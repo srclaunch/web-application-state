@@ -7,7 +7,7 @@
       "bundle": true,
       "codeSplitting": true,
       "excludeLibs": [
-        "@srclaunch/environment-web",
+        "@srclaunch/web-environment",
         "@srclaunch/exceptions",
         "@srclaunch/i18n",
         "@srclaunch/logger",
@@ -37,7 +37,7 @@
       "bundle": true,
       "codeSplitting": false,
       "excludeLibs": [
-        "@srclaunch/environment-web",
+        "@srclaunch/web-environment",
         "@srclaunch/exceptions",
         "@srclaunch/i18n",
         "@srclaunch/logger",
