@@ -3,7 +3,7 @@ import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
 import { DateTime } from 'luxon';
 
 import { AppDispatch, AppThunk, RootState } from '../../index';
-import { PaymentMethodService } from '@srclaunch/services';
+import { PaymentMethodService } from '@srclaunch/http-services';
 
 const paymentMethodsAdapter = createEntityAdapter<PaymentMethod>({
   selectId: paymentMethod => paymentMethod.id,

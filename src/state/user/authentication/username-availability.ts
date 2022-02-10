@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { AuthenticationService } from '@srclaunch/services';
+import { AuthenticationService } from '@srclaunch/http-services';
 import { DateTime } from 'luxon';
 import {
   AuthenticationUsernameAvailabilityCheckException,
@@ -63,7 +63,7 @@ export const checkUsernameAvailability =
 
       dispatch(setCheckUsernameAvailabilitySuccess(available));
       dispatch(setCheckUsernameAvailabilityInProgress(false));
-    } catch (err:any) {
+    } catch (err: any) {
       const exception =
         err instanceof Exception
           ? err

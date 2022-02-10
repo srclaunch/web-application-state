@@ -1,1 +1,1 @@
-# @srclaunch/state
+# @srclaunch/web-application-state

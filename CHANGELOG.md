@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.3
+
+### Patch Changes
+
+- Updating refs and deps
+- Updated dependencies
+  - @srclaunch/http-services@0.1.3
+
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
 ### [0.0.47](https://github.com/srclaunch/state/compare/v0.0.46...v0.0.47) (2021-08-29)

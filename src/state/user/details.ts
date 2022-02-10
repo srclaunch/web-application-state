@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Exception } from '@srclaunch/exceptions';
 import { User, UserPreferences } from '@srclaunch/types';
 import { DateTime } from 'luxon';
-import { UserService } from '@srclaunch/services';
+import { UserService } from '@srclaunch/http-services';
 import { AppThunk } from '../../index';
 
 type UserDetailsState = Partial<User> & {

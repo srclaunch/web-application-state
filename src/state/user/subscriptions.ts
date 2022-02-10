@@ -1,5 +1,5 @@
 import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
-import { SubscriptionService } from '@srclaunch/services';
+import { SubscriptionService } from '@srclaunch/http-services';
 import { Subscription } from '@srclaunch/types';
 import { DateTime } from 'luxon';
 

@@ -2,7 +2,7 @@ import { Exception } from '@srclaunch/exceptions';
 import { CommunicationMedium, ISO8601String } from '@srclaunch/types';
 import { createSlice } from '@reduxjs/toolkit';
 import { AppThunk } from '../../../../../index';
-import { AuthenticationService } from '@srclaunch/services';
+import { AuthenticationService } from '@srclaunch/http-services';
 import { DateTime } from 'luxon';
 
 type VerificationStatusState = {
@@ -85,7 +85,6 @@ export const getVerificationDetails =
       // dispatch(setVerificationStatusLookupSuccess(details));
 
       dispatch(setVerificationStatusLookupInProgress(false));
-
     } catch (err: any) {
       const exception =
         err instanceof Exception
@@ -94,8 +93,7 @@ export const getVerificationDetails =
               cause: err,
             });
 
-      dispatch(setVerificationStatusLookupFailure(exception.toJSON()))
+      dispatch(setVerificationStatusLookupFailure(exception.toJSON()));
       dispatch(setVerificationStatusLookupInProgress(false));
-
     }
   };

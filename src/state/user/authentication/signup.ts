@@ -21,7 +21,7 @@ import {
   FormValidationProblem,
   ISO8601String,
 } from '@srclaunch/types';
-import { AuthenticationService } from '@srclaunch/services';
+import { AuthenticationService } from '@srclaunch/http-services';
 import { validate } from '@srclaunch/validation';
 import { Navigate } from 'react-router-dom';
 import { AppThunk } from '../../../index';
@@ -146,9 +146,9 @@ export const signUp =
         ClientId: config.aws.cognito.userPoolClientId,
         UserPoolId: config.aws.cognito.userPoolId,
       };
-      
+
       const userPool = new CognitoUserPool(poolData);
-      
+
       const attributeList = [
         new CognitoUserAttribute({
           Name: 'email',
@@ -163,27 +163,27 @@ export const signUp =
           Value: lastName,
         }),
       ];
-      
+
       userPool.signUp(username, password, attributeList, [], (err, result) => {
         if (err) {
           console.log('err', err);
           const exception = new Exception('Failure when signing user up', {
             cause: err,
           });
-      
+
           dispatch(setSignupFailure(exception.toJSON()));
-      
+
           return;
         }
-      
+
         if (!result) {
           const exception = new Exception('Unknown error occurred', {});
-      
+
           dispatch(setSignupFailure(exception.toJSON()));
-      
+
           return;
         }
-      
+
         const cognitoUser = result?.user;
         const userSub = result.userSub;
 
@@ -192,7 +192,6 @@ export const signUp =
           dispatch(setSignupSuccess({ userId: userSub }));
         }
       });
-
 
       // });
     } catch (err: any) {
