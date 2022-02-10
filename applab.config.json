@@ -1,0 +1,61 @@
+{
+  "build": [{
+    "buildDir": "dist",
+    "buildFile": "index.js",
+    "buildTypes": false,
+    "bundle": true,
+    "codeSplitting": true,
+    "excludeLibs": [
+      "@srclaunch/environment-web",
+      "@srclaunch/exceptions",
+      "@srclaunch/i18n",
+      "@srclaunch/logger",
+      "@srclaunch/services",
+      "@srclaunch/themes",
+      "@srclaunch/types",
+      "@srclaunch/validation",
+      "amazon-cognito-identity-js",
+      "aws-sdk",
+      "react",
+      "react-dom"
+    ],
+    "define": {},
+    "format": "esm",
+    "inputScripts": ["src/index.tsx"],
+    "minify": true,
+    "outDir": "dist",
+    "platform": "browser",
+    "sourceMap": true,
+    "target": "es2017",
+    "treeShaking": true
+  },
+  {
+    "buildDir": "dist",
+    "buildFile": "index.cjs.js",
+    "buildTypes": false,
+    "bundle": true,
+    "codeSplitting": false,
+    "excludeLibs": [
+      "@srclaunch/environment-web",
+      "@srclaunch/exceptions",
+      "@srclaunch/i18n",
+      "@srclaunch/logger",
+      "@srclaunch/services",
+      "@srclaunch/themes",
+      "@srclaunch/types",
+      "@srclaunch/validation",
+      "amazon-cognito-identity-js",
+      "aws-sdk",
+      "react",
+      "react-dom"
+    ],
+    "define": {},
+    "format": "cjs",
+    "inputScripts": ["src/index.tsx"],
+    "minify": true,
+    "platform": "browser",
+    "sourceMap": true,
+    "target": "es2017",
+    "treeShaking": true
+  }]
+}
