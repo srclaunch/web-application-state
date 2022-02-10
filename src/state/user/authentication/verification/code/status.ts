@@ -1,20 +1,23 @@
+import { createSlice } from '@reduxjs/toolkit';
 import { Exception } from '@srclaunch/exceptions';
 import { CommunicationMedium, ISO8601String } from '@srclaunch/types';
-import { createSlice } from '@reduxjs/toolkit';
-import { AppThunk } from '../../../../../index';
-import { AuthenticationService } from '@srclaunch/http-services';
+// import { AuthenticationService } from '@srclaunch/http-services';
 import { DateTime } from 'luxon';
 
+import { AppThunk } from '../../../../../index';
+
 type VerificationStatusState = {
-  delivery?: {
-    destination: string;
-    medium: CommunicationMedium.Email | CommunicationMedium.PhoneNumber;
+  readonly delivery?: {
+    readonly destination: string;
+    readonly medium:
+      | CommunicationMedium.Email
+      | CommunicationMedium.PhoneNumber;
   };
-  error?: Exception | Error;
-  inProgress: boolean;
-  lastUpdated?: ISO8601String;
-  status?: string;
-  success?: boolean;
+  readonly error?: Exception | Error;
+  readonly inProgress: boolean;
+  readonly lastUpdated?: ISO8601String;
+  readonly status?: string;
+  readonly success?: boolean;
 };
 
 const initialState: VerificationStatusState = {
@@ -62,7 +65,7 @@ const {
 } = slice.actions;
 
 export const getVerificationDetails =
-  ({ userId }: { userId: string }): AppThunk =>
+  ({ userId }: { readonly userId: string }): AppThunk =>
   async (dispatch, getState) => {
     try {
       dispatch(setVerificationStatusLookupInProgress(true));
@@ -85,12 +88,12 @@ export const getVerificationDetails =
       // dispatch(setVerificationStatusLookupSuccess(details));
 
       dispatch(setVerificationStatusLookupInProgress(false));
-    } catch (err: any) {
+    } catch (error: any) {
       const exception =
-        err instanceof Exception
-          ? err
-          : new Exception(err.message, {
-              cause: err,
+        error instanceof Exception
+          ? error
+          : new Exception(error.message, {
+              cause: error,
             });
 
       dispatch(setVerificationStatusLookupFailure(exception.toJSON()));

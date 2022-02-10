@@ -19,18 +19,18 @@ declare const _default: import("redux").Reducer<import("redux").CombinedState<{
         success?: boolean | undefined;
     };
     signup: {
-        error?: import("@srclaunch/exceptions").Exception | Error | undefined;
-        lastUpdated?: string | undefined;
-        inProgress: boolean;
-        success?: boolean | undefined;
-        userId?: string | undefined;
+        readonly error?: import("@srclaunch/exceptions").Exception | Error | undefined;
+        readonly lastUpdated?: string | undefined;
+        readonly inProgress: boolean;
+        readonly success?: boolean | undefined;
+        readonly userId?: string | undefined;
     };
     usernameAvailability: {
-        available?: boolean | undefined;
-        error?: import("@srclaunch/exceptions").Exception | Error | undefined;
-        lastUpdated?: string | undefined;
-        inProgress: boolean;
-        success?: boolean | undefined;
+        readonly available?: boolean | undefined;
+        readonly error?: import("@srclaunch/exceptions").Exception | Error | undefined;
+        readonly lastUpdated?: string | undefined;
+        readonly inProgress: boolean;
+        readonly success?: boolean | undefined;
     };
     verification: import("redux").CombinedState<{
         code: import("redux").CombinedState<{
@@ -41,15 +41,15 @@ declare const _default: import("redux").Reducer<import("redux").CombinedState<{
                 success?: boolean | undefined;
             };
             status: {
-                delivery?: {
-                    destination: string;
-                    medium: import("@srclaunch/types").CommunicationMedium;
+                readonly delivery?: {
+                    readonly destination: string;
+                    readonly medium: import("@srclaunch/types").CommunicationMedium;
                 } | undefined;
-                error?: import("@srclaunch/exceptions").Exception | Error | undefined;
-                inProgress: boolean;
-                lastUpdated?: string | undefined;
-                status?: string | undefined;
-                success?: boolean | undefined;
+                readonly error?: import("@srclaunch/exceptions").Exception | Error | undefined;
+                readonly inProgress: boolean;
+                readonly lastUpdated?: string | undefined;
+                readonly status?: string | undefined;
+                readonly success?: boolean | undefined;
             };
             verify: {
                 error?: import("@srclaunch/exceptions").Exception | Error | undefined;

@@ -7,15 +7,15 @@ declare const _default: import("redux").Reducer<import("redux").CombinedState<{
             success?: boolean | undefined;
         };
         status: {
-            delivery?: {
-                destination: string;
-                medium: import("@srclaunch/types").CommunicationMedium;
+            readonly delivery?: {
+                readonly destination: string;
+                readonly medium: import("@srclaunch/types").CommunicationMedium;
             } | undefined;
-            error?: import("@srclaunch/exceptions").Exception | Error | undefined;
-            inProgress: boolean;
-            lastUpdated?: string | undefined;
-            status?: string | undefined;
-            success?: boolean | undefined;
+            readonly error?: import("@srclaunch/exceptions").Exception | Error | undefined;
+            readonly inProgress: boolean;
+            readonly lastUpdated?: string | undefined;
+            readonly status?: string | undefined;
+            readonly success?: boolean | undefined;
         };
         verify: {
             error?: import("@srclaunch/exceptions").Exception | Error | undefined;

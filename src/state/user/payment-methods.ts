@@ -1,22 +1,23 @@
-import { PaymentMethod } from '@srclaunch/types';
 import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
+import { PaymentMethod } from '@srclaunch/types';
 import { DateTime } from 'luxon';
 
 import { AppDispatch, AppThunk, RootState } from '../../index';
-import { PaymentMethodService } from '@srclaunch/http-services';
+// import { PaymentMethodService } from '@srclaunch/http-services';
 
 const paymentMethodsAdapter = createEntityAdapter<PaymentMethod>({
   selectId: paymentMethod => paymentMethod.id,
 });
+
 export const selectors = paymentMethodsAdapter.getSelectors(
   (state: RootState) => state.getState().paymentMethods,
 );
 
 type PaymentMethodsState = {
-  error?: Error | string;
-  in_progress: boolean;
-  initialized: boolean;
-  last_updated?: DateTime;
+  readonly error?: Error | string;
+  readonly in_progress: boolean;
+  readonly initialized: boolean;
+  readonly last_updated?: DateTime;
 };
 
 const slice = createSlice({
@@ -31,10 +32,13 @@ const slice = createSlice({
     setError: (state, action) => {
       state.error = action.payload;
     },
-    setInProgress: (state, action: { payload: boolean }) => {
+    setInProgress: (state, action: { readonly payload: boolean }) => {
       state.in_progress = action.payload;
     },
-    setPaymentMethods: (state, action: { payload: PaymentMethod[] }) => {
+    setPaymentMethods: (
+      state,
+      action: { readonly payload: readonly PaymentMethod[] },
+    ) => {
       paymentMethodsAdapter.addMany(state, action.payload);
     },
   },
@@ -44,11 +48,11 @@ export const getPaymentMethods =
   (): AppThunk => async (dispatch: AppDispatch) => {
     dispatch(slice.actions.setInProgress(true));
 
-    const paymentMethods = await PaymentMethodService.list();
+    // const paymentMethods = await PaymentMethodService.list();
 
-    dispatch(
-      slice.actions.setPaymentMethods(paymentMethods as PaymentMethod[]),
-    );
+    // dispatch(
+    //   slice.actions.setPaymentMethods(paymentMethods as PaymentMethod[]),
+    // );
 
     dispatch(slice.actions.setInProgress(true));
   };
@@ -62,7 +66,7 @@ export const deletePaymentMethod =
     dispatch(slice.actions.setInProgress(true));
     dispatch(slice.actions.deletePaymentMethod(id));
 
-    await PaymentMethodService.delete(id);
+    // await PaymentMethodService.delete(id);
 
     dispatch(slice.actions.setInProgress(false));
   };

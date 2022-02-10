@@ -1,17 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import {
-  AuthenticationDetails,
-  CognitoUser,
-  CognitoUserAttribute,
-  CognitoUserPool,
-  CognitoUserSession,
-} from 'amazon-cognito-identity-js';
-import AWS from 'aws-sdk';
-import { Credentials } from 'aws-sdk/lib/credentials';
-import { DateTime } from 'luxon';
-import {
-  Exception,
   AuthenticationException,
+  Exception,
   // Exception,
   InvalidArgumentException,
   MissingArgumentException,
@@ -21,17 +11,28 @@ import {
   FormValidationProblem,
   ISO8601String,
 } from '@srclaunch/types';
-import { AuthenticationService } from '@srclaunch/http-services';
+// import { AuthenticationService } from '@srclaunch/http-services';
 import { validate } from '@srclaunch/validation';
-import { Navigate } from 'react-router-dom';
+import {
+  AuthenticationDetails,
+  CognitoUser,
+  CognitoUserAttribute,
+  CognitoUserPool,
+  CognitoUserSession,
+} from 'amazon-cognito-identity-js';
+import AWS from 'aws-sdk';
+import { Credentials } from 'aws-sdk/lib/credentials';
+import { DateTime } from 'luxon';
+
+// import { Navigate } from 'react-router-dom';
 import { AppThunk } from '../../../index';
 
 type SignupState = {
-  error?: Exception | Error;
-  lastUpdated?: ISO8601String;
-  inProgress: boolean;
-  success?: boolean;
-  userId?: string;
+  readonly error?: Exception | Error;
+  readonly lastUpdated?: ISO8601String;
+  readonly inProgress: boolean;
+  readonly success?: boolean;
+  readonly userId?: string;
 };
 
 const initialState: SignupState = {
@@ -51,7 +52,10 @@ const slice = createSlice({
       state.lastUpdated = DateTime.now().toISO();
       state.inProgress = action.payload;
     },
-    setSignupSuccess: (state, action: PayloadAction<{ userId: string }>) => {
+    setSignupSuccess: (
+      state,
+      action: PayloadAction<{ readonly userId: string }>,
+    ) => {
       state.lastUpdated = DateTime.now().toISO();
       state.inProgress = false;
       state.userId = action.payload.userId;
@@ -72,10 +76,10 @@ export const signUp =
     password,
     username,
   }: {
-    firstName: string;
-    lastName: string;
-    password: string;
-    username: string;
+    readonly firstName: string;
+    readonly lastName: string;
+    readonly password: string;
+    readonly username: string;
   }): AppThunk =>
   async (dispatch, getState) => {
     try {
@@ -119,7 +123,7 @@ export const signUp =
         [Condition.IsEmailAddress]: true,
       });
 
-      if (problems.length) {
+      if (problems.length > 0) {
         const err = new InvalidArgumentException(
           `"username" value is not valid email.`,
           {
@@ -194,13 +198,13 @@ export const signUp =
       });
 
       // });
-    } catch (err: any) {
-      if (err.name === AuthenticationException.name) {
-        dispatch(setSignupFailure(err.toJSON()));
+    } catch (error: any) {
+      if (error.name === AuthenticationException.name) {
+        dispatch(setSignupFailure(error.toJSON()));
 
         return;
       }
 
-      throw err;
+      throw error;
     }
   };

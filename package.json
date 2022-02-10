@@ -3,7 +3,7 @@
   "description": "Redux state and utilities used by AppLab web applications",
   "author": "Steven Bennett <steven@srclaunch.com>",
   "license": "MIT",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "engines": {
     "node": ">=16"
   },
@@ -25,11 +25,12 @@
     }
   },
   "scripts": {
-    "build:cjs": "esbuild --sourcemap --bundle --external:'react' --external:'react-dom' --external:'react-router' --external:'react-redux' --external:'@srclaunch/ui' --external:'aws-sdk' --external:'amazon-cognito-identity-js' --outfile=lib/index.cjs.js --format=cjs --platform=browser src/index.tsx",
-    "build:es": "esbuild --sourcemap --bundle --external:'react' --external:'react-dom' --external:'react-router' --external:'react-redux' --external:'@srclaunch/ui' --external:'aws-sdk' --external:'amazon-cognito-identity-js' --outfile=lib/index.es.js --format=esm --platform=browser src/index.tsx",
+    "build:cjs": "esbuild --sourcemap --bundle --external:'react' --external:'react-dom' --external:'react-router' --external:'react-redux' --external:'@srclaunch/ui' --external:'aws-sdk' --external:'amazon-cognito-identity-js' --outfile=dist/index.cjs.js --format=cjs --platform=browser src/index.tsx",
+    "build:es": "esbuild --sourcemap --bundle --external:'react' --external:'react-dom' --external:'react-router' --external:'react-redux' --external:'@srclaunch/ui' --external:'aws-sdk' --external:'amazon-cognito-identity-js' --outfile=dist/index.es.js --format=esm --platform=browser src/index.tsx",
     "build:types": "tsc --build --force",
     "build:applab": "yarn applab build",
-    "build": "yarn build:applab && yarn build:types",
+    "build": "yarn clean && yarn build:applab && yarn build:types",
+    "clean": "rm -fr ./dist",
     "lint:eslint": "yarn eslint ./src --ext js,ts,tsx --max-warnings 0",
     "lint:stylelint": "yarn stylelint '**/*.ts[x]'",
     "lint": "yarn lint:eslint && yarn lint:stylelint",

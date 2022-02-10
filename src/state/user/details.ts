@@ -2,14 +2,15 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Exception } from '@srclaunch/exceptions';
 import { User, UserPreferences } from '@srclaunch/types';
 import { DateTime } from 'luxon';
-import { UserService } from '@srclaunch/http-services';
+
+// import { UserService } from '@srclaunch/http-services';
 import { AppThunk } from '../../index';
 
 type UserDetailsState = Partial<User> & {
-  attributes?: Record<string, string>;
-  error?: Exception | Error;
-  inProgress: boolean;
-  lastUpdated?: DateTime;
+  readonly attributes?: Record<string, string>;
+  readonly error?: Exception | Error;
+  readonly inProgress: boolean;
+  readonly lastUpdated?: DateTime;
 };
 
 const initialState: UserDetailsState = {
@@ -40,7 +41,10 @@ const slice = createSlice({
       state.analytics = analytics;
       state.preferences = preferences;
     },
-    setUserPreferences: (state, action: { payload: UserPreferences }) => {
+    setUserPreferences: (
+      state,
+      action: { readonly payload: UserPreferences },
+    ) => {
       state.preferences = action.payload;
     },
   },
@@ -70,21 +74,18 @@ export const { setUserAttributes } = slice.actions;
 export default slice.reducer;
 
 export const getUserDetails = (): AppThunk => async (dispatch, getState) => {
-  const user = await UserService.getUserDetails();
-
-  if (user) {
-    dispatch(slice.actions.setUserDetails(user));
-
-    // analytics.identifyUser(user.id, {
-    //   email_address: user.email_address,
-    //   first_name: user.first_name,
-    //   last_name: user.last_name,
-    //   login_count: user.login_count,
-    // });
-
-    // await Promise.all([
-    //   dispatch(getSubscriptions()),
-    //   dispatch(slice.actions.setInitialized()),
-    // ]);
-  }
+  // const user = await UserService.getUserDetails();
+  // if (user) {
+  // dispatch(slice.actions.setUserDetails(user));
+  // analytics.identifyUser(user.id, {
+  //   email_address: user.email_address,
+  //   first_name: user.first_name,
+  //   last_name: user.last_name,
+  //   login_count: user.login_count,
+  // });
+  // await Promise.all([
+  //   dispatch(getSubscriptions()),
+  //   dispatch(slice.actions.setInitialized()),
+  // ]);
+  // }
 };

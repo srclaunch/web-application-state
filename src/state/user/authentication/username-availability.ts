@@ -1,20 +1,20 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { AuthenticationService } from '@srclaunch/http-services';
-import { DateTime } from 'luxon';
 import {
   AuthenticationUsernameAvailabilityCheckException,
   Exception,
 } from '@srclaunch/exceptions';
 import { ISO8601String } from '@srclaunch/types';
+// import { AuthenticationService } from '@srclaunch/http-services';
+import { DateTime } from 'luxon';
 
 import { AppThunk } from '../../../index';
 
 type UsernameAvailabilityState = {
-  available?: boolean;
-  error?: Exception | Error;
-  lastUpdated?: ISO8601String;
-  inProgress: boolean;
-  success?: boolean;
+  readonly available?: boolean;
+  readonly error?: Exception | Error;
+  readonly lastUpdated?: ISO8601String;
+  readonly inProgress: boolean;
+  readonly success?: boolean;
 };
 
 const initialState: UsernameAvailabilityState = {
@@ -52,25 +52,25 @@ const {
 } = slice.actions;
 
 export const checkUsernameAvailability =
-  ({ username }: { username: string }): AppThunk =>
+  ({ username }: { readonly username: string }): AppThunk =>
   async dispatch => {
     try {
       dispatch(setCheckUsernameAvailabilityInProgress(true));
 
-      const available = await AuthenticationService.checkUsernameAvailability({
-        username,
-      });
+      // const available = await AuthenticationService.checkUsernameAvailability({
+      //   username,
+      // });
 
-      dispatch(setCheckUsernameAvailabilitySuccess(available));
+      // dispatch(setCheckUsernameAvailabilitySuccess(available));
       dispatch(setCheckUsernameAvailabilityInProgress(false));
-    } catch (err: any) {
+    } catch (error: any) {
       const exception =
-        err instanceof Exception
-          ? err
+        error instanceof Exception
+          ? error
           : new AuthenticationUsernameAvailabilityCheckException(
               'An exception occurred while checking username availability',
               {
-                cause: err,
+                cause: error,
                 origin: {
                   file: 'src/state/user/authentication/username-availability.ts',
                 },

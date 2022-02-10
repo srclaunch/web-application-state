@@ -1,10 +1,9 @@
 import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
-import { SubscriptionService } from '@srclaunch/http-services';
+// import { SubscriptionService } from '@srclaunch/http-services';
 import { Subscription } from '@srclaunch/types';
 import { DateTime } from 'luxon';
 
-import { RootState } from '../../index';
-import { AppDispatch, AppThunk } from '../../index';
+import { AppDispatch, AppThunk, RootState } from '../../index';
 
 const subscriptionsAdapter = createEntityAdapter<Subscription>({
   selectId: subscription => subscription.id,
@@ -15,10 +14,10 @@ export const selectors = subscriptionsAdapter.getSelectors(
 );
 
 type SubscriptionsState = {
-  error?: Error | string;
-  in_progress: boolean;
-  initialized: boolean;
-  last_updated?: DateTime;
+  readonly error?: Error | string;
+  readonly in_progress: boolean;
+  readonly initialized: boolean;
+  readonly last_updated?: DateTime;
 };
 
 const subscriptionsSlice = createSlice({
@@ -31,11 +30,13 @@ const subscriptionsSlice = createSlice({
     setError: (state, action) => {
       state.error = action.payload;
     },
-    setInProgress: (state, action: { payload: boolean }) => {
+    setInProgress: (state, action: { readonly payload: boolean }) => {
       state.in_progress = action.payload;
     },
-    setSubscriptions: (state, action: { payload: Subscription[] }) =>
-      subscriptionsAdapter.setAll(state, action.payload),
+    setSubscriptions: (
+      state,
+      action: { readonly payload: readonly Subscription[] },
+    ) => subscriptionsAdapter.setAll(state, action.payload),
   },
 });
 
@@ -43,10 +44,10 @@ export const getSubscriptions =
   (): AppThunk => async (dispatch: AppDispatch) => {
     dispatch(subscriptionsSlice.actions.setInProgress(true));
 
-    const subscriptions = await SubscriptionService.list();
+    // const subscriptions = await SubscriptionService.list();
 
     // @ts-ignore
-    dispatch(subscriptionsSlice.actions.setSubscriptions(subscriptions));
+    // dispatch(subscriptionsSlice.actions.setSubscriptions(subscriptions));
 
     dispatch(subscriptionsSlice.actions.setInProgress(true));
   };
