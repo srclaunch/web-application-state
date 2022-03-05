@@ -41,9 +41,9 @@ export default defineConfig({
   define: {
     pkgJson: { name, version },
   },
-  // esbuild: {
-  // jsxInject: `import React from 'react'`,
-  // },
+  esbuild: {
+    jsxInject: `import React from 'react'`,
+  },
   // @ts-ignore
   plugins: [
     // react({
