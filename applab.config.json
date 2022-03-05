@@ -18,7 +18,10 @@
         "amazon-cognito-identity-js",
         "aws-sdk",
         "react",
-        "react-dom"
+        "react-dom",
+        "react-redux",
+        "react-router",
+        "react-router-dom"
       ],
       "define": {},
       "format": "esm",
@@ -48,7 +51,10 @@
         "amazon-cognito-identity-js",
         "aws-sdk",
         "react",
-        "react-dom"
+        "react-dom",
+        "react-redux",
+        "react-router",
+        "react-router-dom"
       ],
       "define": {},
       "format": "cjs",
