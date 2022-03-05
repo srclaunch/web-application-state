@@ -11,16 +11,16 @@
     "access": "public",
     "registry": "https://registry.npmjs.org/"
   },
-  "main": "./dist/index.js",
+  "main": "./dist/index.es.js",
   "types": "./dist/index.d.ts",
   "files": [
     "package.json",
     "dist"
   ],
-  "module": "./dist/index.js",
+  "module": "./dist/index.es.js",
   "exports": {
     ".": {
-      "import": "./dist/index.js",
+      "import": "./dist/index.es.js",
       "require": "./dist/index.cjs.js"
     }
   },
@@ -29,7 +29,8 @@
     "build:es": "esbuild --sourcemap --bundle --external:'react' --external:'react-dom' --external:'react-router' --external:'react-redux' --external:'@srclaunch/ui' --external:'aws-sdk' --external:'amazon-cognito-identity-js' --outfile=dist/index.es.js --format=esm --platform=browser src/index.tsx",
     "build:types": "tsc --build --force",
     "build:applab": "yarn applab build",
-    "build": "yarn clean && yarn build:applab && yarn build:types",
+    "build:vite": "vite build",
+    "build": "yarn clean && yarn build:vite && yarn build:types",
     "clean": "rm -fr ./dist",
     "lint:eslint": "yarn eslint ./src --ext js,ts,tsx --max-warnings 0",
     "lint:stylelint": "yarn stylelint '**/*.ts[x]'",
@@ -48,9 +49,8 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.7.2",
-    "@srclaunch/exceptions": "^0.1.2",
+    "@srclaunch/exceptions": "^0.1.6",
     "@srclaunch/http-client": "^0.1.2",
-    "@srclaunch/http-services": "^0.1.3",
     "@srclaunch/i18n": "^0.1.2",
     "@srclaunch/logger": "^0.1.2",
     "@srclaunch/themes": "^0.1.3",
@@ -68,7 +68,7 @@
     "redux": "^4.1.2"
   },
   "devDependencies": {
-    "@srclaunch/cli": "^0.1.13",
+    "@srclaunch/cli": "^0.1.18",
     "@srclaunch/dx": "^0.1.2",
     "@srclaunch/types": "^0.1.2",
     "@types/history": "4.7.11",
@@ -114,7 +114,8 @@
     "stylelint-config-recommended": "^6.0.0",
     "stylelint-config-styled-components": "^0.1.1",
     "stylelint-order": "^5.0.0",
-    "typescript": "^4.5.5"
+    "typescript": "^4.5.5",
+    "vite": "^2.8.6"
   },
   "peerDependencies": {
     "react": "^17.0.2",
