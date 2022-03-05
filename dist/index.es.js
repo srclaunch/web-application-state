@@ -29,7 +29,7 @@ var __objRest = (source, exclude) => {
     }
   return target;
 };
-import React$1, { memo, useState, useEffect, StrictMode } from "react";
+import React, { memo, useState, useEffect, StrictMode } from "react";
 import ReactDOM from "react-dom";
 import { useDispatch, useSelector, Provider } from "react-redux";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -31389,16 +31389,16 @@ const renderReduxWebApp = async ({
   if (authentication2) {
     await store.dispatch(refreshSession());
   }
-  return ReactDOM.render(/* @__PURE__ */ React$1.createElement(StrictMode, null, /* @__PURE__ */ React$1.createElement(Provider, {
+  return ReactDOM.render(/* @__PURE__ */ React.createElement(StrictMode, null, /* @__PURE__ */ React.createElement(Provider, {
     store
-  }, /* @__PURE__ */ React$1.createElement(BrowserRouter, null, /* @__PURE__ */ React$1.createElement(Routes, null, /* @__PURE__ */ React$1.createElement(Route, {
+  }, /* @__PURE__ */ React.createElement(BrowserRouter, null, /* @__PURE__ */ React.createElement(Routes, null, /* @__PURE__ */ React.createElement(Route, {
     path: "/",
     element: container
   }, routes2.map((route, k2) => {
     if (route.role === PageRole.Index) {
-      return /* @__PURE__ */ React$1.createElement(Route, {
+      return /* @__PURE__ */ React.createElement(Route, {
         index: true,
-        element: /* @__PURE__ */ React$1.createElement(route.component, {
+        element: /* @__PURE__ */ React.createElement(route.component, {
           actions,
           httpClient
         }),
@@ -31406,8 +31406,8 @@ const renderReduxWebApp = async ({
       });
     }
     if (route.path) {
-      return /* @__PURE__ */ React$1.createElement(Route, {
-        element: /* @__PURE__ */ React$1.createElement(route.component, {
+      return /* @__PURE__ */ React.createElement(Route, {
+        element: /* @__PURE__ */ React.createElement(route.component, {
           actions,
           httpClient
         }),
@@ -31415,8 +31415,8 @@ const renderReduxWebApp = async ({
         path: route.path
       });
     }
-    return /* @__PURE__ */ React$1.createElement(Route, {
-      element: /* @__PURE__ */ React$1.createElement(route.component, {
+    return /* @__PURE__ */ React.createElement(Route, {
+      element: /* @__PURE__ */ React.createElement(route.component, {
         actions,
         httpClient
       }),
