@@ -1,7 +1,7 @@
 import { AnyAction, EnhancedStore, Middleware, ReducersMapObject, ThunkAction } from '@reduxjs/toolkit';
 import { HttpClient } from '@srclaunch/http-client';
 import { Model, ModelProps, PageRoute, WebApplicationConfig } from '@srclaunch/types';
-import React, { ReactElement } from 'react';
+import { ReactElement } from 'react';
 export declare const history: import("history").BrowserHistory;
 export declare const createStore: ({ models, reducers, middleware, }: {
     readonly models?: Record<string, ModelProps<Model>> | undefined;
@@ -11,7 +11,7 @@ export declare const createStore: ({ models, reducers, middleware, }: {
 export declare const renderReduxWebApp: ({ actions, authentication, container, config, httpClient, routes, store, }: {
     readonly actions?: Record<string, (...args: readonly any[]) => any> | undefined;
     readonly authentication?: boolean | undefined;
-    readonly container?: React.ReactElement<any, string | React.JSXElementConstructor<any>> | undefined;
+    readonly container?: ReactElement<any, string | import("react").JSXElementConstructor<any>> | undefined;
     readonly config?: WebApplicationConfig | undefined;
     readonly httpClient?: typeof HttpClient | undefined;
     readonly routes: readonly PageRoute[];

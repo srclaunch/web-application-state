@@ -17,7 +17,7 @@ import {
 } from '@srclaunch/types';
 import { getEnvironment } from '@srclaunch/web-environment';
 import { createBrowserHistory } from 'history';
-import React, { ReactElement } from 'react';
+import { ReactElement, StrictMode } from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
@@ -89,7 +89,7 @@ export const renderReduxWebApp = async ({
   }
 
   return ReactDOM.render(
-    <React.StrictMode>
+    <StrictMode>
       <Provider store={store}>
         <Router>
           <Routes>
@@ -141,7 +141,7 @@ export const renderReduxWebApp = async ({
           </Routes>
         </Router>
       </Provider>
-    </React.StrictMode>,
+    </StrictMode>,
     document.querySelector('#root'),
   );
 };

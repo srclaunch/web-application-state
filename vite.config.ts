@@ -1,5 +1,5 @@
 import { defineConfig, PluginOption } from 'vite';
-// import react from '@vitejs/plugin-react';
+import react from '@vitejs/plugin-react';
 import { name, version } from './package.json';
 import path from 'path';
 
@@ -27,10 +27,10 @@ export default defineConfig({
       ],
       output: {
         // Global vars to use in UMD build for externalized deps
-        // globals: {
-        //   react: 'React',
-        //   'react-dom': 'ReactDOM',
-        // },
+        globals: {
+          react: 'React',
+          'react-dom': 'ReactDOM',
+        },
       },
     },
   },
@@ -41,9 +41,23 @@ export default defineConfig({
   define: {
     pkgJson: { name, version },
   },
-  esbuild: {
-    // jsxInject: `import React from 'react'`,
-  },
+  // esbuild: {
+  // jsxInject: `import React from 'react'`,
+  // },
   // @ts-ignore
-  // plugins: [react()],
+  plugins: [
+    // react({
+    //   babel: {
+    //     plugins: [
+    //       [
+    //         'babel-plugin-styled-components',
+    //         {
+    //           displayName: true,
+    //           fileName: false,
+    //         },
+    //       ],
+    //     ],
+    //   },
+    // }),
+  ],
 });
