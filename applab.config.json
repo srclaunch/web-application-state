@@ -17,6 +17,7 @@
         "@srclaunch/validation",
         "amazon-cognito-identity-js",
         "aws-sdk",
+        "redux",
         "react",
         "react-dom",
         "react-redux",
@@ -30,7 +31,7 @@
       "outDir": "dist",
       "platform": "browser",
       "sourceMap": true,
-      "target": "es2017",
+      "target": "es2020",
       "treeShaking": true
     },
     {
@@ -49,6 +50,7 @@
         "@srclaunch/types",
         "@srclaunch/validation",
         "amazon-cognito-identity-js",
+        "redux",
         "aws-sdk",
         "react",
         "react-dom",
@@ -62,7 +64,7 @@
       "minify": true,
       "platform": "browser",
       "sourceMap": true,
-      "target": "es2017",
+      "target": "es2015",
       "treeShaking": true
     }
   ]
