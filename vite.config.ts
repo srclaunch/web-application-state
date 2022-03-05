@@ -1,5 +1,5 @@
 import { defineConfig, PluginOption } from 'vite';
-import react from '@vitejs/plugin-react';
+// import react from '@vitejs/plugin-react';
 import { name, version } from './package.json';
 import path from 'path';
 
@@ -16,13 +16,12 @@ export default defineConfig({
     rollupOptions: {
       // Externalize deps that shouldn't be bundled
       external: [
-        'aws-sdk',
         'react',
         'react-dom',
         'react-redux',
         'react-router',
         'react-router-dom',
-        // 'styled-components',
+        'styled-components',
         // 'amazon-cognito-identity-js',
         '@srclaunch/logger',
       ],
@@ -46,5 +45,5 @@ export default defineConfig({
     // jsxInject: `import React from 'react'`,
   },
   // @ts-ignore
-  plugins: [react()],
+  // plugins: [react()],
 });

@@ -22,7 +22,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
-import { createMiddleware } from './middleware';
+import { createMiddleware } from './middleware/index';
 import { createRootReducer } from './state';
 import { setConfig } from './state/app/config';
 import { setRoutes } from './state/app/routes';

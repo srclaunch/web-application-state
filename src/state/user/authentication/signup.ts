@@ -20,8 +20,8 @@ import {
   CognitoUserPool,
   CognitoUserSession,
 } from 'amazon-cognito-identity-js';
-import AWS from 'aws-sdk';
-import { Credentials } from 'aws-sdk/lib/credentials';
+// import AWS from 'aws-sdk';
+// import { Credentials } from 'aws-sdk/lib/credentials';
 import { DateTime } from 'luxon';
 
 // import { Navigate } from 'react-router-dom';
@@ -142,9 +142,9 @@ export const signUp =
 
       const config = getState().app.config;
 
-      AWS.config.update({
-        region: config.aws.region,
-      });
+      // AWS.config.update({
+      //   region: config.aws.region,
+      // });
 
       const poolData = {
         ClientId: config.aws.cognito.userPoolClientId,

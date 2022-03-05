@@ -13,10 +13,10 @@ export declare const setLoggedIn: import("@reduxjs/toolkit").ActionCreatorWithPa
 declare const _default: import("redux").Reducer<import("redux").CombinedState<{
     state: AuthenticationState;
     login: {
-        error?: import("@srclaunch/exceptions").Exception | Error | undefined;
-        lastUpdated?: string | undefined;
-        inProgress: boolean;
-        success?: boolean | undefined;
+        readonly error?: import("@srclaunch/exceptions").Exception | Error | undefined;
+        readonly lastUpdated?: string | undefined;
+        readonly inProgress: boolean;
+        readonly success?: boolean | undefined;
     };
     signup: {
         readonly error?: import("@srclaunch/exceptions").Exception | Error | undefined;

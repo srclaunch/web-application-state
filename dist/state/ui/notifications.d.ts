@@ -9,7 +9,7 @@ export declare function addToastNotification({ color, icon, message, timed, seco
 declare const _default: import("redux").Reducer<import("@reduxjs/toolkit").EntityState<{
     color?: string | undefined;
     id: number;
-    icon?: import("@srclaunch/icons").Icon | undefined;
+    icon?: any;
     message: string;
     timed: boolean;
     type?: import("@srclaunch/types").NotificationType | undefined;
