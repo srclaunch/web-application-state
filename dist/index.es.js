@@ -32,6 +32,7 @@ var __objRest = (source, exclude) => {
 import React, { memo, useState, useEffect, StrictMode } from "react";
 import { createSlice, combineReducers as combineReducers$1, createEntityAdapter, configureStore } from "@reduxjs/toolkit";
 import { EnvironmentType, FormValidationProblem, Condition, PageRole } from "@srclaunch/types";
+import { createBrowserHistory } from "history";
 import ReactDOM from "react-dom";
 import { useDispatch, useSelector, Provider } from "react-redux";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -47,163 +48,6 @@ function s$2() {
     return n2.includes("localhost") || n2.includes("127.0.0.1") ? o$1 : n2.includes("test") ? t$1 : i$2;
   }
   return t$1;
-}
-function _extends() {
-  _extends = Object.assign || function(target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-    return target;
-  };
-  return _extends.apply(this, arguments);
-}
-var r$1, B = r$1 || (r$1 = {});
-B.Pop = "POP";
-B.Push = "PUSH";
-B.Replace = "REPLACE";
-var C = function(b) {
-  return b;
-};
-function E(b) {
-  b.preventDefault();
-  b.returnValue = "";
-}
-function F() {
-  var b = [];
-  return { get length() {
-    return b.length;
-  }, push: function(h) {
-    b.push(h);
-    return function() {
-      b = b.filter(function(e2) {
-        return e2 !== h;
-      });
-    };
-  }, call: function(h) {
-    b.forEach(function(e2) {
-      return e2 && e2(h);
-    });
-  } };
-}
-function H() {
-  return Math.random().toString(36).substr(2, 8);
-}
-function I$1(b) {
-  var h = b.pathname;
-  h = h === void 0 ? "/" : h;
-  var e2 = b.search;
-  e2 = e2 === void 0 ? "" : e2;
-  b = b.hash;
-  b = b === void 0 ? "" : b;
-  e2 && e2 !== "?" && (h += e2.charAt(0) === "?" ? e2 : "?" + e2);
-  b && b !== "#" && (h += b.charAt(0) === "#" ? b : "#" + b);
-  return h;
-}
-function J(b) {
-  var h = {};
-  if (b) {
-    var e2 = b.indexOf("#");
-    0 <= e2 && (h.hash = b.substr(e2), b = b.substr(0, e2));
-    e2 = b.indexOf("?");
-    0 <= e2 && (h.search = b.substr(e2), b = b.substr(0, e2));
-    b && (h.pathname = b);
-  }
-  return h;
-}
-function createBrowserHistory(b) {
-  function h() {
-    var c2 = p2.location, a = m.state || {};
-    return [a.idx, C({ pathname: c2.pathname, search: c2.search, hash: c2.hash, state: a.usr || null, key: a.key || "default" })];
-  }
-  function e2(c2) {
-    return typeof c2 === "string" ? c2 : I$1(c2);
-  }
-  function x2(c2, a) {
-    a === void 0 && (a = null);
-    return C(_extends({ pathname: q.pathname, hash: "", search: "" }, typeof c2 === "string" ? J(c2) : c2, { state: a, key: H() }));
-  }
-  function z2(c2) {
-    t2 = c2;
-    c2 = h();
-    v = c2[0];
-    q = c2[1];
-    d2.call({ action: t2, location: q });
-  }
-  function A(c2, a) {
-    function f() {
-      A(c2, a);
-    }
-    var l2 = r$1.Push, k = x2(c2, a);
-    if (!g2.length || (g2.call({ action: l2, location: k, retry: f }), false)) {
-      var n2 = [{ usr: k.state, key: k.key, idx: v + 1 }, e2(k)];
-      k = n2[0];
-      n2 = n2[1];
-      try {
-        m.pushState(k, "", n2);
-      } catch (G2) {
-        p2.location.assign(n2);
-      }
-      z2(l2);
-    }
-  }
-  function y(c2, a) {
-    function f() {
-      y(c2, a);
-    }
-    var l2 = r$1.Replace, k = x2(c2, a);
-    g2.length && (g2.call({ action: l2, location: k, retry: f }), 1) || (k = [{ usr: k.state, key: k.key, idx: v }, e2(k)], m.replaceState(k[0], "", k[1]), z2(l2));
-  }
-  function w(c2) {
-    m.go(c2);
-  }
-  b === void 0 && (b = {});
-  b = b.window;
-  var p2 = b === void 0 ? document.defaultView : b, m = p2.history, u = null;
-  p2.addEventListener("popstate", function() {
-    if (u)
-      g2.call(u), u = null;
-    else {
-      var c2 = r$1.Pop, a = h(), f = a[0];
-      a = a[1];
-      if (g2.length)
-        if (f != null) {
-          var l2 = v - f;
-          l2 && (u = { action: c2, location: a, retry: function() {
-            w(-1 * l2);
-          } }, w(l2));
-        } else
-          ;
-      else
-        z2(c2);
-    }
-  });
-  var t2 = r$1.Pop;
-  b = h();
-  var v = b[0], q = b[1], d2 = F(), g2 = F();
-  v == null && (v = 0, m.replaceState(_extends({}, m.state, { idx: v }), ""));
-  return { get action() {
-    return t2;
-  }, get location() {
-    return q;
-  }, createHref: e2, push: A, replace: y, go: w, back: function() {
-    w(-1);
-  }, forward: function() {
-    w(1);
-  }, listen: function(c2) {
-    return d2.push(c2);
-  }, block: function(c2) {
-    var a = g2.push(c2);
-    g2.length === 1 && p2.addEventListener("beforeunload", E);
-    return function() {
-      a();
-      g2.length || p2.removeEventListener("beforeunload", E);
-    };
-  } };
 }
 const contextMiddleware = (store) => (next) => (action) => {
   return next(action);
@@ -1617,9 +1461,9 @@ var fn = [{ property: "name", enumerable: false }, { property: "message", enumer
   a[qi] = true;
   let u = a.toJSON();
   return delete a[qi], u;
-}, Ji = ({ from: a, seen: u, to_: A, forceEnumerable: f, maxDepth: U, depth: E2 }) => {
+}, Ji = ({ from: a, seen: u, to_: A, forceEnumerable: f, maxDepth: U, depth: E }) => {
   let v = A || (Array.isArray(a) ? [] : {});
-  if (u.push(a), E2 >= U)
+  if (u.push(a), E >= U)
     return v;
   if (typeof a.toJSON == "function" && a[qi] !== true)
     return hn(a);
@@ -1638,7 +1482,7 @@ var fn = [{ property: "name", enumerable: false }, { property: "message", enumer
         continue;
       }
       if (!u.includes(a[_])) {
-        E2++, v[_] = Ji({ from: a[_], seen: [...u], forceEnumerable: f, maxDepth: U, depth: E2 });
+        E++, v[_] = Ji({ from: a[_], seen: [...u], forceEnumerable: f, maxDepth: U, depth: E });
         continue;
       }
       v[_] = "[Circular]";
@@ -1680,8 +1524,8 @@ var d = class extends Error {
     s$1(this, "__proto__");
     let f = new.target.prototype;
     if (this.__proto__ = f, Error.captureStackTrace && Error.captureStackTrace((_a = A == null ? void 0 : A.cause) != null ? _a : this, d), this.id = Vi(), this.name = this.constructor.name, this.created = new Date().toString(), this.description = (_b = A == null ? void 0 : A.description) != null ? _b : this.description, this.remediation = (_c = A == null ? void 0 : A.remediation) != null ? _c : this.remediation, this.scope = (_d = A == null ? void 0 : A.scope) != null ? _d : this.scope, A) {
-      let { cause: U, context: E2, data: v, model: _, form: S, origin: nn, pii: tn, request: rn, response: sn, tags: on, task: ln, user: mn } = A;
-      this.cause = U, this.context = E2, this.data = v, this.model = _, this.form = S, this.origin = nn, this.pii = tn, this.request = rn, this.response = sn, this.task = ln, this.tags = on, this.user = mn;
+      let { cause: U, context: E, data: v, model: _, form: S, origin: nn, pii: tn, request: rn, response: sn, tags: on, task: ln, user: mn } = A;
+      this.cause = U, this.context = E, this.data = v, this.model = _, this.form = S, this.origin = nn, this.pii = tn, this.request = rn, this.response = sn, this.task = ln, this.tags = on, this.user = mn;
     }
   }
   toJSON() {
@@ -1975,7 +1819,7 @@ var reduxLogger = { exports: {} };
       }
     }
     function y(e3) {
-      return "color: " + F2[e3].color + "; font-weight: bold";
+      return "color: " + F[e3].color + "; font-weight: bold";
     }
     function v(e3) {
       var t3 = e3.kind, r3 = e3.path, n3 = e3.lhs, o3 = e3.rhs, i2 = e3.index, a2 = e3.item;
@@ -2001,7 +1845,7 @@ var reduxLogger = { exports: {} };
       }
       o3 ? o3.forEach(function(e4) {
         var t4 = e4.kind, n4 = v(e4);
-        r3.log.apply(r3, ["%c " + F2[t4].text, y(t4)].concat(P(n4)));
+        r3.log.apply(r3, ["%c " + F[t4].text, y(t4)].concat(P(n4)));
       }) : r3.log("\u2014\u2014 no diff \u2014\u2014");
       try {
         r3.groupEnd();
@@ -2033,15 +1877,15 @@ var reduxLogger = { exports: {} };
         x3 && (w2 = x3.prevState, v2 = x3.started - d3);
         var S2 = n3(g3), k2 = typeof a2 == "function" ? a2(function() {
           return w2;
-        }, g3, o4) : a2, j2 = D(p3), E3 = f2.title ? "color: " + f2.title(S2) + ";" : "", A2 = ["color: gray; font-weight: lighter;"];
-        A2.push(E3), t3.timestamp && A2.push("color: gray; font-weight: lighter;"), t3.duration && A2.push("color: gray; font-weight: lighter;");
+        }, g3, o4) : a2, j2 = D(p3), E2 = f2.title ? "color: " + f2.title(S2) + ";" : "", A2 = ["color: gray; font-weight: lighter;"];
+        A2.push(E2), t3.timestamp && A2.push("color: gray; font-weight: lighter;"), t3.duration && A2.push("color: gray; font-weight: lighter;");
         var O2 = i2(S2, j2, v2);
         try {
           k2 ? f2.title && c3 ? r3.groupCollapsed.apply(r3, ["%c " + O2].concat(A2)) : r3.groupCollapsed(O2) : f2.title && c3 ? r3.group.apply(r3, ["%c " + O2].concat(A2)) : r3.group(O2);
         } catch (e4) {
           r3.log(O2);
         }
-        var N2 = m(u2, S2, [h2], "prevState"), P2 = m(u2, S2, [S2], "action"), C3 = m(u2, S2, [y2, h2], "error"), F3 = m(u2, S2, [w2], "nextState");
+        var N2 = m(u2, S2, [h2], "prevState"), P2 = m(u2, S2, [S2], "action"), C2 = m(u2, S2, [y2, h2], "error"), F2 = m(u2, S2, [w2], "nextState");
         if (N2)
           if (f2.prevState) {
             var L2 = "color: " + f2.prevState(h2) + "; font-weight: bold";
@@ -2054,18 +1898,18 @@ var reduxLogger = { exports: {} };
             r3[P2]("%c action    ", T3, S2);
           } else
             r3[P2]("action    ", S2);
-        if (y2 && C3)
+        if (y2 && C2)
           if (f2.error) {
             var M = "color: " + f2.error(y2, h2) + "; font-weight: bold;";
-            r3[C3]("%c error     ", M, y2);
+            r3[C2]("%c error     ", M, y2);
           } else
-            r3[C3]("error     ", y2);
-        if (F3)
+            r3[C2]("error     ", y2);
+        if (F2)
           if (f2.nextState) {
             var _ = "color: " + f2.nextState(w2) + "; font-weight: bold";
-            r3[F3]("%c next state", _, w2);
+            r3[F2]("%c next state", _, w2);
           } else
-            r3[F3]("next state", w2);
+            r3[F2]("next state", w2);
         l3 && b(h2, w2, r3, k2);
         try {
           r3.groupEnd();
@@ -2119,10 +1963,10 @@ var reduxLogger = { exports: {} };
         };
       };
     }
-    var k, j, E2 = function(e3, t3) {
+    var k, j, E = function(e3, t3) {
       return new Array(t3 + 1).join(e3);
     }, A = function(e3, t3) {
-      return E2("0", t3 - e3.toString().length) + e3;
+      return E("0", t3 - e3.toString().length) + e3;
     }, D = function(e3) {
       return A(e3.getHours(), 2) + ":" + A(e3.getMinutes(), 2) + ":" + A(e3.getSeconds(), 2) + "." + A(e3.getMilliseconds(), 3);
     }, O = typeof performance != "undefined" && performance !== null && typeof performance.now == "function" ? performance : Date, N = typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? function(e3) {
@@ -2136,17 +1980,17 @@ var reduxLogger = { exports: {} };
         return r3;
       }
       return Array.from(e3);
-    }, C2 = [];
-    k = (typeof commonjsGlobal == "undefined" ? "undefined" : N(commonjsGlobal)) === "object" && commonjsGlobal ? commonjsGlobal : typeof window != "undefined" ? window : {}, j = k.DeepDiff, j && C2.push(function() {
+    }, C = [];
+    k = (typeof commonjsGlobal == "undefined" ? "undefined" : N(commonjsGlobal)) === "object" && commonjsGlobal ? commonjsGlobal : typeof window != "undefined" ? window : {}, j = k.DeepDiff, j && C.push(function() {
       typeof j != "undefined" && k.DeepDiff === c2 && (k.DeepDiff = j, j = void 0);
     }), t2(n2, r2), t2(o2, r2), t2(i, r2), t2(a, r2), Object.defineProperties(c2, { diff: { value: c2, enumerable: true }, observableDiff: { value: l2, enumerable: true }, applyDiff: { value: h, enumerable: true }, applyChange: { value: d2, enumerable: true }, revertChange: { value: g2, enumerable: true }, isConflict: { value: function() {
       return typeof j != "undefined";
     }, enumerable: true }, noConflict: { value: function() {
-      return C2 && (C2.forEach(function(e3) {
+      return C && (C.forEach(function(e3) {
         e3();
-      }), C2 = null), c2;
+      }), C = null), c2;
     }, enumerable: true } });
-    var F2 = { E: { color: "#2196F3", text: "CHANGED:" }, N: { color: "#4CAF50", text: "ADDED:" }, D: { color: "#F44336", text: "DELETED:" }, A: { color: "#2196F3", text: "ARRAY:" } }, L = { level: "log", logger: console, logErrors: true, collapsed: void 0, predicate: void 0, duration: false, timestamp: true, stateTransformer: function(e3) {
+    var F = { E: { color: "#2196F3", text: "CHANGED:" }, N: { color: "#4CAF50", text: "ADDED:" }, D: { color: "#F44336", text: "DELETED:" }, A: { color: "#2196F3", text: "ARRAY:" } }, L = { level: "log", logger: console, logErrors: true, collapsed: void 0, predicate: void 0, duration: false, timestamp: true, stateTransformer: function(e3) {
       return e3;
     }, actionTransformer: function(e3) {
       return e3;
@@ -7928,18 +7772,18 @@ var core = { exports: {} };
         throw new Error("Native crypto module could not be used to get secure random number.");
       };
       var create = Object.create || function() {
-        function F2() {
+        function F() {
         }
         return function(obj) {
           var subtype;
-          F2.prototype = obj;
-          subtype = new F2();
-          F2.prototype = null;
+          F.prototype = obj;
+          subtype = new F();
+          F.prototype = null;
           return subtype;
         };
       }();
-      var C2 = {};
-      var C_lib = C2.lib = {};
+      var C = {};
+      var C_lib = C.lib = {};
       var Base = C_lib.Base = function() {
         return {
           extend: function(overrides) {
@@ -8028,7 +7872,7 @@ var core = { exports: {} };
           return new WordArray2.init(words, nBytes);
         }
       });
-      var C_enc = C2.enc = {};
+      var C_enc = C.enc = {};
       var Hex = C_enc.Hex = {
         stringify: function(wordArray) {
           var words = wordArray.words;
@@ -8159,8 +8003,8 @@ var core = { exports: {} };
           };
         }
       });
-      var C_algo = C2.algo = {};
-      return C2;
+      var C_algo = C.algo = {};
+      return C;
     }(Math);
     return CryptoJS2;
   });
@@ -8177,8 +8021,8 @@ var libTypedarrays = { exports: {} };
       if (typeof ArrayBuffer != "function") {
         return;
       }
-      var C2 = CryptoJS2;
-      var C_lib = C2.lib;
+      var C = CryptoJS2;
+      var C_lib = C.lib;
       var WordArray2 = C_lib.WordArray;
       var superInit = WordArray2.init;
       var subInit = WordArray2.init = function(typedArray) {
@@ -8212,12 +8056,12 @@ var sha256 = { exports: {} };
     }
   })(commonjsGlobal, function(CryptoJS2) {
     (function(Math2) {
-      var C2 = CryptoJS2;
-      var C_lib = C2.lib;
+      var C = CryptoJS2;
+      var C_lib = C.lib;
       var WordArray2 = C_lib.WordArray;
       var Hasher = C_lib.Hasher;
-      var C_algo = C2.algo;
-      var H2 = [];
+      var C_algo = C.algo;
+      var H = [];
       var K = [];
       (function() {
         function isPrime(n3) {
@@ -8237,7 +8081,7 @@ var sha256 = { exports: {} };
         while (nPrime < 64) {
           if (isPrime(n2)) {
             if (nPrime < 8) {
-              H2[nPrime] = getFractionalBits(Math2.pow(n2, 1 / 2));
+              H[nPrime] = getFractionalBits(Math2.pow(n2, 1 / 2));
             }
             K[nPrime] = getFractionalBits(Math2.pow(n2, 1 / 3));
             nPrime++;
@@ -8248,18 +8092,18 @@ var sha256 = { exports: {} };
       var W = [];
       var SHA2562 = C_algo.SHA256 = Hasher.extend({
         _doReset: function() {
-          this._hash = new WordArray2.init(H2.slice(0));
+          this._hash = new WordArray2.init(H.slice(0));
         },
         _doProcessBlock: function(M, offset2) {
-          var H3 = this._hash.words;
-          var a = H3[0];
-          var b = H3[1];
-          var c2 = H3[2];
-          var d2 = H3[3];
-          var e2 = H3[4];
-          var f = H3[5];
-          var g2 = H3[6];
-          var h = H3[7];
+          var H2 = this._hash.words;
+          var a = H2[0];
+          var b = H2[1];
+          var c2 = H2[2];
+          var d2 = H2[3];
+          var e2 = H2[4];
+          var f = H2[5];
+          var g2 = H2[6];
+          var h = H2[7];
           for (var i = 0; i < 64; i++) {
             if (i < 16) {
               W[i] = M[offset2 + i] | 0;
@@ -8285,14 +8129,14 @@ var sha256 = { exports: {} };
             b = a;
             a = t1 + t2 | 0;
           }
-          H3[0] = H3[0] + a | 0;
-          H3[1] = H3[1] + b | 0;
-          H3[2] = H3[2] + c2 | 0;
-          H3[3] = H3[3] + d2 | 0;
-          H3[4] = H3[4] + e2 | 0;
-          H3[5] = H3[5] + f | 0;
-          H3[6] = H3[6] + g2 | 0;
-          H3[7] = H3[7] + h | 0;
+          H2[0] = H2[0] + a | 0;
+          H2[1] = H2[1] + b | 0;
+          H2[2] = H2[2] + c2 | 0;
+          H2[3] = H2[3] + d2 | 0;
+          H2[4] = H2[4] + e2 | 0;
+          H2[5] = H2[5] + f | 0;
+          H2[6] = H2[6] + g2 | 0;
+          H2[7] = H2[7] + h | 0;
         },
         _doFinalize: function() {
           var data = this._data;
@@ -8312,8 +8156,8 @@ var sha256 = { exports: {} };
           return clone2;
         }
       });
-      C2.SHA256 = Hasher._createHelper(SHA2562);
-      C2.HmacSHA256 = Hasher._createHmacHelper(SHA2562);
+      C.SHA256 = Hasher._createHelper(SHA2562);
+      C.HmacSHA256 = Hasher._createHmacHelper(SHA2562);
     })(Math);
     return CryptoJS2.SHA256;
   });
@@ -8328,12 +8172,12 @@ var hmac = { exports: {} };
     }
   })(commonjsGlobal, function(CryptoJS2) {
     (function() {
-      var C2 = CryptoJS2;
-      var C_lib = C2.lib;
+      var C = CryptoJS2;
+      var C_lib = C.lib;
       var Base = C_lib.Base;
-      var C_enc = C2.enc;
+      var C_enc = C.enc;
       var Utf8 = C_enc.Utf8;
-      var C_algo = C2.algo;
+      var C_algo = C.algo;
       C_algo.HMAC = Base.extend({
         init: function(hasher, key) {
           hasher = this._hasher = new hasher.init();
@@ -9207,8 +9051,8 @@ var AuthenticationHelper = /* @__PURE__ */ function() {
       callback(null, A);
     });
   };
-  _proto.calculateU = function calculateU(A, B2) {
-    this.UHexHash = this.hexHash(this.padHex(A) + this.padHex(B2));
+  _proto.calculateU = function calculateU(A, B) {
+    this.UHexHash = this.hexHash(this.padHex(A) + this.padHex(B));
     var finalU = new BigInteger(this.UHexHash, 16);
     return finalU;
   };
@@ -9405,10 +9249,10 @@ var encBase64 = { exports: {} };
     }
   })(commonjsGlobal, function(CryptoJS2) {
     (function() {
-      var C2 = CryptoJS2;
-      var C_lib = C2.lib;
+      var C = CryptoJS2;
+      var C_lib = C.lib;
       var WordArray2 = C_lib.WordArray;
-      var C_enc = C2.enc;
+      var C_enc = C.enc;
       C_enc.Base64 = {
         stringify: function(wordArray) {
           var words = wordArray.words;

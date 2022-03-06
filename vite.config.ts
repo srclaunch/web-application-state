@@ -17,6 +17,7 @@ export default defineConfig({
       // Externalize deps that shouldn't be bundled
       external: [
         '@reduxjs/toolkit',
+        'history',
         'react',
         'react-dom',
         'react-redux',
