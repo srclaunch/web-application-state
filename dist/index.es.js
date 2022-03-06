@@ -29,7 +29,7 @@ var __objRest = (source, exclude) => {
     }
   return target;
 };
-import React, { memo, useState, useEffect, StrictMode } from "react";
+import React, { StrictMode } from "react";
 import { createSlice, combineReducers as combineReducers$1, createEntityAdapter, configureStore } from "@reduxjs/toolkit";
 import { EnvironmentType, FormValidationProblem, Condition, PageRole } from "@srclaunch/types";
 import { createBrowserHistory } from "history";
@@ -37,1564 +37,28 @@ import ReactDOM from "react-dom";
 import { useDispatch, useSelector, Provider } from "react-redux";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 export { Link, NavLink, Navigate, Outlet, Route, Router, Routes, useLocation, useMatch, useNavigate, useParams, useResolvedPath, useSearchParams } from "react-router-dom";
+import { UncaughtException, MissingArgumentException, InvalidArgumentException, Exception, AuthenticationLoginException, AuthenticationException, AuthenticationUsernameAvailabilityCheckException } from "@srclaunch/exceptions";
 import Logger, { Logger as Logger$1 } from "@srclaunch/logger";
-import { createGlobalStyle } from "styled-components";
+import { AppLabLightTheme, AppLabDarkTheme } from "@srclaunch/themes";
 import { validate } from "@srclaunch/validation";
 export { matchPath, matchRoutes } from "react-router";
-const o$1 = { id: "dev", type: EnvironmentType.Development, public: false, name: "Development", description: "Development environment" }, t$1 = { id: "test", type: EnvironmentType.NonProduction, public: false, name: "Test", description: "Test environment" }, i$2 = { id: "prod", type: EnvironmentType.Production, public: true, name: "Production", description: "Production environment" };
-function s$2() {
+const o = { id: "dev", type: EnvironmentType.Development, public: false, name: "Development", description: "Development environment" }, t = { id: "test", type: EnvironmentType.NonProduction, public: false, name: "Test", description: "Test environment" }, i$1 = { id: "prod", type: EnvironmentType.Production, public: true, name: "Production", description: "Production environment" };
+function s$1() {
   if (window) {
     const n2 = window.location.hostname;
-    return n2.includes("localhost") || n2.includes("127.0.0.1") ? o$1 : n2.includes("test") ? t$1 : i$2;
+    return n2.includes("localhost") || n2.includes("127.0.0.1") ? o : n2.includes("test") ? t : i$1;
   }
-  return t$1;
+  return t;
 }
 const contextMiddleware = (store) => (next) => (action) => {
   return next(action);
-};
-var cn = Object.defineProperty;
-var un = (a, u, A) => u in a ? cn(a, u, { enumerable: true, configurable: true, writable: true, value: A }) : a[u] = A;
-var s$1 = (a, u, A) => (un(a, typeof u != "symbol" ? u + "" : u, A), A);
-var ja;
-(function(a) {
-  a.Comment = "comment", a.Create = "create", a.Delete = "delete", a.Edit = "edit", a.Invoice = "invoice", a.Message = "message", a.PageView = "pageView", a.Paid = "paid", a.Payment = "payment", a.Purchase = "purchase", a.Referral = "referral", a.Renewal = "renewal", a.Signup = "signup", a.Subscription = "subscription", a.Upgrade = "upgrade";
-})(ja || (ja = {}));
-var Ra;
-(function(a) {
-  a.Business = "business", a.Engineering = "engineering", a.Exception = "exception", a.LogMessage = "log-message", a.Marketing = "marketing", a.PageLeave = "page-leave", a.PageView = "page-view", a.Product = "product", a.QualityManagement = "quality-management", a.UserAccess = "user-access", a.UserLogin = "user-login", a.UserLogout = "user-logout", a.UserSignup = "user-signup", a.UserPreferencesChanged = "user-preferences-changed", a.WebsiteVisit = "website-visit";
-})(Ra || (Ra = {}));
-var za;
-(function(a) {
-  a.CloseTab = "close-tab", a.ExternalLink = "external-link", a.NavigateAway = "navigate-away", a.Unknown = "unknown";
-})(za || (za = {}));
-var Wa;
-(function(a) {
-  a.Ecs = "Ecs";
-})(Wa || (Wa = {}));
-var Va;
-(function(a) {
-  a.Finished = "Finished", a.Queued = "Queued", a.Running = "Running", a.Started = "Started";
-})(Va || (Va = {}));
-var Ja;
-(function(a) {
-  a.Mobile = "mobile", a.TV = "tv", a.Watch = "watch", a.Web = "web";
-})(Ja || (Ja = {}));
-var Ya;
-(function(a) {
-  a.Development = "Development", a.NonProduction = "NonProduction", a.Production = "Production";
-})(Ya || (Ya = {}));
-var Za;
-(function(a) {
-  a.Completed = "completed", a.Started = "started", a.Uncompleted = "uncompleted";
-})(Za || (Za = {}));
-var Qa;
-(function(a) {
-  a.Build = "Build", a.Deployment = "Deployment", a.Test = "Test";
-})(Qa || (Qa = {}));
-var $a;
-(function(a) {
-  a.Canceled = "Canceled", a.Completed = "Completed", a.Failed = "Failed", a.Running = "Running", a.Queued = "Queued", a.Waiting = "Waiting";
-})($a || ($a = {}));
-var Xa;
-(function(a) {
-  a.Canceled = "Canceled", a.Completed = "Completed", a.Failed = "Failed", a.Running = "Running", a.Queued = "Queued", a.Waiting = "Waiting";
-})(Xa || (Xa = {}));
-var Ca;
-(function(a) {
-  a.ForgotPassword = "forgot_password", a.Index = "index", a.Login = "login", a.PageNotFound = "404", a.Signup = "signup", a.VerifyCode = "verify_code";
-})(Ca || (Ca = {}));
-var ae;
-(function(a) {
-  a.Info = "info", a.Warning = "warning", a.Error = "error", a.Success = "success";
-})(ae || (ae = {}));
-var ee;
-(function(a) {
-  a.Details = "details", a.Dialog = "dialog";
-})(ee || (ee = {}));
-var ie;
-(function(a) {
-  a.Info = "info", a.Warning = "warning", a.Error = "error", a.Success = "success";
-})(ie || (ie = {}));
-var ne;
-(function(a) {
-  a.AccountBalance = "AccountBalance", a.UserAssets = "UserAssets", a.UserCreditCardDebt = "UserCreditCardDebt", a.UserCreditLimit = "UserCreditLimit", a.UserCreditUtilization = "UserCreditUtilization", a.UserDebt = "UserDebt", a.UserInvestments = "UserInvestments", a.UserRetirement = "UserRetirement", a.UserSavings = "UserSavings";
-})(ne || (ne = {}));
-var te;
-(function(a) {
-  a.DateTime = "date_time", a.True = "true", a.False = "false", a.UniqueId = "unique_id";
-})(te || (te = {}));
-var re;
-(function(a) {
-  a.DomainModel = "domain_entity", a.GenericModel = "generic_entity";
-})(re || (re = {}));
-var se;
-(function(a) {
-  a.AirportCode = "airport-code", a.BankIDCode = "bank-id-code", a.BitcoinAddress = "bitcoin-address", a.Boolean = "boolean", a.City = "city", a.Color = "color", a.CountryCode = "country-code", a.CreditCard = "credit-card", a.CurrencyAmount = "currency-amount", a.CurrencyCode = "currency-code", a.DataURI = "data-uri", a.Date = "date", a.DateRange = "date-range", a.DateTime = "date-time", a.DayOfMonth = "day-of-month", a.DomainName = "domain-name", a.EmailAddress = "email-address", a.EthereumAddress = "ethereum-address", a.EAN = "european-article-number", a.EIN = "employer-identification-number", a.Float = "float", a.GeographicCoordinate = "geographic-coordinate", a.GeographicCoordinates = "geographic-coordinates", a.GitRepositoryURL = "git-repository-url", a.HSLColor = "hsl-color", a.HexColor = "hex-color", a.Hexadecimal = "hexadecimal", a.IBAN = "international-bank-account-number", a.IMEI = "international-mobile-equipment-identifier", a.IPAddress = "ip-address", a.IPAddressRange = "ip-address-range", a.ISBN = "international-standard-book-number", a.ISIN = "international-stock-number", a.ISMN = "international-standard-music-number", a.ISSN = "international-standard-serial-number", a.ISO8601 = "iso-8601", a.ISO31661Alpha2 = "iso-31661-alpha-2", a.ISO31661Alpha3 = "iso-31661-alpha-3", a.ISO4217 = "iso-4217", a.Image = "image", a.Integer = "integer", a.JSON = "json", a.LanguageCode = "language-code", a.LicensePlateNumber = "license-plate-number", a.LongText = "long-text", a.MD5 = "md5", a.Markdown = "markdown", a.Menu = "menu", a.Number = "number", a.MACAddress = "mac-address", a.MagnetURI = "magnet-uri", a.MimeType = "mime-type", a.Month = "month", a.Password = "password", a.PassportNumber = "passport-number", a.Percent = "percent", a.PhoneNumber = "phone-number", a.Port = "port", a.PostalCode = "postal-code", a.Province = "province", a.RFC3339 = "rfc-3339", a.RGBColor = "rgb-color", a.SemanticVersion = "semantic-version", a.SSN = "social-security-number", a.State = "state", a.StreetAddress = "street-address", a.String = "string", a.Tags = "tags", a.TaxIDNumber = "tax-id-number", a.Time = "time", a.TimeOfDay = "time-of-day", a.TimeRange = "time-range", a.TimezoneRegion = "timezone-region", a.URL = "url", a.URLPath = "url-path", a.UUID = "uuid", a.VATIDNumber = "value-added-tax-id-number", a.VerificationCode = "verification-code", a.Video = "video", a.Weekday = "weekday", a.Year = "year";
-})(se || (se = {}));
-var oe;
-(function(a) {
-  a.Critical = "Critical", a.Error = "Error", a.Fatal = "Fatal", a.Warning = "Warning";
-})(oe || (oe = {}));
-var le;
-(function(a) {
-  a.Contains = "contains", a.HasCharacterCount = "has-character-count", a.HasNumberCount = "has-number-count", a.HasLetterCount = "has-letter-count", a.HasLowercaseCount = "has-lowercase-count", a.HasSpacesCount = "has-spaces-count", a.HasSymbolCount = "has-symbol-count", a.HasUppercaseCount = "has-uppercase-count", a.IsAfter = "is-after", a.IsAfterOrEqual = "is-after-or-equal", a.IsAirport = "is-airport", a.IsAlpha = "is-alpha", a.IsAlphanumeric = "is-alphanumeric", a.IsAlgorithmHash = "is-algorithm-hash", a.IsAscii = "is-ascii", a.IsBase64 = "is-base-64", a.IsBefore = "is-before", a.IsBeforeOrAfter = "is-before-or-after", a.IsBeforeOrEqual = "is-before-or-equal", a.IsBetween = "is-between", a.IsBIC = "is-bic", a.IsBitcoinAddress = "is-bitcoin-address", a.IsBoolean = "is-boolean", a.IsColor = "is-color", a.IsComplexEnough = "is-complex-enough", a.IsCountry = "is-country", a.IsCreditCard = "is-credit-card", a.IsCurrency = "is-currency", a.IsDataURI = "is-data-uri", a.IsDate = "is-date", a.IsDateRange = "is-date-range", a.IsDateTime = "is-date-time", a.IsDayOfMonth = "is-day-of-month", a.IsDecimal = "is-decimal", a.IsDivisibleBy = "is-divisible-by", a.IsDomainName = "is-domain-name", a.IsEmailAddress = "is-email-address", a.IsEthereumAddress = "is-ethereum-address", a.IsEAN = "is-ean", a.IsEIN = "is-ein", a.IsEqual = "is-equal", a.IsEvenNumber = "is-even-number", a.IsFloat = "is-float", a.IsIBAN = "is-iban", a.IsGreaterThan = "greater-than", a.IsGreaterThanOrEqual = "greater-than-or-equal", a.IsHSLColor = "is-hsl-color", a.IsHexColor = "is-hex-color", a.IsHexadecimal = "is-hexadecimal", a.IsIdentityCardCode = "is-identity-card-code", a.IsIMEI = "is-imei", a.IsInIPAddressRange = "is-in-ip-address-range", a.IsInList = "is-in-list", a.IsInTheLast = "is-in-the-last", a.IsInteger = "is-integer", a.IsIPAddress = "is-ip-address", a.IsIPAddressRange = "is-ip-address-range", a.IsISBN = "is-isbn", a.IsISIN = "is-isin", a.IsISMN = "is-ismn", a.IsISRC = "is-isrc", a.IsISSN = "is-issn", a.IsISO4217 = "is-iso-4217", a.IsISO8601 = "is-iso-8601", a.IsISO31661Alpha2 = "is-iso-31661-alpha-2", a.IsISO31661Alpha3 = "is-iso-31661-alpha-3", a.IsJSON = "is-json", a.IsLanguage = "is-language", a.IsLatitude = "is-latitude", a.IsLongitude = "is-longitude", a.IsLengthEqual = "is-length-equal", a.IsLengthGreaterThan = "is-length-greater-than", a.IsLengthGreaterThanOrEqual = "is-length-great-than-or-equal", a.IsLengthLessThan = "is-length-less-than", a.IsLengthLessThanOrEqual = "is-length-less-than-or-equal", a.IsLessThan = "less-than", a.IsLessThanOrEqual = "less-than-or-equal", a.IsLicensePlateNumber = "is-license-plate-number", a.IsLowercase = "is-lowercase", a.IsOctal = "is-octal", a.IsMACAddress = "is-mac-address", a.IsMD5 = "is-md5", a.IsMagnetURI = "is-magnet-uri", a.IsMarkdown = "is-markdown", a.IsMimeType = "is-mime-type", a.IsMonth = "is-month", a.IsNegativeNumber = "is-negative-number", a.IsNotDate = "is-not-date", a.IsNotEqual = "is-not-equal", a.IsNotInIPAddressRange = "is-not-in-ip-address-range", a.IsNotInList = "is-not-in-list", a.IsNotNull = "is-not-null", a.IsNotRegexMatch = "is-not-regex-match", a.IsNotToday = "is-not-today", a.IsNumber = "is-number", a.IsNumeric = "is-numeric", a.IsOddNumber = "is-odd-number", a.IsPassportNumber = "is-passport-number", a.IsPhoneNumber = "is-phone-number", a.IsPort = "is-port", a.IsPositiveNumber = "is-positive-number", a.IsPostalCode = "is-postal-code", a.IsProvince = "is-province", a.IsRGBColor = "is-rgb-color", a.IsRegexMatch = "is-regex-match", a.IsRequired = "is-required", a.IsSemanticVersion = "is-semantic-version", a.IsSlug = "is-slug", a.IsSSN = "is-ssn", a.IsState = "is-state", a.IsStreetAddress = "is-street-address", a.IsString = "is-string", a.IsStrongPassword = "is-strong-password", a.IsTags = "is-tags", a.IsTaxIDNumber = "is-tax-id-number", a.IsThisMonth = "is-this-month", a.IsThisQuarter = "is-this-quarter", a.IsThisWeek = "is-this-week", a.IsThisWeekend = "is-this-weekend", a.IsThisYear = "is-this-year", a.IsTime = "is-time", a.IsTimeOfDay = "is-time-of-day", a.IsTimeRange = "is-time-range", a.IsToday = "is-today", a.IsURL = "is-url", a.IsUUID = "is-uuid", a.IsUppercase = "is-uppercase", a.IsUsernameAvailable = "is-username-available", a.IsValidStreetAddress = "is-valid-street-address", a.IsVATIDNumber = "is-vat-id-number", a.IsWeekday = "is-weekday", a.IsWeekend = "is-weekend", a.IsYear = "is-year";
-})(le || (le = {}));
-var me;
-(function(a) {
-  a.IsAuthenticated = "is-authenticated", a.IsNotAuthenticated = "is-not-authenticated", a.IsUsernameAvailable = "is-username-available", a.PasswordMismatch = "password-mismatch";
-})(me || (me = {}));
-var ce;
-(function(a) {
-  a.IsHSLColor = "is-hsl-color", a.IsHexColor = "is-hex-color", a.IsNotNull = "is-not-null", a.IsRGBColor = "is-rgb-color", a.IsString = "is-string";
-})(ce || (ce = {}));
-var ue;
-(function(a) {
-  a.IsBetween = "is-between", a.IsCurrency = "is-currency", a.IsDecimal = "is-decimal", a.IsDivisibleBy = "is-divisible-by", a.IsEvenNumber = "is-even-number", a.IsFloat = "is-float", a.IsGreaterThan = "greater-than", a.IsGreaterThanOrEqual = "greater-than-or-equal", a.IsInteger = "is-integer", a.IsISO8601 = "is-iso-8601", a.IsLessThan = "less-than", a.IsLessThanOrEqual = "less-than-or-equal", a.IsNegativeNumber = "is-negative-number", a.IsNotEqual = "is-not-equal", a.IsNotNull = "is-not-null", a.IsNumber = "is-number", a.IsOddNumber = "is-odd-number", a.IsPositiveNumber = "is-positive-number";
-})(ue || (ue = {}));
-var de;
-(function(a) {
-  a.IsBitcoinAddress = "is-bitcoin-address", a.IsEqual = "is-equal", a.IsNotEqual = "is-not-equal", a.IsNotNull = "is-not-null";
-})(de || (de = {}));
-var pe;
-(function(a) {
-  a.IsEthereumAddress = "is-ethereum-address", a.IsEqual = "is-equal", a.IsNotEqual = "is-not-equal", a.IsNotNull = "is-not-null";
-})(pe || (pe = {}));
-var Ae;
-(function(a) {
-  a.IsEqual = "is-equal", a.IsJSON = "is-json", a.IsLanguage = "is-language", a.IsNotEqual = "is-not-equal", a.IsNotNull = "is-not-null";
-})(Ae || (Ae = {}));
-var ge;
-(function(a) {
-  a.IsAlpha = "is-alpha", a.IsEqual = "is-equal", a.IsInList = "is-in-list", a.IsNotEqual = "is-not-equal", a.IsNotInList = "is-not-in-list", a.IsNotNull = "is-not-null", a.IsString = "is-string";
-})(ge || (ge = {}));
-var fe;
-(function(a) {
-  a.IsAlpha = "is-alpha", a.IsCountry = "is-country", a.IsEqual = "is-equal", a.IsInList = "is-in-list", a.IsNotEqual = "is-not-equal", a.IsNotInList = "is-not-in-list", a.IsNotNull = "is-not-null", a.IsString = "is-string";
-})(fe || (fe = {}));
-var he;
-(function(a) {
-  a.IsEqual = "is-equal", a.IsFloat = "is-float", a.IsNotEqual = "is-not-equal", a.IsNotNull = "is-not-null", a.IsNumeric = "is-numeric";
-})(he || (he = {}));
-var _e;
-(function(a) {
-  a.IsEqual = "is-equal", a.IsFloat = "is-float", a.IsNotEqual = "is-not-equal", a.IsNotNull = "is-not-null", a.IsNumeric = "is-numeric";
-})(_e || (_e = {}));
-var Se;
-(function(a) {
-  a.IsEqual = "is-equal", a.IsNotEqual = "is-not-equal", a.IsPostalCode = "is-postal-code", a.IsNotNull = "is-not-null";
-})(Se || (Se = {}));
-var Te;
-(function(a) {
-  a.IsAlpha = "is-alpha", a.IsEqual = "is-equal", a.IsInList = "is-in-list", a.IsNotEqual = "is-not-equal", a.IsNotInList = "is-not-in-list", a.IsNotNull = "is-not-null", a.IsProvince = "is-province", a.IsString = "is-string";
-})(Te || (Te = {}));
-var ve;
-(function(a) {
-  a.IsAlpha = "is-alpha", a.IsEqual = "is-equal", a.IsInList = "is-in-list", a.IsNotEqual = "is-not-equal", a.IsNotInList = "is-not-in-list", a.IsNotNull = "is-not-null", a.IsState = "is-state", a.IsString = "is-string";
-})(ve || (ve = {}));
-var be;
-(function(a) {
-  a.IsAlphanumeric = "is-alphanumeric", a.IsEqual = "is-equal", a.IsNotEqual = "is-not-equal", a.IsNotNull = "is-not-null", a.IsString = "is-string", a.IsStreetAddress = "is-street-address";
-})(be || (be = {}));
-var Ee;
-(function(a) {
-  a.IsAirport = "is-airport", a.IsAlpha = "is-alpha", a.IsEqual = "is-equal", a.IsInList = "is-in-list", a.IsNotEqual = "is-not-equal", a.IsNotInList = "is-not-in-list", a.IsNotNull = "is-not-null", a.IsString = "is-string";
-})(Ee || (Ee = {}));
-var Ie;
-(function(a) {
-  a.IsAlgorithmHash = "is-algorithm-hash", a.IsEqual = "is-equal", a.IsInList = "is-in-list", a.IsNotEqual = "is-not-equal", a.IsNotInList = "is-not-in-list", a.IsNotNull = "is-not-null", a.IsString = "is-string";
-})(Ie || (Ie = {}));
-var xe;
-(function(a) {
-  a.IsEqual = "is-equal", a.IsInList = "is-in-list", a.IsNotEqual = "is-not-equal", a.IsNotInList = "is-not-in-list", a.IsNotNull = "is-not-null", a.IsSemanticVersion = "is-semantic-version", a.IsString = "is-string";
-})(xe || (xe = {}));
-var Ue;
-(function(a) {
-  a.IsEqual = "is-equal", a.IsInList = "is-in-list", a.IsNotEqual = "is-not-equal", a.IsNotInList = "is-not-in-list", a.IsNotNull = "is-not-null", a.IsString = "is-string", a.IsUUID = "is-uuid";
-})(Ue || (Ue = {}));
-var ye;
-(function(a) {
-  a.IsEqual = "is-equal", a.IsInList = "is-in-list", a.IsMD5 = "is-md5", a.IsNotEqual = "is-not-equal", a.IsNotInList = "is-not-in-list", a.IsNotNull = "is-not-null", a.IsString = "is-string";
-})(ye || (ye = {}));
-var Pe;
-(function(a) {
-  a.IsBoolean = "is-boolean", a.IsEqual = "is-equal", a.IsNotEqual = "is-not-equal", a.IsNotNull = "is-not-null";
-})(Pe || (Pe = {}));
-var ke;
-(function(a) {
-  a.IsAfter = "is-after", a.IsAfterOrEqual = "is-after-or-equal", a.IsBefore = "is-before", a.IsBeforeOrEqual = "is-before-or-equal", a.IsBetween = "is-between", a.IsDate = "is-date", a.IsEqual = "is-equal", a.IsNotDate = "is-not-date", a.IsNotEqual = "is-not-equal", a.IsNotNull = "is-not-null", a.IsNotToday = "is-not-today", a.IsThisWeek = "is-this-week", a.IsThisMonth = "is-this-month", a.IsThisQuarter = "is-this-quarter", a.IsThisYear = "is-this-year", a.IsToday = "is-today", a.IsWeekend = "is-weekend";
-})(ke || (ke = {}));
-var Me;
-(function(a) {
-  a.IsAfter = "is-after", a.IsBefore = "is-before", a.IsBeforeOrAfter = "is-before-or-after", a.IsBetween = "is-between", a.IsDate = "is-date", a.IsDateRange = "is-date-range", a.IsEqual = "is-equal", a.IsNotEqual = "is-not-equal", a.IsNotNull = "is-not-null";
-})(Me || (Me = {}));
-var Ne;
-(function(a) {
-  a.IsAfter = "is-after", a.IsAfterOrEqual = "is-after-or-equal", a.IsBefore = "is-before", a.IsBeforeOrEqual = "is-before-or-equal", a.IsBetween = "is-between", a.IsDate = "is-date", a.IsEqual = "is-equal", a.IsNotDate = "is-not-date", a.IsNotEqual = "is-not-equal", a.IsNotNull = "is-not-null", a.IsNotToday = "is-not-today", a.IsThisWeek = "is-this-week", a.IsThisMonth = "is-this-month", a.IsThisQuarter = "is-this-quarter", a.IsThisYear = "is-this-year", a.IsToday = "is-today", a.IsWeekend = "is-weekend";
-})(Ne || (Ne = {}));
-var Le;
-(function(a) {
-  a.IsAfter = "is-after", a.IsAfterOrEqual = "is-after-or-equal", a.IsBefore = "is-before", a.IsBeforeOrEqual = "is-before-or-equal", a.IsBetween = "is-between", a.IsDayOfMonth = "is-day-of-month", a.IsEvenNumber = "is-even-number", a.IsEqual = "is-equal", a.IsGreaterThan = "greater-than", a.IsGreaterThanOrEqual = "greater-than-or-equal", a.IsInteger = "is-integer", a.IsLessThan = "less-than", a.IsLessThanOrEqual = "less-than-or-equal", a.IsNotEqual = "is-not-equal", a.IsNotNull = "is-not-null", a.IsNumber = "is-number", a.IsOddNumber = "is-odd-number", a.IsToday = "is-today", a.IsWeekday = "is-weekday", a.IsWeekend = "is-weekend";
-})(Le || (Le = {}));
-var Be;
-(function(a) {
-  a.IsAfter = "is-after", a.IsAfterOrEqual = "is-after-or-equal", a.IsBefore = "is-before", a.IsBeforeOrEqual = "is-before-or-equal", a.IsBetween = "is-between", a.IsEvenNumber = "is-even-number", a.IsEqual = "is-equal", a.IsGreaterThan = "greater-than", a.IsGreaterThanOrEqual = "greater-than-or-equal", a.IsInteger = "is-integer", a.IsLessThan = "less-than", a.IsLessThanOrEqual = "less-than-or-equal", a.IsMonth = "is-month", a.IsNotEqual = "is-not-equal", a.IsNotNull = "is-not-null", a.IsNumber = "is-number", a.IsOddNumber = "is-odd-number", a.IsThisMonth = "is-this-month";
-})(Be || (Be = {}));
-var we;
-(function(a) {
-  a.IsAfter = "is-after", a.IsAfterOrEqual = "is-after-or-equal", a.IsBefore = "is-before", a.IsBeforeOrEqual = "is-before-or-equal", a.IsBetween = "is-between", a.IsEqual = "is-equal", a.IsNotEqual = "is-not-equal", a.IsNotNull = "is-not-null", a.IsTime = "is-time";
-})(we || (we = {}));
-var De;
-(function(a) {
-  a.IsAfter = "is-after", a.IsBefore = "is-before", a.IsBeforeOrAfter = "is-before-or-after", a.IsBetween = "is-between", a.IsTime = "is-time", a.IsEqual = "is-equal", a.IsNotEqual = "is-not-equal", a.IsNotNull = "is-not-null", a.IsTimeRange = "is-time-range";
-})(De || (De = {}));
-var Ge;
-(function(a) {
-  a.IsAfter = "is-after", a.IsBefore = "is-before", a.IsBeforeOrAfter = "is-before-or-after", a.IsBetween = "is-between", a.IsEqual = "is-equal", a.IsInList = "is-in-list", a.IsNotEqual = "is-not-equal", a.IsNotInList = "is-not-in-list", a.IsNotNull = "is-not-null", a.IsTimeOfDay = "is-time-of-day", a.IsTimeRange = "is-time-range";
-})(Ge || (Ge = {}));
-var Ke;
-(function(a) {
-  a.IsAfter = "is-after", a.IsAfterOrEqual = "is-after-or-equal", a.IsBefore = "is-before", a.IsBeforeOrEqual = "is-before-or-equal", a.IsBetween = "is-between", a.IsEvenNumber = "is-even-number", a.IsEqual = "is-equal", a.IsGreaterThan = "greater-than", a.IsGreaterThanOrEqual = "greater-than-or-equal", a.IsLessThan = "less-than", a.IsLessThanOrEqual = "less-than-or-equal", a.IsNotEqual = "is-not-equal", a.IsNotNull = "is-not-null", a.IsNumber = "is-number", a.IsOddNumber = "is-odd-number", a.IsWeekday = "is-weekday", a.IsWeekend = "is-weekend";
-})(Ke || (Ke = {}));
-var qe;
-(function(a) {
-  a.IsAfter = "is-after", a.IsAfterOrEqual = "is-after-or-equal", a.IsBefore = "is-before", a.IsBeforeOrEqual = "is-before-or-equal", a.IsBetween = "is-between", a.IsEvenNumber = "is-even-number", a.IsEqual = "is-equal", a.IsGreaterThan = "greater-than", a.IsGreaterThanOrEqual = "greater-than-or-equal", a.IsInteger = "is-integer", a.IsLessThan = "less-than", a.IsLessThanOrEqual = "less-than-or-equal", a.IsNotEqual = "is-not-equal", a.IsNotNull = "is-not-null", a.IsNumber = "is-number", a.IsOddNumber = "is-odd-number", a.IsThisYear = "is-this-year", a.IsYear = "is-year";
-})(qe || (qe = {}));
-var Fe;
-(function(a) {
-  a.IsEqual = "is-equal", a.IsHexadecimal = "is-hexadecimal", a.IsLengthEqual = "is-length-equal", a.IsLengthGreaterThan = "is-length-greater-than", a.IsLengthGreaterThanOrEqual = "is-length-great-than-or-equal", a.IsLengthLessThan = "is-length-less-than", a.IsLengthLessThanOrEqual = "is-length-less-than-or-equal", a.IsNotEqual = "is-not-equal", a.IsNotNull = "is-not-null", a.IsString = "is-string";
-})(Fe || (Fe = {}));
-var He;
-(function(a) {
-  a.IsEqual = "is-equal", a.IsJSON = "is-json", a.IsNotEqual = "is-not-equal", a.IsNotNull = "is-not-null";
-})(He || (He = {}));
-var Oe;
-(function(a) {
-  a.IsEqual = "is-equal", a.IsNotEqual = "is-not-equal", a.IsNotNull = "is-not-null", a.IsMarkdown = "is-markdown", a.IsString = "is-string";
-})(Oe || (Oe = {}));
-var je;
-(function(a) {
-  a.Contains = "contains", a.IsEqual = "is-equal", a.IsNotEqual = "is-not-equal", a.IsNotNull = "is-not-null";
-})(je || (je = {}));
-var Re;
-(function(a) {
-  a.Contains = "contains", a.IsEqual = "is-equal", a.IsNotEqual = "is-not-equal", a.IsNotNull = "is-not-null";
-})(Re || (Re = {}));
-var ze;
-(function(a) {
-  a.Contains = "contains", a.IsDataURI = "is-data-uri", a.IsEqual = "is-equal", a.IsNotEqual = "is-not-equal", a.IsNotNull = "is-not-null", a.IsString = "is-string";
-})(ze || (ze = {}));
-var We;
-(function(a) {
-  a.Contains = "contains", a.IsDomainName = "is-domain-name", a.IsEqual = "is-equal", a.IsNotEqual = "is-not-equal", a.IsNotNull = "is-not-null", a.IsString = "is-string";
-})(We || (We = {}));
-var Ve;
-(function(a) {
-  a.Contains = "contains", a.IsEmailAddress = "is-email-address", a.IsEqual = "is-equal", a.IsInList = "is-in-list", a.IsNotEqual = "is-not-equal", a.IsNotInList = "is-not-in-list", a.IsNotNull = "is-not-null", a.IsString = "is-string";
-})(Ve || (Ve = {}));
-var Je;
-(function(a) {
-  a.Contains = "contains", a.IsEqual = "is-equal", a.IsIPAddress = "is-ip-address", a.IsInIPAddressRange = "is-in-ip-address-range", a.IsInList = "is-in-list", a.IsNotEqual = "is-not-equal", a.IsNotInList = "is-not-in-list", a.IsNotInIPAddressRange = "is-not-in-ip-address-range", a.IsNotNull = "is-not-null", a.IsString = "is-string";
-})(Je || (Je = {}));
-var Ye;
-(function(a) {
-  a.IsEqual = "is-equal", a.IsIPAddressRange = "is-ip-address-range", a.IsInList = "is-in-list", a.IsNotEqual = "is-not-equal", a.IsNotInList = "is-not-in-list", a.IsNotInIPAddressRange = "is-not-in-ip-address-range", a.IsNotNull = "is-not-null", a.IsString = "is-string";
-})(Ye || (Ye = {}));
-var Ze;
-(function(a) {
-  a.IsEqual = "is-equal", a.IsGreaterThan = "greater-than", a.IsGreaterThanOrEqual = "greater-than-or-equal", a.IsInteger = "is-integer", a.IsLessThan = "less-than", a.IsLessThanOrEqual = "less-than-or-equal", a.IsNotEqual = "is-not-equal", a.IsNotNull = "is-not-null";
-})(Ze || (Ze = {}));
-var Qe;
-(function(a) {
-  a.Contains = "contains", a.IsEqual = "is-equal", a.IsInList = "is-in-list", a.IsMACAddress = "is-mac-address", a.IsNotEqual = "is-not-equal", a.IsNotInList = "is-not-in-list", a.IsNotNull = "is-not-null", a.IsString = "is-string";
-})(Qe || (Qe = {}));
-var $e;
-(function(a) {
-  a.Contains = "contains", a.IsEqual = "is-equal", a.IsInList = "is-in-list", a.IsMagnetURI = "is-magnet-uri", a.IsNotEqual = "is-not-equal", a.IsNotInList = "is-not-in-list", a.IsNotNull = "is-not-null", a.IsString = "is-string";
-})($e || ($e = {}));
-var Xe;
-(function(a) {
-  a.Contains = "contains", a.IsEqual = "is-equal", a.IsInList = "is-in-list", a.IsMimeType = "is-mime-type", a.IsNotEqual = "is-not-equal", a.IsNotInList = "is-not-in-list", a.IsNotNull = "is-not-null", a.IsString = "is-string";
-})(Xe || (Xe = {}));
-var Ce;
-(function(a) {
-  a.Contains = "contains", a.IsEqual = "is-equal", a.IsInList = "is-in-list", a.IsNotEqual = "is-not-equal", a.IsNotInList = "is-not-in-list", a.IsNotNull = "is-not-null", a.IsString = "is-string", a.IsSlug = "is-slug";
-})(Ce || (Ce = {}));
-var ai;
-(function(a) {
-  a.Contains = "contains", a.IsEqual = "is-equal", a.IsInList = "is-in-list", a.IsNotEqual = "is-not-equal", a.IsNotInList = "is-not-in-list", a.IsNotNull = "is-not-null", a.IsString = "is-string", a.IsURL = "is-url";
-})(ai || (ai = {}));
-var ei;
-(function(a) {
-  a.IsAfter = "is-after", a.IsAfterOrEqual = "is-after-or-equal", a.IsBefore = "is-before", a.IsBeforeOrEqual = "is-before-or-equal", a.IsBetween = "is-between", a.IsDecimal = "is-decimal", a.IsDivisibleBy = "is-divisible-by", a.IsEAN = "is-ean", a.IsEIN = "is-ein", a.IsEqual = "is-equal", a.IsEvenNumber = "is-even-number", a.IsFloat = "is-float", a.IsGreaterThan = "greater-than", a.IsGreaterThanOrEqual = "greater-than-or-equal", a.IsInt = "is-integer", a.IsISBN = "is-isbn", a.IsISMN = "is-ismn", a.IsISSN = "is-issn", a.IsLatitude = "is-latitude", a.IsLongitude = "is-longitude", a.IsLessThan = "less-than", a.IsLessThanOrEqual = "less-than-or-equal", a.IsMACAddress = "is-mac-address", a.IsNumber = "is-number", a.IsNegativeNumber = "is-negative-number", a.IsNotEqual = "is-not-equal", a.IsNotNull = "is-not-null", a.IsOddNumber = "is-odd-number", a.IsPassportNumber = "is-passport-number", a.IsPhoneNumber = "is-phone-number", a.IsPort = "is-port", a.IsPositiveNumber = "is-positive-number", a.IsPostalCode = "is-postal-code", a.IsSemanticVersion = "is-semantic-version", a.IsSSN = "is-ssn", a.IsTaxIDNumber = "is-tax-id-number", a.IsUUID = "is-uuid", a.IsVATIDNumber = "is-vat-id-number";
-})(ei || (ei = {}));
-var ii;
-(function(a) {
-  a.IsEqual = "is-equal", a.IsFloat = "is-float", a.IsGreaterThan = "greater-than", a.IsGreaterThanOrEqual = "greater-than-or-equal", a.IsLessThan = "less-than", a.IsLessThanOrEqual = "less-than-or-equal", a.IsNotEqual = "is-not-equal", a.IsNotNull = "is-not-null", a.IsNumber = "is-number", a.IsNumeric = "is-numeric";
-})(ii || (ii = {}));
-var ni;
-(function(a) {
-  a.IsEqual = "is-equal", a.IsInteger = "is-integer", a.IsGreaterThan = "greater-than", a.IsGreaterThanOrEqual = "greater-than-or-equal", a.IsLessThan = "less-than", a.IsLessThanOrEqual = "less-than-or-equal", a.IsNotEqual = "is-not-equal", a.IsNotNull = "is-not-null", a.IsNumber = "is-number", a.IsNumeric = "is-numeric";
-})(ni || (ni = {}));
-var ti;
-(function(a) {
-  a.IsCreditCard = "is-credit-card", a.IsEqual = "is-equal", a.IsLengthEqual = "is-length-equal", a.IsLengthGreaterThan = "is-length-greater-than", a.IsLengthGreaterThanOrEqual = "is-length-great-than-or-equal", a.IsLengthLessThan = "is-length-less-than", a.IsLengthLessThanOrEqual = "is-length-less-than-or-equal", a.IsNotEqual = "is-not-equal", a.IsNotNull = "is-not-null", a.IsRegexMatch = "is-regex-match", a.IsNotRegexMatch = "is-not-regex-match";
-})(ti || (ti = {}));
-var ri;
-(function(a) {
-  a.isEmailAddress = "is-email-address", a.IsEqual = "is-equal", a.IsInList = "is-in-list", a.IsLengthEqual = "is-length-equal", a.IsLengthGreaterThan = "is-length-greater-than", a.IsLengthGreaterThanOrEqual = "is-length-great-than-or-equal", a.IsLengthLessThan = "is-length-less-than", a.IsLengthLessThanOrEqual = "is-length-less-than-or-equal", a.IsNotEqual = "is-not-equal", a.IsNotInList = "is-not-in-list", a.IsNotNull = "is-not-null", a.IsRegexMatch = "is-regex-match", a.IsNotRegexMatch = "is-not-regex-match";
-})(ri || (ri = {}));
-var zi;
-(function(a) {
-  a.IsLicensePlateNumber = "is-license-plate-number", a.IsNotNull = "is-not-null", a.IsNotRegexMatch = "is-not-regex-match", a.IsString = "is-string", a.IsRegexMatch = "is-regex-match";
-})(zi || (zi = {}));
-var si;
-(function(a) {
-  a.IsNotNull = "is-not-null", a.IsPassportNumber = "is-passport-number", a.IsString = "is-string", a.IsRegexMatch = "is-regex-match";
-})(si || (si = {}));
-var oi;
-(function(a) {
-  a.IsComplexEnough = "is-complex-enough", a.IsInList = "is-in-list", a.IsNotInList = "is-not-in-list", a.IsNotNull = "is-not-null", a.IsNotRegexMatch = "is-not-regex-match", a.IsLengthGreaterThan = "is-length-greater-than", a.IsLengthGreaterThanOrEqual = "is-length-great-than-or-equal", a.IsLengthLessThan = "is-length-less-than", a.IsLengthLessThanOrEqual = "is-length-less-than-or-equal", a.IsStrongPassword = "is-strong-password", a.IsString = "is-string", a.IsRegexMatch = "is-regex-match";
-})(oi || (oi = {}));
-var li;
-(function(a) {
-  a.IsNotNull = "is-not-null", a.IsNotRegexMatch = "is-not-regex-match", a.IsNumber = "is-number", a.IsPhoneNumber = "is-phone-number", a.IsRegexMatch = "is-regex-match";
-})(li || (li = {}));
-var mi;
-(function(a) {
-  a.IsNotNull = "is-not-null", a.IsSSN = "is-ssn", a.IsString = "is-string", a.IsRegexMatch = "is-regex-match";
-})(mi || (mi = {}));
-var ci;
-(function(a) {
-  a.Contains = "contains", a.IsBIC = "is-bic", a.IsEqual = "is-equal", a.IsInList = "is-in-list", a.IsNotEqual = "is-not-equal", a.IsNotInList = "is-not-in-list", a.IsNotNull = "is-not-null", a.IsString = "is-string";
-})(ci || (ci = {}));
-var ui$1;
-(function(a) {
-  a.Contains = "contains", a.IsEAN = "is-ean", a.IsEqual = "is-equal", a.IsInList = "is-in-list", a.IsNotEqual = "is-not-equal", a.IsNotInList = "is-not-in-list", a.IsNotNull = "is-not-null", a.IsString = "is-string";
-})(ui$1 || (ui$1 = {}));
-var di;
-(function(a) {
-  a.Contains = "contains", a.IsEIN = "is-ein", a.IsEqual = "is-equal", a.IsInList = "is-in-list", a.IsNotEqual = "is-not-equal", a.IsNotInList = "is-not-in-list", a.IsNotNull = "is-not-null", a.IsString = "is-string";
-})(di || (di = {}));
-var pi;
-(function(a) {
-  a.Contains = "contains", a.IsEqual = "is-equal", a.IsIBAN = "is-iban", a.IsInList = "is-in-list", a.IsNotEqual = "is-not-equal", a.IsNotInList = "is-not-in-list", a.IsNotNull = "is-not-null", a.IsString = "is-string";
-})(pi || (pi = {}));
-var Ai;
-(function(a) {
-  a.Contains = "contains", a.IsEqual = "is-equal", a.IsISBN = "is-isbn", a.IsInList = "is-in-list", a.IsNotEqual = "is-not-equal", a.IsNotInList = "is-not-in-list", a.IsNotNull = "is-not-null", a.IsString = "is-string";
-})(Ai || (Ai = {}));
-var gi;
-(function(a) {
-  a.Contains = "contains", a.IsEqual = "is-equal", a.IsISIN = "is-isin", a.IsInList = "is-in-list", a.IsNotEqual = "is-not-equal", a.IsNotInList = "is-not-in-list", a.IsNotNull = "is-not-null", a.IsString = "is-string";
-})(gi || (gi = {}));
-var fi;
-(function(a) {
-  a.Contains = "contains", a.IsEqual = "is-equal", a.IsISMN = "is-ismn", a.IsInList = "is-in-list", a.IsNotEqual = "is-not-equal", a.IsNotInList = "is-not-in-list", a.IsNotNull = "is-not-null", a.IsString = "is-string";
-})(fi || (fi = {}));
-var hi;
-(function(a) {
-  a.Contains = "contains", a.IsEqual = "is-equal", a.IsISSN = "is-issn", a.IsInList = "is-in-list", a.IsNotEqual = "is-not-equal", a.IsNotInList = "is-not-in-list", a.IsNotNull = "is-not-null", a.IsString = "is-string";
-})(hi || (hi = {}));
-var _i;
-(function(a) {
-  a.Contains = "contains", a.IsEqual = "is-equal", a.IsInList = "is-in-list", a.IsNotEqual = "is-not-equal", a.IsNotInList = "is-not-in-list", a.IsNotNull = "is-not-null", a.IsString = "is-string", a.IsTaxIDNumber = "is-tax-id-number";
-})(_i || (_i = {}));
-var Si;
-(function(a) {
-  a.Contains = "contains", a.IsEqual = "is-equal", a.IsInList = "is-in-list", a.IsNotEqual = "is-not-equal", a.IsNotInList = "is-not-in-list", a.IsNotNull = "is-not-null", a.IsString = "is-string", a.IsVATIDNumber = "is-vat-id-number";
-})(Si || (Si = {}));
-var Ti;
-(function(a) {
-  a.Contains = "contains", a.HasNumberCount = "has-number-count", a.HasLowercaseCount = "has-lowercase-count", a.HasLetterCount = "has-letter-count", a.HasSpacesCount = "has-spaces-count", a.HasSymbolCount = "has-symbol-count", a.HasUppercaseCount = "has-uppercase-count", a.IsAlpha = "is-alpha", a.IsAlphanumeric = "is-alphanumeric", a.IsAscii = "is-ascii", a.IsBase64 = "is-base-64", a.IsColor = "is-color", a.IsComplexEnough = "is-complex-enough", a.IsCreditCard = "is-credit-card", a.IsDataURI = "is-data-uri", a.IsDomainName = "is-domain-name", a.IsEmailAddress = "is-email-address", a.IsEthereumAddress = "is-ethereum-address", a.IsEAN = "is-ean", a.IsEIN = "is-ein", a.IsEqual = "is-equal", a.IsIBAN = "is-iban", a.IsHSLColor = "is-hsl-color", a.IsHexColor = "is-hex-color", a.IsHexadecimal = "is-hexadecimal", a.IsIdentityCardCode = "is-identity-card-code", a.IsIMEI = "is-imei", a.IsInList = "is-in-list", a.IsIPAddress = "is-ip-address", a.IsInIPAddressRange = "is-in-ip-address-range", a.IsISBN = "is-isbn", a.IsISIN = "is-isin", a.IsISMN = "is-ismn", a.IsISRC = "is-isrc", a.IsISSN = "is-issn", a.IsLanguage = "is-language", a.IsLatitude = "is-latitude", a.IsLongitude = "is-longitude", a.IsLengthEqual = "is-length-equal", a.IsLengthGreaterThan = "is-length-greater-than", a.IsLengthGreaterThanOrEqual = "is-length-great-than-or-equal", a.IsLengthLessThan = "is-length-less-than", a.IsLengthLessThanOrEqual = "is-length-less-than-or-equal", a.IsLicensePlateNumber = "is-license-plate-number", a.IsLowercase = "is-lowercase", a.IsOctal = "is-octal", a.IsMACAddress = "is-mac-address", a.IsMD5 = "is-md5", a.IsMagnetURI = "is-magnet-uri", a.IsMarkdown = "is-markdown", a.IsMimeType = "is-mime-type", a.IsMonth = "is-month", a.IsNotInIPAddressRange = "is-not-in-ip-address-range", a.IsNotInList = "is-not-in-list", a.IsNotNull = "is-not-null", a.IsNotRegexMatch = "is-not-regex-match", a.IsNumber = "is-number", a.IsNumeric = "is-numeric", a.IsPassportNumber = "is-passport-number", a.IsPhoneNumber = "is-phone-number", a.IsPort = "is-port", a.IsPostalCode = "is-postal-code", a.IsProvince = "is-province", a.IsRegexMatch = "is-regex-match", a.IsSemanticVersion = "is-semantic-version", a.IsSlug = "is-slug", a.IsSSN = "is-ssn", a.IsState = "is-state", a.IsStreetAddress = "is-street-address", a.IsString = "is-string", a.IsTaxIDNumber = "is-tax-id-number", a.IsURL = "is-url", a.IsUUID = "is-uuid", a.IsUppercase = "is-uppercase", a.IsVATIDNumber = "is-vat-id-number", a.IsWeekday = "is-weekday", a.IsWeekend = "is-weekend", a.IsYear = "is-year";
-})(Ti || (Ti = {}));
-var vi;
-(function(a) {
-  a.Contains = "contains", a.IsAlpha = "is-alpha", a.IsAlphanumeric = "is-alphanumeric", a.IsInList = "is-in-list", a.IsMarkdown = "is-markdown", a.IsNotInList = "is-not-in-list", a.IsNumeric = "is-numeric", a.IsLowercase = "is-lowercase", a.IsString = "is-string", a.IsUppercase = "is-uppercase";
-})(vi || (vi = {}));
-var bi;
-(function(a) {
-  a.InvalidCharacters = "invalid-characters", a.InvalidPattern = "invalid-pattern", a.NotComplexEnough = "not-complex-enough", a.NotUnique = "not-unique", a.NotValidEmail = "not-valid-email", a.TooLong = "too-long", a.TooShort = "too-short", a.Required = "required";
-})(bi || (bi = {}));
-var Ei;
-(function(a) {
-  a[a.Allowed = 0] = "Allowed", a[a.Blocked = 1] = "Blocked";
-})(Ei || (Ei = {}));
-var Ii;
-(function(a) {
-  a.Canceled = "Canceled", a.Completed = "Completed", a.Created = "Created", a.Faulted = "Faulted", a.Queued = "Queued", a.Running = "Running", a.Waiting = "Waiting";
-})(Ii || (Ii = {}));
-var xi;
-(function(a) {
-  a.Archived = "ARCHIVED", a.Compromised = "COMPROMISED", a.Confirmed = "CONFIRMED", a.ForcePasswordChange = "FORCE_CHANGE_PASSWORD", a.ResetRequired = "RESET_REQUIRED", a.Unconfirmed = "UNCONFIRMED", a.Unknown = "UNKNOWN";
-})(xi || (xi = {}));
-var Wi;
-(function(a) {
-  a.Code = "code", a.Link = "link";
-})(Wi || (Wi = {}));
-var Ui;
-(function(a) {
-  a.Owner = "Owner", a.Admin = "Admin", a.User = "User", a.Visitor = "Visitor";
-})(Ui || (Ui = {}));
-var yi;
-(function(a) {
-  a.RequiresPaymentMethod = "requires_payment_method", a.RequiresConfirmation = "requires_confirmation", a.RequiresAction = "requires_action", a.Processing = "processing", a.RequiresCapture = "requires_capture", a.Canceled = "canceled", a.Succeeded = "succeeded";
-})(yi || (yi = {}));
-var Pi;
-(function(a) {
-  a.Incomplete = "incomplete", a.IncompleteExpired = "incomplete_expired", a.Trialing = "trialing", a.Active = "active", a.PastDue = "past_due", a.Canceled = "canceled", a.Unpaid = "unpaid";
-})(Pi || (Pi = {}));
-var ki;
-(function(a) {
-  a.Monthly = "monthly", a.Quarterly = "quarterly", a.Yearly = "yearly", a.Lifetime = "lifetime";
-})(ki || (ki = {}));
-var Mi;
-(function(a) {
-  a.Delivered = "delivered", a.Read = "read", a.Sending = "sending", a.Sent = "sent";
-})(Mi || (Mi = {}));
-var Ni;
-(function(a) {
-  a.Audio = "audio", a.File = "file", a.Image = "image", a.Text = "text", a.Video = "video";
-})(Ni || (Ni = {}));
-var Li;
-(function(a) {
-  a.Audio = "audio", a.File = "file", a.Image = "image", a.Video = "video";
-})(Li || (Li = {}));
-var Bi;
-(function(a) {
-  a.Angry = "angry", a.Laugh = "laugh", a.Like = "like", a.Love = "love", a.Sad = "sad", a.Wow = "wow", a.Wink = "wink", a.Yay = "yay";
-})(Bi || (Bi = {}));
-var wi;
-(function(a) {
-  a.Email = "email", a.PhoneNumber = "phone_number";
-})(wi || (wi = {}));
-var c;
-(function(a) {
-  a.Analytics = "analytics", a.Critical = "critical", a.Debug = "debug", a.Exception = "exception", a.Http = "http", a.Info = "info", a.Warning = "warning";
-})(c || (c = {}));
-var Di;
-(function(a) {
-  a.Delete = "delete", a.Get = "get", a.Head = "head", a.Patch = "patch", a.Post = "post", a.Put = "put";
-})(Di || (Di = {}));
-var Gi;
-(function(a) {
-  a[a.CONTINUE = 100] = "CONTINUE", a[a.SWITCHING_PROTOCOLS = 101] = "SWITCHING_PROTOCOLS", a[a.PROCESSING = 102] = "PROCESSING", a[a.OK = 200] = "OK", a[a.CREATED = 201] = "CREATED", a[a.ACCEPTED = 202] = "ACCEPTED", a[a.NON_AUTHORITATIVE_INFORMATION = 203] = "NON_AUTHORITATIVE_INFORMATION", a[a.NO_CONTENT = 204] = "NO_CONTENT", a[a.RESET_CONTENT = 205] = "RESET_CONTENT", a[a.PARTIAL_CONTENT = 206] = "PARTIAL_CONTENT", a[a.MULTI_STATUS = 207] = "MULTI_STATUS", a[a.ALREADY_REPORTED = 208] = "ALREADY_REPORTED", a[a.IM_USED = 226] = "IM_USED", a[a.MULTIPLE_CHOICES = 300] = "MULTIPLE_CHOICES", a[a.MOVED_PERMANENTLY = 301] = "MOVED_PERMANENTLY", a[a.FOUND = 302] = "FOUND", a[a.SEE_OTHER = 303] = "SEE_OTHER", a[a.NOT_MODIFIED = 304] = "NOT_MODIFIED", a[a.USE_PROXY = 305] = "USE_PROXY", a[a.SWITCH_PROXY = 306] = "SWITCH_PROXY", a[a.TEMPORARY_REDIRECT = 307] = "TEMPORARY_REDIRECT", a[a.PERMANENT_REDIRECT = 308] = "PERMANENT_REDIRECT", a[a.BAD_REQUEST = 400] = "BAD_REQUEST", a[a.UNAUTHORIZED = 401] = "UNAUTHORIZED", a[a.PAYMENT_REQUIRED = 402] = "PAYMENT_REQUIRED", a[a.FORBIDDEN = 403] = "FORBIDDEN", a[a.NOT_FOUND = 404] = "NOT_FOUND", a[a.METHOD_NOT_ALLOWED = 405] = "METHOD_NOT_ALLOWED", a[a.NOT_ACCEPTABLE = 406] = "NOT_ACCEPTABLE", a[a.PROXY_AUTHENTICATION_REQUIRED = 407] = "PROXY_AUTHENTICATION_REQUIRED", a[a.REQUEST_TIMEOUT = 408] = "REQUEST_TIMEOUT", a[a.CONFLICT = 409] = "CONFLICT", a[a.GONE = 410] = "GONE", a[a.LENGTH_REQUIRED = 411] = "LENGTH_REQUIRED", a[a.PRECONDITION_FAILED = 412] = "PRECONDITION_FAILED", a[a.PAYLOAD_TOO_LARGE = 413] = "PAYLOAD_TOO_LARGE", a[a.URI_TOO_LONG = 414] = "URI_TOO_LONG", a[a.UNSUPPORTED_MEDIA_TYPE = 415] = "UNSUPPORTED_MEDIA_TYPE", a[a.RANGE_NOT_SATISFIABLE = 416] = "RANGE_NOT_SATISFIABLE", a[a.EXPECTATION_FAILED = 417] = "EXPECTATION_FAILED", a[a.I_AM_A_TEAPOT = 418] = "I_AM_A_TEAPOT", a[a.MISDIRECTED_REQUEST = 421] = "MISDIRECTED_REQUEST", a[a.UNPROCESSABLE_ENTITY = 422] = "UNPROCESSABLE_ENTITY", a[a.LOCKED = 423] = "LOCKED", a[a.FAILED_DEPENDENCY = 424] = "FAILED_DEPENDENCY", a[a.TOO_EARLY = 425] = "TOO_EARLY", a[a.UPGRADE_REQUIRED = 426] = "UPGRADE_REQUIRED", a[a.PRECONDITION_REQUIRED = 428] = "PRECONDITION_REQUIRED", a[a.TOO_MANY_REQUESTS = 429] = "TOO_MANY_REQUESTS", a[a.REQUEST_HEADER_FIELDS_TOO_LARGE = 431] = "REQUEST_HEADER_FIELDS_TOO_LARGE", a[a.UNAVAILABLE_FOR_LEGAL_REASONS = 451] = "UNAVAILABLE_FOR_LEGAL_REASONS", a[a.INTERNAL_SERVER_ERROR = 500] = "INTERNAL_SERVER_ERROR", a[a.NOT_IMPLEMENTED = 501] = "NOT_IMPLEMENTED", a[a.BAD_GATEWAY = 502] = "BAD_GATEWAY", a[a.SERVICE_UNAVAILABLE = 503] = "SERVICE_UNAVAILABLE", a[a.GATEWAY_TIMEOUT = 504] = "GATEWAY_TIMEOUT", a[a.HTTP_VERSION_NOT_SUPPORTED = 505] = "HTTP_VERSION_NOT_SUPPORTED", a[a.VARIANT_ALSO_NEGOTIATES = 506] = "VARIANT_ALSO_NEGOTIATES", a[a.INSUFFICIENT_STORAGE = 507] = "INSUFFICIENT_STORAGE", a[a.LOOP_DETECTED = 508] = "LOOP_DETECTED", a[a.BANDWIDTH_LIMIT_EXCEEDED = 509] = "BANDWIDTH_LIMIT_EXCEEDED", a[a.NOT_EXTENDED = 510] = "NOT_EXTENDED", a[a.NETWORK_AUTHENTICATION_REQUIRED = 511] = "NETWORK_AUTHENTICATION_REQUIRED";
-})(Gi || (Gi = {}));
-var r;
-(function(a) {
-  a.Afghanistan = "AF", a.Albania = "AL", a.Algeria = "DZ", a.AmericanSamoa = "AS", a.Andorra = "AD", a.Angola = "AO", a.Anguilla = "AI", a.Antarctica = "AQ", a.AntiguaAndBarbuda = "AG", a.Argentina = "AR", a.Armenia = "AM", a.Aruba = "AW", a.Australia = "AU", a.Austria = "AT", a.Azerbaijan = "AZ", a.Bahamas = "BS", a.Bahrain = "BH", a.Bangladesh = "BD", a.Barbados = "BB", a.Belarus = "BY", a.Belgium = "BE", a.Belize = "BZ", a.Benin = "BJ", a.Bermuda = "BM", a.Bhutan = "BT", a.Bolivia = "BO", a.BosniaAndHerzegovina = "BA", a.Botswana = "BW", a.BouvetIsland = "BV", a.Brazil = "BR", a.BritishIndianOceanTerritory = "IO", a.Brunei = "BN", a.Bulgaria = "BG", a.BurkinaFaso = "BF", a.Burundi = "BI", a.Cambodia = "KH", a.Cameroon = "CM", a.Canada = "CA", a.CapeVerde = "CV", a.CaymanIslands = "KY", a.CentralAfricanRepublic = "CF", a.Chad = "TD", a.Chile = "CL", a.China = "CN", a.ChristmasIsland = "CX", a.CocosKeelingIslands = "CC", a.Colombia = "CO", a.Comoros = "KM", a.Congo = "CG", a.CongoTheDemocraticRepublicOfThe = "CD", a.CookIslands = "CK", a.CostaRica = "CR", a.CoteDIvoire = "CI", a.Croatia = "HR", a.Cuba = "CU", a.Cyprus = "CY", a.CzechRepublic = "CZ", a.Denmark = "DK", a.Djibouti = "DJ", a.Dominica = "DM", a.DominicanRepublic = "DO", a.Ecuador = "EC", a.Egypt = "EG", a.ElSalvador = "SV", a.EquatorialGuinea = "GQ", a.Eritrea = "ER", a.Estonia = "EE", a.Ethiopia = "ET", a.FalklandIslands = "FK", a.FaroeIslands = "FO", a.Fiji = "FJ", a.Finland = "FI", a.France = "FR", a.FrenchGuiana = "GF", a.FrenchPolynesia = "PF", a.FrenchSouthernTerritories = "TF", a.Gabon = "GA", a.Gambia = "GM", a.Georgia = "GE", a.Germany = "DE", a.Ghana = "GH", a.Gibraltar = "GI", a.Greece = "GR", a.Greenland = "GL", a.Grenada = "GD", a.Guadeloupe = "GP", a.Guam = "GU", a.Guatemala = "GT", a.Guernsey = "GG", a.Guinea = "GN", a.GuineaBissau = "GW", a.Guyana = "GY", a.Haiti = "HT", a.HeardIslandMcdonaldIslands = "HM", a.HolySeeVaticanCityState = "VA", a.Honduras = "HN", a.HongKong = "HK", a.Hungary = "HU", a.Iceland = "IS", a.India = "IN", a.Indonesia = "ID", a.Iran = "IR", a.Iraq = "IQ", a.Ireland = "IE", a.IsleOfMan = "IM", a.Israel = "IL", a.Italy = "IT", a.Jamaica = "JM", a.Japan = "JP", a.Jersey = "JE", a.Jordan = "JO", a.Kazakhstan = "KZ", a.Kenya = "KE", a.Kiribati = "KI", a.Kuwait = "KW", a.Kyrgyzstan = "KG", a.Laos = "LA", a.Latvia = "LV", a.Lebanon = "LB", a.Lesotho = "LS", a.Liberia = "LR", a.Libya = "LY", a.Liechtenstein = "LI", a.Lithuania = "LT", a.Luxembourg = "LU", a.Macau = "MO", a.Madagascar = "MG", a.Malawi = "MW", a.Malaysia = "MY", a.Maldives = "MV", a.Mali = "ML", a.Malta = "MT", a.MarshallIslands = "MH", a.Martinique = "MQ", a.Mauritania = "MR", a.Mauritius = "MU", a.Mayotte = "YT", a.Mexico = "MX", a.MicronesiaFederatedStatesOf = "FM", a.Moldova = "MD", a.Monaco = "MC", a.Mongolia = "MN", a.Montenegro = "ME", a.Montserrat = "MS", a.Morocco = "MA", a.Mozambique = "MZ", a.Myanmar = "MM", a.Namibia = "NA", a.Nauru = "NR", a.Nepal = "NP", a.Netherlands = "NL", a.NetherlandsAntilles = "AN", a.NewCaledonia = "NC", a.NewZealand = "NZ", a.NorthKorea = "KP", a.Nicaragua = "NI", a.Niger = "NE", a.Nigeria = "NG", a.Niue = "NU", a.NorfolkIsland = "NF", a.NorthMacedonia = "MK", a.NorthernMarianaIslands = "MP", a.Norway = "NO", a.Oman = "OM", a.Pakistan = "PK", a.Palau = "PW", a.PalestinianTerritoryOccupied = "PS", a.Panama = "PA", a.PapuaNewGuinea = "PG", a.Paraguay = "PY", a.Peru = "PE", a.Philippines = "PH", a.Pitcairn = "PN", a.Poland = "PL", a.Portugal = "PT", a.PuertoRico = "PR", a.Qatar = "QA", a.Reunion = "RE", a.Romania = "RO", a.RussianFederation = "RU", a.Rwanda = "RW", a.SaintBarthelemy = "BL", a.SaintHelena = "SH", a.SaintKittsAndNevis = "KN", a.SaintLucia = "LC", a.SaintMartin = "MF", a.SaintPierreAndMiquelon = "PM", a.SaintVincentAndTheGrenadines = "VC", a.Samoa = "WS", a.SanMarino = "SM", a.SaoTomeAndPrincipe = "ST", a.SaudiArabia = "SA", a.Senegal = "SN", a.Serbia = "RS", a.SerbiaAndMontenegro = "CS", a.Seychelles = "SC", a.SierraLeone = "SL", a.Singapore = "SG", a.Slovakia = "SK", a.Slovenia = "SI", a.SolomonIslands = "SB", a.Somalia = "SO", a.SouthAfrica = "ZA", a.SouthGeorgiaAndTheSouthSandwichIslands = "GS", a.SouthKorea = "KR", a.Spain = "ES", a.SriLanka = "LK", a.Sudan = "SD", a.Suriname = "SR", a.SvalbardAndJanMayen = "SJ", a.Swaziland = "SZ", a.Sweden = "SE", a.Switzerland = "CH", a.Syria = "SY", a.Taiwan = "TW", a.Tajikistan = "TJ", a.Tanzania = "TZ", a.Thailand = "TH", a.TimorLeste = "TL", a.Togo = "TG", a.Tokelau = "TK", a.Tonga = "TO", a.TrinidadAndTobago = "TT", a.Tunisia = "TN", a.Turkey = "TR", a.Turkmenistan = "TM", a.TurksAndCaicosIslands = "TC", a.Tuvalu = "TV", a.Uganda = "UG", a.Ukraine = "UA", a.UnitedArabEmirates = "AE", a.UnitedKingdom = "GB", a.UnitedStates = "US", a.UnitedStatesMinorOutlyingIslands = "UM", a.Uruguay = "UY", a.Uzbekistan = "UZ", a.Vanuatu = "VU", a.Venezuela = "VE", a.Vietnam = "VN", a.VirginIslandsBritish = "VG", a.VirginIslandsUS = "VI", a.WallisAndFutuna = "WF", a.WesternSahara = "EH", a.Yemen = "YE", a.Zambia = "ZM", a.Zimbabwe = "ZW";
-})(r || (r = {}));
-var l$1;
-(function(a) {
-  a.AfghanistanAfghani = "AFN", a.AlbaniaLek = "ALL", a.ArmeniaDram = "AMD", a.AlgeriaDinar = "DZD", a.AmericanSamoaTala = "WST", a.AngolaKwanza = "AOA", a.ArgentinaPeso = "ARS", a.AustraliaDollar = "AUD", a.ArubaFlorin = "AWG", a.AzerbaijanNewManat = "AZN", a.BosniaAndHerzegovinaConvertibleMark = "BAM", a.BahrainDinar = "BHD", a.BarbadosDollar = "BBD", a.BangladeshTaka = "BDT", a.BelgiumFranc = "BGN", a.BermudaDollar = "BMD", a.BruneiDollar = "BND", a.BoliviaBoliviano = "BOB", a.BrazilReal = "BRL", a.BahamasDollar = "BSD", a.BhutanNgultrum = "BTN", a.BotswanaPula = "BWP", a.BelarusRuble = "BYN", a.BelizeDollar = "BZD", a.BulgariaLev = "BGN", a.BurundiFranc = "BIF", a.BritishPound = "GBP", a.CanadaDollar = "CAD", a.CambodiaRiel = "KHR", a.ComorosFranc = "KMF", a.CaymanIslandsDollar = "KYD", a.ChilePeso = "CLP", a.ChinaYuan = "CNY", a.ColombiaPeso = "COP", a.CostaRicaColon = "CRC", a.CroatiaKuna = "HRK", a.CubaConvertiblePeso = "CUC", a.CubaPeso = "CUP", a.CapeVerdeEscudo = "CVE", a.CyprusPound = "CYP", a.CzechRepublicKoruna = "CZK", a.DjiboutiFranc = "DJF", a.DenmarkKrone = "DKK", a.DominicaDollar = "XCD", a.DominicanRepublicPeso = "DOP", a.EastCaribbeanDollar = "XCD", a.EgyptPound = "EGP", a.ElSalvadorColon = "SVC", a.EquatorialGuineaEkwele = "GQE", a.EritreaNakfa = "ERN", a.EstoniaKroon = "EEK", a.EthiopiaBirr = "ETB", a.Euro = "EUR", a.FijiDollar = "FJD", a.FalklandIslandsPound = "FKP", a.GambiaDalasi = "GMD", a.GabonFranc = "GMD", a.GeorgiaLari = "GEL", a.GhanaCedi = "GHS", a.GibraltarPound = "GIP", a.GuatemalaQuetzal = "GTQ", a.GuernseyPound = "GGP", a.GuineaBissauPeso = "GWP", a.GuyanaDollar = "GYD", a.HongKongDollar = "HKD", a.HondurasLempira = "HNL", a.HaitiGourde = "HTG", a.HungaryForint = "HUF", a.IndonesiaRupiah = "IDR", a.IsleOfManPound = "IMP", a.IsraelNewShekel = "ILS", a.IndiaRupee = "INR", a.IraqDinar = "IQD", a.IranRial = "IRR", a.IcelandKrona = "ISK", a.JamaicaDollar = "JMD", a.JapanYen = "JPY", a.JerseyPound = "JEP", a.JordanDinar = "JOD", a.KazakhstanTenge = "KZT", a.KenyaShilling = "KES", a.KyrgyzstanSom = "KGS", a.NorthKoreaWon = "KPW", a.SouthKoreaWon = "KRW", a.KuwaitDinar = "KWD", a.LaosKip = "LAK", a.LebanonPound = "LBP", a.LiberiaDollar = "LRD", a.LesothoLoti = "LSL", a.LibyanDinar = "LYD", a.LithuaniaLitas = "LTL", a.LatviaLats = "LVL", a.LibyaDinar = "LYD", a.MacauPataca = "MOP", a.MaldivesRufiyaa = "MVR", a.MalawiKwacha = "MWK", a.MaltaLira = "MTL", a.MauritiusRupee = "MUR", a.MongoliaTughrik = "MNT", a.MoroccoDirham = "MAD", a.MoldovaLeu = "MDL", a.MozambiqueMetical = "MZN", a.MadagascarAriary = "MGA", a.MacedoniaDenar = "MKD", a.MexicoPeso = "MXN", a.MalaysiaRinggit = "MYR", a.MyanmarKyat = "MMK", a.MicronesiaFederatedStatesDollar = "USD", a.NicaraguaCordoba = "NIO", a.NamibiaDollar = "NAD", a.NetherlandsAntillesGuilder = "ANG", a.NewCaledoniaFranc = "XPF", a.NigeriaNaira = "NGN", a.NicaraguaCordobaOro = "NIO", a.NigerCFAFranc = "XOF", a.NorwayKrone = "NOK", a.NepalRupee = "NPR", a.NewZealandDollar = "NZD", a.OmanRial = "OMR", a.PanamaBalboa = "PAB", a.PeruNuevoSol = "PEN", a.PapuaNewGuineaKina = "PGK", a.PhilippinesPeso = "PHP", a.PakistanRupee = "PKR", a.PeruNuevo = "PEN", a.PolandZloty = "PLN", a.ParaguayGuarani = "PYG", a.QatarRial = "QAR", a.RomaniaNewLeu = "RON", a.SerbiaDinar = "RSD", a.SriLankaRupee = "LKR", a.RussiaRuble = "RUB", a.RwandaFranc = "RWF", a.SaudiArabiaRiyal = "SAR", a.SlovakiaKoruna = "SKK", a.SloveniaTolar = "SIT", a.SolomonIslandsDollar = "SBD", a.SeychellesRupee = "SCR", a.SudanPound = "SDG", a.SwedenKrona = "SEK", a.SingaporeDollar = "SGD", a.SaintHelenaPound = "SHP", a.SierraLeoneLeone = "SLL", a.SomaliaShilling = "SOS", a.SurinameDollar = "SRD", a.SintMaartenPound = "SXD", a.SyriaPound = "SYP", a.SwazilandLilangeni = "SZL", a.SwitzerlandFranc = "CHF", a.ThailandBaht = "THB", a.TajikistanSomoni = "TJS", a.TurkmenistanManat = "TMT", a.TunisiaDinar = "TND", a.TongaPaanga = "TOP", a.TurkeyLira = "TRY", a.TrinidadAndTobagoDollar = "TTD", a.TaiwanNewDollar = "TWD", a.TanzaniaShilling = "TZS", a.UnitedArabEmiratesDirham = "AED", a.UkraineHryvnia = "UAH", a.UgandaShilling = "UGX", a.UnitedKingdomPound = "GBP", a.UnitedStatesDollar = "USD", a.UruguayPeso = "UYU", a.UzbekistanSom = "UZS", a.VenezuelaBolivar = "VEF", a.VietnamDong = "VND", a.VanuatuVatu = "VUV", a.SamoaTala = "WST", a.YemenRial = "YER", a.SouthAfricaRand = "ZAR", a.ZambiaKwacha = "ZMW", a.ZimbabweDollar = "ZWL";
-})(l$1 || (l$1 = {}));
-({ AfghanistanAfghani: { code: l$1.AfghanistanAfghani, countries: [r.Afghanistan], decimal_digits: 2, decimal_separator: ".", name: "Afghan Afghani", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "\u060B", symbol_native: "\u060B", symbol_placement: "before", thousands_separator: "," }, AlbaniaLek: { code: l$1.AlbaniaLek, countries: [r.Albania], decimal_digits: 2, decimal_separator: ",", name: "Albanian Lek", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "Lek", symbol_native: "Lek", symbol_placement: "before", thousands_separator: "." }, AlgeriaDinar: { code: l$1.AlgeriaDinar, countries: [r.Algeria], decimal_digits: 2, decimal_separator: ".", name: "Algerian Dinar", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "\u062F.\u062C", symbol_native: "\u062F.\u062C", symbol_placement: "before", thousands_separator: "," }, ArgentinaPeso: { code: l$1.ArgentinaPeso, countries: [r.Argentina], decimal_digits: 2, decimal_separator: ".", name: "Argentine Peso", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "$", symbol_native: "$", symbol_placement: "before", thousands_separator: "," }, ArmeniaDram: { code: l$1.ArmeniaDram, countries: [r.Armenia], decimal_digits: 2, decimal_separator: ",", name: "Armenian Dram", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "\u0564\u0580.", symbol_native: "\u0564\u0580.", symbol_placement: "before", thousands_separator: "." }, ArubaFlorin: { code: l$1.ArubaFlorin, countries: [r.Aruba], decimal_digits: 2, decimal_separator: ".", name: "Aruban Florin", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "\u0192", symbol_native: "\u0192", symbol_placement: "before", thousands_separator: "," }, AustraliaDollar: { code: l$1.AustraliaDollar, countries: [r.Australia], decimal_digits: 2, decimal_separator: ".", name: "Australian Dollar", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "$", symbol_native: "$", symbol_placement: "before", thousands_separator: "," }, AzerbaijanManat: { code: l$1.AzerbaijanNewManat, countries: [r.Azerbaijan], decimal_digits: 2, decimal_separator: ".", name: "Azerbaijani Manat", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "\u043C\u0430\u043D", symbol_native: "\u043C\u0430\u043D", symbol_placement: "before", thousands_separator: "," }, BahrainDinar: { code: l$1.BahrainDinar, countries: [r.Bahrain], decimal_digits: 3, decimal_separator: ".", name: "Bahraini Dinar", negative_sign: "-", positive_sign: "", rounding: 0, symbol: ".\u062F.\u0628", symbol_native: ".\u062F.\u0628", symbol_placement: "before", thousands_separator: "," }, BangladeshTaka: { code: l$1.BangladeshTaka, countries: [r.Bangladesh], decimal_digits: 2, decimal_separator: ".", name: "Bangladeshi Taka", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "\u09F3", symbol_native: "\u09F3", symbol_placement: "before", thousands_separator: "," }, BarbadosDollar: { code: l$1.BarbadosDollar, countries: [r.Barbados], decimal_digits: 2, decimal_separator: ".", name: "Barbadian Dollar", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "$", symbol_native: "$", symbol_placement: "before", thousands_separator: "," }, BelarusRuble: { code: l$1.BelarusRuble, countries: [r.Belarus], decimal_digits: 2, decimal_separator: ".", name: "Belarusian Ruble", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "Br", symbol_native: "Br", symbol_placement: "before", thousands_separator: "." }, BelizeDollar: { code: l$1.BelizeDollar, countries: [r.Belize], decimal_digits: 2, decimal_separator: ".", name: "Belize Dollar", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "BZ$", symbol_native: "BZ$", symbol_placement: "before", thousands_separator: "," }, BermudaDollar: { code: l$1.BermudaDollar, countries: [r.Bermuda], decimal_digits: 2, decimal_separator: ".", name: "Bermudian Dollar", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "$", symbol_native: "$", symbol_placement: "before", thousands_separator: "," }, BoliviaBoliviano: { code: l$1.BoliviaBoliviano, countries: [r.Bolivia], decimal_digits: 2, decimal_separator: ".", name: "Bolivian Boliviano", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "$b", symbol_native: "$b", symbol_placement: "before", thousands_separator: "," }, BosniaAndHerzegovinaConvertibleMarka: { code: l$1.BosniaAndHerzegovinaConvertibleMark, countries: [r.BosniaAndHerzegovina], decimal_digits: 2, decimal_separator: ",", name: "Bosnia and Herzegovina Convertible Marka", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "KM", symbol_native: "KM", symbol_placement: "before", thousands_separator: "." }, BotswanaPula: { code: l$1.BotswanaPula, countries: [r.Botswana], decimal_digits: 2, decimal_separator: ".", name: "Botswana Pula", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "P", symbol_native: "P", symbol_placement: "before", thousands_separator: "," }, BrazilReal: { code: l$1.BrazilReal, countries: [r.Brazil], decimal_digits: 2, decimal_separator: ",", name: "Brazilian Real", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "R$", symbol_native: "R$", symbol_placement: "before", thousands_separator: "." }, BruneiDollar: { code: l$1.BruneiDollar, countries: [r.Brunei], decimal_digits: 2, decimal_separator: ".", name: "Brunei Dollar", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "$", symbol_native: "$", symbol_placement: "before", thousands_separator: "," }, BulgariaLev: { code: l$1.BulgariaLev, countries: [r.Bulgaria], decimal_digits: 2, decimal_separator: ".", name: "Bulgarian Lev", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "\u043B\u0432", symbol_native: "\u043B\u0432", symbol_placement: "before", thousands_separator: "." }, BurundiFranc: { code: l$1.BurundiFranc, countries: [r.Burundi], decimal_digits: 0, decimal_separator: ".", name: "Burundian Franc", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "FBu", symbol_native: "FBu", symbol_placement: "before", thousands_separator: "," }, CambodiaRiel: { code: l$1.CambodiaRiel, countries: [r.Cambodia], decimal_digits: 2, decimal_separator: ",", name: "Cambodian Riel", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "\u17DB", symbol_native: "\u17DB", symbol_placement: "before", thousands_separator: "." }, CanadaDollar: { code: l$1.CanadaDollar, countries: [r.Canada], decimal_digits: 2, decimal_separator: ".", name: "Canadian Dollar", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "$", symbol_native: "$", symbol_placement: "before", thousands_separator: "," }, CapeVerdeEscudo: { code: l$1.CapeVerdeEscudo, countries: [r.CapeVerde], decimal_digits: 2, decimal_separator: ".", name: "Cape Verde Escudo", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "Esc", symbol_native: "Esc", symbol_placement: "before", thousands_separator: "," }, CaymanIslandsDollar: { code: l$1.CaymanIslandsDollar, countries: [r.CaymanIslands], decimal_digits: 2, decimal_separator: ".", name: "Cayman Islands Dollar", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "$", symbol_native: "$", symbol_placement: "before", thousands_separator: "," }, ChilePeso: { code: l$1.ChilePeso, countries: [r.Chile], decimal_digits: 0, decimal_separator: ".", name: "Chilean Peso", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "$", symbol_native: "$", symbol_placement: "before", thousands_separator: "," }, ChinaYuanRenminbi: { code: l$1.ChinaYuan, countries: [r.China], decimal_digits: 2, decimal_separator: ".", name: "Chinese Yuan", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "\xA5", symbol_native: "\xA5", symbol_placement: "before", thousands_separator: "," }, ColombiaPeso: { code: l$1.ColombiaPeso, countries: [r.Colombia], decimal_digits: 2, decimal_separator: ".", name: "Colombian Peso", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "$", symbol_native: "$", symbol_placement: "before", thousands_separator: "," }, ComorosFranc: { code: l$1.ComorosFranc, countries: [r.Comoros], decimal_digits: 0, decimal_separator: ".", name: "Comoros Franc", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "CF", symbol_native: "CF", symbol_placement: "before", thousands_separator: "," }, CostaRicaColon: { code: l$1.CostaRicaColon, countries: [r.CostaRica], decimal_digits: 2, decimal_separator: ".", name: "Costa Rican Colon", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "\u20A1", symbol_native: "\u20A1", symbol_placement: "before", thousands_separator: "," }, CroatiaKuna: { code: l$1.CroatiaKuna, countries: [r.Croatia], decimal_digits: 2, decimal_separator: ",", name: "Croatian Kuna", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "kn", symbol_native: "kn", symbol_placement: "before", thousands_separator: "." }, CubaConvertiblePeso: { code: l$1.CubaConvertiblePeso, countries: [r.Cuba], decimal_digits: 2, decimal_separator: ",", name: "Cuba Convertible Peso", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "$", symbol_native: "$", symbol_placement: "before", thousands_separator: "." }, CubaPeso: { code: l$1.CubaPeso, countries: [r.Cuba], decimal_digits: 2, decimal_separator: ",", name: "Cuba Peso", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "$", symbol_native: "$", symbol_placement: "before", thousands_separator: "." }, CyprusPound: { code: l$1.CyprusPound, countries: [r.Cyprus], decimal_digits: 2, decimal_separator: ",", name: "Cyprus Pound", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "\xA3", symbol_native: "\xA3", symbol_placement: "before", thousands_separator: "." }, CzechRepublicKoruna: { code: l$1.CzechRepublicKoruna, countries: [r.CzechRepublic], decimal_digits: 2, decimal_separator: ",", name: "Czech Republic Koruna", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "K\u010D", symbol_native: "K\u010D", symbol_placement: "before", thousands_separator: "." }, DenmarkKrone: { code: l$1.DenmarkKrone, countries: [r.Denmark], decimal_digits: 2, decimal_separator: ",", name: "Denmark Krone", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "kr", symbol_native: "kr", symbol_placement: "before", thousands_separator: "." }, DjiboutiFranc: { code: l$1.DjiboutiFranc, countries: [r.Djibouti], decimal_digits: 0, decimal_separator: ".", name: "Djibouti Franc", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "Fdj", symbol_native: "Fdj", symbol_placement: "before", thousands_separator: "," }, DominicanRepublicPeso: { code: l$1.DominicanRepublicPeso, countries: [r.DominicanRepublic], decimal_digits: 2, decimal_separator: ",", name: "Dominican Republic Peso", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "RD$", symbol_native: "RD$", symbol_placement: "before", thousands_separator: "." }, EastCaribbeanDollar: { code: l$1.EastCaribbeanDollar, countries: [r.AntiguaAndBarbuda, r.Dominica, r.Grenada, r.SaintKittsAndNevis, r.SaintLucia, r.SaintVincentAndTheGrenadines], decimal_digits: 2, decimal_separator: ".", name: "East Caribbean Dollar", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "$", symbol_native: "$", symbol_placement: "before", thousands_separator: "," }, EgyptPound: { code: l$1.EgyptPound, countries: [r.Egypt], decimal_digits: 2, decimal_separator: ".", name: "Egypt Pound", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "\xA3", symbol_native: "\xA3", symbol_placement: "before", thousands_separator: "," }, ElSalvadorColon: { code: l$1.ElSalvadorColon, countries: [r.ElSalvador], decimal_digits: 2, decimal_separator: ",", name: "El Salvador Colon", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "\u20A1", symbol_native: "\u20A1", symbol_placement: "before", thousands_separator: "." }, EquatorialGuineaEkwele: { code: l$1.EquatorialGuineaEkwele, countries: [r.EquatorialGuinea], decimal_digits: 0, decimal_separator: ".", name: "Equatorial Guinea Ekwele", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "GQE", symbol_native: "GQE", symbol_placement: "before", thousands_separator: "," }, EritreaNakfa: { code: l$1.EritreaNakfa, countries: [r.Eritrea], decimal_digits: 2, decimal_separator: ",", name: "Eritrea Nakfa", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "Nfk", symbol_native: "Nfk", symbol_placement: "before", thousands_separator: "." }, EstoniaKroon: { code: l$1.EstoniaKroon, countries: [r.Estonia], decimal_digits: 2, decimal_separator: ",", name: "Estonia Kroon", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "kr", symbol_native: "kr", symbol_placement: "before", thousands_separator: "." }, EthiopiaBirr: { code: l$1.EthiopiaBirr, countries: [r.Ethiopia], decimal_digits: 2, decimal_separator: ",", name: "Ethiopia Birr", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "Br", symbol_native: "Br", symbol_placement: "before", thousands_separator: "." }, Euro: { code: l$1.Euro, countries: [r.Andorra, r.Austria, r.Belgium, r.Cyprus, r.Estonia, r.Finland, r.France, r.Germany, r.Greece, r.Ireland, r.Italy, r.Latvia, r.Lithuania, r.Luxembourg, r.Malta, r.Monaco, r.Netherlands, r.Portugal, r.Spain, r.Sweden, r.UnitedKingdom], decimal_digits: 2, decimal_separator: ",", name: "Euro", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "\u20AC", symbol_native: "\u20AC", symbol_placement: "before", thousands_separator: "." }, FalklandIslandsPound: { code: l$1.FalklandIslandsPound, countries: [r.FalklandIslands], decimal_digits: 2, decimal_separator: ",", name: "Equatorial Guinea Ekwele", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "\xA3", symbol_native: "\xA3", symbol_placement: "before", thousands_separator: "." }, FijiDollar: { code: l$1.FijiDollar, countries: [r.Fiji], decimal_digits: 2, decimal_separator: ",", name: "Fiji Dollar", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "$", symbol_native: "$", symbol_placement: "before", thousands_separator: "." }, GambiaDalasi: { code: l$1.GambiaDalasi, countries: [r.Gambia], decimal_digits: 2, decimal_separator: ",", name: "Gambia Dalasi", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "D", symbol_native: "D", symbol_placement: "before", thousands_separator: "." }, GeorgiaLari: { code: l$1.GeorgiaLari, countries: [r.Georgia], decimal_digits: 2, decimal_separator: ",", name: "Georgia Lari", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "\u20BE", symbol_native: "\u20BE", symbol_placement: "before", thousands_separator: "." }, GhanaCedi: { code: l$1.GhanaCedi, countries: [r.Ghana], decimal_digits: 2, decimal_separator: ",", name: "Ghana Cedi", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "\u20B5", symbol_native: "\u20B5", symbol_placement: "before", thousands_separator: "." }, GibraltarPound: { code: l$1.GibraltarPound, countries: [r.Gibraltar], decimal_digits: 2, decimal_separator: ",", name: "Gibraltar Pound", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "\xA3", symbol_native: "\xA3", symbol_placement: "before", thousands_separator: "." }, GuatemalaQuetzal: { code: l$1.GuatemalaQuetzal, countries: [r.Guatemala], decimal_digits: 2, decimal_separator: ",", name: "Guatemala Quetzal", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "Q", symbol_native: "Q", symbol_placement: "before", thousands_separator: "." }, GuernseyPound: { code: l$1.GuernseyPound, countries: [r.Guernsey], decimal_digits: 2, decimal_separator: ",", name: "Guernsey Pound", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "\xA3", symbol_native: "\xA3", symbol_placement: "before", thousands_separator: "." }, GuineaBissauPeso: { code: l$1.GuineaBissauPeso, countries: [r.GuineaBissau], decimal_digits: 2, decimal_separator: ",", name: "Guinea-Bissau Peso", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "\u20B5", symbol_native: "\u20B5", symbol_placement: "before", thousands_separator: "." }, GuyanaDollar: { code: l$1.GuyanaDollar, countries: [r.Guyana], decimal_digits: 2, decimal_separator: ",", name: "Guyana Dollar", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "$", symbol_native: "$", symbol_placement: "before", thousands_separator: "." }, HaitiGourde: { code: l$1.HaitiGourde, countries: [r.Haiti], decimal_digits: 2, decimal_separator: ",", name: "Haiti Gourde", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "G", symbol_native: "G", symbol_placement: "before", thousands_separator: "." }, HondurasLempira: { code: l$1.HondurasLempira, countries: [r.Honduras], decimal_digits: 2, decimal_separator: ",", name: "Honduras Lempira", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "L", symbol_native: "L", symbol_placement: "before", thousands_separator: "." }, HongKongDollar: { code: l$1.HongKongDollar, countries: [r.HongKong], decimal_digits: 2, decimal_separator: ",", name: "Hong Kong Dollar", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "$", symbol_native: "$", symbol_placement: "before", thousands_separator: "." }, HungaryForint: { code: l$1.HungaryForint, countries: [r.Hungary], decimal_digits: 2, decimal_separator: ",", name: "Hungary Forint", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "Ft", symbol_native: "Ft", symbol_placement: "before", thousands_separator: "." }, IcelandKrona: { code: l$1.IcelandKrona, countries: [r.Iceland], decimal_digits: 0, decimal_separator: ",", name: "Iceland Krona", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "kr", symbol_native: "kr", symbol_placement: "before", thousands_separator: "." }, IndianRupee: { code: l$1.IndiaRupee, countries: [r.India, r.Bhutan], decimal_digits: 2, decimal_separator: ",", name: "Indian Rupee", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "\u20B9", symbol_native: "\u20B9", symbol_placement: "before", thousands_separator: "." }, IndonesiaRupiah: { code: l$1.IndonesiaRupiah, countries: [r.Indonesia], decimal_digits: 0, decimal_separator: ",", name: "Indonesia Rupiah", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "Rp", symbol_native: "Rp", symbol_placement: "before", thousands_separator: "." }, IranRial: { code: l$1.IranRial, countries: [r.Iran], decimal_digits: 0, decimal_separator: ",", name: "Iran Rial", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "\uFDFC", symbol_native: "\uFDFC", symbol_placement: "before", thousands_separator: "." }, IsleOfManPound: { code: l$1.IsleOfManPound, countries: [r.IsleOfMan], decimal_digits: 2, decimal_separator: ",", name: "Isle of Man Pound", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "\uFDFC", symbol_native: "\uFDFC", symbol_placement: "before", thousands_separator: "." }, IsraeliShekel: { code: l$1.IsraelNewShekel, countries: [r.Israel], decimal_digits: 2, decimal_separator: ",", name: "Israeli Shekel", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "\u20AA", symbol_native: "\u20AA", symbol_placement: "before", thousands_separator: "." }, JamaicaDollar: { code: l$1.JamaicaDollar, countries: [r.Jamaica], decimal_digits: 2, decimal_separator: ",", name: "Jamaica Dollar", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "J$", symbol_native: "J$", symbol_placement: "before", thousands_separator: "." }, JapanYen: { code: l$1.JapanYen, countries: [r.Japan], decimal_digits: 0, decimal_separator: ",", name: "Japan Yen", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "\xA5", symbol_native: "\uFFE5", symbol_placement: "before", thousands_separator: "." }, JerseyPound: { code: l$1.JerseyPound, countries: [r.Jersey], decimal_digits: 2, decimal_separator: ",", name: "Jersey Pound", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "\xA3", symbol_native: "\xA3", symbol_placement: "before", thousands_separator: "." }, JordanDinar: { code: l$1.JordanDinar, countries: [r.Jordan], decimal_digits: 3, decimal_separator: ",", name: "Jordan Dinar", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "JD", symbol_native: "JD", symbol_placement: "before", thousands_separator: "." }, KazakhstanTenge: { code: l$1.KazakhstanTenge, countries: [r.Kazakhstan], decimal_digits: 2, decimal_separator: ",", name: "Kazakhstan Tenge", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "\u20B8", symbol_native: "\u20B8", symbol_placement: "before", thousands_separator: "." }, KenyaShilling: { code: l$1.KenyaShilling, countries: [r.Kenya], decimal_digits: 2, decimal_separator: ",", name: "Kenya Shilling", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "KSh", symbol_native: "KSh", symbol_placement: "before", thousands_separator: "." }, KuwaitDinar: { code: l$1.KuwaitDinar, countries: [r.Kuwait], decimal_digits: 3, decimal_separator: ",", name: "Kuwait Dinar", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "KD", symbol_native: "KD", symbol_placement: "before", thousands_separator: "." }, KyrgyzstanSom: { code: l$1.KyrgyzstanSom, countries: [r.Kyrgyzstan], decimal_digits: 2, decimal_separator: ",", name: "Kyrgyzstan Som", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "KGS", symbol_native: "KGS", symbol_placement: "before", thousands_separator: "." }, LaosKip: { code: l$1.LaosKip, countries: [r.Laos], decimal_digits: 0, decimal_separator: ",", name: "Laos Kip", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "\u20AD", symbol_native: "\u20AD", symbol_placement: "before", thousands_separator: "." }, LatviaLats: { code: l$1.LatviaLats, countries: [r.Latvia], decimal_digits: 2, decimal_separator: ",", name: "Latvia Lat", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "Ls", symbol_native: "Ls", symbol_placement: "before", thousands_separator: "." }, LebanonPound: { code: l$1.LebanonPound, countries: [r.Lebanon], decimal_digits: 0, decimal_separator: ",", name: "Lebanon Pound", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "\xA3", symbol_native: "\xA3", symbol_placement: "before", thousands_separator: "." }, LesothoLoti: { code: l$1.LesothoLoti, countries: [r.Lesotho], decimal_digits: 2, decimal_separator: ",", name: "Lesotho Loti", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "M", symbol_native: "M", symbol_placement: "before", thousands_separator: "." }, LiberiaDollar: { code: l$1.LiberiaDollar, countries: [r.Liberia], decimal_digits: 2, decimal_separator: ",", name: "Liberia Dollar", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "$", symbol_native: "$", symbol_placement: "before", thousands_separator: "." }, LibyanDinar: { code: l$1.LibyanDinar, countries: [r.Libya], decimal_digits: 3, decimal_separator: ",", name: "Libyan Dinar", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "LD", symbol_native: "LD", symbol_placement: "before", thousands_separator: "." }, LithuaniaLitas: { code: l$1.LithuaniaLitas, countries: [r.Lithuania], decimal_digits: 2, decimal_separator: ",", name: "Lithuania Litas", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "Lt", symbol_native: "Lt", symbol_placement: "before", thousands_separator: "." }, MacauPataca: { code: l$1.MacauPataca, countries: [r.Macau], decimal_digits: 2, decimal_separator: ",", name: "Macau Pataca", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "MOP$", symbol_native: "MOP$", symbol_placement: "before", thousands_separator: "." }, MacedoniaDenar: { code: l$1.MacedoniaDenar, countries: [r.NorthMacedonia], decimal_digits: 2, decimal_separator: ",", name: "Macedonia Denar", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "\u0434\u0435\u043D", symbol_native: "\u0434\u0435\u043D", symbol_placement: "before", thousands_separator: "." }, MadagascarAriary: { code: l$1.MadagascarAriary, countries: [r.Madagascar], decimal_digits: 0, decimal_separator: ",", name: "Madagascar Ariary", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "Ar", symbol_native: "Ar", symbol_placement: "before", thousands_separator: "." }, MalawiKwacha: { code: l$1.MalawiKwacha, countries: [r.Malawi], decimal_digits: 2, decimal_separator: ",", name: "Malawi Kwacha", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "MK", symbol_native: "MK", symbol_placement: "before", thousands_separator: "." }, MalaysiaRinggit: { code: l$1.MalaysiaRinggit, countries: [r.Malaysia], decimal_digits: 2, decimal_separator: ",", name: "Malaysia Ringgit", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "RM", symbol_native: "RM", symbol_placement: "before", thousands_separator: "." }, MaldivesRufiyaa: { code: l$1.MaldivesRufiyaa, countries: [r.Maldives], decimal_digits: 2, decimal_separator: ",", name: "Maldives Rufiyaa", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "Rf", symbol_native: "Rf", symbol_placement: "before", thousands_separator: "." }, MaltaLira: { code: l$1.MaltaLira, countries: [r.Malta], decimal_digits: 2, decimal_separator: ",", name: "Malta Lira", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "Lm", symbol_native: "Lm", symbol_placement: "before", thousands_separator: "." }, MauritiusRupee: { code: l$1.MauritiusRupee, countries: [r.Mauritius], decimal_digits: 2, decimal_separator: ",", name: "Mauritius Rupee", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "\u20A8", symbol_native: "\u20A8", symbol_placement: "before", thousands_separator: "." }, MexicoPeso: { code: l$1.MexicoPeso, countries: [r.Mexico], decimal_digits: 2, decimal_separator: ",", name: "Mexico Peso", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "$", symbol_native: "$", symbol_placement: "before", thousands_separator: "." }, MoldovaLeu: { code: l$1.MoldovaLeu, countries: [r.Moldova], decimal_digits: 2, decimal_separator: ",", name: "Moldova Leu", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "L", symbol_native: "L", symbol_placement: "before", thousands_separator: "." }, MongoliaTughrik: { code: l$1.MongoliaTughrik, countries: [r.Mongolia], decimal_digits: 2, decimal_separator: ",", name: "Mongolia Tughrik", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "\u20AE", symbol_native: "\u20AE", symbol_placement: "before", thousands_separator: "." }, MoroccoDirham: { code: l$1.MoroccoDirham, countries: [r.Morocco], decimal_digits: 2, decimal_separator: ",", name: "Morocco Dirham", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "DH", symbol_native: "DH", symbol_placement: "before", thousands_separator: "." }, MozambiqueMetical: { code: l$1.MozambiqueMetical, countries: [r.Mozambique], decimal_digits: 2, decimal_separator: ",", name: "Mozambique Metical", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "MT", symbol_native: "MT", symbol_placement: "before", thousands_separator: "." }, MyanmarKyat: { code: l$1.MyanmarKyat, countries: [r.Myanmar], decimal_digits: 0, decimal_separator: ",", name: "Myanmar Kyat", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "K", symbol_native: "K", symbol_placement: "before", thousands_separator: "." }, NamibiaDollar: { code: l$1.NamibiaDollar, countries: [r.Namibia], decimal_digits: 2, decimal_separator: ",", name: "Namibia Dollar", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "$", symbol_native: "$", symbol_placement: "before", thousands_separator: "." }, NepalRupee: { code: l$1.NepalRupee, countries: [r.Nepal], decimal_digits: 2, decimal_separator: ",", name: "Nepal Rupee", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "\u20A8", symbol_native: "\u20A8", symbol_placement: "before", thousands_separator: "." }, NetherlandsAntillesGuilder: { code: l$1.NetherlandsAntillesGuilder, countries: [r.NetherlandsAntilles], decimal_digits: 2, decimal_separator: ",", name: "Netherlands Antilles Guilder", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "\u0192", symbol_native: "\u0192", symbol_placement: "before", thousands_separator: "." }, NewCaledoniaFranc: { code: l$1.NewCaledoniaFranc, countries: [r.NewCaledonia], decimal_digits: 0, decimal_separator: ",", name: "New Caledonia Franc", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "\u20A3", symbol_native: "\u20A3", symbol_placement: "before", thousands_separator: "." }, NewZealandDollar: { code: l$1.NewZealandDollar, countries: [r.NewZealand], decimal_digits: 2, decimal_separator: ",", name: "New Zealand Dollar", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "$", symbol_native: "$", symbol_placement: "before", thousands_separator: "." }, NicaraguaCordoba: { code: l$1.NicaraguaCordoba, countries: [r.Nicaragua], decimal_digits: 2, decimal_separator: ",", name: "Nicaragua Cordoba", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "C$", symbol_native: "C$", symbol_placement: "before", thousands_separator: "." }, NigerCFAFranc: { code: l$1.NigerCFAFranc, countries: [r.Niger], decimal_digits: 0, decimal_separator: ",", name: "Niger CFA Franc", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "CFA", symbol_native: "CFA", symbol_placement: "before", thousands_separator: "." }, NigeriaNaira: { code: l$1.NigeriaNaira, countries: [r.Nigeria], decimal_digits: 2, decimal_separator: ",", name: "Nigeria Naira", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "\u20A6", symbol_native: "\u20A6", symbol_placement: "before", thousands_separator: "." }, NorthKoreaWon: { code: l$1.NorthKoreaWon, countries: [r.NorthKorea], decimal_digits: 0, decimal_separator: ",", name: "North Korea Won", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "\u20A9", symbol_native: "\u20A9", symbol_placement: "before", thousands_separator: "." }, NorwayKrone: { code: l$1.NorwayKrone, countries: [r.Norway], decimal_digits: 2, decimal_separator: ",", name: "Norway Krone", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "kr", symbol_native: "kr", symbol_placement: "before", thousands_separator: "." }, OmanRial: { code: l$1.OmanRial, countries: [r.Oman], decimal_digits: 3, decimal_separator: ",", name: "Oman Rial", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "\uFDFC", symbol_native: "\uFDFC", symbol_placement: "before", thousands_separator: "." }, PakistanRupee: { code: l$1.PakistanRupee, countries: [r.Pakistan], decimal_digits: 2, decimal_separator: ",", name: "Pakistan Rupee", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "\u20A8", symbol_native: "\u20A8", symbol_placement: "before", thousands_separator: "." }, PanamaBalboa: { code: l$1.PanamaBalboa, countries: [r.Panama], decimal_digits: 2, decimal_separator: ",", name: "Panama Balboa", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "B/.", symbol_native: "B/.", symbol_placement: "before", thousands_separator: "." }, ParaguayGuarani: { code: l$1.ParaguayGuarani, countries: [r.Paraguay], decimal_digits: 0, decimal_separator: ",", name: "Paraguay Guarani", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "Gs", symbol_native: "Gs", symbol_placement: "before", thousands_separator: "." }, PeruvianNuevo: { code: l$1.PeruNuevo, countries: [r.Peru], decimal_digits: 2, decimal_separator: ",", name: "Peruvian Nuevo", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "S/.", symbol_native: "S/.", symbol_placement: "before", thousands_separator: "." }, PhilippinesPeso: { code: l$1.PhilippinesPeso, countries: [r.Philippines], decimal_digits: 2, decimal_separator: ",", name: "Philippines Peso", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "\u20B1", symbol_native: "\u20B1", symbol_placement: "before", thousands_separator: "." }, PolandZloty: { code: l$1.PolandZloty, countries: [r.Poland], decimal_digits: 2, decimal_separator: ",", name: "Poland Zloty", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "z\u0142", symbol_native: "z\u0142", symbol_placement: "before", thousands_separator: "." }, QatarRial: { code: l$1.QatarRial, countries: [r.Qatar], decimal_digits: 2, decimal_separator: ",", name: "Qatar Rial", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "\uFDFC", symbol_native: "\uFDFC", symbol_placement: "before", thousands_separator: "." }, RomaniaNewLeu: { code: l$1.RomaniaNewLeu, countries: [r.Romania], decimal_digits: 2, decimal_separator: ",", name: "Romania New Leu", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "lei", symbol_native: "lei", symbol_placement: "before", thousands_separator: "." }, RussiaRuble: { code: l$1.RussiaRuble, countries: [r.RussianFederation], decimal_digits: 2, decimal_separator: ",", name: "Russia Ruble", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "\u20BD", symbol_native: "\u20BD", symbol_placement: "before", thousands_separator: "." }, RwandaFranc: { code: l$1.RwandaFranc, countries: [r.Rwanda], decimal_digits: 0, decimal_separator: ",", name: "Rwanda Franc", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "RF", symbol_native: "RF", symbol_placement: "before", thousands_separator: "." }, SaudiArabiaRiyal: { code: l$1.SaudiArabiaRiyal, countries: [r.SaudiArabia], decimal_digits: 2, decimal_separator: ",", name: "Saudi Arabia Riyal", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "\uFDFC", symbol_native: "\uFDFC", symbol_placement: "before", thousands_separator: "." }, SerbiaDinar: { code: l$1.SerbiaDinar, countries: [r.Serbia], decimal_digits: 0, decimal_separator: ",", name: "Serbia Dinar", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "\u0414\u0438\u043D.", symbol_native: "\u0414\u0438\u043D.", symbol_placement: "before", thousands_separator: "." }, SeychellesRupee: { code: l$1.SeychellesRupee, countries: [r.Seychelles], decimal_digits: 2, decimal_separator: ",", name: "Seychelles Rupee", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "\u20A8", symbol_native: "\u20A8", symbol_placement: "before", thousands_separator: "." }, SingaporeDollar: { code: l$1.SingaporeDollar, countries: [r.Singapore], decimal_digits: 2, decimal_separator: ",", name: "Singapore Dollar", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "$", symbol_native: "$", symbol_placement: "before", thousands_separator: "." }, SlovakiaKoruna: { code: l$1.SlovakiaKoruna, countries: [r.Slovakia], decimal_digits: 2, decimal_separator: ",", name: "Slovakia Koruna", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "Sk", symbol_native: "Sk", symbol_placement: "before", thousands_separator: "." }, SloveniaTolar: { code: l$1.SloveniaTolar, countries: [r.Slovenia], decimal_digits: 2, decimal_separator: ",", name: "Slovenia Tolar", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "SIT", symbol_native: "SIT", symbol_placement: "before", thousands_separator: "." }, SolomonIslandsDollar: { code: l$1.SolomonIslandsDollar, countries: [r.SolomonIslands], decimal_digits: 2, decimal_separator: ",", name: "Solomon Islands Dollar", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "$", symbol_native: "$", symbol_placement: "before", thousands_separator: "." }, SomaliaShilling: { code: l$1.SomaliaShilling, countries: [r.Somalia], decimal_digits: 0, decimal_separator: ",", name: "Somalia Shilling", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "S", symbol_native: "S", symbol_placement: "before", thousands_separator: "." }, SouthAfricaRand: { code: l$1.SouthAfricaRand, countries: [r.SouthAfrica], decimal_digits: 2, decimal_separator: ",", name: "South Africa Rand", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "R", symbol_native: "R", symbol_placement: "before", thousands_separator: "." }, SouthKoreaWon: { code: l$1.SouthKoreaWon, countries: [r.SouthKorea], decimal_digits: 0, decimal_separator: ",", name: "South Korea Won", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "\u20A9", symbol_native: "\u20A9", symbol_placement: "before", thousands_separator: "." }, SriLankaRupee: { code: l$1.SriLankaRupee, countries: [r.SriLanka], decimal_digits: 2, decimal_separator: ",", name: "Sri Lanka Rupee", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "\u20A8", symbol_native: "\u20A8", symbol_placement: "before", thousands_separator: "." }, SudanPound: { code: l$1.SudanPound, countries: [r.Sudan], decimal_digits: 2, decimal_separator: ",", name: "Sudan Pound", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "\xA3", symbol_native: "\xA3", symbol_placement: "before", thousands_separator: "." }, SurinameDollar: { code: l$1.SurinameDollar, countries: [r.Suriname], decimal_digits: 2, decimal_separator: ",", name: "Suriname Dollar", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "$", symbol_native: "$", symbol_placement: "before", thousands_separator: "." }, SwazilandLilangeni: { code: l$1.SwazilandLilangeni, countries: [r.Swaziland], decimal_digits: 2, decimal_separator: ",", name: "Swaziland Lilangeni", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "E", symbol_native: "E", symbol_placement: "before", thousands_separator: "." }, SwedenKrona: { code: l$1.SwedenKrona, countries: [r.Sweden], decimal_digits: 2, decimal_separator: ",", name: "Sweden Krona", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "kr", symbol_native: "kr", symbol_placement: "before", thousands_separator: "." }, SwitzerlandFranc: { code: l$1.SwitzerlandFranc, countries: [r.Switzerland], decimal_digits: 2, decimal_separator: ",", name: "Switzerland Franc", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "CHF", symbol_native: "CHF", symbol_placement: "before", thousands_separator: "." }, SyriaPound: { code: l$1.SyriaPound, countries: [r.Syria], decimal_digits: 2, decimal_separator: ",", name: "Syria Pound", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "\xA3", symbol_native: "\xA3", symbol_placement: "before", thousands_separator: "." }, TaiwanNewDollar: { code: l$1.TaiwanNewDollar, countries: [r.Taiwan], decimal_digits: 2, decimal_separator: ",", name: "Taiwan New Dollar", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "NT$", symbol_native: "NT$", symbol_placement: "before", thousands_separator: "." }, TajikistanSomoni: { code: l$1.TajikistanSomoni, countries: [r.Tajikistan], decimal_digits: 2, decimal_separator: ",", name: "Tajikistan Somoni", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "TJS", symbol_native: "TJS", symbol_placement: "before", thousands_separator: "." }, TanzaniaShilling: { code: l$1.TanzaniaShilling, countries: [r.Tanzania], decimal_digits: 2, decimal_separator: ",", name: "Tanzania Shilling", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "TSh", symbol_native: "TSh", symbol_placement: "before", thousands_separator: "." }, ThailandBaht: { code: l$1.ThailandBaht, countries: [r.Thailand], decimal_digits: 2, decimal_separator: ",", name: "Thailand Baht", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "\u0E3F", symbol_native: "\u0E3F", symbol_placement: "before", thousands_separator: "." }, TunisiaDinar: { code: l$1.TunisiaDinar, countries: [r.Tunisia], decimal_digits: 3, decimal_separator: ",", name: "Tunisia Dinar", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "\u062F.\u062A", symbol_native: "\u062F.\u062A", symbol_placement: "before", thousands_separator: "." }, TurkeyLira: { code: l$1.TurkeyLira, countries: [r.Turkey], decimal_digits: 2, decimal_separator: ",", name: "Turkey Lira", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "\u20BA", symbol_native: "\u20BA", symbol_placement: "before", thousands_separator: "." }, TurkmenistanManat: { code: l$1.TurkmenistanManat, countries: [r.Turkmenistan], decimal_digits: 2, decimal_separator: ",", name: "Turkmenistan Manat", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "m", symbol_native: "m", symbol_placement: "before", thousands_separator: "." }, UgandaShilling: { code: l$1.UgandaShilling, countries: [r.Uganda], decimal_digits: 0, decimal_separator: ",", name: "Uganda Shilling", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "USh", symbol_native: "USh", symbol_placement: "before", thousands_separator: "." }, UkraineHryvnia: { code: l$1.UkraineHryvnia, countries: [r.Ukraine], decimal_digits: 2, decimal_separator: ",", name: "Ukraine Hryvnia", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "\u20B4", symbol_native: "\u20B4", symbol_placement: "before", thousands_separator: "." }, UnitedArabEmiratesDirham: { code: l$1.UnitedArabEmiratesDirham, countries: [r.UnitedArabEmirates], decimal_digits: 2, decimal_separator: ",", name: "United Arab Emirates Dirham", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "\u062F.\u0625", symbol_native: "\u062F.\u0625", symbol_placement: "before", thousands_separator: "." }, UnitedKingdomPound: { code: l$1.UnitedKingdomPound, countries: [r.UnitedKingdom], decimal_digits: 2, decimal_separator: ",", name: "United Kingdom Pound", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "\xA3", symbol_native: "\xA3", symbol_placement: "before", thousands_separator: "." }, UnitedStatesDollar: { code: l$1.UnitedStatesDollar, countries: [r.UnitedStates], decimal_digits: 2, decimal_separator: ",", name: "United States Dollar", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "$", symbol_native: "$", symbol_placement: "before", thousands_separator: "." }, UruguayPeso: { code: l$1.UruguayPeso, countries: [r.Uruguay], decimal_digits: 2, decimal_separator: ",", name: "Uruguay Peso", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "$U", symbol_native: "$U", symbol_placement: "before", thousands_separator: "." }, UzbekistanSom: { code: l$1.UzbekistanSom, countries: [r.Uzbekistan], decimal_digits: 2, decimal_separator: ",", name: "Uzbekistan Som", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "UZS", symbol_native: "UZS", symbol_placement: "before", thousands_separator: "." }, VanuatuVatu: { code: l$1.VanuatuVatu, countries: [r.Vanuatu], decimal_digits: 0, decimal_separator: ",", name: "Vanuatu Vatu", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "VT", symbol_native: "VT", symbol_placement: "before", thousands_separator: "." }, VenezuelaBolivar: { code: l$1.VenezuelaBolivar, countries: [r.Venezuela], decimal_digits: 2, decimal_separator: ",", name: "Venezuela Bolivar", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "Bs. F", symbol_native: "Bs. F", symbol_placement: "before", thousands_separator: "." }, VietnamDong: { code: l$1.VietnamDong, countries: [r.Vietnam], decimal_digits: 0, decimal_separator: ",", name: "Vietnam Dong", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "\u20AB", symbol_native: "\u20AB", symbol_placement: "before", thousands_separator: "." }, YemenRial: { code: l$1.YemenRial, countries: [r.Yemen], decimal_digits: 2, decimal_separator: ",", name: "Yemen Rial", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "\uFDFC", symbol_native: "\uFDFC", symbol_placement: "before", thousands_separator: "." }, ZambiaKwacha: { code: l$1.ZambiaKwacha, countries: [r.Zambia], decimal_digits: 2, decimal_separator: ",", name: "Zambia Kwacha", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "ZK", symbol_native: "ZK", symbol_placement: "before", thousands_separator: "." }, ZimbabweDollar: { code: l$1.ZimbabweDollar, countries: [r.Zimbabwe], decimal_digits: 2, decimal_separator: ",", name: "Zimbabwe Dollar", negative_sign: "-", positive_sign: "", rounding: 0, symbol: "\u20AB", symbol_native: "\u20AB", symbol_placement: "before", thousands_separator: "." } });
-var Ki;
-(function(a) {
-  a.Bitcoin = "BTC", a.Ethereum = "ETH", a.Litecoin = "LTC", a.Ripple = "XRP", a.Dash = "DASH", a.Zcash = "ZEC", a.Dogecoin = "DOGE", a.Monero = "XMR", a.BitcoinCash = "BCH", a.EOS = "EOS", a.Binance = "BNB", a.Stellar = "XLM", a.Cardano = "ADA", a.IOTA = "IOTA", a.Tezos = "XTZ", a.NEO = "NEO", a.TRON = "TRX", a.EOSClassic = "EOSC", a.Ontology = "ONT", a.VeChain = "VEN", a.QTUM = "QTUM", a.Lisk = "LSK", a.Waves = "WAVES", a.OmiseGO = "OMG", a.Zilliqa = "ZIL", a.BitcoinGold = "BTG", a.Decred = "DCR", a.Stratis = "STRAT", a.Populous = "PPT", a.Augur = "REP", a.Golem = "GNT", a.Siacoin = "SC", a.BasicAttentionToken = "BAT", a.ZCoin = "XZC", a.StratisHedged = "SNT", a.VeChainHedged = "VEN", a.PowerLedger = "POWR", a.WavesHedged = "WAVE", a.ZilliqaHedged = "ZRX", a.BitcoinDiamond = "BCD", a.DigiByte = "DGB", a.DigiByteHedged = "DGB", a.Bytecoin = "BCN", a.BytecoinHedged = "BCN";
-})(Ki || (Ki = {}));
-var o;
-(function(a) {
-  a.Afrikaans = "af", a.Albanian = "sq", a.Amharic = "am", a.Arabic = "ar", a.Armenian = "hy", a.Azerbaijani = "az", a.Bashkir = "ba", a.Basque = "eu", a.Belarusian = "be", a.Bengali = "bn", a.Berber = "ber", a.Bhutani = "dz", a.Bihari = "bh", a.Bislama = "bi", a.Bosnian = "bs", a.Breten = "br", a.Bulgarian = "bg", a.Burmese = "my", a.Cantonese = "yue", a.Catalan = "ca", a.Chinese = "zh", a.Chuvash = "cv", a.Corsican = "co", a.Croatian = "hr", a.Czech = "cs", a.Danish = "da", a.Dari = "prs", a.Divehi = "dv", a.Dutch = "nl", a.English = "en", a.Esperanto = "eo", a.Estonian = "et", a.Faroese = "fo", a.Farsi = "fa", a.Filipino = "fil", a.Finnish = "fi", a.French = "fr", a.Frisian = "fy", a.Galician = "gl", a.Georgian = "ka", a.German = "de", a.Greek = "el", a.Greenlandic = "kl", a.Gujarati = "gu", a.Haitian = "ht", a.Hausa = "ha", a.Hebrew = "he", a.Hindi = "hi", a.Hungarian = "hu", a.Icelandic = "is", a.Igbo = "ig", a.Indonesian = "id", a.Irish = "ga", a.Italian = "it", a.Japanese = "ja", a.Javanese = "jv", a.Kannada = "kn", a.Karelian = "krl", a.Kazakh = "kk", a.Khmer = "km", a.Komi = "kv", a.Konkani = "kok", a.Korean = "ko", a.Kurdish = "ku", a.Kyrgyz = "ky", a.Lao = "lo", a.Latin = "la", a.Latvian = "lv", a.Lithuanian = "lt", a.Luxembourgish = "lb", a.Ossetian = "os", a.Macedonian = "mk", a.Malagasy = "mg", a.Malay = "ms", a.Malayalam = "ml", a.Maltese = "mt", a.Maori = "mi", a.Marathi = "mr", a.Mari = "mhr", a.Mongolian = "mn", a.Montenegrin = "me", a.Nepali = "ne", a.NorthernSotho = "nso", a.Norwegian = "no", a.NorwegianBokmal = "nb", a.NorwegianNynorsk = "nn", a.Oriya = "or", a.Pashto = "ps", a.Persian = "fa", a.Polish = "pl", a.Portuguese = "pt", a.Punjabi = "pa", a.Quechua = "qu", a.Romanian = "ro", a.Russian = "ru", a.Sakha = "sah", a.Sami = "se", a.Samoan = "sm", a.Sanskrit = "sa", a.Scots = "gd", a.Serbian = "sr", a.SerbianCyrillic = "sr-Cyrl", a.Sesotho = "st", a.Shona = "sn", a.Sindhi = "sd", a.Sinhala = "si", a.Slovak = "sk", a.Slovenian = "sl", a.Somali = "so", a.Spanish = "es", a.Sudanese = "su", a.Sutu = "sx", a.Swahili = "sw", a.Swedish = "sv", a.Syriac = "syr", a.Tagalog = "tl", a.Tajik = "tg", a.Tamazight = "tmh", a.Tamil = "ta", a.Tatar = "tt", a.Telugu = "te", a.Thai = "th", a.Tibetan = "bo", a.Tsonga = "ts", a.Tswana = "tn", a.Turkish = "tr", a.Turkmen = "tk", a.Ukrainian = "uk", a.Urdu = "ur", a.Uzbek = "uz", a.Vietnamese = "vi", a.Welsh = "cy", a.Xhosa = "xh", a.Yiddish = "yi", a.Yoruba = "yo", a.Zulu = "zu";
-})(o || (o = {}));
-var e;
-(function(a) {
-  a.Afrikaans = "af", a.AfrikaansSouthAfrica = "af-ZA", a.Albanian = "sq", a.AlbanianAlbania = "sq-AL", a.Amharic = "am", a.AmharicEthiopia = "am-ET", a.Arabic = "ar", a.ArabicAlgeria = "ar-DZ", a.ArabicBahrain = "ar-BH", a.ArabicEgypt = "ar-EG", a.ArabicIraq = "ar-IQ", a.ArabicJordan = "ar-JO", a.ArabicKuwait = "ar-KW", a.ArabicLebanon = "ar-LB", a.ArabicLibya = "ar-LY", a.ArabicMorocco = "ar-MA", a.ArabicOman = "ar-OM", a.ArabicQatar = "ar-QA", a.ArabicSaudiArabia = "ar-SA", a.ArabicSyria = "ar-SY", a.ArabicTunisia = "ar-TN", a.ArabicUnitedArabEmirates = "ar-AE", a.ArabicYemen = "ar-YE", a.Armenian = "hy", a.ArmenianArmenia = "hy-AM", a.Azerbaijani = "az", a.AzerbaijaniAzerbaijan = "az-AZ", a.AzerbaijaniCyrillicAzerbaijan = "az-Cyrl-AZ", a.Bashkir = "ba", a.Basque = "eu", a.BasqueSpain = "eu-ES", a.Belarusian = "be", a.BelarusianBelarus = "be-BY", a.Bengali = "bn", a.BengaliBangladesh = "bn-BD", a.BengaliIndia = "bn-IN", a.Berber = "ber", a.Bhutani = "dz", a.BhutaniBhutan = "dz-BT", a.Bosnian = "bs", a.BosnianBosniaAndHerzegovina = "bs-BA", a.Breton = "br", a.Bulgarian = "bg", a.BulgarianBosniaAndHerzegovina = "bg-BG", a.BulgarianBulgaria = "bg-BG", a.Burmese = "my", a.BurmeseMyanmar = "my-MM", a.Cantonese = "yue", a.CantoneseHongKong = "yue-HK", a.Catalan = "ca", a.CatalanSpain = "ca-ES", a.Chechen = "ce", a.Cherokee = "chr", a.Chinese = "zh", a.ChineseSimplified = "zh-Hans", a.ChineseSimplifiedChina = "zh-Hans-CN", a.ChineseSimplifiedHongKong = "zh-Hans-HK", a.ChineseSimplifiedMacau = "zh-Hans-MO", a.ChineseSimplifiedSingapore = "zh-Hans-SG", a.ChineseTraditional = "zh-Hant", a.ChineseTraditionalHongKong = "zh-Hant-HK", a.ChineseTraditionalMacau = "zh-Hant-MO", a.ChineseTraditionalSingapore = "zh-Hant-SG", a.ChineseTraditionalTaiwan = "zh-Hant-TW", a.Chuvash = "cv", a.CorsicanFrance = "co-FR", a.Croatian = "hr", a.CroatianBosniaAndHerzegovina = "hr-BA", a.CroatianCroatia = "hr-HR", a.Czech = "cs", a.CzechCzechRepublic = "cs-CZ", a.Danish = "da", a.DanishDenmark = "da-DK", a.Dari = "prs", a.DariAfghanistan = "prs-AF", a.Divehi = "dv", a.DivehiMaldives = "dv-MV", a.Dutch = "nl", a.DutchBelgium = "nl-BE", a.DutchNetherlands = "nl-NL", a.English = "en", a.EnglishAustralia = "en-AU", a.EnglishBelgium = "en-BE", a.EnglishBelize = "en-BZ", a.EnglishCanada = "en-CA", a.EnglishCaribbean = "en-029", a.EnglishIreland = "en-IE", a.EnglishJamaica = "en-JM", a.EnglishNewZealand = "en-NZ", a.EnglishPhilippines = "en-PH", a.EnglishSingapore = "en-SG", a.EnglishSouthAfrica = "en-ZA", a.EnglishTrinidadAndTobago = "en-TT", a.EnglishUnitedKingdom = "en-GB", a.EnglishUnitedStates = "en-US", a.EnglishZimbabwe = "en-ZW", a.Esperanto = "eo", a.Estonian = "et", a.EstonianEstonia = "et-EE", a.Faroese = "fo", a.FaroeseFaroeIslands = "fo-FO", a.Farsi = "fa", a.FarsiIran = "fa-IR", a.Filipino = "fil", a.FilipinoPhilippines = "fil-PH", a.Finnish = "fi", a.FinnishFinland = "fi-FI", a.French = "fr", a.FrenchBelgium = "fr-BE", a.FrenchCanada = "fr-CA", a.FrenchFrance = "fr-FR", a.FrenchLuxembourg = "fr-LU", a.FrenchMonaco = "fr-MC", a.FrenchReunion = "fr-RE", a.FrenchSwitzerland = "fr-CH", a.Frisian = "fy", a.FrisianNetherlands = "fy-NL", a.Galician = "gl", a.GalicianSpain = "gl-ES", a.Georgian = "ka", a.GeorgianGeorgia = "ka-GE", a.German = "de", a.GermanAustria = "de-AT", a.GermanBelgium = "de-BE", a.GermanGermany = "de-DE", a.GermanLiechtenstein = "de-LI", a.GermanLuxembourg = "de-LU", a.GermanSwitzerland = "de-CH", a.Greenlandic = "kl", a.GreenlandicGreenland = "kl-GL", a.Greek = "el", a.GreekGreece = "el-GR", a.Gujarati = "gu", a.GujaratiIndia = "gu-IN", a.Haitian = "ht", a.Hausa = "ha", a.HausaGhana = "ha-GH", a.HausaNiger = "ha-NE", a.HausaNigeria = "ha-NG", a.Hebrew = "he", a.HebrewIsrael = "he-IL", a.Hindi = "hi", a.HindiIndia = "hi-IN", a.Hungarian = "hu", a.HungarianHungary = "hu-HU", a.Icelandic = "is", a.IcelandicIceland = "is-IS", a.Igbo = "ig", a.IgboNigeria = "ig-NG", a.Indonesian = "id", a.IndonesianIndonesia = "id-ID", a.Irish = "ga", a.IrishIreland = "ga-IE", a.Italian = "it", a.ItalianItaly = "it-IT", a.ItalianSwitzerland = "it-CH", a.Japanese = "ja", a.JapaneseJapan = "ja-JP", a.Javanese = "jv", a.Kannada = "kn", a.KannadaIndia = "kn-IN", a.Karelian = "krl", a.Kazakh = "kk", a.KazakhKazakhstan = "kk-KZ", a.Khmer = "km", a.KhmerCambodia = "km-KH", a.KinyarwandaRwanda = "rw-RW", a.Komi = "kv", a.Konkani = "kok", a.KonkaniIndia = "kok-IN", a.Korean = "ko", a.KoreanSouthKorea = "ko-KR", a.Kurdish = "ku", a.KurdishIraq = "ku-IQ", a.KurdishTurkey = "ku-TR", a.Kyrgyz = "ky", a.KyrgyzKyrgyzstan = "ky-KG", a.Lao = "lo", a.LaoLaos = "lo-LA", a.Latin = "la", a.Latvian = "lv", a.LatvianLatvia = "lv-LV", a.Lithuanian = "lt", a.LithuanianLithuania = "lt-LT", a.Luxembourgish = "lb", a.LuxembourgishBelgium = "lb-LU", a.LuxembourgishLuxembourg = "lb-LU", a.Macedonian = "mk", a.MacedonianNorthMacedonia = "mk-MK", a.Malagasy = "mg", a.Malay = "ms", a.MalayBrunei = "ms-BN", a.MalayIndia = "ms-IN", a.MalayMalaysia = "ms-MY", a.MalaySingapore = "ms-SG", a.Malayalam = "ml", a.MalayalamIndia = "ml-IN", a.Maltese = "mt", a.MalteseMalta = "mt-MT", a.Maori = "mi", a.MaoriNewZealand = "mi-NZ", a.Marathi = "mr", a.MarathiIndia = "mr-IN", a.Mari = "chm", a.Mongolian = "mn", a.MongolianMongolia = "mn-MN", a.Montenegrin = "me", a.MontenegrinMontenegro = "me-ME", a.Nepali = "ne", a.NepaliNepal = "ne-NP", a.NorthernSotho = "ns", a.NorthernSothoSouthAfrica = "ns-ZA", a.Norwegian = "nb", a.NorwegianBokmalNorway = "nb-NO", a.NorwegianNynorskNorway = "nn-NO", a.Oriya = "or", a.OriyaIndia = "or-IN", a.Ossetian = "os", a.Pashto = "ps", a.PashtoAfghanistan = "ps-AF", a.Persian = "fa", a.PersianIran = "fa-IR", a.Polish = "pl", a.PolishPoland = "pl-PL", a.Portuguese = "pt", a.PortugueseBrazil = "pt-BR", a.PortuguesePortugal = "pt-PT", a.Punjabi = "pa", a.PunjabiIndia = "pa-IN", a.PunjabiPakistan = "pa-PK", a.Quechua = "qu", a.QuechuaBolivia = "qu-BO", a.QuechuaEcuador = "qu-EC", a.QuechuaPeru = "qu-PE", a.Romanian = "ro", a.RomanianRomania = "ro-RO", a.Russian = "ru", a.RussianKazakhstan = "ru-KZ", a.RussianKyrgyzstan = "ru-KG", a.RussianRussia = "ru-RU", a.RussianUkraine = "ru-UA", a.Sakha = "sah", a.Sanskrit = "sa", a.SanskritIndia = "sa-IN", a.Sami = "se", a.SamiNorway = "se-NO", a.SamiSweden = "se-SE", a.SamiFinland = "se-FI", a.Samoan = "sm", a.SamoanSamoa = "sm-WS", a.Scots = "gd", a.Serbian = "sr", a.SerbianBosniaAndHerzegovina = "sr-BA", a.SerbianSerbiaAndMontenegro = "sr-SP", a.SerbianCyrillic = "sr-SP-Cyrl", a.SerbianCyrillicBosniaAndHerzegovina = "sr-Cyrl-BA", a.SerbianCyrillicSerbiaAndMontenegro = "sr-Cyrl-SP", a.Sesotho = "st", a.SesothoSouthAfrica = "st-ZA", a.Shona = "sn", a.ShonaZimbabwe = "sn-ZW", a.Sindhi = "sd", a.SindhiPakistan = "sd-PK", a.Sinhala = "si", a.SinhalaSriLanka = "si-LK", a.Slovak = "sk", a.SlovakSlovakia = "sk-SK", a.Slovenian = "sl", a.SlovenianSlovenia = "sl-SI", a.Somali = "so", a.SomaliSomalia = "so-SO", a.Spanish = "es", a.SpanishArgentina = "es-AR", a.SpanishBolivia = "es-BO", a.SpanishChile = "es-CL", a.SpanishColombia = "es-CO", a.SpanishCostaRica = "es-CR", a.SpanishCuba = "es-CU", a.SpanishDominicanRepublic = "es-DO", a.SpanishEcuador = "es-EC", a.SpanishEquatorialGuinea = "es-GQ", a.SpanishElSalvador = "es-SV", a.SpanishGuatemala = "es-GT", a.SpanishHonduras = "es-HN", a.SpanishMexico = "es-MX", a.SpanishNicaragua = "es-NI", a.SpanishPanama = "es-PA", a.SpanishParaguay = "es-PY", a.SpanishPeru = "es-PE", a.SpanishPuertoRico = "es-PR", a.SpanishSpain = "es-ES", a.SpanishUnitedStates = "es-US", a.SpanishUruguay = "es-UY", a.SpanishVenezuela = "es-VE", a.Sudanese = "su", a.Sutu = "st", a.SutuSouthAfrica = "st-ZA", a.Swahili = "sw", a.SwahiliKenya = "sw-KE", a.Swedish = "sv", a.SwedishFinland = "sv-FI", a.SwedishSweden = "sv-SE", a.Syriac = "syr", a.SyriacSyria = "syr-SY", a.Tajik = "tg", a.TajikTajikistan = "tg-TJ", a.Tagalog = "tl", a.TagalogPhilippines = "tl-PH", a.Tamazight = "tmh", a.Tamil = "ta", a.TamilIndia = "ta-IN", a.Tatar = "tt", a.Telugu = "te", a.TeluguIndia = "te-IN", a.Thai = "th", a.ThaiThailand = "th-TH", a.Tibetan = "bo", a.TibetanBhutan = "bo-BT", a.TibetanChina = "bo-CN", a.TibetanIndia = "bo-IN", a.Tsonga = "ts", a.Tswana = "tn", a.TswanaSouthAfrica = "tn-ZA", a.Turkish = "tr", a.TurkishTurkey = "tr-TR", a.Turkmen = "tk", a.Ukrainian = "uk", a.UkrainianUkraine = "uk-UA", a.Urdu = "ur", a.UrduAfghanistan = "ur-AF", a.UrduIndia = "ur-IN", a.UrduPakistan = "ur-PK", a.Uzbek = "uz", a.UzbekCyrillic = "uz-Cyrl-UZ", a.UzbekLatin = "uz-Latn-UZ", a.UzbekUzbekistan = "uz-UZ", a.Vietnamese = "vi", a.VietnameseVietnam = "vi-VN", a.Welsh = "cy", a.WelshUnitedKingdom = "cy-GB", a.Xhosa = "xh", a.XhosaSouthAfrica = "xh-ZA", a.Yiddish = "yi", a.Yoruba = "yo", a.YorubaNigeria = "yo-NG", a.ZhuyinMandarinChina = "yue-Hant-CN", a.Zulu = "zu", a.ZuluSouthAfrica = "zu-ZA";
-})(e || (e = {}));
-var t;
-(function(a) {
-  a.AfricaAbidjan = "Africa/Abidjan", a.AfricaAccra = "Africa/Accra", a.AfricaAddisAbaba = "Africa/Addis_Ababa", a.AfricaAlgiers = "Africa/Algiers", a.AfricaAsmara = "Africa/Asmara", a.AfricaBamako = "Africa/Bamako", a.AfricaBangui = "Africa/Bangui", a.AfricaBanjul = "Africa/Banjul", a.AfricaBissau = "Africa/Bissau", a.AfricaBlantyre = "Africa/Blantyre", a.AfricaBrazzaville = "Africa/Brazzaville", a.AfricaBujumbura = "Africa/Bujumbura", a.AfricaCairo = "Africa/Cairo", a.AfricaCasablanca = "Africa/Casablanca", a.AfricaCeuta = "Africa/Ceuta", a.AfricaConakry = "Africa/Conakry", a.AfricaDakar = "Africa/Dakar", a.AfricaDarEsSalaam = "Africa/Dar_es_Salaam", a.AfricaDjibouti = "Africa/Djibouti", a.AfricaDouala = "Africa/Douala", a.AfricaElAaiun = "Africa/El_Aaiun", a.AfricaFreetown = "Africa/Freetown", a.AfricaGaborone = "Africa/Gaborone", a.AfricaHarare = "Africa/Harare", a.AfricaJohannesburg = "Africa/Johannesburg", a.AfricaJuba = "Africa/Juba", a.AfricaKampala = "Africa/Kampala", a.AfricaKhartoum = "Africa/Khartoum", a.AfricaKigali = "Africa/Kigali", a.AfricaKinshasa = "Africa/Kinshasa", a.AfricaLagos = "Africa/Lagos", a.AfricaLibreville = "Africa/Libreville", a.AfricaLome = "Africa/Lome", a.AfricaLuanda = "Africa/Luanda", a.AfricaLubumbashi = "Africa/Lubumbashi", a.AfricaLusaka = "Africa/Lusaka", a.AfricaMalabo = "Africa/Malabo", a.AfricaMaputo = "Africa/Maputo", a.AfricaMaseru = "Africa/Maseru", a.AfricaMbabane = "Africa/Mbabane", a.AfricaMogadishu = "Africa/Mogadishu", a.AfricaMonrovia = "Africa/Monrovia", a.AfricaNairobi = "Africa/Nairobi", a.AfricaNdjamena = "Africa/Ndjamena", a.AfricaNiamey = "Africa/Niamey", a.AfricaNouakchott = "Africa/Nouakchott", a.AfricaOuagadougou = "Africa/Ouagadougou", a.AfricaPortoNovo = "Africa/Porto-Novo", a.AfricaSaoTome = "Africa/Sao_Tome", a.AfricaTripoli = "Africa/Tripoli", a.AfricaTunis = "Africa/Tunis", a.AfricaWindhoek = "Africa/Windhoek", a.AmericaAdak = "America/Adak", a.AmericaAnchorage = "America/Anchorage", a.AmericaAnguilla = "America/Anguilla", a.AmericaAntigua = "America/Antigua", a.AmericaAraguaina = "America/Araguaina", a.AmericaArgentinaBuenosAires = "America/Argentina/Buenos_Aires", a.AmericaArgentinaCatamarca = "America/Argentina/Catamarca", a.AmericaArgentinaCordoba = "America/Argentina/Cordoba", a.AmericaArgentinaJujuy = "America/Argentina/Jujuy", a.AmericaArgentinaLaRioja = "America/Argentina/La_Rioja", a.AmericaArgentinaMendoza = "America/Argentina/Mendoza", a.AmericaArgentinaRioGallegos = "America/Argentina/Rio_Gallegos", a.AmericaArgentinaSalta = "America/Argentina/Salta", a.AmericaArgentinaSanJuan = "America/Argentina/San_Juan", a.AmericaArgentinaSanLuis = "America/Argentina/San_Luis", a.AmericaArgentinaTucuman = "America/Argentina/Tucuman", a.AmericaArgentinaUshuaia = "America/Argentina/Ushuaia", a.AmericaAruba = "America/Aruba", a.AmericaAsuncion = "America/Asuncion", a.AmericaAtikokan = "America/Atikokan", a.AmericaAtka = "America/Atka", a.AmericaBahia = "America/Bahia", a.AmericaBahiaBanderas = "America/Bahia_Banderas", a.AmericaBarbados = "America/Barbados", a.AmericaBelem = "America/Belem", a.AmericaBelize = "America/Belize", a.AmericaBlancSablon = "America/Blanc-Sablon", a.AmericaBoaVista = "America/Boa_Vista", a.AmericaBogota = "America/Bogota", a.AmericaBoise = "America/Boise", a.AmericaCambridgeBay = "America/Cambridge_Bay", a.AmericaCampoGrande = "America/Campo_Grande", a.AmericaCancun = "America/Cancun", a.AmericaCaracas = "America/Caracas", a.AmericaCayenne = "America/Cayenne", a.AmericaCayman = "America/Cayman", a.AmericaChicago = "America/Chicago", a.AmericaChihuahua = "America/Chihuahua", a.AmericaCoralHarbour = "America/Coral_Harbour", a.AmericaCordoba = "America/Cordoba", a.AmericaCostaRica = "America/Costa_Rica", a.AmericaCreston = "America/Creston", a.AmericaCuiaba = "America/Cuiaba", a.AmericaCuracao = "America/Curacao", a.AmericaDanmarkshavn = "America/Danmarkshavn", a.AmericaDawson = "America/Dawson", a.AmericaDawsonCreek = "America/Dawson_Creek", a.AmericaDenver = "America/Denver", a.AmericaDetroit = "America/Detroit", a.AmericaDominica = "America/Dominica", a.AmericaEdmonton = "America/Edmonton", a.AmericaEirunepe = "America/Eirunepe", a.AmericaElSalvador = "America/El_Salvador", a.AmericaFortaleza = "America/Fortaleza", a.AmericaGlaceBay = "America/Glace_Bay", a.AmericaGodthab = "America/Godthab", a.AmericaGooseBay = "America/Goose_Bay", a.AmericaGrandTurk = "America/Grand_Turk", a.AmericaGrenada = "America/Grenada", a.AmericaGuadeloupe = "America/Guadeloupe", a.AmericaGuatemala = "America/Guatemala", a.AmericaGuayaquil = "America/Guayaquil", a.AmericaGuyana = "America/Guyana", a.AmericaHalifax = "America/Halifax", a.AmericaHavana = "America/Havana", a.AmericaHermosillo = "America/Hermosillo", a.AmericaIndianaIndianapolis = "America/Indiana/Indianapolis", a.AmericaIndianaKnox = "America/Indiana/Knox", a.AmericaIndianaMarengo = "America/Indiana/Marengo", a.AmericaIndianaPetersburg = "America/Indiana/Petersburg", a.AmericaIndianaTellCity = "America/Indiana/Tell_City", a.AmericaIndianaVevay = "America/Indiana/Vevay", a.AmericaIndianaVincennes = "America/Indiana/Vincennes", a.AmericaIndianaWinamac = "America/Indiana/Winamac", a.AmericaInuvik = "America/Inuvik", a.AmericaIqaluit = "America/Iqaluit", a.AmericaJamaica = "America/Jamaica", a.AmericaJuneau = "America/Juneau", a.AmericaKentuckyLouisville = "America/Kentucky/Louisville", a.AmericaKentuckyMonticello = "America/Kentucky/Monticello", a.AmericaKralendijk = "America/Kralendijk", a.AmericaLaPaz = "America/La_Paz", a.AmericaLima = "America/Lima", a.AmericaLosAngeles = "America/Los_Angeles", a.AmericaLouisville = "America/Louisville", a.AmericaLowerPrinces = "America/Lower_Princes", a.AmericaMaceio = "America/Maceio", a.AmericaManagua = "America/Managua", a.AmericaManaus = "America/Manaus", a.AmericaMarigot = "America/Marigot", a.AmericaMartinique = "America/Martinique", a.AmericaMatamoros = "America/Matamoros", a.AmericaMazatlan = "America/Mazatlan", a.AmericaMenominee = "America/Menominee", a.AmericaMerida = "America/Merida", a.AmericaMetlakatla = "America/Metlakatla", a.AmericaMexicoCity = "America/Mexico_City", a.AmericaMiquelon = "America/Miquelon", a.AmericaMoncton = "America/Moncton", a.AmericaMonterrey = "America/Monterrey", a.AmericaMontevideo = "America/Montevideo", a.AmericaMontserrat = "America/Montserrat", a.AmericaMontreal = "America/Montreal", a.AmericaNassau = "America/Nassau", a.AmericaNewYork = "America/New_York", a.AmericaNipigon = "America/Nipigon", a.AmericaNome = "America/Nome", a.AmericaNoronha = "America/Noronha", a.AmericaNorthDakotaBeulah = "America/North_Dakota/Beulah", a.AmericaNorthDakotaCenter = "America/North_Dakota/Center", a.AmericaNorthDakotaNewSalem = "America/North_Dakota/New_Salem", a.AmericaOjinaga = "America/Ojinaga", a.AmericaPanama = "America/Panama", a.AmericaPangnirtung = "America/Pangnirtung", a.AmericaParamaribo = "America/Paramaribo", a.AmericaPhoenix = "America/Phoenix", a.AmericaPortAuPrince = "America/Port-au-Prince", a.AmericaPortOfSpain = "America/Port_of_Spain", a.AmericaPortoVelho = "America/Porto_Velho", a.AmericaPuertoRico = "America/Puerto_Rico", a.AmericaRainyRiver = "America/Rainy_River", a.AmericaRankinInlet = "America/Rankin_Inlet", a.AmericaRecife = "America/Recife", a.AmericaRegina = "America/Regina", a.AmericaResolute = "America/Resolute", a.AmericaRioBranco = "America/Rio_Branco", a.AmericaSantaIsabel = "America/Santa_Isabel", a.AmericaSantarem = "America/Santarem", a.AmericaSantiago = "America/Santiago", a.AmericaSantoDomingo = "America/Santo_Domingo", a.AmericaSaoPaulo = "America/Sao_Paulo", a.AmericaScoresbysund = "America/Scoresbysund", a.AmericaShiprock = "America/Shiprock", a.AmericaSitka = "America/Sitka", a.AmericaStBarthelemy = "America/St_Barthelemy", a.AmericaStJohns = "America/St_Johns", a.AmericaStKitts = "America/St_Kitts", a.AmericaStLucia = "America/St_Lucia", a.AmericaStThomas = "America/St_Thomas", a.AmericaStVincent = "America/St_Vincent", a.AmericaSwiftCurrent = "America/Swift_Current", a.AmericaTegucigalpa = "America/Tegucigalpa", a.AmericaThule = "America/Thule", a.AmericaThunderBay = "America/Thunder_Bay", a.AmericaTijuana = "America/Tijuana", a.AmericaToronto = "America/Toronto", a.AmericaTortola = "America/Tortola", a.AmericaVancouver = "America/Vancouver", a.AmericaWhitehorse = "America/Whitehorse", a.AmericaWinnipeg = "America/Winnipeg", a.AmericaYakutat = "America/Yakutat", a.AmericaYellowknife = "America/Yellowknife", a.AntarcticaCasey = "Antarctica/Casey", a.AntarcticaDavis = "Antarctica/Davis", a.AntarcticaDumontDUrville = "Antarctica/DumontDUrville", a.AntarcticaMacquarie = "Antarctica/Macquarie", a.AntarcticaMawson = "Antarctica/Mawson", a.AntarcticaMcMurdo = "Antarctica/McMurdo", a.AntarcticaPalmer = "Antarctica/Palmer", a.AntarcticaRothera = "Antarctica/Rothera", a.AntarcticaSyowa = "Antarctica/Syowa", a.AntarcticaTroll = "Antarctica/Troll", a.AntarcticaVostok = "Antarctica/Vostok", a.ArcticLongyearbyen = "Arctic/Longyearbyen", a.AsiaAden = "Asia/Aden", a.AsiaAlmaty = "Asia/Almaty", a.AsiaAmman = "Asia/Amman", a.AsiaAnadyr = "Asia/Anadyr", a.AsiaAqtau = "Asia/Aqtau", a.AsiaAqtobe = "Asia/Aqtobe", a.AsiaAshgabat = "Asia/Ashgabat", a.AsiaBaghdad = "Asia/Baghdad", a.AsiaBahrain = "Asia/Bahrain", a.AsiaBaku = "Asia/Baku", a.AsiaBangkok = "Asia/Bangkok", a.AsiaBarnaul = "Asia/Barnaul", a.AsiaBeirut = "Asia/Beirut", a.AsiaBishkek = "Asia/Bishkek", a.AsiaBrunei = "Asia/Brunei", a.AsiaChita = "Asia/Chita", a.AsiaChoibalsan = "Asia/Choibalsan", a.AsiaColombo = "Asia/Colombo", a.AsiaDamascus = "Asia/Damascus", a.AsiaDhaka = "Asia/Dhaka", a.AsiaDili = "Asia/Dili", a.AsiaDubai = "Asia/Dubai", a.AsiaDushanbe = "Asia/Dushanbe", a.AsiaFamagusta = "Asia/Famagusta", a.AsiaGaza = "Asia/Gaza", a.AsiaHebron = "Asia/Hebron", a.AsiaHoChiMinh = "Asia/Ho_Chi_Minh", a.AsiaHongKong = "Asia/Hong_Kong", a.AsiaHovd = "Asia/Hovd", a.AsiaIrkutsk = "Asia/Irkutsk", a.AsiaJakarta = "Asia/Jakarta", a.AsiaJayapura = "Asia/Jayapura", a.AsiaJerusalem = "Asia/Jerusalem", a.AsiaKabul = "Asia/Kabul", a.AsiaKamchatka = "Asia/Kamchatka", a.AsiaKarachi = "Asia/Karachi", a.AsiaKathmandu = "Asia/Kathmandu", a.AsiaKhandyga = "Asia/Khandyga", a.AsiaKolkata = "Asia/Kolkata", a.AsiaKrasnoyarsk = "Asia/Krasnoyarsk", a.AsiaKualaLumpur = "Asia/Kuala_Lumpur", a.AsiaKuching = "Asia/Kuching", a.AsiaKuwait = "Asia/Kuwait", a.AsiaMacau = "Asia/Macau", a.AsiaMagadan = "Asia/Magadan", a.AsiaMakassar = "Asia/Makassar", a.AsiaManila = "Asia/Manila", a.AsiaMuscat = "Asia/Muscat", a.AsiaNicosia = "Asia/Nicosia", a.AsiaNovokuznetsk = "Asia/Novokuznetsk", a.AsiaNovosibirsk = "Asia/Novosibirsk", a.AsiaOmsk = "Asia/Omsk", a.AsiaOral = "Asia/Oral", a.AsiaPhnomPenh = "Asia/Phnom_Penh", a.AsiaPontianak = "Asia/Pontianak", a.AsiaPyongyang = "Asia/Pyongyang", a.AsiaQatar = "Asia/Qatar", a.AsiaQyzylorda = "Asia/Qyzylorda", a.AsiaRangoon = "Asia/Rangoon", a.AsiaRiyadh = "Asia/Riyadh", a.AsiaSakhalin = "Asia/Sakhalin", a.AsiaSamarkand = "Asia/Samarkand", a.AsiaSeoul = "Asia/Seoul", a.AsiaShanghai = "Asia/Shanghai", a.AsiaSingapore = "Asia/Singapore", a.AsiaSrednekolymsk = "Asia/Srednekolymsk", a.AsiaTaipei = "Asia/Taipei", a.AsiaTashkent = "Asia/Tashkent", a.AsiaTbilisi = "Asia/Tbilisi", a.AsiaTehran = "Asia/Tehran", a.AsiaThimphu = "Asia/Thimphu", a.AsiaTokyo = "Asia/Tokyo", a.AsiaTomsk = "Asia/Tomsk", a.AsiaUlaanbaatar = "Asia/Ulaanbaatar", a.AsiaUrumqi = "Asia/Urumqi", a.AsiaUstNera = "Asia/Ust-Nera", a.AsiaVientiane = "Asia/Vientiane", a.AsiaVladivostok = "Asia/Vladivostok", a.AsiaYakutsk = "Asia/Yakutsk", a.AsiaYekaterinburg = "Asia/Yekaterinburg", a.AsiaYerevan = "Asia/Yerevan", a.AtlanticAzores = "Atlantic/Azores", a.AtlanticBermuda = "Atlantic/Bermuda", a.AtlanticCanary = "Atlantic/Canary", a.AtlanticCapeVerde = "Atlantic/Cape_Verde", a.AtlanticFaroe = "Atlantic/Faroe", a.AtlanticMadeira = "Atlantic/Madeira", a.AtlanticReykjavik = "Atlantic/Reykjavik", a.AtlanticSouthGeorgia = "Atlantic/South_Georgia", a.AtlanticStHelena = "Atlantic/St_Helena", a.AtlanticStanley = "Atlantic/Stanley", a.AustraliaAdelaide = "Australia/Adelaide", a.AustraliaBrisbane = "Australia/Brisbane", a.AustraliaBrokenHill = "Australia/Broken_Hill", a.AustraliaCanberra = "Australia/Canberra", a.AustraliaCurrie = "Australia/Currie", a.AustraliaDarwin = "Australia/Darwin", a.AustraliaEucla = "Australia/Eucla", a.AustraliaHobart = "Australia/Hobart", a.AustraliaLindeman = "Australia/Lindeman", a.AustraliaLordHowe = "Australia/Lord_Howe", a.AustraliaMelbourne = "Australia/Melbourne", a.AustraliaPerth = "Australia/Perth", a.AustraliaSydney = "Australia/Sydney", a.EuropeAmsterdam = "Europe/Amsterdam", a.EuropeAndorra = "Europe/Andorra", a.EuropeAthens = "Europe/Athens", a.EuropeBelgrade = "Europe/Belgrade", a.EuropeBerlin = "Europe/Berlin", a.EuropeBratislava = "Europe/Bratislava", a.EuropeBrussels = "Europe/Brussels", a.EuropeBucharest = "Europe/Bucharest", a.EuropeBudapest = "Europe/Budapest", a.EuropeBusingen = "Europe/Busingen", a.EuropeChisinau = "Europe/Chisinau", a.EuropeCopenhagen = "Europe/Copenhagen", a.EuropeDublin = "Europe/Dublin", a.EuropeGibraltar = "Europe/Gibraltar", a.EuropeGuernsey = "Europe/Guernsey", a.EuropeHelsinki = "Europe/Helsinki", a.EuropeIsleOfMan = "Europe/Isle_of_Man", a.EuropeIstanbul = "Europe/Istanbul", a.EuropeJersey = "Europe/Jersey", a.EuropeKaliningrad = "Europe/Kaliningrad", a.EuropeKiev = "Europe/Kiev", a.EuropeKirov = "Europe/Kirov", a.EuropeLisbon = "Europe/Lisbon", a.EuropeLjubljana = "Europe/Ljubljana", a.EuropeLondon = "Europe/London", a.EuropeLuxembourg = "Europe/Luxembourg", a.EuropeMadrid = "Europe/Madrid", a.EuropeMalta = "Europe/Malta", a.EuropeMariehamn = "Europe/Mariehamn", a.EuropeMinsk = "Europe/Minsk", a.EuropeMonaco = "Europe/Monaco", a.EuropeMoscow = "Europe/Moscow", a.EuropeOslo = "Europe/Oslo", a.EuropeParis = "Europe/Paris", a.EuropePodgorica = "Europe/Podgorica", a.EuropePrague = "Europe/Prague", a.EuropeRiga = "Europe/Riga", a.EuropeRome = "Europe/Rome", a.EuropeSamara = "Europe/Samara", a.EuropeSanMarino = "Europe/San_Marino", a.EuropeSarajevo = "Europe/Sarajevo", a.EuropeSimferopol = "Europe/Simferopol", a.EuropeSkopje = "Europe/Skopje", a.EuropeSofia = "Europe/Sofia", a.EuropeStockholm = "Europe/Stockholm", a.EuropeTallinn = "Europe/Tallinn", a.EuropeTirane = "Europe/Tirane", a.EuropeUzhgorod = "Europe/Uzhgorod", a.EuropeVaduz = "Europe/Vaduz", a.EuropeVatican = "Europe/Vatican", a.EuropeVienna = "Europe/Vienna", a.EuropeVilnius = "Europe/Vilnius", a.EuropeVolgograd = "Europe/Volgograd", a.EuropeWarsaw = "Europe/Warsaw", a.EuropeZagreb = "Europe/Zagreb", a.EuropeZaporozhye = "Europe/Zaporozhye", a.EuropeZurich = "Europe/Zurich", a.GMT = "GMT", a.IndianAntananarivo = "Indian/Antananarivo", a.IndianChagos = "Indian/Chagos", a.IndianChristmas = "Indian/Christmas", a.IndianCocos = "Indian/Cocos", a.IndianComoro = "Indian/Comoro", a.IndianKerguelen = "Indian/Kerguelen", a.IndianMahe = "Indian/Mahe", a.IndianMaldives = "Indian/Maldives", a.IndianMauritius = "Indian/Mauritius", a.IndianMayotte = "Indian/Mayotte", a.IndianReunion = "Indian/Reunion", a.PacificApia = "Pacific/Apia", a.PacificAuckland = "Pacific/Auckland", a.PacificBougainville = "Pacific/Bougainville", a.PacificChatham = "Pacific/Chatham", a.PacificChuuk = "Pacific/Chuuk", a.PacificEaster = "Pacific/Easter", a.PacificEfate = "Pacific/Efate", a.PacificEnderbury = "Pacific/Enderbury", a.PacificFakaofo = "Pacific/Fakaofo", a.PacificFiji = "Pacific/Fiji", a.PacificFunafuti = "Pacific/Funafuti", a.PacificGalapagos = "Pacific/Galapagos", a.PacificGambier = "Pacific/Gambier", a.PacificGuadalcanal = "Pacific/Guadalcanal", a.PacificGuam = "Pacific/Guam", a.PacificHonolulu = "Pacific/Honolulu", a.PacificJohnston = "Pacific/Johnston", a.PacificKiritimati = "Pacific/Kiritimati", a.PacificKosrae = "Pacific/Kosrae", a.PacificKwajalein = "Pacific/Kwajalein", a.PacificMajuro = "Pacific/Majuro", a.PacificMarquesas = "Pacific/Marquesas", a.PacificMidway = "Pacific/Midway", a.PacificNauru = "Pacific/Nauru", a.PacificNiue = "Pacific/Niue", a.PacificNorfolk = "Pacific/Norfolk", a.PacificNoumea = "Pacific/Noumea", a.PacificPagoPago = "Pacific/Pago_Pago", a.PacificPalau = "Pacific/Palau", a.PacificPitcairn = "Pacific/Pitcairn", a.PacificPohnpei = "Pacific/Pohnpei", a.PacificPonape = "Pacific/Ponape", a.PacificPortMoresby = "Pacific/Port_Moresby", a.PacificRarotonga = "Pacific/Rarotonga", a.PacificSaipan = "Pacific/Saipan", a.PacificSamoa = "Pacific/Samoa", a.PacificTahiti = "Pacific/Tahiti", a.PacificTarawa = "Pacific/Tarawa", a.PacificTongatapu = "Pacific/Tongatapu", a.PacificTruk = "Pacific/Truk", a.PacificWake = "Pacific/Wake", a.PacificWallis = "Pacific/Wallis", a.PacificYap = "Pacific/Yap";
-})(t || (t = {}));
-var i$1;
-(function(a) {
-  a.UTC_MINUS_12 = "UTC-12", a.UTC_MINUS_11_30 = "UTC-11:30", a.UTC_MINUS_11 = "UTC-11", a.UTC_MINUS_10_30 = "UTC-10:30", a.UTC_MINUS_10 = "UTC-10", a.UTC_MINUS_9_30 = "UTC-9:30", a.UTC_MINUS_9 = "UTC-09", a.UTC_MINUS_8_45 = "UTC-8:45", a.UTC_MINUS_8 = "UTC-08", a.UTC_MINUS_7 = "UTC-07", a.UTC_MINUS_6_30 = "UTC-6:30", a.UTC_MINUS_6 = "UTC-06", a.UTC_MINUS_5_45 = "UTC-5:45", a.UTC_MINUS_5_30 = "UTC-5:30", a.UTC_MINUS_5 = "UTC-05", a.UTC_MINUS_4_30 = "UTC-4:30", a.UTC_MINUS_4 = "UTC-04", a.UTC_MINUS_3_30 = "UTC-3:30", a.UTC_MINUS_3 = "UTC-03", a.UTC_MINUS_2_30 = "UTC-2:30", a.UTC_MINUS_2 = "UTC-02", a.UTC_MINUS_1 = "UTC-01", a.UTC_0 = "UTC+00", a.UTC_PLUS_1 = "UTC+01", a.UTC_PLUS_2 = "UTC+02", a.UTC_PLUS_3 = "UTC+03", a.UTC_PLUS_3_30 = "UTC+3:30", a.UTC_PLUS_4 = "UTC+04", a.UTC_PLUS_4_30 = "UTC+4:30", a.UTC_PLUS_5 = "UTC+05", a.UTC_PLUS_5_30 = "UTC+5:30", a.UTC_PLUS_5_45 = "UTC+5:45", a.UTC_PLUS_6 = "UTC+06", a.UTC_PLUS_6_30 = "UTC+6:30", a.UTC_PLUS_7 = "UTC+07", a.UTC_PLUS_8 = "UTC+08", a.UTC_PLUS_8_45 = "UTC+8:45", a.UTC_PLUS_9 = "UTC+09", a.UTC_PLUS_9_30 = "UTC+9:30", a.UTC_PLUS_10 = "UTC+10", a.UTC_PLUS_10_30 = "UTC+10:30", a.UTC_PLUS_11 = "UTC+11", a.UTC_PLUS_11_30 = "UTC+11:30", a.UTC_PLUS_12 = "UTC+12", a.UTC_PLUS_12_45 = "UTC+12:45", a.UTC_PLUS_13 = "UTC+13", a.UTC_PLUS_13_45 = "UTC+13:45", a.UTC_PLUS_14 = "UTC+14";
-})(i$1 || (i$1 = {}));
-var n$1;
-(function(a) {
-  a.AcreTime = "ACT", a.AfghanistanTime = "AFT", a.AIXCentralEuropeanTime = "DFT", a.AlaskaDaylightTime = "AKDT", a.AlaskaStandardTime = "AKST", a.AlmaAtaTime = "ALMT", a.AmazonSummerTime = "AMST", a.AmazonTime = "AMT", a.AnadyrTime = "ANAT", a.AqtobeTime = "AQTT", a.ArabiaStandardTime = "AST", a.ArgentinaTime = "ART", a.ArmeniaTime = "AMT", a.ASEANCommonTime = "ASEAN", a.AtlanticDaylightTime = "ADT", a.AtlanticStandardTime = "AST", a.AustralianCentralDaylightSavingTime = "ACDT", a.AustralianCentralStandardTime = "ACST", a.AustralianCentralWesternStandardTime = "ACWST", a.AustralianEasternDaylightSavingTime = "AEDT", a.AustralianEasternStandardTime = "AEST", a.AustralianEasternTime = "AET", a.AustralianWesternStandardTime = "AWST", a.AzerbaijanTime = "AZT", a.AzoresStandardTime = "AZOT", a.AzoresSummerTime = "AZOST", a.BakerIslandTime = "BIT", a.BangladeshStandardTime = "BST", a.BhutanTime = "BTT", a.BoliviaTime = "BOT", a.BougainvilleStandardTime = "BST", a.BrasiliaSummerTime = "BRST", a.BrasiliaTime = "BRT", a.BritishIndianOceanTime = "BIOT", a.BritishSummerTime = "BST", a.BruneiTime = "BNT", a.CapeVerdeTime = "CVT", a.CentralAfricaTime = "CAT", a.CentralDaylightTime = "CDT", a.CentralEuropeanSummerTime = "CEST", a.CentralEuropeanTime = "CET", a.CentralIndonesiaTime = "WITA", a.CentralStandardTime = "CST", a.CentralTime = "CT", a.CentralWesternStandardTime = "CWST", a.ChamorroStandardTime = "CHST", a.ChathamDaylightTime = "CHADT", a.ChathamStandardTime = "CHAST", a.ChileStandardTime = "CLT", a.ChileSummerTime = "CLST", a.ChinaStandardTime = "CST", a.ChoibalsanStandardTime = "CHOT", a.ChoibalsanSummerTime = "CHOST", a.ChristmasIslandTime = "CXT", a.ChuukTime = "CHUT", a.ClipptertonIslandStandardTime = "CIST", a.CocosIslandsTime = "CCT", a.ColombiaSummerTime = "COST", a.ColombiaTime = "COT", a.CookIslandTime = "CKT", a.CoordinatedUniversalTime = "UTC", a.CubaDaylightTime = "CDT", a.CubaStandardTime = "CST", a.DavisTime = "DAVT", a.DumontDUrvilleTime = "DDUT", a.EastAfricaTime = "EAT", a.EasterIslandStandardTime = "EAST", a.EasterIslandSummerTime = "EASST", a.EasternCaribbeanTime = "ECT", a.EasternDaylightTime = "EDT", a.EasternEuropeanSummerTime = "EEST", a.EasternEuropeanTime = "EET", a.EasternGreenlandSummerTime = "EGST", a.EasternGreenlandTime = "EGT", a.EasternIndonesianTime = "WIT", a.EasternStandardTime = "EST", a.EasternTime = "ET", a.EcuadorTime = "ECT", a.FalklandIslandsSummerTime = "FKST", a.FalklandIslandsTime = "FKT", a.FernandoDeNoronhaTime = "FNT", a.FijiTime = "FJT", a.FrenchGuianaTime = "GFT", a.FrenchSouthernAndAntarcticTime = "TFT", a.FurtherEasternEuropeanTime = "FET", a.GalapagosTime = "GALT", a.GambierIslandTime = "GIT", a.GambierIslandsTime = "GAMT", a.GeorgiaStandardTime = "GET", a.GilbertIslandTime = "GILT", a.GreenwichMeanTime = "GMT", a.GulfStandardTime = "GST", a.GuyanaTime = "GYT", a.HawaiiAleutianDaylightTime = "HDT", a.HawaiiAleutianStandardTime = "HST", a.HeardAndMcDonaldIslandsTime = "HMT", a.HeureAvanceeDEuropeCentraleTime = "HAEC", a.HongKongTime = "HKT", a.HovdSummerTime = "HOVST", a.HovdTime = "HOVT", a.IndianOceanTime = "IOT", a.IndianStandardTime = "IST", a.IndochinaTime = "ICT", a.InternationalDayLineWestTime = "IDLW", a.IranDaylightTime = "IRDT", a.IranStandardTime = "IRST", a.IrishStandardTime = "IST", a.IrkutskSummerTime = "IRKST", a.IrkutskTime = "IRKT", a.IsraelDaylightTime = "IDT", a.IsraelStandardTime = "IST", a.JapanStandardTime = "JST", a.KaliningradTime = "KALT", a.KamchatkaTime = "KAMT", a.KoreaStandardTime = "KST", a.KosraeTime = "KOST", a.KrasnoyarskSummerTime = "KRAST", a.KrasnoyarskTime = "KRAT", a.KyrgyzstanTime = "KGT", a.LineIslandsTime = "LINT", a.KazakhstanStandardTime = "KAST", a.LordHoweStandardTime = "LHST", a.LordHoweSummerTime = "LHST", a.MacquarieIslandStationTime = "MIST", a.MagadanTime = "MAGT", a.MalaysiaStandardTime = "MST", a.MalaysiaTime = "MYT", a.MaldivesTime = "MVT", a.MarquesasIslandsTime = "MART", a.MarshallIslandsTime = "MHT", a.MauritiusTime = "MUT", a.MawsonStationTime = "MAWT", a.MiddleEuropeanSummerTime = "MEDT", a.MiddleEuropeanTime = "MET", a.MoscowTime = "MSK", a.MountainDaylightTime = "MDT", a.MountainStandardTime = "MST", a.MyanmarStandardTime = "MMT", a.NepalTime = "NCT", a.NauruTime = "NRT", a.NewCaledoniaTime = "NCT", a.NewZealandDaylightTime = "NZDT", a.NewZealandStandardTime = "NZST", a.NewfoundlandDaylightTime = "NDT", a.NewfoundlandStandardTime = "NST", a.NewfoundlandTime = "NT", a.NiueTime = "NUT", a.NorfolkIslandTime = "NFT", a.NovosibirskTime = "NOVT", a.OmskTime = "OMST", a.OralTime = "ORAT", a.PacificDaylightTime = "PDT", a.PacificStandardTime = "PST", a.PakistanStandardTime = "PKT", a.PalauTime = "PWT", a.PapuaNewGuineaTime = "PGT", a.ParaguaySummerTime = "PYST", a.ParaguayTime = "PYT", a.PeruTime = "PET", a.PhilippineStandardTime = "PHST", a.PhilippineTime = "PHT", a.PhoenixIslandTime = "PHOT", a.PitcairnTime = "PST", a.PohnpeiStandardTime = "PONT", a.ReunionTime = "RET", a.RotheraResearchStationTime = "ROTT", a.SaintPierreAndMiquelonDaylightTime = "PMDT", a.SaintPierreAndMiquelonStandardTime = "PMST", a.SakhalinIslandTime = "SAKT", a.SamaraTime = "SAMT", a.SamoaDaylightTime = "SDT", a.SamoaStandardTime = "SST", a.SeychellesTime = "SCT", a.ShowaStationTime = "SYOT", a.SingaporeStandardTime = "SST", a.SingaporeTime = "SGT", a.SolomonIslandsTime = "SBT", a.SouthAfricanStandardTime = "SAST", a.SouthGeorgiaAndTheSouthSandwichIslandsTime = "GST", a.SrednekolymskTime = "SRET", a.SriLankaStandardTime = "SLST", a.SurinameTime = "SRT", a.TahitiTime = "TAHT", a.TajikistanTime = "TJT", a.ThailandStandardTime = "THA", a.TimorLesteTime = "TLT", a.TokelauTime = "TKT", a.TongaTime = "TOT", a.TurkeyTime = "TRT", a.TurkmenistanTime = "TMT", a.TuvaluTime = "TVT", a.UlaanbaatarStandardTime = "ULAT", a.UlaanbaatarSummerTime = "ULAST", a.UruguayStandardTime = "UYT", a.UruguaySummerTime = "UYST", a.UzbekistanTime = "UZT", a.VanuatuTime = "VUT", a.VenezuelaStandardTime = "VET", a.VladivostokTime = "VLAT", a.VolgogradTime = "VOLT", a.VostokStationTime = "VOST", a.WakeIslandTime = "WAKT", a.WestAfricaSummerTime = "WAST", a.WestAfricaTime = "WAT", a.WestGreenlandSummerTime = "WGST", a.WestGreenlandTime = "WGT", a.WestKazakhstanTime = "WKT", a.WesternEuropeanSummerTime = "WEDT", a.WesternEuropeanTime = "WET", a.WesternIndonesianTime = "WIT", a.WesternStandardTime = "WST", a.YakutskTime = "YAKT", a.YekaterinburgTime = "YEKT";
-})(n$1 || (n$1 = {}));
-({ dst: { is: false, uses: true }, id: n$1.AcreTime, name: "Acre Time", offset: i$1.UTC_MINUS_5 });
-({ dst: { is: false, uses: true }, id: n$1.AfghanistanTime, name: "Afghanistan Time", offset: i$1.UTC_PLUS_4_30 });
-({ dst: { is: false, uses: true }, id: n$1.AIXCentralEuropeanTime, name: "AIX Central European Time", offset: i$1.UTC_PLUS_1 });
-({ dst: { is: true, uses: true }, id: n$1.AlaskaDaylightTime, name: "Alaska Daylight Time", offset: i$1.UTC_MINUS_8 });
-({ dst: { is: false, uses: true }, id: n$1.AlaskaStandardTime, name: "Alaska Standard Time", offset: i$1.UTC_MINUS_9 });
-({ dst: { is: false, uses: true }, id: n$1.AlmaAtaTime, name: "Alma-Ata Time", offset: i$1.UTC_PLUS_6 });
-({ dst: { is: false, uses: true }, id: n$1.AmazonSummerTime, name: "Amazon Summer Time", offset: i$1.UTC_MINUS_3 });
-({ dst: { is: false, uses: true }, id: n$1.AmazonTime, name: "Amazon Time", offset: i$1.UTC_MINUS_4 });
-({ dst: { is: false, uses: true }, id: n$1.AnadyrTime, name: "Anadyr Time", offset: i$1.UTC_PLUS_12 });
-({ dst: { is: false, uses: true }, id: n$1.AqtobeTime, name: "Aqtobe Time", offset: i$1.UTC_PLUS_5 });
-({ dst: { is: false, uses: true }, id: n$1.ArabiaStandardTime, name: "Arabia Standard Time", offset: i$1.UTC_PLUS_3 });
-({ dst: { is: false, uses: true }, id: n$1.ArgentinaTime, name: "Argentina Time", offset: i$1.UTC_MINUS_3 });
-({ dst: { is: false, uses: true }, id: n$1.ArmeniaTime, name: "Armenia Time", offset: i$1.UTC_PLUS_4 });
-({ dst: { is: true, uses: true }, id: n$1.AtlanticDaylightTime, name: "Atlantic Daylight Time", offset: i$1.UTC_MINUS_3 });
-({ dst: { is: false, uses: true }, id: n$1.AtlanticStandardTime, name: "Atlantic Standard Time", offset: i$1.UTC_MINUS_4 });
-({ dst: { is: true, uses: true }, id: n$1.AustralianCentralDaylightSavingTime, name: "Australian Central Daylight Saving Time", offset: i$1.UTC_PLUS_10_30 });
-({ dst: { is: false, uses: true }, id: n$1.AustralianCentralStandardTime, name: "Australian Central Standard Time", offset: i$1.UTC_PLUS_9_30 });
-({ dst: { is: false, uses: true }, id: n$1.AustralianCentralWesternStandardTime, name: "Australian Central Western Standard Time", offset: i$1.UTC_PLUS_8_45 });
-({ dst: { is: true, uses: true }, id: n$1.AustralianEasternDaylightSavingTime, name: "Australian Eastern Daylight Saving Time", offset: i$1.UTC_PLUS_11 });
-({ dst: { is: false, uses: true }, id: n$1.AustralianEasternStandardTime, name: "Australian Eastern Standard Time", offset: i$1.UTC_PLUS_10 });
-({ dst: { is: false, uses: true }, id: n$1.AustralianEasternTime, name: "Australian Eastern Time", offset: i$1.UTC_PLUS_10 });
-({ dst: { is: false, uses: true }, id: n$1.AustralianWesternStandardTime, name: "Australian Western Standard Time", offset: i$1.UTC_PLUS_8 });
-({ dst: { is: false, uses: true }, id: n$1.AzerbaijanTime, name: "Azerbaijan Time", offset: i$1.UTC_PLUS_4 });
-({ dst: { is: false, uses: true }, id: n$1.AzoresStandardTime, name: "Azores Standard Time", offset: i$1.UTC_MINUS_1 });
-({ dst: { is: true, uses: true }, id: n$1.AzoresSummerTime, name: "Azores Summer Time", offset: i$1.UTC_0 });
-({ dst: { is: false, uses: true }, id: n$1.BakerIslandTime, name: "Baker Island Time", offset: i$1.UTC_MINUS_12 });
-({ dst: { is: false, uses: true }, id: n$1.BangladeshStandardTime, name: "Bangladesh Standard Time", offset: i$1.UTC_PLUS_6 });
-({ dst: { is: false, uses: true }, id: n$1.BhutanTime, name: "Bhutan Time", offset: i$1.UTC_PLUS_6 });
-({ dst: { is: false, uses: true }, id: n$1.BoliviaTime, name: "Bolivia Time", offset: i$1.UTC_MINUS_4 });
-({ dst: { is: false, uses: true }, id: n$1.BougainvilleStandardTime, name: "Bougainville Standard Time", offset: i$1.UTC_PLUS_11 });
-({ dst: { is: true, uses: true }, id: n$1.BrasiliaSummerTime, name: "Brasilia Summer Time", offset: i$1.UTC_MINUS_2 });
-({ dst: { is: false, uses: true }, id: n$1.BrasiliaTime, name: "Brasilia Time", offset: i$1.UTC_MINUS_3 });
-({ dst: { is: false, uses: true }, id: n$1.BritishIndianOceanTime, name: "British Indian Ocean Time", offset: i$1.UTC_PLUS_6 });
-({ dst: { is: true, uses: true }, id: n$1.BritishSummerTime, name: "British Summer Time", offset: i$1.UTC_PLUS_1 });
-({ dst: { is: false, uses: true }, id: n$1.BruneiTime, name: "Brunei Time", offset: i$1.UTC_PLUS_8 });
-({ dst: { is: false, uses: true }, id: n$1.CapeVerdeTime, name: "Cape Verde Time", offset: i$1.UTC_MINUS_1 });
-({ dst: { is: false, uses: true }, id: n$1.CentralAfricaTime, name: "Central Africa Time", offset: i$1.UTC_PLUS_2 });
-({ dst: { is: true, uses: true }, id: n$1.CentralDaylightTime, name: "Central Daylight Time", offset: i$1.UTC_MINUS_5 });
-({ dst: { is: true, uses: true }, id: n$1.CentralEuropeanSummerTime, name: "Central European Summer Time", offset: i$1.UTC_PLUS_2 });
-({ dst: { is: false, uses: true }, id: n$1.CentralEuropeanTime, name: "Central European Time", offset: i$1.UTC_PLUS_1 });
-({ dst: { is: false, uses: true }, id: n$1.CentralIndonesiaTime, name: "Central Indonesia Time", offset: i$1.UTC_PLUS_8 });
-({ dst: { is: false, uses: true }, id: n$1.CentralStandardTime, name: "Central Standard Time", offset: i$1.UTC_MINUS_6 });
-({ dst: { is: false, uses: true }, id: n$1.CentralTime, name: "Central Time", offset: i$1.UTC_MINUS_5 });
-({ dst: { is: false, uses: true }, id: n$1.CentralWesternStandardTime, name: "Central Western Standard Time", offset: i$1.UTC_PLUS_8_45 });
-({ dst: { is: false, uses: true }, id: n$1.ChamorroStandardTime, name: "Chamorro Standard Time", offset: i$1.UTC_PLUS_10 });
-({ dst: { is: true, uses: true }, id: n$1.ChathamDaylightTime, name: "Chatham Daylight Time", offset: i$1.UTC_PLUS_13_45 });
-({ dst: { is: false, uses: true }, id: n$1.ChathamStandardTime, name: "Chatham Standard Time", offset: i$1.UTC_PLUS_12_45 });
-({ dst: { is: false, uses: true }, id: n$1.ChileStandardTime, name: "Chile Standard Time", offset: i$1.UTC_MINUS_4 });
-({ dst: { is: true, uses: true }, id: n$1.ChileSummerTime, name: "Chile Summer Time", offset: i$1.UTC_MINUS_3 });
-({ dst: { is: false, uses: true }, id: n$1.ChinaStandardTime, name: "China Standard Time", offset: i$1.UTC_PLUS_8 });
-({ dst: { is: false, uses: true }, id: n$1.ChoibalsanStandardTime, name: "Choibalsan Standard Time", offset: i$1.UTC_PLUS_8 });
-({ dst: { is: true, uses: true }, id: n$1.ChoibalsanSummerTime, name: "Choibalsan Summer Time", offset: i$1.UTC_PLUS_9 });
-({ dst: { is: false, uses: true }, id: n$1.ChristmasIslandTime, name: "Christmas Island Time", offset: i$1.UTC_PLUS_7 });
-({ dst: { is: false, uses: true }, id: n$1.ChuukTime, name: "Chuuk Time", offset: i$1.UTC_PLUS_10 });
-({ dst: { is: false, uses: true }, id: n$1.ClipptertonIslandStandardTime, name: "Clippterton Island Standard Time", offset: i$1.UTC_MINUS_8 });
-({ dst: { is: false, uses: true }, id: n$1.CocosIslandsTime, name: "Cocos Standard Time", offset: i$1.UTC_PLUS_6_30 });
-({ dst: { is: true, uses: true }, id: n$1.ColombiaSummerTime, name: "Colombia Summer Time", offset: i$1.UTC_MINUS_4 });
-({ dst: { is: false, uses: true }, id: n$1.ColombiaTime, name: "Colombia Time", offset: i$1.UTC_MINUS_5 });
-({ dst: { is: false, uses: true }, id: n$1.CookIslandTime, name: "Cook Island Time", offset: i$1.UTC_MINUS_10 });
-({ dst: { is: false, uses: true }, id: n$1.CoordinatedUniversalTime, name: "Coordinated Universal Time", offset: i$1.UTC_0 });
-({ dst: { is: true, uses: true }, id: n$1.CubaDaylightTime, name: "Cuba Daylight Time", offset: i$1.UTC_MINUS_4 });
-({ dst: { is: false, uses: true }, id: n$1.CubaStandardTime, name: "Cuba Standard Time", offset: i$1.UTC_MINUS_5 });
-({ dst: { is: false, uses: true }, id: n$1.DavisTime, name: "Davis Time", offset: i$1.UTC_PLUS_7 });
-({ dst: { is: false, uses: true }, id: n$1.DumontDUrvilleTime, name: "Dumont D'Urville Time", offset: i$1.UTC_PLUS_10 });
-({ dst: { is: false, uses: true }, id: n$1.EastAfricaTime, name: "East Africa Time", offset: i$1.UTC_PLUS_3 });
-({ dst: { is: false, uses: true }, id: n$1.EasterIslandStandardTime, name: "Easter Island Standard Time", offset: i$1.UTC_MINUS_6 });
-({ dst: { is: true, uses: true }, id: n$1.EasterIslandSummerTime, name: "Easter Island Summer Time", offset: i$1.UTC_MINUS_5 });
-({ dst: { is: false, uses: true }, id: n$1.EasternCaribbeanTime, name: "Eastern Caribbean Time", offset: i$1.UTC_MINUS_4 });
-({ dst: { is: true, uses: true }, id: n$1.EasternDaylightTime, name: "Eastern Daylight Time", offset: i$1.UTC_MINUS_4 });
-({ dst: { is: true, uses: true }, id: n$1.EasternEuropeanSummerTime, name: "Eastern European Summer Time", offset: i$1.UTC_PLUS_3 });
-({ dst: { is: false, uses: true }, id: n$1.EasternEuropeanTime, name: "Eastern European Time", offset: i$1.UTC_PLUS_2 });
-({ dst: { is: true, uses: true }, id: n$1.EasternGreenlandSummerTime, name: "Eastern Greenland Summer Time", offset: i$1.UTC_0 });
-({ dst: { is: false, uses: true }, id: n$1.EasternGreenlandTime, name: "Eastern Greenland Time", offset: i$1.UTC_MINUS_1 });
-({ dst: { is: false, uses: true }, id: n$1.EasternIndonesianTime, name: "Eastern Indonesian Time", offset: i$1.UTC_PLUS_9 });
-({ dst: { is: false, uses: true }, id: n$1.EasternStandardTime, name: "Eastern Standard Time", offset: i$1.UTC_MINUS_5 });
-({ dst: { is: false, uses: true }, id: n$1.EasternTime, name: "Eastern Time", offset: i$1.UTC_MINUS_5 });
-({ dst: { is: false, uses: true }, id: n$1.EcuadorTime, name: "Ecuador Time", offset: i$1.UTC_MINUS_5 });
-({ dst: { is: true, uses: true }, id: n$1.FalklandIslandsSummerTime, name: "Falkland Islands Summer Time", offset: i$1.UTC_MINUS_3 });
-({ dst: { is: false, uses: true }, id: n$1.FalklandIslandsTime, name: "Falkland Islands Time", offset: i$1.UTC_MINUS_4 });
-({ dst: { is: false, uses: true }, id: n$1.FernandoDeNoronhaTime, name: "Fernando de Noronha Time", offset: i$1.UTC_MINUS_2 });
-({ dst: { is: false, uses: true }, id: n$1.FijiTime, name: "Fiji Time", offset: i$1.UTC_PLUS_12 });
-({ dst: { is: false, uses: true }, id: n$1.FrenchGuianaTime, name: "French Guiana Time", offset: i$1.UTC_MINUS_3 });
-({ dst: { is: false, uses: true }, id: n$1.FrenchSouthernAndAntarcticTime, name: "French Southern and Antarctic Time", offset: i$1.UTC_PLUS_5 });
-({ dst: { is: false, uses: true }, id: n$1.FurtherEasternEuropeanTime, name: "Further Eastern European Time", offset: i$1.UTC_PLUS_3 });
-({ dst: { is: false, uses: true }, id: n$1.GalapagosTime, name: "Galapagos Time", offset: i$1.UTC_MINUS_6 });
-({ dst: { is: false, uses: true }, id: n$1.GambierIslandTime, name: "Gambier Island Time", offset: i$1.UTC_MINUS_9 });
-({ dst: { is: false, uses: true }, id: n$1.GambierIslandsTime, name: "Gambier Islands Time", offset: i$1.UTC_MINUS_9 });
-({ dst: { is: false, uses: true }, id: n$1.GeorgiaStandardTime, name: "Georgia Standard Time", offset: i$1.UTC_PLUS_4 });
-({ dst: { is: false, uses: true }, id: n$1.GilbertIslandTime, name: "Gilbert Island Time", offset: i$1.UTC_PLUS_12 });
-({ dst: { is: false, uses: true }, id: n$1.GreenwichMeanTime, name: "Greenwich Mean Time", offset: i$1.UTC_0 });
-({ dst: { is: false, uses: true }, id: n$1.GulfStandardTime, name: "Gulf Standard Time", offset: i$1.UTC_PLUS_4 });
-({ dst: { is: false, uses: true }, id: n$1.GuyanaTime, name: "Guyana Time", offset: i$1.UTC_MINUS_4 });
-({ dst: { is: true, uses: true }, id: n$1.HawaiiAleutianDaylightTime, name: "Hawaii-Aleutian Daylight Time", offset: i$1.UTC_MINUS_9 });
-({ dst: { is: false, uses: true }, id: n$1.HawaiiAleutianStandardTime, name: "Hawaii-Aleutian Standard Time", offset: i$1.UTC_MINUS_10 });
-({ dst: { is: false, uses: true }, id: n$1.HeardAndMcDonaldIslandsTime, name: "Heard and McDonald Islands Time", offset: i$1.UTC_PLUS_5 });
-({ dst: { is: false, uses: true }, id: n$1.HongKongTime, name: "Hong Kong Time", offset: i$1.UTC_PLUS_8 });
-({ dst: { is: true, uses: true }, id: n$1.HovdSummerTime, name: "Hovd Summer Time", offset: i$1.UTC_PLUS_8 });
-({ dst: { is: false, uses: true }, id: n$1.HovdTime, name: "Hovd Time", offset: i$1.UTC_PLUS_7 });
-({ dst: { is: false, uses: true }, id: n$1.IndianOceanTime, name: "Indian Ocean Time", offset: i$1.UTC_PLUS_3 });
-({ dst: { is: false, uses: true }, id: n$1.IndianStandardTime, name: "Indian Standard Time", offset: i$1.UTC_PLUS_5_30 });
-({ dst: { is: false, uses: true }, id: n$1.IndochinaTime, name: "Indochina Time", offset: i$1.UTC_PLUS_7 });
-({ dst: { is: false, uses: true }, id: n$1.InternationalDayLineWestTime, name: "International Day Line West Time", offset: i$1.UTC_MINUS_12 });
-({ dst: { is: true, uses: true }, id: n$1.IranDaylightTime, name: "Iran Daylight Time", offset: i$1.UTC_PLUS_4_30 });
-({ dst: { is: false, uses: true }, id: n$1.IranStandardTime, name: "Iran Standard Time", offset: i$1.UTC_PLUS_3_30 });
-({ dst: { is: false, uses: true }, id: n$1.IrishStandardTime, name: "Irish Standard Time", offset: i$1.UTC_PLUS_1 });
-({ dst: { is: false, uses: true }, id: n$1.IrkutskTime, name: "Irkutsk Time", offset: i$1.UTC_PLUS_8 });
-({ dst: { is: true, uses: true }, id: n$1.IsraelDaylightTime, name: "Israel Daylight Time", offset: i$1.UTC_PLUS_3 });
-({ dst: { is: false, uses: true }, id: n$1.IsraelStandardTime, name: "Israel Standard Time", offset: i$1.UTC_PLUS_2 });
-({ dst: { is: false, uses: true }, id: n$1.JapanStandardTime, name: "Japan Standard Time", offset: i$1.UTC_PLUS_9 });
-({ dst: { is: false, uses: true }, id: n$1.KaliningradTime, name: "Kaliningrad Time", offset: i$1.UTC_PLUS_2 });
-({ dst: { is: false, uses: true }, id: n$1.KamchatkaTime, name: "Kamchatka Time", offset: i$1.UTC_PLUS_12 });
-({ dst: { is: false, uses: true }, id: n$1.KoreaStandardTime, name: "Korea Standard Time", offset: i$1.UTC_PLUS_9 });
-({ dst: { is: false, uses: true }, id: n$1.KosraeTime, name: "Kosrae Time", offset: i$1.UTC_PLUS_11 });
-({ dst: { is: false, uses: true }, id: n$1.KrasnoyarskTime, name: "Krasnoyarsk Time", offset: i$1.UTC_PLUS_7 });
-({ dst: { is: false, uses: true }, id: n$1.KyrgyzstanTime, name: "Kyrgyzstan Time", offset: i$1.UTC_PLUS_6 });
-({ dst: { is: false, uses: true }, id: n$1.LineIslandsTime, name: "Line Islands Time", offset: i$1.UTC_PLUS_14 });
-({ dst: { is: false, uses: true }, id: n$1.LordHoweStandardTime, name: "Lord Howe Standard Time", offset: i$1.UTC_PLUS_10_30 });
-({ dst: { is: false, uses: true }, id: n$1.LordHoweSummerTime, name: "Lord Howe Summer Time", offset: i$1.UTC_PLUS_11 });
-({ dst: { is: false, uses: true }, id: n$1.MacquarieIslandStationTime, name: "Macquarie Island Station Time", offset: i$1.UTC_PLUS_11 });
-({ dst: { is: false, uses: true }, id: n$1.MagadanTime, name: "Magadan Time", offset: i$1.UTC_PLUS_12 });
-({ dst: { is: false, uses: true }, id: n$1.MalaysiaStandardTime, name: "Malaysia Standard Time", offset: i$1.UTC_PLUS_8 });
-({ dst: { is: false, uses: true }, id: n$1.MalaysiaTime, name: "Malaysia Time", offset: i$1.UTC_PLUS_8 });
-({ dst: { is: false, uses: true }, id: n$1.MaldivesTime, name: "Maldives Time", offset: i$1.UTC_PLUS_5 });
-({ dst: { is: false, uses: true }, id: n$1.MarquesasIslandsTime, name: "Marquesas Islands Time", offset: i$1.UTC_PLUS_9_30 });
-({ dst: { is: false, uses: true }, id: n$1.MarshallIslandsTime, name: "Marshall Islands Time", offset: i$1.UTC_PLUS_12 });
-({ dst: { is: false, uses: true }, id: n$1.MauritiusTime, name: "Mauritius Time", offset: i$1.UTC_PLUS_4 });
-({ dst: { is: false, uses: true }, id: n$1.MawsonStationTime, name: "Mawson Station Time", offset: i$1.UTC_PLUS_5 });
-({ dst: { is: false, uses: true }, id: n$1.MiddleEuropeanSummerTime, name: "Middle European Summer Time", offset: i$1.UTC_PLUS_2 });
-({ dst: { is: false, uses: true }, id: n$1.MiddleEuropeanTime, name: "Middle European Time", offset: i$1.UTC_PLUS_1 });
-({ dst: { is: false, uses: true }, id: n$1.MoscowTime, name: "Moscow Time", offset: i$1.UTC_PLUS_3 });
-({ dst: { is: false, uses: true }, id: n$1.MountainDaylightTime, name: "Mountain Daylight Time", offset: i$1.UTC_MINUS_6 });
-({ dst: { is: false, uses: true }, id: n$1.MountainStandardTime, name: "Mountain Standard Time", offset: i$1.UTC_MINUS_7 });
-({ dst: { is: false, uses: true }, id: n$1.MyanmarStandardTime, name: "Myanmar Standard Time", offset: i$1.UTC_PLUS_6_30 });
-({ dst: { is: false, uses: true }, id: n$1.NepalTime, name: "Nepal Time", offset: i$1.UTC_PLUS_5_45 });
-({ dst: { is: false, uses: true }, id: n$1.NauruTime, name: "Nauru Time", offset: i$1.UTC_PLUS_12 });
-({ dst: { is: false, uses: true }, id: n$1.NewCaledoniaTime, name: "New Caledonia Time", offset: i$1.UTC_PLUS_11 });
-({ dst: { is: false, uses: true }, id: n$1.NewZealandDaylightTime, name: "New Zealand Daylight Time", offset: i$1.UTC_PLUS_13 });
-({ dst: { is: false, uses: true }, id: n$1.NewZealandStandardTime, name: "New Zealand Standard Time", offset: i$1.UTC_PLUS_12 });
-({ dst: { is: false, uses: true }, id: n$1.NewfoundlandDaylightTime, name: "Newfoundland Daylight Time", offset: i$1.UTC_MINUS_2_30 });
-({ dst: { is: false, uses: true }, id: n$1.NewfoundlandTime, name: "Newfoundland Time", offset: i$1.UTC_MINUS_3_30 });
-({ dst: { is: false, uses: true }, id: n$1.NiueTime, name: "Niue Time", offset: i$1.UTC_MINUS_11 });
-({ dst: { is: false, uses: true }, id: n$1.NorfolkIslandTime, name: "Norfolk Island Time", offset: i$1.UTC_PLUS_11 });
-({ dst: { is: false, uses: true }, id: n$1.NovosibirskTime, name: "Novosibirsk Time", offset: i$1.UTC_PLUS_7 });
-({ dst: { is: false, uses: true }, id: n$1.OmskTime, name: "Omsk Time", offset: i$1.UTC_PLUS_6 });
-({ dst: { is: false, uses: true }, id: n$1.OralTime, name: "Oral Time", offset: i$1.UTC_PLUS_5 });
-({ dst: { is: false, uses: true }, id: n$1.PacificDaylightTime, name: "Pacific Daylight Time", offset: i$1.UTC_MINUS_7 });
-({ dst: { is: false, uses: true }, id: n$1.PacificStandardTime, name: "Pacific Standard Time", offset: i$1.UTC_MINUS_8 });
-({ dst: { is: false, uses: true }, id: n$1.PakistanStandardTime, name: "Pakistan Standard Time", offset: i$1.UTC_PLUS_5 });
-({ dst: { is: false, uses: true }, id: n$1.PalauTime, name: "Palau Time", offset: i$1.UTC_PLUS_9 });
-({ dst: { is: false, uses: true }, id: n$1.PapuaNewGuineaTime, name: "Papua New Guinea Time", offset: i$1.UTC_PLUS_10 });
-({ dst: { is: false, uses: true }, id: n$1.ParaguaySummerTime, name: "Paraguay Summer Time", offset: i$1.UTC_MINUS_3 });
-({ dst: { is: false, uses: true }, id: n$1.ParaguayTime, name: "Paraguay Time", offset: i$1.UTC_MINUS_4 });
-({ dst: { is: false, uses: true }, id: n$1.PeruTime, name: "Peru Time", offset: i$1.UTC_MINUS_5 });
-({ dst: { is: false, uses: true }, id: n$1.PhilippineStandardTime, name: "Philippine Standard Time", offset: i$1.UTC_PLUS_8 });
-({ dst: { is: false, uses: true }, id: n$1.PhilippineTime, name: "Philippine Time", offset: i$1.UTC_PLUS_8 });
-({ dst: { is: false, uses: true }, id: n$1.PhoenixIslandTime, name: "Phoenix Island Time", offset: i$1.UTC_PLUS_13 });
-({ dst: { is: false, uses: true }, id: n$1.PitcairnTime, name: "Pitcairn Time", offset: i$1.UTC_MINUS_8 });
-({ dst: { is: false, uses: true }, id: n$1.PohnpeiStandardTime, name: "Pohnpei Standard Time", offset: i$1.UTC_PLUS_11 });
-({ dst: { is: false, uses: true }, id: n$1.ReunionTime, name: "Reunion Time", offset: i$1.UTC_PLUS_4 });
-({ dst: { is: false, uses: true }, id: n$1.RotheraResearchStationTime, name: "Rothera Research Station Time", offset: i$1.UTC_MINUS_3 });
-({ dst: { is: false, uses: true }, id: n$1.SaintPierreAndMiquelonDaylightTime, name: "Saint Pierre and Miquelon Daylight Time", offset: i$1.UTC_MINUS_2 });
-({ dst: { is: false, uses: true }, id: n$1.SaintPierreAndMiquelonStandardTime, name: "Saint Pierre and Miquelon Standard Time", offset: i$1.UTC_MINUS_3 });
-({ dst: { is: false, uses: true }, id: n$1.SakhalinIslandTime, name: "Sakhalin Island Time", offset: i$1.UTC_PLUS_11 });
-({ dst: { is: false, uses: true }, id: n$1.SamaraTime, name: "Samara Time", offset: i$1.UTC_PLUS_4 });
-({ dst: { is: false, uses: true }, id: n$1.SamoaDaylightTime, name: "Samoa Daylight Time", offset: i$1.UTC_MINUS_10 });
-({ dst: { is: false, uses: true }, id: n$1.SamoaStandardTime, name: "Samoa Standard Time", offset: i$1.UTC_MINUS_11 });
-({ dst: { is: false, uses: true }, id: n$1.SeychellesTime, name: "Seychelles Time", offset: i$1.UTC_PLUS_4 });
-({ dst: { is: false, uses: true }, id: n$1.ShowaStationTime, name: "Showa Station Time", offset: i$1.UTC_PLUS_3 });
-({ dst: { is: false, uses: true }, id: n$1.SingaporeStandardTime, name: "Singapore Standard Time", offset: i$1.UTC_PLUS_8 });
-({ dst: { is: false, uses: true }, id: n$1.SingaporeTime, name: "Singapore Time", offset: i$1.UTC_PLUS_8 });
-({ dst: { is: false, uses: true }, id: n$1.SolomonIslandsTime, name: "Solomon Islands Time", offset: i$1.UTC_PLUS_11 });
-({ dst: { is: false, uses: true }, id: n$1.SouthAfricanStandardTime, name: "South African Standard Time", offset: i$1.UTC_PLUS_2 });
-({ dst: { is: false, uses: true }, id: n$1.SouthGeorgiaAndTheSouthSandwichIslandsTime, name: "South Georgia and the South Sandwich Islands Time", offset: i$1.UTC_MINUS_2 });
-({ dst: { is: false, uses: true }, id: n$1.SrednekolymskTime, name: "Srednekolymsk Time", offset: i$1.UTC_PLUS_11 });
-({ dst: { is: false, uses: true }, id: n$1.SriLankaStandardTime, name: "Sri Lanka Standard Time", offset: i$1.UTC_PLUS_5_30 });
-({ dst: { is: false, uses: true }, id: n$1.SurinameTime, name: "Suriname Time", offset: i$1.UTC_MINUS_3 });
-({ dst: { is: false, uses: true }, id: n$1.TahitiTime, name: "Tahiti Time", offset: i$1.UTC_MINUS_10 });
-({ dst: { is: false, uses: true }, id: n$1.TajikistanTime, name: "Tajikistan Time", offset: i$1.UTC_PLUS_5 });
-({ dst: { is: false, uses: true }, id: n$1.ThailandStandardTime, name: "Thailand Standard Time", offset: i$1.UTC_PLUS_7 });
-({ dst: { is: false, uses: true }, id: n$1.TimorLesteTime, name: "Timor-Leste Time", offset: i$1.UTC_PLUS_9 });
-({ dst: { is: false, uses: true }, id: n$1.TokelauTime, name: "Tokelau Time", offset: i$1.UTC_PLUS_13 });
-({ dst: { is: false, uses: true }, id: n$1.TongaTime, name: "Tonga Time", offset: i$1.UTC_PLUS_13 });
-({ dst: { is: false, uses: true }, id: n$1.TurkeyTime, name: "Turkey Time", offset: i$1.UTC_PLUS_3 });
-({ dst: { is: false, uses: true }, id: n$1.TurkmenistanTime, name: "Turkmenistan Time", offset: i$1.UTC_PLUS_5 });
-({ dst: { is: false, uses: true }, id: n$1.TuvaluTime, name: "Tuvalu Time", offset: i$1.UTC_PLUS_12 });
-({ dst: { is: false, uses: true }, id: n$1.UlaanbaatarStandardTime, name: "Ulaanbaatar Standard Time", offset: i$1.UTC_PLUS_8 });
-({ dst: { is: false, uses: true }, id: n$1.UlaanbaatarSummerTime, name: "Ulaanbaatar Summer Time", offset: i$1.UTC_PLUS_9 });
-({ dst: { is: false, uses: true }, id: n$1.UruguayStandardTime, name: "Uruguay Standard Time", offset: i$1.UTC_MINUS_3 });
-({ dst: { is: false, uses: true }, id: n$1.UruguaySummerTime, name: "Uruguay Summer Time", offset: i$1.UTC_MINUS_2 });
-({ dst: { is: false, uses: true }, id: n$1.UzbekistanTime, name: "Uzbekistan Time", offset: i$1.UTC_PLUS_5 });
-({ dst: { is: false, uses: true }, id: n$1.VanuatuTime, name: "Vanuatu Time", offset: i$1.UTC_PLUS_11 });
-({ dst: { is: false, uses: true }, id: n$1.VenezuelaStandardTime, name: "Venezuela Standard Time", offset: i$1.UTC_MINUS_4 });
-({ dst: { is: false, uses: true }, id: n$1.VladivostokTime, name: "Vladivostok Time", offset: i$1.UTC_PLUS_10 });
-({ dst: { is: false, uses: true }, id: n$1.VolgogradTime, name: "Volgograd Time", offset: i$1.UTC_PLUS_4 });
-({ dst: { is: false, uses: true }, id: n$1.VostokStationTime, name: "Vostok Station Time", offset: i$1.UTC_PLUS_6 });
-({ dst: { is: false, uses: true }, id: n$1.WakeIslandTime, name: "Wake Island Time", offset: i$1.UTC_PLUS_12 });
-({ dst: { is: false, uses: true }, id: n$1.WestAfricaSummerTime, name: "West Africa Summer Time", offset: i$1.UTC_PLUS_2 });
-({ dst: { is: false, uses: true }, id: n$1.WestAfricaTime, name: "West Africa Time", offset: i$1.UTC_PLUS_1 });
-({ dst: { is: false, uses: true }, id: n$1.WestGreenlandSummerTime, name: "West Greenland Summer Time", offset: i$1.UTC_MINUS_2 });
-({ dst: { is: false, uses: true }, id: n$1.WestGreenlandTime, name: "West Greenland Time", offset: i$1.UTC_MINUS_3 });
-({ dst: { is: false, uses: true }, id: n$1.WestKazakhstanTime, name: "West Kazakhstan Time", offset: i$1.UTC_PLUS_5 });
-({ dst: { is: false, uses: true }, id: n$1.WesternEuropeanSummerTime, name: "Western European Summer Time", offset: i$1.UTC_PLUS_1 });
-({ dst: { is: false, uses: true }, id: n$1.WesternEuropeanTime, name: "Western European Time", offset: i$1.UTC_0 });
-({ dst: { is: false, uses: true }, id: n$1.WesternIndonesianTime, name: "Western Indonesian Time", offset: i$1.UTC_PLUS_7 });
-({ dst: { is: false, uses: true }, id: n$1.WesternStandardTime, name: "Western Standard Time", offset: i$1.UTC_PLUS_8 });
-({ dst: { is: false, uses: true }, id: n$1.YakutskTime, name: "Yakutsk Time", offset: i$1.UTC_PLUS_9 });
-({ dst: { is: false, uses: true }, id: n$1.YekaterinburgTime, name: "Yekaterinburg Time", offset: i$1.UTC_PLUS_5 });
-var I;
-(function(a) {
-  a.Africa = "Africa", a.Americas = "Americas", a.Asia = "Asia", a.Europe = "Europe", a.Oceania = "Oceania", a.Polar = "Polar";
-})(I || (I = {}));
-var x;
-(function(a) {
-  a.CentralAmerica = "Central America", a.EasternAsia = "Eastern Asia", a.EasternEurope = "Eastern Europe", a.EasternAfrica = "Eastern Africa", a.MiddleAfrica = "Middle Africa", a.MiddleEast = "Middle East", a.NorthernAfrica = "Northern Africa", a.NorthernAmerica = "Northern America", a.NorthernEurope = "Northern Europe", a.Polynesia = "Polynesia", a.SouthAmerica = "South America", a.SouthernAfrica = "Southern Africa", a.SouthernAsia = "Southern Asia", a.SouthernEurope = "Southern Europe", a.WesternAfrica = "Western Africa", a.WesternAsia = "Western Asia", a.WesternEurope = "Western Europe", a.WesternAustralia = "Western Australia";
-})(x || (x = {}));
-({ Afghanistan: { i18n: { calling_codes: [93], currencies: [l$1.AfghanistanAfghani], languages: [e.Pashto, e.Dari, e.Turkmen, e.Uzbek], tz: { offsets: [i$1.UTC_PLUS_4_30], regions: [t.AsiaKabul], timezones: [n$1.AfghanistanTime] } }, id: r.Afghanistan, info: { flag: { emoji: "\u{1F1E6}\u{1F1EB}", emoji_unicode: "U+1F1E6 U+1F1EB", svg: "https://www.countryflags.io/af/flat/64.svg" }, tld: [".af"] }, iso: { alpha2: r.Afghanistan, alpha3: "AFG", numeric: "004" }, name: { alt_spellings: ["AF", "Af\u0121\u0101nist\u0101n"], demonym: "Afghan", native: { endonym: "\u0627\u0641\u063A\u0627\u0646\u0633\u062A\u0627\u0646" }, official: "Islamic Republic of Afghanistan", short: "Afghanistan", translations: { [e.Afrikaans]: "Afghanistan", [e.Albanian]: "Shqip\xEBri", [e.Amharic]: "\u12A0\u134D\u130B\u1295", [e.Arabic]: "\u0623\u0641\u063A\u0627\u0646\u0633\u062A\u0627\u0646", [e.Armenian]: "\u0540\u0561\u0575\u0561\u057D\u057F\u0561\u0576", [e.Azerbaijani]: "Az\u0259rbaycan", [e.Bashkir]: "\u0410\u0444\u0433\u0430\u043D\u0438\u0441\u0442\u0430\u043D", [e.Basque]: "Afganist\xE1n", [e.Belarusian]: "\u0410\u0444\u0433\u0430\u043D\u0438\u0441\u0442\u0430\u043D", [e.Bengali]: "\u0986\u09AB\u0997\u09BE\u09A8\u09BF\u09B8\u09CD\u09A4\u09BE\u09A8", [e.Berber]: "\u0623\u0641\u063A\u0627\u0646\u0633\u062A\u0627\u0646", [e.Bhutani]: "\u0F60\u0F56\u0FB2\u0F74\u0F42\u0F0B\u0F61\u0F74\u0F63\u0F0B\u0F66\u0FA4\u0FB2\u0F7C\u0F51\u0F0B\u0F40\u0FB1\u0F72\u0F0B\u0F51\u0F7C\u0F53\u0F0B\u0F63\u0F7A\u0F0B\u0F66\u0F90\u0F51\u0F0B\u0F46\u0F0D", [e.Bosnian]: "\u0410\u0444\u0433\u0430\u043D\u0438\u0441\u0442\u0430\u043D", [e.Breton]: "Afganistan", [e.Bulgarian]: "\u0410\u0444\u0433\u0430\u043D\u0438\u0441\u0442\u0430\u043D", [e.Burmese]: "\u1021\u102C\u1019\u1001\u103B\u1004\u103A\u1010\u1031\u102C\u103A", [e.Catalan]: "Afganistan", [e.Chinese]: "\u963F\u5BCC\u6C57", [e.Croatian]: "Afganistan", [e.Czech]: "Afganistan", [e.Danish]: "Afghanistan", [e.Dutch]: "Afghanistan", [e.English]: "Afghanistan", [e.Esperanto]: "Afganistan", [e.Estonian]: "Afganistan", [e.Finnish]: "Afghanistan", [e.French]: "Afghanistan", [e.Frisian]: "Afghanistan", [e.Galician]: "Afganist\xE1n", [e.Georgian]: "\u10D0\u10D5\u10E6\u10D0\u10DC\u10D4\u10D7\u10D8", [e.German]: "Afghanistan", [e.Greenlandic]: "Afghanistan", [e.Greek]: "\u0391\u03C6\u03B3\u03B1\u03BD\u03B9\u03C3\u03C4\u03AC\u03BD", [e.Gujarati]: "\u0A85\u0AAB\u0A97\u0ABE\u0AA8\u0ABF\u0AB8\u0ACD\u0AA4\u0ABE\u0AA8", [e.Haitian]: "Afghanistan", [e.Hausa]: "Afghanistan", [e.Hebrew]: "\u05D0\u05E4\u05D2\u05E0\u05D9\u05E1\u05D8\u05DF", [e.Hindi]: "\u0905\u092B\u0917\u093E\u0928\u093F\u0938\u094D\u0924\u093E\u0928", [e.Hungarian]: "Afganistan", [e.Icelandic]: "Afghanistan", [e.Igbo]: "Afghanistan", [e.Indonesian]: "Afghanistan", [e.Irish]: "Afghanistan", [e.Italian]: "Afghanistan", [e.Japanese]: "\u30A2\u30D5\u30AC\u30CB\u30B9\u30BF\u30F3", [e.Javanese]: "Afghanistan", [e.Kannada]: "\u0C85\u0CAB\u0C97\u0CBE\u0CA8\u0CBF\u0CB8\u0CCD\u0CA4\u0CBE\u0CA8", [e.Kazakh]: "\u0410\u0444\u0433\u0430\u043D\u0438\u0441\u0442\u0430\u043D", [e.Khmer]: "\u17A2\u17B6\u17A0\u17D2\u179C\u17D2\u179A\u17B7\u1780", [e.Korean]: "\uC544\uD504\uAC00\uB2C8\uC2A4\uD0C4", [e.Kurdish]: "Afghanistan", [e.Kyrgyz]: "\u0410\u0444\u0433\u0430\u043D\u0438\u0441\u0442\u0430\u043D", [e.Lao]: "\u0EAD\u0EB2\u0E9F\u0EB2\u0EA5\u0EBD\u0E99", [e.Latin]: "Afghanistan", [e.Latvian]: "Afghanistan", [e.Lithuanian]: "Afganistanas", [e.Luxembourgish]: "Afghanistan", [e.Macedonian]: "\u0410\u0444\u0433\u0430\u043D\u0438\u0441\u0442\u0430\u043D", [e.Malagasy]: "Afghanistan", [e.Malay]: "Afghanistan", [e.Malayalam]: "\u0D05\u0D2B\u0D17\u0D3E\u0D28\u0D3F\u0D38\u0D4D\u0D24\u0D3E\u0D28", [e.Maltese]: "Afghanistan", [e.Maori]: "Afghanistan", [e.Marathi]: "\u0905\u092B\u0917\u093E\u0928\u093F\u0938\u094D\u0924\u093E\u0928", [e.Mongolian]: "\u0410\u0444\u0433\u0430\u043D\u0438\u0441\u0442\u0430\u043D", [e.Nepali]: "\u0905\u092B\u0917\u093E\u0928\u093F\u0938\u094D\u0924\u093E\u0928", [e.Norwegian]: "Afghanistan", [e.Pashto]: "\u0627\u0641\u063A\u0627\u0646\u0633\u062A\u0627\u0646", [e.Persian]: "\u0627\u0641\u063A\u0627\u0646\u0633\u062A\u0627\u0646", [e.Polish]: "Afganistan", [e.Portuguese]: "Afghanistan", [e.Punjabi]: "Afghanistan", [e.Romanian]: "Afghanistan", [e.Polish]: "Afganistan", [e.Russian]: "\u0410\u0444\u0433\u0430\u043D\u0438\u0441\u0442\u0430\u043D", [e.Samoan]: "Afghanistan", [e.Sanskrit]: "\u0905\u092B\u0917\u093E\u0928\u093F\u0938\u094D\u0924\u093E\u0928", [e.Scots]: "Afghanistan", [e.Serbian]: "\u0410\u0444\u0433\u0430\u043D\u0438\u0441\u0442\u0430\u043D", [e.Sesotho]: "Afghanistan", [e.Shona]: "Afghanistan", [e.Sindhi]: "Afghanistan", [e.Sinhala]: "\u0D86\u0D9C\u0DCA\u200D\u0DBB\u0DDC\u0D9A\u0DCA\u0D9A\u0DD2\u0DBA\u0DCF\u0DC0", [e.Slovak]: "Afganistan", [e.Slovenian]: "Afganistan", [e.Somali]: "Afghanistan", [e.Spanish]: "Afganist\xE1n", [e.Sudanese]: "Afghanistan", [e.Swahili]: "Afghanistan", [e.Swedish]: "Afghanistan", [e.Tagalog]: "Afghanistan", [e.Tajik]: "\u0410\u0444\u0433\u0430\u043D\u0438\u0441\u0442\u0430\u043D", [e.Tatar]: "\u0410\u0444\u0433\u0430\u043D\u0438\u0441\u0442\u0430\u043D", [e.Tamil]: "\u0B86\u0BAA\u0BCD\u0BAA\u0B95\u0BBE\u0BA9\u0BBF\u0BB8\u0BCD\u0BA4\u0BBE\u0BA9\u0BCD", [e.Telugu]: "\u0C06\u0C2B\u0C4D\u0C18\u0C28\u0C3F\u0C38\u0C4D\u0C24\u0C3E\u0C28\u0C4D", [e.Thai]: "\u0E2D\u0E31\u0E1F\u0E01\u0E32\u0E19\u0E34\u0E2A\u0E16\u0E32\u0E19", [e.Tibetan]: "\u0F68\u0F55\u0F0B\u0F42\u0F7A\u0F0B\u0F53\u0F72\u0F66\u0F72\u0F0B\u0F4F\u0F7A\u0F53\u0F66\u0F72\u0F0D", [e.Turkish]: "Afganistan", [e.Ukrainian]: "\u0410\u0444\u0433\u0430\u043D\u0438\u0441\u0442\u0430\u043D", [e.Urdu]: "\u0627\u0641\u063A\u0627\u0646\u0633\u062A\u0627\u0646", [e.Uzbek]: "\u0410\u0444\u0433\u0430\u043D\u0438\u0441\u0442\u0430\u043D", [e.Vietnamese]: "Afghanistan", [e.Welsh]: "Afghanistan", [e.Xhosa]: "Afghanistan", [e.Yiddish]: "Afghanistan", [e.Yoruba]: "Afghanistan", [e.Zulu]: "Afghanistan" } }, statistics: { demographics: { age: { distribution: [{ age: "0 to 14 years", percentage: 15.3 }, { age: "15 to 64 years", percentage: 66.7 }, { age: "65 years and over", percentage: 14.6 }], median_age: 35.5 }, population: { largest_city: "Kabul", total: 341e5 } }, geography: { area: 652230, region: I.Asia, sub_region: x.SouthernAsia }, government: { capital: "Kabul", type: "Islamic Emirate" } } }, Albania: { i18n: { calling_codes: [355], currencies: [l$1.AlbaniaLek], languages: [e.Albanian, e.Greek, e.Turkish], tz: { offsets: [i$1.UTC_PLUS_1], regions: [t.EuropeBrussels], timezones: [n$1.CentralEuropeanTime] } }, id: r.Albania, info: { flag: { emoji: "\u{1F1E6}\u{1F1F1}", emoji_unicode: "U+1F1E6 U+1F1F1", svg: "https://www.countryflags.io/al/flat/64.svg" }, tld: [".al"] }, iso: { alpha2: r.Albania, alpha3: "ALB", numeric: "008" }, name: { alt_spellings: ["AL", "Shqip\xEBri", "Shqip\xEBria", "Shqipnia"], demonym: "Albanian", native: { endonym: "Shqip\xEBri" }, official: "Republic of Albania", short: "Albania", translations: { [e.Afrikaans]: "Albania", [e.Albanian]: "Albania", [e.Amharic]: "\u12A0\u120D\u1263\u1295\u12EB", [e.Arabic]: "\u0623\u0644\u0628\u0627\u0646\u064A\u0627", [e.Armenian]: "\u0540\u0561\u0575\u0561\u057D\u057F\u0561\u0576", [e.Azerbaijani]: "Az\u0259rbaycan", [e.Bashkir]: "\u0410\u043B\u0431\u0430\u043D\u0438\u044F", [e.Basque]: "Albania", [e.Belarusian]: "\u0410\u043B\u0431\u0430\u043D\u0438\u044F", [e.Bengali]: "\u0986\u09B2\u09AC\u09BE\u09A8\u09BF\u09AF\u09BC\u09BE", [e.Berber]: "\u0623\u0644\u0628\u0627\u0646\u064A\u0627", [e.Bhutani]: "\u0F60\u0F56\u0FB2\u0F74\u0F42\u0F0B\u0F61\u0F74\u0F63\u0F0B", [e.Bosnian]: "Albanija", [e.Breton]: "Albania", [e.Bulgarian]: "\u0410\u043B\u0431\u0430\u043D\u0438\u044F", [e.Burmese]: "\u1021\u102C\u1019\u1001\u103B\u1004\u103A\u1010\u1031\u102C\u103A", [e.Catalan]: "Alb\xE0nia", [e.Chinese]: "\u963F\u5C14\u5DF4\u5C3C\u4E9A", [e.Croatian]: "Albanija", [e.Czech]: "Alb\xE1nie", [e.Danish]: "Albanien", [e.Dutch]: "Albani\xEB", [e.English]: "Albania", [e.Esperanto]: "Albanio", [e.Estonian]: "Albaania", [e.Finnish]: "Albania", [e.French]: "Albanie", [e.Frisian]: "Albani\xEB", [e.Galician]: "Alb\xE2nia", [e.Georgian]: "\u10D0\u10DA\u10D1\u10D0\u10DC\u10D8\u10D0", [e.German]: "Albanien", [e.Greenlandic]: "Albania", [e.Greek]: "\u0391\u03BB\u03B2\u03B1\u03BD\u03AF\u03B1", [e.Gujarati]: "\u0A85\u0AB2\u0AAC\u0AA8\u0ABF\u0AAF\u0ABE", [e.Haitian]: "Albanais", [e.Hausa]: "Albania", [e.Hebrew]: "\u05D0\u05DC\u05D1\u05E0\u05D9\u05D4", [e.Hindi]: "\u0905\u0932\u094D\u092C\u093E\u0928\u093F\u092F\u093E", [e.Hungarian]: "Alb\xE1nia", [e.Icelandic]: "Alb\xFAnir", [e.Igbo]: "Albania", [e.Indonesian]: "Albania", [e.Irish]: "Alb\xE1in", [e.Italian]: "Albania", [e.Japanese]: "\u30A2\u30EB\u30D0\u30CB\u30A2", [e.Javanese]: "Albania", [e.Kannada]: "\u0C85\u0CB2\u0CCD\u0CAC\u0CBE\u0CA8\u0CBF\u0CAF\u0CBE", [e.Kazakh]: "\u0410\u043B\u0431\u0430\u043D\u0438\u044F", [e.Khmer]: "\u17A2\u17B6\u17A0\u17D2\u179C\u17D2\u179A\u17C1\u179F\u17CA\u17B8", [e.Korean]: "\uC54C\uBC14\uB2C8\uC544", [e.Kurdish]: "\u0622\u0644\u0628\u0627\u0646\u06CC\u0627", [e.Kyrgyz]: "\u0410\u043B\u0431\u0430\u043D\u0438\u044F", [e.Lao]: "\u0EAD\u0EB2\u0EA5\u0EB2\u0E99\u0EB5", [e.Latin]: "Albania", [e.Latvian]: "Alb\u0101nija", [e.Lithuanian]: "Albanija", [e.Luxembourgish]: "Albani\xEB", [e.Macedonian]: "\u0410\u043B\u0431\u0430\u043D\u0438\u0458\u0430", [e.Malagasy]: "Albania", [e.Malay]: "Albania", [e.Malayalam]: "\u0D05\u0D32\u0D4D\u0D2C\u0D3E\u0D28\u0D3F\u0D2F\u0D3E", [e.Maltese]: "Albania", [e.Maori]: "Albania", [e.Marathi]: "\u0905\u0932\u094D\u092C\u093E\u0928\u093F\u092F\u093E", [e.Mongolian]: "\u0410\u043B\u0431\u0430\u043D\u0438\u044F", [e.Nepali]: "\u0905\u0932\u094D\u092C\u093E\u0928\u093F\u092F\u093E", [e.Norwegian]: "Albania", [e.Pashto]: "\u0627\u0627\u0644\u0628\u0627\u0646\u06CC", [e.Persian]: "\u0622\u0644\u0628\u0627\u0646\u06CC", [e.Polish]: "Albania", [e.Portuguese]: "Alb\xE2nia", [e.Punjabi]: "\u0A05\u0A32\u0A2C\u0A28\u0A40\u0A06", [e.Romanian]: "Alb\u0103n", [e.Russian]: "\u0410\u043B\u0431\u0430\u043D\u0438\u044F", [e.Samoan]: "Albania", [e.Sanskrit]: "Albani", [e.Scots]: "Alb\xE0inia", [e.Serbian]: "\u0410\u043B\u0431\u0430\u043D\u0438\u0458\u0430", [e.Sesotho]: "Albania", [e.Shona]: "Albania", [e.Sindhi]: "Albania", [e.Sinhala]: "\u0D87\u0DBD\u0DCA\u0DB6\u0DCF\u0DB1\u0DD2\u0DBA", [e.Slovak]: "Alb\xE1nsko", [e.Slovenian]: "Albanija", [e.Somali]: "Albania", [e.Spanish]: "Albania", [e.Sudanese]: "Albania", [e.Swahili]: "Albania", [e.Swedish]: "Albanien", [e.Tagalog]: "Albania", [e.Tajik]: "\u0410\u043B\u0431\u0430\u043D\u0438\u044F", [e.Tamil]: "\u0B85\u0BB2\u0BCD\u0BAA\u0BBE\u0BA9\u0BBF\u0BAF\u0BBE", [e.Tatar]: "\u0410\u043B\u0431\u0430\u043D\u0438\u044F", [e.Telugu]: "\u0C05\u0C32\u0C4D\u0C2C\u0C3E\u0C28\u0C3F\u0C2F\u0C3E", [e.Thai]: "\u0E2D\u0E31\u0E25\u0E41\u0E1A\u0E19\u0E34\u0E19\u0E35", [e.Tibetan]: "\u0F68\u0F63\u0F0B\u0F56\u0F72\u0F0B\u0F53\u0F72\u0F0B\u0F61\u0F72", [e.Turkish]: "Albaniye", [e.Ukrainian]: "\u0410\u043B\u0431\u0430\u043D\u0456\u044F", [e.Urdu]: "\u0622\u0644\u0628\u0627\u0646\u06CC", [e.Uzbek]: "\u0410\u043B\u0431\u0430\u043D\u0438\u044F", [e.Vietnamese]: "Albanie", [e.Welsh]: "Albania", [e.Xhosa]: "Albania", [e.Yiddish]: "\u05D0\u05DC\u05D1\u05E0\u05D9\u05E9", [e.Yoruba]: "Albania", [e.Zulu]: "Albania" } }, statistics: { demographics: { age: { distribution: [{ age: "0 to 14 years", percentage: 15.3 }, { age: "15 to 64 years", percentage: 66.7 }, { age: "65 years and over", percentage: 14.6 }], median_age: 35.5 }, population: { largest_city: "Tirana", total: 2853e3 } }, geography: { area: 28748, region: I.Europe, sub_region: x.SouthernEurope }, government: { capital: "Tirana", type: "Republic" } } }, Algeria: { i18n: { calling_codes: [213], currencies: [l$1.AlgeriaDinar], languages: [e.Arabic, e.French, e.Berber, e.Tamazight], tz: { offsets: [i$1.UTC_PLUS_1, i$1.UTC_PLUS_2], regions: [t.AfricaAlgiers], timezones: [n$1.CentralEuropeanTime] } }, id: r.Algeria, info: { flag: { emoji: "\u{1F1E9}\u{1F1FF}", emoji_unicode: "U+1F1E9 U+1F1FF", svg: "https://www.countryflags.io/dz/flat/64.svg" }, tld: [".dz", ".\u062C\u0632\u0627\u0626\u0631"] }, iso: { alpha2: r.Algeria, alpha3: "DZA", numeric: "012" }, name: { alt_spellings: ["DZ", "Dzayer", "Alg\xE9rie"], demonym: "Algerian", native: { endonym: "\u0627\u0644\u062C\u0632\u0627\u0626\u0631" }, official: "People's Democratic Republic of Algeria", short: "Algeria", translations: { [e.Afrikaans]: "Algerije", [e.Albanian]: "Algeria", [e.Amharic]: "\u12A0\u120D\u1300\u122D\u1235", [e.Arabic]: "\u0627\u0644\u062C\u0632\u0627\u0626\u0631", [e.Armenian]: "\u0531\u056C\u0563\u0578\u0580\u056B\u0561", [e.Azerbaijani]: "Az\u0259rbaycan", [e.Bashkir]: "\u0410\u043B\u0436\u0438\u0440", [e.Basque]: "Algeria", [e.Belarusian]: "\u0410\u043B\u0436\u0438\u0440", [e.Bengali]: "\u0986\u09B2\u099C\u09C7\u09B0", [e.Berber]: "\u062C\u0632\u0627\u0626\u0631", [e.Bhutani]: "\u0F62\u0FAB\u0F7C\u0F44\u0F0B\u0F41", [e.Bosnian]: "Al\u017Eir", [e.Breton]: "Algeria", [e.Bulgarian]: "\u0410\u043B\u0436\u0438\u0440", [e.Burmese]: "\u1021\u102C\u101B\u1015\u103A", [e.Catalan]: "Alg\xE8ria", [e.Chinese]: "\u963F\u5C14\u53CA\u5229\u4E9A", [e.Croatian]: "Al\u017Eir", [e.Czech]: "Al\u017E\xEDrsko", [e.Danish]: "Algeriet", [e.Dutch]: "Algerije", [e.English]: "Algeria", [e.Esperanto]: "Al\u011Derio", [e.Estonian]: "Al\u017Eira", [e.Finnish]: "Algeria", [e.French]: "Alg\xE9rie", [e.Frisian]: "Algeri\xEB", [e.Galician]: "Alxeria", [e.Georgian]: "\u10D0\u10DA\u10D2\u10D8\u10E3\u10E0\u10D8", [e.German]: "Algerien", [e.Greenlandic]: "Algeria", [e.Greek]: "\u0391\u03BB\u03B3\u03B5\u03C1\u03AF\u03B1", [e.Gujarati]: "\u0A86\u0AB2\u0AC7\u0A97\u0AB0\u0ABF\u0AAF\u0ABE", [e.Haitian]: "Alg\xE9rie", [e.Hausa]: "Algeria", [e.Hebrew]: "\u05D0\u05DC\u05D2\u05F3\u05D9\u05E8\u05D9\u05D4", [e.Hindi]: "\u0906\u0932\u094D\u0917\u0947\u0930\u093F\u092F\u093E", [e.Hungarian]: "Alg\xE1r", [e.Icelandic]: "Alg\xFAra", [e.Igbo]: "Algeria", [e.Indonesian]: "Aljir", [e.Irish]: "Alg\xE9rie", [e.Italian]: "Algeria", [e.Japanese]: "\u30A2\u30EB\u30B8\u30A7\u30EA\u30A2", [e.Javanese]: "Aljir", [e.Kannada]: "\u0C86\u0CB2\u0CCD\u0C97\u0CC7\u0CB0\u0CBF\u0CAF\u0CA8\u0CCD", [e.Kazakh]: "\u0410\u043B\u0436\u0438\u0440", [e.Khmer]: "\u17A2\u17B6\u179B\u17CB\u1794\u17B6\u1793\u17B8", [e.Korean]: "\uC54C\uC81C\uB9AC", [e.Kurdish]: "\u062C\u0632\u0627\u06CC\u0631 \u0627\u0644\u062C\u0632\u0627\u06CC\u0631", [e.Kyrgyz]: "\u0410\u043B\u0436\u0438\u0440", [e.Lao]: "\u0EAD\u0EB2\u0EA5\u0EB2\u0E88\u0EB5\u0E99", [e.Latin]: "Algeria", [e.Latvian]: "Al\u017E\u012Brija", [e.Lithuanian]: "Al\u017Eyras", [e.Luxembourgish]: "Algeria", [e.Macedonian]: "\u0410\u043B\u0436\u0438\u0440", [e.Malagasy]: "Alg\xE9rie", [e.Malay]: "Aljir", [e.Malayalam]: "\u0D06\u0D32\u0D02\u0D17\u0D47\u0D30\u0D3F\u0D2F\u0D7B", [e.Maltese]: "Alg\xE9rie", [e.Maori]: "Algeria", [e.Marathi]: "\u0906\u0932\u094D\u0917\u0947\u0930\u093F\u092F\u093E", [e.Mongolian]: "\u0410\u043B\u0436\u0438\u0440", [e.Nepali]: "\u0906\u0932\u094D\u0917\u0947\u0930\u093F\u092F\u093E", [e.Norwegian]: "Algeria", [e.Pashto]: "\u0627\u0644\u062C\u0632\u0627\u0626\u0631", [e.Persian]: "\u062C\u0632\u0627\u06CC\u0631 \u0627\u0644\u0639\u0631\u0628", [e.Polish]: "Algieria", [e.Portuguese]: "Alg\xE9ria", [e.Punjabi]: "\u0A06\u0A32\u0A47\u0A17\u0A40\u0A06", [e.Romanian]: "Algeria", [e.Russian]: "\u0410\u043B\u0436\u0438\u0440", [e.Samoan]: "Algeria", [e.Sanskrit]: "\u0906\u0932\u094D\u0917\u0947\u0930\u093F\u092F\u093E", [e.Scots]: "Algeria", [e.Serbian]: "\u0410\u043B\u0436\u0438\u0440", [e.Sesotho]: "Algeria", [e.Shona]: "Algeria", [e.Sindhi]: "Algeria", [e.Sinhala]: "\u0D86\u0DBD\u0DCA\u0DB6\u0DCF\u0DB1\u0DD2\u0DBA", [e.Slovak]: "Al\u017E\xEDrsko", [e.Slovenian]: "Al\u017Eir", [e.Somali]: "Algeria", [e.Spanish]: "Algeria", [e.Sudanese]: "Aljir", [e.Swahili]: "Aljir", [e.Swedish]: "Algeriet", [e.Tagalog]: "Algeria", [e.Tajik]: "\u0410\u043B\u0436\u0438\u0440", [e.Tamil]: "\u0B86\u0BB2\u0BCD\u0B95\u0BC7\u0BB0\u0BBF\u0BAF\u0BBE", [e.Tatar]: "\u0410\u043B\u0436\u0438\u0440", [e.Telugu]: "\u0C06\u0C32\u0C4D\u0C17\u0C47\u0C30\u0C3F\u0C2F\u0C3E", [e.Thai]: "\u0E2D\u0E32\u0E23\u0E32\u0E01\u0E2D\u0E19", [e.Tibetan]: "\u0F68\u0F63\u0F9F\u0F72\u0F0B\u0F62\u0F72\u0F0B\u0F61\u0F72", [e.Turkish]: "Cezayir", [e.Ukrainian]: "\u0410\u043B\u0436\u0438\u0440", [e.Urdu]: "\u0622\u0644\u062C\u06CC\u0631", [e.Uzbek]: "\u0410\u043B\u0436\u0438\u0440", [e.Vietnamese]: "\u1EA2\u0301\u1EA1\u1EA3\u1EAD\u1EB5", [e.Welsh]: "Algeria", [e.Xhosa]: "Algeria", [e.Yiddish]: "\u05D0\u05DC\u05D2\u05F3\u05D9\u05E8\u05D9\u05D4", [e.Yoruba]: "Algeria", [e.Zulu]: "Algeria" } }, statistics: { demographics: { age: { distribution: [{ age: "0 to 14 years", percentage: 15.3 }, { age: "15 to 64 years", percentage: 66.7 }, { age: "65 years and over", percentage: 14.6 }], median_age: 35.5 }, population: { largest_city: "Oran", total: 371e5 } }, geography: { area: 2381740, region: I.Africa, sub_region: x.NorthernAfrica }, government: { capital: "Algiers", type: "Republic" } } }, AmericanSamoa: { i18n: { calling_codes: [1684], currencies: [l$1.AmericanSamoaTala], languages: [e.English, e.Samoan], tz: { offsets: [i$1.UTC_MINUS_11], regions: [t.PacificSamoa], timezones: [n$1.SamoaStandardTime] } }, id: r.AmericanSamoa, info: { flag: { emoji: "\u{1F1E6}\u{1F1F8}", emoji_unicode: "U+1F1E6 U+1F1F8", svg: "https://www.countryflags.io/as/flat/64.svg" }, tld: [".as"] }, iso: { alpha2: r.AmericanSamoa, alpha3: "ASM", numeric: "016" }, name: { alt_spellings: ["AS", "Amerika S\u0101moa", "Amelika S\u0101moa", "S\u0101moa Amelika"], demonym: "American Samoan", native: { endonym: "American Samoa" }, official: "American Samoa", short: "American Samoa", translations: { [e.Afrikaans]: "Amerikaans Samoa", [e.Albanian]: "Samoa Amerikane", [e.Amharic]: "\u1233\u121E\u12A0\u122D", [e.Arabic]: "\u0633\u0627\u0645\u0648\u0627 \u0627\u0644\u0623\u0645\u0631\u064A\u0643\u064A\u0629", [e.Armenian]: "\u054D\u0561\u0570\u0561\u0574\u0561\u056C\u056B\u0561", [e.Azerbaijani]: "Samoa Amerikana", [e.Bashkir]: "\u0410\u043C\u0435\u0440\u0438\u043A\u0430\u043D\u0441\u043A\u0438 \u0421\u0430\u043C\u043E\u0430", [e.Basque]: "Samoa Amerikana", [e.Belarusian]: "\u0410\u043C\u0435\u0440\u0438\u043A\u0430\u043D\u0441\u043A\u0430\u044F \u0421\u0430\u043C\u043E\u0430", [e.Bengali]: "\u0986\u09AE\u09C7\u09B0\u09BF\u0995\u09BE\u09A8 \u09B8\u09BE\u09AE\u09CB\u09AF\u09BC\u09BE", [e.Berber]: "\u062C\u0632\u0631 \u0633\u0627\u0645\u0648\u0627 \u0627\u0644\u0623\u0645\u0631\u064A\u0643\u064A\u0629", [e.Bhutani]: "\u0F68\u0F62\u0F92\u0FB1\u0F0B\u0F58\u0F72\u0F0B\u0F51\u0F58\u0F44\u0F66\u0F0B\u0F66\u0FA4\u0FB2\u0F7C\u0F51\u0F0B\u0F40\u0FB1\u0F72\u0F0B\u0F66\u0F90\u0F56\u0F66\u0F0B\u0F62\u0F92\u0FB1\u0F74\u0F51\u0F0B\u0F46\u0F7A\u0F53\u0F0B\u0F54\u0F7C\u0F0D", [e.Bosnian]: "Ameri\u010Dka Samoa", [e.Breton]: "Samoa Amerikan", [e.Bulgarian]: "\u0410\u043C\u0435\u0440\u0438\u043A\u0430\u043D\u0441\u043A\u0430 \u0421\u0430\u043C\u043E\u0430", [e.Burmese]: "\u1021\u1019\u1039\u1038\u1019\u101B\u102D\u102F\u1018\u102C\u101E\u102C", [e.Catalan]: "Samoa Americana", [e.Chinese]: "\u7F8E\u5C5E\u8428\u6469\u4E9A", [e.Croatian]: "Ameri\u010Dka Samoa", [e.Czech]: "Americk\xE1 Samoa", [e.Danish]: "Amerikansk Samoa", [e.Dutch]: "Amerikaans Samoa", [e.English]: "American Samoa", [e.Esperanto]: "Samoa Amerika", [e.Estonian]: "Ameerika Samoa", [e.Finnish]: "Amerikka Samoa", [e.French]: "American Samoa", [e.Frisian]: "Amerikaans Samoa", [e.Galician]: "Samoa Americana", [e.Georgian]: "\u10D0\u10DB\u10D4\u10E0\u10D8\u10D9\u10D8\u10E1 \u10E1\u10D0\u10DB\u10DD\u10D0", [e.German]: "Amerikanisch-Samoa", [e.Greenlandic]: "Amerikaans Samoa", [e.Greek]: "\u0391\u03BC\u03B5\u03C1\u03B9\u03BA\u03B1\u03BD\u03B9\u03BA\u03AE \u03A3\u03B1\u03BC\u03CC\u03B1", [e.Gujarati]: "\u0A86\u0AAE\u0AC7\u0AB0\u0ABF\u0A95\u0AA8 \u0AB8\u0ABE\u0AAE\u0ACB\u0AAF\u0ABE", [e.Haitian]: "Amerikaans Samoa", [e.Hausa]: "Amerikaans Samoa", [e.Hebrew]: "\u05D0\u05DE\u05E8\u05D9\u05E7\u05E0\u05D9\u05D4 \u05E1\u05DE\u05D5\u05D0\u05D4", [e.Hindi]: "\u0905\u092E\u0947\u0930\u093F\u0915\u093E \u0938\u092E\u094B\u0906", [e.Hungarian]: "Amerikai Szamoa", [e.Icelandic]: "Amerikai Szamoa", [e.Igbo]: "Ikina Amerika", [e.Indonesian]: "Samoa Amerika", [e.Irish]: "Samoa Amerikana", [e.Italian]: "Samoa Americane", [e.Japanese]: "\u30A2\u30E1\u30EA\u30AB\u9818\u30B5\u30E2\u30A2", [e.Javanese]: "Samoa Amerika", [e.Kannada]: "\u0C85\u0CAE\u0CC7\u0CB0\u0CBF\u0C95\u0CA8\u0CCD \u0CB8\u0CAE\u0CCB\u0C86", [e.Kazakh]: "\u0410\u043C\u0435\u0440\u0438\u043A\u0430\u043D\u0441\u043A\u0438\u0439 \u0421\u0430\u043C\u043E\u0430", [e.Khmer]: "\u17A2\u17B6\u1798\u17C9\u17B6\u179A\u17B8\u179F\u17D2\u178F\u1784\u17CB", [e.Korean]: "\uC544\uBA54\uB9AC\uCE74 \uC0AC\uBAA8\uC544", [e.Kurdish]: "Amerikaans Samoa", [e.Kyrgyz]: "\u0410\u043C\u0435\u0440\u0438\u043A\u0430\u043D\u0441\u043A\u0438\u0439 \u0421\u0430\u043C\u043E\u0430", [e.Lao]: "\u0EAD\u0EB2\u0EA1\u0EB2\u0E99\u0EB2\u0E94\u0EB2\u0EA1\u0EB2\u0E99\u0EB2\u0E94", [e.Latin]: "Samoa Amerikana", [e.Latvian]: "Amerikas Samoa", [e.Lithuanian]: "Amerikos Samoa", [e.Luxembourgish]: "Amerikaans Samoa", [e.Macedonian]: "\u0410\u043C\u0435\u0440\u0438\u043A\u0430\u043D\u0441\u043A\u0430 \u0421\u0430\u043C\u043E\u0430", [e.Malagasy]: "Samoa Amerika", [e.Malay]: "Amerika Samo", [e.Malayalam]: "\u0D05\u0D2E\u0D47\u0D30\u0D3F\u0D15\u0D4D\u0D15\u0D28\u0D4D\u0D31\u0D4D \u0D38\u0D2E\u0D4B\u0D06", [e.Maltese]: "Samoa Amerika", [e.Maori]: "Samoa Amerika", [e.Marathi]: "\u0905\u092E\u0947\u0930\u093F\u0915\u093E \u0938\u092E\u094B\u0906", [e.Mongolian]: "\u0410\u043C\u0435\u0440\u0438\u043A\u0430\u043D\u0441\u043A\u0438\u0439 \u0421\u0430\u043C\u043E\u0430", [e.Nepali]: "\u0905\u092E\u0947\u0930\u093F\u0915\u093E \u0938\u092E\u094B\u0906", [e.Norwegian]: "Amerikansk Samoa", [e.Pashto]: "\u0627\u0645\u0631\u06CC\u06A9\u0627\u06CC \u0633\u0645\u0648\u0627", [e.Persian]: "\u0622\u0645\u0631\u06CC\u06A9\u0627\u06CC \u0633\u0645\u0648\u0627", [e.Polish]: "Samoa Ameryka\u0144skie", [e.Portuguese]: "Samoa Americana", [e.Punjabi]: "\u0A05\u0A2E\u0A30\u0A40\u0A15\u0A40 \u0A38\u0A3E\u0A2E\u0A4B\u0A06", [e.Romanian]: "Samoa americane", [e.Russian]: "\u0410\u043C\u0435\u0440\u0438\u043A\u0430\u043D\u0441\u043A\u0430\u044F \u0421\u0430\u043C\u043E\u0430", [e.Samoan]: "Samoa Amerika", [e.Sanskrit]: "\u0905\u092E\u0947\u0930\u093F\u0915\u093E \u0938\u092E\u094B\u0906", [e.Scots]: "Amerikaans Samoa", [e.Serbian]: "\u0410\u043C\u0435\u0440\u0438\u043A\u0430\u043D\u0441\u043A\u0430 \u0421\u0430\u043C\u043E\u0430", [e.Sesotho]: "Amerikaans Samoa", [e.Shona]: "Amerikaans Samoa", [e.Sindhi]: "Amerikaans Samoa", [e.Sinhala]: "\u0D86\u0DBB\u0DCA\u0DA2\u0DD2\u0DB1\u0DCF\u0DB1\u0DD4 \u0DC3\u0DD0\u0DB8\u0DD0\u0DBD\u0DCA\u0DC0", [e.Slovak]: "Amerikaans Samoa", [e.Slovenian]: "Amerikaans Samoa", [e.Somali]: "Amerikaans Samoa", [e.Spanish]: "Samoa Americana", [e.Sudanese]: "Amerikaans Samoa", [e.Swahili]: "Amerikaans Samoa", [e.Swedish]: "Amerikansk Samoa", [e.Tagalog]: "Amerikaans Samoa", [e.Tajik]: "\u0410\u043C\u0435\u0440\u0438\u043A\u0430\u043D\u0441\u043A\u0438 \u0441\u0430\u043C\u043E\u0430", [e.Tamil]: "\u0B85\u0BAE\u0BC6\u0BB0\u0BBF\u0B95\u0BCD \u0B9A\u0BAE\u0BCB\u0BB5\u0BBE", [e.Tatar]: "\u0410\u043C\u0435\u0440\u0438\u043A\u0430\u043D\u0441\u043A\u0438 \u0441\u0430\u043C\u043E\u0430", [e.Telugu]: "\u0C05\u0C2E\u0C46\u0C30\u0C3F\u0C15\u0C4D \u0C38\u0C2E\u0C4B\u0C35\u0C3E", [e.Thai]: "\u0E2A\u0E2B\u0E23\u0E32\u0E0A\u0E2D\u0E32\u0E13\u0E32\u0E08\u0E31\u0E01\u0E23\u0E41\u0E2D\u0E1F\u0E23\u0E34\u0E01\u0E32", [e.Tibetan]: "\u0F68\u0F7A\u0F0B\u0F62\u0F72\u0F0B\u0F40\u0F0B\u0F68\u0F7A\u0F0B\u0F58\u0F72\u0F0B\u0F51\u0F74\u0F0B\u0F61\u0F72\u0F0B\u0F62\u0F72\u0F0B\u0F40", [e.Turkish]: "Amerikan Samoas\u0131", [e.Ukrainian]: "\u0410\u043C\u0435\u0440\u0438\u043A\u0430\u043D\u0441\u044C\u043A\u0430 \u0421\u0430\u043C\u043E\u0430", [e.Urdu]: "\u0627\u0645\u0631\u06CC\u06A9\u06CC \u0633\u0645\u0648\u0627", [e.Uzbek]: "\u0410\u043C\u0435\u0440\u0438\u043A\u0430\u043D\u0441\u043A\u0438 \u0441\u0430\u043C\u043E\u0430", [e.Vietnamese]: "Amerikaans Samoa", [e.Welsh]: "Amerikaans Samoa", [e.Xhosa]: "Amerikaans Samoa", [e.Yiddish]: "Amerikaans Samoa", [e.Yoruba]: "Amerikaans Samoa", [e.Zulu]: "Amerikaans Samoa" } }, statistics: { demographics: { age: { distribution: [{ age: "0 to 14 years", percentage: 15.3 }, { age: "15 to 64 years", percentage: 66.7 }, { age: "65 years and over", percentage: 14.6 }], median_age: 35.5 }, population: { largest_city: "Pago Pago", total: 558e3 } }, geography: { area: 199, region: I.Oceania, sub_region: x.Polynesia }, government: { capital: "Pago Pago", type: "Nonmetropolitan Territory of the US" } } }, Andorra: { i18n: { calling_codes: [376], currencies: [l$1.Euro], languages: [e.Catalan, e.Spanish], tz: { offsets: [i$1.UTC_PLUS_1, i$1.UTC_PLUS_2], regions: [t.EuropeAndorra], timezones: [n$1.CentralEuropeanTime] } }, id: r.Andorra, info: { flag: { emoji: "\u{1F1E6}\u{1F1F4}", emoji_unicode: "U+1F1E6 U+1F1F4", svg: "https://www.countryflags.io/ad/flat/64.svg" }, tld: [".ad"] }, iso: { alpha2: r.Andorra, alpha3: "AND", numeric: "020" }, name: { alt_spellings: ["AD", "Principality of Andorra", "Principat d'Andorra"], demonym: "Andorran", native: { endonym: "Andorra" }, official: "Principality of Andorra", short: "Andorra", translations: { [e.Afrikaans]: "Andorra", [e.Albanian]: "Andorra", [e.Amharic]: "\u12A0\u1295\u12F6\u122B", [e.Arabic]: "\u0623\u0646\u062F\u0648\u0631\u0627", [e.Armenian]: "\u0540\u0561\u0576\u0564\u0561\u0580\u0561\u057E\u0561\u0575\u0584", [e.Azerbaijani]: "Andorra", [e.Bashkir]: "\u0410\u043D\u0434\u043E\u0440\u0430", [e.Basque]: "Andorra", [e.Belarusian]: "\u0410\u043D\u0434\u043E\u0440\u0440\u0430", [e.Bengali]: "\u0985\u09A8\u09CD\u09A1\u09CB\u09B0\u09BE", [e.Berber]: "\u0623\u0646\u062F\u0648\u0631\u0627", [e.Bhutani]: "\u0F68\u0F53\u0F0B\u0F4C\u0F7C\u0F0B", [e.Bosnian]: "Andora", [e.Breton]: "Andorra", [e.Bulgarian]: "\u0410\u043D\u0434\u043E\u0440\u0430", [e.Burmese]: "\u1021\u1014\u1039\u1010\u102C\u101B\u102D\u102F\u1038", [e.Catalan]: "Andorra", [e.Chinese]: "\u5B89\u9053\u5C14", [e.Croatian]: "Andora", [e.Czech]: "Andorra", [e.Danish]: "Andorra", [e.Dutch]: "Andorra", [e.English]: "Andorra", [e.Esperanto]: "Andora", [e.Estonian]: "Andorra", [e.Finnish]: "Andorra", [e.French]: "Andorra", [e.Frisian]: "Andorra", [e.Galician]: "Andorra", [e.Georgian]: "\u12A0\u1295\u12F6\u122B", [e.German]: "Andorra", [e.Greek]: "\u0391\u03BD\u03B4\u03CC\u03C1\u03B1", [e.Hebrew]: "\u05D0\u05E0\u05D3\u05D5\u05E8\u05D4", [e.Hindi]: "\u0905\u0902\u0921\u094B\u0930\u093E", [e.Hungarian]: "Andorra", [e.Icelandic]: "Andorra", [e.Igbo]: "Andorra", [e.Indonesian]: "Andorra", [e.Irish]: "Andorra", [e.Italian]: "Andorra", [e.Japanese]: "\u30A2\u30F3\u30C9\u30E9", [e.Javanese]: "Andorra", [e.Kannada]: "\u0C85\u0C82\u0CA1\u0CCB\u0CB0\u0CBF\u0CAF\u0CA8\u0CCD", [e.Kazakh]: "\u0410\u043D\u0434\u043E\u0440\u0440\u0430", [e.Khmer]: "\u17A2\u1784\u17CB\u178A\u17B6\u179A\u17B6", [e.Korean]: "\uC548\uB3C4\uB77C", [e.Kurdish]: "Andorra", [e.Kyrgyz]: "\u0410\u043D\u0434\u043E\u0440\u0440\u0430", [e.Lao]: "\u0EAD\u0EB1\u0E99\u0EC2\u0E94\u0EA3\u0EB2", [e.Latin]: "Andorra", [e.Latvian]: "Andora", [e.Lithuanian]: "Andora", [e.Luxembourgish]: "Andorra", [e.Macedonian]: "\u0410\u043D\u0434\u043E\u0440\u0440\u0430", [e.Malagasy]: "Andorra", [e.Malay]: "Andorra", [e.Malayalam]: "\u0D05\u0D02\u0D21\u0D4B\u0D30\u0D3F\u0D2F\u0D28\u0D4D", [e.Maltese]: "Andorra", [e.Maori]: "Andorra", [e.Marathi]: "\u0905\u0902\u0921\u094B\u0930\u093E", [e.Mongolian]: "\u0410\u043D\u0434\u043E\u0440\u0440\u0430", [e.Nepali]: "\u0905\u0902\u0921\u094B\u0930\u093E", [e.Norwegian]: "Andorra", [e.Pashto]: "\u0622\u0646\u062F\u0648\u0631\u0627", [e.Persian]: "\u0622\u0646\u062F\u0648\u0631\u0627", [e.Polish]: "Andora", [e.Portuguese]: "Andorra", [e.Punjabi]: "\u0A05\u0A70\u0A21\u0A4B\u0A30\u0A3E", [e.Romanian]: "Andorra", [e.Russian]: "\u0410\u043D\u0434\u043E\u0440\u0440\u0430", [e.Samoan]: "Andorra", [e.Sanskrit]: "\u0905\u0902\u0921\u094B\u0930\u093E", [e.Scots]: "Andorra", [e.Serbian]: "\u0410\u043D\u0434\u043E\u0440\u0440\u0430", [e.Sesotho]: "Andorra", [e.Shona]: "Andorra", [e.Sindhi]: "\u0905\u0902\u0921\u094B\u0930\u093E", [e.Sinhala]: "\u0D86\u0DB1\u0DCA\u0DAF\u0DDA", [e.Slovak]: "Andorra", [e.Slovenian]: "Andora", [e.Somali]: "Andorra", [e.Spanish]: "Andorra", [e.Sudanese]: "Andorra", [e.Swahili]: "Andorra", [e.Swedish]: "Andorra", [e.Tagalog]: "Andorra", [e.Tajik]: "\u0410\u043D\u0434\u043E\u0440\u0440\u0430", [e.Tamil]: "\u0B85\u0BA9\u0BCB\u0BB0\u0BCD\u0B9F\u0BBE", [e.Tatar]: "\u0410\u043D\u0434\u043E\u0440\u0440\u0430", [e.Telugu]: "\u0C05\u0C02\u0C21\u0C4B\u0C30\u0C4D\u0C30\u0C3E", [e.Thai]: "\u0E2D\u0E31\u0E19\u0E14\u0E2D\u0E23\u0E4C\u0E23\u0E32", [e.Tibetan]: "\u0F68\u0F53\u0F0B\u0F4C\u0F7C\u0F0B", [e.Turkish]: "Andora", [e.Ukrainian]: "\u0410\u043D\u0434\u043E\u0440\u0440\u0430", [e.Urdu]: "\u0622\u0646\u062F\u0648\u0631\u0627", [e.Uzbek]: "\u0410\u043D\u0434\u043E\u0440\u0440\u0430", [e.Vietnamese]: "Andorra", [e.Welsh]: "Andorra", [e.Xhosa]: "Andorra", [e.Yiddish]: "\u05D0\u05E0\u05D3\u05D5\u05E8\u05D4", [e.Yoruba]: "Andorra", [e.Zulu]: "Andorra" } }, statistics: { demographics: { age: { distribution: [{ age: "0 to 14 years", percentage: 15.3 }, { age: "15 to 64 years", percentage: 66.7 }, { age: "65 years and over", percentage: 14.6 }], median_age: 35.5 }, population: { largest_city: "Andorra la Vella", total: 78e3 } }, geography: { area: 468, region: I.Europe, sub_region: x.SouthernEurope }, government: { capital: "Andorra la Vella", type: "Constitutional Monarchy" } } }, Angola: { i18n: { calling_codes: [244], currencies: [l$1.AngolaKwanza], languages: [e.Portuguese, e.Spanish, e.French, e.Italian, e.German, e.English], tz: { offsets: [i$1.UTC_0, i$1.UTC_PLUS_1, i$1.UTC_PLUS_2], regions: [t.AfricaLuanda], timezones: [n$1.WestAfricaTime] } }, id: r.Angola, info: { flag: { emoji: "\u{1F1E6}\u{1F1EC}", emoji_unicode: "U+1F1E6 U+1F1EC", svg: "https://www.countryflags.io/ao/flat/64.svg" }, tld: [".ao"] }, iso: { alpha2: r.Angola, alpha3: "AGO", numeric: "024" }, name: { alt_spellings: ["AO", "Rep\xFAblica de Angola", "\u0281\u025Bpublika de an"], demonym: "Angolan", native: { endonym: "Angola" }, official: "Republic of Angola", short: "Angola", translations: { [e.Afrikaans]: "Angola", [e.Albanian]: "Ang\xF2la", [e.Amharic]: "\u12A0\u1295\u130E\u120A\u12EB", [e.Arabic]: "\u0623\u0646\u063A\u0648\u0644\u0627", [e.Armenian]: "\u0540\u0561\u0576\u0563\u0561\u056C\u0561\u056F\u0561", [e.Azerbaijani]: "Ang\u0259l", [e.Bashkir]: "\u0410\u043D\u0433\u043E\u043B\u0430", [e.Basque]: "Angola", [e.Belarusian]: "\u0410\u043D\u0433\u043E\u043B\u0430", [e.Bengali]: "\u0985\u0999\u09CD\u0997\u09B2\u09BE", [e.Berber]: "Angola", [e.Bhutani]: "\u0F60\u0F56\u0FB2\u0F74\u0F42", [e.Bosnian]: "Angola", [e.Breton]: "Angola", [e.Bulgarian]: "\u0410\u043D\u0433\u043E\u043B\u0430", [e.Burmese]: "\u1021\u1004\u103A\u1039\u1002\u101C\u102D\u1010\u103A", [e.Catalan]: "Angola", [e.Chinese]: "\u5B89\u54E5\u62C9", [e.Croatian]: "Angola", [e.Czech]: "Angola", [e.Danish]: "Angola", [e.Dutch]: "Angola", [e.English]: "Angola", [e.Esperanto]: "Angolo", [e.Estonian]: "Angola", [e.Finnish]: "Angola", [e.French]: "Angola", [e.Frisian]: "Angola", [e.Galician]: "Angola", [e.Georgian]: "\u10D0\u10DC\u10D2\u10DD\u10DA\u10D0", [e.German]: "Angola", [e.Greenlandic]: "Angola", [e.Greek]: "\u0391\u03B3\u03BA\u03CC\u03BB\u03B1", [e.Gujarati]: "\u0A85\u0A82\u0A97\u0ACB\u0AB2\u0ABE", [e.Haitian]: "Angola", [e.Hausa]: "Angola", [e.Hebrew]: "\u05D0\u05E0\u05D2\u05D5\u05DC\u05D4", [e.Hindi]: "\u0905\u0919\u094D\u0917\u094B\u0932\u093E", [e.Hungarian]: "Angola", [e.Icelandic]: "Angola", [e.Igbo]: "Angola", [e.Indonesian]: "Angola", [e.Irish]: "Angola", [e.Italian]: "Angola", [e.Japanese]: "\u30A2\u30F3\u30B4\u30E9", [e.Javanese]: "Anggol", [e.Kannada]: "\u0C85\u0C82\u0C97\u0CCB\u0CB2\u0CBE", [e.Kazakh]: "\u0410\u043D\u0433\u043E\u043B\u0430", [e.Khmer]: "\u17A2\u1784\u17CB\u1780\u17B6\u179B\u17A2\u1784\u17CB\u1782\u17D2\u179B\u17C1\u179F", [e.Korean]: "\uC559\uACE8\uB77C", [e.Kurdish]: "Angola", [e.Kyrgyz]: "\u0410\u043D\u0433\u043E\u043B\u0430", [e.Lao]: "\u0EAD\u0EB0\u0E99\u0EB2\u0E94\u0EB2", [e.Latin]: "Angola", [e.Latvian]: "Angola", [e.Lithuanian]: "Angola", [e.Luxembourgish]: "Angola", [e.Macedonian]: "\u0410\u043D\u0433\u043E\u043B\u0430", [e.Malagasy]: "Angola", [e.Malay]: "Angola", [e.Malayalam]: "\u0D05\u0D02\u0D17\u0D4B\u0D33\u0D3E", [e.Maltese]: "Angola", [e.Maori]: "Angola", [e.Marathi]: "\u0905\u0919\u094D\u0917\u094B\u0932\u093E", [e.Mongolian]: "\u0410\u043D\u0433\u043E\u043B\u0430", [e.Nepali]: "\u0905\u0919\u094D\u0917\u094B\u0932\u093E", [e.Norwegian]: "Angola", [e.Pashto]: "\u0627\u0646\u06AB\u0648\u0644\u0627", [e.Persian]: "\u0622\u0646\u06AF\u0648\u0644\u0627", [e.Polish]: "Angola", [e.Portuguese]: "Angola", [e.Punjabi]: "\u0A05\u0A19\u0A4D\u0A17\u0A4B\u0A32\u0A3E", [e.Romanian]: "Angole", [e.Russian]: "\u0410\u043D\u0433\u043E\u043B\u0430", [e.Samoan]: "Angola", [e.Sanskrit]: "\u0905\u0919\u094D\u0917\u094B\u0932\u093E", [e.Scots]: "Angola", [e.Serbian]: "\u0410\u043D\u0433\u043E\u043B\u0430", [e.Sesotho]: "Angola", [e.Shona]: "Angola", [e.Sindhi]: "\u0905\u0919\u094D\u0917\u094B\u0932\u093E", [e.Sinhala]: "\u0D86\u0D9C\u0DBD\u0DD2\u0DBA\u0DCF\u0DC0", [e.Slovak]: "Angola", [e.Slovenian]: "Angola", [e.Somali]: "Angola", [e.Spanish]: "Angola", [e.Sudanese]: "Angola", [e.Swahili]: "Angola", [e.Swedish]: "Angola", [e.Tagalog]: "Angola", [e.Tajik]: "\u0410\u043D\u0433\u043E\u043B\u0430", [e.Tamil]: "\u0B85\u0B99\u0BCD\u0B95\u0BCB\u0BB2\u0BBE", [e.Tatar]: "\u0410\u043D\u0433\u043E\u043B\u0430", [e.Telugu]: "\u0C05\u0C02\u0C17\u0C4B\u0C32\u0C3E", [e.Thai]: "\u0E2D\u0E07\u0E04\u0E4C\u0E01\u0E32\u0E23\u0E2D\u0E32\u0E19\u0E32\u0E21\u0E34\u0E2A\u0E16\u0E32\u0E19", [e.Tibetan]: "\u0F68\u0F44\u0F0B\u0F63\u0F7C\u0F0B", [e.Turkish]: "Angola", [e.Ukrainian]: "\u0410\u043D\u0433\u043E\u043B\u0430", [e.Urdu]: "\u0627\u0646\u06AF\u0648\u0644\u0627", [e.Uzbek]: "Angola", [e.Vietnamese]: "Angola", [e.Xhosa]: "Angola", [e.Welsh]: "Angola", [e.Yiddish]: "\u05D0\u05E0\u05D2\u05D5\u05DC\u05D4", [e.Yoruba]: "Angola", [e.Zulu]: "Angola" } } }, Anguilla: { i18n: { calling_codes: [1264], currencies: [l$1.DominicaDollar, l$1.EastCaribbeanDollar, l$1.Euro, l$1.UnitedStatesDollar, l$1.BritishPound], languages: [e.English, e.Spanish], tz: { offsets: [i$1.UTC_MINUS_4], regions: [t.AmericaAnguilla], timezones: [n$1.AtlanticStandardTime] } }, id: r.Anguilla, info: { flag: { emoji: "\u{1F1E6}\u{1F1EC}", emoji_unicode: "U+1F1E6 U+1F1EC", svg: "https://www.countryflags.io/ai/flat/64.svg" }, tld: [".ai"] }, iso: { alpha2: r.Anguilla, alpha3: "AIA", numeric: "660" }, name: { alt_spellings: ["AI"], demonym: "Anguillian", native: { endonym: "Anguilla" }, official: "Anguilla", short: "Anguilla", translations: { [e.Afrikaans]: "Anguilla", [e.Albanian]: "Anguilla", [e.Amharic]: "\u12A0\u1295\u1309\u120B", [e.Arabic]: "\u0623\u0646\u063A\u0648\u064A\u0644\u0627", [e.Armenian]: "\u0531\u0576\u0563\u056B\u056C\u0561", [e.Azerbaijani]: "Az\u0259rbaycan", [e.Bashkir]: "\u0410\u043D\u0433\u0438\u043B\u0438", [e.Basque]: "Angila", [e.Belarusian]: "\u0410\u043D\u0433\u0438\u043B\u0438", [e.Bengali]: "\u0985\u0999\u09CD\u0997\u09C0\u09B2\u09BE", [e.Berber]: "\u0623\u0646\u063A\u0648\u064A\u0644\u0627", [e.Bhutani]: "\u0F68\u0F44\u0F0B\u0F63\u0F7C\u0F0B", [e.Bosnian]: "Angila", [e.Breton]: "Angila", [e.Bulgarian]: "\u0410\u043D\u0433\u0438\u043B\u0438", [e.Burmese]: "\u1021\u1004\u103A\u1039\u1002\u101C\u102D\u1010\u103A", [e.Catalan]: "Angilla", [e.Chinese]: "\u5B89\u572D\u62C9", [e.Croatian]: "Angila", [e.Czech]: "Anguilla", [e.Danish]: "Anguilla", [e.Dutch]: "Anguilla", [e.English]: "Anguilla", [e.Esperanto]: "Angila", [e.Estonian]: "Anguilla", [e.Finnish]: "Anguilla", [e.French]: "Anguilla", [e.Frisian]: "Angila", [e.Galician]: "Anguilla", [e.Georgian]: "\u10D0\u10DC\u10D2\u10D8\u10DA\u10D0", [e.German]: "Anguilla", [e.Greenlandic]: "Anguilla", [e.Greek]: "\u0391\u03BD\u03B3\u03BA\u03C5\u03BB\u03AC", [e.Gujarati]: "\u0A85\u0A82\u0A97\u0ACD\u0AAF\u0ABE\u0AB2\u0ABE", [e.Haitian]: "Anguilla", [e.Hausa]: "Anguilla", [e.Hebrew]: "\u05D0\u05E0\u05D2\u05D5\u05D9\u05D0\u05DC\u05D4", [e.Hindi]: "\u0905\u0902\u0917\u094D\u0935\u0947\u0932\u093E", [e.Hungarian]: "Anguilla", [e.Icelandic]: "Anguilla", [e.Igbo]: "Anguilla", [e.Indonesian]: "Anguilla", [e.Irish]: "Anguilla", [e.Italian]: "Anguilla", [e.Japanese]: "\u30A2\u30F3\u30AE\u30E9", [e.Javanese]: "Anguilla", [e.Kannada]: "\u0C85\u0C82\u0C97\u0CCD\u0CB5\u0CC7\u0CB2\u0CBE", [e.Kazakh]: "\u0410\u043D\u0433\u0438\u043B\u0438", [e.Khmer]: "\u17A2\u1784\u17CB\u1780\u17B6\u179A\u17A0\u17D2\u1782\u17B8\u1798", [e.Korean]: "\uC575\uADC8\uB77C", [e.Kurdish]: "Anguilla", [e.Kyrgyz]: "\u0410\u043D\u0433\u0438\u043B\u0438", [e.Lao]: "\u0EAD\u0EB0\u0E99\u0EB0\u0E88\u0EB3", [e.Latin]: "Anguilla", [e.Latvian]: "Anguilla", [e.Lithuanian]: "Anguilla", [e.Luxembourgish]: "Angilla", [e.Macedonian]: "\u0410\u043D\u0433\u0438\u043B\u0438", [e.Malagasy]: "Angila", [e.Malay]: "Anguilla", [e.Malayalam]: "\u0D05\u0D02\u0D17\u0D4D\u0D35\u0D47\u0D32\u0D3E", [e.Maltese]: "Anguilla", [e.Maori]: "Anguilla", [e.Marathi]: "\u0905\u0902\u0917\u094D\u0935\u0947\u0932\u093E", [e.Mongolian]: "\u0410\u043D\u0433\u0438\u043B\u0438", [e.Nepali]: "\u0905\u0902\u0917\u094D\u0935\u0947\u0932\u093E", [e.Norwegian]: "Anguilla", [e.Pashto]: "\u0622\u0646\u06AF\u0648\u0644\u0627", [e.Persian]: "\u0622\u0646\u06AF\u0648\u0644\u0627", [e.Polish]: "Anguilla", [e.Portuguese]: "Anguilla", [e.Punjabi]: "\u0A05\u0A02\u0A17\u0A40\u0A32\u0A3E", [e.Romanian]: "Anguilla", [e.Russian]: "\u0410\u043D\u0433\u0438\u043B\u0438", [e.Samoan]: "Anguilla", [e.Sanskrit]: "\u0905\u0902\u0917\u094D\u0935\u0947\u0932\u093E", [e.Scots]: "Anguilla", [e.Serbian]: "\u0410\u043D\u0433\u0438\u043B\u0438", [e.Sesotho]: "Anguilla", [e.Shona]: "Anguilla", [e.Sindhi]: "\u0905\u0902\u0917\u094D\u0935\u0947\u0932\u093E", [e.Sinhala]: "\u0D86\u0D82\u0D9C\u0DD2\u0DBD\u0DCF\u0DC0", [e.Slovak]: "Anguilla", [e.Slovenian]: "Anguilla", [e.Somali]: "Anguilla", [e.Spanish]: "Anguilla", [e.Sudanese]: "Anguilla", [e.Swahili]: "Anguilla", [e.Swedish]: "Anguilla", [e.Tagalog]: "Anguilla", [e.Tajik]: "\u0410\u043D\u0433\u0438\u043B\u0438", [e.Tamil]: "\u0B85\u0B99\u0BCD\u0B95\u0BC8\u0BB2\u0BBE", [e.Tatar]: "\u0410\u043D\u0433\u0438\u043B\u0438", [e.Telugu]: "\u0C05\u0C02\u0C17\u0C4D\u0C35\u0C47\u0C32\u0C3E", [e.Thai]: "\u0E2D\u0E31\u0E07\u0E01\u0E32\u0E25\u0E32", [e.Tibetan]: "\u0F68\u0F44\u0F0B\u0F63\u0F72\u0F0B", [e.Turkish]: "Anguilla", [e.Ukrainian]: "\u0410\u043D\u0433\u0438\u043B\u0438", [e.Urdu]: "\u0622\u0646\u06AF\u0648\u0644\u0627", [e.Uzbek]: "\u0410\u043D\u0433\u0438\u043B\u0438", [e.Vietnamese]: "Anguilla", [e.Welsh]: "Anguilla", [e.Xhosa]: "Anguilla", [e.Yiddish]: "Anguilla", [e.Yoruba]: "Anguilla", [e.Zulu]: "Anguilla" } } }, Antarctica: { i18n: { calling_codes: [672], currencies: [l$1.UnitedStatesDollar, l$1.Euro], languages: [e.English, e.Spanish, e.French, e.Portuguese, e.Italian, e.Dutch, e.German, e.Swedish, e.Norwegian, e.Danish, e.Finnish], tz: { offsets: [i$1.UTC_PLUS_1, i$1.UTC_PLUS_2], regions: [t.AntarcticaCasey, t.AntarcticaDavis, t.AntarcticaMcMurdo, t.AntarcticaPalmer, t.AntarcticaRothera], timezones: [n$1.AtlanticStandardTime, n$1.CentralTime, n$1.EasternTime, n$1.AtlanticStandardTime, n$1.AzoresStandardTime, n$1.NewfoundlandStandardTime] } }, id: r.Antarctica, info: { flag: { emoji: "\u{1F1E6}\u{1F1F6}", emoji_unicode: "U+1F1E6 U+1F1F6", svg: "https://www.countryflags.io/aq/flat/64.svg" }, tld: [".aq"] }, iso: { alpha2: r.Antarctica, alpha3: "ATA", numeric: "010" }, name: { alt_spellings: ["AQ"], demonym: "Antarctican", native: { endonym: "Antarctica" }, official: "Antarctica", short: "Antarctica", translations: { [e.Afrikaans]: "Antarctica", [e.Albanian]: "Antarktika", [e.Amharic]: "\u12A0\u1295\u1272\u120D\u12AB\u1293", [e.Arabic]: "\u0623\u0646\u062A\u0627\u0631\u0643\u062A\u064A\u0643\u0627", [e.Armenian]: "\u0540\u0561\u0576\u0561\u0580\u0561\u057F\u056F\u0578", [e.Azerbaijani]: "Az\u0259rbaycan", [e.Bashkir]: "\u0410\u043D\u0442\u0430\u0440\u043A\u0442\u0438\u043A\u0430", [e.Basque]: "Antarktika", [e.Belarusian]: "\u0410\u043D\u0442\u0430\u0440\u043A\u0442\u0438\u043A\u0430", [e.Bengali]: "\u0985\u09A8\u09CD\u09A4\u09B0\u09BE\u09B6\u09CD\u09AC\u09C0", [e.Berber]: "\u0623\u0646\u062A\u0627\u0631\u0643\u062A\u064A\u0643\u0627", [e.Bhutani]: "\u0F68\u0F44\u0F0B\u0F63\u0F72\u0F0B", [e.Bosnian]: "Antarktika", [e.Breton]: "Antarktika", [e.Bulgarian]: "\u0410\u043D\u0442\u0430\u0440\u043A\u0442\u0438\u043A\u0430", [e.Burmese]: "\u1021\u1014\u1039\u1010\u102C\u101B\u102E\u1038\u101A\u102C\u1038", [e.Catalan]: "Ant\xE0rtida", [e.Chinese]: "\u5357\u6781\u6D32", [e.Croatian]: "Antarktika", [e.Czech]: "Antarktida", [e.Danish]: "Antarktis", [e.Dutch]: "Antarctica", [e.English]: "Antarctica", [e.Esperanto]: "Antarktika", [e.Estonian]: "Antarktika", [e.Finnish]: "Antarktis", [e.French]: "Antarctica", [e.Frisian]: "Antarktis", [e.Galician]: "Ant\xE1rtida", [e.Georgian]: "\u10D0\u10DC\u10E2\u10D0\u10E0\u10E5\u10E2\u10D8\u10D9\u10D0", [e.German]: "Antarktis", [e.Greenlandic]: "Antarktis", [e.Greek]: "\u0391\u03BD\u03C4\u03B1\u03C1\u03BA\u03C4\u03B9\u03BA\u03AE", [e.Gujarati]: "\u0A85\u0AA8\u0ACD\u0AA4\u0AB0\u0ABE\u0AB6\u0ACD\u0AB5\u0AC0", [e.Haitian]: "Antarctica", [e.Hausa]: "Antarktika", [e.Hebrew]: "\u05D0\u05E0\u05D8\u05E8\u05E7\u05D8\u05D9\u05E7\u05D4", [e.Hindi]: "\u0905\u0928\u094D\u0924\u0930\u0915\u094D\u0937\u0947\u0924\u094D\u0930", [e.Hungarian]: "Antarktika", [e.Icelandic]: "Antarktis", [e.Igbo]: "Antarktika", [e.Indonesian]: "Antarktika", [e.Irish]: "Antarktika", [e.Italian]: "Antartide", [e.Japanese]: "\u5357\u6975", [e.Javanese]: "Antarktika", [e.Kannada]: "\u0C85\u0CA8\u0CCD\u0CA4\u0CB0\u0CBE\u0CB6\u0CCD\u0CB5\u0CBF", [e.Kazakh]: "\u0410\u043D\u0442\u0430\u0440\u043A\u0442\u0438\u043A\u0430", [e.Khmer]: "\u17A2\u1784\u17CB\u179F\u17D2\u1780\u179A\u17A2\u17B6\u1798\u17C9\u17BB\u1799", [e.Korean]: "\uC564\uD2F0\uCE74\uD1A0\uB2C9", [e.Kurdish]: "Antarktika", [e.Kyrgyz]: "\u0410\u043D\u0442\u0430\u0440\u043A\u0442\u0438\u043A\u0430", [e.Lao]: "\u0EAD\u0EB0\u0E99\u0EAD\u0EA5\u0EB2\u0E81\u0EB4\u0EAA\u0EB0", [e.Latin]: "Antarctica", [e.Latvian]: "Antarktika", [e.Lithuanian]: "Antarktis", [e.Luxembourgish]: "Antarktis", [e.Macedonian]: "\u0410\u043D\u0442\u0430\u0440\u043A\u0442\u0438\u043A\u0430", [e.Malagasy]: "Antarctica", [e.Malay]: "Antarktika", [e.Malayalam]: "\u0D05\u0D28\u0D4D\u0D24\u0D30\u0D3E\u0D36\u0D4D\u0D35\u0D3F", [e.Maltese]: "Antarktika", [e.Maori]: "Antarktika", [e.Marathi]: "\u0905\u0928\u094D\u0924\u0930\u093E\u0936\u094D\u0935\u093F\u0915\u093E", [e.Mongolian]: "\u0410\u043D\u0442\u0430\u0440\u043A\u0442\u0438\u043A\u0430", [e.Nepali]: "\u0905\u0928\u094D\u0924\u0930\u093E\u0936\u094D\u0935\u093F\u0915\u093E", [e.Norwegian]: "Antarktis", [e.Pashto]: "\u0627\u0646\u062A\u0627\u0631\u0643\u062A\u064A\u0643\u0627", [e.Persian]: "\u0622\u0646\u062A\u0627\u0631\u06A9\u062A\u06CC\u06A9\u0627", [e.Polish]: "Antarktyka", [e.Portuguese]: "Ant\xE1rtida", [e.Punjabi]: "\u0A05\u0A28\u0A4D\u0A24\u0A30\u0A3E\u0A36\u0A3F\u0A15\u0A3E", [e.Romanian]: "Antarctica", [e.Russian]: "\u0410\u043D\u0442\u0430\u0440\u043A\u0442\u0438\u043A\u0430", [e.Samoan]: "Antarktika", [e.Sanskrit]: "\u0905\u0928\u094D\u0924\u0930\u093E\u0936\u094D\u0935\u093F\u0915\u093E", [e.Scots]: "Antarktika", [e.Serbian]: "\u0410\u043D\u0442\u0430\u0440\u043A\u0442\u0438\u043A\u0430", [e.Sesotho]: "Antarktika", [e.Shona]: "Antarktika", [e.Sindhi]: "Antarktika", [e.Sinhala]: "\u0D86\u0DB1\u0DCA\u0DA7\u0DCA\u0DA7\u0DD2\u0D9A\u0DCF\u0DC0", [e.Slovak]: "Antarktika", [e.Slovenian]: "Antarktika", [e.Somali]: "Antarktika", [e.Spanish]: "Ant\xE1rtida", [e.Sudanese]: "Antarktika", [e.Swahili]: "Antarktika", [e.Swedish]: "Antarktis", [e.Tagalog]: "Antarktika", [e.Tajik]: "\u0410\u043D\u0442\u0430\u0440\u043A\u0442\u0438\u043A\u0430", [e.Tamil]: "\u0B85\u0BA9\u0BCD\u0BA4\u0BBE\u0BB0\u0BCD\u0B95\u0BCD\u0B95\u0BBF\u0B95\u0BCD", [e.Tatar]: "\u0410\u043D\u0442\u0430\u0440\u043A\u0442\u0438\u043A\u0430", [e.Telugu]: "\u0C05\u0C28\u0C4D\u0C24\u0C30\u0C3E\u0C36\u0C4D\u0C35\u0C3F\u0C15\u0C3E", [e.Thai]: "\u0E20\u0E39\u0E21\u0E34\u0E20\u0E32\u0E04\u0E2D\u0E32\u0E19\u0E31\u0E19\u0E15\u0E34\u0E01\u0E32", [e.Tibetan]: "\u0F68\u0F7A\u0F53\u0F0B\u0F4A\u0F72\u0F4A\u0F7A\u0F53\u0F0B\u0F40\u0F72\u0F66\u0F72\u0F0B\u0F68\u0F7A\u0F53\u0F0B\u0F4A\u0F72\u0F4A\u0F7A\u0F53\u0F0B\u0F40\u0F72\u0F66\u0F72", [e.Turkish]: "Antarktika", [e.Ukrainian]: "\u0410\u043D\u0442\u0430\u0440\u043A\u0442\u0438\u043A\u0430", [e.Urdu]: "\u0627\u0646\u062A\u0627\u0631\u06A9\u062A\u06CC\u06A9\u0627", [e.Uzbek]: "\u0410\u043D\u0442\u0430\u0440\u043A\u0442\u0438\u043A\u0430", [e.Vietnamese]: "\u0110\u1EA5t Antarktik", [e.Welsh]: "Antarktika", [e.Xhosa]: "Antarktika", [e.Yiddish]: "Antarktika", [e.Yoruba]: "Antarktika", [e.Zulu]: "Antarktika" } } }, Armenia: { i18n: { calling_codes: [374], currencies: [l$1.ArmeniaDram], languages: [e.Armenian], tz: { offsets: [i$1.UTC_PLUS_4], regions: [t.AsiaJakarta], timezones: [n$1.ArmeniaTime] } }, id: r.Armenia, info: { flag: { emoji: "\u{1F1E6}\u{1F1F2}", emoji_unicode: "U+1F1E6 U+1F1F2", svg: "https://www.countryflags.io/am/flat/64.svg" }, tld: [".am"] }, iso: { alpha2: r.Armenia, alpha3: "ARM", numeric: "051" }, name: { alt_spellings: ["AM", "Hayastan", "Republic of Armenia", "\u0540\u0561\u0575\u0561\u057D\u057F\u0561\u0576"], demonym: "Armenian", native: { endonym: "\u0540\u0561\u0575\u0561\u057D\u057F\u0561\u0576" }, official: "Republic of Armenia", short: "Armenia", translations: { [e.Afrikaans]: "Armeni\xEB", [e.Albanian]: "Armenia", [e.Amharic]: "\u12A0\u121B\u122D\u129B", [e.Arabic]: "\u0623\u0631\u0645\u064A\u0646\u064A\u0627", [e.Armenian]: "\u0540\u0561\u0575\u0561\u057D\u057F\u0561\u0576", [e.Azerbaijani]: "Az\u0259rbaycan", [e.Bashkir]: "\u0410\u0440\u043C\u0435\u043D\u0438\u044F", [e.Basque]: "Arm\xE9nia", [e.Belarusian]: "\u0410\u0440\u043C\u0435\u043D\u0438\u044F", [e.Bengali]: "\u0986\u09B0\u09CD\u09AE\u09C7\u09A8\u09BF", [e.Berber]: "\u0623\u0631\u0645\u064A\u0646\u064A\u0627", [e.Bhutani]: "\u0F62\u0F92\u0FB1\u0F0B\u0F53\u0F42", [e.Bosnian]: "Armenija", [e.Breton]: "Armeni\xEB", [e.Bulgarian]: "\u0410\u0440\u043C\u0435\u043D\u0438\u044F", [e.Burmese]: "\u1021\u102C\u1019\u1010\u102D\u1010\u1039", [e.Catalan]: "Arm\xE8nia", [e.Chinese]: "\u4E9A\u7F8E\u5C3C\u4E9A", [e.Croatian]: "Armenija", [e.Czech]: "Arm\xE9nie", [e.Danish]: "Armenien", [e.Dutch]: "Armeni\xEB", [e.English]: "Armenia", [e.Esperanto]: "Armenia", [e.Estonian]: "Armeenia", [e.Finnish]: "Armenia", [e.French]: "Armenia", [e.Frisian]: "Armeenia", [e.Galician]: "Arm\xE9nia", [e.Georgian]: "\u10D0\u10E0\u10DB\u10DD\u10DC\u10D8", [e.German]: "Armenien", [e.Greenlandic]: "Armenia", [e.Greek]: "\u0391\u03C1\u03BC\u03B5\u03BD\u03AF\u03B1", [e.Gujarati]: "\u0A85\u0AB0\u0ACD\u0AAE\u0AC7\u0AA8\u0ABF", [e.Haitian]: "Armenia", [e.Hausa]: "Armenia", [e.Hebrew]: "\u05D0\u05E8\u05DE\u05E0\u05D9\u05D4", [e.Hindi]: "\u0905\u05E8\u05DE\u05E0\u093F\u092F\u093E", [e.Hungarian]: "\xD6rm\xE9nyorsz\xE1g", [e.Icelandic]: "Armenia", [e.Igbo]: "Armenia", [e.Indonesian]: "Armenia", [e.Irish]: "Armenia", [e.Italian]: "Armenia", [e.Japanese]: "\u30A2\u30EB\u30E1\u30CB\u30A2", [e.Javanese]: "Armenia", [e.Kannada]: "\u0C85\u0CB0\u0CCD\u0CAE\u0CC7\u0CA8\u0CBF", [e.Kazakh]: "\u0410\u0440\u043C\u0435\u043D\u0438\u044F", [e.Khmer]: "\u17A2\u17B6\u1798\u17C9\u17C1\u179A\u17B8", [e.Korean]: "\uC544\uB974\uBA54\uB2C8\uC544", [e.Kurdish]: "Armenia", [e.Kyrgyz]: "\u0410\u0440\u043C\u0435\u043D\u0438\u044F", [e.Lao]: "\u0EAD\u0EB2\u0EAB\u0EBC\u0E99\u0EB2", [e.Latin]: "Armenia", [e.Latvian]: "Armeenia", [e.Lithuanian]: "Arm\u0117nija", [e.Luxembourgish]: "Armenien", [e.Macedonian]: "\u0410\u0440\u043C\u0435\u043D\u0438\u0458\u0430", [e.Malagasy]: "Armenia", [e.Malay]: "Armenia", [e.Malayalam]: "\u0D05\u0D30\u0D4D\u200D\u0D2E\u0D47\u0D28\u0D3F", [e.Maltese]: "Armenia", [e.Maori]: "Armenia", [e.Marathi]: "\u0905\u0930\u094D\u092E\u0947\u0928\u093F", [e.Mongolian]: "\u0410\u0440\u043C\u0435\u043D\u0438\u044F", [e.Nepali]: "\u0905\u0930\u094D\u092E\u0947\u0928\u093F", [e.Norwegian]: "Armenia", [e.Pashto]: "\u0622\u0631\u0645\u06CC\u0646\u06CC\u0627", [e.Persian]: "\u0627\u0631\u0645\u0646\u0633\u062A\u0627\u0646", [e.Polish]: "Armenia", [e.Portuguese]: "Armenia", [e.Punjabi]: "\u0A05\u0A30\u0A2E\u0A40\u0A28\u0A40", [e.Romanian]: "Armenia", [e.Russian]: "\u0410\u0440\u043C\u0435\u043D\u0438\u044F", [e.Samoan]: "Armenia", [e.Sanskrit]: "Armenia", [e.Scots]: "Armenia", [e.Serbian]: "\u0410\u0440\u043C\u0435\u043D\u0438\u0458\u0430", [e.Sesotho]: "Armenia", [e.Shona]: "Armenia", [e.Sindhi]: "Armenia", [e.Sinhala]: "\u0D86\u0DBB\u0DCA\u0DB8\u0DD3\u0DB1\u0DD2", [e.Slovak]: "Armenia", [e.Slovenian]: "Armenija", [e.Somali]: "Armenia", [e.Spanish]: "Armenia", [e.Sudanese]: "Armenia", [e.Swahili]: "Armenia", [e.Swedish]: "Armenien", [e.Tagalog]: "Armenia", [e.Tajik]: "\u0410\u0440\u043C\u0435\u043D\u0438\u044F", [e.Tamil]: "\u0B85\u0BB0\u0BCD\u0BAE\u0BC7\u0BA9\u0BBF\u0BAF\u0BA9\u0BCD", [e.Tatar]: "\u0410\u0440\u043C\u0435\u043D\u0438\u044F", [e.Telugu]: "\u0C05\u0C30\u0C4D\u0C2E\u0C47\u0C28\u0C3F", [e.Thai]: "\u0E2D\u0E32\u0E23\u0E4C\u0E40\u0E21\u0E19\u0E34\u0E2A\u0E16\u0E32\u0E19", [e.Tibetan]: "\u0F68\u0F62\u0F0B\u0F58\u0F7A\u0F0B\u0F53\u0F72\u0F0B\u0F61\u0F74\u0F0D", [e.Turkish]: "Ermenistan", [e.Ukrainian]: "\u0410\u0440\u043C\u0435\u043D\u0456\u044F", [e.Urdu]: "\u0627\u0631\u0645\u0646\u0633\u062A\u0627\u0646", [e.Uzbek]: "\u0410\u0440\u043C\u0435\u043D\u0438\u044F", [e.Vietnamese]: "Armenia", [e.Welsh]: "Armenia", [e.Xhosa]: "Armenia", [e.Yiddish]: "\u05D0\u05E8\u05DE\u05E0\u05D9\u05D4", [e.Yoruba]: "Armenia", [e.Zulu]: "Armenia" } } }, SomeCountry: { i18n: { calling_codes: [], currencies: [], languages: [], tz: { offsets: [], regions: [], timezones: [] } }, id: r.AmericanSamoa, info: { flag: { emoji: "", emoji_unicode: "", svg: "" }, tld: [] }, iso: { alpha2: r.AmericanSamoa, alpha3: "", numeric: "" }, name: { alt_spellings: [], demonym: "", native: { endonym: "" }, official: "", short: "", translations: { [e.Afrikaans]: "", [e.Albanian]: "", [e.Amharic]: "", [e.Arabic]: "", [e.Armenian]: "", [e.Azerbaijani]: "", [e.Bashkir]: "", [e.Basque]: "", [e.Belarusian]: "", [e.Bengali]: "", [e.Berber]: "", [e.Bhutani]: "", [e.Bosnian]: "", [e.Breton]: "", [e.Bulgarian]: "", [e.Burmese]: "", [e.Catalan]: "", [e.Chinese]: "", [e.Croatian]: "", [e.Czech]: "", [e.Danish]: "", [e.Dutch]: "", [e.English]: "", [e.Esperanto]: "", [e.Estonian]: "", [e.Finnish]: "", [e.French]: "", [e.Frisian]: "", [e.Galician]: "", [e.Georgian]: "", [e.German]: "", [e.Greenlandic]: "", [e.Greek]: "", [e.Gujarati]: "", [e.Haitian]: "", [e.Hausa]: "", [e.Hebrew]: "", [e.Hindi]: "", [e.Hungarian]: "", [e.Icelandic]: "", [e.Igbo]: "", [e.Indonesian]: "", [e.Irish]: "", [e.Italian]: "", [e.Japanese]: "", [e.Javanese]: "", [e.Kannada]: "", [e.Kazakh]: "", [e.Khmer]: "", [e.Korean]: "", [e.Kurdish]: "", [e.Kyrgyz]: "", [e.Lao]: "", [e.Latin]: "", [e.Latvian]: "", [e.Lithuanian]: "", [e.Luxembourgish]: "", [e.Macedonian]: "", [e.Malagasy]: "", [e.Malay]: "", [e.Malayalam]: "", [e.Maltese]: "", [e.Maori]: "", [e.Marathi]: "", [e.Mongolian]: "", [e.Nepali]: "", [e.Norwegian]: "", [e.Pashto]: "", [e.Persian]: "", [e.Polish]: "", [e.Portuguese]: "", [e.Punjabi]: "", [e.Romanian]: "", [e.Russian]: "", [e.Samoan]: "", [e.Sanskrit]: "", [e.Scots]: "", [e.Serbian]: "", [e.Sesotho]: "", [e.Shona]: "", [e.Sindhi]: "", [e.Sinhala]: "", [e.Slovak]: "", [e.Slovenian]: "", [e.Somali]: "", [e.Spanish]: "", [e.Sudanese]: "", [e.Swahili]: "", [e.Swedish]: "", [e.Tagalog]: "", [e.Tajik]: "", [e.Tamil]: "", [e.Tatar]: "", [e.Telugu]: "", [e.Thai]: "", [e.Tibetan]: "", [e.Turkish]: "", [e.Ukrainian]: "", [e.Urdu]: "", [e.Uzbek]: "", [e.Vietnamese]: "", [e.Welsh]: "", [e.Xhosa]: "", [e.Yiddish]: "", [e.Yoruba]: "", [e.Zulu]: "" } } } });
-({ id: e.Afrikaans, language: { code: o.Afrikaans, name: "Afrikaans", native: "Afrikaans" }, name: "Afrikaans", native_name: "Afrikaans", rtl: false });
-({ country: { code: r.SouthAfrica, name: "South Africa", native: "South Africa" }, id: e.AfrikaansSouthAfrica, language: { code: o.Afrikaans, name: "Afrikaans", native: "Afrikaans" }, name: "Afrikaans (South Africa)", native_name: "Afrikaans (Suid-Afrika)", rtl: false });
-({ id: e.Albanian, language: { code: o.Albanian, name: "Albanian", native: "Shqip" }, name: "Albanian", native_name: "Shqip", rtl: false });
-({ country: { code: r.Albania, name: "Albania", native: "Shqip\xEBria" }, id: e.AlbanianAlbania, language: { code: o.Albanian, name: "Albanian", native: "Shqip" }, name: "Albanian (Albania)", native_name: "Shqip (Shqip\xEBria)", rtl: false });
-({ id: e.Amharic, language: { code: o.Amharic, name: "Amharic", native: "\u12A0\u121B\u122D\u129B" }, name: "Amharic", native_name: "\u12A0\u121B\u122D\u129B", rtl: false });
-({ country: { code: r.Ethiopia, name: "Ethiopia", native: "\u12A2\u1275\u12EE\u1335\u12EB" }, id: e.AmharicEthiopia, language: { code: o.Amharic, name: "Amharic", native: "\u12A0\u121B\u122D\u129B" }, name: "Amharic (Ethiopia)", native_name: "\u12A0\u121B\u122D\u129B (\u12A2\u1275\u12EE\u1335\u12EB)", rtl: false });
-({ id: e.Arabic, language: { code: o.Arabic, name: "Arabic", native: "\u0627\u0644\u0639\u0631\u0628\u064A\u0629" }, name: "Arabic", native_name: "\u0627\u0644\u0639\u0631\u0628\u064A\u0629", rtl: true });
-({ country: { code: r.Algeria, name: "Algeria", native: "\u0627\u0644\u062C\u0632\u0627\u0626\u0631" }, id: e.ArabicAlgeria, language: { code: o.Arabic, name: "Arabic", native: "\u0627\u0644\u0639\u0631\u0628\u064A\u0629" }, name: "Arabic (Algeria)", native_name: "\u0627\u0644\u0639\u0631\u0628\u064A\u0629 (\u0627\u0644\u062C\u0632\u0627\u0626\u0631)", rtl: true });
-({ country: { code: r.Bahrain, name: "Bahrain", native: "\u0627\u0644\u0628\u062D\u0631\u064A\u0646" }, id: e.ArabicBahrain, language: { code: o.Arabic, name: "Arabic", native: "\u0627\u0644\u0639\u0631\u0628\u064A\u0629" }, name: "Arabic (Bahrain)", native_name: "\u0627\u0644\u0639\u0631\u0628\u064A\u0629 (\u0627\u0644\u0628\u062D\u0631\u064A\u0646)", rtl: true });
-({ country: { code: r.Egypt, name: "Egypt", native: "\u0645\u0635\u0631" }, id: e.ArabicEgypt, language: { code: o.Arabic, name: "Arabic", native: "\u0627\u0644\u0639\u0631\u0628\u064A\u0629" }, name: "Arabic (Egypt)", native_name: "\u0627\u0644\u0639\u0631\u0628\u064A\u0629 (\u0645\u0635\u0631)", rtl: true });
-({ country: { code: r.Iraq, name: "Iraq", native: "\u0627\u0644\u0639\u0631\u0627\u0642" }, id: e.ArabicIraq, language: { code: o.Arabic, name: "Arabic", native: "\u0627\u0644\u0639\u0631\u0628\u064A\u0629" }, name: "Arabic (Iraq)", native_name: "\u0627\u0644\u0639\u0631\u0628\u064A\u0629 (\u0627\u0644\u0639\u0631\u0627\u0642)", rtl: true });
-({ country: { code: r.Jordan, name: "Jordan", native: "\u0627\u0644\u0623\u0631\u062F\u0646" }, id: e.ArabicJordan, language: { code: o.Arabic, name: "Arabic", native: "\u0627\u0644\u0639\u0631\u0628\u064A\u0629" }, name: "Arabic (Jordan)", native_name: "\u0627\u0644\u0639\u0631\u0628\u064A\u0629 (\u0627\u0644\u0623\u0631\u062F\u0646)", rtl: true });
-({ country: { code: r.Kuwait, name: "Kuwait", native: "\u0627\u0644\u0643\u0648\u064A\u062A" }, id: e.ArabicKuwait, language: { code: o.Arabic, name: "Arabic", native: "\u0627\u0644\u0639\u0631\u0628\u064A\u0629" }, name: "Arabic (Kuwait)", native_name: "\u0627\u0644\u0639\u0631\u0628\u064A\u0629 (\u0627\u0644\u0643\u0648\u064A\u062A)", rtl: true });
-({ country: { code: r.Lebanon, name: "Lebanon", native: "\u0644\u0628\u0646\u0627\u0646" }, id: e.ArabicLebanon, language: { code: o.Arabic, name: "Arabic", native: "\u0627\u0644\u0639\u0631\u0628\u064A\u0629" }, name: "Arabic (Lebanon)", native_name: "\u0627\u0644\u0639\u0631\u0628\u064A\u0629 (\u0644\u0628\u0646\u0627\u0646)", rtl: true });
-({ country: { code: r.Libya, name: "Libya", native: "\u0644\u064A\u0628\u064A\u0627" }, id: e.ArabicLibya, language: { code: o.Arabic, name: "Arabic", native: "\u0627\u0644\u0639\u0631\u0628\u064A\u0629" }, name: "Arabic (Libya)", native_name: "\u0627\u0644\u0639\u0631\u0628\u064A\u0629 (\u0644\u064A\u0628\u064A\u0627)", rtl: true });
-({ country: { code: r.Morocco, name: "Morocco", native: "\u0627\u0644\u0645\u063A\u0631\u0628" }, id: e.ArabicMorocco, language: { code: o.Arabic, name: "Arabic", native: "\u0627\u0644\u0639\u0631\u0628\u064A\u0629" }, name: "Arabic (Morocco)", native_name: "\u0627\u0644\u0639\u0631\u0628\u064A\u0629 (\u0627\u0644\u0645\u063A\u0631\u0628)", rtl: true });
-({ country: { code: r.Oman, name: "Oman", native: "\u0639\u0645\u0627\u0646" }, id: e.ArabicOman, language: { code: o.Arabic, name: "Arabic", native: "\u0627\u0644\u0639\u0631\u0628\u064A\u0629" }, name: "Arabic (Oman)", native_name: "\u0627\u0644\u0639\u0631\u0628\u064A\u0629 (\u0639\u0645\u0627\u0646)", rtl: true });
-({ country: { code: r.Qatar, name: "Qatar", native: "\u0642\u0637\u0631" }, id: e.ArabicQatar, language: { code: o.Arabic, name: "Arabic", native: "\u0627\u0644\u0639\u0631\u0628\u064A\u0629" }, name: "Arabic (Qatar)", native_name: "\u0627\u0644\u0639\u0631\u0628\u064A\u0629 (\u0642\u0637\u0631)", rtl: true });
-({ country: { code: r.SaudiArabia, name: "Saudi Arabia", native: "\u0627\u0644\u0645\u0645\u0644\u0643\u0629 \u0627\u0644\u0639\u0631\u0628\u064A\u0629 \u0627\u0644\u0633\u0639\u0648\u062F\u064A\u0629" }, id: e.ArabicSaudiArabia, language: { code: o.Arabic, name: "Arabic", native: "\u0627\u0644\u0639\u0631\u0628\u064A\u0629" }, name: "Arabic (Saudi Arabia)", native_name: "\u0627\u0644\u0639\u0631\u0628\u064A\u0629 (\u0627\u0644\u0645\u0645\u0644\u0643\u0629 \u0627\u0644\u0639\u0631\u0628\u064A\u0629 \u0627\u0644\u0633\u0639\u0648\u062F\u064A\u0629)", rtl: true });
-({ country: { code: r.Tunisia, name: "Tunisia", native: "\u062A\u0648\u0646\u0633" }, id: e.ArabicTunisia, language: { code: o.Arabic, name: "Arabic", native: "\u0627\u0644\u0639\u0631\u0628\u064A\u0629" }, name: "Arabic (Tunisia)", native_name: "\u0627\u0644\u0639\u0631\u0628\u064A\u0629 (\u062A\u0648\u0646\u0633)", rtl: true });
-({ country: { code: r.UnitedArabEmirates, name: "United Arab Emirates", native: "\u0627\u0644\u0625\u0645\u0627\u0631\u0627\u062A \u0627\u0644\u0639\u0631\u0628\u064A\u0629 \u0627\u0644\u0645\u062A\u062D\u062F\u0629" }, id: e.ArabicUnitedArabEmirates, language: { code: o.Arabic, name: "Arabic", native: "\u0627\u0644\u0639\u0631\u0628\u064A\u0629" }, name: "Arabic (United Arab Emirates)", native_name: "\u0627\u0644\u0639\u0631\u0628\u064A\u0629 (\u0627\u0644\u0625\u0645\u0627\u0631\u0627\u062A \u0627\u0644\u0639\u0631\u0628\u064A\u0629 \u0627\u0644\u0645\u062A\u062D\u062F\u0629)", rtl: true });
-({ country: { code: r.Yemen, name: "Yemen", native: "\u0627\u0644\u064A\u0645\u0646" }, id: e.ArabicYemen, language: { code: o.Arabic, name: "Arabic", native: "\u0627\u0644\u0639\u0631\u0628\u064A\u0629" }, name: "Arabic (Yemen)", native_name: "\u0627\u0644\u0639\u0631\u0628\u064A\u0629 (\u0627\u0644\u064A\u0645\u0646)", rtl: true });
-({ id: e.Armenian, language: { code: o.Armenian, name: "Armenian", native: "\u0540\u0561\u0575\u0565\u0580\u0565\u0576" }, name: "Armenian", native_name: "\u0540\u0561\u0575\u0565\u0580\u0565\u0576", rtl: false });
-({ country: { code: r.Armenia, name: "Armenia", native: "\u0540\u0561\u0575\u0561\u057D\u057F\u0561\u0576" }, id: e.ArmenianArmenia, language: { code: o.Armenian, name: "Armenian", native: "\u0570\u0561\u0575\u0565\u0580\u0565\u0576" }, name: "Armenian (Armenia)", native_name: "\u0570\u0561\u0575\u0565\u0580\u0565\u0576 (\u0540\u0561\u0575\u0561\u057D\u057F\u0561\u0576)", rtl: false });
-({ id: e.Azerbaijani, language: { code: o.Azerbaijani, name: "Azeribaijani", native: "Az\u0259rbaycan" }, name: "Azeri", native_name: "Az\u0259rbaycan", rtl: false });
-({ country: { code: r.Azerbaijan, name: "Azerbaijan", native: "Az\u0259rbaycan" }, id: e.AzerbaijaniAzerbaijan, language: { code: o.Azerbaijani, name: "Azerbaijani", native: "Az\u0259rbaycan" }, name: "Azeri (Azerbaijan)", native_name: "Az\u0259rbaycan (Az\u0259rbaycan)", rtl: false });
-({ id: e.Basque, language: { code: o.Basque, name: "Basque", native: "Euskara" }, name: "Basque", native_name: "Euskara", rtl: false });
-({ country: { code: r.Spain, name: "Spain", native: "Espa\xF1a" }, id: e.BasqueSpain, language: { code: o.Basque, name: "Basque", native: "Euskara" }, name: "Basque (Spain)", native_name: "Euskara (Espa\xF1a)", rtl: false });
-({ id: e.Belarusian, language: { code: o.Belarusian, name: "Belarusian", native: "\u0411\u0435\u043B\u0430\u0440\u0443\u0441\u043A\u0430\u044F" }, name: "Belarusian", native_name: "\u0411\u0435\u043B\u0430\u0440\u0443\u0441\u043A\u0430\u044F", rtl: false });
-({ country: { code: r.Belarus, name: "Belarus", native: "\u0411\u0435\u043B\u0430\u0440\u0443\u0441\u044C" }, id: e.BelarusianBelarus, language: { code: o.Belarusian, name: "Belarusian", native: "\u0431\u0435\u043B\u0430\u0440\u0443\u0441\u043A\u0430\u044F" }, name: "Belarusian (Belarus)", native_name: "\u0431\u0435\u043B\u0430\u0440\u0443\u0441\u043A\u0430\u044F (\u0411\u0435\u043B\u0430\u0440\u0443\u0441\u044C)", rtl: false });
-({ id: e.Bengali, language: { code: o.Bengali, name: "Bengali", native: "\u09AC\u09BE\u0982\u09B2\u09BE" }, name: "Bengali", native_name: "\u09AC\u09BE\u0982\u09B2\u09BE", rtl: false });
-({ country: { code: r.Bangladesh, name: "Bangladesh", native: "\u09AC\u09BE\u0982\u09B2\u09BE\u09A6\u09C7\u09B6" }, id: e.BengaliBangladesh, language: { code: o.Bengali, name: "Bengali", native: "\u09AC\u09BE\u0982\u09B2\u09BE" }, name: "Bengali (Bangladesh)", native_name: "\u09AC\u09BE\u0982\u09B2\u09BE (\u09AC\u09BE\u0982\u09B2\u09BE\u09A6\u09C7\u09B6)", rtl: false });
-({ id: e.Bhutani, language: { code: o.Bhutani, name: "Bhutani", native: "\u0F56\u0F7C\u0F51\u0F0B\u0F61\u0F72\u0F42" }, name: "Bhutani", native_name: "\u0F56\u0F7C\u0F51\u0F0B\u0F61\u0F72\u0F42", rtl: false });
-({ country: { code: r.Bhutan, name: "Bhutan", native: "\u0F60\u0F56\u0FB2\u0F74\u0F42" }, id: e.BhutaniBhutan, language: { code: o.Bhutani, name: "Bhutani", native: "\u0F56\u0F7C\u0F51\u0F0B\u0F61\u0F72\u0F42" }, name: "Bhutani (Bhutan)", native_name: "\u0F56\u0F7C\u0F51\u0F0B\u0F61\u0F72\u0F42 (\u0F60\u0F56\u0FB2\u0F74\u0F42)", rtl: false });
-({ id: e.Bulgarian, language: { code: o.Bulgarian, name: "Bulgarian", native: "\u0411\u044A\u043B\u0433\u0430\u0440\u0441\u043A\u0438" }, name: "Bulgarian", native_name: "\u0411\u044A\u043B\u0433\u0430\u0440\u0441\u043A\u0438", rtl: false });
-({ country: { code: r.Bulgaria, name: "Bulgaria", native: "\u0411\u044A\u043B\u0433\u0430\u0440\u0438\u044F" }, id: e.BulgarianBulgaria, language: { code: o.Bulgarian, name: "Bulgarian", native: "\u0431\u044A\u043B\u0433\u0430\u0440\u0441\u043A\u0438" }, name: "Bulgarian (Bulgaria)", native_name: "\u0431\u044A\u043B\u0433\u0430\u0440\u0441\u043A\u0438 (\u0411\u044A\u043B\u0433\u0430\u0440\u0438\u044F)", rtl: false });
-({ id: e.Burmese, language: { code: o.Burmese, name: "Burmese", native: "\u1017\u1019\u102C\u1005\u102C" }, name: "Burmese", native_name: "\u1017\u1019\u102C\u1005\u102C", rtl: false });
-({ country: { code: r.Myanmar, name: "Myanmar", native: "\u1019\u103C\u1014\u103A\u1019\u102C" }, id: e.BurmeseMyanmar, language: { code: o.Burmese, name: "Burmese", native: "\u1017\u1019\u102C\u1005\u102C" }, name: "Burmese (Myanmar)", native_name: "\u1017\u1019\u102C\u1005\u102C (\u1019\u103C\u1014\u103A\u1019\u102C)", rtl: false });
-({ id: e.Cantonese, language: { code: o.Cantonese, name: "Cantonese", native: "\u5EE3\u6771\u8A71" }, name: "Cantonese", native_name: "\u5EE3\u6771\u8A71", rtl: false });
-({ country: { code: r.HongKong, name: "Hong Kong", native: "\u9999\u6E2F" }, id: e.CantoneseHongKong, language: { code: o.Cantonese, name: "Cantonese", native: "\u5EE3\u6771\u8A71" }, name: "Cantonese (Hong Kong)", native_name: "\u5EE3\u6771\u8A71 (\u9999\u6E2F)", rtl: false });
-({ id: e.Catalan, language: { code: o.Catalan, name: "Catalan", native: "Catal\xE0" }, name: "Catalan", native_name: "Catal\xE0", rtl: false });
-({ country: { code: r.Spain, name: "Spain", native: "Espa\xF1a" }, id: e.CatalanSpain, language: { code: o.Catalan, name: "Catalan", native: "Catal\xE0" }, name: "Catalan (Spain)", native_name: "Catal\xE0 (Espanya)", rtl: false });
-({ id: e.ChineseSimplified, language: { code: o.Chinese, name: "Chinese", native: "\u4E2D\u6587" }, name: "Chinese (Simplified)", native_name: "\u4E2D\u6587", rtl: false });
-({ country: { code: r.China, name: "China", native: "\u4E2D\u56FD" }, id: e.ChineseSimplifiedChina, language: { code: o.Chinese, name: "Chinese", native: "\u4E2D\u6587" }, name: "Chinese (Simplified/China)", native_name: "\u4E2D\u6587 (\u4E2D\u56FD)", rtl: false });
-({ country: { code: r.HongKong, name: "Hong Kong", native: "\u9999\u6E2F" }, id: e.ChineseSimplifiedHongKong, language: { code: o.Chinese, name: "Chinese", native: "\u4E2D\u6587" }, name: "Chinese (Simplified/Hong Kong)", native_name: "\u4E2D\u6587 (\u9999\u6E2F)", rtl: false });
-({ country: { code: r.Macau, name: "Macau", native: "\u6FB3\u9580" }, id: e.ChineseSimplifiedMacau, language: { code: o.Chinese, name: "Chinese", native: "\u4E2D\u6587" }, name: "Chinese (Simplified/Macau)", native_name: "\u4E2D\u6587 (\u6FB3\u9580)", rtl: false });
-({ country: { code: r.Singapore, name: "Singapore", native: "\u65B0\u52A0\u5761" }, id: e.ChineseSimplifiedSingapore, language: { code: o.Chinese, name: "Chinese", native: "\u4E2D\u6587" }, name: "Chinese (Simplified/Singapore)", native_name: "\u4E2D\u6587 (\u65B0\u52A0\u5761)", rtl: false });
-({ id: e.ChineseTraditional, language: { code: o.Chinese, name: "Chinese", native: "\u4E2D\u6587" }, name: "Chinese (Traditional)", native_name: "\u4E2D\u6587", rtl: false });
-({ country: { code: r.HongKong, name: "Hong Kong", native: "\u9999\u6E2F" }, id: e.ChineseTraditionalHongKong, language: { code: o.Chinese, name: "Chinese (Traditional/Hong Kong)", native: "\u4E2D\u6587" }, name: "Chinese (Hong Kong)", native_name: "\u4E2D\u6587 (\u9999\u6E2F)", rtl: false });
-({ country: { code: r.Macau, name: "Macau", native: "\u6FB3\u9580" }, id: e.ChineseTraditionalMacau, language: { code: o.Chinese, name: "Chinese (Traditional/Macau)", native: "\u4E2D\u6587" }, name: "Chinese (Macau)", native_name: "\u4E2D\u6587 (\u6FB3\u9580)", rtl: false });
-({ country: { code: r.Singapore, name: "Singapore", native: "\u65B0\u52A0\u5761" }, id: e.ChineseTraditionalSingapore, language: { code: o.Chinese, name: "Chinese (Traditional/Singapore)", native: "\u4E2D\u6587" }, name: "Chinese (Singapore)", native_name: "\u4E2D\u6587 (\u65B0\u52A0\u5761)", rtl: false });
-({ id: e.Croatian, language: { code: o.Croatian, name: "Croatian", native: "Hrvatski" }, name: "Croatian", native_name: "Hrvatski", rtl: false });
-({ country: { code: r.BosniaAndHerzegovina, name: "Bosnia and Herzegovina", native: "Bosna i Hercegovina" }, id: e.CroatianBosniaAndHerzegovina, language: { code: o.Croatian, name: "Croatian", native: "Hrvatski" }, name: "Croatian (Bosnia and Herzegovina)", native_name: "Hrvatski (Bosna i Hercegovina)", rtl: false });
-({ country: { code: r.Croatia, name: "Croatia", native: "Hrvatska" }, id: e.CroatianCroatia, language: { code: o.Croatian, name: "Croatian", native: "Hrvatski" }, name: "Croatian (Croatia)", native_name: "Hrvatski (Hrvatska)", rtl: false });
-({ id: e.Czech, language: { code: o.Czech, name: "Czech", native: "\u010Ce\u0161tina" }, name: "Czech", native_name: "\u010Ce\u0161tina", rtl: false });
-({ country: { code: r.CzechRepublic, name: "Czech Republic", native: "\u010Cesk\xE1 republika" }, id: e.CzechCzechRepublic, language: { code: o.Czech, name: "Czech", native: "\u010Ce\u0161tina" }, name: "Czech (Czech Republic)", native_name: "\u010Ce\u0161tina (\u010Cesk\xE1 republika)", rtl: false });
-({ id: e.Danish, language: { code: o.Danish, name: "Danish", native: "Dansk" }, name: "Danish", native_name: "Dansk", rtl: false });
-({ country: { code: r.Denmark, name: "Denmark", native: "Danmark" }, id: e.DanishDenmark, language: { code: o.Danish, name: "Danish", native: "Dansk" }, name: "Danish (Denmark)", native_name: "Dansk (Danmark)", rtl: false });
-({ id: e.Divehi, language: { code: o.Divehi, name: "Divehi", native: "\u078B\u07A8\u0788\u07AC\u0780\u07A8\u0784\u07A6\u0790\u07B0" }, name: "Divehi", native_name: "\u078B\u07A8\u0788\u07AC\u0780\u07A8\u0784\u07A6\u0790\u07B0", rtl: true });
-({ country: { code: r.Maldives, name: "Maldives", native: "\u078B\u07A8\u0788\u07AC\u0780\u07A8 \u0783\u07A7\u0787\u07B0\u0796\u07AC" }, id: e.DivehiMaldives, language: { code: o.Divehi, name: "Divehi", native: "\u078B\u07A8\u0788\u07AC\u0780\u07A8\u0784\u07A6\u0790\u07B0" }, name: "Divehi (Maldives)", native_name: "\u078B\u07A8\u0788\u07AC\u0780\u07A8\u0784\u07A6\u0790\u07B0 (\u078B\u07A8\u0788\u07AC\u0780\u07A8 \u0783\u07A7\u0787\u07B0\u0796\u07AC)", rtl: true });
-({ id: e.Dutch, language: { code: o.Dutch, name: "Dutch", native: "Nederlands" }, name: "Dutch", native_name: "Nederlands", rtl: false });
-({ country: { code: r.Belgium, name: "Belgium", native: "Belgi\xEB" }, id: e.DutchBelgium, language: { code: o.Dutch, name: "Dutch", native: "Nederlands" }, name: "Dutch (Belgium)", native_name: "Nederlands (Belgi\xEB)", rtl: false });
-({ country: { code: r.Netherlands, name: "Netherlands", native: "Nederland" }, id: e.DutchNetherlands, language: { code: o.Dutch, name: "Dutch", native: "Nederlands" }, name: "Dutch (Netherlands)", native_name: "Nederlands (Nederland)", rtl: false });
-({ id: e.English, language: { code: o.English, name: "English", native: "English" }, name: "English", native_name: "English", rtl: false });
-({ country: { code: r.Australia, name: "Australia", native: "Australia" }, id: e.EnglishAustralia, language: { code: o.English, name: "English", native: "English" }, name: "English (Australia)", native_name: "English (Australia)", rtl: false });
-({ country: { code: r.Belgium, name: "Belgium", native: "Belgi\xEB" }, id: e.EnglishBelgium, language: { code: o.English, name: "English", native: "English" }, name: "English (Belgium)", native_name: "English (Belgi\xEB)", rtl: false });
-({ country: { code: r.Canada, name: "Canada", native: "Canada" }, id: e.EnglishCanada, language: { code: o.English, name: "English", native: "English" }, name: "English (Canada)", native_name: "English (Canada)", rtl: false });
-({ country: { code: r.Ireland, name: "Ireland", native: "\xC9ire" }, id: e.EnglishIreland, language: { code: o.English, name: "English", native: "English" }, name: "English (Ireland)", native_name: "English (\xC9ire)", rtl: false });
-({ country: { code: r.Jamaica, name: "Jamaica", native: "Jamaica" }, id: e.EnglishJamaica, language: { code: o.English, name: "English", native: "English" }, name: "English (Jamaica)", native_name: "English (Jamaica)", rtl: false });
-({ country: { code: r.NewZealand, name: "New Zealand", native: "New Zealand" }, id: e.EnglishNewZealand, language: { code: o.English, name: "English", native: "English" }, name: "English (New Zealand)", native_name: "English (New Zealand)", rtl: false });
-({ country: { code: r.Philippines, name: "Philippines", native: "Philippines" }, id: e.EnglishPhilippines, language: { code: o.English, name: "English", native: "English" }, name: "English (Philippines)", native_name: "English (Philippines)", rtl: false });
-({ country: { code: r.Singapore, name: "Singapore", native: "Singapore" }, id: e.EnglishSingapore, language: { code: o.English, name: "English", native: "English" }, name: "English (Singapore)", native_name: "English (Singapore)", rtl: false });
-({ country: { code: r.SouthAfrica, name: "South Africa", native: "South Africa" }, id: e.EnglishSouthAfrica, language: { code: o.English, name: "English", native: "English" }, name: "English (South Africa)", native_name: "English (South Africa)", rtl: false });
-({ country: { code: r.TrinidadAndTobago, name: "Trinidad and Tobago", native: "Trinidad and Tobago" }, id: e.EnglishTrinidadAndTobago, language: { code: o.English, name: "English", native: "English" }, name: "English (Trinidad and Tobago)", native_name: "English (Trinidad and Tobago)", rtl: false });
-({ country: { code: r.UnitedKingdom, name: "United Kingdom", native: "United Kingdom" }, id: e.EnglishUnitedKingdom, language: { code: o.English, name: "English", native: "English" }, name: "English (United Kingdom)", native_name: "English (United Kingdom)", rtl: false });
-({ country: { code: r.UnitedStates, name: "United States", native: "United States" }, id: e.EnglishUnitedStates, language: { code: o.English, name: "English", native: "English" }, name: "English (United States)", native_name: "English (United States)", rtl: false });
-({ country: { code: r.Zimbabwe, name: "Zimbabwe", native: "Zimbabwe" }, id: e.EnglishZimbabwe, language: { code: o.English, name: "English", native: "English" }, name: "English (Zimbabwe)", native_name: "English (Zimbabwe)", rtl: false });
-({ id: e.Esperanto, language: { code: o.Esperanto, name: "Esperanto", native: "Esperanto" }, name: "Esperanto", native_name: "Esperanto", rtl: false });
-({ id: e.Estonian, language: { code: o.Estonian, name: "Estonian", native: "Eesti" }, name: "Estonian", native_name: "Eesti", rtl: false });
-({ country: { code: r.Estonia, name: "Estonia", native: "Eesti" }, id: e.EstonianEstonia, language: { code: o.Estonian, name: "Estonian", native: "Eesti" }, name: "Estonian (Estonia)", native_name: "Eesti (Eesti)", rtl: false });
-({ id: e.Faroese, language: { code: o.Faroese, name: "Faroese", native: "F\xF8royskt" }, name: "Faroese", native_name: "F\xF8royskt", rtl: false });
-({ country: { code: r.FaroeIslands, name: "Faroe Islands", native: "F\xF8royar" }, id: e.FaroeseFaroeIslands, language: { code: o.Faroese, name: "Faroese", native: "F\xF8royskt" }, name: "Faroese (Faroe Islands)", native_name: "F\xF8royskt (F\xF8royar)", rtl: false });
-({ id: e.Farsi, language: { code: o.Farsi, name: "Farsi", native: "\u0641\u0627\u0631\u0633\u06CC" }, name: "Farsi", native_name: "\u0641\u0627\u0631\u0633\u06CC", rtl: true });
-({ country: { code: r.Iran, name: "Iran", native: "\u0627\u06CC\u0631\u0627\u0646" }, id: e.FarsiIran, language: { code: o.Farsi, name: "Farsi", native: "\u0641\u0627\u0631\u0633\u06CC" }, name: "Farsi (Iran)", native_name: "\u0641\u0627\u0631\u0633\u06CC (\u0627\u06CC\u0631\u0627\u0646)", rtl: true });
-({ id: e.Filipino, language: { code: o.Filipino, name: "Filipino", native: "Filipino" }, name: "Filipino", native_name: "Filipino", rtl: false });
-({ country: { code: r.Philippines, name: "Philippines", native: "Pilipinas" }, id: e.FilipinoPhilippines, language: { code: o.Filipino, name: "Filipino", native: "Filipino" }, name: "Filipino (Philippines)", native_name: "Filipino (Pilipinas)", rtl: false });
-({ id: e.Finnish, language: { code: o.Finnish, name: "Finnish", native: "Suomi" }, name: "Finnish", native_name: "Suomi", rtl: false });
-({ country: { code: r.Finland, name: "Finland", native: "Suomi" }, id: e.FinnishFinland, language: { code: o.Finnish, name: "Finnish", native: "Suomi" }, name: "Finnish (Finland)", native_name: "Suomi (Suomi)", rtl: false });
-({ id: e.French, language: { code: o.French, name: "French", native: "Fran\xE7ais" }, name: "French", native_name: "Fran\xE7ais", rtl: false });
-({ country: { code: r.Belgium, name: "Belgium", native: "Belgique" }, id: e.FrenchBelgium, language: { code: o.French, name: "French", native: "Fran\xE7ais" }, name: "French (Belgium)", native_name: "Fran\xE7ais (Belgique)", rtl: false });
-({ country: { code: r.Canada, name: "Canada", native: "Canada" }, id: e.FrenchCanada, language: { code: o.French, name: "French", native: "Fran\xE7ais" }, name: "French (Canada)", native_name: "Fran\xE7ais (Canada)", rtl: false });
-({ country: { code: r.France, name: "France", native: "France" }, id: e.FrenchFrance, language: { code: o.French, name: "French", native: "Fran\xE7ais" }, name: "French (France)", native_name: "Fran\xE7ais (France)", rtl: false });
-({ country: { code: r.Luxembourg, name: "Luxembourg", native: "Luxembourg" }, id: e.FrenchLuxembourg, language: { code: o.French, name: "French", native: "Fran\xE7ais" }, name: "French (Luxembourg)", native_name: "Fran\xE7ais (Luxembourg)", rtl: false });
-({ country: { code: r.Monaco, name: "Monaco", native: "Monaco" }, id: e.FrenchMonaco, language: { code: o.French, name: "French", native: "Fran\xE7ais" }, name: "French (Monaco)", native_name: "Fran\xE7ais (Monaco)", rtl: false });
-({ country: { code: r.Reunion, name: "Reunion", native: "La R\xE9union" }, id: e.FrenchReunion, language: { code: o.French, name: "French", native: "Fran\xE7ais" }, name: "French (Reunion)", native_name: "Fran\xE7ais (La R\xE9union)", rtl: false });
-({ country: { code: r.Switzerland, name: "Switzerland", native: "Suisse" }, id: e.FrenchSwitzerland, language: { code: o.French, name: "French", native: "Fran\xE7ais" }, name: "French (Switzerland)", native_name: "Fran\xE7ais (Suisse)", rtl: false });
-({ id: e.Frisian, language: { code: o.Frisian, name: "Frisian", native: "Frysk" }, name: "Frisian", native_name: "Frysk", rtl: false });
-({ country: { code: r.Netherlands, name: "Netherlands", native: "Nederland" }, id: e.FrisianNetherlands, language: { code: o.Frisian, name: "Frisian", native: "Frysk" }, name: "Frisian (Netherlands)", native_name: "Frysk (Nederland)", rtl: false });
-({ id: e.Galician, language: { code: o.Galician, name: "Galician", native: "Galego" }, name: "Galician", native_name: "Galego", rtl: false });
-({ country: { code: r.Spain, name: "Spain", native: "Espa\xF1a" }, id: e.GalicianSpain, language: { code: o.Galician, name: "Galician", native: "Galego" }, name: "Galician (Spain)", native_name: "Galego (Espa\xF1a)", rtl: false });
-({ id: e.Georgian, language: { code: o.Georgian, name: "Georgian", native: "\u10E5\u10D0\u10E0\u10D7\u10E3\u10DA\u10D8" }, name: "Georgian", native_name: "\u10E5\u10D0\u10E0\u10D7\u10E3\u10DA\u10D8", rtl: false });
-({ country: { code: r.Georgia, name: "Georgia", native: "\u10E1\u10D0\u10E5\u10D0\u10E0\u10D7\u10D5\u10D4\u10DA\u10DD" }, id: e.GeorgianGeorgia, language: { code: o.Georgian, name: "Georgian", native: "\u10E5\u10D0\u10E0\u10D7\u10E3\u10DA\u10D8" }, name: "Georgian (Georgia)", native_name: "\u10E5\u10D0\u10E0\u10D7\u10E3\u10DA\u10D8 (\u10E1\u10D0\u10E5\u10D0\u10E0\u10D7\u10D5\u10D4\u10DA\u10DD)", rtl: false });
-({ id: e.German, language: { code: o.German, name: "German", native: "Deutsch" }, name: "German", native_name: "Deutsch", rtl: false });
-({ country: { code: r.Austria, name: "Austria", native: "\xD6sterreich" }, id: e.GermanAustria, language: { code: o.German, name: "German", native: "Deutsch" }, name: "German (Austria)", native_name: "Deutsch (\xD6sterreich)", rtl: false });
-({ country: { code: r.Belgium, name: "Belgium", native: "Belgi\xEB" }, id: e.GermanBelgium, language: { code: o.German, name: "German", native: "Deutsch" }, name: "German (Belgium)", native_name: "Deutsch (Belgi\xEB)", rtl: false });
-({ country: { code: r.Switzerland, name: "Switzerland", native: "Suisse" }, id: e.GermanSwitzerland, language: { code: o.German, name: "German", native: "Deutsch" }, name: "German (Switzerland)", native_name: "Deutsch (Suisse)", rtl: false });
-({ country: { code: r.Liechtenstein, name: "Liechtenstein", native: "Liechtenstein" }, id: e.GermanLiechtenstein, language: { code: o.German, name: "German", native: "Deutsch" }, name: "German (Liechtenstein)", native_name: "Deutsch (Liechtenstein)", rtl: false });
-({ country: { code: r.Luxembourg, name: "Luxembourg", native: "Luxembourg" }, id: e.GermanLuxembourg, language: { code: o.German, name: "German", native: "Deutsch" }, name: "German (Luxembourg)", native_name: "Deutsch (Luxembourg)", rtl: false });
-({ id: e.Greek, language: { code: o.Greek, name: "Greek", native: "\u0395\u03BB\u03BB\u03B7\u03BD\u03B9\u03BA\u03AC" }, name: "Greek", native_name: "\u0395\u03BB\u03BB\u03B7\u03BD\u03B9\u03BA\u03AC", rtl: false });
-({ country: { code: r.Greece, name: "Greece", native: "\u0395\u03BB\u03BB\u03AC\u03B4\u03B1" }, id: e.GreekGreece, language: { code: o.Greek, name: "Greek", native: "\u0395\u03BB\u03BB\u03B7\u03BD\u03B9\u03BA\u03AC" }, name: "Greek (Greece)", native_name: "\u0395\u03BB\u03BB\u03B7\u03BD\u03B9\u03BA\u03AC (\u0395\u03BB\u03BB\u03AC\u03B4\u03B1)", rtl: false });
-({ id: e.Greenlandic, language: { code: o.Greenlandic, name: "Greenlandic", native: "Kalaallisut" }, name: "Greenlandic", native_name: "Kalaallisut", rtl: false });
-({ country: { code: r.Greenland, name: "Greenland", native: "Kalaallit Nunaat" }, id: e.GreenlandicGreenland, language: { code: o.Greenlandic, name: "Greenlandic", native: "Kalaallisut" }, name: "Greenlandic (Greenland)", native_name: "Kalaallisut (Kalaallit Nunaat)", rtl: false });
-({ id: e.Gujarati, language: { code: o.Gujarati, name: "Gujarati", native: "\u0A97\u0AC1\u0A9C\u0AB0\u0ABE\u0AA4\u0AC0" }, name: "Gujarati", native_name: "\u0A97\u0AC1\u0A9C\u0AB0\u0ABE\u0AA4\u0AC0", rtl: false });
-({ country: { code: r.India, name: "India", native: "\u092D\u093E\u0930\u0924" }, id: e.GujaratiIndia, language: { code: o.Gujarati, name: "Gujarati", native: "\u0A97\u0AC1\u0A9C\u0AB0\u0ABE\u0AA4\u0AC0" }, name: "Gujarati (India)", native_name: "\u0A97\u0AC1\u0A9C\u0AB0\u0ABE\u0AA4\u0AC0 (\u092D\u093E\u0930\u0924)", rtl: false });
-({ id: e.Hausa, language: { code: o.Hausa, name: "Hausa", native: "\u0647\u064E\u0648\u064F\u0633\u064E" }, name: "Hausa", native_name: "\u0647\u064E\u0648\u064F\u0633\u064E", rtl: false });
-({ country: { code: r.Ghana, name: "Ghana", native: "Ghana" }, id: e.HausaGhana, language: { code: o.Hausa, name: "Hausa", native: "\u0647\u064E\u0648\u064F\u0633\u064E" }, name: "Hausa (Ghana)", native_name: "\u0647\u064E\u0648\u064F\u0633\u064E (Ghana)", rtl: false });
-({ country: { code: r.Niger, name: "Niger", native: "Niger" }, id: e.HausaNiger, language: { code: o.Hausa, name: "Hausa", native: "\u0647\u064E\u0648\u064F\u0633\u064E" }, name: "Hausa (Niger)", native_name: "\u0647\u064E\u0648\u064F\u0633\u064E (Niger)", rtl: false });
-({ country: { code: r.Nigeria, name: "Nigeria", native: "Nigeria" }, id: e.HausaNigeria, language: { code: o.Hausa, name: "Hausa", native: "\u0647\u064E\u0648\u064F\u0633\u064E" }, name: "Hausa (Nigeria)", native_name: "\u0647\u064E\u0648\u064F\u0633\u064E (Nigeria)", rtl: false });
-({ id: e.Hebrew, language: { code: o.Hebrew, name: "Hebrew", native: "\u05E2\u05D1\u05E8\u05D9\u05EA" }, name: "Hebrew", native_name: "\u05E2\u05D1\u05E8\u05D9\u05EA", rtl: true });
-({ country: { code: r.Israel, name: "Hebrew", native: "" }, id: e.HebrewIsrael, language: { code: o.Hebrew, name: "Hebrew", native: "" }, name: "Hebrew (Israel)", native_name: "", rtl: true });
-({ id: e.Hindi, language: { code: o.Hindi, name: "Hindi", native: "\u0939\u093F\u0928\u094D\u0926\u0940" }, name: "Hindi", native_name: "\u0939\u093F\u0928\u094D\u0926\u0940", rtl: false });
-({ country: { code: r.India, name: "India", native: "\u092D\u093E\u0930\u0924" }, id: e.HindiIndia, language: { code: o.Hindi, name: "Hindi", native: "\u092D\u093E\u0930\u0924\u0940\u092F" }, name: "Hindi (India)", native_name: "\u092D\u093E\u0930\u0924\u0940\u092F", rtl: false });
-({ id: e.Hungarian, language: { code: o.Hungarian, name: "Hungarian", native: "Magyar" }, name: "Hungarian", native_name: "Magyar", rtl: false });
-({ country: { code: r.Hungary, name: "Hungary", native: "Magyarorsz\xE1g" }, id: e.HungarianHungary, language: { code: o.Hungarian, name: "Hungarian", native: "Magyar" }, name: "Hungarian (Hungary)", native_name: "Magyar (Magyarorsz\xE1g)", rtl: false });
-({ id: e.Icelandic, language: { code: o.Icelandic, name: "Icelandic", native: "\xCDslenska" }, name: "Icelandic", native_name: "\xCDslenska", rtl: false });
-({ country: { code: r.Iceland, name: "Iceland", native: "\xCDsland" }, id: e.IcelandicIceland, language: { code: o.Icelandic, name: "Icelandic", native: "\xCDslenska" }, name: "Icelandic (Iceland)", native_name: "\xCDslenska (\xCDsland)", rtl: false });
-({ id: e.Igbo, language: { code: o.Igbo, name: "Igbo", native: "Igbo" }, name: "Igbo", native_name: "Igbo", rtl: false });
-({ id: e.Indonesian, language: { code: o.Indonesian, name: "Indonesian", native: "Bahasa Indonesia" }, name: "Indonesian", native_name: "Bahasa Indonesia", rtl: false });
-({ country: { code: r.Indonesia, name: "Indonesia", native: "Indonesia" }, id: e.IndonesianIndonesia, language: { code: o.Indonesian, name: "Indonesian", native: "Bahasa Indonesia" }, name: "Indonesian (Indonesia)", native_name: "Bahasa Indonesia (Indonesia)", rtl: false });
-({ id: e.Irish, language: { code: o.Irish, name: "Irish", native: "Gaeilge" }, name: "Irish", native_name: "Gaeilge", rtl: false });
-({ country: { code: r.Ireland, name: "Ireland", native: "\xC9ire" }, id: e.IrishIreland, language: { code: o.Irish, name: "Irish", native: "Gaeilge" }, name: "Irish (Ireland)", native_name: "Gaeilge (\xC9ire)", rtl: false });
-({ id: e.Italian, language: { code: o.Italian, name: "Italian", native: "Italiano" }, name: "Italian", native_name: "Italiano", rtl: false });
-({ country: { code: r.Italy, name: "Italy", native: "Italia" }, id: e.ItalianItaly, language: { code: o.Italian, name: "Italian", native: "Italiano" }, name: "Italian (Italy)", native_name: "Italiano (Italia)", rtl: false });
-({ country: { code: r.Switzerland, name: "Switzerland", native: "Schweiz" }, id: e.ItalianSwitzerland, language: { code: o.Italian, name: "Italian", native: "Italiano" }, name: "Italian (Switzerland)", native_name: "Italiano (Svizzera)", rtl: false });
-({ id: e.Japanese, language: { code: o.Japanese, name: "Japanese", native: "\u65E5\u672C\u8A9E" }, name: "Japanese", native_name: "\u65E5\u672C\u8A9E", rtl: false });
-({ country: { code: r.Japan, name: "Japan", native: "\u65E5\u672C" }, id: e.JapaneseJapan, language: { code: o.Japanese, name: "Japanese", native: "\u65E5\u672C\u8A9E" }, name: "Japanese (Japan)", native_name: "\u65E5\u672C\u8A9E (\u65E5\u672C)", rtl: false });
-({ id: e.Kannada, language: { code: o.Kannada, name: "Kannada", native: "\u0C95\u0CA8\u0CCD\u0CA8\u0CA1" }, name: "Kannada", native_name: "\u0C95\u0CA8\u0CCD\u0CA8\u0CA1", rtl: false });
-({ country: { code: r.India, name: "India", native: "\u0CAD\u0CBE\u0CB0\u0CA4" }, id: e.KannadaIndia, language: { code: o.Kannada, name: "Kannada", native: "\u0C95\u0CA8\u0CCD\u0CA8\u0CA1" }, name: "Kannada (India)", native_name: "\u0C95\u0CA8\u0CCD\u0CA8\u0CA1 (\u0CAD\u0CBE\u0CB0\u0CA4)", rtl: false });
-({ id: e.Kazakh, language: { code: o.Kazakh, name: "Kazakh", native: "\u049A\u0430\u0437\u0430\u049B \u0442\u0456\u043B\u0456" }, name: "Kazakh", native_name: "\u049A\u0430\u0437\u0430\u049B \u0442\u0456\u043B\u0456", rtl: false });
-({ country: { code: r.Kazakhstan, name: "Kazakhstan", native: "\u049A\u0430\u0437\u0430\u049B\u0441\u0442\u0430\u043D" }, id: e.KazakhKazakhstan, language: { code: o.Kazakh, name: "Kazakh", native: "\u049A\u0430\u0437\u0430\u049B \u0442\u0456\u043B\u0456" }, name: "Kazakh (Kazakhstan)", native_name: "\u049A\u0430\u0437\u0430\u049B \u0442\u0456\u043B\u0456 (\u049A\u0430\u0437\u0430\u049B\u0441\u0442\u0430\u043D)", rtl: false });
-({ id: e.Khmer, language: { code: o.Khmer, name: "Khmer", native: "\u1797\u17B6\u179F\u17B6\u1781\u17D2\u1798\u17C2\u179A" }, name: "Khmer", native_name: "\u1797\u17B6\u179F\u17B6\u1781\u17D2\u1798\u17C2\u179A", rtl: false });
-({ country: { code: r.Cambodia, name: "Cambodia", native: "\u1780\u1798\u17D2\u1796\u17BB\u1787\u17B6" }, id: e.KhmerCambodia, language: { code: o.Khmer, name: "Khmer", native: "\u1797\u17B6\u179F\u17B6\u1781\u17D2\u1798\u17C2\u179A" }, name: "Khmer (Cambodia)", native_name: "\u1797\u17B6\u179F\u17B6\u1781\u17D2\u1798\u17C2\u179A (\u1780\u1798\u17D2\u1796\u17BB\u1787\u17B6)", rtl: false });
-({ id: e.Konkani, language: { code: o.Konkani, name: "Konkani", native: "\u0915\u094B\u0902\u0915\u0923\u0940" }, name: "Konkani", native_name: "\u0915\u094B\u0902\u0915\u0923\u0940", rtl: false });
-({ country: { code: r.India, name: "India", native: "\u092D\u093E\u0930\u0924" }, id: e.KonkaniIndia, language: { code: o.Konkani, name: "Konkani", native: "\u0915\u094B\u0902\u0915\u0923\u0940" }, name: "Konkani (India)", native_name: "\u0915\u094B\u0902\u0915\u0923\u0940 (\u092D\u093E\u0930\u0924)", rtl: false });
-({ id: e.Korean, language: { code: o.Korean, name: "Korean", native: "\uD55C\uAD6D\uC5B4" }, name: "Korean", native_name: "\uD55C\uAD6D\uC5B4", rtl: false });
-({ country: { code: r.SouthKorea, name: "South Korea", native: "\uB300\uD55C\uBBFC\uAD6D" }, id: e.KoreanSouthKorea, language: { code: o.Korean, name: "Korean", native: "\uD55C\uAD6D\uC5B4" }, name: "Korean (South Korea)", native_name: "\uD55C\uAD6D\uC5B4 (\uB300\uD55C\uBBFC\uAD6D)", rtl: false });
-({ id: e.Kurdish, language: { code: o.Kurdish, name: "Kurdish", native: "Kurd\xEE" }, name: "Kurdish", native_name: "Kurd\xEE", rtl: false });
-({ country: { code: r.Iraq, name: "Iraq", native: "\u0627\u0644\u0639\u0631\u0627\u0642" }, id: e.KurdishIraq, language: { code: o.Kurdish, name: "Kurdish", native: "Kurd\xEE" }, name: "Kurdish (Iraq)", native_name: "Kurd\xEE (\u0627\u0644\u0639\u0631\u0627\u0642)", rtl: false });
-({ country: { code: r.Turkey, name: "Turkey", native: "T\xFCrkiye" }, id: e.KurdishTurkey, language: { code: o.Kurdish, name: "Kurdish", native: "Kurd\xEE" }, name: "Kurdish (Turkey)", native_name: "Kurd\xEE (T\xFCrkiye)", rtl: false });
-({ id: e.Kyrgyz, language: { code: o.Kyrgyz, name: "Kyrgyz", native: "\u041A\u044B\u0440\u0433\u044B\u0437\u0447\u0430" }, name: "Kyrgyz", native_name: "\u041A\u044B\u0440\u0433\u044B\u0437\u0447\u0430", rtl: false });
-({ country: { code: r.Kyrgyzstan, name: "Kyrgyzstan", native: "\u041A\u044B\u0440\u0433\u044B\u0437\u0441\u0442\u0430\u043D" }, id: e.KyrgyzKyrgyzstan, language: { code: o.Kyrgyz, name: "Kyrgyz", native: "\u041A\u044B\u0440\u0433\u044B\u0437\u0447\u0430" }, name: "Kyrgyz (Kyrgyzstan)", native_name: "\u041A\u044B\u0440\u0433\u044B\u0437\u0447\u0430 (\u041A\u044B\u0440\u0433\u044B\u0437\u0441\u0442\u0430\u043D)", rtl: false });
-({ id: e.Lao, language: { code: o.Lao, name: "Lao", native: "\u0EA5\u0EB2\u0EA7" }, name: "Lao", native_name: "\u0EA5\u0EB2\u0EA7", rtl: false });
-({ country: { code: r.Laos, name: "Laos", native: "\u0EAA.\u0E9B.\u0E9B\u0EB0\u0E8A\u0EB2\u0E97\u0EB4\u0E9B\u0EB0\u0EC4\u0E95" }, id: e.LaoLaos, language: { code: o.Lao, name: "Lao", native: "\u0EA5\u0EB2\u0EA7" }, name: "Lao (Laos)", native_name: "\u0EA5\u0EB2\u0EA7 (\u0EAA.\u0E9B.\u0E9B\u0EB0\u0E8A\u0EB2\u0E97\u0EB4\u0E9B\u0EB0\u0EC4\u0E95)", rtl: false });
-({ id: e.Latvian, language: { code: o.Latvian, name: "Latvian", native: "Latvie\u0161u" }, name: "Latvian", native_name: "Latvie\u0161u", rtl: false });
-({ country: { code: r.Latvia, name: "Latvia", native: "Latvija" }, id: e.LatvianLatvia, language: { code: o.Latvian, name: "Latvian", native: "Latvie\u0161u" }, name: "Latvian (Latvia)", native_name: "Latvie\u0161u (Latvija)", rtl: false });
-({ id: e.Lithuanian, language: { code: o.Lithuanian, name: "Lithuanian", native: "Lietuvi\u0173" }, name: "Lithuanian", native_name: "Lietuvi\u0173", rtl: false });
-({ country: { code: r.Lithuania, name: "Lithuania", native: "Lietuva" }, id: e.LithuanianLithuania, language: { code: o.Lithuanian, name: "Lithuanian", native: "Lietuvi\u0173" }, name: "Lithuanian (Lithuania)", native_name: "Lietuvi\u0173 (Lietuva)", rtl: false });
-({ id: e.Luxembourgish, language: { code: o.Luxembourgish, name: "Luxembourgish", native: "L\xEBtzebuergesch" }, name: "Luxembourgish", native_name: "L\xEBtzebuergesch", rtl: false });
-({ country: { code: r.Belgium, name: "Belgium", native: "Belgi\xEB" }, id: e.LuxembourgishBelgium, language: { code: o.Luxembourgish, name: "Luxembourgish", native: "L\xEBtzebuergesch" }, name: "Luxembourgish (Belgium)", native_name: "L\xEBtzebuergesch (Belgi\xEB)", rtl: false });
-({ country: { code: r.Luxembourg, name: "Luxembourg", native: "Luxembourg" }, id: e.LuxembourgishLuxembourg, language: { code: o.Luxembourgish, name: "Luxembourgish", native: "L\xEBtzebuergesch" }, name: "Luxembourgish (Luxembourg)", native_name: "L\xEBtzebuergesch (Luxembourg)", rtl: false });
-({ id: e.Macedonian, language: { code: o.Macedonian, name: "Macedonian", native: "\u041C\u0430\u043A\u0435\u0434\u043E\u043D\u0441\u043A\u0438" }, name: "Macedonian", native_name: "\u041C\u0430\u043A\u0435\u0434\u043E\u043D\u0441\u043A\u0438", rtl: false });
-({ country: { code: r.NorthMacedonia, name: "Macedonia", native: "\u0421\u0435\u0432\u0435\u0440\u043D\u0430 \u041C\u0430\u043A\u0435\u0434\u043E\u043D\u0438\u0458\u0430" }, id: e.MacedonianNorthMacedonia, language: { code: o.Macedonian, name: "Macedonian", native: "\u041C\u0430\u043A\u0435\u0434\u043E\u043D\u0441\u043A\u0438" }, name: "Macedonian (North Macedonia)", native_name: "\u041C\u0430\u043A\u0435\u0434\u043E\u043D\u0441\u043A\u0438 (\u0421\u0435\u0432\u0435\u0440\u043D\u0430 \u041C\u0430\u043A\u0435\u0434\u043E\u043D\u0438\u0458\u0430)", rtl: false });
-({ id: e.Malay, language: { code: o.Malay, name: "Malay", native: "Bahasa Melayu" }, name: "Malay", native_name: "Bahasa Melayu", rtl: false });
-({ country: { code: r.Brunei, name: "Brunei", native: "Negara Brunei Darussalam" }, id: e.MalayBrunei, language: { code: o.Malay, name: "Malay", native: "Bahasa Melayu" }, name: "Malay (Brunei)", native_name: "Bahasa Melayu (Negara Brunei Darussalam)", rtl: false });
-({ country: { code: r.Malaysia, name: "Malaysia", native: "Malaysia" }, id: e.MalayMalaysia, language: { code: o.Malay, name: "Malay", native: "Bahasa Melayu" }, name: "Malay (Malaysia)", native_name: "Bahasa Melayu (Malaysia)", rtl: false });
-({ country: { code: r.Singapore, name: "Singapore", native: "Singapore" }, id: e.MalaySingapore, language: { code: o.Malay, name: "Malay", native: "Bahasa Melayu" }, name: "Malay (Singapore)", native_name: "Bahasa Melayu (Singapore)", rtl: false });
-({ country: { code: r.India, name: "India", native: "\u092D\u093E\u0930\u0924" }, id: e.MalayIndia, language: { code: o.Malay, name: "Malay", native: "Bahasa Melayu" }, name: "Malay (India)", native_name: "Bahasa Melayu (\u092D\u093E\u0930\u0924)", rtl: false });
-({ id: e.Maltese, language: { code: o.Maltese, name: "Maltese", native: "Malti" }, name: "Maltese", native_name: "Malti", rtl: false });
-({ country: { code: r.Malta, name: "Malta", native: "Malta" }, id: e.MalteseMalta, language: { code: o.Maltese, name: "Maltese", native: "Malti" }, name: "Maltese (Malta)", native_name: "Malti (Malta)", rtl: false });
-({ id: e.Maori, language: { code: o.Maori, name: "Maori", native: "M\u0101ori" }, name: "Maori", native_name: "M\u0101ori", rtl: false });
-({ country: { code: r.NewZealand, name: "New Zealand", native: "New Zealand" }, id: e.MaoriNewZealand, language: { code: o.Maori, name: "Maori", native: "M\u0101ori" }, name: "Maori (New Zealand)", native_name: "M\u0101ori (New Zealand)", rtl: false });
-({ id: e.Marathi, language: { code: o.Marathi, name: "Marathi", native: "\u092E\u0930\u093E\u0920\u0940" }, name: "Marathi", native_name: "\u092E\u0930\u093E\u0920\u0940", rtl: false });
-({ country: { code: r.India, name: "India", native: "\u092D\u093E\u0930\u0924" }, id: e.MarathiIndia, language: { code: o.Marathi, name: "Marathi", native: "\u092E\u0930\u093E\u0920\u0940" }, name: "Marathi (India)", native_name: "\u092E\u0930\u093E\u0920\u0940 (\u092D\u093E\u0930\u0924)", rtl: false });
-({ id: e.Mongolian, language: { code: o.Mongolian, name: "Mongolian", native: "\u041C\u043E\u043D\u0433\u043E\u043B" }, name: "Mongolian", native_name: "\u041C\u043E\u043D\u0433\u043E\u043B", rtl: false });
-({ country: { code: r.Mongolia, name: "Mongolia", native: "\u041C\u043E\u043D\u0433\u043E\u043B \u0443\u043B\u0441" }, id: e.MongolianMongolia, language: { code: o.Mongolian, name: "Mongolian", native: "\u041C\u043E\u043D\u0433\u043E\u043B" }, name: "Mongolian (Mongolia)", native_name: "\u041C\u043E\u043D\u0433\u043E\u043B (\u041C\u043E\u043D\u0433\u043E\u043B \u0443\u043B\u0441)", rtl: false });
-({ id: e.Montenegrin, language: { code: o.Montenegrin, name: "Montenegrin", native: "\u0426\u0440\u043D\u0430 \u0413\u043E\u0440\u0430\u043A" }, name: "Montenegrin", native_name: "\u0426\u0440\u043D\u0430 \u0413\u043E\u0440\u0430\u043A", rtl: false });
-({ country: { code: r.Montenegro, name: "Montenegro", native: "\u0426\u0440\u043D\u0430 \u0413\u043E\u0440\u0430\u043A" }, id: e.MontenegrinMontenegro, language: { code: o.Montenegrin, name: "Montenegrin", native: "\u0426\u0440\u043D\u0430 \u0413\u043E\u0440\u0430\u043A" }, name: "Montenegrin (Montenegro)", native_name: "\u0426\u0440\u043D\u0430 \u0413\u043E\u0440\u0430\u043A (\u0426\u0440\u043D\u0430 \u0413\u043E\u0440\u0430\u043A)", rtl: false });
-({ id: e.Nepali, language: { code: o.Nepali, name: "Nepali", native: "\u0928\u0947\u092A\u093E\u0932\u0940" }, name: "Nepali", native_name: "\u0928\u0947\u092A\u093E\u0932\u0940", rtl: false });
-({ country: { code: r.Nepal, name: "Nepal", native: "\u0928\u0947\u092A\u093E\u0932" }, id: e.NepaliNepal, language: { code: o.Nepali, name: "Nepali", native: "\u0928\u0947\u092A\u093E\u0932\u0940" }, name: "Nepali (Nepal)", native_name: "\u0928\u0947\u092A\u093E\u0932\u0940 (\u0928\u0947\u092A\u093E\u0932)", rtl: false });
-({ id: e.NorthernSotho, language: { code: o.NorthernSotho, name: "Northern Sotho", native: "Sesotho sa Leboa" }, name: "Northern Sotho", native_name: "Sesotho sa Leboa", rtl: false });
-({ country: { code: r.SouthAfrica, name: "South Africa", native: "South Africa" }, id: e.NorthernSothoSouthAfrica, language: { code: o.NorthernSotho, name: "Northern Sotho", native: "Sesotho sa Leboa" }, name: "Northern Sotho (South Africa)", native_name: "Sesotho sa Leboa (South Africa)", rtl: false });
-({ id: e.Norwegian, language: { code: o.Norwegian, name: "Norwegian", native: "Norsk" }, name: "Norwegian", native_name: "Norsk", rtl: false });
-({ country: { code: r.Norway, name: "Norway", native: "Norge" }, id: e.NorwegianBokmalNorway, language: { code: o.NorwegianBokmal, name: "Norwegian", native: "Norsk" }, name: "Norwegian (Bokmal)", native_name: "Norsk (Bokm\xE5l)", rtl: false });
-({ country: { code: r.Norway, name: "Norway", native: "Norge" }, id: e.NorwegianNynorskNorway, language: { code: o.NorwegianNynorsk, name: "Norwegian", native: "Norsk" }, name: "Norwegian (Nynorsk)", native_name: "Norsk (Nynorsk)", rtl: false });
-({ id: e.Oriya, language: { code: o.Oriya, name: "Oriya", native: "\u0B13\u0B21\u0B3C\u0B3F\u0B06" }, name: "Oriya", native_name: "\u0B13\u0B21\u0B3C\u0B3F\u0B06", rtl: false });
-({ country: { code: r.India, name: "India", native: "\u0B87\u0BA8\u0BCD\u0BA4\u0BBF\u0BAF\u0BBE" }, id: e.OriyaIndia, language: { code: o.Oriya, name: "Oriya", native: "\u0B13\u0B21\u0B3C\u0B3F\u0B06" }, name: "Oriya (India)", native_name: "\u0B13\u0B21\u0B3C\u0B3F\u0B06 (\u0B2D\u0B3E\u0B30\u0B24)", rtl: false });
-({ id: e.Pashto, language: { code: o.Pashto, name: "Pashto", native: "\u067E\u069A\u062A\u0648" }, name: "Pashto", native_name: "\u067E\u069A\u062A\u0648", rtl: true });
-({ country: { code: r.Afghanistan, name: "Afghanistan", native: "\u0627\u0641\u063A\u0627\u0646\u0633\u062A\u0627\u0646" }, id: e.PashtoAfghanistan, language: { code: o.Pashto, name: "Pashto", native: "\u067E\u069A\u062A\u0648" }, name: "Pashto (Afghanistan)", native_name: "\u067E\u069A\u062A\u0648 (\u0627\u0641\u063A\u0627\u0646\u0633\u062A\u0627\u0646)", rtl: true });
-({ id: e.Persian, language: { code: o.Persian, name: "Persian", native: "\u0641\u0627\u0631\u0633\u06CC" }, name: "Persian", native_name: "\u0641\u0627\u0631\u0633\u06CC", rtl: true });
-({ country: { code: r.Iran, name: "Iran", native: "\u0627\u06CC\u0631\u0627\u0646" }, id: e.PersianIran, language: { code: o.Persian, name: "Persian", native: "\u0641\u0627\u0631\u0633\u06CC" }, name: "Persian (Iran)", native_name: "\u0641\u0627\u0631\u0633\u06CC (\u0627\u06CC\u0631\u0627\u0646)", rtl: true });
-({ id: e.Polish, language: { code: o.Polish, name: "Polish", native: "Polski" }, name: "Polish", native_name: "Polski", rtl: false });
-({ country: { code: r.Poland, name: "Poland", native: "Polska" }, id: e.PolishPoland, language: { code: o.Polish, name: "Polish", native: "Polski" }, name: "Polish (Poland)", native_name: "Polski (Polska)", rtl: false });
-({ id: e.Portuguese, language: { code: o.Portuguese, name: "Portuguese", native: "Portugu\xEAs" }, name: "Portuguese", native_name: "Portugu\xEAs", rtl: false });
-({ country: { code: r.Brazil, name: "Brazil", native: "Brasil" }, id: e.PortugueseBrazil, language: { code: o.Portuguese, name: "Portuguese", native: "Portugu\xEAs" }, name: "Portuguese (Brazil)", native_name: "Portugu\xEAs (Brasil)", rtl: false });
-({ country: { code: r.Portugal, name: "Portugal", native: "Portugal" }, id: e.PortuguesePortugal, language: { code: o.Portuguese, name: "Portuguese", native: "Portugu\xEAs" }, name: "Portuguese (Portugal)", native_name: "Portugu\xEAs (Portugal)", rtl: false });
-({ id: e.Punjabi, language: { code: o.Punjabi, name: "Punjabi", native: "\u0A2A\u0A70\u0A1C\u0A3E\u0A2C\u0A40" }, name: "Punjabi", native_name: "\u0A2A\u0A70\u0A1C\u0A3E\u0A2C\u0A40", rtl: true });
-({ country: { code: r.Pakistan, name: "Pakistan", native: "\u067E\u0627\u06A9\u0633\u062A\u0627\u0646" }, id: e.PunjabiPakistan, language: { code: o.Punjabi, name: "Punjabi", native: "\u0A2A\u0A70\u0A1C\u0A3E\u0A2C\u0A40" }, name: "Punjabi (Pakistan)", native_name: "\u0A2A\u0A70\u0A1C\u0A3E\u0A2C\u0A40 (\u067E\u0627\u06A9\u0633\u062A\u0627\u0646)", rtl: true });
-({ country: { code: r.India, name: "India", native: "\u0A2D\u0A3E\u0A30\u0A24" }, id: e.PunjabiIndia, language: { code: o.Punjabi, name: "Punjabi", native: "\u0A2A\u0A70\u0A1C\u0A3E\u0A2C\u0A40" }, name: "Punjabi (India)", native_name: "\u0A2A\u0A70\u0A1C\u0A3E\u0A2C\u0A40 (\u0A2D\u0A3E\u0A30\u0A24)", rtl: true });
-({ id: e.Quechua, language: { code: o.Quechua, name: "Quechua", native: "Runa Simi" }, name: "Quechua", native_name: "Runa Simi", rtl: false });
-({ country: { code: r.Bolivia, name: "Bolivia", native: "Bolivia" }, id: e.QuechuaBolivia, language: { code: o.Quechua, name: "Quechua", native: "Runa Simi" }, name: "Quechua (Bolivia)", native_name: "Runa Simi (Bolivia)", rtl: false });
-({ country: { code: r.Ecuador, name: "Ecuador", native: "Ecuador" }, id: e.QuechuaEcuador, language: { code: o.Quechua, name: "Quechua", native: "Runa Simi" }, name: "Quechua (Ecuador)", native_name: "Runa Simi (Ecuador)", rtl: false });
-({ country: { code: r.Peru, name: "Peru", native: "Per\xFA" }, id: e.QuechuaPeru, language: { code: o.Quechua, name: "Quechua", native: "Runa Simi" }, name: "Quechua (Peru)", native_name: "Runa Simi (Per\xFA)", rtl: false });
-({ id: e.Romanian, language: { code: o.Romanian, name: "Romanian", native: "Rom\xE2n\u0103" }, name: "Romanian", native_name: "Rom\xE2n\u0103", rtl: false });
-({ country: { code: r.Romania, name: "Romania", native: "Rom\xE2nia" }, id: e.RomanianRomania, language: { code: o.Romanian, name: "Romanian", native: "Rom\xE2n\u0103" }, name: "Romanian (Romania)", native_name: "Rom\xE2n\u0103 (Rom\xE2nia)", rtl: false });
-({ id: e.Russian, language: { code: o.Russian, name: "Russian", native: "\u0420\u0443\u0441\u0441\u043A\u0438\u0439" }, name: "Russian", native_name: "\u0420\u0443\u0441\u0441\u043A\u0438\u0439", rtl: false });
-({ country: { code: r.RussianFederation, name: "Russian Federation", native: "\u0420\u043E\u0441\u0441\u0438\u044F" }, id: e.RussianRussia, language: { code: o.Russian, name: "Russian", native: "\u0420\u0443\u0441\u0441\u043A\u0438\u0439" }, name: "Russian (Russia)", native_name: "\u0420\u0443\u0441\u0441\u043A\u0438\u0439 (\u0420\u043E\u0441\u0441\u0438\u044F)", rtl: false });
-({ country: { code: r.Ukraine, name: "Ukraine", native: "\u0423\u043A\u0440\u0430\u0457\u043D\u0430" }, id: e.RussianUkraine, language: { code: o.Russian, name: "Russian", native: "\u0420\u0443\u0441\u0441\u043A\u0438\u0439" }, name: "Russian (Ukraine)", native_name: "\u0420\u0443\u0441\u0441\u043A\u0438\u0439 (\u0423\u043A\u0440\u0430\u0457\u043D\u0430)", rtl: false });
-({ country: { code: r.Kazakhstan, name: "Kazakhstan", native: "\u049A\u0430\u0437\u0430\u049B\u0441\u0442\u0430\u043D" }, id: e.RussianKazakhstan, language: { code: o.Russian, name: "Russian", native: "\u0420\u0443\u0441\u0441\u043A\u0438\u0439" }, name: "Russian (Kazakhstan)", native_name: "\u0420\u0443\u0441\u0441\u043A\u0438\u0439 (\u049A\u0430\u0437\u0430\u049B\u0441\u0442\u0430\u043D)", rtl: false });
-({ country: { code: r.Kyrgyzstan, name: "Kyrgyzstan", native: "\u041A\u044B\u0440\u0433\u044B\u0437\u0447\u0430" }, id: e.RussianKyrgyzstan, language: { code: o.Russian, name: "Russian", native: "\u0420\u0443\u0441\u0441\u043A\u0438\u0439" }, name: "Russian (Kyrgyzstan)", native_name: "\u0420\u0443\u0441\u0441\u043A\u0438\u0439 (\u041A\u044B\u0440\u0433\u044B\u0437\u0447\u0430)", rtl: false });
-({ id: e.Sanskrit, language: { code: o.Sanskrit, name: "Sanskrit", native: "\u0938\u0902\u0938\u094D\u0915\u0943\u0924\u092E\u094D" }, name: "Sanskrit", native_name: "\u0938\u0902\u0938\u094D\u0915\u0943\u0924\u092E\u094D", rtl: false });
-({ country: { code: r.India, name: "India", native: "\u092D\u093E\u0930\u0924" }, id: e.SanskritIndia, language: { code: o.Sanskrit, name: "Sanskrit", native: "\u0938\u0902\u0938\u094D\u0915\u0943\u0924\u092E\u094D" }, name: "Sanskrit (India)", native_name: "\u0938\u0902\u0938\u094D\u0915\u0943\u0924\u092E\u094D (\u092D\u093E\u0930\u0924)", rtl: false });
-({ id: e.Sami, language: { code: o.Sami, name: "Sami", native: "S\xE1megiella" }, name: "Sami", native_name: "S\xE1megiella", rtl: false });
-({ country: { code: r.Finland, name: "Finland", native: "Suomi" }, id: e.SamiFinland, language: { code: o.Sami, name: "Sami", native: "S\xE1megiella" }, name: "Sami (Finland)", native_name: "S\xE1megiella (Suomi)", rtl: false });
-({ country: { code: r.Norway, name: "Norway", native: "Norge" }, id: e.SamiNorway, language: { code: o.Sami, name: "Sami", native: "S\xE1megiella" }, name: "Sami (Norway)", native_name: "S\xE1megiella (Norge)", rtl: false });
-({ country: { code: r.Sweden, name: "Sweden", native: "Sverige" }, id: e.SamiSweden, language: { code: o.Sami, name: "Sami", native: "S\xE1megiella" }, name: "Sami (Sweden)", native_name: "S\xE1megiella (Sverige)", rtl: false });
-({ id: e.Samoan, language: { code: o.Samoan, name: "Samoan", native: "Gagana fa\u2019a S\u0101moa" }, name: "Samoan", native_name: "Gagana fa\u2019a S\u0101moa", rtl: false });
-({ country: { code: r.Samoa, name: "Samoa", native: "Samoa" }, id: e.SamoanSamoa, language: { code: o.Samoan, name: "Samoan", native: "Gagana fa\u2019a S\u0101moa" }, name: "Samoan (Samoa)", native_name: "Gagana fa\u2019a S\u0101moa (Samoa)", rtl: false });
-({ id: e.Serbian, language: { code: o.Serbian, name: "Serbian (Latin)", native: "Srpski (Latinica)" }, name: "Serbian (Latin)", native_name: "Srpski (Latinica)", rtl: false });
-({ country: { code: r.BosniaAndHerzegovina, name: "Bosnia and Herzegovina", native: "Bosna i Hercegovina" }, id: e.SerbianBosniaAndHerzegovina, language: { code: o.Serbian, name: "Serbian (Latin)", native: "Srpski (Latinica)" }, name: "Serbian (Latin) (Bosnia and Herzegovina)", native_name: "Srpski (Latinica) (Bosna i Hercegovina)", rtl: false });
-({ country: { code: r.SerbiaAndMontenegro, name: "Serbia and Montenegro", native: "Srbija i Crna Gora" }, id: e.SerbianSerbiaAndMontenegro, language: { code: o.Serbian, name: "Serbian (Latin)", native: "Srpski (Latinica)" }, name: "Serbian (Latin) (Serbia and Montenegro)", native_name: "Srpski (Latinica) (Srbija i Crna Gora)", rtl: false });
-({ id: e.SerbianCyrillic, language: { code: o.SerbianCyrillic, name: "Serbian", native: "\u0421\u0440\u043F\u0441\u043A\u0438" }, name: "Serbian (Cyrillic)", native_name: "\u0421\u0440\u043F\u0441\u043A\u0438 (\u040B\u0438\u0440\u0438\u043B\u0438\u0446\u0430)", rtl: false });
-({ country: { code: r.BosniaAndHerzegovina, name: "Bosnia and Herzegovina", native: "\u0411\u043E\u0441\u043D\u0430 \u0438 \u0425\u0435\u0440\u0446\u0435\u0433\u043E\u0432\u0438\u043D\u0430" }, id: e.SerbianCyrillicBosniaAndHerzegovina, language: { code: o.SerbianCyrillic, name: "Serbian", native: "\u0421\u0440\u043F\u0441\u043A\u0438" }, name: "Serbian (Cyrillic, Bosnia and Herzegovina)", native_name: "\u0421\u0440\u043F\u0441\u043A\u0438 (\u040B\u0438\u0440\u0438\u043B\u0438\u0446\u0430, \u0411\u043E\u0441\u043D\u0430 \u0438 \u0425\u0435\u0440\u0446\u0435\u0433\u043E\u0432\u0438\u043D\u0430)", rtl: false });
-({ country: { code: r.SerbiaAndMontenegro, name: "Serbia and Montenegro", native: "\u0421\u0440\u0431\u0438\u0458\u0430 \u0438 \u0426\u0440\u043D\u0430 \u0413\u043E\u0440\u0430" }, id: e.SerbianCyrillicSerbiaAndMontenegro, language: { code: o.SerbianCyrillic, name: "Serbian", native: "\u0421\u0440\u043F\u0441\u043A\u0438" }, name: "Serbian (Cyrillic, Serbia and Montenegro)", native_name: "\u0421\u0440\u043F\u0441\u043A\u0438 (\u040B\u0438\u0440\u0438\u043B\u0438\u0446\u0430, \u0421\u0440\u0431\u0438\u0458\u0430 \u0438 \u0426\u0440\u043D\u0430 \u0413\u043E\u0440\u0430)", rtl: false });
-({ id: e.Slovak, language: { code: o.Slovak, name: "Slovak", native: "Sloven\u010Dina" }, name: "Slovak", native_name: "Sloven\u010Dina", rtl: false });
-({ country: { code: r.Slovakia, name: "Slovakia", native: "Slovensko" }, id: e.SlovakSlovakia, language: { code: o.Slovak, name: "Slovak", native: "Sloven\u010Dina" }, name: "Slovak (Slovakia)", native_name: "Sloven\u010Dina (Slovensko)", rtl: false });
-({ id: e.Slovenian, language: { code: o.Slovenian, name: "Slovenian", native: "Sloven\u0161\u010Dina" }, name: "Slovenian", native_name: "Sloven\u0161\u010Dina", rtl: false });
-({ country: { code: r.Slovenia, name: "Slovenia", native: "Slovenija" }, id: e.SlovenianSlovenia, language: { code: o.Slovenian, name: "Slovenian", native: "Sloven\u0161\u010Dina" }, name: "Slovenian (Slovenia)", native_name: "Sloven\u0161\u010Dina (Slovenija)", rtl: false });
-({ id: e.Somali, language: { code: o.Somali, name: "Somali", native: "Soomaaliga" }, name: "Somali", native_name: "Soomaaliga", rtl: true });
-({ country: { code: r.Somalia, name: "Somalia", native: "Soomaaliya" }, id: e.SomaliSomalia, language: { code: o.Somali, name: "Somali", native: "Soomaaliga" }, name: "Somali (Somalia)", native_name: "Soomaaliga (Soomaaliya)", rtl: true });
-({ id: e.Spanish, language: { code: o.Spanish, name: "Spanish", native: "Espa\xF1ol" }, name: "Spanish", native_name: "Espa\xF1ol", rtl: false });
-({ country: { code: r.Argentina, name: "Argentina", native: "Argentina" }, id: e.SpanishArgentina, language: { code: o.Spanish, name: "Spanish", native: "Espa\xF1ol" }, name: "Spanish (Argentina)", native_name: "Espa\xF1ol (Argentina)", rtl: false });
-({ country: { code: r.Bolivia, name: "Bolivia", native: "Bolivia" }, id: e.SpanishBolivia, language: { code: o.Spanish, name: "Spanish", native: "Espa\xF1ol" }, name: "Spanish (Bolivia)", native_name: "Espa\xF1ol (Bolivia)", rtl: false });
-({ country: { code: r.Chile, name: "Chile", native: "Chile" }, id: e.SpanishChile, language: { code: o.Spanish, name: "Spanish", native: "Espa\xF1ol" }, name: "Spanish (Chile)", native_name: "Espa\xF1ol (Chile)", rtl: false });
-({ country: { code: r.Colombia, name: "Colombia", native: "Colombia" }, id: e.SpanishColombia, language: { code: o.Spanish, name: "Spanish", native: "Espa\xF1ol" }, name: "Spanish (Colombia)", native_name: "Espa\xF1ol (Colombia)", rtl: false });
-({ country: { code: r.CostaRica, name: "Costa Rica", native: "Costa Rica" }, id: e.SpanishCostaRica, language: { code: o.Spanish, name: "Spanish", native: "Espa\xF1ol" }, name: "Spanish (Costa Rica)", native_name: "Espa\xF1ol (Costa Rica)", rtl: false });
-({ country: { code: r.Cuba, name: "Cuba", native: "Cuba" }, id: e.SpanishCuba, language: { code: o.Spanish, name: "Spanish", native: "Espa\xF1ol" }, name: "Spanish (Cuba)", native_name: "Espa\xF1ol (Cuba)", rtl: false });
-({ country: { code: r.DominicanRepublic, name: "Dominican Republic", native: "Rep\xFAblica Dominicana" }, id: e.SpanishDominicanRepublic, language: { code: o.Spanish, name: "Spanish", native: "Espa\xF1ol" }, name: "Spanish (Dominican Republic)", native_name: "Espa\xF1ol (Rep\xFAblica Dominicana)", rtl: false });
-({ country: { code: r.Ecuador, name: "Ecuador", native: "Ecuador" }, id: e.SpanishEcuador, language: { code: o.Spanish, name: "Spanish", native: "Espa\xF1ol" }, name: "Spanish (Ecuador)", native_name: "Espa\xF1ol (Ecuador)", rtl: false });
-({ country: { code: r.ElSalvador, name: "El Salvador", native: "El Salvador" }, id: e.SpanishElSalvador, language: { code: o.Spanish, name: "Spanish", native: "Espa\xF1ol" }, name: "Spanish (El Salvador)", native_name: "Espa\xF1ol (El Salvador)", rtl: false });
-({ country: { code: r.EquatorialGuinea, name: "Equatorial Guinea", native: "Guinea Ecuatorial" }, id: e.SpanishEquatorialGuinea, language: { code: o.Spanish, name: "Spanish", native: "Espa\xF1ol" }, name: "Spanish (Equatorial Guinea)", native_name: "Espa\xF1ol (Guinea Ecuatorial)", rtl: false });
-({ country: { code: r.Guatemala, name: "Guatemala", native: "Guatemala" }, id: e.SpanishGuatemala, language: { code: o.Spanish, name: "Spanish", native: "Espa\xF1ol" }, name: "Spanish (Guatemala)", native_name: "Espa\xF1ol (Guatemala)", rtl: false });
-({ country: { code: r.Honduras, name: "Honduras", native: "Honduras" }, id: e.SpanishHonduras, language: { code: o.Spanish, name: "Spanish", native: "Espa\xF1ol" }, name: "Spanish (Honduras)", native_name: "Espa\xF1ol (Honduras)", rtl: false });
-({ country: { code: r.Mexico, name: "Mexico", native: "M\xE9xico" }, id: e.SpanishMexico, language: { code: o.Spanish, name: "Spanish", native: "Espa\xF1ol" }, name: "Spanish (Mexico)", native_name: "Espa\xF1ol (M\xE9xico)", rtl: false });
-({ country: { code: r.Nicaragua, name: "Nicaragua", native: "Nicaragua" }, id: e.SpanishNicaragua, language: { code: o.Spanish, name: "Spanish", native: "Espa\xF1ol" }, name: "Spanish (Nicaragua)", native_name: "Espa\xF1ol (Nicaragua)", rtl: false });
-({ country: { code: r.Panama, name: "Panama", native: "Panam\xE1" }, id: e.SpanishPanama, language: { code: o.Spanish, name: "Spanish", native: "Espa\xF1ol" }, name: "Spanish (Panama)", native_name: "Espa\xF1ol (Panam\xE1)", rtl: false });
-({ country: { code: r.Paraguay, name: "Paraguay", native: "Paraguay" }, id: e.SpanishParaguay, language: { code: o.Spanish, name: "Spanish", native: "Espa\xF1ol" }, name: "Spanish (Paraguay)", native_name: "Espa\xF1ol (Paraguay)", rtl: false });
-({ country: { code: r.Peru, name: "Peru", native: "Per\xFA" }, id: e.SpanishPeru, language: { code: o.Spanish, name: "Spanish", native: "Espa\xF1ol" }, name: "Spanish (Peru)", native_name: "Espa\xF1ol (Per\xFA)", rtl: false });
-({ country: { code: r.PuertoRico, name: "Puerto Rico", native: "Puerto Rico" }, id: e.SpanishPuertoRico, language: { code: o.Spanish, name: "Spanish", native: "Espa\xF1ol" }, name: "Spanish (Puerto Rico)", native_name: "Espa\xF1ol (Puerto Rico)", rtl: false });
-({ country: { code: r.Uruguay, name: "Uruguay", native: "Uruguay" }, id: e.SpanishUruguay, language: { code: o.Spanish, name: "Spanish", native: "Espa\xF1ol" }, name: "Spanish (Uruguay)", native_name: "Espa\xF1ol (Uruguay)", rtl: false });
-({ country: { code: r.Venezuela, name: "Venezuela", native: "Venezuela" }, id: e.SpanishVenezuela, language: { code: o.Spanish, name: "Spanish", native: "Espa\xF1ol" }, name: "Spanish (Venezuela)", native_name: "Espa\xF1ol (Venezuela)", rtl: false });
-({ country: { code: r.SouthAfrica, name: "South Africa", native: "South Africa" }, id: e.SutuSouthAfrica, language: { code: o.Sutu, name: "Sutu", native: "Sesotho" }, name: "Sutu (South Africa)", native_name: "Sesotho (Afrika Borwa)", rtl: false });
-({ id: e.Swahili, language: { code: o.Swahili, name: "Swahili", native: "Kiswahili" }, name: "Swahili", native_name: "Kiswahili", rtl: false });
-({ country: { code: r.Kenya, name: "Kenya", native: "Kenya" }, id: e.SwahiliKenya, language: { code: o.Swahili, name: "Swahili", native: "Kiswahili" }, name: "Swahili (Kenya)", native_name: "Kiswahili (Kenya)", rtl: false });
-({ id: e.Swedish, language: { code: o.Swedish, name: "Swedish", native: "Svenska" }, name: "Swedish", native_name: "Svenska", rtl: false });
-({ country: { code: r.Finland, name: "Finland", native: "Suomi" }, id: e.SwedishFinland, language: { code: o.Swedish, name: "Swedish", native: "Svenska" }, name: "Swedish (Finland)", native_name: "Svenska (Finland)", rtl: false });
-({ country: { code: r.Sweden, name: "Sweden", native: "Sverige" }, id: e.SwedishSweden, language: { code: o.Swedish, name: "Swedish", native: "Svenska" }, name: "Swedish (Sweden)", native_name: "Svenska (Sverige)", rtl: false });
-({ id: e.Syriac, language: { code: o.Syriac, name: "Syriac", native: "\u0723\u0718\u072A\u071D\u071D\u0710" }, name: "Syriac", native_name: "\u0723\u0718\u072A\u071D\u071D\u0710", rtl: true });
-({ country: { code: r.Syria, name: "Syria", native: "\u0633\u0648\u0631\u064A\u0627" }, id: e.SyriacSyria, language: { code: o.Syriac, name: "Syriac", native: "\u0723\u0718\u072A\u071D\u071D\u0710" }, name: "Syriac (Syria)", native_name: "\u0723\u0718\u072A\u071D\u071D\u0710 (\u0633\u0648\u0631\u064A\u0627)", rtl: true });
-({ id: e.Tajik, language: { code: o.Tajik, name: "Tajik", native: "\u0422\u043E\u04B7\u0438\u043A\u04E3" }, name: "Tajik", native_name: "\u0422\u043E\u04B7\u0438\u043A\u04E3", rtl: false });
-({ country: { code: r.Tajikistan, name: "Tajikistan", native: "\u0422\u043E\u04B7\u0438\u043A\u0438\u0441\u0442\u043E\u043D" }, id: e.TajikTajikistan, language: { code: o.Tajik, name: "Tajik", native: "\u0422\u043E\u04B7\u0438\u043A\u04E3" }, name: "Tajik (Tajikistan)", native_name: "\u0422\u043E\u04B7\u0438\u043A\u04E3 (\u0422\u043E\u04B7\u0438\u043A\u0438\u0441\u0442\u043E\u043D)", rtl: false });
-({ id: e.Tagalog, language: { code: o.Tagalog, name: "Tagalog", native: "Tagalog" }, name: "Tagalog", native_name: "Tagalog", rtl: false });
-({ country: { code: r.Philippines, name: "Philippines", native: "Pilipinas" }, id: e.TagalogPhilippines, language: { code: o.Tagalog, name: "Tagalog", native: "Tagalog" }, name: "Tagalog (Philippines)", native_name: "Tagalog (Pilipinas)", rtl: false });
-({ id: e.Tamil, language: { code: o.Tamil, name: "Tamil", native: "\u0BA4\u0BAE\u0BBF\u0BB4\u0BCD" }, name: "Tamil", native_name: "\u0BA4\u0BAE\u0BBF\u0BB4\u0BCD", rtl: false });
-({ country: { code: r.India, name: "India", native: "\u0B87\u0BA8\u0BCD\u0BA4\u0BBF\u0BAF\u0BBE" }, id: e.TamilIndia, language: { code: o.Tamil, name: "Tamil", native: "\u0BA4\u0BAE\u0BBF\u0BB4\u0BCD" }, name: "Tamil (India)", native_name: "\u0BA4\u0BAE\u0BBF\u0BB4\u0BCD (\u0B87\u0BA8\u0BCD\u0BA4\u0BBF\u0BAF\u0BBE)", rtl: false });
-({ id: e.Telugu, language: { code: o.Telugu, name: "Telugu", native: "\u0C24\u0C46\u0C32\u0C41\u0C17\u0C41" }, name: "Telugu", native_name: "\u0C24\u0C46\u0C32\u0C41\u0C17\u0C41", rtl: false });
-({ country: { code: r.India, name: "India", native: "\u0C2D\u0C3E\u0C30\u0C24\u0C26\u0C47\u0C36\u0C02" }, id: e.TeluguIndia, language: { code: o.Telugu, name: "Telugu", native: "\u0C24\u0C46\u0C32\u0C41\u0C17\u0C41" }, name: "Telugu (India)", native_name: "\u0C24\u0C46\u0C32\u0C41\u0C17\u0C41 (\u0C2D\u0C3E\u0C30\u0C24\u0C26\u0C47\u0C36\u0C02)", rtl: false });
-({ id: e.Thai, language: { code: o.Thai, name: "Thai", native: "\u0E44\u0E17\u0E22" }, name: "Thai", native_name: "\u0E44\u0E17\u0E22", rtl: false });
-({ country: { code: r.Thailand, name: "Thailand", native: "\u0E1B\u0E23\u0E30\u0E40\u0E17\u0E28\u0E44\u0E17\u0E22" }, id: e.ThaiThailand, language: { code: o.Thai, name: "Thai", native: "\u0E44\u0E17\u0E22" }, name: "Thai (Thailand)", native_name: "\u0E44\u0E17\u0E22 (\u0E1B\u0E23\u0E30\u0E40\u0E17\u0E28\u0E44\u0E17\u0E22)", rtl: false });
-({ id: e.Tibetan, language: { code: o.Tibetan, name: "Tibetan", native: "\u0F56\u0F7C\u0F51\u0F0B\u0F61\u0F72\u0F42" }, name: "Tibetan", native_name: "\u0F56\u0F7C\u0F51\u0F0B\u0F61\u0F72\u0F42", rtl: false });
-({ country: { code: r.China, name: "China", native: "\u4E2D\u56FD" }, id: e.TibetanChina, language: { code: o.Tibetan, name: "Tibetan", native: "\u0F56\u0F7C\u0F51\u0F0B\u0F61\u0F72\u0F42" }, name: "Tibetan (China)", native_name: "\u0F56\u0F7C\u0F51\u0F0B\u0F61\u0F72\u0F42 (\u0F62\u0F92\u0FB1\u0F0B\u0F53\u0F42)", rtl: false });
-({ country: { code: r.Bhutan, name: "Bhutan", native: "\u0F60\u0F56\u0FB2\u0F74\u0F42\u0F0B\u0F61\u0F74\u0F63\u0F0B\u0F66\u0FA4\u0FB1\u0F72\u0F0B\u0F63\u0F7A\u0F53\u0F4C\u0F0D" }, id: e.TibetanBhutan, language: { code: o.Tibetan, name: "Tibetan", native: "\u0F56\u0F7C\u0F51\u0F0B\u0F61\u0F72\u0F42" }, name: "Tibetan (Bhutan)", native_name: "\u0F56\u0F7C\u0F51\u0F0B\u0F61\u0F72\u0F42 (\u0F60\u0F56\u0FB2\u0F74\u0F42\u0F0B\u0F61\u0F74\u0F63\u0F0B\u0F66\u0FA4\u0FB1\u0F72\u0F0B\u0F63\u0F7A\u0F53\u0F4C\u0F0D)", rtl: false });
-({ country: { code: r.India, name: "India", native: "\u0B87\u0BA8\u0BCD\u0BA4\u0BBF\u0BAF\u0BBE" }, id: e.TibetanIndia, language: { code: o.Tibetan, name: "Tibetan", native: "\u0F56\u0F7C\u0F51\u0F0B\u0F61\u0F72\u0F42" }, name: "Tibetan (India)", native_name: "\u0F56\u0F7C\u0F51\u0F0B\u0F61\u0F72\u0F42 (\u0B87\u0BA8\u0BCD\u0BA4\u0BBF\u0BAF\u0BBE)", rtl: false });
-({ id: e.Tsonga, language: { code: o.Tsonga, name: "Tsonga", native: "Xitsonga" }, name: "Tsonga", native_name: "Xitsonga", rtl: false });
-({ id: e.Tswana, language: { code: o.Tswana, name: "Tswana", native: "Setswana" }, name: "Tswana", native_name: "Setswana", rtl: false });
-({ country: { code: r.SouthAfrica, name: "South Africa", native: "South Africa" }, id: e.TswanaSouthAfrica, language: { code: o.Tswana, name: "Tswana", native: "Setswana" }, name: "Tswana (South Africa)", native_name: "Setswana (South Africa)", rtl: false });
-({ id: e.Turkish, language: { code: o.Turkish, name: "Turkish", native: "T\xFCrk\xE7e" }, name: "Turkish", native_name: "T\xFCrk\xE7e", rtl: false });
-({ country: { code: r.Turkey, name: "Turkey", native: "T\xFCrkiye" }, id: e.TurkishTurkey, language: { code: o.Turkish, name: "Turkish", native: "T\xFCrk\xE7e" }, name: "Turkish (Turkey)", native_name: "T\xFCrk\xE7e (T\xFCrkiye)", rtl: false });
-({ id: e.Ukrainian, language: { code: o.Ukrainian, name: "Ukrainian", native: "\u0423\u043A\u0440\u0430\u0457\u043D\u0441\u044C\u043A\u0430" }, name: "Ukrainian", native_name: "\u0423\u043A\u0440\u0430\u0457\u043D\u0441\u044C\u043A\u0430", rtl: false });
-({ country: { code: r.Ukraine, name: "Ukraine", native: "\u0423\u043A\u0440\u0430\u0457\u043D\u0430" }, id: e.UkrainianUkraine, language: { code: o.Ukrainian, name: "Ukrainian", native: "\u0423\u043A\u0440\u0430\u0457\u043D\u0441\u044C\u043A\u0430" }, name: "Ukrainian (Ukraine)", native_name: "\u0423\u043A\u0440\u0430\u0457\u043D\u0441\u044C\u043A\u0430 (\u0423\u043A\u0440\u0430\u0457\u043D\u0430)", rtl: false });
-({ id: e.Urdu, language: { code: o.Urdu, name: "Urdu", native: "\u0627\u0631\u062F\u0648" }, name: "Urdu", native_name: "\u0627\u0631\u062F\u0648", rtl: true });
-({ country: { code: r.Afghanistan, name: "Afghanistan", native: "\u0627\u0641\u063A\u0627\u0646\u0633\u062A\u0627\u0646" }, id: e.UrduAfghanistan, language: { code: o.Urdu, name: "Urdu", native: "\u0627\u0631\u062F\u0648" }, name: "Urdu (Afghanistan)", native_name: "\u0627\u0631\u062F\u0648 (\u0627\u0641\u063A\u0627\u0646\u0633\u062A\u0627\u0646)", rtl: true });
-({ country: { code: r.India, name: "India", native: "\u092D\u093E\u0930\u0924" }, id: e.UrduIndia, language: { code: o.Urdu, name: "Urdu", native: "\u0627\u0631\u062F\u0648" }, name: "Urdu (India)", native_name: "\u0627\u0631\u062F\u0648 (\u092D\u093E\u0930\u0924)", rtl: true });
-({ country: { code: r.Pakistan, name: "Pakistan", native: "\u067E\u0627\u06A9\u0633\u062A\u0627\u0646" }, id: e.UrduPakistan, language: { code: o.Urdu, name: "Urdu", native: "\u0627\u0631\u062F\u0648" }, name: "Urdu (Pakistan)", native_name: "\u0627\u0631\u062F\u0648 (\u067E\u0627\u06A9\u0633\u062A\u0627\u0646)", rtl: true });
-({ id: e.Uzbek, language: { code: o.Uzbek, name: "Uzbek", native: "O\u02BBzbekcha" }, name: "Uzbek", native_name: "O\u02BBzbekcha", rtl: false });
-({ country: { code: r.Uzbekistan, name: "Uzbekistan", native: "O\u02BBzbekiston" }, id: e.UzbekUzbekistan, language: { code: o.Uzbek, name: "Uzbek", native: "O\u02BBzbekcha" }, name: "Uzbek (Latin, Uzbekistan)", native_name: "O\u02BBzbekcha (O\u02BBzbekiston)", rtl: false });
-({ country: { code: r.Uzbekistan, name: "Uzbekistan", native: "\u040E\u0437\u0431\u0435\u043A\u0438\u0441\u0442\u043E\u043D" }, id: e.UzbekCyrillic, language: { code: o.Uzbek, name: "Uzbek", native: "\u040E\u0437\u0431\u0435\u043A\u0438\u0441\u0442\u043E\u043D" }, name: "Uzbek (Cyrillic)", native_name: "\u040E\u0437\u0431\u0435\u043A\u0438\u0441\u0442\u043E\u043D (\u040E\u0437\u0431\u0435\u043A\u0438\u0441\u0442\u043E\u043D)", rtl: false });
-({ id: e.Vietnamese, language: { code: o.Vietnamese, name: "Vietnamese", native: "Ti\u1EBFng Vi\u1EC7t" }, name: "Vietnamese", native_name: "Ti\u1EBFng Vi\u1EC7t", rtl: false });
-({ country: { code: r.Vietnam, name: "Vietnam", native: "Vi\u1EC7t Nam" }, id: e.VietnameseVietnam, language: { code: o.Vietnamese, name: "Vietnamese", native: "Ti\u1EBFng Vi\u1EC7t" }, name: "Vietnamese (Vietnam)", native_name: "Ti\u1EBFng Vi\u1EC7t (Vi\u1EC7t Nam)", rtl: false });
-({ id: e.Welsh, language: { code: o.Welsh, name: "Welsh", native: "Cymraeg" }, name: "Welsh", native_name: "Cymraeg", rtl: false });
-({ country: { code: r.UnitedKingdom, name: "United Kingdom", native: "United Kingdom" }, id: e.WelshUnitedKingdom, language: { code: o.Welsh, name: "Welsh", native: "Cymraeg" }, name: "Welsh (United Kingdom)", native_name: "Cymraeg (United Kingdom)", rtl: false });
-({ id: e.Xhosa, language: { code: o.Xhosa, name: "Xhosa", native: "isiXhosa" }, name: "Xhosa", native_name: "isiXhosa", rtl: false });
-({ country: { code: r.SouthAfrica, name: "South Africa", native: "South Africa" }, id: e.XhosaSouthAfrica, language: { code: o.Xhosa, name: "Xhosa", native: "isiXhosa" }, name: "Xhosa (South Africa)", native_name: "isiXhosa (South Africa)", rtl: false });
-({ id: e.Yiddish, language: { code: o.Yiddish, name: "Yiddish", native: "\u05D9\u05D9\u05B4\u05D3\u05D9\u05E9" }, name: "Yiddish", native_name: "\u05D9\u05D9\u05B4\u05D3\u05D9\u05E9", rtl: false });
-({ id: e.Yoruba, language: { code: o.Yoruba, name: "Yoruba", native: "Yor\xF9b\xE1" }, name: "Yoruba", native_name: "Yor\xF9b\xE1", rtl: false });
-({ country: { code: r.Nigeria, name: "Nigeria", native: "Nigeria" }, id: e.YorubaNigeria, language: { code: o.Yoruba, name: "Yoruba", native: "Yor\xF9b\xE1" }, name: "Yoruba (Nigeria)", native_name: "Yor\xF9b\xE1 (Nigeria)", rtl: false });
-({ id: e.Zulu, language: { code: o.Zulu, name: "Zulu", native: "isiZulu" }, name: "Zulu", native_name: "isiZulu", rtl: false });
-({ country: { code: r.SouthAfrica, name: "South Africa", native: "South Africa" }, id: e.ZuluSouthAfrica, language: { code: o.Zulu, name: "Zulu", native: "isiZulu" }, name: "Zulu (South Africa)", native_name: "isiZulu (South Africa)", rtl: false });
-({ id: t.AfricaAbidjan, name: "Africa/Abidjan", offset: i$1.UTC_0, timezone: n$1.CoordinatedUniversalTime });
-({ id: t.AfricaAccra, name: "Africa/Accra", offset: i$1.UTC_0, timezone: n$1.CoordinatedUniversalTime });
-({ id: t.AfricaAddisAbaba, name: "Africa/Addis_Ababa", offset: i$1.UTC_PLUS_3, timezone: n$1.EastAfricaTime });
-({ id: t.AfricaAlgiers, name: "Africa/Algiers", offset: i$1.UTC_PLUS_1, timezone: n$1.CentralEuropeanTime });
-({ id: t.AfricaAsmara, name: "Africa/Asmara", offset: i$1.UTC_PLUS_3, timezone: n$1.EastAfricaTime });
-({ id: t.AfricaBamako, name: "Africa/Bamako", offset: i$1.UTC_0, timezone: n$1.CoordinatedUniversalTime });
-({ id: t.AfricaBangui, name: "Africa/Bangui", offset: i$1.UTC_PLUS_1, timezone: n$1.WestAfricaTime });
-({ id: t.AfricaBanjul, name: "Africa/Banjul", offset: i$1.UTC_0, timezone: n$1.CoordinatedUniversalTime });
-({ id: t.AfricaBissau, name: "Africa/Bissau", offset: i$1.UTC_0, timezone: n$1.CoordinatedUniversalTime });
-({ id: t.AfricaBlantyre, name: "Africa/Blantyre", offset: i$1.UTC_PLUS_2, timezone: n$1.CentralAfricaTime });
-({ id: t.AfricaBrazzaville, name: "Africa/Brazzaville", offset: i$1.UTC_PLUS_1, timezone: n$1.WestAfricaTime });
-({ id: t.AfricaBujumbura, name: "Africa/Bujumbura", offset: i$1.UTC_PLUS_2, timezone: n$1.CentralAfricaTime });
-({ id: t.AfricaCairo, name: "Africa/Cairo", offset: i$1.UTC_PLUS_2, timezone: n$1.EasternEuropeanTime });
-({ id: t.AfricaCasablanca, name: "Africa/Casablanca", offset: i$1.UTC_PLUS_1, timezone: n$1.WesternEuropeanTime });
-({ id: t.AfricaCeuta, name: "Africa/Ceuta", offset: i$1.UTC_PLUS_1, timezone: n$1.CentralEuropeanTime });
-({ id: t.AfricaConakry, name: "Africa/Conakry", offset: i$1.UTC_0, timezone: n$1.CoordinatedUniversalTime });
-({ id: t.AfricaDakar, name: "Africa/Dakar", offset: i$1.UTC_0, timezone: n$1.CoordinatedUniversalTime });
-({ id: t.AfricaDarEsSalaam, name: "Africa/Dar_es_Salaam", offset: i$1.UTC_PLUS_3, timezone: n$1.EastAfricaTime });
-({ id: t.AfricaDjibouti, name: "Africa/Djibouti", offset: i$1.UTC_PLUS_3, timezone: n$1.EastAfricaTime });
-({ id: t.AfricaDouala, name: "Africa/Douala", offset: i$1.UTC_PLUS_1, timezone: n$1.WestAfricaTime });
-({ id: t.AfricaElAaiun, name: "Africa/El_Aaiun", offset: i$1.UTC_PLUS_1, timezone: n$1.WestAfricaTime });
-({ id: t.AfricaFreetown, name: "Africa/Freetown", offset: i$1.UTC_0, timezone: n$1.CoordinatedUniversalTime });
-({ id: t.AfricaGaborone, name: "Africa/Gaborone", offset: i$1.UTC_PLUS_2, timezone: n$1.CentralAfricaTime });
-({ id: t.AfricaHarare, name: "Africa/Harare", offset: i$1.UTC_PLUS_2, timezone: n$1.CentralAfricaTime });
-({ id: t.AfricaJohannesburg, name: "Africa/Johannesburg", offset: i$1.UTC_PLUS_2, timezone: n$1.SouthAfricanStandardTime });
-({ id: t.AfricaJuba, name: "Africa/Juba", offset: i$1.UTC_PLUS_3, timezone: n$1.EastAfricaTime });
-({ id: t.AfricaKampala, name: "Africa/Kampala", offset: i$1.UTC_PLUS_3, timezone: n$1.EastAfricaTime });
-({ id: t.AfricaKhartoum, name: "Africa/Khartoum", offset: i$1.UTC_PLUS_2, timezone: n$1.EastAfricaTime });
-({ id: t.AfricaKigali, name: "Africa/Kigali", offset: i$1.UTC_PLUS_2, timezone: n$1.CentralAfricaTime });
-({ id: t.AfricaKinshasa, name: "Africa/Kinshasa", offset: i$1.UTC_PLUS_1, timezone: n$1.WestAfricaTime });
-({ id: t.AfricaLagos, name: "Africa/Lagos", offset: i$1.UTC_PLUS_1, timezone: n$1.WestAfricaTime });
-({ id: t.AfricaLibreville, name: "Africa/Libreville", offset: i$1.UTC_PLUS_1, timezone: n$1.WestAfricaTime });
-({ id: t.AfricaLome, name: "Africa/Lome", offset: i$1.UTC_0, timezone: n$1.CoordinatedUniversalTime });
-({ id: t.AfricaLuanda, name: "Africa/Luanda", offset: i$1.UTC_PLUS_1, timezone: n$1.WestAfricaTime });
-({ id: t.AfricaLubumbashi, name: "Africa/Lubumbashi", offset: i$1.UTC_PLUS_2, timezone: n$1.CentralAfricaTime });
-({ id: t.AfricaLusaka, name: "Africa/Lusaka", offset: i$1.UTC_PLUS_2, timezone: n$1.CentralAfricaTime });
-({ id: t.AfricaMalabo, name: "Africa/Malabo", offset: i$1.UTC_PLUS_1, timezone: n$1.WestAfricaTime });
-({ id: t.AfricaMaputo, name: "Africa/Maputo", offset: i$1.UTC_PLUS_2, timezone: n$1.CentralAfricaTime });
-({ id: t.AfricaMaseru, name: "Africa/Maseru", offset: i$1.UTC_PLUS_2, timezone: n$1.SouthAfricanStandardTime });
-({ id: t.AfricaMbabane, name: "Africa/Mbabane", offset: i$1.UTC_PLUS_2, timezone: n$1.SouthAfricanStandardTime });
-({ id: t.AfricaMogadishu, name: "Africa/Mogadishu", offset: i$1.UTC_PLUS_3, timezone: n$1.EastAfricaTime });
-({ id: t.AfricaMonrovia, name: "Africa/Monrovia", offset: i$1.UTC_0, timezone: n$1.CoordinatedUniversalTime });
-({ id: t.AfricaNairobi, name: "Africa/Nairobi", offset: i$1.UTC_PLUS_3, timezone: n$1.EastAfricaTime });
-({ id: t.AfricaNdjamena, name: "Africa/Ndjamena", offset: i$1.UTC_PLUS_1, timezone: n$1.WestAfricaTime });
-({ id: t.AfricaNiamey, name: "Africa/Niamey", offset: i$1.UTC_PLUS_1, timezone: n$1.WestAfricaTime });
-({ id: t.AfricaNouakchott, name: "Africa/Nouakchott", offset: i$1.UTC_0, timezone: n$1.GreenwichMeanTime });
-({ id: t.AfricaOuagadougou, name: "Africa/Ouagadougou", offset: i$1.UTC_0, timezone: n$1.CoordinatedUniversalTime });
-({ id: t.AfricaPortoNovo, name: "Africa/Porto-Novo", offset: i$1.UTC_PLUS_1, timezone: n$1.WestAfricaTime });
-({ id: t.AfricaSaoTome, name: "Africa/SaoTome", offset: i$1.UTC_0, timezone: n$1.CoordinatedUniversalTime });
-({ id: t.AfricaTripoli, name: "Africa/Tripoli", offset: i$1.UTC_0, timezone: n$1.CoordinatedUniversalTime });
-({ id: t.AfricaTunis, name: "Africa/Tunis", offset: i$1.UTC_0, timezone: n$1.CoordinatedUniversalTime });
-({ id: t.AfricaWindhoek, name: "Africa/Windhoek", offset: i$1.UTC_PLUS_2, timezone: n$1.WestAfricaTime });
-({ id: t.AmericaAdak, name: "America/Adak", offset: i$1.UTC_PLUS_10, timezone: n$1.HawaiiAleutianStandardTime });
-({ id: t.AmericaAnchorage, name: "America/Anchorage", offset: i$1.UTC_PLUS_9, timezone: n$1.AlaskaStandardTime });
-({ id: t.AmericaAnguilla, name: "America/Anguilla", offset: i$1.UTC_0, timezone: n$1.AtlanticStandardTime });
-({ id: t.AmericaAntigua, name: "America/Antigua", offset: i$1.UTC_0, timezone: n$1.AtlanticStandardTime });
-({ id: t.AmericaAraguaina, name: "America/Araguaina", offset: i$1.UTC_MINUS_3, timezone: n$1.BrasiliaTime });
-({ id: t.AmericaArgentinaBuenosAires, name: "America/Argentina/Buenos_Aires", offset: i$1.UTC_MINUS_3, timezone: n$1.ArgentinaTime });
-({ id: t.AmericaArgentinaCatamarca, name: "America/Argentina/Catamarca", offset: i$1.UTC_MINUS_3, timezone: n$1.ArgentinaTime });
-({ id: t.AmericaArgentinaCordoba, name: "America/Argentina/Cordoba", offset: i$1.UTC_MINUS_3, timezone: n$1.ArgentinaTime });
-({ id: t.AmericaArgentinaJujuy, name: "America/Argentina/Jujuy", offset: i$1.UTC_MINUS_3, timezone: n$1.ArgentinaTime });
-({ id: t.AmericaArgentinaLaRioja, name: "America/Argentina/La_Rioja", offset: i$1.UTC_MINUS_3, timezone: n$1.ArgentinaTime });
-({ id: t.AmericaArgentinaMendoza, name: "America/Argentina/Mendoza", offset: i$1.UTC_MINUS_3, timezone: n$1.ArgentinaTime });
-({ id: t.AmericaArgentinaRioGallegos, name: "America/Argentina/Rio_Gallegos", offset: i$1.UTC_MINUS_3, timezone: n$1.ArgentinaTime });
-({ id: t.AmericaArgentinaSalta, name: "America/Argentina/Salta", offset: i$1.UTC_MINUS_3, timezone: n$1.ArgentinaTime });
-({ id: t.AmericaArgentinaSanJuan, name: "America/Argentina/San_Juan", offset: i$1.UTC_MINUS_3, timezone: n$1.ArgentinaTime });
-({ id: t.AmericaArgentinaSanLuis, name: "America/Argentina/San_Luis", offset: i$1.UTC_MINUS_3, timezone: n$1.ArgentinaTime });
-({ id: t.AmericaArgentinaTucuman, name: "America/Argentina/Tucuman", offset: i$1.UTC_MINUS_3, timezone: n$1.ArgentinaTime });
-({ id: t.AmericaArgentinaUshuaia, name: "America/Argentina/Ushuaia", offset: i$1.UTC_MINUS_3, timezone: n$1.ArgentinaTime });
-({ id: t.AmericaAruba, name: "America/Aruba", offset: i$1.UTC_0, timezone: n$1.AtlanticStandardTime });
-({ id: t.AmericaAsuncion, name: "America/Asuncion", offset: i$1.UTC_MINUS_4, timezone: n$1.ParaguayTime });
-({ id: t.AmericaAtikokan, name: "America/Atikokan", offset: i$1.UTC_0, timezone: n$1.EasternStandardTime });
-({ id: t.AmericaAtka, name: "America/Atka", offset: i$1.UTC_MINUS_10, timezone: n$1.HawaiiAleutianStandardTime });
-({ id: t.AmericaBahia, name: "America/Bahia", offset: i$1.UTC_MINUS_3, timezone: n$1.BrasiliaTime });
-({ id: t.AmericaBahiaBanderas, name: "America/Bahia_Banderas", offset: i$1.UTC_MINUS_6, timezone: n$1.CentralStandardTime });
-({ id: t.AmericaBarbados, name: "America/Barbados", offset: i$1.UTC_MINUS_4, timezone: n$1.AtlanticStandardTime });
-({ id: t.AmericaBelem, name: "America/Belem", offset: i$1.UTC_MINUS_3, timezone: n$1.BrasiliaTime });
-({ id: t.AmericaBelize, name: "America/Belize", offset: i$1.UTC_MINUS_6, timezone: n$1.CentralStandardTime });
-({ id: t.AmericaBlancSablon, name: "America/Blanc-Sablon", offset: i$1.UTC_MINUS_4, timezone: n$1.AtlanticStandardTime });
-({ id: t.AmericaBoaVista, name: "America/Boa_Vista", offset: i$1.UTC_MINUS_4, timezone: n$1.AmazonTime });
-({ id: t.AmericaBogota, name: "America/Bogota", offset: i$1.UTC_MINUS_5, timezone: n$1.ColombiaTime });
-({ id: t.AmericaBoise, name: "America/Boise", offset: i$1.UTC_MINUS_7, timezone: n$1.MountainStandardTime });
-({ id: t.AmericaCambridgeBay, name: "America/Cambridge_Bay", offset: i$1.UTC_MINUS_7, timezone: n$1.MountainStandardTime });
-({ id: t.AmericaCampoGrande, name: "America/Campo_Grande", offset: i$1.UTC_MINUS_4, timezone: n$1.AmazonTime });
-({ id: t.AmericaCancun, name: "America/Cancun", offset: i$1.UTC_MINUS_5, timezone: n$1.EasternStandardTime });
-({ id: t.AmericaCaracas, name: "America/Caracas", offset: i$1.UTC_MINUS_4, timezone: n$1.VenezuelaStandardTime });
-({ id: t.AmericaCayenne, name: "America/Cayenne", offset: i$1.UTC_MINUS_3, timezone: n$1.FrenchGuianaTime });
-({ id: t.AmericaCayman, name: "America/Cayman", offset: i$1.UTC_0, timezone: n$1.AtlanticStandardTime });
-({ id: t.AmericaChicago, name: "America/Chicago", offset: i$1.UTC_MINUS_6, timezone: n$1.CentralStandardTime });
-({ id: t.AmericaChihuahua, name: "America/Chihuahua", offset: i$1.UTC_MINUS_7, timezone: n$1.MountainStandardTime });
-({ id: t.AmericaCoralHarbour, name: "America/Coral_Harbour", offset: i$1.UTC_MINUS_5, timezone: n$1.EasternStandardTime });
-({ id: t.AmericaCordoba, name: "America/Cordoba", offset: i$1.UTC_MINUS_3, timezone: n$1.ArgentinaTime });
-({ id: t.AmericaCostaRica, name: "America/Costa_Rica", offset: i$1.UTC_MINUS_6, timezone: n$1.CentralStandardTime });
-({ id: t.AmericaCreston, name: "America/Creston", offset: i$1.UTC_MINUS_7, timezone: n$1.MountainStandardTime });
-({ id: t.AmericaCuiaba, name: "America/Cuiaba", offset: i$1.UTC_MINUS_4, timezone: n$1.AmazonTime });
-({ id: t.AmericaCuracao, name: "America/Curacao", offset: i$1.UTC_MINUS_4, timezone: n$1.AtlanticStandardTime });
-({ id: t.AmericaDanmarkshavn, name: "America/Danmarkshavn", offset: i$1.UTC_0, timezone: n$1.GreenwichMeanTime });
-({ id: t.AmericaDawson, name: "America/Dawson", offset: i$1.UTC_MINUS_8, timezone: n$1.PacificStandardTime });
-({ id: t.AmericaDawsonCreek, name: "America/Dawson_Creek", offset: i$1.UTC_MINUS_8, timezone: n$1.PacificStandardTime });
-({ id: t.AmericaDenver, name: "America/Denver", offset: i$1.UTC_MINUS_7, timezone: n$1.MountainStandardTime });
-({ id: t.AmericaDetroit, name: "America/Detroit", offset: i$1.UTC_MINUS_5, timezone: n$1.EasternStandardTime });
-({ id: t.AmericaDominica, name: "America/Dominica", offset: i$1.UTC_0, timezone: n$1.AtlanticStandardTime });
-({ id: t.AmericaEdmonton, name: "America/Edmonton", offset: i$1.UTC_MINUS_7, timezone: n$1.MountainStandardTime });
-({ id: t.AmericaEirunepe, name: "America/Eirunepe", offset: i$1.UTC_MINUS_5, timezone: n$1.AcreTime });
-({ id: t.AmericaElSalvador, name: "America/El_Salvador", offset: i$1.UTC_MINUS_6, timezone: n$1.CentralStandardTime });
-({ id: t.AmericaFortaleza, name: "America/Fortaleza", offset: i$1.UTC_MINUS_3, timezone: n$1.BrasiliaTime });
-({ id: t.AmericaGlaceBay, name: "America/Glace_Bay", offset: i$1.UTC_0, timezone: n$1.AtlanticStandardTime });
-({ id: t.AmericaGodthab, name: "America/Godthab", offset: i$1.UTC_MINUS_3, timezone: n$1.WestGreenlandTime });
-({ id: t.AmericaGooseBay, name: "America/Goose_Bay", offset: i$1.UTC_0, timezone: n$1.AtlanticStandardTime });
-({ id: t.AmericaGrandTurk, name: "America/Grand_Turk", offset: i$1.UTC_0, timezone: n$1.AtlanticStandardTime });
-({ id: t.AmericaGrenada, name: "America/Grenada", offset: i$1.UTC_0, timezone: n$1.AtlanticStandardTime });
-({ id: t.AmericaGuadeloupe, name: "America/Guadeloupe", offset: i$1.UTC_0, timezone: n$1.AtlanticStandardTime });
-({ id: t.AmericaGuatemala, name: "America/Guatemala", offset: i$1.UTC_MINUS_6, timezone: n$1.CentralStandardTime });
-({ id: t.AmericaGuayaquil, name: "America/Guayaquil", offset: i$1.UTC_MINUS_5, timezone: n$1.EcuadorTime });
-({ id: t.AmericaGuyana, name: "America/Guyana", offset: i$1.UTC_0, timezone: n$1.AtlanticStandardTime });
-({ id: t.AmericaHalifax, name: "America/Halifax", offset: i$1.UTC_0, timezone: n$1.AtlanticStandardTime });
-({ id: t.AmericaHavana, name: "America/Havana", offset: i$1.UTC_MINUS_5, timezone: n$1.CubaStandardTime });
-({ id: t.AmericaHermosillo, name: "America/Hermosillo", offset: i$1.UTC_MINUS_7, timezone: n$1.MountainStandardTime });
-({ id: t.AmericaIndianaIndianapolis, name: "America/Indiana/Indianapolis", offset: i$1.UTC_MINUS_5, timezone: n$1.EasternStandardTime });
-({ id: t.AmericaIndianaKnox, name: "America/Indiana/Knox", offset: i$1.UTC_MINUS_6, timezone: n$1.CentralStandardTime });
-({ id: t.AmericaIndianaMarengo, name: "America/Indiana/Marengo", offset: i$1.UTC_MINUS_5, timezone: n$1.EasternStandardTime });
-({ id: t.AmericaIndianaPetersburg, name: "America/Indiana/Petersburg", offset: i$1.UTC_MINUS_5, timezone: n$1.EasternStandardTime });
-({ id: t.AmericaIndianaTellCity, name: "America/Indiana/Tell_City", offset: i$1.UTC_MINUS_6, timezone: n$1.CentralStandardTime });
-({ id: t.AmericaIndianaVevay, name: "America/Indiana/Vevay", offset: i$1.UTC_MINUS_5, timezone: n$1.EasternStandardTime });
-({ id: t.AmericaIndianaVincennes, name: "America/Indiana/Vincennes", offset: i$1.UTC_MINUS_5, timezone: n$1.EasternStandardTime });
-({ id: t.AmericaIndianaWinamac, name: "America/Indiana/Winamac", offset: i$1.UTC_MINUS_5, timezone: n$1.EasternStandardTime });
-({ id: t.AmericaInuvik, name: "America/Inuvik", offset: i$1.UTC_MINUS_7, timezone: n$1.MountainStandardTime });
-({ id: t.AmericaIqaluit, name: "America/Iqaluit", offset: i$1.UTC_0, timezone: n$1.EasternStandardTime });
-({ id: t.AmericaJamaica, name: "America/Jamaica", offset: i$1.UTC_MINUS_4, timezone: n$1.AtlanticStandardTime });
-({ id: t.AmericaJuneau, name: "America/Juneau", offset: i$1.UTC_MINUS_9, timezone: n$1.AlaskaStandardTime });
-({ id: t.AmericaKentuckyLouisville, name: "America/Kentucky/Louisville", offset: i$1.UTC_MINUS_5, timezone: n$1.EasternStandardTime });
-({ id: t.AmericaKentuckyMonticello, name: "America/Kentucky/Monticello", offset: i$1.UTC_MINUS_5, timezone: n$1.EasternStandardTime });
-({ id: t.AmericaKralendijk, name: "America/Kralendijk", offset: i$1.UTC_MINUS_4, timezone: n$1.AtlanticStandardTime });
-({ id: t.AmericaLaPaz, name: "America/La_Paz", offset: i$1.UTC_MINUS_4, timezone: n$1.BoliviaTime });
-({ id: t.AmericaLima, name: "America/Lima", offset: i$1.UTC_MINUS_5, timezone: n$1.PeruTime });
-({ id: t.AmericaLosAngeles, name: "America/Los_Angeles", offset: i$1.UTC_MINUS_8, timezone: n$1.PacificStandardTime });
-({ id: t.AmericaLouisville, name: "America/Louisville", offset: i$1.UTC_MINUS_5, timezone: n$1.EasternStandardTime });
-({ id: t.AmericaLowerPrinces, name: "America/Lower_Princes", offset: i$1.UTC_MINUS_4, timezone: n$1.AtlanticStandardTime });
-({ id: t.AmericaMaceio, name: "America/Maceio", offset: i$1.UTC_MINUS_3, timezone: n$1.BrasiliaTime });
-({ id: t.AmericaManagua, name: "America/Managua", offset: i$1.UTC_MINUS_6, timezone: n$1.CentralStandardTime });
-({ id: t.AmericaManaus, name: "America/Manaus", offset: i$1.UTC_MINUS_4, timezone: n$1.AmazonTime });
-({ id: t.AmericaMarigot, name: "America/Marigot", offset: i$1.UTC_MINUS_4, timezone: n$1.AtlanticStandardTime });
-({ id: t.AmericaMartinique, name: "America/Martinique", offset: i$1.UTC_MINUS_4, timezone: n$1.AtlanticStandardTime });
-({ id: t.AmericaMatamoros, name: "America/Matamoros", offset: i$1.UTC_MINUS_6, timezone: n$1.CentralStandardTime });
-({ id: t.AmericaMazatlan, name: "America/Mazatlan", offset: i$1.UTC_MINUS_7, timezone: n$1.MountainStandardTime });
-({ id: t.AmericaMenominee, name: "America/Menominee", offset: i$1.UTC_MINUS_5, timezone: n$1.CentralStandardTime });
-({ id: t.AmericaMerida, name: "America/Merida", offset: i$1.UTC_MINUS_6, timezone: n$1.CentralStandardTime });
-({ id: t.AmericaMetlakatla, name: "America/Metlakatla", offset: i$1.UTC_MINUS_9, timezone: n$1.AlaskaStandardTime });
-({ id: t.AmericaMexicoCity, name: "America/Mexico_City", offset: i$1.UTC_MINUS_6, timezone: n$1.CentralStandardTime });
-({ id: t.AmericaMiquelon, name: "America/Miquelon", offset: i$1.UTC_MINUS_3, timezone: n$1.SaintPierreAndMiquelonStandardTime });
-({ id: t.AmericaMoncton, name: "America/Moncton", offset: i$1.UTC_MINUS_4, timezone: n$1.AtlanticStandardTime });
-({ id: t.AmericaMonterrey, name: "America/Monterrey", offset: i$1.UTC_MINUS_6, timezone: n$1.CentralStandardTime });
-({ id: t.AmericaMontevideo, name: "America/Montevideo", offset: i$1.UTC_MINUS_3, timezone: n$1.UruguayStandardTime });
-({ id: t.AmericaMontreal, name: "America/Montreal", offset: i$1.UTC_MINUS_5, timezone: n$1.EasternStandardTime });
-({ id: t.AmericaMontserrat, name: "America/Montserrat", offset: i$1.UTC_MINUS_4, timezone: n$1.AtlanticStandardTime });
-({ id: t.AmericaNassau, name: "America/Nassau", offset: i$1.UTC_MINUS_5, timezone: n$1.EasternStandardTime });
-({ id: t.AmericaNewYork, name: "America/New_York", offset: i$1.UTC_MINUS_5, timezone: n$1.EasternStandardTime });
-({ id: t.AmericaNipigon, name: "America/Nipigon", offset: i$1.UTC_MINUS_5, timezone: n$1.EasternStandardTime });
-({ id: t.AmericaNome, name: "America/Nome", offset: i$1.UTC_MINUS_9, timezone: n$1.AlaskaStandardTime });
-({ id: t.AmericaNoronha, name: "America/Noronha", offset: i$1.UTC_MINUS_2, timezone: n$1.FernandoDeNoronhaTime });
-({ id: t.AmericaNorthDakotaBeulah, name: "America/North_Dakota/Beulah", offset: i$1.UTC_MINUS_6, timezone: n$1.CentralStandardTime });
-({ id: t.AmericaNorthDakotaCenter, name: "America/North_Dakota/Center", offset: i$1.UTC_MINUS_6, timezone: n$1.CentralStandardTime });
-({ id: t.AmericaNorthDakotaNewSalem, name: "America/North_Dakota/New_Salem", offset: i$1.UTC_MINUS_6, timezone: n$1.CentralStandardTime });
-({ id: t.AmericaOjinaga, name: "America/Ojinaga", offset: i$1.UTC_MINUS_7, timezone: n$1.MountainStandardTime });
-({ id: t.AmericaPanama, name: "America/Panama", offset: i$1.UTC_MINUS_5, timezone: n$1.EasternStandardTime });
-({ id: t.AmericaPangnirtung, name: "America/Pangnirtung", offset: i$1.UTC_MINUS_5, timezone: n$1.EasternStandardTime });
-({ id: t.AmericaParamaribo, name: "America/Paramaribo", offset: i$1.UTC_MINUS_3, timezone: n$1.SurinameTime });
-({ id: t.AmericaPhoenix, name: "America/Phoenix", offset: i$1.UTC_MINUS_7, timezone: n$1.MountainStandardTime });
-({ id: t.AmericaPortAuPrince, name: "America/Port-au-Prince", offset: i$1.UTC_MINUS_5, timezone: n$1.EasternStandardTime });
-({ id: t.AmericaPortOfSpain, name: "America/Port_of_Spain", offset: i$1.UTC_MINUS_4, timezone: n$1.AtlanticStandardTime });
-({ id: t.AmericaPortoVelho, name: "America/Porto_Velho", offset: i$1.UTC_MINUS_4, timezone: n$1.AmazonTime });
-({ id: t.AmericaPuertoRico, name: "America/Puerto_Rico", offset: i$1.UTC_MINUS_4, timezone: n$1.AtlanticStandardTime });
-({ id: t.AmericaRainyRiver, name: "America/Rainy_River", offset: i$1.UTC_MINUS_6, timezone: n$1.CentralStandardTime });
-({ id: t.AmericaRankinInlet, name: "America/Rankin_Inlet", offset: i$1.UTC_MINUS_6, timezone: n$1.CentralStandardTime });
-({ id: t.AmericaRecife, name: "America/Recife", offset: i$1.UTC_MINUS_3, timezone: n$1.BrasiliaTime });
-({ id: t.AmericaRegina, name: "America/Regina", offset: i$1.UTC_MINUS_6, timezone: n$1.CentralStandardTime });
-({ id: t.AmericaResolute, name: "America/Resolute", offset: i$1.UTC_MINUS_6, timezone: n$1.CentralStandardTime });
-({ id: t.AmericaRioBranco, name: "America/Rio_Branco", offset: i$1.UTC_MINUS_5, timezone: n$1.AcreTime });
-({ id: t.AmericaSantaIsabel, name: "America/Santa_Isabel", offset: i$1.UTC_MINUS_8, timezone: n$1.PacificStandardTime });
-({ id: t.AmericaSantarem, name: "America/Santarem", offset: i$1.UTC_MINUS_3, timezone: n$1.BrasiliaTime });
-({ id: t.AmericaSantiago, name: "America/Santiago", offset: i$1.UTC_MINUS_4, timezone: n$1.ChileStandardTime });
-({ id: t.AmericaSantoDomingo, name: "America/Santo_Domingo", offset: i$1.UTC_MINUS_4, timezone: n$1.AtlanticStandardTime });
-({ id: t.AmericaSaoPaulo, name: "America/Sao_Paulo", offset: i$1.UTC_MINUS_3, timezone: n$1.BrasiliaTime });
-({ id: t.AmericaScoresbysund, name: "America/Scoresbysund", offset: i$1.UTC_MINUS_1, timezone: n$1.EasternGreenlandTime });
-({ id: t.AmericaShiprock, name: "America/Shiprock", offset: i$1.UTC_MINUS_7, timezone: n$1.MountainStandardTime });
-({ id: t.AmericaSitka, name: "America/Sitka", offset: i$1.UTC_MINUS_9, timezone: n$1.AlaskaStandardTime });
-({ id: t.AmericaStBarthelemy, name: "America/St_Barthelemy", offset: i$1.UTC_MINUS_4, timezone: n$1.AtlanticStandardTime });
-({ id: t.AmericaStJohns, name: "America/St_Johns", offset: i$1.UTC_MINUS_3, timezone: n$1.NewfoundlandStandardTime });
-({ id: t.AmericaStKitts, name: "America/St_Kitts", offset: i$1.UTC_MINUS_4, timezone: n$1.AtlanticStandardTime });
-({ id: t.AmericaStLucia, name: "America/St_Lucia", offset: i$1.UTC_MINUS_4, timezone: n$1.AtlanticStandardTime });
-({ id: t.AmericaStThomas, name: "America/St_Thomas", offset: i$1.UTC_MINUS_4, timezone: n$1.AtlanticStandardTime });
-({ id: t.AmericaStVincent, name: "America/St_Vincent", offset: i$1.UTC_MINUS_4, timezone: n$1.AtlanticStandardTime });
-({ id: t.AmericaSwiftCurrent, name: "America/Swift_Current", offset: i$1.UTC_MINUS_6, timezone: n$1.CentralStandardTime });
-({ id: t.AmericaTegucigalpa, name: "America/Tegucigalpa", offset: i$1.UTC_MINUS_6, timezone: n$1.CentralStandardTime });
-({ id: t.AmericaThule, name: "America/Thule", offset: i$1.UTC_MINUS_4, timezone: n$1.AtlanticStandardTime });
-({ id: t.AmericaThunderBay, name: "America/Thunder_Bay", offset: i$1.UTC_MINUS_4, timezone: n$1.EasternStandardTime });
-({ id: t.AmericaTijuana, name: "America/Tijuana", offset: i$1.UTC_MINUS_8, timezone: n$1.PacificStandardTime });
-({ id: t.AmericaToronto, name: "America/Toronto", offset: i$1.UTC_MINUS_5, timezone: n$1.EasternStandardTime });
-({ id: t.AmericaTortola, name: "America/Tortola", offset: i$1.UTC_MINUS_4, timezone: n$1.AtlanticStandardTime });
-({ id: t.AmericaVancouver, name: "America/Vancouver", offset: i$1.UTC_MINUS_8, timezone: n$1.PacificStandardTime });
-({ id: t.AmericaWhitehorse, name: "America/Whitehorse", offset: i$1.UTC_MINUS_8, timezone: n$1.PacificStandardTime });
-({ id: t.AmericaWinnipeg, name: "America/Winnipeg", offset: i$1.UTC_MINUS_6, timezone: n$1.CentralStandardTime });
-({ id: t.AmericaYakutat, name: "America/Yakutat", offset: i$1.UTC_MINUS_9, timezone: n$1.AlaskaStandardTime });
-({ id: t.AmericaYellowknife, name: "America/Yellowknife", offset: i$1.UTC_MINUS_6, timezone: n$1.MountainStandardTime });
-({ id: t.AntarcticaCasey, name: "Antarctica/Casey", offset: i$1.UTC_MINUS_8, timezone: n$1.WesternStandardTime });
-({ id: t.AntarcticaDavis, name: "Antarctica/Davis", offset: i$1.UTC_MINUS_7, timezone: n$1.NewfoundlandStandardTime });
-({ id: t.AntarcticaDumontDUrville, name: "Antarctica/DumontDUrville", offset: i$1.UTC_MINUS_10, timezone: n$1.CentralStandardTime });
-({ id: t.AntarcticaMacquarie, name: "Antarctica/Macquarie", offset: i$1.UTC_MINUS_11, timezone: n$1.CentralStandardTime });
-({ id: t.AntarcticaMawson, name: "Antarctica/Mawson", offset: i$1.UTC_MINUS_6, timezone: n$1.CentralStandardTime });
-({ id: t.AntarcticaMcMurdo, name: "Antarctica/McMurdo", offset: i$1.UTC_MINUS_12, timezone: n$1.NewZealandStandardTime });
-({ id: t.AntarcticaPalmer, name: "Antarctica/Palmer", offset: i$1.UTC_MINUS_4, timezone: n$1.ChathamStandardTime });
-({ id: t.AntarcticaRothera, name: "Antarctica/Rothera", offset: i$1.UTC_MINUS_3, timezone: n$1.RotheraResearchStationTime });
-({ id: t.AntarcticaSyowa, name: "Antarctica/Syowa", offset: i$1.UTC_MINUS_3, timezone: n$1.ShowaStationTime });
-({ id: t.AntarcticaTroll, name: "Antarctica/Troll", offset: i$1.UTC_MINUS_2, timezone: n$1.CentralStandardTime });
-({ id: t.AntarcticaVostok, name: "Antarctica/Vostok", offset: i$1.UTC_MINUS_6, timezone: n$1.CentralStandardTime });
-({ id: t.ArcticLongyearbyen, name: "Arctic/Longyearbyen", offset: i$1.UTC_MINUS_1, timezone: n$1.CentralEuropeanTime });
-({ id: t.AsiaAden, name: "Asia/Aden", offset: i$1.UTC_PLUS_3, timezone: n$1.ArabiaStandardTime });
-({ id: t.AsiaAlmaty, name: "Asia/Almaty", offset: i$1.UTC_PLUS_6, timezone: n$1.AlmaAtaTime });
-({ id: t.AsiaAmman, name: "Asia/Amman", offset: i$1.UTC_PLUS_2, timezone: n$1.EasternEuropeanTime });
-({ id: t.AsiaAnadyr, name: "Asia/Anadyr", offset: i$1.UTC_PLUS_12, timezone: n$1.NewCaledoniaTime });
-({ id: t.AsiaAqtau, name: "Asia/Aqtau", offset: i$1.UTC_PLUS_5, timezone: n$1.AqtobeTime });
-({ id: t.AsiaAqtobe, name: "Asia/Aqtobe", offset: i$1.UTC_PLUS_5, timezone: n$1.AqtobeTime });
-({ id: t.AsiaAshgabat, name: "Asia/Ashgabat", offset: i$1.UTC_PLUS_5, timezone: n$1.TurkmenistanTime });
-({ id: t.AsiaBaghdad, name: "Asia/Baghdad", offset: i$1.UTC_PLUS_3, timezone: n$1.ArabiaStandardTime });
-({ id: t.AsiaBahrain, name: "Asia/Bahrain", offset: i$1.UTC_PLUS_3, timezone: n$1.ArabiaStandardTime });
-({ id: t.AsiaBaku, name: "Asia/Baku", offset: i$1.UTC_PLUS_4, timezone: n$1.AzerbaijanTime });
-({ id: t.AsiaBangkok, name: "Asia/Bangkok", offset: i$1.UTC_PLUS_7, timezone: n$1.IndochinaTime });
-({ id: t.AsiaBarnaul, name: "Asia/Barnaul", offset: i$1.UTC_PLUS_7, timezone: n$1.KrasnoyarskTime });
-({ id: t.AsiaBeirut, name: "Asia/Beirut", offset: i$1.UTC_PLUS_2, timezone: n$1.EasternEuropeanTime });
-({ id: t.AsiaBishkek, name: "Asia/Bishkek", offset: i$1.UTC_PLUS_6, timezone: n$1.KyrgyzstanTime });
-({ id: t.AsiaBrunei, name: "Asia/Brunei", offset: i$1.UTC_PLUS_8, timezone: n$1.BruneiTime });
-({ id: t.AsiaChita, name: "Asia/Chita", offset: i$1.UTC_PLUS_9, timezone: n$1.YakutskTime });
-({ id: t.AsiaChoibalsan, name: "Asia/Choibalsan", offset: i$1.UTC_PLUS_8, timezone: n$1.ChoibalsanStandardTime });
-({ id: t.AsiaColombo, name: "Asia/Colombo", offset: i$1.UTC_PLUS_5, timezone: n$1.IndianStandardTime });
-({ id: t.AsiaDamascus, name: "Asia/Damascus", offset: i$1.UTC_PLUS_2, timezone: n$1.EasternEuropeanTime });
-({ id: t.AsiaDhaka, name: "Asia/Dhaka", offset: i$1.UTC_PLUS_6, timezone: n$1.BangladeshStandardTime });
-({ id: t.AsiaDili, name: "Asia/Dili", offset: i$1.UTC_PLUS_9, timezone: n$1.JapanStandardTime });
-({ id: t.AsiaDubai, name: "Asia/Dubai", offset: i$1.UTC_PLUS_4, timezone: n$1.GulfStandardTime });
-({ id: t.AsiaDushanbe, name: "Asia/Dushanbe", offset: i$1.UTC_PLUS_5, timezone: n$1.TajikistanTime });
-({ id: t.AsiaFamagusta, name: "Asia/Famagusta", offset: i$1.UTC_PLUS_2, timezone: n$1.EasternEuropeanTime });
-({ id: t.AsiaGaza, name: "Asia/Gaza", offset: i$1.UTC_PLUS_2, timezone: n$1.EasternEuropeanTime });
-({ id: t.AsiaHebron, name: "Asia/Hebron", offset: i$1.UTC_PLUS_2, timezone: n$1.EasternEuropeanTime });
-({ id: t.AsiaHoChiMinh, name: "Asia/Ho_Chi_Minh", offset: i$1.UTC_PLUS_7, timezone: n$1.IndochinaTime });
-({ id: t.AsiaHongKong, name: "Asia/Hong_Kong", offset: i$1.UTC_PLUS_8, timezone: n$1.HongKongTime });
-({ id: t.AsiaHovd, name: "Asia/Hovd", offset: i$1.UTC_PLUS_7, timezone: n$1.HovdTime });
-({ id: t.AsiaIrkutsk, name: "Asia/Irkutsk", offset: i$1.UTC_PLUS_8, timezone: n$1.IrkutskTime });
-({ id: t.AsiaJakarta, name: "Asia/Jakarta", offset: i$1.UTC_PLUS_7, timezone: n$1.WesternIndonesianTime });
-({ id: t.AsiaJayapura, name: "Asia/Jayapura", offset: i$1.UTC_PLUS_9, timezone: n$1.JapanStandardTime });
-({ id: t.AsiaJerusalem, name: "Asia/Jerusalem", offset: i$1.UTC_PLUS_2, timezone: n$1.EasternEuropeanTime });
-({ id: t.AsiaKabul, name: "Asia/Kabul", offset: i$1.UTC_PLUS_4, timezone: n$1.AfghanistanTime });
-({ id: t.AsiaKamchatka, name: "Asia/Kamchatka", offset: i$1.UTC_PLUS_12, timezone: n$1.KamchatkaTime });
-({ id: t.AsiaKarachi, name: "Asia/Karachi", offset: i$1.UTC_PLUS_5, timezone: n$1.PakistanStandardTime });
-({ id: t.AsiaKathmandu, name: "Asia/Kathmandu", offset: i$1.UTC_PLUS_5, timezone: n$1.NepalTime });
-({ id: t.AsiaKhandyga, name: "Asia/Khandyga", offset: i$1.UTC_PLUS_9, timezone: n$1.YakutskTime });
-({ id: t.AsiaKolkata, name: "Asia/Kolkata", offset: i$1.UTC_PLUS_5, timezone: n$1.IndianStandardTime });
-({ id: t.AsiaKrasnoyarsk, name: "Asia/Krasnoyarsk", offset: i$1.UTC_PLUS_7, timezone: n$1.KrasnoyarskTime });
-({ id: t.AsiaKualaLumpur, name: "Asia/Kuala_Lumpur", offset: i$1.UTC_PLUS_8, timezone: n$1.MalaysiaStandardTime });
-({ id: t.AsiaKuching, name: "Asia/Kuching", offset: i$1.UTC_PLUS_8, timezone: n$1.MalaysiaStandardTime });
-({ id: t.AsiaKuwait, name: "Asia/Kuwait", offset: i$1.UTC_PLUS_3, timezone: n$1.ArabiaStandardTime });
-({ id: t.AsiaMacau, name: "Asia/Macau", offset: i$1.UTC_PLUS_8, timezone: n$1.ChinaStandardTime });
-({ id: t.AsiaMagadan, name: "Asia/Magadan", offset: i$1.UTC_PLUS_11, timezone: n$1.MagadanTime });
-({ id: t.AsiaMakassar, name: "Asia/Makassar", offset: i$1.UTC_PLUS_8, timezone: n$1.MalaysiaTime });
-({ id: t.AsiaManila, name: "Asia/Manila", offset: i$1.UTC_PLUS_8, timezone: n$1.PhilippineTime });
-({ id: t.AsiaMuscat, name: "Asia/Muscat", offset: i$1.UTC_PLUS_4, timezone: n$1.GulfStandardTime });
-({ id: t.AsiaNovokuznetsk, name: "Asia/Novokuznetsk", offset: i$1.UTC_PLUS_6, timezone: n$1.NovosibirskTime });
-({ id: t.AsiaNovosibirsk, name: "Asia/Novosibirsk", offset: i$1.UTC_PLUS_6, timezone: n$1.NovosibirskTime });
-({ id: t.AsiaOmsk, name: "Asia/Omsk", offset: i$1.UTC_PLUS_6, timezone: n$1.OmskTime });
-({ id: t.AsiaOral, name: "Asia/Oral", offset: i$1.UTC_PLUS_5, timezone: n$1.OralTime });
-({ id: t.AsiaPhnomPenh, name: "Asia/Phnom_Penh", offset: i$1.UTC_PLUS_7, timezone: n$1.IndochinaTime });
-({ id: t.AsiaPontianak, name: "Asia/Pontianak", offset: i$1.UTC_PLUS_7, timezone: n$1.WesternIndonesianTime });
-({ id: t.AsiaPyongyang, name: "Asia/Pyongyang", offset: i$1.UTC_PLUS_9, timezone: n$1.KoreaStandardTime });
-({ id: t.AsiaQatar, name: "Asia/Qatar", offset: i$1.UTC_PLUS_3, timezone: n$1.ArabiaStandardTime });
-({ id: t.AsiaQyzylorda, name: "Asia/Qyzylorda", offset: i$1.UTC_PLUS_5, timezone: n$1.WestKazakhstanTime });
-({ id: t.AsiaRangoon, name: "Asia/Rangoon", offset: i$1.UTC_PLUS_6, timezone: n$1.MyanmarStandardTime });
-({ id: t.AsiaRiyadh, name: "Asia/Riyadh", offset: i$1.UTC_PLUS_3, timezone: n$1.ArabiaStandardTime });
-({ id: t.AsiaSakhalin, name: "Asia/Sakhalin", offset: i$1.UTC_PLUS_11, timezone: n$1.SakhalinIslandTime });
-({ id: t.AsiaSamarkand, name: "Asia/Samarkand", offset: i$1.UTC_PLUS_5, timezone: n$1.UzbekistanTime });
-({ id: t.AsiaSeoul, name: "Asia/Seoul", offset: i$1.UTC_PLUS_9, timezone: n$1.KoreaStandardTime });
-({ id: t.AsiaShanghai, name: "Asia/Shanghai", offset: i$1.UTC_PLUS_8, timezone: n$1.ChinaStandardTime });
-({ id: t.AsiaSingapore, name: "Asia/Singapore", offset: i$1.UTC_PLUS_8, timezone: n$1.SingaporeStandardTime });
-({ id: t.AsiaSrednekolymsk, name: "Asia/Srednekolymsk", offset: i$1.UTC_PLUS_11, timezone: n$1.SrednekolymskTime });
-({ id: t.AsiaTaipei, name: "Asia/Taipei", offset: i$1.UTC_PLUS_8, timezone: n$1.ChinaStandardTime });
-({ id: t.AsiaTashkent, name: "Asia/Tashkent", offset: i$1.UTC_PLUS_5, timezone: n$1.UzbekistanTime });
-({ id: t.AsiaTbilisi, name: "Asia/Tbilisi", offset: i$1.UTC_PLUS_4, timezone: n$1.GeorgiaStandardTime });
-({ id: t.AsiaTehran, name: "Asia/Tehran", offset: i$1.UTC_PLUS_3, timezone: n$1.IranStandardTime });
-({ id: t.AsiaThimphu, name: "Asia/Thimphu", offset: i$1.UTC_PLUS_6, timezone: n$1.BhutanTime });
-({ id: t.AsiaTokyo, name: "Asia/Tokyo", offset: i$1.UTC_PLUS_9, timezone: n$1.JapanStandardTime });
-({ id: t.AsiaTomsk, name: "Asia/Tomsk", offset: i$1.UTC_PLUS_6, timezone: n$1.KrasnoyarskTime });
-({ id: t.AsiaUlaanbaatar, name: "Asia/Ulaanbaatar", offset: i$1.UTC_PLUS_8, timezone: n$1.UlaanbaatarStandardTime });
-({ id: t.AsiaUrumqi, name: "Asia/Urumqi", offset: i$1.UTC_PLUS_8, timezone: n$1.ChinaStandardTime });
-({ id: t.AsiaUstNera, name: "Asia/Ust-Nera", offset: i$1.UTC_PLUS_10, timezone: n$1.VladivostokTime });
-({ id: t.AsiaVientiane, name: "Asia/Vientiane", offset: i$1.UTC_PLUS_7, timezone: n$1.IndochinaTime });
-({ id: t.AsiaVladivostok, name: "Asia/Vladivostok", offset: i$1.UTC_PLUS_10, timezone: n$1.VladivostokTime });
-({ id: t.AsiaYakutsk, name: "Asia/Yakutsk", offset: i$1.UTC_PLUS_9, timezone: n$1.YakutskTime });
-({ id: t.AsiaYekaterinburg, name: "Asia/Yekaterinburg", offset: i$1.UTC_PLUS_5, timezone: n$1.YekaterinburgTime });
-({ id: t.AsiaYerevan, name: "Asia/Yerevan", offset: i$1.UTC_PLUS_4, timezone: n$1.ArmeniaTime });
-({ id: t.AtlanticAzores, name: "Atlantic/Azores", offset: i$1.UTC_MINUS_1, timezone: n$1.AzoresStandardTime });
-({ id: t.AtlanticBermuda, name: "Atlantic/Bermuda", offset: i$1.UTC_MINUS_4, timezone: n$1.AtlanticStandardTime });
-({ id: t.AtlanticCanary, name: "Atlantic/Canary", offset: i$1.UTC_MINUS_1, timezone: n$1.WesternEuropeanTime });
-({ id: t.AtlanticCapeVerde, name: "Atlantic/Cape_Verde", offset: i$1.UTC_0, timezone: n$1.CapeVerdeTime });
-({ id: t.AtlanticFaroe, name: "Atlantic/Faroe", offset: i$1.UTC_0, timezone: n$1.GreenwichMeanTime });
-({ id: t.AtlanticMadeira, name: "Atlantic/Madeira", offset: i$1.UTC_0, timezone: n$1.WesternEuropeanTime });
-({ id: t.AtlanticReykjavik, name: "Atlantic/Reykjavik", offset: i$1.UTC_0, timezone: n$1.GreenwichMeanTime });
-({ id: t.AtlanticSouthGeorgia, name: "Atlantic/South_Georgia", offset: i$1.UTC_0, timezone: n$1.CoordinatedUniversalTime });
-({ id: t.AtlanticStHelena, name: "Atlantic/St_Helena", offset: i$1.UTC_0, timezone: n$1.GreenwichMeanTime });
-({ id: t.AtlanticStanley, name: "Atlantic/Stanley", offset: i$1.UTC_0, timezone: n$1.FalklandIslandsTime });
-({ id: t.AustraliaAdelaide, name: "Australia/Adelaide", offset: i$1.UTC_PLUS_9_30, timezone: n$1.AustralianCentralStandardTime });
-({ id: t.AustraliaBrisbane, name: "Australia/Brisbane", offset: i$1.UTC_PLUS_10, timezone: n$1.AustralianEasternStandardTime });
-({ id: t.AustraliaBrokenHill, name: "Australia/Broken_Hill", offset: i$1.UTC_PLUS_9_30, timezone: n$1.AustralianCentralStandardTime });
-({ id: t.AustraliaCanberra, name: "Australia/Canberra", offset: i$1.UTC_PLUS_10, timezone: n$1.AustralianEasternStandardTime });
-({ id: t.AustraliaCurrie, name: "Australia/Currie", offset: i$1.UTC_PLUS_10, timezone: n$1.AustralianEasternStandardTime });
-({ id: t.AustraliaDarwin, name: "Australia/Darwin", offset: i$1.UTC_PLUS_9_30, timezone: n$1.AustralianCentralStandardTime });
-({ id: t.AustraliaEucla, name: "Australia/Eucla", offset: i$1.UTC_PLUS_8_45, timezone: n$1.AustralianCentralWesternStandardTime });
-({ id: t.AustraliaHobart, name: "Australia/Hobart", offset: i$1.UTC_PLUS_10, timezone: n$1.AustralianEasternStandardTime });
-({ id: t.AustraliaLindeman, name: "Australia/Lindeman", offset: i$1.UTC_PLUS_10, timezone: n$1.AustralianEasternStandardTime });
-({ id: t.AustraliaLordHowe, name: "Australia/Lord_Howe", offset: i$1.UTC_PLUS_10_30, timezone: n$1.LordHoweStandardTime });
-({ id: t.AustraliaMelbourne, name: "Australia/Melbourne", offset: i$1.UTC_PLUS_10, timezone: n$1.AustralianEasternStandardTime });
-({ id: t.AustraliaPerth, name: "Australia/Perth", offset: i$1.UTC_PLUS_8, timezone: n$1.AustralianWesternStandardTime });
-({ id: t.AustraliaSydney, name: "Australia/Sydney", offset: i$1.UTC_PLUS_10, timezone: n$1.AustralianEasternStandardTime });
-({ id: t.EuropeAmsterdam, name: "Europe/Amsterdam", offset: i$1.UTC_PLUS_1, timezone: n$1.CentralEuropeanTime });
-({ id: t.EuropeAndorra, name: "Europe/Andorra", offset: i$1.UTC_PLUS_1, timezone: n$1.CentralEuropeanTime });
-({ id: t.EuropeAthens, name: "Europe/Athens", offset: i$1.UTC_PLUS_2, timezone: n$1.EasternEuropeanTime });
-({ id: t.EuropeBelgrade, name: "Europe/Belgrade", offset: i$1.UTC_PLUS_1, timezone: n$1.CentralEuropeanTime });
-({ id: t.EuropeBerlin, name: "Europe/Berlin", offset: i$1.UTC_PLUS_1, timezone: n$1.CentralEuropeanTime });
-({ id: t.EuropeBratislava, name: "Europe/Bratislava", offset: i$1.UTC_PLUS_1, timezone: n$1.CentralEuropeanTime });
-({ id: t.EuropeBrussels, name: "Europe/Brussels", offset: i$1.UTC_PLUS_1, timezone: n$1.CentralEuropeanTime });
-({ id: t.EuropeBucharest, name: "Europe/Bucharest", offset: i$1.UTC_PLUS_2, timezone: n$1.EasternEuropeanTime });
-({ id: t.EuropeBudapest, name: "Europe/Budapest", offset: i$1.UTC_PLUS_1, timezone: n$1.CentralEuropeanTime });
-({ id: t.EuropeBusingen, name: "Europe/Busingen", offset: i$1.UTC_PLUS_1, timezone: n$1.CentralEuropeanTime });
-({ id: t.EuropeChisinau, name: "Europe/Chisinau", offset: i$1.UTC_PLUS_2, timezone: n$1.EasternEuropeanTime });
-({ id: t.EuropeCopenhagen, name: "Europe/Copenhagen", offset: i$1.UTC_PLUS_1, timezone: n$1.CentralEuropeanTime });
-({ id: t.EuropeDublin, name: "Europe/Dublin", offset: i$1.UTC_0, timezone: n$1.GreenwichMeanTime });
-({ id: t.EuropeGibraltar, name: "Europe/Gibraltar", offset: i$1.UTC_PLUS_1, timezone: n$1.CentralEuropeanTime });
-({ id: t.EuropeGuernsey, name: "Europe/Guernsey", offset: i$1.UTC_PLUS_1, timezone: n$1.CentralEuropeanTime });
-({ id: t.EuropeHelsinki, name: "Europe/Helsinki", offset: i$1.UTC_PLUS_2, timezone: n$1.EasternEuropeanTime });
-({ id: t.EuropeIsleOfMan, name: "Europe/Isle_of_Man", offset: i$1.UTC_0, timezone: n$1.GreenwichMeanTime });
-({ id: t.EuropeIstanbul, name: "Europe/Istanbul", offset: i$1.UTC_PLUS_3, timezone: n$1.EasternEuropeanTime });
-({ id: t.EuropeJersey, name: "Europe/Jersey", offset: i$1.UTC_PLUS_1, timezone: n$1.CentralEuropeanTime });
-({ id: t.EuropeKaliningrad, name: "Europe/Kaliningrad", offset: i$1.UTC_PLUS_2, timezone: n$1.EasternEuropeanTime });
-({ id: t.EuropeKiev, name: "Europe/Kiev", offset: i$1.UTC_PLUS_2, timezone: n$1.EasternEuropeanTime });
-({ id: t.EuropeLisbon, name: "Europe/Lisbon", offset: i$1.UTC_0, timezone: n$1.GreenwichMeanTime });
-({ id: t.EuropeLjubljana, name: "Europe/Ljubljana", offset: i$1.UTC_PLUS_1, timezone: n$1.CentralEuropeanTime });
-({ id: t.EuropeLondon, name: "Europe/London", offset: i$1.UTC_0, timezone: n$1.GreenwichMeanTime });
-({ id: t.EuropeLuxembourg, name: "Europe/Luxembourg", offset: i$1.UTC_PLUS_1, timezone: n$1.CentralEuropeanTime });
-({ id: t.EuropeMadrid, name: "Europe/Madrid", offset: i$1.UTC_PLUS_1, timezone: n$1.CentralEuropeanTime });
-({ id: t.EuropeMalta, name: "Europe/Malta", offset: i$1.UTC_PLUS_1, timezone: n$1.CentralEuropeanTime });
-({ id: t.EuropeMariehamn, name: "Europe/Mariehamn", offset: i$1.UTC_PLUS_2, timezone: n$1.EasternEuropeanTime });
-({ id: t.EuropeMinsk, name: "Europe/Minsk", offset: i$1.UTC_PLUS_3, timezone: n$1.EasternEuropeanTime });
-({ id: t.EuropeMonaco, name: "Europe/Monaco", offset: i$1.UTC_PLUS_1, timezone: n$1.CentralEuropeanTime });
-({ id: t.EuropeMoscow, name: "Europe/Moscow", offset: i$1.UTC_PLUS_3, timezone: n$1.EasternEuropeanTime });
-({ id: t.EuropeOslo, name: "Europe/Oslo", offset: i$1.UTC_PLUS_1, timezone: n$1.CentralEuropeanTime });
-({ id: t.EuropeParis, name: "Europe/Paris", offset: i$1.UTC_PLUS_1, timezone: n$1.CentralEuropeanTime });
-({ id: t.EuropePodgorica, name: "Europe/Podgorica", offset: i$1.UTC_PLUS_1, timezone: n$1.CentralEuropeanTime });
-({ id: t.EuropePrague, name: "Europe/Prague", offset: i$1.UTC_PLUS_1, timezone: n$1.CentralEuropeanTime });
-({ id: t.EuropeRiga, name: "Europe/Riga", offset: i$1.UTC_PLUS_2, timezone: n$1.EasternEuropeanTime });
-({ id: t.EuropeRome, name: "Europe/Rome", offset: i$1.UTC_PLUS_1, timezone: n$1.CentralEuropeanTime });
-({ id: t.EuropeSamara, name: "Europe/Samara", offset: i$1.UTC_PLUS_4, timezone: n$1.EasternEuropeanTime });
-({ id: t.EuropeSanMarino, name: "Europe/San_Marino", offset: i$1.UTC_PLUS_1, timezone: n$1.CentralEuropeanTime });
-({ id: t.EuropeSarajevo, name: "Europe/Sarajevo", offset: i$1.UTC_PLUS_1, timezone: n$1.CentralEuropeanTime });
-({ id: t.EuropeSimferopol, name: "Europe/Simferopol", offset: i$1.UTC_PLUS_3, timezone: n$1.EasternEuropeanTime });
-({ id: t.EuropeSkopje, name: "Europe/Skopje", offset: i$1.UTC_PLUS_1, timezone: n$1.CentralEuropeanTime });
-({ id: t.EuropeSofia, name: "Europe/Sofia", offset: i$1.UTC_PLUS_2, timezone: n$1.EasternEuropeanTime });
-({ id: t.EuropeStockholm, name: "Europe/Stockholm", offset: i$1.UTC_PLUS_1, timezone: n$1.CentralEuropeanTime });
-({ id: t.EuropeTallinn, name: "Europe/Tallinn", offset: i$1.UTC_PLUS_2, timezone: n$1.EasternEuropeanTime });
-({ id: t.EuropeTirane, name: "Europe/Tirane", offset: i$1.UTC_PLUS_1, timezone: n$1.CentralEuropeanTime });
-({ id: t.EuropeUzhgorod, name: "Europe/Uzhgorod", offset: i$1.UTC_PLUS_2, timezone: n$1.EasternEuropeanTime });
-({ id: t.EuropeVaduz, name: "Europe/Vaduz", offset: i$1.UTC_PLUS_1, timezone: n$1.CentralEuropeanTime });
-({ id: t.EuropeVatican, name: "Europe/Vatican", offset: i$1.UTC_PLUS_1, timezone: n$1.CentralEuropeanTime });
-({ id: t.EuropeVienna, name: "Europe/Vienna", offset: i$1.UTC_PLUS_1, timezone: n$1.CentralEuropeanTime });
-({ id: t.EuropeVilnius, name: "Europe/Vilnius", offset: i$1.UTC_PLUS_2, timezone: n$1.EasternEuropeanTime });
-({ id: t.EuropeVolgograd, name: "Europe/Volgograd", offset: i$1.UTC_PLUS_4, timezone: n$1.EasternEuropeanTime });
-({ id: t.EuropeWarsaw, name: "Europe/Warsaw", offset: i$1.UTC_PLUS_1, timezone: n$1.CentralEuropeanTime });
-({ id: t.EuropeZagreb, name: "Europe/Zagreb", offset: i$1.UTC_PLUS_1, timezone: n$1.CentralEuropeanTime });
-({ id: t.EuropeZaporozhye, name: "Europe/Zaporozhye", offset: i$1.UTC_PLUS_2, timezone: n$1.EasternEuropeanTime });
-({ id: t.EuropeZurich, name: "Europe/Zurich", offset: i$1.UTC_PLUS_1, timezone: n$1.CentralEuropeanTime });
-({ id: t.IndianAntananarivo, name: "Indian/Antananarivo", offset: i$1.UTC_PLUS_3, timezone: n$1.EastAfricaTime });
-({ id: t.IndianChagos, name: "Indian/Chagos", offset: i$1.UTC_PLUS_6, timezone: n$1.IndianOceanTime });
-({ id: t.IndianChristmas, name: "Indian/Christmas", offset: i$1.UTC_PLUS_7, timezone: n$1.ChristmasIslandTime });
-({ id: t.IndianCocos, name: "Indian/Cocos", offset: i$1.UTC_PLUS_6, timezone: n$1.CocosIslandsTime });
-({ id: t.IndianComoro, name: "Indian/Comoro", offset: i$1.UTC_PLUS_3, timezone: n$1.EastAfricaTime });
-({ id: t.IndianKerguelen, name: "Indian/Kerguelen", offset: i$1.UTC_PLUS_5, timezone: n$1.FrenchSouthernAndAntarcticTime });
-({ id: t.IndianMahe, name: "Indian/Mahe", offset: i$1.UTC_PLUS_4, timezone: n$1.SeychellesTime });
-({ id: t.IndianMaldives, name: "Indian/Maldives", offset: i$1.UTC_PLUS_5, timezone: n$1.MaldivesTime });
-({ id: t.IndianMauritius, name: "Indian/Mauritius", offset: i$1.UTC_PLUS_4, timezone: n$1.MauritiusTime });
-({ id: t.IndianMayotte, name: "Indian/Mayotte", offset: i$1.UTC_PLUS_3, timezone: n$1.EastAfricaTime });
-({ id: t.IndianReunion, name: "Indian/Reunion", offset: i$1.UTC_PLUS_4, timezone: n$1.ReunionTime });
-({ id: t.PacificApia, name: "Pacific/Apia", offset: i$1.UTC_PLUS_13, timezone: n$1.SamoaStandardTime });
-({ id: t.PacificAuckland, name: "Pacific/Auckland", offset: i$1.UTC_PLUS_13, timezone: n$1.NewZealandStandardTime });
-({ id: t.PacificChatham, name: "Pacific/Chatham", offset: i$1.UTC_PLUS_13, timezone: n$1.ChathamStandardTime });
-({ id: t.PacificEaster, name: "Pacific/Easter", offset: i$1.UTC_PLUS_6, timezone: n$1.EasterIslandStandardTime });
-({ id: t.PacificEfate, name: "Pacific/Efate", offset: i$1.UTC_PLUS_11, timezone: n$1.VanuatuTime });
-({ id: t.PacificEnderbury, name: "Pacific/Enderbury", offset: i$1.UTC_PLUS_13, timezone: n$1.TongaTime });
-({ id: t.PacificFakaofo, name: "Pacific/Fakaofo", offset: i$1.UTC_PLUS_13, timezone: n$1.TongaTime });
-({ id: t.PacificFiji, name: "Pacific/Fiji", offset: i$1.UTC_PLUS_12, timezone: n$1.FijiTime });
-({ id: t.PacificFunafuti, name: "Pacific/Funafuti", offset: i$1.UTC_PLUS_12, timezone: n$1.TuvaluTime });
-({ id: t.PacificGalapagos, name: "Pacific/Galapagos", offset: i$1.UTC_PLUS_6, timezone: n$1.GalapagosTime });
-({ id: t.PacificGambier, name: "Pacific/Gambier", offset: i$1.UTC_PLUS_9, timezone: n$1.GambierIslandTime });
-({ id: t.PacificGuadalcanal, name: "Pacific/Guadalcanal", offset: i$1.UTC_PLUS_11, timezone: n$1.SolomonIslandsTime });
-({ id: t.PacificGuam, name: "Pacific/Guam", offset: i$1.UTC_PLUS_10, timezone: n$1.ChamorroStandardTime });
-({ id: t.PacificHonolulu, name: "Pacific/Honolulu", offset: i$1.UTC_PLUS_10, timezone: n$1.HawaiiAleutianStandardTime });
-({ id: t.PacificJohnston, name: "Pacific/Johnston", offset: i$1.UTC_PLUS_10, timezone: n$1.HawaiiAleutianStandardTime });
-({ id: t.PacificKiritimati, name: "Pacific/Kiritimati", offset: i$1.UTC_PLUS_14, timezone: n$1.LineIslandsTime });
-({ id: t.PacificKosrae, name: "Pacific/Kosrae", offset: i$1.UTC_PLUS_11, timezone: n$1.KosraeTime });
-({ id: t.PacificKwajalein, name: "Pacific/Kwajalein", offset: i$1.UTC_PLUS_12, timezone: n$1.MarshallIslandsTime });
-({ id: t.PacificMajuro, name: "Pacific/Majuro", offset: i$1.UTC_PLUS_12, timezone: n$1.MarshallIslandsTime });
-({ id: t.PacificMarquesas, name: "Pacific/Marquesas", offset: i$1.UTC_PLUS_9, timezone: n$1.MarquesasIslandsTime });
-({ id: t.PacificMidway, name: "Pacific/Midway", offset: i$1.UTC_PLUS_11, timezone: n$1.SamoaStandardTime });
-({ id: t.PacificNauru, name: "Pacific/Nauru", offset: i$1.UTC_PLUS_12, timezone: n$1.NauruTime });
-({ id: t.PacificNiue, name: "Pacific/Niue", offset: i$1.UTC_PLUS_11, timezone: n$1.NiueTime });
-({ id: t.PacificNorfolk, name: "Pacific/Norfolk", offset: i$1.UTC_PLUS_11, timezone: n$1.NorfolkIslandTime });
-({ id: t.PacificNoumea, name: "Pacific/Noumea", offset: i$1.UTC_PLUS_11, timezone: n$1.NewCaledoniaTime });
-({ id: t.PacificPagoPago, name: "Pacific/Pago_Pago", offset: i$1.UTC_PLUS_11, timezone: n$1.SamoaStandardTime });
-({ id: t.PacificPalau, name: "Pacific/Palau", offset: i$1.UTC_PLUS_9, timezone: n$1.PalauTime });
-({ id: t.PacificPitcairn, name: "Pacific/Pitcairn", offset: i$1.UTC_PLUS_8, timezone: n$1.PitcairnTime });
-({ id: t.PacificPonape, name: "Pacific/Ponape", offset: i$1.UTC_PLUS_11, timezone: n$1.PohnpeiStandardTime });
-({ id: t.PacificPortMoresby, name: "Pacific/Port_Moresby", offset: i$1.UTC_PLUS_10, timezone: n$1.PapuaNewGuineaTime });
-({ id: t.PacificRarotonga, name: "Pacific/Rarotonga", offset: i$1.UTC_PLUS_10, timezone: n$1.CookIslandTime });
-({ id: t.PacificSaipan, name: "Pacific/Saipan", offset: i$1.UTC_PLUS_10, timezone: n$1.ChamorroStandardTime });
-({ id: t.PacificTahiti, name: "Pacific/Tahiti", offset: i$1.UTC_PLUS_10, timezone: n$1.TahitiTime });
-({ id: t.PacificTarawa, name: "Pacific/Tarawa", offset: i$1.UTC_PLUS_12, timezone: n$1.GilbertIslandTime });
-({ id: t.PacificTongatapu, name: "Pacific/Tongatapu", offset: i$1.UTC_PLUS_13, timezone: n$1.TongaTime });
-({ id: t.PacificChuuk, name: "Pacific/Chuuk", offset: i$1.UTC_PLUS_10, timezone: n$1.ChuukTime });
-({ id: t.PacificPohnpei, name: "Pacific/Pohnpei", offset: i$1.UTC_PLUS_11, timezone: n$1.PohnpeiStandardTime });
-({ id: t.PacificYap, name: "Pacific/Yap", offset: i$1.UTC_PLUS_10, timezone: n$1.ChuukTime });
-var Vi = (a = 21) => {
-  let u = "", A = crypto.getRandomValues(new Uint8Array(a));
-  for (; a--; ) {
-    let f = A[a] & 63;
-    f < 36 ? u += f.toString(36) : f < 62 ? u += (f - 26).toString(36).toUpperCase() : f < 63 ? u += "_" : u += "-";
-  }
-  return u;
-};
-var fn = [{ property: "name", enumerable: false }, { property: "message", enumerable: false }, { property: "stack", enumerable: false }, { property: "code", enumerable: true }], qi = Symbol(".toJSON was called"), hn = (a) => {
-  a[qi] = true;
-  let u = a.toJSON();
-  return delete a[qi], u;
-}, Ji = ({ from: a, seen: u, to_: A, forceEnumerable: f, maxDepth: U, depth: E }) => {
-  let v = A || (Array.isArray(a) ? [] : {});
-  if (u.push(a), E >= U)
-    return v;
-  if (typeof a.toJSON == "function" && a[qi] !== true)
-    return hn(a);
-  for (let [_, S] of Object.entries(a)) {
-    if (typeof Buffer == "function" && Buffer.isBuffer(S)) {
-      v[_] = "[object Buffer]";
-      continue;
-    }
-    if (typeof S == "object" && typeof S.pipe == "function") {
-      v[_] = "[object Stream]";
-      continue;
-    }
-    if (typeof S != "function") {
-      if (!S || typeof S != "object") {
-        v[_] = S;
-        continue;
-      }
-      if (!u.includes(a[_])) {
-        E++, v[_] = Ji({ from: a[_], seen: [...u], forceEnumerable: f, maxDepth: U, depth: E });
-        continue;
-      }
-      v[_] = "[Circular]";
-    }
-  }
-  for (let { property: _, enumerable: S } of fn)
-    typeof a[_] == "string" && Object.defineProperty(v, _, { value: a[_], enumerable: f ? true : S, configurable: true, writable: true });
-  return v;
-};
-function Yi(a, u = {}) {
-  let { maxDepth: A = Number.POSITIVE_INFINITY } = u;
-  return typeof a == "object" && a !== null ? Ji({ from: a, seen: [], forceEnumerable: true, maxDepth: A, depth: 0 }) : typeof a == "function" ? `[Function: ${a.name || "anonymous"}]` : a;
-}
-var g = ((m) => (m[m.Warning = 999] = "Warning", m[m.Exception = 1e3] = "Exception", m[m.UnmanagedException = 1001] = "UnmanagedException", m[m.CaughtException = 1002] = "CaughtException", m[m.UncaughtException = 1003] = "UncaughtException", m[m.UnhandledPromiseRejectionException = 1004] = "UnhandledPromiseRejectionException", m[m.AuthenticationException = 2e3] = "AuthenticationException", m[m.AuthenticationExpiredAccessTokenException = 2001] = "AuthenticationExpiredAccessTokenException", m[m.AuthenticationInvalidAccessTokenException = 2002] = "AuthenticationInvalidAccessTokenException", m[m.AuthenticationMissingAccessTokenException = 2003] = "AuthenticationMissingAccessTokenException", m[m.AuthenticationExpiredRefreshTokenException = 2004] = "AuthenticationExpiredRefreshTokenException", m[m.AuthenticationInvalidRefreshTokenException = 2005] = "AuthenticationInvalidRefreshTokenException", m[m.AuthenticationMissingRefreshTokenException = 2006] = "AuthenticationMissingRefreshTokenException", m[m.AuthenticationMissingDeviceKeyException = 2007] = "AuthenticationMissingDeviceKeyException", m[m.AuthenticationUnAuthorizedAccessException = 2008] = "AuthenticationUnAuthorizedAccessException", m[m.AuthenticationCodeMismatchException = 2009] = "AuthenticationCodeMismatchException", m[m.AuthenticationExpiredCodeException = 2010] = "AuthenticationExpiredCodeException", m[m.AuthenticationLoginException = 2011] = "AuthenticationLoginException", m[m.AuthenticationLoginInvalidCredentialsException = 2012] = "AuthenticationLoginInvalidCredentialsException", m[m.AuthenticationLoginTooManyFailedAttemptsException = 2013] = "AuthenticationLoginTooManyFailedAttemptsException", m[m.AuthenticationLimitExceededException = 2014] = "AuthenticationLimitExceededException", m[m.AuthenticationUnauthorizedAccessException = 2015] = "AuthenticationUnauthorizedAccessException", m[m.AuthenticationTooManyRequestsException = 2016] = "AuthenticationTooManyRequestsException", m[m.AuthenticationUserNotFoundException = 2017] = "AuthenticationUserNotFoundException", m[m.AuthenticationSignupException = 2018] = "AuthenticationSignupException", m[m.AuthenticationUsernameAvailabilityCheckException = 2019] = "AuthenticationUsernameAvailabilityCheckException", m[m.AuthenticationUsernameExistsException = 2020] = "AuthenticationUsernameExistsException", m[m.AuthenticationAliasExistException = 2021] = "AuthenticationAliasExistException", m[m.AuthenticationCodeDeliveryFailureException = 2022] = "AuthenticationCodeDeliveryFailureException", m[m.AuthenticationMFAMethodNotFoundException = 2023] = "AuthenticationMFAMethodNotFoundException", m[m.AuthenticationNotAuthorizedException = 2024] = "AuthenticationNotAuthorizedException", m[m.AuthenticationPasswordResetRequiredException = 2025] = "AuthenticationPasswordResetRequiredException", m[m.AuthenticationUserNotConfirmedException = 2026] = "AuthenticationUserNotConfirmedException", m[m.DatabaseException = 3e3] = "DatabaseException", m[m.SequelizeNotInitializedException = 3001] = "SequelizeNotInitializedException", m[m.ProcessException = 4e3] = "ProcessException", m[m.ProcessWarningException = 4001] = "ProcessWarningException", m[m.KillProcessException = 4002] = "KillProcessException", m[m.FatalException = 4003] = "FatalException", m[m.ProcessSigTermException = 4004] = "ProcessSigTermException", m[m.ProcessSigIntException = 4005] = "ProcessSigIntException", m[m.MissingEnvironmentVariable = 4006] = "MissingEnvironmentVariable", m[m.NetworkException = 5e3] = "NetworkException", m[m.HttpException = 5001] = "HttpException", m[m.HttpRequestException = 5002] = "HttpRequestException", m[m.HttpRequestResourceNotFoundException = 5003] = "HttpRequestResourceNotFoundException", m[m.HttpResponseException = 5004] = "HttpResponseException", m[m.ServiceProviderException = 6e3] = "ServiceProviderException", m[m.AWSException = 6001] = "AWSException", m[m.AWSMissingAccessKeyException = 6002] = "AWSMissingAccessKeyException", m[m.AWSMissingSecretKeyException = 6003] = "AWSMissingSecretKeyException", m[m.CognitoException = 6004] = "CognitoException", m[m.CognitoInternalErrorException = 6005] = "CognitoInternalErrorException", m[m.CognitoInvalidEmailRoleAccessPolicyException = 6006] = "CognitoInvalidEmailRoleAccessPolicyException", m[m.CognitoInvalidLambdaResponseException = 6007] = "CognitoInvalidLambdaResponseException", m[m.CognitoUserLambdaValidationException = 6008] = "CognitoUserLambdaValidationException", m[m.CognitoInvalidParameterException = 6009] = "CognitoInvalidParameterException", m[m.CognitoInvalidSmsRoleAccessPolicyException = 6010] = "CognitoInvalidSmsRoleAccessPolicyException", m[m.CognitoInvalidSmsRoleTrustRelationshipException = 6011] = "CognitoInvalidSmsRoleTrustRelationshipException", m[m.CognitoInvalidUserPoolConfigurationException = 6012] = "CognitoInvalidUserPoolConfigurationException", m[m.CognitoResourceNotFoundException = 6013] = "CognitoResourceNotFoundException", m[m.CognitoMissingUserPoolClientIdException = 6014] = "CognitoMissingUserPoolClientIdException", m[m.CognitoMissingUserPoolIdException = 6015] = "CognitoMissingUserPoolIdException", m[m.CognitoUnexpectedLambdaException = 6016] = "CognitoUnexpectedLambdaException", m[m.StripeException = 6017] = "StripeException", m[m.StripeMissingSecretKeyException = 6018] = "StripeMissingSecretKeyException", m[m.StripeSubscriptionCreationFailedException = 6019] = "StripeSubscriptionCreationFailedException", m[m.StripePaymentMethodRequiredException = 6020] = "StripePaymentMethodRequiredException", m[m.UserException = 7e3] = "UserException", m[m.NullUserException = 7001] = "NullUserException", m[m.UserStateConflictException = 7002] = "UserStateConflictException", m[m.NullAccountException = 7003] = "NullAccountException", m[m.ValidationException = 8e3] = "ValidationException", m[m.InvalidTypeException = 8001] = "InvalidTypeException", m[m.MissingArgumentException = 8002] = "MissingArgumentException", m[m.MissingPropertyException = 8003] = "MissingPropertyException", m[m.InvalidArgumentException = 8004] = "InvalidArgumentException", m[m.InvalidPropertyException = 8005] = "InvalidPropertyException", m[m.MissingRequestBodyPropertyException = 8006] = "MissingRequestBodyPropertyException", m[m.MissingRequestUrlParameterException = 8007] = "MissingRequestUrlParameterException", m[m.MissingCookieException = 8008] = "MissingCookieException", m))(g || {});
-var d = class extends Error {
-  constructor(u, A) {
-    super(u);
-    var _a, _b, _c, _d;
-    s$1(this, "cause");
-    s$1(this, "code", 1e3);
-    s$1(this, "context");
-    s$1(this, "created");
-    s$1(this, "data");
-    s$1(this, "description");
-    s$1(this, "model");
-    s$1(this, "form");
-    s$1(this, "friendlyMessage", "An unknown error has occurred. :(");
-    s$1(this, "id");
-    s$1(this, "logLevel", c.Exception);
-    s$1(this, "origin");
-    s$1(this, "pii");
-    s$1(this, "request");
-    s$1(this, "response");
-    s$1(this, "scope");
-    s$1(this, "remediation");
-    s$1(this, "tags");
-    s$1(this, "task");
-    s$1(this, "user");
-    s$1(this, "__proto__");
-    let f = new.target.prototype;
-    if (this.__proto__ = f, Error.captureStackTrace && Error.captureStackTrace((_a = A == null ? void 0 : A.cause) != null ? _a : this, d), this.id = Vi(), this.name = this.constructor.name, this.created = new Date().toString(), this.description = (_b = A == null ? void 0 : A.description) != null ? _b : this.description, this.remediation = (_c = A == null ? void 0 : A.remediation) != null ? _c : this.remediation, this.scope = (_d = A == null ? void 0 : A.scope) != null ? _d : this.scope, A) {
-      let { cause: U, context: E, data: v, model: _, form: S, origin: nn, pii: tn, request: rn, response: sn, tags: on, task: ln, user: mn } = A;
-      this.cause = U, this.context = E, this.data = v, this.model = _, this.form = S, this.origin = nn, this.pii = tn, this.request = rn, this.response = sn, this.task = ln, this.tags = on, this.user = mn;
-    }
-  }
-  toJSON() {
-    return Yi(this);
-  }
-};
-var T = ((f) => (f.Simple = "simple", f.ExponentialBackoff = "exponential", f.CircuitBreaker = "circuit_breaker", f))(T || {});
-var z = class extends d {
-  constructor() {
-    super(...arguments);
-    s$1(this, "code", 1003);
-    s$1(this, "description", "An uncaught exception bubbled up and was caught automatically.");
-    s$1(this, "logLevel", c.Exception);
-    s$1(this, "remediation", { response: { code: 500 }, retry: { limit: 3 } });
-  }
-};
-var p = class extends d {
-  constructor() {
-    super(...arguments);
-    s$1(this, "code", 2e3);
-    s$1(this, "description", "Generic or unknown exceptions associated with user authentication.");
-    s$1(this, "friendlyMessage", "An unknown error occurred.");
-    s$1(this, "logLevel", c.Warning);
-    s$1(this, "remediation", { response: { code: 401 }, retry: { limit: 3, strategy: "circuit_breaker" } });
-  }
-};
-var aa = class extends p {
-  constructor() {
-    super(...arguments);
-    s$1(this, "code", 2011);
-    s$1(this, "description", "An exception occurred while logging a user in.");
-    s$1(this, "friendlyMessage", "An unknown error occurred.");
-    s$1(this, "logLevel", c.Critical);
-    s$1(this, "remediation", { response: { code: 500 }, retry: true });
-  }
-};
-var G = class extends p {
-  constructor() {
-    super(...arguments);
-    s$1(this, "code", 2019);
-    s$1(this, "description", "An exception occurred while checking if a username is available.");
-    s$1(this, "friendlyMessage", "An error occurred while checking if a username is available.");
-    s$1(this, "logLevel", c.Critical);
-    s$1(this, "remediation", { response: { code: 500 }, retry: true });
-  }
-};
-var qa = class extends d {
-  constructor() {
-    super(...arguments);
-    s$1(this, "code", 8002);
-    s$1(this, "description", "A required argument is missing.");
-    s$1(this, "logLevel", c.Exception);
-    s$1(this, "remediation", { response: { code: 400 }, retry: false });
-  }
-}, Ha = class extends d {
-  constructor() {
-    super(...arguments);
-    s$1(this, "code", 8004);
-    s$1(this, "description", "An argument is invalid.");
-    s$1(this, "logLevel", c.Exception);
-    s$1(this, "remediation", { response: { code: 400 }, retry: false });
-  }
 };
 const logger$2 = new Logger();
 const exceptionLogger = (store) => (next) => (action) => {
   try {
     return next(action);
   } catch (err) {
-    const exception = new z(err.name, { cause: err });
+    const exception = new UncaughtException(err.name, { cause: err });
     logger$2.exception(exception.toJSON());
     throw err;
   }
@@ -1605,8 +69,8 @@ function getAugmentedNamespace(n2) {
     return n2;
   var a = Object.defineProperty({}, "__esModule", { value: true });
   Object.keys(n2).forEach(function(k) {
-    var d2 = Object.getOwnPropertyDescriptor(n2, k);
-    Object.defineProperty(a, k, d2.get ? d2 : {
+    var d = Object.getOwnPropertyDescriptor(n2, k);
+    Object.defineProperty(a, k, d.get ? d : {
       enumerable: true,
       get: function() {
         return n2[k];
@@ -1620,382 +84,382 @@ function commonjsRequire(path) {
 }
 var reduxLogger = { exports: {} };
 (function(module, exports) {
-  !function(e2, t2) {
+  !function(e, t2) {
     t2(exports);
-  }(commonjsGlobal, function(e2) {
-    function t2(e3, t3) {
-      e3.super_ = t3, e3.prototype = Object.create(t3.prototype, { constructor: { value: e3, enumerable: false, writable: true, configurable: true } });
+  }(commonjsGlobal, function(e) {
+    function t2(e2, t3) {
+      e2.super_ = t3, e2.prototype = Object.create(t3.prototype, { constructor: { value: e2, enumerable: false, writable: true, configurable: true } });
     }
-    function r2(e3, t3) {
-      Object.defineProperty(this, "kind", { value: e3, enumerable: true }), t3 && t3.length && Object.defineProperty(this, "path", { value: t3, enumerable: true });
+    function r(e2, t3) {
+      Object.defineProperty(this, "kind", { value: e2, enumerable: true }), t3 && t3.length && Object.defineProperty(this, "path", { value: t3, enumerable: true });
     }
-    function n2(e3, t3, r3) {
-      n2.super_.call(this, "E", e3), Object.defineProperty(this, "lhs", { value: t3, enumerable: true }), Object.defineProperty(this, "rhs", { value: r3, enumerable: true });
+    function n2(e2, t3, r2) {
+      n2.super_.call(this, "E", e2), Object.defineProperty(this, "lhs", { value: t3, enumerable: true }), Object.defineProperty(this, "rhs", { value: r2, enumerable: true });
     }
-    function o2(e3, t3) {
-      o2.super_.call(this, "N", e3), Object.defineProperty(this, "rhs", { value: t3, enumerable: true });
+    function o2(e2, t3) {
+      o2.super_.call(this, "N", e2), Object.defineProperty(this, "rhs", { value: t3, enumerable: true });
     }
-    function i(e3, t3) {
-      i.super_.call(this, "D", e3), Object.defineProperty(this, "lhs", { value: t3, enumerable: true });
+    function i(e2, t3) {
+      i.super_.call(this, "D", e2), Object.defineProperty(this, "lhs", { value: t3, enumerable: true });
     }
-    function a(e3, t3, r3) {
-      a.super_.call(this, "A", e3), Object.defineProperty(this, "index", { value: t3, enumerable: true }), Object.defineProperty(this, "item", { value: r3, enumerable: true });
+    function a(e2, t3, r2) {
+      a.super_.call(this, "A", e2), Object.defineProperty(this, "index", { value: t3, enumerable: true }), Object.defineProperty(this, "item", { value: r2, enumerable: true });
     }
-    function f(e3, t3, r3) {
-      var n3 = e3.slice((r3 || t3) + 1 || e3.length);
-      return e3.length = t3 < 0 ? e3.length + t3 : t3, e3.push.apply(e3, n3), e3;
+    function f(e2, t3, r2) {
+      var n3 = e2.slice((r2 || t3) + 1 || e2.length);
+      return e2.length = t3 < 0 ? e2.length + t3 : t3, e2.push.apply(e2, n3), e2;
     }
-    function u(e3) {
-      var t3 = typeof e3 == "undefined" ? "undefined" : N(e3);
-      return t3 !== "object" ? t3 : e3 === Math ? "math" : e3 === null ? "null" : Array.isArray(e3) ? "array" : Object.prototype.toString.call(e3) === "[object Date]" ? "date" : typeof e3.toString == "function" && /^\/.*\//.test(e3.toString()) ? "regexp" : "object";
+    function u(e2) {
+      var t3 = typeof e2 == "undefined" ? "undefined" : N(e2);
+      return t3 !== "object" ? t3 : e2 === Math ? "math" : e2 === null ? "null" : Array.isArray(e2) ? "array" : Object.prototype.toString.call(e2) === "[object Date]" ? "date" : typeof e2.toString == "function" && /^\/.*\//.test(e2.toString()) ? "regexp" : "object";
     }
-    function l2(e3, t3, r3, c3, s3, d3, p3) {
-      s3 = s3 || [], p3 = p3 || [];
-      var g3 = s3.slice(0);
-      if (typeof d3 != "undefined") {
-        if (c3) {
-          if (typeof c3 == "function" && c3(g3, d3))
+    function l2(e2, t3, r2, c2, s3, d2, p2) {
+      s3 = s3 || [], p2 = p2 || [];
+      var g2 = s3.slice(0);
+      if (typeof d2 != "undefined") {
+        if (c2) {
+          if (typeof c2 == "function" && c2(g2, d2))
             return;
-          if ((typeof c3 == "undefined" ? "undefined" : N(c3)) === "object") {
-            if (c3.prefilter && c3.prefilter(g3, d3))
+          if ((typeof c2 == "undefined" ? "undefined" : N(c2)) === "object") {
+            if (c2.prefilter && c2.prefilter(g2, d2))
               return;
-            if (c3.normalize) {
-              var h2 = c3.normalize(g3, d3, e3, t3);
-              h2 && (e3 = h2[0], t3 = h2[1]);
+            if (c2.normalize) {
+              var h2 = c2.normalize(g2, d2, e2, t3);
+              h2 && (e2 = h2[0], t3 = h2[1]);
             }
           }
         }
-        g3.push(d3);
+        g2.push(d2);
       }
-      u(e3) === "regexp" && u(t3) === "regexp" && (e3 = e3.toString(), t3 = t3.toString());
-      var y2 = typeof e3 == "undefined" ? "undefined" : N(e3), v2 = typeof t3 == "undefined" ? "undefined" : N(t3), b2 = y2 !== "undefined" || p3 && p3[p3.length - 1].lhs && p3[p3.length - 1].lhs.hasOwnProperty(d3), m2 = v2 !== "undefined" || p3 && p3[p3.length - 1].rhs && p3[p3.length - 1].rhs.hasOwnProperty(d3);
+      u(e2) === "regexp" && u(t3) === "regexp" && (e2 = e2.toString(), t3 = t3.toString());
+      var y2 = typeof e2 == "undefined" ? "undefined" : N(e2), v2 = typeof t3 == "undefined" ? "undefined" : N(t3), b2 = y2 !== "undefined" || p2 && p2[p2.length - 1].lhs && p2[p2.length - 1].lhs.hasOwnProperty(d2), m2 = v2 !== "undefined" || p2 && p2[p2.length - 1].rhs && p2[p2.length - 1].rhs.hasOwnProperty(d2);
       if (!b2 && m2)
-        r3(new o2(g3, t3));
+        r2(new o2(g2, t3));
       else if (!m2 && b2)
-        r3(new i(g3, e3));
-      else if (u(e3) !== u(t3))
-        r3(new n2(g3, e3, t3));
-      else if (u(e3) === "date" && e3 - t3 !== 0)
-        r3(new n2(g3, e3, t3));
-      else if (y2 === "object" && e3 !== null && t3 !== null)
-        if (p3.filter(function(t4) {
-          return t4.lhs === e3;
+        r2(new i(g2, e2));
+      else if (u(e2) !== u(t3))
+        r2(new n2(g2, e2, t3));
+      else if (u(e2) === "date" && e2 - t3 !== 0)
+        r2(new n2(g2, e2, t3));
+      else if (y2 === "object" && e2 !== null && t3 !== null)
+        if (p2.filter(function(t4) {
+          return t4.lhs === e2;
         }).length)
-          e3 !== t3 && r3(new n2(g3, e3, t3));
+          e2 !== t3 && r2(new n2(g2, e2, t3));
         else {
-          if (p3.push({ lhs: e3, rhs: t3 }), Array.isArray(e3)) {
+          if (p2.push({ lhs: e2, rhs: t3 }), Array.isArray(e2)) {
             var w2;
-            e3.length;
-            for (w2 = 0; w2 < e3.length; w2++)
-              w2 >= t3.length ? r3(new a(g3, w2, new i(void 0, e3[w2]))) : l2(e3[w2], t3[w2], r3, c3, g3, w2, p3);
+            e2.length;
+            for (w2 = 0; w2 < e2.length; w2++)
+              w2 >= t3.length ? r2(new a(g2, w2, new i(void 0, e2[w2]))) : l2(e2[w2], t3[w2], r2, c2, g2, w2, p2);
             for (; w2 < t3.length; )
-              r3(new a(g3, w2, new o2(void 0, t3[w2++])));
+              r2(new a(g2, w2, new o2(void 0, t3[w2++])));
           } else {
-            var x3 = Object.keys(e3), S2 = Object.keys(t3);
-            x3.forEach(function(n3, o3) {
+            var x2 = Object.keys(e2), S2 = Object.keys(t3);
+            x2.forEach(function(n3, o3) {
               var i2 = S2.indexOf(n3);
-              i2 >= 0 ? (l2(e3[n3], t3[n3], r3, c3, g3, n3, p3), S2 = f(S2, i2)) : l2(e3[n3], void 0, r3, c3, g3, n3, p3);
-            }), S2.forEach(function(e4) {
-              l2(void 0, t3[e4], r3, c3, g3, e4, p3);
+              i2 >= 0 ? (l2(e2[n3], t3[n3], r2, c2, g2, n3, p2), S2 = f(S2, i2)) : l2(e2[n3], void 0, r2, c2, g2, n3, p2);
+            }), S2.forEach(function(e3) {
+              l2(void 0, t3[e3], r2, c2, g2, e3, p2);
             });
           }
-          p3.length = p3.length - 1;
+          p2.length = p2.length - 1;
         }
       else
-        e3 !== t3 && (y2 === "number" && isNaN(e3) && isNaN(t3) || r3(new n2(g3, e3, t3)));
+        e2 !== t3 && (y2 === "number" && isNaN(e2) && isNaN(t3) || r2(new n2(g2, e2, t3)));
     }
-    function c2(e3, t3, r3, n3) {
-      return n3 = n3 || [], l2(e3, t3, function(e4) {
-        e4 && n3.push(e4);
-      }, r3), n3.length ? n3 : void 0;
+    function c(e2, t3, r2, n3) {
+      return n3 = n3 || [], l2(e2, t3, function(e3) {
+        e3 && n3.push(e3);
+      }, r2), n3.length ? n3 : void 0;
     }
-    function s2(e3, t3, r3) {
-      if (r3.path && r3.path.length) {
-        var n3, o3 = e3[t3], i2 = r3.path.length - 1;
+    function s2(e2, t3, r2) {
+      if (r2.path && r2.path.length) {
+        var n3, o3 = e2[t3], i2 = r2.path.length - 1;
         for (n3 = 0; n3 < i2; n3++)
-          o3 = o3[r3.path[n3]];
-        switch (r3.kind) {
+          o3 = o3[r2.path[n3]];
+        switch (r2.kind) {
           case "A":
-            s2(o3[r3.path[n3]], r3.index, r3.item);
+            s2(o3[r2.path[n3]], r2.index, r2.item);
             break;
           case "D":
-            delete o3[r3.path[n3]];
+            delete o3[r2.path[n3]];
             break;
           case "E":
           case "N":
-            o3[r3.path[n3]] = r3.rhs;
+            o3[r2.path[n3]] = r2.rhs;
         }
       } else
-        switch (r3.kind) {
+        switch (r2.kind) {
           case "A":
-            s2(e3[t3], r3.index, r3.item);
+            s2(e2[t3], r2.index, r2.item);
             break;
           case "D":
-            e3 = f(e3, t3);
+            e2 = f(e2, t3);
             break;
           case "E":
           case "N":
-            e3[t3] = r3.rhs;
+            e2[t3] = r2.rhs;
         }
-      return e3;
+      return e2;
     }
-    function d2(e3, t3, r3) {
-      if (e3 && t3 && r3 && r3.kind) {
-        for (var n3 = e3, o3 = -1, i2 = r3.path ? r3.path.length - 1 : 0; ++o3 < i2; )
-          typeof n3[r3.path[o3]] == "undefined" && (n3[r3.path[o3]] = typeof r3.path[o3] == "number" ? [] : {}), n3 = n3[r3.path[o3]];
-        switch (r3.kind) {
+    function d(e2, t3, r2) {
+      if (e2 && t3 && r2 && r2.kind) {
+        for (var n3 = e2, o3 = -1, i2 = r2.path ? r2.path.length - 1 : 0; ++o3 < i2; )
+          typeof n3[r2.path[o3]] == "undefined" && (n3[r2.path[o3]] = typeof r2.path[o3] == "number" ? [] : {}), n3 = n3[r2.path[o3]];
+        switch (r2.kind) {
           case "A":
-            s2(r3.path ? n3[r3.path[o3]] : n3, r3.index, r3.item);
+            s2(r2.path ? n3[r2.path[o3]] : n3, r2.index, r2.item);
             break;
           case "D":
-            delete n3[r3.path[o3]];
+            delete n3[r2.path[o3]];
             break;
           case "E":
           case "N":
-            n3[r3.path[o3]] = r3.rhs;
+            n3[r2.path[o3]] = r2.rhs;
         }
       }
     }
-    function p2(e3, t3, r3) {
-      if (r3.path && r3.path.length) {
-        var n3, o3 = e3[t3], i2 = r3.path.length - 1;
+    function p(e2, t3, r2) {
+      if (r2.path && r2.path.length) {
+        var n3, o3 = e2[t3], i2 = r2.path.length - 1;
         for (n3 = 0; n3 < i2; n3++)
-          o3 = o3[r3.path[n3]];
-        switch (r3.kind) {
+          o3 = o3[r2.path[n3]];
+        switch (r2.kind) {
           case "A":
-            p2(o3[r3.path[n3]], r3.index, r3.item);
+            p(o3[r2.path[n3]], r2.index, r2.item);
             break;
           case "D":
-            o3[r3.path[n3]] = r3.lhs;
+            o3[r2.path[n3]] = r2.lhs;
             break;
           case "E":
-            o3[r3.path[n3]] = r3.lhs;
+            o3[r2.path[n3]] = r2.lhs;
             break;
           case "N":
-            delete o3[r3.path[n3]];
+            delete o3[r2.path[n3]];
         }
       } else
-        switch (r3.kind) {
+        switch (r2.kind) {
           case "A":
-            p2(e3[t3], r3.index, r3.item);
+            p(e2[t3], r2.index, r2.item);
             break;
           case "D":
-            e3[t3] = r3.lhs;
+            e2[t3] = r2.lhs;
             break;
           case "E":
-            e3[t3] = r3.lhs;
+            e2[t3] = r2.lhs;
             break;
           case "N":
-            e3 = f(e3, t3);
+            e2 = f(e2, t3);
         }
-      return e3;
+      return e2;
     }
-    function g2(e3, t3, r3) {
-      if (e3 && t3 && r3 && r3.kind) {
-        var n3, o3, i2 = e3;
-        for (o3 = r3.path.length - 1, n3 = 0; n3 < o3; n3++)
-          typeof i2[r3.path[n3]] == "undefined" && (i2[r3.path[n3]] = {}), i2 = i2[r3.path[n3]];
-        switch (r3.kind) {
+    function g(e2, t3, r2) {
+      if (e2 && t3 && r2 && r2.kind) {
+        var n3, o3, i2 = e2;
+        for (o3 = r2.path.length - 1, n3 = 0; n3 < o3; n3++)
+          typeof i2[r2.path[n3]] == "undefined" && (i2[r2.path[n3]] = {}), i2 = i2[r2.path[n3]];
+        switch (r2.kind) {
           case "A":
-            p2(i2[r3.path[n3]], r3.index, r3.item);
+            p(i2[r2.path[n3]], r2.index, r2.item);
             break;
           case "D":
-            i2[r3.path[n3]] = r3.lhs;
+            i2[r2.path[n3]] = r2.lhs;
             break;
           case "E":
-            i2[r3.path[n3]] = r3.lhs;
+            i2[r2.path[n3]] = r2.lhs;
             break;
           case "N":
-            delete i2[r3.path[n3]];
+            delete i2[r2.path[n3]];
         }
       }
     }
-    function h(e3, t3, r3) {
-      if (e3 && t3) {
+    function h(e2, t3, r2) {
+      if (e2 && t3) {
         var n3 = function(n4) {
-          r3 && !r3(e3, t3, n4) || d2(e3, t3, n4);
+          r2 && !r2(e2, t3, n4) || d(e2, t3, n4);
         };
-        l2(e3, t3, n3);
+        l2(e2, t3, n3);
       }
     }
-    function y(e3) {
-      return "color: " + F[e3].color + "; font-weight: bold";
+    function y(e2) {
+      return "color: " + F[e2].color + "; font-weight: bold";
     }
-    function v(e3) {
-      var t3 = e3.kind, r3 = e3.path, n3 = e3.lhs, o3 = e3.rhs, i2 = e3.index, a2 = e3.item;
+    function v(e2) {
+      var t3 = e2.kind, r2 = e2.path, n3 = e2.lhs, o3 = e2.rhs, i2 = e2.index, a2 = e2.item;
       switch (t3) {
         case "E":
-          return [r3.join("."), n3, "\u2192", o3];
+          return [r2.join("."), n3, "\u2192", o3];
         case "N":
-          return [r3.join("."), o3];
+          return [r2.join("."), o3];
         case "D":
-          return [r3.join(".")];
+          return [r2.join(".")];
         case "A":
-          return [r3.join(".") + "[" + i2 + "]", a2];
+          return [r2.join(".") + "[" + i2 + "]", a2];
         default:
           return [];
       }
     }
-    function b(e3, t3, r3, n3) {
-      var o3 = c2(e3, t3);
+    function b(e2, t3, r2, n3) {
+      var o3 = c(e2, t3);
       try {
-        n3 ? r3.groupCollapsed("diff") : r3.group("diff");
-      } catch (e4) {
-        r3.log("diff");
+        n3 ? r2.groupCollapsed("diff") : r2.group("diff");
+      } catch (e3) {
+        r2.log("diff");
       }
-      o3 ? o3.forEach(function(e4) {
-        var t4 = e4.kind, n4 = v(e4);
-        r3.log.apply(r3, ["%c " + F[t4].text, y(t4)].concat(P(n4)));
-      }) : r3.log("\u2014\u2014 no diff \u2014\u2014");
+      o3 ? o3.forEach(function(e3) {
+        var t4 = e3.kind, n4 = v(e3);
+        r2.log.apply(r2, ["%c " + F[t4].text, y(t4)].concat(P(n4)));
+      }) : r2.log("\u2014\u2014 no diff \u2014\u2014");
       try {
-        r3.groupEnd();
-      } catch (e4) {
-        r3.log("\u2014\u2014 diff end \u2014\u2014 ");
+        r2.groupEnd();
+      } catch (e3) {
+        r2.log("\u2014\u2014 diff end \u2014\u2014 ");
       }
     }
-    function m(e3, t3, r3, n3) {
-      switch (typeof e3 == "undefined" ? "undefined" : N(e3)) {
+    function m(e2, t3, r2, n3) {
+      switch (typeof e2 == "undefined" ? "undefined" : N(e2)) {
         case "object":
-          return typeof e3[n3] == "function" ? e3[n3].apply(e3, P(r3)) : e3[n3];
+          return typeof e2[n3] == "function" ? e2[n3].apply(e2, P(r2)) : e2[n3];
         case "function":
-          return e3(t3);
+          return e2(t3);
         default:
-          return e3;
+          return e2;
       }
     }
-    function w(e3) {
-      var t3 = e3.timestamp, r3 = e3.duration;
-      return function(e4, n3, o3) {
+    function w(e2) {
+      var t3 = e2.timestamp, r2 = e2.duration;
+      return function(e3, n3, o3) {
         var i2 = ["action"];
-        return i2.push("%c" + String(e4.type)), t3 && i2.push("%c@ " + n3), r3 && i2.push("%c(in " + o3.toFixed(2) + " ms)"), i2.join(" ");
+        return i2.push("%c" + String(e3.type)), t3 && i2.push("%c@ " + n3), r2 && i2.push("%c(in " + o3.toFixed(2) + " ms)"), i2.join(" ");
       };
     }
-    function x2(e3, t3) {
-      var r3 = t3.logger, n3 = t3.actionTransformer, o3 = t3.titleFormatter, i2 = o3 === void 0 ? w(t3) : o3, a2 = t3.collapsed, f2 = t3.colors, u2 = t3.level, l3 = t3.diff, c3 = typeof t3.titleFormatter == "undefined";
-      e3.forEach(function(o4, s3) {
-        var d3 = o4.started, p3 = o4.startedTime, g3 = o4.action, h2 = o4.prevState, y2 = o4.error, v2 = o4.took, w2 = o4.nextState, x3 = e3[s3 + 1];
-        x3 && (w2 = x3.prevState, v2 = x3.started - d3);
-        var S2 = n3(g3), k2 = typeof a2 == "function" ? a2(function() {
+    function x(e2, t3) {
+      var r2 = t3.logger, n3 = t3.actionTransformer, o3 = t3.titleFormatter, i2 = o3 === void 0 ? w(t3) : o3, a2 = t3.collapsed, f2 = t3.colors, u2 = t3.level, l3 = t3.diff, c2 = typeof t3.titleFormatter == "undefined";
+      e2.forEach(function(o4, s3) {
+        var d2 = o4.started, p2 = o4.startedTime, g2 = o4.action, h2 = o4.prevState, y2 = o4.error, v2 = o4.took, w2 = o4.nextState, x2 = e2[s3 + 1];
+        x2 && (w2 = x2.prevState, v2 = x2.started - d2);
+        var S2 = n3(g2), k2 = typeof a2 == "function" ? a2(function() {
           return w2;
-        }, g3, o4) : a2, j2 = D(p3), E2 = f2.title ? "color: " + f2.title(S2) + ";" : "", A2 = ["color: gray; font-weight: lighter;"];
+        }, g2, o4) : a2, j2 = D(p2), E2 = f2.title ? "color: " + f2.title(S2) + ";" : "", A2 = ["color: gray; font-weight: lighter;"];
         A2.push(E2), t3.timestamp && A2.push("color: gray; font-weight: lighter;"), t3.duration && A2.push("color: gray; font-weight: lighter;");
         var O2 = i2(S2, j2, v2);
         try {
-          k2 ? f2.title && c3 ? r3.groupCollapsed.apply(r3, ["%c " + O2].concat(A2)) : r3.groupCollapsed(O2) : f2.title && c3 ? r3.group.apply(r3, ["%c " + O2].concat(A2)) : r3.group(O2);
-        } catch (e4) {
-          r3.log(O2);
+          k2 ? f2.title && c2 ? r2.groupCollapsed.apply(r2, ["%c " + O2].concat(A2)) : r2.groupCollapsed(O2) : f2.title && c2 ? r2.group.apply(r2, ["%c " + O2].concat(A2)) : r2.group(O2);
+        } catch (e3) {
+          r2.log(O2);
         }
         var N2 = m(u2, S2, [h2], "prevState"), P2 = m(u2, S2, [S2], "action"), C2 = m(u2, S2, [y2, h2], "error"), F2 = m(u2, S2, [w2], "nextState");
         if (N2)
           if (f2.prevState) {
             var L2 = "color: " + f2.prevState(h2) + "; font-weight: bold";
-            r3[N2]("%c prev state", L2, h2);
+            r2[N2]("%c prev state", L2, h2);
           } else
-            r3[N2]("prev state", h2);
+            r2[N2]("prev state", h2);
         if (P2)
           if (f2.action) {
-            var T3 = "color: " + f2.action(S2) + "; font-weight: bold";
-            r3[P2]("%c action    ", T3, S2);
+            var T2 = "color: " + f2.action(S2) + "; font-weight: bold";
+            r2[P2]("%c action    ", T2, S2);
           } else
-            r3[P2]("action    ", S2);
+            r2[P2]("action    ", S2);
         if (y2 && C2)
           if (f2.error) {
             var M = "color: " + f2.error(y2, h2) + "; font-weight: bold;";
-            r3[C2]("%c error     ", M, y2);
+            r2[C2]("%c error     ", M, y2);
           } else
-            r3[C2]("error     ", y2);
+            r2[C2]("error     ", y2);
         if (F2)
           if (f2.nextState) {
             var _ = "color: " + f2.nextState(w2) + "; font-weight: bold";
-            r3[F2]("%c next state", _, w2);
+            r2[F2]("%c next state", _, w2);
           } else
-            r3[F2]("next state", w2);
-        l3 && b(h2, w2, r3, k2);
+            r2[F2]("next state", w2);
+        l3 && b(h2, w2, r2, k2);
         try {
-          r3.groupEnd();
-        } catch (e4) {
-          r3.log("\u2014\u2014 log end \u2014\u2014");
+          r2.groupEnd();
+        } catch (e3) {
+          r2.log("\u2014\u2014 log end \u2014\u2014");
         }
       });
     }
     function S() {
-      var e3 = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : {}, t3 = Object.assign({}, L, e3), r3 = t3.logger, n3 = t3.stateTransformer, o3 = t3.errorTransformer, i2 = t3.predicate, a2 = t3.logErrors, f2 = t3.diffPredicate;
-      if (typeof r3 == "undefined")
+      var e2 = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : {}, t3 = Object.assign({}, L, e2), r2 = t3.logger, n3 = t3.stateTransformer, o3 = t3.errorTransformer, i2 = t3.predicate, a2 = t3.logErrors, f2 = t3.diffPredicate;
+      if (typeof r2 == "undefined")
         return function() {
-          return function(e4) {
+          return function(e3) {
             return function(t4) {
-              return e4(t4);
+              return e3(t4);
             };
           };
         };
-      if (e3.getState && e3.dispatch)
+      if (e2.getState && e2.dispatch)
         return console.error("[redux-logger] redux-logger not installed. Make sure to pass logger instance as middleware:\n// Logger with default options\nimport { logger } from 'redux-logger'\nconst store = createStore(\n  reducer,\n  applyMiddleware(logger)\n)\n// Or you can create your own logger with custom options http://bit.ly/redux-logger-options\nimport createLogger from 'redux-logger'\nconst logger = createLogger({\n  // ...options\n});\nconst store = createStore(\n  reducer,\n  applyMiddleware(logger)\n)\n"), function() {
-          return function(e4) {
+          return function(e3) {
             return function(t4) {
-              return e4(t4);
+              return e3(t4);
             };
           };
         };
       var u2 = [];
-      return function(e4) {
-        var r4 = e4.getState;
-        return function(e5) {
+      return function(e3) {
+        var r3 = e3.getState;
+        return function(e4) {
           return function(l3) {
-            if (typeof i2 == "function" && !i2(r4, l3))
-              return e5(l3);
-            var c3 = {};
-            u2.push(c3), c3.started = O.now(), c3.startedTime = new Date(), c3.prevState = n3(r4()), c3.action = l3;
+            if (typeof i2 == "function" && !i2(r3, l3))
+              return e4(l3);
+            var c2 = {};
+            u2.push(c2), c2.started = O.now(), c2.startedTime = new Date(), c2.prevState = n3(r3()), c2.action = l3;
             var s3 = void 0;
             if (a2)
               try {
-                s3 = e5(l3);
-              } catch (e6) {
-                c3.error = o3(e6);
+                s3 = e4(l3);
+              } catch (e5) {
+                c2.error = o3(e5);
               }
             else
-              s3 = e5(l3);
-            c3.took = O.now() - c3.started, c3.nextState = n3(r4());
-            var d3 = t3.diff && typeof f2 == "function" ? f2(r4, l3) : t3.diff;
-            if (x2(u2, Object.assign({}, t3, { diff: d3 })), u2.length = 0, c3.error)
-              throw c3.error;
+              s3 = e4(l3);
+            c2.took = O.now() - c2.started, c2.nextState = n3(r3());
+            var d2 = t3.diff && typeof f2 == "function" ? f2(r3, l3) : t3.diff;
+            if (x(u2, Object.assign({}, t3, { diff: d2 })), u2.length = 0, c2.error)
+              throw c2.error;
             return s3;
           };
         };
       };
     }
-    var k, j, E = function(e3, t3) {
-      return new Array(t3 + 1).join(e3);
-    }, A = function(e3, t3) {
-      return E("0", t3 - e3.toString().length) + e3;
-    }, D = function(e3) {
-      return A(e3.getHours(), 2) + ":" + A(e3.getMinutes(), 2) + ":" + A(e3.getSeconds(), 2) + "." + A(e3.getMilliseconds(), 3);
-    }, O = typeof performance != "undefined" && performance !== null && typeof performance.now == "function" ? performance : Date, N = typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? function(e3) {
-      return typeof e3;
-    } : function(e3) {
-      return e3 && typeof Symbol == "function" && e3.constructor === Symbol && e3 !== Symbol.prototype ? "symbol" : typeof e3;
-    }, P = function(e3) {
-      if (Array.isArray(e3)) {
-        for (var t3 = 0, r3 = Array(e3.length); t3 < e3.length; t3++)
-          r3[t3] = e3[t3];
-        return r3;
+    var k, j, E = function(e2, t3) {
+      return new Array(t3 + 1).join(e2);
+    }, A = function(e2, t3) {
+      return E("0", t3 - e2.toString().length) + e2;
+    }, D = function(e2) {
+      return A(e2.getHours(), 2) + ":" + A(e2.getMinutes(), 2) + ":" + A(e2.getSeconds(), 2) + "." + A(e2.getMilliseconds(), 3);
+    }, O = typeof performance != "undefined" && performance !== null && typeof performance.now == "function" ? performance : Date, N = typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? function(e2) {
+      return typeof e2;
+    } : function(e2) {
+      return e2 && typeof Symbol == "function" && e2.constructor === Symbol && e2 !== Symbol.prototype ? "symbol" : typeof e2;
+    }, P = function(e2) {
+      if (Array.isArray(e2)) {
+        for (var t3 = 0, r2 = Array(e2.length); t3 < e2.length; t3++)
+          r2[t3] = e2[t3];
+        return r2;
       }
-      return Array.from(e3);
+      return Array.from(e2);
     }, C = [];
     k = (typeof commonjsGlobal == "undefined" ? "undefined" : N(commonjsGlobal)) === "object" && commonjsGlobal ? commonjsGlobal : typeof window != "undefined" ? window : {}, j = k.DeepDiff, j && C.push(function() {
-      typeof j != "undefined" && k.DeepDiff === c2 && (k.DeepDiff = j, j = void 0);
-    }), t2(n2, r2), t2(o2, r2), t2(i, r2), t2(a, r2), Object.defineProperties(c2, { diff: { value: c2, enumerable: true }, observableDiff: { value: l2, enumerable: true }, applyDiff: { value: h, enumerable: true }, applyChange: { value: d2, enumerable: true }, revertChange: { value: g2, enumerable: true }, isConflict: { value: function() {
+      typeof j != "undefined" && k.DeepDiff === c && (k.DeepDiff = j, j = void 0);
+    }), t2(n2, r), t2(o2, r), t2(i, r), t2(a, r), Object.defineProperties(c, { diff: { value: c, enumerable: true }, observableDiff: { value: l2, enumerable: true }, applyDiff: { value: h, enumerable: true }, applyChange: { value: d, enumerable: true }, revertChange: { value: g, enumerable: true }, isConflict: { value: function() {
       return typeof j != "undefined";
     }, enumerable: true }, noConflict: { value: function() {
-      return C && (C.forEach(function(e3) {
-        e3();
-      }), C = null), c2;
+      return C && (C.forEach(function(e2) {
+        e2();
+      }), C = null), c;
     }, enumerable: true } });
-    var F = { E: { color: "#2196F3", text: "CHANGED:" }, N: { color: "#4CAF50", text: "ADDED:" }, D: { color: "#F44336", text: "DELETED:" }, A: { color: "#2196F3", text: "ARRAY:" } }, L = { level: "log", logger: console, logErrors: true, collapsed: void 0, predicate: void 0, duration: false, timestamp: true, stateTransformer: function(e3) {
-      return e3;
-    }, actionTransformer: function(e3) {
-      return e3;
-    }, errorTransformer: function(e3) {
-      return e3;
+    var F = { E: { color: "#2196F3", text: "CHANGED:" }, N: { color: "#4CAF50", text: "ADDED:" }, D: { color: "#F44336", text: "DELETED:" }, A: { color: "#2196F3", text: "ARRAY:" } }, L = { level: "log", logger: console, logErrors: true, collapsed: void 0, predicate: void 0, duration: false, timestamp: true, stateTransformer: function(e2) {
+      return e2;
+    }, actionTransformer: function(e2) {
+      return e2;
+    }, errorTransformer: function(e2) {
+      return e2;
     }, colors: { title: function() {
       return "inherit";
     }, prevState: function() {
@@ -2006,11 +470,11 @@ var reduxLogger = { exports: {} };
       return "#4CAF50";
     }, error: function() {
       return "#F20404";
-    } }, diff: false, diffPredicate: void 0, transformer: void 0 }, T2 = function() {
-      var e3 = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : {}, t3 = e3.dispatch, r3 = e3.getState;
-      return typeof t3 == "function" || typeof r3 == "function" ? S()({ dispatch: t3, getState: r3 }) : void console.error("\n[redux-logger v3] BREAKING CHANGE\n[redux-logger v3] Since 3.0.0 redux-logger exports by default logger with default settings.\n[redux-logger v3] Change\n[redux-logger v3] import createLogger from 'redux-logger'\n[redux-logger v3] to\n[redux-logger v3] import { createLogger } from 'redux-logger'\n");
+    } }, diff: false, diffPredicate: void 0, transformer: void 0 }, T = function() {
+      var e2 = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : {}, t3 = e2.dispatch, r2 = e2.getState;
+      return typeof t3 == "function" || typeof r2 == "function" ? S()({ dispatch: t3, getState: r2 }) : void console.error("\n[redux-logger v3] BREAKING CHANGE\n[redux-logger v3] Since 3.0.0 redux-logger exports by default logger with default settings.\n[redux-logger v3] Change\n[redux-logger v3] import createLogger from 'redux-logger'\n[redux-logger v3] to\n[redux-logger v3] import { createLogger } from 'redux-logger'\n");
     };
-    e2.defaults = L, e2.createLogger = S, e2.logger = T2, e2.default = T2, Object.defineProperty(e2, "__esModule", { value: true });
+    e.defaults = L, e.createLogger = S, e.logger = T, e.default = T, Object.defineProperty(e, "__esModule", { value: true });
   });
 })(reduxLogger, reduxLogger.exports);
 function createMiddleware(history2, appMiddleware) {
@@ -2179,50 +643,6 @@ function addToastNotification({
   };
 }
 var notifications = slice$a.reducer;
-var styles$1 = "html,\nbody,\n#root {\n  background-color: var(--bg-color-default);\n\n  /* Proportions */\n  --amount-none: 0px;\n  --amount-least: 5.5px;\n  --amount-less: 11px;\n  --amount-default: 16.5px;\n  --amount-more: 22px;\n  --amount-most: 27.5px;\n  --amount-all: 33px;\n\n  --size-smallest: 10px;\n  --size-smaller: 14px;\n  --size-small: 24px;\n  --size-default: 32px;\n  --size-large: 42px;\n  --size-larger: 52px;\n  --size-largest: 56px;\n\n  /* Colors */\n  --color-primary-rgb: 76, 62, 196;\n  --color-primary: rgb(var(--color-primary-rgb));\n  --color-primary-contrast-rgb: 255, 255, 255;\n  --color-primary-contrast: rgb(var(--color-primary-contrast-rgb));\n  --color-default-rgb: var(--color-black-rgb);\n  --color-default: rgb(var(--color-default-rgb));\n  --color-default-contrast-rgb: var(--color-default-rgb);\n  --color-default-contrast: var(--color-default-rgb);\n  --color-secondary-rgb: 230, 232, 235;\n  --color-secondary: rgb(var(--color-secondary-rgb));\n  --color-secondary-contrast-rgb: 35, 37, 40;\n  --color-secondary-contrast: rgb(var(--color-secondary-contrast-rgb));\n  --color-black-rgb: 50, 52, 55;\n  --color-black: rgb(var(--color-black-rgb));\n  --color-black-contrast-rgb: var(--color-white-rgb);\n  --color-black-contrast: rgb(var(--color-black-contrast-rgb));\n  --color-white-rgb: 238, 240, 243;\n  --color-white: rgb(var(--color-white-rgb));\n  --color-white-contrast-rgb: var(--color-white-rgb);\n  --color-white-contrast: rgb(var(--color-white-contrast-rgb));\n  --color-error-rgb: 236, 79, 79;\n  --color-error: rgb(var(--color-error-rgb));\n  --color-error-contrast-rgb: var(--color-white-rgb);\n  --color-error-contrast: rgb(var(--color-error-contrast-rgb));\n  --color-info-rgb: 15, 193, 223;\n  --color-info: rgb(var(--color-info-rgb));\n  --color-info-contrast-rgb: var(--color-white-rgb);\n  --color-info-contrast: rgb(var(--color-info-contrast-rgb));\n  --color-success-rgb: 131, 210, 126;\n  --color-success: rgb(var(--color-success-rgb));\n  --color-success-contrast-rgb: var(--color-white-rgb);\n  --color-success-contrast: rgb(var(--color-success-contrast-rgb));\n  --color-warning-rgb: 255, 209, 0;\n  --color-warning: rgb(var(--color-warning-rgb));\n  --color-warning-contrast-rgb: var(--color-white-rgb);\n  --color-warning-contrast: rgb(var(--color-warning-contrast-rgb));\n\n  --bg-color-lightest-rgb: 245, 245, 245;\n  --bg-color-lightest: rgb(var(--bg-color-lightest-rgb));\n  --bg-color-lighter-rgb: 235, 235, 235;\n  --bg-color-lighter: rgb(var(--bg-color-lighter-rgb));\n  --bg-color-light-rgb: 225, 225, 225;\n  --bg-color-light: rgb(var(--bg-color-light-rgb));\n  --bg-color-default-rgb: 220, 220, 220;\n  --bg-color-default: rgb(var(--bg-color-default-rgb));\n  --bg-color-dark-rgb: 200, 200, 200;\n  --bg-color-dark: rgb(var(--bg-color-dark-rgb));\n  --bg-color-darker-rgb: 190, 190, 190;\n  --bg-color-darker: rgb(var(--bg-color-darker-rgb));\n  --bg-color-darkest-rgb: 180, 180, 180;\n  --bg-color-darkest: rgb(var(--bg-color-darkest-rgb));\n\n  --border-color-lightest-rgb: 240, 243, 247;\n  --border-color-lightest: rgb(var(--border-color-lightest-rgb));\n  --border-color-lighter-rgb: 230, 233, 237;\n  --border-color-lighter: rgb(var(--border-color-lighter-rgb));\n  --border-color-light-rgb: 220, 223, 227;\n  --border-color-light: rgb(var(--border-color-light-rgb));\n  --border-color-default-rgb: 210, 213, 217;\n  --border-color-default: rgb(var(--border-color-default-rgb));\n  --border-color-dark-rgb: 200, 203, 207;\n  --border-color-dark: rgb(var(--border-color-dark-rgb));\n  --border-color-darker-rgb: 190, 193, 197;\n  --border-color-darker: rgb(var(--border-color-darker-rgb));\n  --border-color-darkest-rgb: 180, 183, 187;\n  --border-color-darkest: rgb(var(--border-color-darkest-rgb));\n\n  --fg-color-lightest-rgb: 210, 212, 215;\n  --fg-color-lightest: rgb(var(--fg-color-lightest-rgb));\n  --fg-color-lighter-rgb: 190, 192, 195;\n  --fg-color-lighter: rgb(var(--fg-color-lighter-rgb));\n  --fg-color-light-rgb: 160, 162, 165;\n  --fg-color-light: rgb(var(--fg-color-light-rgb));\n  --fg-color-default-rgb: 130, 132, 135;\n  --fg-color-default: rgb(var(--fg-color-default-rgb));\n  --fg-color-dark-rgb: 100, 102, 105;\n  --fg-color-dark: rgb(var(--fg-color-dark-rgb));\n  --fg-color-darker-rgb: 60, 62, 65;\n  --fg-color-darker: rgb(var(--fg-color-darker-rgb));\n  --fg-color-darkest-rgb: var(--color-black-rgb);\n  --fg-color-darkest: rgb(var(--fg-color-darkest-rgb));\n\n  /* Text */\n  --text-color-lightest-rgb: var(--color-white-rgb);\n  --text-color-lightest: rgb(var(--text-color-lightest-rgb));\n  --text-color-lighter-rgb: 170, 172, 175;\n  --text-color-lighter: rgb(var(--text-color-lighter-rgb));\n  --text-color-light-rgb: 140, 142, 145;\n  --text-color-light: rgb(var(--text-color-light-rgb));\n  --text-color-default-rgb: 90, 92, 95;\n  --text-color-default: rgb(var(--text-color-default-rgb));\n  --text-color-dark-rgb: 70, 72, 75;\n  --text-color-dark: rgb(var(--text-color-dark-rgb));\n  --text-color-darker-rgb: 50, 52, 55;\n  --text-color-darker: rgb(var(--text-color-darker-rgb));\n  --text-color-darkest-rgb: var(--color-black-rgb);\n  --text-color-darkest: rgb(var(--text-color-darkest-rgb));\n\n  --text-font-button: 'Helvetica Neue', -apple-system, blinkmacsystemfont,\n    'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',\n    'Droid Sans', sans-serif;\n  --text-font-text: 'Helvetica Neue', -apple-system, blinkmacsystemfont,\n    'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',\n    'Droid Sans', sans-serif;\n\n  /* Text sizes */\n  --text-size-smallest: 9px;\n  --text-size-smaller: 11px;\n  --text-size-small: 12px;\n  --text-size-default: 13px;\n  --text-size-large: 18px;\n  --text-size-larger: 20px;\n  --text-size-largest: 24px;\n\n  --text-weight-least: 300;\n  --text-weight-less: 400;\n  --text-weight-default: 500;\n  --text-weight-more: 600;\n  --text-weight-most: 700;\n\n  /* Shadows */\n  --shadow-depth-lowest: inset 0 -20px 60px rgba(0, 0, 0, 0.1);\n  --shadow-depth-lower: inset 0 2px 5px rgba(0, 0, 0, 0.1);\n  --shadow-depth-low: inset 0 1px 3px rgba(0, 0, 0, 0.1);\n  --shadow-depth-surface: none;\n  --shadow-depth-high: 0 1px 3px rgba(0, 0, 0, 0.05);\n  --shadow-depth-higher: 0 4px 27px rgba(0, 0, 0, 0.16);\n  --shadow-depth-highest: 0 10px 62px rgba(0, 0, 0, 0.1);\n\n  /* Layout */\n  --z-index-depth-lowest: -300;\n  --z-index-depth-lower: -200;\n  --z-index-depth-low: -100;\n  --z-index-depth-surface: 0;\n  --z-index-depth-high: 100;\n  --z-index-depth-higher: 200;\n  --z-index-depth-highest: 300;\n\n  /* Element styles */\n  --bg-color-card-rgb: var(--bg-color-lightest-rgb);\n  --bg-color-close-button-rgb: var(--bg-color-default-rgb);\n  --bg-color-data-grid-rgb: var(--bg-color-default-rgb);\n  --bg-color-data-grid-header-rgb: var(--bg-color-default-rgb);\n  --bg-color-data-grid-column-headers-rgb: var(--bg-color-lighter-rgb);\n  --bg-color-data-grid-cell-rgb: var(--bg-color-lightest-rgb);\n  --bg-color-data-grid-row-rgb: var(--bg-color-lighter-rgb);\n  --bg-color-dropdown-menu-rgb: var(--bg-color-lightest-rgb);\n  --bg-color-input-control-rgb: var(--bg-color-lightest-rgb);\n  --bg-color-menu-button-rgb: var(--bg-color-lightest-rgb);\n  --bg-color-more-menu-rgb: var(--bg-color-default-rgb);\n  --bg-color-navigation-bar-rgb: var(--bg-color-lightest-rgb);\n  --bg-color-navigation-menu-rgb: var(--bg-color-lightest-rgb);\n  --bg-color-page-rgb: var(--bg-color-lighter-rgb);\n  --bg-color-slide-panel-rgb: var(--bg-color-lightest-rgb);\n  --bg-color-workspace-rgb: var(--bg-color-lighter-rgb);\n\n  --border-color-input-control-rgb: var(--border-color-default-rgb);\n\n  --fg-color-close-button-rgb: var(--fg-color-dark-rgb);\n  --fg-color-more-menu-rgb: var(--fg-color-dark-rgb);\n\n  --text-color-data-grid-column-headers-rgb: var(--text-color-lighter-rgb);\n  --text-color-data-grid-cell-rgb: var(--text-color-light-rgb);\n  --text-color-dropdown-menu-rgb: var(--text-color-light-rgb);\n  --text-color-input-control-rgb: var(--text-color-default-rgb);\n  --text-color-input-label-rgb: var(--text-color-light-rgb);\n  --text-color-input-placeholder-rgb: var(--text-color-lighter-rgb);\n  --text-color-link-rgb: var(--color-primary-rgb);\n  --text-color-menu-button-rgb: var(--text-color-light-rgb);\n  --text-color-paragraph-rgb: var(--text-color-lighter-rgb);\n  --text-color-text-rgb: var(--text-color-default-rgb);\n  --text-color-title-rgb: var(--text-color-dark-rgb);\n  --text-color-sub-title-rgb: var(--text-color-default-rgb);\n}\n";
-const AppLabLightTheme = {
-  css: styles$1,
-  description: "Default AppLab Light theme",
-  id: "applab-light",
-  name: "AppLab Light"
-};
-var styles = "html,\nbody,\n#root {\n  background-color: var(--bg-color-default);\n\n  --amount-none: 0px;\n  --amount-least: 5.5px;\n  --amount-less: 11px;\n  --amount-default: 16.5px;\n  --amount-more: 22px;\n  --amount-most: 27.5px;\n  --amount-all: 33px;\n\n  --size-smallest: 10px;\n  --size-smaller: 14px;\n  --size-small: 24px;\n  --size-default: 32px;\n  --size-large: 42px;\n  --size-larger: 52px;\n  --size-largest: 56px;\n\n  /* Colors */\n  --color-primary-rgb: 76, 62, 196;\n  /* --color-primary-rgb: 128, 60, 187; */\n  /* --color-primary-rgb: 212, 23, 82; */\n  --color-primary: rgb(var(--color-primary-rgb));\n  --color-primary-contrast-rgb: 255, 255, 255;\n  --color-primary-contrast: rgb(var(--color-primary-contrast-rgb));\n  --color-default-rgb: var(--color-black-rgb);\n  --color-default: rgb(var(--color-default-rgb));\n  --color-default-contrast-rgb: var(--color-default-rgb);\n  --color-default-contrast: var(--color-default-rgb);\n  --color-secondary-rgb: var(--bg-color-lightest-rgb);\n  --color-secondary: rgb(var(--color-secondary-rgb));\n  --color-secondary-contrast-rgb: var(--color-white-rgb);\n  --color-secondary-contrast: rgb(var(--color-secondary-contrast-rgb));\n  --color-black-rgb: 35, 37, 40;\n  --color-black: rgb(var(--color-black-rgb));\n  --color-black-contrast-rgb: var(--color-white-rgb);\n  --color-black-contrast: rgb(var(--color-black-contrast-rgb));\n  --color-white-rgb: 238, 240, 243;\n  --color-white: rgb(var(--color-white-rgb));\n  --color-white-contrast-rgb: var(--color-white-rgb);\n  --color-white-contrast: rgb(var(--color-white-contrast-rgb));\n  --color-error-rgb: 236, 79, 79;\n  --color-error: rgb(var(--color-error-rgb));\n  --color-error-contrast-rgb: var(--color-white-rgb);\n  --color-error-contrast: rgb(var(--color-error-contrast-rgb));\n  --color-info-rgb: 15, 193, 223;\n  --color-info: rgb(var(--color-info-rgb));\n  --color-info-contrast-rgb: var(--color-white-rgb);\n  --color-info-contrast: rgb(var(--color-info-contrast-rgb));\n  --color-success-rgb: 131, 210, 126;\n  --color-success: rgb(var(--color-success-rgb));\n  --color-success-contrast-rgb: var(--color-white-rgb);\n  --color-success-contrast: rgb(var(--color-success-contrast-rgb));\n  --color-warning-rgb: 255, 209, 0;\n  --color-warning: rgb(var(--color-warning-rgb));\n  --color-warning-contrast-rgb: var(--color-white-rgb);\n  --color-warning-contrast: rgb(var(--color-warning-contrast-rgb));\n\n  --bg-color-lightest-rgb: 54, 54, 62;\n  --bg-color-lightest: rgb(var(--bg-color-lightest-rgb));\n  --bg-color-lighter-rgb: 48, 48, 56;\n  --bg-color-lighter: rgb(var(--bg-color-lighter-rgb));\n  --bg-color-light-rgb: 42, 42, 50;\n  --bg-color-light: rgb(var(--bg-color-light-rgb));\n  --bg-color-default-rgb: 36, 36, 44;\n  --bg-color-default: rgb(var(--bg-color-default-rgb));\n  --bg-color-dark-rgb: 30, 30, 38;\n  --bg-color-dark: rgb(var(--bg-color-dark-rgb));\n  --bg-color-darker-rgb: 24, 24, 32;\n  --bg-color-darker: rgb(var(--bg-color-darker-rgb));\n  --bg-color-darkest-rgb: 16, 16, 24;\n  --bg-color-darkest: rgb(var(--bg-color-darkest-rgb));\n\n  --border-color-lightest-rgb: 56, 56, 64;\n  --border-color-lightest: rgb(var(--border-color-lightest-rgb));\n  --border-color-lighter-rgb: 48, 48, 56;\n  --border-color-lighter: rgb(var(--border-color-lighter-rgb));\n  --border-color-light-rgb: 40, 40, 48;\n  --border-color-light: rgb(var(--border-color-light-rgb));\n  --border-color-default-rgb: 32, 32, 40;\n  --border-color-default: rgb(var(--border-color-default-rgb));\n  --border-color-dark-rgb: 24, 24, 32;\n  --border-color-dark: rgb(var(--border-color-dark-rgb));\n  --border-color-darker-rgb: 16, 16, 24;\n  --border-color-darker: rgb(var(--border-color-darker-rgb));\n  --border-color-darkest-rgb: 8, 8, 16;\n  --border-color-darkest: rgb(var(--border-color-darkest-rgb));\n\n  --fg-color-lightest-rgb: 210, 212, 215;\n  --fg-color-lightest: rgb(var(--fg-color-lightest-rgb));\n  --fg-color-lighter-rgb: 190, 192, 195;\n  --fg-color-lighter: rgb(var(--fg-color-lighter-rgb));\n  --fg-color-light-rgb: 160, 162, 165;\n  --fg-color-light: rgb(var(--fg-color-light-rgb));\n  --fg-color-default-rgb: 130, 132, 135;\n  --fg-color-default: rgb(var(--fg-color-default-rgb));\n  --fg-color-dark-rgb: 100, 102, 105;\n  --fg-color-dark: rgb(var(--fg-color-dark-rgb));\n  --fg-color-darker-rgb: 60, 62, 65;\n  --fg-color-darker: rgb(var(--fg-color-darker-rgb));\n  --fg-color-darkest-rgb: var(--color-black-rgb);\n  --fg-color-darkest: rgb(var(--fg-color-darkest-rgb));\n\n  /* Text */\n  --text-color-lightest-rgb: var(--color-white-rgb);\n  --text-color-lightest: rgb(var(--text-color-lightest-rgb));\n  --text-color-lighter-rgb: 190, 192, 195;\n  --text-color-lighter: rgb(var(--text-color-lighter-rgb));\n  --text-color-light-rgb: 140, 142, 145;\n  --text-color-light: rgb(var(--text-color-light-rgb));\n  --text-color-default-rgb: 90, 92, 95;\n  --text-color-default: rgb(var(--text-color-default-rgb));\n  --text-color-dark-rgb: 70, 72, 75;\n  --text-color-dark: rgb(var(--text-color-dark-rgb));\n  --text-color-darker-rgb: 50, 52, 55;\n  --text-color-darker: rgb(var(--text-color-darker-rgb));\n  --text-color-darkest-rgb: var(--color-black-rgb);\n  --text-color-darkest: rgb(var(--text-color-darkest-rgb));\n\n  --text-font-button: 'Helvetica Neue', -apple-system, blinkmacsystemfont,\n    'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',\n    'Droid Sans', sans-serif;\n  --text-font-text: 'Helvetica Neue', -apple-system, blinkmacsystemfont,\n    'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',\n    'Droid Sans', sans-serif;\n\n  /* Text sizes */\n  --text-size-smallest: 9px;\n  --text-size-smaller: 11px;\n  --text-size-small: 12px;\n  --text-size-default: 13px;\n  --text-size-large: 18px;\n  --text-size-larger: 20px;\n  --text-size-largest: 24px;\n\n  --text-weight-least: 300;\n  --text-weight-less: 400;\n  --text-weight-default: 500;\n  --text-weight-more: 600;\n  --text-weight-most: 700;\n\n  /* Shadows */\n  --shadow-depth-lowest: inset 0 20px 60px rgba(0, 0, 0, 0.05);\n  --shadow-depth-lower: inset 0 17px 25px rgba(0, 0, 0, 0.1);\n  --shadow-depth-low: inset 0 1px 3px rgba(0, 0, 0, 0.2);\n  --shadow-depth-surface: none;\n  --shadow-depth-high: 0 1px 3px rgba(0, 0, 0, 0.13);\n  --shadow-depth-higher: 0 4px 27px rgba(0, 0, 0, 0.2);\n  --shadow-depth-highest: 0 20px 60px rgba(0, 0, 0, 0.12);\n\n  /* Layout */\n  --z-index-depth-lowest: -300;\n  --z-index-depth-lower: -200;\n  --z-index-depth-low: -100;\n  --z-index-depth-surface: 0;\n  --z-index-depth-high: 100;\n  --z-index-depth-higher: 200;\n  --z-index-depth-highest: 300;\n\n  /* --bg-color-button: rgb(); */\n\n  /* --bg-color-menu-item: rgb(); */\n  /* --bg-color-workspace: rgb(); */\n  /* --bg-color-workspace-title: rgb(); */\n\n  /* Element styles */\n  --bg-color-card-rgb: var(--bg-color-default-rgb);\n  --bg-color-close-button-rgb: var(--bg-color-default-rgb);\n  --bg-color-data-grid-rgb: var(--bg-color-default-rgb);\n  --bg-color-data-grid-header-rgb: var(--bg-color-default-rgb);\n  --bg-color-data-grid-column-headers-rgb: var(--bg-color-light-rgb);\n  --bg-color-data-grid-cell-rgb: var(--bg-color-lightest-rgb);\n  --bg-color-data-grid-row-rgb: var(--bg-color-lighter-rgb);\n  --bg-color-dropdown-menu-rgb: var(--bg-color-dark-rgb);\n  --bg-color-input-control-rgb: var(--bg-color-dark-rgb);\n  --bg-color-menu-button-rgb: var(--bg-color-lightest-rgb);\n  --bg-color-more-menu-rgb: var(--bg-color-default-rgb);\n  --bg-color-navigation-bar-rgb: var(--bg-color-default-rgb);\n  --bg-color-navigation-menu-rgb: var(--bg-color-default-rgb);\n  --bg-color-page-rgb: var(--bg-color-darker-rgb);\n  --bg-color-slide-panel-rgb: var(--bg-color-light-rgb);\n  --bg-color-workspace-rgb: var(--bg-color-darker-rgb);\n\n  --border-color-input-control-rgb: var(--border-color-light-rgb);\n\n  --fg-color-close-button-rgb: var(--fg-color-light-rgb);\n  --fg-color-more-menu-rgb: var(--fg-color-light-rgb);\n\n  --text-color-data-grid-column-headers-rgb: var(--text-color-light-rgb);\n  --text-color-data-grid-cell-rgb: var(--text-color-lightest-rgb);\n  --text-color-dropdown-menu-rgb: var(--text-color-lightest-rgb);\n  --text-color-input-control-rgb: var(--text-color-lightest-rgb);\n  --text-color-input-placeholder-rgb: var(--text-color-dark-rgb);\n  --text-color-input-label-rgb: var(--text-color-light-rgb);\n  --text-color-link-rgb: var(--color-primary-rgb);\n  --text-color-menu-button-rgb: var(--text-color-lighter-rgb);\n  --text-color-paragraph-rgb: var(--text-color-default-rgb);\n  --text-color-text-rgb: var(--text-color-default-rgb);\n  --text-color-title-rgb: var(--text-color-lightest-rgb);\n  --text-color-sub-title-rgb: var(--text-color-default-rgb);\n}\n";
-const AppLabDarkTheme = {
-  css: styles,
-  description: "AppLab dark theme",
-  id: "applab-dark",
-  name: "AppLab Dark"
-};
-memo(({
-  className = "",
-  children,
-  theme,
-  themes: themes2
-}) => {
-  var _a;
-  const [currentTheme, setTheme2] = useState((_a = themes2 == null ? void 0 : themes2.find((t2) => t2.id === theme)) != null ? _a : AppLabLightTheme);
-  useEffect(() => {
-    if (theme && themes2) {
-      const match2 = themes2.find((t2) => t2.id === theme);
-      if (match2) {
-        setTheme2(match2);
-      } else {
-        setTheme2(AppLabLightTheme);
-      }
-    } else {
-      setTheme2(AppLabLightTheme);
-    }
-  }, [theme]);
-  return /* @__PURE__ */ React.createElement("div", {
-    className: `${currentTheme.id} ${className} theme-provider`
-  }, /* @__PURE__ */ React.createElement(GlobalStyle, {
-    theme: currentTheme
-  }), children);
-});
-const GlobalStyle = createGlobalStyle`
-  ${(props) => props.theme.css};
-
-`;
 const initialState$8 = {
   current: AppLabLightTheme.id,
   list: [AppLabLightTheme, AppLabDarkTheme]
@@ -2443,7 +863,7 @@ function isDate(o2) {
 function hasRelative() {
   try {
     return typeof Intl !== "undefined" && !!Intl.RelativeTimeFormat;
-  } catch (e2) {
+  } catch (e) {
     return false;
   }
 }
@@ -2477,8 +897,8 @@ function hasOwnProperty(obj, prop) {
 function integerBetween(thing, bottom, top) {
   return isInteger(thing) && thing >= bottom && thing <= top;
 }
-function floorMod(x2, n2) {
-  return x2 - n2 * Math.floor(x2 / n2);
+function floorMod(x, n2) {
+  return x - n2 * Math.floor(x / n2);
 }
 function padStart(input, n2 = 2) {
   const isNeg = input < 0;
@@ -2531,12 +951,12 @@ function daysInMonth(year, month) {
   }
 }
 function objToLocalTS(obj) {
-  let d2 = Date.UTC(obj.year, obj.month - 1, obj.day, obj.hour, obj.minute, obj.second, obj.millisecond);
+  let d = Date.UTC(obj.year, obj.month - 1, obj.day, obj.hour, obj.minute, obj.second, obj.millisecond);
   if (obj.year < 100 && obj.year >= 0) {
-    d2 = new Date(d2);
-    d2.setUTCFullYear(d2.getUTCFullYear() - 1900);
+    d = new Date(d);
+    d.setUTCFullYear(d.getUTCFullYear() - 1900);
   }
-  return +d2;
+  return +d;
 }
 function weeksInWeekYear(weekYear) {
   const p1 = (weekYear + Math.floor(weekYear / 4) - Math.floor(weekYear / 100) + Math.floor(weekYear / 400)) % 7, last = weekYear - 1, p2 = (last + Math.floor(last / 4) - Math.floor(last / 100) + Math.floor(last / 400)) % 7;
@@ -2772,8 +1192,8 @@ class Formatter {
     let current = null, currentFull = "", bracketed = false;
     const splits = [];
     for (let i = 0; i < fmt.length; i++) {
-      const c2 = fmt.charAt(i);
-      if (c2 === "'") {
+      const c = fmt.charAt(i);
+      if (c === "'") {
         if (currentFull.length > 0) {
           splits.push({ literal: bracketed, val: currentFull });
         }
@@ -2781,15 +1201,15 @@ class Formatter {
         currentFull = "";
         bracketed = !bracketed;
       } else if (bracketed) {
-        currentFull += c2;
-      } else if (c2 === current) {
-        currentFull += c2;
+        currentFull += c;
+      } else if (c === current) {
+        currentFull += c;
       } else {
         if (currentFull.length > 0) {
           splits.push({ literal: false, val: currentFull });
         }
-        currentFull = c2;
-        current = c2;
+        currentFull = c;
+        current = c;
       }
     }
     if (currentFull.length > 0) {
@@ -2824,13 +1244,13 @@ class Formatter {
     const df = this.loc.dtFormatter(dt, __spreadValues(__spreadValues({}, this.opts), opts));
     return df.resolvedOptions();
   }
-  num(n2, p2 = 0) {
+  num(n2, p = 0) {
     if (this.opts.forceSimple) {
-      return padStart(n2, p2);
+      return padStart(n2, p);
     }
     const opts = __spreadValues({}, this.opts);
-    if (p2 > 0) {
-      opts.padTo = p2;
+    if (p > 0) {
+      opts.padTo = p;
     }
     return this.loc.numberFormatter(opts).format(n2);
   }
@@ -3131,7 +1551,7 @@ class IANAZone extends Zone {
     try {
       new Intl.DateTimeFormat("en-US", { timeZone: zone }).format();
       return true;
-    } catch (e2) {
+    } catch (e) {
       return false;
     }
   }
@@ -3195,9 +1615,9 @@ class FixedOffsetZone extends Zone {
   }
   static parseSpecifier(s2) {
     if (s2) {
-      const r2 = s2.match(/^utc(?:([+-]\d{1,2})(?::(\d{2}))?)?$/i);
-      if (r2) {
-        return new FixedOffsetZone(signedOffset(r2[1], r2[2]));
+      const r = s2.match(/^utc(?:([+-]\d{1,2})(?::(\d{2}))?)?$/i);
+      if (r) {
+        return new FixedOffsetZone(signedOffset(r[1], r[2]));
       }
     }
     return null;
@@ -3384,7 +1804,7 @@ function parseLocaleString(localeStr) {
     const smaller = localeStr.substring(0, uIndex);
     try {
       options = getCachedDTF(localeStr).resolvedOptions();
-    } catch (e2) {
+    } catch (e) {
       options = getCachedDTF(smaller).resolvedOptions();
     }
     const { numberingSystem, calendar } = options;
@@ -3463,15 +1883,15 @@ class PolyNumberFormatter {
 class PolyDateFormatter {
   constructor(dt, intl, opts) {
     this.opts = opts;
-    let z2;
+    let z;
     if (dt.zone.isUniversal) {
       const gmtOffset = -1 * (dt.offset / 60);
       const offsetZ = gmtOffset >= 0 ? `Etc/GMT+${gmtOffset}` : `Etc/GMT${gmtOffset}`;
       if (dt.offset !== 0 && IANAZone.create(offsetZ).valid) {
-        z2 = offsetZ;
+        z = offsetZ;
         this.dt = dt;
       } else {
-        z2 = "UTC";
+        z = "UTC";
         if (opts.timeZoneName) {
           this.dt = dt;
         } else {
@@ -3482,11 +1902,11 @@ class PolyDateFormatter {
       this.dt = dt;
     } else {
       this.dt = dt;
-      z2 = dt.zone.name;
+      z = dt.zone.name;
     }
     const intlOpts = __spreadValues({}, this.opts);
-    if (z2) {
-      intlOpts.timeZone = z2;
+    if (z) {
+      intlOpts.timeZone = z;
     }
     this.dtf = getCachedDTF(intl, intlOpts);
   }
@@ -3639,7 +2059,7 @@ class Locale {
   }
 }
 function combineRegexes(...regexes) {
-  const full = regexes.reduce((f, r2) => f + r2.source, "");
+  const full = regexes.reduce((f, r) => f + r.source, "");
   return RegExp(`^${full}$`);
 }
 function combineExtractors(...extractors) {
@@ -4125,12 +2545,12 @@ class Duration {
     const dur = Duration.fromDurationLike(duration);
     return this.plus(dur.negate());
   }
-  mapUnits(fn2) {
+  mapUnits(fn) {
     if (!this.isValid)
       return this;
     const result = {};
     for (const k of Object.keys(this.values)) {
-      result[k] = asNumber(fn2(this.values[k], k));
+      result[k] = asNumber(fn(this.values[k], k));
     }
     return clone$1(this, { values: result }, true);
   }
@@ -4315,27 +2735,27 @@ class Interval {
     return Interval.fromDateTimes(dt.minus(dur), dt);
   }
   static fromISO(text, opts) {
-    const [s2, e2] = (text || "").split("/", 2);
-    if (s2 && e2) {
+    const [s2, e] = (text || "").split("/", 2);
+    if (s2 && e) {
       let start, startIsValid;
       try {
         start = DateTime.fromISO(s2, opts);
         startIsValid = start.isValid;
-      } catch (e3) {
+      } catch (e2) {
         startIsValid = false;
       }
       let end, endIsValid;
       try {
-        end = DateTime.fromISO(e2, opts);
+        end = DateTime.fromISO(e, opts);
         endIsValid = end.isValid;
-      } catch (e3) {
+      } catch (e2) {
         endIsValid = false;
       }
       if (startIsValid && endIsValid) {
         return Interval.fromDateTimes(start, end);
       }
       if (startIsValid) {
-        const dur = Duration.fromISO(e2, opts);
+        const dur = Duration.fromISO(e, opts);
         if (dur.isValid) {
           return Interval.after(start, dur);
         }
@@ -4404,7 +2824,7 @@ class Interval {
   splitAt(...dateTimes) {
     if (!this.isValid)
       return [];
-    const sorted = dateTimes.map(friendlyDateTime).filter((d2) => this.contains(d2)).sort(), results = [];
+    const sorted = dateTimes.map(friendlyDateTime).filter((d) => this.contains(d)).sort(), results = [];
     let { s: s2 } = this, i = 0;
     while (s2 < this.e) {
       const added = sorted[i] || this.e, next = +added > +this.e ? this.e : added;
@@ -4422,7 +2842,7 @@ class Interval {
     let { s: s2 } = this, idx = 1, next;
     const results = [];
     while (s2 < this.e) {
-      const added = this.start.plus(dur.mapUnits((x2) => x2 * idx));
+      const added = this.start.plus(dur.mapUnits((x) => x * idx));
       next = +added > +this.e ? this.e : added;
       results.push(Interval.fromDateTimes(s2, next));
       s2 = next;
@@ -4462,18 +2882,18 @@ class Interval {
   intersection(other) {
     if (!this.isValid)
       return this;
-    const s2 = this.s > other.s ? this.s : other.s, e2 = this.e < other.e ? this.e : other.e;
-    if (s2 >= e2) {
+    const s2 = this.s > other.s ? this.s : other.s, e = this.e < other.e ? this.e : other.e;
+    if (s2 >= e) {
       return null;
     } else {
-      return Interval.fromDateTimes(s2, e2);
+      return Interval.fromDateTimes(s2, e);
     }
   }
   union(other) {
     if (!this.isValid)
       return this;
-    const s2 = this.s < other.s ? this.s : other.s, e2 = this.e > other.e ? this.e : other.e;
-    return Interval.fromDateTimes(s2, e2);
+    const s2 = this.s < other.s ? this.s : other.s, e = this.e > other.e ? this.e : other.e;
+    return Interval.fromDateTimes(s2, e);
   }
   static merge(intervals) {
     const [found, final] = intervals.sort((a, b) => a.s - b.s).reduce(([sofar, current], item) => {
@@ -4905,8 +3325,8 @@ function tokenForPart(part, locale, formatOpts) {
   return void 0;
 }
 function buildRegex(units) {
-  const re2 = units.map((u) => u.regex).reduce((f, r2) => `${f}(${r2.source})`, "");
-  return [`^${re2}$`, units];
+  const re = units.map((u) => u.regex).reduce((f, r) => `${f}(${r.source})`, "");
+  return [`^${re}$`, units];
 }
 function match(input, regex, handlers) {
   const matches = input.match(regex);
@@ -4988,12 +3408,12 @@ function dateTimeFromMatches(matches) {
   if (!isUndefined(matches.u)) {
     matches.S = parseMillis(matches.u);
   }
-  const vals = Object.keys(matches).reduce((r2, k) => {
+  const vals = Object.keys(matches).reduce((r, k) => {
     const f = toField(k);
     if (f) {
-      r2[f] = matches[k];
+      r[f] = matches[k];
     }
-    return r2;
+    return r;
   }, {});
   return [vals, zone, specificOffset];
 }
@@ -5014,7 +3434,7 @@ function maybeExpandMacroToken(token, locale) {
   }
   const formatter = Formatter.create(locale, formatOpts);
   const parts = formatter.formatDateTimeParts(getDummyDateTime());
-  const tokens = parts.map((p2) => tokenForPart(p2, locale, formatOpts));
+  const tokens = parts.map((p) => tokenForPart(p, locale, formatOpts));
   if (tokens.includes(void 0)) {
     return token;
   }
@@ -5175,22 +3595,22 @@ function fixOffset(localTS, o2, tz) {
 }
 function tsToObj(ts, offset2) {
   ts += offset2 * 60 * 1e3;
-  const d2 = new Date(ts);
+  const d = new Date(ts);
   return {
-    year: d2.getUTCFullYear(),
-    month: d2.getUTCMonth() + 1,
-    day: d2.getUTCDate(),
-    hour: d2.getUTCHours(),
-    minute: d2.getUTCMinutes(),
-    second: d2.getUTCSeconds(),
-    millisecond: d2.getUTCMilliseconds()
+    year: d.getUTCFullYear(),
+    month: d.getUTCMonth() + 1,
+    day: d.getUTCDate(),
+    hour: d.getUTCHours(),
+    minute: d.getUTCMinutes(),
+    second: d.getUTCSeconds(),
+    millisecond: d.getUTCMilliseconds()
   };
 }
 function objToTS(obj, offset2, zone) {
   return fixOffset(objToLocalTS(obj), offset2, zone);
 }
 function adjustTime(inst, dur) {
-  const oPre = inst.o, year = inst.c.year + Math.trunc(dur.years), month = inst.c.month + Math.trunc(dur.months) + Math.trunc(dur.quarters) * 3, c2 = __spreadProps(__spreadValues({}, inst.c), {
+  const oPre = inst.o, year = inst.c.year + Math.trunc(dur.years), month = inst.c.month + Math.trunc(dur.months) + Math.trunc(dur.quarters) * 3, c = __spreadProps(__spreadValues({}, inst.c), {
     year,
     month,
     day: Math.min(inst.c.day, daysInMonth(year, month)) + Math.trunc(dur.days) + Math.trunc(dur.weeks) * 7
@@ -5204,7 +3624,7 @@ function adjustTime(inst, dur) {
     minutes: dur.minutes,
     seconds: dur.seconds,
     milliseconds: dur.milliseconds
-  }).as("milliseconds"), localTS = objToLocalTS(c2);
+  }).as("milliseconds"), localTS = objToLocalTS(c);
   let [ts, o2] = fixOffset(localTS, oPre, inst.zone);
   if (millisToAdd !== 0) {
     ts += millisToAdd;
@@ -5232,55 +3652,55 @@ function toTechFormat(dt, format, allowZ = true) {
 }
 function toISODate(o2, extended) {
   const longFormat = o2.c.year > 9999 || o2.c.year < 0;
-  let c2 = "";
+  let c = "";
   if (longFormat && o2.c.year >= 0)
-    c2 += "+";
-  c2 += padStart(o2.c.year, longFormat ? 6 : 4);
+    c += "+";
+  c += padStart(o2.c.year, longFormat ? 6 : 4);
   if (extended) {
-    c2 += "-";
-    c2 += padStart(o2.c.month);
-    c2 += "-";
-    c2 += padStart(o2.c.day);
+    c += "-";
+    c += padStart(o2.c.month);
+    c += "-";
+    c += padStart(o2.c.day);
   } else {
-    c2 += padStart(o2.c.month);
-    c2 += padStart(o2.c.day);
+    c += padStart(o2.c.month);
+    c += padStart(o2.c.day);
   }
-  return c2;
+  return c;
 }
 function toISOTime(o2, extended, suppressSeconds, suppressMilliseconds, includeOffset) {
-  let c2 = padStart(o2.c.hour);
+  let c = padStart(o2.c.hour);
   if (extended) {
-    c2 += ":";
-    c2 += padStart(o2.c.minute);
+    c += ":";
+    c += padStart(o2.c.minute);
     if (o2.c.second !== 0 || !suppressSeconds) {
-      c2 += ":";
+      c += ":";
     }
   } else {
-    c2 += padStart(o2.c.minute);
+    c += padStart(o2.c.minute);
   }
   if (o2.c.second !== 0 || !suppressSeconds) {
-    c2 += padStart(o2.c.second);
+    c += padStart(o2.c.second);
     if (o2.c.millisecond !== 0 || !suppressMilliseconds) {
-      c2 += ".";
-      c2 += padStart(o2.c.millisecond, 3);
+      c += ".";
+      c += padStart(o2.c.millisecond, 3);
     }
   }
   if (includeOffset) {
     if (o2.isOffsetFixed && o2.offset === 0) {
-      c2 += "Z";
+      c += "Z";
     } else if (o2.o < 0) {
-      c2 += "-";
-      c2 += padStart(Math.trunc(-o2.o / 60));
-      c2 += ":";
-      c2 += padStart(Math.trunc(-o2.o % 60));
+      c += "-";
+      c += padStart(Math.trunc(-o2.o / 60));
+      c += ":";
+      c += padStart(Math.trunc(-o2.o % 60));
     } else {
-      c2 += "+";
-      c2 += padStart(Math.trunc(o2.o / 60));
-      c2 += ":";
-      c2 += padStart(Math.trunc(o2.o % 60));
+      c += "+";
+      c += padStart(Math.trunc(o2.o / 60));
+      c += ":";
+      c += padStart(Math.trunc(o2.o % 60));
     }
   }
-  return c2;
+  return c;
 }
 const defaultUnitValues = {
   month: 1,
@@ -5364,10 +3784,10 @@ function quickDT(obj, opts) {
   return new DateTime({ ts, zone, loc, o: o2 });
 }
 function diffRelative(start, end, opts) {
-  const round = isUndefined(opts.round) ? true : opts.round, format = (c2, unit) => {
-    c2 = roundTo(c2, round || opts.calendary ? 0 : 2, true);
+  const round = isUndefined(opts.round) ? true : opts.round, format = (c, unit) => {
+    c = roundTo(c, round || opts.calendary ? 0 : 2, true);
     const formatter = end.loc.clone(opts).relFormatter(opts);
-    return formatter.format(c2, unit);
+    return formatter.format(c, unit);
   }, differ = (unit) => {
     if (opts.calendary) {
       if (!end.hasSame(start, unit)) {
@@ -5404,16 +3824,16 @@ class DateTime {
     const zone = config2.zone || Settings.defaultZone;
     let invalid = config2.invalid || (Number.isNaN(config2.ts) ? new Invalid("invalid input") : null) || (!zone.isValid ? unsupportedZone(zone) : null);
     this.ts = isUndefined(config2.ts) ? Settings.now() : config2.ts;
-    let c2 = null, o2 = null;
+    let c = null, o2 = null;
     if (!invalid) {
       const unchanged = config2.old && config2.old.ts === this.ts && config2.old.zone.equals(zone);
       if (unchanged) {
-        [c2, o2] = [config2.old.c, config2.old.o];
+        [c, o2] = [config2.old.c, config2.old.o];
       } else {
         const ot = zone.offset(this.ts);
-        c2 = tsToObj(this.ts, ot);
-        invalid = Number.isNaN(c2.year) ? new Invalid("invalid input") : null;
-        c2 = invalid ? null : c2;
+        c = tsToObj(this.ts, ot);
+        invalid = Number.isNaN(c.year) ? new Invalid("invalid input") : null;
+        c = invalid ? null : c;
         o2 = invalid ? null : ot;
       }
     }
@@ -5421,7 +3841,7 @@ class DateTime {
     this.loc = config2.loc || Locale.create();
     this.invalid = invalid;
     this.weekData = null;
-    this.c = c2;
+    this.c = c;
     this.o = o2;
     this.isLuxonDateTime = true;
   }
@@ -5818,10 +4238,10 @@ class DateTime {
       return null;
     }
     const ext = format === "extended";
-    let c2 = toISODate(this, ext);
-    c2 += "T";
-    c2 += toISOTime(this, ext, suppressSeconds, suppressMilliseconds, includeOffset);
-    return c2;
+    let c = toISODate(this, ext);
+    c += "T";
+    c += toISOTime(this, ext, suppressSeconds, suppressMilliseconds, includeOffset);
+    return c;
   }
   toISODate({ format = "extended" } = {}) {
     if (!this.isValid) {
@@ -5842,8 +4262,8 @@ class DateTime {
     if (!this.isValid) {
       return null;
     }
-    let c2 = includePrefix ? "T" : "";
-    return c2 + toISOTime(this, format === "extended", suppressSeconds, suppressMilliseconds, includeOffset);
+    let c = includePrefix ? "T" : "";
+    return c + toISOTime(this, format === "extended", suppressSeconds, suppressMilliseconds, includeOffset);
   }
   toRFC2822() {
     return toTechFormat(this, "EEE, dd LLL yyyy HH:mm:ss ZZZ", false);
@@ -6199,81 +4619,81 @@ function fromByteArray(uint8) {
 var ieee754 = {};
 /*! ieee754. BSD-3-Clause License. Feross Aboukhadijeh <https://feross.org/opensource> */
 ieee754.read = function(buffer2, offset2, isLE, mLen, nBytes) {
-  var e2, m;
+  var e, m;
   var eLen = nBytes * 8 - mLen - 1;
   var eMax = (1 << eLen) - 1;
   var eBias = eMax >> 1;
   var nBits = -7;
   var i = isLE ? nBytes - 1 : 0;
-  var d2 = isLE ? -1 : 1;
+  var d = isLE ? -1 : 1;
   var s2 = buffer2[offset2 + i];
-  i += d2;
-  e2 = s2 & (1 << -nBits) - 1;
+  i += d;
+  e = s2 & (1 << -nBits) - 1;
   s2 >>= -nBits;
   nBits += eLen;
-  for (; nBits > 0; e2 = e2 * 256 + buffer2[offset2 + i], i += d2, nBits -= 8) {
+  for (; nBits > 0; e = e * 256 + buffer2[offset2 + i], i += d, nBits -= 8) {
   }
-  m = e2 & (1 << -nBits) - 1;
-  e2 >>= -nBits;
+  m = e & (1 << -nBits) - 1;
+  e >>= -nBits;
   nBits += mLen;
-  for (; nBits > 0; m = m * 256 + buffer2[offset2 + i], i += d2, nBits -= 8) {
+  for (; nBits > 0; m = m * 256 + buffer2[offset2 + i], i += d, nBits -= 8) {
   }
-  if (e2 === 0) {
-    e2 = 1 - eBias;
-  } else if (e2 === eMax) {
+  if (e === 0) {
+    e = 1 - eBias;
+  } else if (e === eMax) {
     return m ? NaN : (s2 ? -1 : 1) * Infinity;
   } else {
     m = m + Math.pow(2, mLen);
-    e2 = e2 - eBias;
+    e = e - eBias;
   }
-  return (s2 ? -1 : 1) * m * Math.pow(2, e2 - mLen);
+  return (s2 ? -1 : 1) * m * Math.pow(2, e - mLen);
 };
 ieee754.write = function(buffer2, value, offset2, isLE, mLen, nBytes) {
-  var e2, m, c2;
+  var e, m, c;
   var eLen = nBytes * 8 - mLen - 1;
   var eMax = (1 << eLen) - 1;
   var eBias = eMax >> 1;
   var rt = mLen === 23 ? Math.pow(2, -24) - Math.pow(2, -77) : 0;
   var i = isLE ? 0 : nBytes - 1;
-  var d2 = isLE ? 1 : -1;
+  var d = isLE ? 1 : -1;
   var s2 = value < 0 || value === 0 && 1 / value < 0 ? 1 : 0;
   value = Math.abs(value);
   if (isNaN(value) || value === Infinity) {
     m = isNaN(value) ? 1 : 0;
-    e2 = eMax;
+    e = eMax;
   } else {
-    e2 = Math.floor(Math.log(value) / Math.LN2);
-    if (value * (c2 = Math.pow(2, -e2)) < 1) {
-      e2--;
-      c2 *= 2;
+    e = Math.floor(Math.log(value) / Math.LN2);
+    if (value * (c = Math.pow(2, -e)) < 1) {
+      e--;
+      c *= 2;
     }
-    if (e2 + eBias >= 1) {
-      value += rt / c2;
+    if (e + eBias >= 1) {
+      value += rt / c;
     } else {
       value += rt * Math.pow(2, 1 - eBias);
     }
-    if (value * c2 >= 2) {
-      e2++;
-      c2 /= 2;
+    if (value * c >= 2) {
+      e++;
+      c /= 2;
     }
-    if (e2 + eBias >= eMax) {
+    if (e + eBias >= eMax) {
       m = 0;
-      e2 = eMax;
-    } else if (e2 + eBias >= 1) {
-      m = (value * c2 - 1) * Math.pow(2, mLen);
-      e2 = e2 + eBias;
+      e = eMax;
+    } else if (e + eBias >= 1) {
+      m = (value * c - 1) * Math.pow(2, mLen);
+      e = e + eBias;
     } else {
       m = value * Math.pow(2, eBias - 1) * Math.pow(2, mLen);
-      e2 = 0;
+      e = 0;
     }
   }
-  for (; mLen >= 8; buffer2[offset2 + i] = m & 255, i += d2, m /= 256, mLen -= 8) {
+  for (; mLen >= 8; buffer2[offset2 + i] = m & 255, i += d, m /= 256, mLen -= 8) {
   }
-  e2 = e2 << mLen | m;
+  e = e << mLen | m;
   eLen += mLen;
-  for (; eLen > 0; buffer2[offset2 + i] = e2 & 255, i += d2, e2 /= 256, eLen -= 8) {
+  for (; eLen > 0; buffer2[offset2 + i] = e & 255, i += d, e /= 256, eLen -= 8) {
   }
-  buffer2[offset2 + i - d2] |= s2 * 128;
+  buffer2[offset2 + i - d] |= s2 * 128;
 };
 var toString = {}.toString;
 var isarray = Array.isArray || function(arr) {
@@ -6301,7 +4721,7 @@ var isarray = Array.isArray || function(arr) {
         return 42;
       } };
       return arr.foo() === 42 && typeof arr.subarray === "function" && arr.subarray(1, 1).byteLength === 0;
-    } catch (e2) {
+    } catch (e) {
       return false;
     }
   }
@@ -6491,18 +4911,18 @@ var isarray = Array.isArray || function(arr) {
     }
     if (a === b)
       return 0;
-    var x2 = a.length;
+    var x = a.length;
     var y = b.length;
-    for (var i = 0, len = Math.min(x2, y); i < len; ++i) {
+    for (var i = 0, len = Math.min(x, y); i < len; ++i) {
       if (a[i] !== b[i]) {
-        x2 = a[i];
+        x = a[i];
         y = b[i];
         break;
       }
     }
-    if (x2 < y)
+    if (x < y)
       return -1;
-    if (y < x2)
+    if (y < x)
       return 1;
     return 0;
   };
@@ -6739,21 +5159,21 @@ var isarray = Array.isArray || function(arr) {
     thisEnd >>>= 0;
     if (this === target)
       return 0;
-    var x2 = thisEnd - thisStart;
+    var x = thisEnd - thisStart;
     var y = end - start;
-    var len = Math.min(x2, y);
+    var len = Math.min(x, y);
     var thisCopy = this.slice(thisStart, thisEnd);
     var targetCopy = target.slice(start, end);
     for (var i = 0; i < len; ++i) {
       if (thisCopy[i] !== targetCopy[i]) {
-        x2 = thisCopy[i];
+        x = thisCopy[i];
         y = targetCopy[i];
         break;
       }
     }
-    if (x2 < y)
+    if (x < y)
       return -1;
-    if (y < x2)
+    if (y < x)
       return 1;
     return 0;
   };
@@ -7696,16 +6116,16 @@ var isarray = Array.isArray || function(arr) {
     return byteArray;
   }
   function utf16leToBytes(str, units) {
-    var c2, hi2, lo;
+    var c, hi, lo;
     var byteArray = [];
     for (var i = 0; i < str.length; ++i) {
       if ((units -= 2) < 0)
         break;
-      c2 = str.charCodeAt(i);
-      hi2 = c2 >> 8;
-      lo = c2 % 256;
+      c = str.charCodeAt(i);
+      hi = c >> 8;
+      lo = c % 256;
       byteArray.push(lo);
-      byteArray.push(hi2);
+      byteArray.push(hi);
     }
     return byteArray;
   }
@@ -7918,7 +6338,7 @@ var core = { exports: {} };
         stringify: function(wordArray) {
           try {
             return decodeURIComponent(escape(Latin1.stringify(wordArray)));
-          } catch (e2) {
+          } catch (e) {
             throw new Error("Malformed UTF-8 data");
           }
         },
@@ -8098,11 +6518,11 @@ var sha256 = { exports: {} };
           var H2 = this._hash.words;
           var a = H2[0];
           var b = H2[1];
-          var c2 = H2[2];
-          var d2 = H2[3];
-          var e2 = H2[4];
+          var c = H2[2];
+          var d = H2[3];
+          var e = H2[4];
           var f = H2[5];
-          var g2 = H2[6];
+          var g = H2[6];
           var h = H2[7];
           for (var i = 0; i < 64; i++) {
             if (i < 16) {
@@ -8114,28 +6534,28 @@ var sha256 = { exports: {} };
               var gamma1 = (gamma1x << 15 | gamma1x >>> 17) ^ (gamma1x << 13 | gamma1x >>> 19) ^ gamma1x >>> 10;
               W[i] = gamma0 + W[i - 7] + gamma1 + W[i - 16];
             }
-            var ch = e2 & f ^ ~e2 & g2;
-            var maj = a & b ^ a & c2 ^ b & c2;
+            var ch = e & f ^ ~e & g;
+            var maj = a & b ^ a & c ^ b & c;
             var sigma0 = (a << 30 | a >>> 2) ^ (a << 19 | a >>> 13) ^ (a << 10 | a >>> 22);
-            var sigma1 = (e2 << 26 | e2 >>> 6) ^ (e2 << 21 | e2 >>> 11) ^ (e2 << 7 | e2 >>> 25);
+            var sigma1 = (e << 26 | e >>> 6) ^ (e << 21 | e >>> 11) ^ (e << 7 | e >>> 25);
             var t1 = h + sigma1 + ch + K[i] + W[i];
             var t2 = sigma0 + maj;
-            h = g2;
-            g2 = f;
-            f = e2;
-            e2 = d2 + t1 | 0;
-            d2 = c2;
-            c2 = b;
+            h = g;
+            g = f;
+            f = e;
+            e = d + t1 | 0;
+            d = c;
+            c = b;
             b = a;
             a = t1 + t2 | 0;
           }
           H2[0] = H2[0] + a | 0;
           H2[1] = H2[1] + b | 0;
-          H2[2] = H2[2] + c2 | 0;
-          H2[3] = H2[3] + d2 | 0;
-          H2[4] = H2[4] + e2 | 0;
+          H2[2] = H2[2] + c | 0;
+          H2[3] = H2[3] + d | 0;
+          H2[4] = H2[4] + e | 0;
           H2[5] = H2[5] + f | 0;
-          H2[6] = H2[6] + g2 | 0;
+          H2[6] = H2[6] + g | 0;
           H2[7] = H2[7] + h | 0;
         },
         _doFinalize: function() {
@@ -8307,37 +6727,37 @@ function nbi() {
 var dbits;
 var canary = 244837814094590;
 var j_lm = (canary & 16777215) == 15715070;
-function am1(i, x2, w, j, c2, n2) {
+function am1(i, x, w, j, c, n2) {
   while (--n2 >= 0) {
-    var v = x2 * this[i++] + w[j] + c2;
-    c2 = Math.floor(v / 67108864);
+    var v = x * this[i++] + w[j] + c;
+    c = Math.floor(v / 67108864);
     w[j++] = v & 67108863;
   }
-  return c2;
+  return c;
 }
-function am2(i, x2, w, j, c2, n2) {
-  var xl = x2 & 32767, xh = x2 >> 15;
+function am2(i, x, w, j, c, n2) {
+  var xl = x & 32767, xh = x >> 15;
   while (--n2 >= 0) {
     var l2 = this[i] & 32767;
     var h = this[i++] >> 15;
     var m = xh * l2 + h * xl;
-    l2 = xl * l2 + ((m & 32767) << 15) + w[j] + (c2 & 1073741823);
-    c2 = (l2 >>> 30) + (m >>> 15) + xh * h + (c2 >>> 30);
+    l2 = xl * l2 + ((m & 32767) << 15) + w[j] + (c & 1073741823);
+    c = (l2 >>> 30) + (m >>> 15) + xh * h + (c >>> 30);
     w[j++] = l2 & 1073741823;
   }
-  return c2;
+  return c;
 }
-function am3(i, x2, w, j, c2, n2) {
-  var xl = x2 & 16383, xh = x2 >> 14;
+function am3(i, x, w, j, c, n2) {
+  var xl = x & 16383, xh = x >> 14;
   while (--n2 >= 0) {
     var l2 = this[i] & 16383;
     var h = this[i++] >> 14;
     var m = xh * l2 + h * xl;
-    l2 = xl * l2 + ((m & 16383) << 14) + w[j] + c2;
-    c2 = (l2 >> 28) + (m >> 14) + xh * h;
+    l2 = xl * l2 + ((m & 16383) << 14) + w[j] + c;
+    c = (l2 >> 28) + (m >> 14) + xh * h;
     w[j++] = l2 & 268435455;
   }
-  return c2;
+  return c;
 }
 var inBrowser = typeof navigator !== "undefined";
 if (inBrowser && j_lm && navigator.appName == "Microsoft Internet Explorer") {
@@ -8376,30 +6796,30 @@ function int2char(n2) {
   return BI_RM.charAt(n2);
 }
 function intAt(s2, i) {
-  var c2 = BI_RC[s2.charCodeAt(i)];
-  return c2 == null ? -1 : c2;
+  var c = BI_RC[s2.charCodeAt(i)];
+  return c == null ? -1 : c;
 }
-function bnpCopyTo(r2) {
+function bnpCopyTo(r) {
   for (var i = this.t - 1; i >= 0; --i) {
-    r2[i] = this[i];
+    r[i] = this[i];
   }
-  r2.t = this.t;
-  r2.s = this.s;
+  r.t = this.t;
+  r.s = this.s;
 }
-function bnpFromInt(x2) {
+function bnpFromInt(x) {
   this.t = 1;
-  this.s = x2 < 0 ? -1 : 0;
-  if (x2 > 0)
-    this[0] = x2;
-  else if (x2 < -1)
-    this[0] = x2 + this.DV;
+  this.s = x < 0 ? -1 : 0;
+  if (x > 0)
+    this[0] = x;
+  else if (x < -1)
+    this[0] = x + this.DV;
   else
     this.t = 0;
 }
 function nbv(i) {
-  var r2 = nbi();
-  r2.fromInt(i);
-  return r2;
+  var r = nbi();
+  r.fromInt(i);
+  return r;
 }
 function bnpFromString(s2, b) {
   var k;
@@ -8417,33 +6837,33 @@ function bnpFromString(s2, b) {
     throw new Error("Only radix 2, 4, 8, 16, 32 are supported");
   this.t = 0;
   this.s = 0;
-  var i = s2.length, mi2 = false, sh = 0;
+  var i = s2.length, mi = false, sh = 0;
   while (--i >= 0) {
-    var x2 = intAt(s2, i);
-    if (x2 < 0) {
+    var x = intAt(s2, i);
+    if (x < 0) {
       if (s2.charAt(i) == "-")
-        mi2 = true;
+        mi = true;
       continue;
     }
-    mi2 = false;
+    mi = false;
     if (sh == 0)
-      this[this.t++] = x2;
+      this[this.t++] = x;
     else if (sh + k > this.DB) {
-      this[this.t - 1] |= (x2 & (1 << this.DB - sh) - 1) << sh;
-      this[this.t++] = x2 >> this.DB - sh;
+      this[this.t - 1] |= (x & (1 << this.DB - sh) - 1) << sh;
+      this[this.t++] = x >> this.DB - sh;
     } else
-      this[this.t - 1] |= x2 << sh;
+      this[this.t - 1] |= x << sh;
     sh += k;
     if (sh >= this.DB)
       sh -= this.DB;
   }
   this.clamp();
-  if (mi2)
+  if (mi)
     BigInteger.ZERO.subTo(this, this);
 }
 function bnpClamp() {
-  var c2 = this.s & this.DM;
-  while (this.t > 0 && this[this.t - 1] == c2) {
+  var c = this.s & this.DM;
+  while (this.t > 0 && this[this.t - 1] == c) {
     --this.t;
   }
 }
@@ -8463,204 +6883,204 @@ function bnToString(b) {
     k = 2;
   else
     throw new Error("Only radix 2, 4, 8, 16, 32 are supported");
-  var km = (1 << k) - 1, d2, m = false, r2 = "", i = this.t;
-  var p2 = this.DB - i * this.DB % k;
+  var km = (1 << k) - 1, d, m = false, r = "", i = this.t;
+  var p = this.DB - i * this.DB % k;
   if (i-- > 0) {
-    if (p2 < this.DB && (d2 = this[i] >> p2) > 0) {
+    if (p < this.DB && (d = this[i] >> p) > 0) {
       m = true;
-      r2 = int2char(d2);
+      r = int2char(d);
     }
     while (i >= 0) {
-      if (p2 < k) {
-        d2 = (this[i] & (1 << p2) - 1) << k - p2;
-        d2 |= this[--i] >> (p2 += this.DB - k);
+      if (p < k) {
+        d = (this[i] & (1 << p) - 1) << k - p;
+        d |= this[--i] >> (p += this.DB - k);
       } else {
-        d2 = this[i] >> (p2 -= k) & km;
-        if (p2 <= 0) {
-          p2 += this.DB;
+        d = this[i] >> (p -= k) & km;
+        if (p <= 0) {
+          p += this.DB;
           --i;
         }
       }
-      if (d2 > 0)
+      if (d > 0)
         m = true;
       if (m)
-        r2 += int2char(d2);
+        r += int2char(d);
     }
   }
-  return m ? r2 : "0";
+  return m ? r : "0";
 }
 function bnNegate() {
-  var r2 = nbi();
-  BigInteger.ZERO.subTo(this, r2);
-  return r2;
+  var r = nbi();
+  BigInteger.ZERO.subTo(this, r);
+  return r;
 }
 function bnAbs() {
   return this.s < 0 ? this.negate() : this;
 }
 function bnCompareTo(a) {
-  var r2 = this.s - a.s;
-  if (r2 != 0)
-    return r2;
+  var r = this.s - a.s;
+  if (r != 0)
+    return r;
   var i = this.t;
-  r2 = i - a.t;
-  if (r2 != 0)
-    return this.s < 0 ? -r2 : r2;
+  r = i - a.t;
+  if (r != 0)
+    return this.s < 0 ? -r : r;
   while (--i >= 0) {
-    if ((r2 = this[i] - a[i]) != 0)
-      return r2;
+    if ((r = this[i] - a[i]) != 0)
+      return r;
   }
   return 0;
 }
-function nbits(x2) {
-  var r2 = 1, t2;
-  if ((t2 = x2 >>> 16) != 0) {
-    x2 = t2;
-    r2 += 16;
+function nbits(x) {
+  var r = 1, t2;
+  if ((t2 = x >>> 16) != 0) {
+    x = t2;
+    r += 16;
   }
-  if ((t2 = x2 >> 8) != 0) {
-    x2 = t2;
-    r2 += 8;
+  if ((t2 = x >> 8) != 0) {
+    x = t2;
+    r += 8;
   }
-  if ((t2 = x2 >> 4) != 0) {
-    x2 = t2;
-    r2 += 4;
+  if ((t2 = x >> 4) != 0) {
+    x = t2;
+    r += 4;
   }
-  if ((t2 = x2 >> 2) != 0) {
-    x2 = t2;
-    r2 += 2;
+  if ((t2 = x >> 2) != 0) {
+    x = t2;
+    r += 2;
   }
-  if ((t2 = x2 >> 1) != 0) {
-    x2 = t2;
-    r2 += 1;
+  if ((t2 = x >> 1) != 0) {
+    x = t2;
+    r += 1;
   }
-  return r2;
+  return r;
 }
 function bnBitLength() {
   if (this.t <= 0)
     return 0;
   return this.DB * (this.t - 1) + nbits(this[this.t - 1] ^ this.s & this.DM);
 }
-function bnpDLShiftTo(n2, r2) {
+function bnpDLShiftTo(n2, r) {
   var i;
   for (i = this.t - 1; i >= 0; --i) {
-    r2[i + n2] = this[i];
+    r[i + n2] = this[i];
   }
   for (i = n2 - 1; i >= 0; --i) {
-    r2[i] = 0;
+    r[i] = 0;
   }
-  r2.t = this.t + n2;
-  r2.s = this.s;
+  r.t = this.t + n2;
+  r.s = this.s;
 }
-function bnpDRShiftTo(n2, r2) {
+function bnpDRShiftTo(n2, r) {
   for (var i = n2; i < this.t; ++i) {
-    r2[i - n2] = this[i];
+    r[i - n2] = this[i];
   }
-  r2.t = Math.max(this.t - n2, 0);
-  r2.s = this.s;
+  r.t = Math.max(this.t - n2, 0);
+  r.s = this.s;
 }
-function bnpLShiftTo(n2, r2) {
+function bnpLShiftTo(n2, r) {
   var bs = n2 % this.DB;
   var cbs = this.DB - bs;
   var bm = (1 << cbs) - 1;
-  var ds = Math.floor(n2 / this.DB), c2 = this.s << bs & this.DM, i;
+  var ds = Math.floor(n2 / this.DB), c = this.s << bs & this.DM, i;
   for (i = this.t - 1; i >= 0; --i) {
-    r2[i + ds + 1] = this[i] >> cbs | c2;
-    c2 = (this[i] & bm) << bs;
+    r[i + ds + 1] = this[i] >> cbs | c;
+    c = (this[i] & bm) << bs;
   }
   for (i = ds - 1; i >= 0; --i) {
-    r2[i] = 0;
+    r[i] = 0;
   }
-  r2[ds] = c2;
-  r2.t = this.t + ds + 1;
-  r2.s = this.s;
-  r2.clamp();
+  r[ds] = c;
+  r.t = this.t + ds + 1;
+  r.s = this.s;
+  r.clamp();
 }
-function bnpRShiftTo(n2, r2) {
-  r2.s = this.s;
+function bnpRShiftTo(n2, r) {
+  r.s = this.s;
   var ds = Math.floor(n2 / this.DB);
   if (ds >= this.t) {
-    r2.t = 0;
+    r.t = 0;
     return;
   }
   var bs = n2 % this.DB;
   var cbs = this.DB - bs;
   var bm = (1 << bs) - 1;
-  r2[0] = this[ds] >> bs;
+  r[0] = this[ds] >> bs;
   for (var i = ds + 1; i < this.t; ++i) {
-    r2[i - ds - 1] |= (this[i] & bm) << cbs;
-    r2[i - ds] = this[i] >> bs;
+    r[i - ds - 1] |= (this[i] & bm) << cbs;
+    r[i - ds] = this[i] >> bs;
   }
   if (bs > 0)
-    r2[this.t - ds - 1] |= (this.s & bm) << cbs;
-  r2.t = this.t - ds;
-  r2.clamp();
+    r[this.t - ds - 1] |= (this.s & bm) << cbs;
+  r.t = this.t - ds;
+  r.clamp();
 }
-function bnpSubTo(a, r2) {
-  var i = 0, c2 = 0, m = Math.min(a.t, this.t);
+function bnpSubTo(a, r) {
+  var i = 0, c = 0, m = Math.min(a.t, this.t);
   while (i < m) {
-    c2 += this[i] - a[i];
-    r2[i++] = c2 & this.DM;
-    c2 >>= this.DB;
+    c += this[i] - a[i];
+    r[i++] = c & this.DM;
+    c >>= this.DB;
   }
   if (a.t < this.t) {
-    c2 -= a.s;
+    c -= a.s;
     while (i < this.t) {
-      c2 += this[i];
-      r2[i++] = c2 & this.DM;
-      c2 >>= this.DB;
+      c += this[i];
+      r[i++] = c & this.DM;
+      c >>= this.DB;
     }
-    c2 += this.s;
+    c += this.s;
   } else {
-    c2 += this.s;
+    c += this.s;
     while (i < a.t) {
-      c2 -= a[i];
-      r2[i++] = c2 & this.DM;
-      c2 >>= this.DB;
+      c -= a[i];
+      r[i++] = c & this.DM;
+      c >>= this.DB;
     }
-    c2 -= a.s;
+    c -= a.s;
   }
-  r2.s = c2 < 0 ? -1 : 0;
-  if (c2 < -1)
-    r2[i++] = this.DV + c2;
-  else if (c2 > 0)
-    r2[i++] = c2;
-  r2.t = i;
-  r2.clamp();
+  r.s = c < 0 ? -1 : 0;
+  if (c < -1)
+    r[i++] = this.DV + c;
+  else if (c > 0)
+    r[i++] = c;
+  r.t = i;
+  r.clamp();
 }
-function bnpMultiplyTo(a, r2) {
-  var x2 = this.abs(), y = a.abs();
-  var i = x2.t;
-  r2.t = i + y.t;
+function bnpMultiplyTo(a, r) {
+  var x = this.abs(), y = a.abs();
+  var i = x.t;
+  r.t = i + y.t;
   while (--i >= 0) {
-    r2[i] = 0;
+    r[i] = 0;
   }
   for (i = 0; i < y.t; ++i) {
-    r2[i + x2.t] = x2.am(0, y[i], r2, i, 0, x2.t);
+    r[i + x.t] = x.am(0, y[i], r, i, 0, x.t);
   }
-  r2.s = 0;
-  r2.clamp();
+  r.s = 0;
+  r.clamp();
   if (this.s != a.s)
-    BigInteger.ZERO.subTo(r2, r2);
+    BigInteger.ZERO.subTo(r, r);
 }
-function bnpSquareTo(r2) {
-  var x2 = this.abs();
-  var i = r2.t = 2 * x2.t;
+function bnpSquareTo(r) {
+  var x = this.abs();
+  var i = r.t = 2 * x.t;
   while (--i >= 0) {
-    r2[i] = 0;
+    r[i] = 0;
   }
-  for (i = 0; i < x2.t - 1; ++i) {
-    var c2 = x2.am(i, x2[i], r2, 2 * i, 0, 1);
-    if ((r2[i + x2.t] += x2.am(i + 1, 2 * x2[i], r2, 2 * i + 1, c2, x2.t - i - 1)) >= x2.DV) {
-      r2[i + x2.t] -= x2.DV;
-      r2[i + x2.t + 1] = 1;
+  for (i = 0; i < x.t - 1; ++i) {
+    var c = x.am(i, x[i], r, 2 * i, 0, 1);
+    if ((r[i + x.t] += x.am(i + 1, 2 * x[i], r, 2 * i + 1, c, x.t - i - 1)) >= x.DV) {
+      r[i + x.t] -= x.DV;
+      r[i + x.t + 1] = 1;
     }
   }
-  if (r2.t > 0)
-    r2[r2.t - 1] += x2.am(i, x2[i], r2, 2 * i, 0, 1);
-  r2.s = 0;
-  r2.clamp();
+  if (r.t > 0)
+    r[r.t - 1] += x.am(i, x[i], r, 2 * i, 0, 1);
+  r.s = 0;
+  r.clamp();
 }
-function bnpDivRemTo(m, q, r2) {
+function bnpDivRemTo(m, q, r) {
   var pm = m.abs();
   if (pm.t <= 0)
     return;
@@ -8668,32 +7088,32 @@ function bnpDivRemTo(m, q, r2) {
   if (pt.t < pm.t) {
     if (q != null)
       q.fromInt(0);
-    if (r2 != null)
-      this.copyTo(r2);
+    if (r != null)
+      this.copyTo(r);
     return;
   }
-  if (r2 == null)
-    r2 = nbi();
+  if (r == null)
+    r = nbi();
   var y = nbi(), ts = this.s, ms = m.s;
   var nsh = this.DB - nbits(pm[pm.t - 1]);
   if (nsh > 0) {
     pm.lShiftTo(nsh, y);
-    pt.lShiftTo(nsh, r2);
+    pt.lShiftTo(nsh, r);
   } else {
     pm.copyTo(y);
-    pt.copyTo(r2);
+    pt.copyTo(r);
   }
   var ys = y.t;
   var y0 = y[ys - 1];
   if (y0 == 0)
     return;
   var yt = y0 * (1 << this.F1) + (ys > 1 ? y[ys - 2] >> this.F2 : 0);
-  var d1 = this.FV / yt, d2 = (1 << this.F1) / yt, e2 = 1 << this.F2;
-  var i = r2.t, j = i - ys, t2 = q == null ? nbi() : q;
+  var d1 = this.FV / yt, d2 = (1 << this.F1) / yt, e = 1 << this.F2;
+  var i = r.t, j = i - ys, t2 = q == null ? nbi() : q;
   y.dlShiftTo(j, t2);
-  if (r2.compareTo(t2) >= 0) {
-    r2[r2.t++] = 1;
-    r2.subTo(t2, r2);
+  if (r.compareTo(t2) >= 0) {
+    r[r.t++] = 1;
+    r.subTo(t2, r);
   }
   BigInteger.ONE.dlShiftTo(ys, t2);
   t2.subTo(y, y);
@@ -8701,101 +7121,101 @@ function bnpDivRemTo(m, q, r2) {
     y[y.t++] = 0;
   }
   while (--j >= 0) {
-    var qd = r2[--i] == y0 ? this.DM : Math.floor(r2[i] * d1 + (r2[i - 1] + e2) * d2);
-    if ((r2[i] += y.am(0, qd, r2, j, 0, ys)) < qd) {
+    var qd = r[--i] == y0 ? this.DM : Math.floor(r[i] * d1 + (r[i - 1] + e) * d2);
+    if ((r[i] += y.am(0, qd, r, j, 0, ys)) < qd) {
       y.dlShiftTo(j, t2);
-      r2.subTo(t2, r2);
-      while (r2[i] < --qd) {
-        r2.subTo(t2, r2);
+      r.subTo(t2, r);
+      while (r[i] < --qd) {
+        r.subTo(t2, r);
       }
     }
   }
   if (q != null) {
-    r2.drShiftTo(ys, q);
+    r.drShiftTo(ys, q);
     if (ts != ms)
       BigInteger.ZERO.subTo(q, q);
   }
-  r2.t = ys;
-  r2.clamp();
+  r.t = ys;
+  r.clamp();
   if (nsh > 0)
-    r2.rShiftTo(nsh, r2);
+    r.rShiftTo(nsh, r);
   if (ts < 0)
-    BigInteger.ZERO.subTo(r2, r2);
+    BigInteger.ZERO.subTo(r, r);
 }
 function bnMod(a) {
-  var r2 = nbi();
-  this.abs().divRemTo(a, null, r2);
-  if (this.s < 0 && r2.compareTo(BigInteger.ZERO) > 0)
-    a.subTo(r2, r2);
-  return r2;
+  var r = nbi();
+  this.abs().divRemTo(a, null, r);
+  if (this.s < 0 && r.compareTo(BigInteger.ZERO) > 0)
+    a.subTo(r, r);
+  return r;
 }
 function bnpInvDigit() {
   if (this.t < 1)
     return 0;
-  var x2 = this[0];
-  if ((x2 & 1) == 0)
+  var x = this[0];
+  if ((x & 1) == 0)
     return 0;
-  var y = x2 & 3;
-  y = y * (2 - (x2 & 15) * y) & 15;
-  y = y * (2 - (x2 & 255) * y) & 255;
-  y = y * (2 - ((x2 & 65535) * y & 65535)) & 65535;
-  y = y * (2 - x2 * y % this.DV) % this.DV;
+  var y = x & 3;
+  y = y * (2 - (x & 15) * y) & 15;
+  y = y * (2 - (x & 255) * y) & 255;
+  y = y * (2 - ((x & 65535) * y & 65535)) & 65535;
+  y = y * (2 - x * y % this.DV) % this.DV;
   return y > 0 ? this.DV - y : -y;
 }
 function bnEquals(a) {
   return this.compareTo(a) == 0;
 }
-function bnpAddTo(a, r2) {
-  var i = 0, c2 = 0, m = Math.min(a.t, this.t);
+function bnpAddTo(a, r) {
+  var i = 0, c = 0, m = Math.min(a.t, this.t);
   while (i < m) {
-    c2 += this[i] + a[i];
-    r2[i++] = c2 & this.DM;
-    c2 >>= this.DB;
+    c += this[i] + a[i];
+    r[i++] = c & this.DM;
+    c >>= this.DB;
   }
   if (a.t < this.t) {
-    c2 += a.s;
+    c += a.s;
     while (i < this.t) {
-      c2 += this[i];
-      r2[i++] = c2 & this.DM;
-      c2 >>= this.DB;
+      c += this[i];
+      r[i++] = c & this.DM;
+      c >>= this.DB;
     }
-    c2 += this.s;
+    c += this.s;
   } else {
-    c2 += this.s;
+    c += this.s;
     while (i < a.t) {
-      c2 += a[i];
-      r2[i++] = c2 & this.DM;
-      c2 >>= this.DB;
+      c += a[i];
+      r[i++] = c & this.DM;
+      c >>= this.DB;
     }
-    c2 += a.s;
+    c += a.s;
   }
-  r2.s = c2 < 0 ? -1 : 0;
-  if (c2 > 0)
-    r2[i++] = c2;
-  else if (c2 < -1)
-    r2[i++] = this.DV + c2;
-  r2.t = i;
-  r2.clamp();
+  r.s = c < 0 ? -1 : 0;
+  if (c > 0)
+    r[i++] = c;
+  else if (c < -1)
+    r[i++] = this.DV + c;
+  r.t = i;
+  r.clamp();
 }
 function bnAdd(a) {
-  var r2 = nbi();
-  this.addTo(a, r2);
-  return r2;
+  var r = nbi();
+  this.addTo(a, r);
+  return r;
 }
 function bnSubtract(a) {
-  var r2 = nbi();
-  this.subTo(a, r2);
-  return r2;
+  var r = nbi();
+  this.subTo(a, r);
+  return r;
 }
 function bnMultiply(a) {
-  var r2 = nbi();
-  this.multiplyTo(a, r2);
-  return r2;
+  var r = nbi();
+  this.multiplyTo(a, r);
+  return r;
 }
 function bnDivide(a) {
-  var r2 = nbi();
-  this.divRemTo(a, r2, null);
-  return r2;
+  var r = nbi();
+  this.divRemTo(a, r, null);
+  return r;
 }
 function Montgomery(m) {
   this.m = m;
@@ -8805,56 +7225,56 @@ function Montgomery(m) {
   this.um = (1 << m.DB - 15) - 1;
   this.mt2 = 2 * m.t;
 }
-function montConvert(x2) {
-  var r2 = nbi();
-  x2.abs().dlShiftTo(this.m.t, r2);
-  r2.divRemTo(this.m, null, r2);
-  if (x2.s < 0 && r2.compareTo(BigInteger.ZERO) > 0)
-    this.m.subTo(r2, r2);
-  return r2;
+function montConvert(x) {
+  var r = nbi();
+  x.abs().dlShiftTo(this.m.t, r);
+  r.divRemTo(this.m, null, r);
+  if (x.s < 0 && r.compareTo(BigInteger.ZERO) > 0)
+    this.m.subTo(r, r);
+  return r;
 }
-function montRevert(x2) {
-  var r2 = nbi();
-  x2.copyTo(r2);
-  this.reduce(r2);
-  return r2;
+function montRevert(x) {
+  var r = nbi();
+  x.copyTo(r);
+  this.reduce(r);
+  return r;
 }
-function montReduce(x2) {
-  while (x2.t <= this.mt2) {
-    x2[x2.t++] = 0;
+function montReduce(x) {
+  while (x.t <= this.mt2) {
+    x[x.t++] = 0;
   }
   for (var i = 0; i < this.m.t; ++i) {
-    var j = x2[i] & 32767;
-    var u0 = j * this.mpl + ((j * this.mph + (x2[i] >> 15) * this.mpl & this.um) << 15) & x2.DM;
+    var j = x[i] & 32767;
+    var u0 = j * this.mpl + ((j * this.mph + (x[i] >> 15) * this.mpl & this.um) << 15) & x.DM;
     j = i + this.m.t;
-    x2[j] += this.m.am(0, u0, x2, i, 0, this.m.t);
-    while (x2[j] >= x2.DV) {
-      x2[j] -= x2.DV;
-      x2[++j]++;
+    x[j] += this.m.am(0, u0, x, i, 0, this.m.t);
+    while (x[j] >= x.DV) {
+      x[j] -= x.DV;
+      x[++j]++;
     }
   }
-  x2.clamp();
-  x2.drShiftTo(this.m.t, x2);
-  if (x2.compareTo(this.m) >= 0)
-    x2.subTo(this.m, x2);
+  x.clamp();
+  x.drShiftTo(this.m.t, x);
+  if (x.compareTo(this.m) >= 0)
+    x.subTo(this.m, x);
 }
-function montSqrTo(x2, r2) {
-  x2.squareTo(r2);
-  this.reduce(r2);
+function montSqrTo(x, r) {
+  x.squareTo(r);
+  this.reduce(r);
 }
-function montMulTo(x2, y, r2) {
-  x2.multiplyTo(y, r2);
-  this.reduce(r2);
+function montMulTo(x, y, r) {
+  x.multiplyTo(y, r);
+  this.reduce(r);
 }
 Montgomery.prototype.convert = montConvert;
 Montgomery.prototype.revert = montRevert;
 Montgomery.prototype.reduce = montReduce;
 Montgomery.prototype.mulTo = montMulTo;
 Montgomery.prototype.sqrTo = montSqrTo;
-function bnModPow(e2, m, callback) {
-  var i = e2.bitLength(), k, r2 = nbv(1), z2 = new Montgomery(m);
+function bnModPow(e, m, callback) {
+  var i = e.bitLength(), k, r = nbv(1), z = new Montgomery(m);
   if (i <= 0)
-    return r2;
+    return r;
   else if (i < 18)
     k = 1;
   else if (i < 48)
@@ -8865,26 +7285,26 @@ function bnModPow(e2, m, callback) {
     k = 5;
   else
     k = 6;
-  var g2 = new Array(), n2 = 3, k1 = k - 1, km = (1 << k) - 1;
-  g2[1] = z2.convert(this);
+  var g = new Array(), n2 = 3, k1 = k - 1, km = (1 << k) - 1;
+  g[1] = z.convert(this);
   if (k > 1) {
-    var g22 = nbi();
-    z2.sqrTo(g2[1], g22);
+    var g2 = nbi();
+    z.sqrTo(g[1], g2);
     while (n2 <= km) {
-      g2[n2] = nbi();
-      z2.mulTo(g22, g2[n2 - 2], g2[n2]);
+      g[n2] = nbi();
+      z.mulTo(g2, g[n2 - 2], g[n2]);
       n2 += 2;
     }
   }
-  var j = e2.t - 1, w, is1 = true, r22 = nbi(), t2;
-  i = nbits(e2[j]) - 1;
+  var j = e.t - 1, w, is1 = true, r2 = nbi(), t2;
+  i = nbits(e[j]) - 1;
   while (j >= 0) {
     if (i >= k1)
-      w = e2[j] >> i - k1 & km;
+      w = e[j] >> i - k1 & km;
     else {
-      w = (e2[j] & (1 << i + 1) - 1) << k1 - i;
+      w = (e[j] & (1 << i + 1) - 1) << k1 - i;
       if (j > 0)
-        w |= e2[j - 1] >> this.DB + i - k1;
+        w |= e[j - 1] >> this.DB + i - k1;
     }
     n2 = k;
     while ((w & 1) == 0) {
@@ -8896,35 +7316,35 @@ function bnModPow(e2, m, callback) {
       --j;
     }
     if (is1) {
-      g2[w].copyTo(r2);
+      g[w].copyTo(r);
       is1 = false;
     } else {
       while (n2 > 1) {
-        z2.sqrTo(r2, r22);
-        z2.sqrTo(r22, r2);
+        z.sqrTo(r, r2);
+        z.sqrTo(r2, r);
         n2 -= 2;
       }
       if (n2 > 0)
-        z2.sqrTo(r2, r22);
+        z.sqrTo(r, r2);
       else {
-        t2 = r2;
-        r2 = r22;
-        r22 = t2;
+        t2 = r;
+        r = r2;
+        r2 = t2;
       }
-      z2.mulTo(r22, g2[w], r2);
+      z.mulTo(r2, g[w], r);
     }
-    while (j >= 0 && (e2[j] & 1 << i) == 0) {
-      z2.sqrTo(r2, r22);
-      t2 = r2;
-      r2 = r22;
-      r22 = t2;
+    while (j >= 0 && (e[j] & 1 << i) == 0) {
+      z.sqrTo(r, r2);
+      t2 = r;
+      r = r2;
+      r2 = t2;
       if (--i < 0) {
         i = this.DB - 1;
         --j;
       }
     }
   }
-  var result = z2.revert(r2);
+  var result = z.revert(r);
   callback(null, result);
   return result;
 }
@@ -9119,8 +7539,8 @@ var AuthenticationHelper = /* @__PURE__ */ function() {
     hexStr = hexStr.length % 2 !== 0 ? "0" + hexStr : hexStr;
     hexStr = HEX_MSB_REGEX.test(hexStr) ? "00" + hexStr : hexStr;
     if (isNegative) {
-      var invertedNibbles = hexStr.split("").map(function(x2) {
-        var invertedNibble = ~parseInt(x2, 16) & 15;
+      var invertedNibbles = hexStr.split("").map(function(x) {
+        var invertedNibble = ~parseInt(x, 16) & 15;
         return "0123456789ABCDEF".charAt(invertedNibble);
       }).join("");
       var flippedBitsBI = new BigInteger(invertedNibbles, 16).add(BigInteger.ONE);
@@ -9179,12 +7599,12 @@ function _inheritsLoose$2(subClass, superClass) {
   subClass.prototype.constructor = subClass;
   _setPrototypeOf$2(subClass, superClass);
 }
-function _setPrototypeOf$2(o2, p2) {
-  _setPrototypeOf$2 = Object.setPrototypeOf || function _setPrototypeOf2(o3, p3) {
-    o3.__proto__ = p3;
+function _setPrototypeOf$2(o2, p) {
+  _setPrototypeOf$2 = Object.setPrototypeOf || function _setPrototypeOf2(o3, p2) {
+    o3.__proto__ = p2;
     return o3;
   };
-  return _setPrototypeOf$2(o2, p2);
+  return _setPrototypeOf$2(o2, p);
 }
 var CognitoAccessToken = /* @__PURE__ */ function(_CognitoJwtToken) {
   _inheritsLoose$2(CognitoAccessToken2, _CognitoJwtToken);
@@ -9199,12 +7619,12 @@ function _inheritsLoose$1(subClass, superClass) {
   subClass.prototype.constructor = subClass;
   _setPrototypeOf$1(subClass, superClass);
 }
-function _setPrototypeOf$1(o2, p2) {
-  _setPrototypeOf$1 = Object.setPrototypeOf || function _setPrototypeOf2(o3, p3) {
-    o3.__proto__ = p3;
+function _setPrototypeOf$1(o2, p) {
+  _setPrototypeOf$1 = Object.setPrototypeOf || function _setPrototypeOf2(o3, p2) {
+    o3.__proto__ = p2;
     return o3;
   };
-  return _setPrototypeOf$1(o2, p2);
+  return _setPrototypeOf$1(o2, p);
 }
 var CognitoIdToken = /* @__PURE__ */ function(_CognitoJwtToken) {
   _inheritsLoose$1(CognitoIdToken2, _CognitoJwtToken);
@@ -10782,8 +9202,8 @@ var CognitoUser = /* @__PURE__ */ function() {
   };
   return CognitoUser2;
 }();
-function unfetch_module(e2, n2) {
-  return n2 = n2 || {}, new Promise(function(t2, r2) {
+function unfetch_module(e, n2) {
+  return n2 = n2 || {}, new Promise(function(t2, r) {
     var s2 = new XMLHttpRequest(), o2 = [], u = [], i = {}, a = function() {
       return { ok: (s2.status / 100 | 0) == 2, statusText: s2.statusText, status: s2.status, url: s2.responseURL, text: function() {
         return Promise.resolve(s2.responseText);
@@ -10795,17 +9215,17 @@ function unfetch_module(e2, n2) {
         return o2;
       }, entries: function() {
         return u;
-      }, get: function(e3) {
-        return i[e3.toLowerCase()];
-      }, has: function(e3) {
-        return e3.toLowerCase() in i;
+      }, get: function(e2) {
+        return i[e2.toLowerCase()];
+      }, has: function(e2) {
+        return e2.toLowerCase() in i;
       } } };
     };
-    for (var l2 in s2.open(n2.method || "get", e2, true), s2.onload = function() {
-      s2.getAllResponseHeaders().replace(/^(.*?):[^\S\n]*([\s\S]*?)$/gm, function(e3, n3, t3) {
+    for (var l2 in s2.open(n2.method || "get", e, true), s2.onload = function() {
+      s2.getAllResponseHeaders().replace(/^(.*?):[^\S\n]*([\s\S]*?)$/gm, function(e2, n3, t3) {
         o2.push(n3 = n3.toLowerCase()), u.push([n3, t3]), i[n3] = i[n3] ? i[n3] + "," + t3 : t3;
       }), t2(a());
-    }, s2.onerror = r2, s2.withCredentials = n2.credentials == "include", n2.headers)
+    }, s2.onerror = r, s2.withCredentials = n2.credentials == "include", n2.headers)
       s2.setRequestHeader(l2, n2.headers[l2]);
     s2.send(n2.body || null);
   });
@@ -10897,19 +9317,19 @@ function _isNativeReflectConstruct() {
     Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function() {
     }));
     return true;
-  } catch (e2) {
+  } catch (e) {
     return false;
   }
 }
-function _isNativeFunction(fn2) {
-  return Function.toString.call(fn2).indexOf("[native code]") !== -1;
+function _isNativeFunction(fn) {
+  return Function.toString.call(fn).indexOf("[native code]") !== -1;
 }
-function _setPrototypeOf(o2, p2) {
-  _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf2(o3, p3) {
-    o3.__proto__ = p3;
+function _setPrototypeOf(o2, p) {
+  _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf2(o3, p2) {
+    o3.__proto__ = p2;
     return o3;
   };
-  return _setPrototypeOf(o2, p2);
+  return _setPrototypeOf(o2, p);
 }
 function _getPrototypeOf(o2) {
   _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf2(o3) {
@@ -10953,9 +9373,9 @@ var Client = /* @__PURE__ */ function() {
   _proto.requestWithRetry = function requestWithRetry(operation, params, callback) {
     var _this3 = this;
     var MAX_DELAY_IN_MILLIS = 5 * 1e3;
-    jitteredExponentialRetry(function(p2) {
+    jitteredExponentialRetry(function(p) {
       return new Promise(function(res, rej) {
-        _this3.request(operation, p2, function(error, result) {
+        _this3.request(operation, p, function(error, result) {
           if (error) {
             rej(error);
           } else {
@@ -11235,7 +9655,7 @@ var js_cookie = { exports: {} };
           if (/^[\{\[]/.test(result)) {
             value = result;
           }
-        } catch (e2) {
+        } catch (e) {
         }
         value = converter.write ? converter.write(value, key) : encodeURIComponent(String(value)).replace(/%(23|24|26|2B|3A|3C|3E|3D|2F|3F|40|5B|5D|5E|60|7B|7D|7C)/g, decodeURIComponent);
         key = encodeURIComponent(String(key)).replace(/%(23|24|26|2B|5E|60|7C)/g, decodeURIComponent).replace(/[\(\)]/g, escape);
@@ -11271,14 +9691,14 @@ var js_cookie = { exports: {} };
             if (json) {
               try {
                 cookie = JSON.parse(cookie);
-              } catch (e2) {
+              } catch (e) {
               }
             }
             jar[name] = cookie;
             if (key === name) {
               break;
             }
-          } catch (e2) {
+          } catch (e) {
           }
         }
         return key ? jar[key] : jar;
@@ -11340,7 +9760,7 @@ const login$1 = ({
   try {
     dispatch(setLoginInProgress(true));
     if (!username) {
-      const err = new qa(`"username" property is required.`, {
+      const err = new MissingArgumentException(`"username" property is required.`, {
         form: {
           field: "username",
           problem: FormValidationProblem.Required
@@ -11350,7 +9770,7 @@ const login$1 = ({
       return;
     }
     if (!password) {
-      const err = new qa(`"password" property is required.`, {
+      const err = new MissingArgumentException(`"password" property is required.`, {
         form: {
           field: "password",
           problem: FormValidationProblem.Required
@@ -11363,7 +9783,7 @@ const login$1 = ({
       [Condition.IsEmailAddress]: true
     });
     if (problems.length > 0) {
-      const err = new Ha(`"username" value is not valid email.`, {
+      const err = new InvalidArgumentException(`"username" value is not valid email.`, {
         form: {
           field: "username",
           problem: FormValidationProblem.NotValidEmail
@@ -11390,7 +9810,7 @@ const login$1 = ({
     const cognitoUser = new CognitoUser(userData);
     cognitoUser.authenticateUser(authenticationDetails, {
       onFailure: (err) => {
-        const exception = new d("Error encountered while logging user in", {
+        const exception = new Exception("Error encountered while logging user in", {
           cause: err
         });
         dispatch(setLoginFailure(exception.toJSON()));
@@ -11400,7 +9820,7 @@ const login$1 = ({
       }
     });
   } catch (error) {
-    const exception = error instanceof d ? error : new aa("An unknown error occurred while logging a user in.", {
+    const exception = error instanceof Exception ? error : new AuthenticationLoginException("An unknown error occurred while logging a user in.", {
       cause: error
     });
     dispatch(setLoginFailure(exception.toJSON()));
@@ -11440,7 +9860,7 @@ const refreshSession = () => async (dispatch, getState) => {
       });
     }
   } catch (error) {
-    const exception = new d("Error encountered getting user attributes", {
+    const exception = new Exception("Error encountered getting user attributes", {
       cause: error
     });
     logger.exception(exception.toJSON());
@@ -11496,7 +9916,7 @@ const signUp = ({
   try {
     dispatch(setSignupInProgress(true));
     if (!username) {
-      const err = new qa(`"username" property is required.`, {
+      const err = new MissingArgumentException(`"username" property is required.`, {
         form: {
           field: "username",
           problem: FormValidationProblem.Required
@@ -11506,7 +9926,7 @@ const signUp = ({
       return;
     }
     if (!password) {
-      const err = new qa(`"password" property is required.`, {
+      const err = new MissingArgumentException(`"password" property is required.`, {
         form: {
           field: "password",
           problem: FormValidationProblem.Required
@@ -11519,7 +9939,7 @@ const signUp = ({
       [Condition.IsEmailAddress]: true
     });
     if (problems.length > 0) {
-      const err = new Ha(`"username" value is not valid email.`, {
+      const err = new InvalidArgumentException(`"username" value is not valid email.`, {
         form: {
           field: "username",
           problem: FormValidationProblem.NotValidEmail
@@ -11551,14 +9971,14 @@ const signUp = ({
     userPool.signUp(username, password, attributeList, [], (err, result) => {
       if (err) {
         console.log("err", err);
-        const exception = new d("Failure when signing user up", {
+        const exception = new Exception("Failure when signing user up", {
           cause: err
         });
         dispatch(setSignupFailure(exception.toJSON()));
         return;
       }
       if (!result) {
-        const exception = new d("Unknown error occurred", {});
+        const exception = new Exception("Unknown error occurred", {});
         dispatch(setSignupFailure(exception.toJSON()));
         return;
       }
@@ -11570,7 +9990,7 @@ const signUp = ({
       }
     });
   } catch (error) {
-    if (error.name === p.name) {
+    if (error.name === AuthenticationException.name) {
       dispatch(setSignupFailure(error.toJSON()));
       return;
     }
@@ -11609,7 +10029,7 @@ const checkUsernameAvailability = ({ username }) => async (dispatch) => {
     dispatch(setCheckUsernameAvailabilityInProgress(true));
     dispatch(setCheckUsernameAvailabilityInProgress(false));
   } catch (error) {
-    const exception = error instanceof d ? error : new G("An exception occurred while checking username availability", {
+    const exception = error instanceof Exception ? error : new AuthenticationUsernameAvailabilityCheckException("An exception occurred while checking username availability", {
       cause: error,
       origin: {
         file: "src/state/user/authentication/username-availability.ts"
@@ -11660,8 +10080,8 @@ function combineReducers(reducers) {
   var shapeAssertionError;
   try {
     assertReducerShape(finalReducers);
-  } catch (e2) {
-    shapeAssertionError = e2;
+  } catch (e) {
+    shapeAssertionError = e;
   }
   return function combination(state, action) {
     if (state === void 0) {
@@ -11672,8 +10092,8 @@ function combineReducers(reducers) {
     }
     var hasChanged = false;
     var nextState = {};
-    for (var _i2 = 0; _i2 < finalReducerKeys.length; _i2++) {
-      var _key = finalReducerKeys[_i2];
+    for (var _i = 0; _i < finalReducerKeys.length; _i++) {
+      var _key = finalReducerKeys[_i];
       var reducer = finalReducers[_key];
       var previousStateForKey = state[_key];
       var nextStateForKey = reducer(previousStateForKey, action);
@@ -11740,7 +10160,7 @@ const resendVerificationCode = ({ userId }) => async (dispatch, getState) => {
     const cognitoUser = new CognitoUser(userData);
     cognitoUser.resendConfirmationCode((err, result) => {
       if (err) {
-        const exception = new d("Failure resending verification code", {
+        const exception = new Exception("Failure resending verification code", {
           cause: err
         });
         dispatch(setVerificationCodeResendFailure(exception.toJSON()));
@@ -11750,7 +10170,7 @@ const resendVerificationCode = ({ userId }) => async (dispatch, getState) => {
       dispatch(setVerificationCodeResendSuccess());
     });
   } catch (err) {
-    const exception = new d("Failure resending verification code", {
+    const exception = new Exception("Failure resending verification code", {
       cause: err
     });
     dispatch(setVerificationCodeResendFailure(exception.toJSON()));
@@ -11801,7 +10221,7 @@ const getVerificationDetails = ({ userId }) => async (dispatch, getState) => {
     dispatch(setVerificationStatusLookupInProgress(true));
     dispatch(setVerificationStatusLookupInProgress(false));
   } catch (error) {
-    const exception = error instanceof d ? error : new d(error.message, {
+    const exception = error instanceof Exception ? error : new Exception(error.message, {
       cause: error
     });
     dispatch(setVerificationStatusLookupFailure(exception.toJSON()));
@@ -11856,7 +10276,7 @@ const verifyCode = ({ code: code2, userId }) => async (dispatch, getState) => {
   const cognitoUser = new CognitoUser(userData);
   cognitoUser.confirmRegistration(code2, true, (err, result) => {
     if (err) {
-      const exception = new d("Failure confirming verification code", {
+      const exception = new Exception("Failure confirming verification code", {
         cause: err
       });
       dispatch(setVerificationCodeVerifyFailure(exception.toJSON()));
@@ -12003,7 +10423,7 @@ const getSubscriptions = () => async (dispatch) => {
   dispatch(subscriptionsSlice.actions.setInProgress(true));
 };
 subscriptionsSlice.reducer;
-const environment = s$2();
+const environment = s$1();
 const history = createBrowserHistory();
 const createStore = ({
   models,
@@ -12034,8 +10454,8 @@ const renderReduxWebApp = async ({
   if ((_d = (_c = config2 == null ? void 0 : config2.ui) == null ? void 0 : _c.themes) == null ? void 0 : _d.default) {
     await store.dispatch(setTheme(config2.ui.themes.default));
   }
-  await store.dispatch(setRoutes(routes2.map((_e2) => {
-    var _f = _e2, { component } = _f, route = __objRest(_f, ["component"]);
+  await store.dispatch(setRoutes(routes2.map((_e) => {
+    var _f = _e, { component } = _f, route = __objRest(_f, ["component"]);
     return __spreadValues({}, route);
   })));
   if (authentication2) {
