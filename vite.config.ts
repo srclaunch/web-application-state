@@ -22,6 +22,7 @@ export default defineConfig({
         'react-router',
         'react-router-dom',
         '@srclaunch/validation',
+        '@srclaunch/types',
         'styled-components',
         // 'amazon-cognito-identity-js',
         '@srclaunch/logger',
