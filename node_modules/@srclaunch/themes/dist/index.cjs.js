@@ -1,4 +1,4 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});var l=require("react"),i=require("styled-components");function h(r){return r&&typeof r=="object"&&"default"in r?r:{default:r}}var c=h(l),x=`html,
+"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});var c=require("react"),p=require("styled-components");function f(r){return r&&typeof r=="object"&&"default"in r?r:{default:r}}var m=f(c),k=`html,
 body,
 #root {
   background-color: var(--bg-color-default);
@@ -195,7 +195,7 @@ body,
   --text-color-title-rgb: var(--text-color-dark-rgb);
   --text-color-sub-title-rgb: var(--text-color-default-rgb);
 }
-`;const e={css:x,description:"Default AppLab Light theme",id:"applab-light",name:"AppLab Light"};var v=`html,
+`;const s={css:k,description:"Default AppLab Light theme",id:"applab-light",name:"AppLab Light"};var w=`html,
 body,
 #root {
   background-color: var(--bg-color-default);
@@ -399,8 +399,16 @@ body,
   --text-color-title-rgb: var(--text-color-lightest-rgb);
   --text-color-sub-title-rgb: var(--text-color-default-rgb);
 }
-`;const p={css:v,description:"AppLab dark theme",id:"applab-dark",name:"AppLab Dark"},u=l.memo(({className:r="",children:s,theme:t,themes:o})=>{var a;const[b,n]=l.useState((a=o==null?void 0:o.find(g=>g.id===t))!=null?a:e);return l.useEffect(()=>{if(t&&o){const g=o.find(d=>d.id===t);n(g||e)}else n(e)},[t]),c.default.createElement("div",{className:`${b.id} ${r} theme-provider`},c.default.createElement(f,{theme:b}),s)}),f=i.createGlobalStyle`
-  ${r=>r.theme.css};
-
-`;exports.AppLabDarkTheme=p;exports.AppLabLightTheme=e;exports.ThemeProvider=u;
+`;const y={css:w,description:"AppLab dark theme",id:"applab-dark",name:"AppLab Dark"};var i={exports:{}},b={};/*
+object-assign
+(c) Sindre Sorhus
+@license MIT
+*/var d=Object.getOwnPropertySymbols,z=Object.prototype.hasOwnProperty,O=Object.prototype.propertyIsEnumerable;function S(r){if(r==null)throw new TypeError("Object.assign cannot be called with null or undefined");return Object(r)}function j(){try{if(!Object.assign)return!1;var r=new String("abc");if(r[5]="de",Object.getOwnPropertyNames(r)[0]==="5")return!1;for(var e={},t=0;t<10;t++)e["_"+String.fromCharCode(t)]=t;var o=Object.getOwnPropertyNames(e).map(function(l){return e[l]});if(o.join("")!=="0123456789")return!1;var g={};return"abcdefghijklmnopqrst".split("").forEach(function(l){g[l]=l}),Object.keys(Object.assign({},g)).join("")==="abcdefghijklmnopqrst"}catch{return!1}}j();/** @license React v17.0.2
+ * react-jsx-runtime.production.min.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */var _=m.default,v=60103;b.Fragment=60107;if(typeof Symbol=="function"&&Symbol.for){var h=Symbol.for;v=h("react.element"),b.Fragment=h("react.fragment")}var L=_.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED.ReactCurrentOwner,T=Object.prototype.hasOwnProperty,P={key:!0,ref:!0,__self:!0,__source:!0};function x(r,e,t){var o,g={},l=null,a=null;t!==void 0&&(l=""+t),e.key!==void 0&&(l=""+e.key),e.ref!==void 0&&(a=e.ref);for(o in e)T.call(e,o)&&!P.hasOwnProperty(o)&&(g[o]=e[o]);if(r&&r.defaultProps)for(o in e=r.defaultProps,e)g[o]===void 0&&(g[o]=e[o]);return{$$typeof:v,type:r,key:l,ref:a,props:g,_owner:L.current}}b.jsx=x;b.jsxs=x;i.exports=b;const E=i.exports.jsx,C=i.exports.jsxs,D=c.memo(({className:r="",children:e,theme:t,themes:o})=>{var a;const[g,l]=c.useState((a=o==null?void 0:o.find(n=>n.id===t))!=null?a:s);return c.useEffect(()=>{if(t&&o){const n=o.find(u=>u.id===t);l(n||s)}else l(s)},[t]),C("div",{className:`${g.id} ${r} theme-provider`,children:[E(N,{theme:g}),e]})}),N=p.createGlobalStyle(["",";"],r=>r.theme.css);exports.AppLabDarkTheme=y;exports.AppLabLightTheme=s;exports.ThemeProvider=D;
 //# sourceMappingURL=index.cjs.js.map

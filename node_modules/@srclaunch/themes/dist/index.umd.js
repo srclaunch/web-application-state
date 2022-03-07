@@ -1,4 +1,4 @@
-(function(r,t){typeof exports=="object"&&typeof module!="undefined"?t(exports,require("react"),require("styled-components")):typeof define=="function"&&define.amd?define(["exports","react","styled-components"],t):(r=typeof globalThis!="undefined"?globalThis:r||self,t(r.themes={},r.React,r.styled))})(this,function(r,t,d){"use strict";function i(o){return o&&typeof o=="object"&&"default"in o?o:{default:o}}var a=i(t),h=`html,
+(function(n,c){typeof exports=="object"&&typeof module!="undefined"?c(exports,require("react"),require("styled-components")):typeof define=="function"&&define.amd?define(["exports","react","styled-components"],c):(n=typeof globalThis!="undefined"?globalThis:n||self,c(n.themes={},n.React,n.styled))})(this,function(n,c,u){"use strict";function p(r){return r&&typeof r=="object"&&"default"in r?r:{default:r}}var m=p(c),k=`html,
 body,
 #root {
   background-color: var(--bg-color-default);
@@ -195,7 +195,7 @@ body,
   --text-color-title-rgb: var(--text-color-dark-rgb);
   --text-color-sub-title-rgb: var(--text-color-default-rgb);
 }
-`;const l={css:h,description:"Default AppLab Light theme",id:"applab-light",name:"AppLab Light"};var x=`html,
+`;const i={css:k,description:"Default AppLab Light theme",id:"applab-light",name:"AppLab Light"};var w=`html,
 body,
 #root {
   background-color: var(--bg-color-default);
@@ -399,8 +399,16 @@ body,
   --text-color-title-rgb: var(--text-color-lightest-rgb);
   --text-color-sub-title-rgb: var(--text-color-default-rgb);
 }
-`;const v={css:x,description:"AppLab dark theme",id:"applab-dark",name:"AppLab Dark"},u=t.memo(({className:o="",children:f,theme:e,themes:g})=>{var s;const[c,b]=t.useState((s=g==null?void 0:g.find(n=>n.id===e))!=null?s:l);return t.useEffect(()=>{if(e&&g){const n=g.find(k=>k.id===e);b(n||l)}else b(l)},[e]),a.default.createElement("div",{className:`${c.id} ${o} theme-provider`},a.default.createElement(p,{theme:c}),f)}),p=d.createGlobalStyle`
-  ${o=>o.theme.css};
-
-`;r.AppLabDarkTheme=v,r.AppLabLightTheme=l,r.ThemeProvider=u,Object.defineProperties(r,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})});
+`;const y={css:w,description:"AppLab dark theme",id:"applab-dark",name:"AppLab Dark"};var d={exports:{}},s={};/*
+object-assign
+(c) Sindre Sorhus
+@license MIT
+*/var h=Object.getOwnPropertySymbols,z=Object.prototype.hasOwnProperty,O=Object.prototype.propertyIsEnumerable;function S(r){if(r==null)throw new TypeError("Object.assign cannot be called with null or undefined");return Object(r)}function j(){try{if(!Object.assign)return!1;var r=new String("abc");if(r[5]="de",Object.getOwnPropertyNames(r)[0]==="5")return!1;for(var e={},t=0;t<10;t++)e["_"+String.fromCharCode(t)]=t;var o=Object.getOwnPropertyNames(e).map(function(l){return e[l]});if(o.join("")!=="0123456789")return!1;var g={};return"abcdefghijklmnopqrst".split("").forEach(function(l){g[l]=l}),Object.keys(Object.assign({},g)).join("")==="abcdefghijklmnopqrst"}catch{return!1}}j();/** @license React v17.0.2
+ * react-jsx-runtime.production.min.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */var _=m.default,v=60103;if(s.Fragment=60107,typeof Symbol=="function"&&Symbol.for){var x=Symbol.for;v=x("react.element"),s.Fragment=x("react.fragment")}var T=_.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED.ReactCurrentOwner,L=Object.prototype.hasOwnProperty,P={key:!0,ref:!0,__self:!0,__source:!0};function f(r,e,t){var o,g={},l=null,b=null;t!==void 0&&(l=""+t),e.key!==void 0&&(l=""+e.key),e.ref!==void 0&&(b=e.ref);for(o in e)L.call(e,o)&&!P.hasOwnProperty(o)&&(g[o]=e[o]);if(r&&r.defaultProps)for(o in e=r.defaultProps,e)g[o]===void 0&&(g[o]=e[o]);return{$$typeof:v,type:r,key:l,ref:b,props:g,_owner:T.current}}s.jsx=f,s.jsxs=f,d.exports=s;const E=d.exports.jsx,R=d.exports.jsxs,D=c.memo(({className:r="",children:e,theme:t,themes:o})=>{var b;const[g,l]=c.useState((b=o==null?void 0:o.find(a=>a.id===t))!=null?b:i);return c.useEffect(()=>{if(t&&o){const a=o.find(U=>U.id===t);l(a||i)}else l(i)},[t]),R("div",{className:`${g.id} ${r} theme-provider`,children:[E(N,{theme:g}),e]})}),N=u.createGlobalStyle(["",";"],r=>r.theme.css);n.AppLabDarkTheme=y,n.AppLabLightTheme=i,n.ThemeProvider=D,Object.defineProperties(n,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})});
 //# sourceMappingURL=index.umd.js.map

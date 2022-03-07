@@ -29,10 +29,11 @@ export default defineConfig({
         // 'history',
         'react',
         'react-dom',
-        'react-redux',
-        'react-router',
-        'react-router-dom',
-        'redux',
+        // 'styled-components',
+        // 'react-redux',
+        // 'react-router',
+        // 'react-router-dom',
+        // 'redux',
       ],
       output: {
         // Global vars to use in UMD build for externalized deps
@@ -44,7 +45,7 @@ export default defineConfig({
     },
   },
   optimizeDeps: {
-    exclude: ['react', 'react-dom', 'styled-components'],
+    exclude: ['react', 'react-dom'],
     include: [],
   },
   define: {

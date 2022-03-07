@@ -1747,14 +1747,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@srclaunch/themes@npm:^0.1.6":
-  version: 0.1.6
-  resolution: "@srclaunch/themes@npm:0.1.6"
+"@srclaunch/themes@npm:^0.1.12":
+  version: 0.1.12
+  resolution: "@srclaunch/themes@npm:0.1.12"
   peerDependencies:
     react: ^17.0.2
     react-dom: ^17.0.2
     styled-components: ^5.3.3
-  checksum: adbc756a5278aa5f9144fc8e4732646825a3a2bfbf4a59a905c63a8acbbf767b277c6d88b21b10d43fe8613182c93aff4f5de786326436cfa82112caf8e9e4f2
+  checksum: da95b57000bbfad78e0c4e92ab098309c5401f6e80afe1abf9db6f9f38e8b9754d6993c314f0ec95babfe349fb783db27233cc78f0c25b74b42691cf226181f3
   languageName: node
   linkType: hard
 
@@ -1788,13 +1788,13 @@ __metadata:
     "@srclaunch/http-client": ^0.1.2
     "@srclaunch/i18n": ^0.1.2
     "@srclaunch/logger": ^0.1.2
-    "@srclaunch/themes": ^0.1.6
+    "@srclaunch/themes": ^0.1.12
     "@srclaunch/types": ^0.1.2
     "@srclaunch/validation": ^0.1.2
     "@srclaunch/web-environment": ^0.1.2
     "@types/history": 4.7.11
     "@types/luxon": ^2.0.9
-    "@types/node": ^17.0.15
+    "@types/node": ^17.0.21
     "@types/react": ^17.0.39
     "@types/react-dom": 17.0.11
     "@types/react-redux": ^7.1.22
@@ -1940,7 +1940,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:^17.0.15":
+"@types/node@npm:*, @types/node@npm:^17.0.21":
   version: 17.0.21
   resolution: "@types/node@npm:17.0.21"
   checksum: 89dcd2fe82f21d3634266f8384e9c865cf8af49685639fbdbd799bdd1040480fb1e8eeda2d3b9fce41edbe704d2a4be9f427118c4ae872e8d9bb7cbeb3c41a94
