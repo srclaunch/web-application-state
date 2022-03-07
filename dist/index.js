@@ -5170,4 +5170,4 @@ const renderReduxWebApp = async ({
   })))))), document.querySelector("#root"));
 };
 export { addThemes, addToastNotification, checkUsernameAvailability, closeModal, createStore, deletePaymentMethod, getPaymentMethods, getSubscriptions, getVerificationDetails, hideModelPanel, history, login$1 as login, logout, refreshSession, renderReduxWebApp, resendVerificationCode, setTheme, showModal, showModelPanel, signUp, createStore as store, useAppDispatch as useDispatch, useAppSelector as useSelector, verifyCode };
-//# sourceMappingURL=index.es.js.map
+//# sourceMappingURL=index.js.map
