@@ -31,8 +31,8 @@ export default defineConfig({
         'react-dom',
         // 'styled-components',
         // 'react-redux',
-        // 'react-router',
-        // 'react-router-dom',
+        'react-router',
+        'react-router-dom',
         // 'redux',
       ],
       output: {
