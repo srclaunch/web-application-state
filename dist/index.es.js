@@ -46,8 +46,8 @@ import { combineReducers as combineReducers$1 } from "redux";
 export { matchPath, matchRoutes } from "react-router";
 const o = { id: "dev", type: EnvironmentType.Development, public: false, name: "Development", description: "Development environment" }, t = { id: "test", type: EnvironmentType.NonProduction, public: false, name: "Test", description: "Test environment" }, i = { id: "prod", type: EnvironmentType.Production, public: true, name: "Production", description: "Production environment" };
 function s$1() {
-  if (window) {
-    const n2 = window.location.hostname;
+  if ({}) {
+    const n2 = {}.location.hostname;
     return n2.includes("localhost") || n2.includes("127.0.0.1") ? o : n2.includes("test") ? t : i;
   }
   return t;
@@ -65,7 +65,7 @@ const exceptionLogger = (store) => (next) => (action) => {
     throw err;
   }
 };
-var commonjsGlobal = typeof globalThis !== "undefined" ? globalThis : typeof window !== "undefined" ? window : typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : {};
+var commonjsGlobal = typeof globalThis !== "undefined" ? globalThis : typeof {} !== "undefined" ? {} : typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : {};
 var reduxLogger = { exports: {} };
 (function(module, exports) {
   !function(e, t2) {
@@ -429,7 +429,7 @@ var reduxLogger = { exports: {} };
       }
       return Array.from(e2);
     }, C = [];
-    k = (typeof commonjsGlobal == "undefined" ? "undefined" : N(commonjsGlobal)) === "object" && commonjsGlobal ? commonjsGlobal : typeof window != "undefined" ? window : {}, j = k.DeepDiff, j && C.push(function() {
+    k = (typeof commonjsGlobal == "undefined" ? "undefined" : N(commonjsGlobal)) === "object" && commonjsGlobal ? commonjsGlobal : typeof {} != "undefined" ? {} : {}, j = k.DeepDiff, j && C.push(function() {
       typeof j != "undefined" && k.DeepDiff === c && (k.DeepDiff = j, j = void 0);
     }), t2(n2, r), t2(o2, r), t2(i2, r), t2(a, r), Object.defineProperties(c, { diff: { value: c, enumerable: true }, observableDiff: { value: l2, enumerable: true }, applyDiff: { value: h, enumerable: true }, applyChange: { value: d, enumerable: true }, revertChange: { value: g, enumerable: true }, isConflict: { value: function() {
       return typeof j != "undefined";
