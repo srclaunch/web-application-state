@@ -1834,6 +1834,8 @@ __metadata:
     nanoid: ^3.2.0
     prettier: ^2.5.1
     prettier-eslint: ^13.0.0
+    react: ^17.0.2
+    react-dom: ^17.0.2
     react-redux: ^7.2.6
     react-router: ^6.2.1
     react-router-dom: ^6.2.1
@@ -7537,6 +7539,19 @@ __metadata:
     shell-quote: ^1.6.1
     ws: ^7
   checksum: 16c020149171c18039f366f43e305fdf5ec5991a40841e0ef83d5360b41c9a52cb072f22915b35732dd767954adbd65b6baf4f7f1bbcc785d9ffeb7f42bc1bb4
+  languageName: node
+  linkType: hard
+
+"react-dom@npm:^17.0.2":
+  version: 17.0.2
+  resolution: "react-dom@npm:17.0.2"
+  dependencies:
+    loose-envify: ^1.1.0
+    object-assign: ^4.1.1
+    scheduler: ^0.20.2
+  peerDependencies:
+    react: 17.0.2
+  checksum: 1c1eaa3bca7c7228d24b70932e3d7c99e70d1d04e13bb0843bbf321582bc25d7961d6b8a6978a58a598af2af496d1cedcfb1bf65f6b0960a0a8161cb8dab743c
   languageName: node
   linkType: hard
 

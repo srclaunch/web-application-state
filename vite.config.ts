@@ -16,24 +16,23 @@ export default defineConfig({
     rollupOptions: {
       // Externalize deps that shouldn't be bundled
       external: [
-        '@reduxjs/toolkit',
-        '@srclaunch/exceptions',
-        '@srclaunch/http-client',
-        '@srclaunch/i18n',
-        '@srclaunch/logger',
+        // '@reduxjs/toolkit',
+        // '@srclaunch/exceptions',
+        // '@srclaunch/http-client',
+        // '@srclaunch/i18n',
+        // '@srclaunch/logger',
         '@srclaunch/themes',
-        '@srclaunch/types',
-        '@srclaunch/validation',
-        'amazon-cognito-identity-js',
-        'crypto-js',
-        'history',
+        // '@srclaunch/types',
+        // '@srclaunch/validation',
+        // 'amazon-cognito-identity-js',
+        // 'crypto-js',
+        // 'history',
         'react',
         'react-dom',
         'react-redux',
         'react-router',
         'react-router-dom',
         'redux',
-        'styled-components',
       ],
       output: {
         // Global vars to use in UMD build for externalized deps
@@ -45,7 +44,7 @@ export default defineConfig({
     },
   },
   optimizeDeps: {
-    exclude: [],
+    exclude: ['react', 'react-dom', 'styled-components'],
     include: [],
   },
   define: {
@@ -53,22 +52,8 @@ export default defineConfig({
     // window: {},
   },
   esbuild: {
-    jsxInject: `import React from 'react'`,
+    // jsxInject: `import React from 'react'`,
   },
   // @ts-ignore
-  plugins: [
-    // react({
-    //   babel: {
-    //     plugins: [
-    //       [
-    //         'babel-plugin-styled-components',
-    //         {
-    //           displayName: true,
-    //           fileName: false,
-    //         },
-    //       ],
-    //     ],
-    //   },
-    // }),
-  ],
+  plugins: [react()],
 });
