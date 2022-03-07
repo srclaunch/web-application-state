@@ -50,7 +50,7 @@ export default defineConfig({
   },
   define: {
     pkgJson: { name, version },
-    window: {},
+    // window: {},
   },
   esbuild: {
     jsxInject: `import React from 'react'`,
