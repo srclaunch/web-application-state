@@ -51,6 +51,7 @@ export default defineConfig({
   },
   define: {
     pkgJson: { name, version },
+    global: {},
     // window: {},
   },
   esbuild: {
