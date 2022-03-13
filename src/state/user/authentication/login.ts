@@ -134,9 +134,9 @@ export const login =
 
       const config = getState().app.config;
 
-      // AWS.config.update({
-      //   region: config.aws.region,
-      // });
+      AWS.config.update({
+        region: config.aws.region,
+      });
 
       const authenticationData = {
         Password: password,
@@ -171,67 +171,62 @@ export const login =
         onSuccess: result => {
           const accessToken = result.getAccessToken().getJwtToken();
 
-          // const credentials = new AWS.CognitoIdentityCredentials({
-          //   IdentityPoolId: config.aws.cognito.identityPoolId,
-          //   Logins: {
-          //     // Change the key below according to the specific region your user pool is in.
-          //     [`cognito-idp.${config.aws.region}.amazonaws.com/${config.aws.cognito.userPoolId}`]:
-          //       result.getIdToken().getJwtToken(),
-          //   },
-          // });
+          const credentials = new AWS.CognitoIdentityCredentials({
+            IdentityPoolId: config.aws.cognito.identityPoolId,
+            Logins: {
+              // Change the key below according to the specific region your user pool is in.
+              [`cognito-idp.${config.aws.region}.amazonaws.com/${config.aws.cognito.userPoolId}`]:
+                result.getIdToken().getJwtToken(),
+            },
+          });
 
-          // AWS.config.credentials = credentials as Credentials;
+          AWS.config.credentials = credentials as Credentials;
 
-          // // @ts-ignore
-          // AWS.config.credentials.refresh(err => {
-          //   if (err) {
-          //     const exception = new Exception(
-          //       'Error encountered while refreshing credentials',
-          //       {
-          //         cause: err,
-          //       },
-          //     );
+          // @ts-ignore
+          AWS.config.credentials.refresh(err => {
+            if (err) {
+              const exception = new Exception(
+                'Error encountered while refreshing credentials',
+                {
+                  cause: err,
+                },
+              );
 
-          //     dispatch(setLoginFailure(exception.toJSON()));
-          //   } else {
-          //     cognitoUser.getUserAttributes((err2, attributes) => {
-          //       if (err2) {
-          //         const exception = new Exception(
-          //           'Error encountered while getting user attributes',
-          //           {
-          //             cause: err2,
-          //           },
-          //         );
+              dispatch(setLoginFailure(exception.toJSON()));
+            } else {
+              cognitoUser.getUserAttributes((err2, attributes) => {
+                if (err2) {
+                  const exception = new Exception(
+                    'Error encountered while getting user attributes',
+                    {
+                      cause: err2,
+                    },
+                  );
 
-          //         logger.exception(exception.toJSON());
+                  logger.exception(exception.toJSON());
 
-          //         dispatch(setLoginFailure(exception.toJSON()));
-          //       } else {
-          //         if (attributes) {
-          //           let attrs = {};
+                  dispatch(setLoginFailure(exception.toJSON()));
+                } else if (attributes) {
+                  let attrs = {};
 
-          //           Object.entries(attributes).forEach(attr => {
-          //             attrs = Object.assign(
-          //               {},
-          //               {
-          //                 [attr[1].Name]: attr[1].Value,
-          //               },
-          //               attrs,
-          //             );
-          //           });
+                  for (const attr of Object.entries(attributes)) {
+                    attrs = {
+                      [attr[1].Name]: attr[1].Value,
+                      ...attrs,
+                    };
+                  }
 
-          //           dispatch(setUserAttributes(attrs));
-          //           dispatch(
-          //             setLoggedIn({
-          //               accessToken,
-          //             }),
-          //           );
-          //           dispatch(setLoginSuccess());
-          //         }
-          //       }
-          //     });
-          //   }
-          // });
+                  dispatch(setUserAttributes(attrs));
+                  dispatch(
+                    setLoggedIn({
+                      accessToken,
+                    }),
+                  );
+                  dispatch(setLoginSuccess());
+                }
+              });
+            }
+          });
         },
       });
     } catch (error: any) {
@@ -255,9 +250,9 @@ export const refreshSession = (): AppThunk => async (dispatch, getState) => {
 
     const config = getState().app.config;
 
-    // AWS.config.update({
-    //   region: config.aws.region,
-    // });
+    AWS.config.update({
+      region: config.aws.region,
+    });
 
     const poolData = {
       ClientId: config.aws.cognito.userPoolClientId,
@@ -297,6 +292,10 @@ export const refreshSession = (): AppThunk => async (dispatch, getState) => {
             dispatch(setLoginInProgress(false));
           } else {
             const accessToken = session.getIdToken().getJwtToken();
+
+            AWS.config.update({
+              region: config.aws.region,
+            });
 
             const credentials: Credentials = new AWS.CognitoIdentityCredentials(
               {
