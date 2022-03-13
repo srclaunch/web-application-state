@@ -1692,10 +1692,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@srclaunch/dx@npm:^0.1.2":
-  version: 0.1.2
-  resolution: "@srclaunch/dx@npm:0.1.2"
-  checksum: cb4365dc3c3195555aba342d560a40d0740f547bb0a419b4bc9b45886dea459abb93e98b619ff419523ea299d967fb3e75a5d6210347a11dc7b2cfab3ef4585f
+"@srclaunch/dx@npm:^0.1.6":
+  version: 0.1.6
+  resolution: "@srclaunch/dx@npm:0.1.6"
+  checksum: 4b9077e3d6b99de2b10e529d6197e69ed6f97138fdb1ebcb91834de02cc500c7911c1ad688f761f2ada87e1eab0a8ba0d50bf0db2d084bb2e38bd5d3fb8aa8c2
   languageName: node
   linkType: hard
 
@@ -1783,7 +1783,7 @@ __metadata:
   dependencies:
     "@reduxjs/toolkit": ^1.7.2
     "@srclaunch/cli": ^0.1.18
-    "@srclaunch/dx": ^0.1.2
+    "@srclaunch/dx": ^0.1.6
     "@srclaunch/exceptions": ^0.1.6
     "@srclaunch/http-client": ^0.1.2
     "@srclaunch/i18n": ^0.1.2
@@ -1802,7 +1802,7 @@ __metadata:
     "@typescript-eslint/eslint-plugin": ^5.10.2
     "@typescript-eslint/parser": ^5.10.2
     "@vitejs/plugin-react": ^1.2.0
-    amazon-cognito-identity-js: ^5.2.7
+    amazon-cognito-identity-js: ^5.2.8
     babel-plugin-styled-components: ^2.0.6
     crypto-js: ^4.1.1
     esbuild: ^0.14.19
@@ -2358,16 +2358,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"amazon-cognito-identity-js@npm:^5.2.7":
-  version: 5.2.7
-  resolution: "amazon-cognito-identity-js@npm:5.2.7"
+"amazon-cognito-identity-js@npm:^5.2.8":
+  version: 5.2.8
+  resolution: "amazon-cognito-identity-js@npm:5.2.8"
   dependencies:
     buffer: 4.9.2
     crypto-js: ^4.1.1
     fast-base64-decode: ^1.0.0
     isomorphic-unfetch: ^3.0.0
     js-cookie: ^2.2.1
-  checksum: 15796630179feeb285c0616779417d50bd451a66b9a41cdf09da2037e35d55e2f55364bf2e65d3da64f69324a16a43eb4f5af32369608d9dd4ca8cf80a6f344e
+  checksum: b65b6aa0c28ce22678144667e80ee07ce3b0f9a66bd1e054c9e8f3ab3ea5632c98ac25624e56f6023bff4851f30310bd8f510575547342dac17431c160fba84c
   languageName: node
   linkType: hard
 

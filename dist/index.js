@@ -26061,20 +26061,8 @@ function Ti(a2, l2) {
   }
 }
 /*!
- * Copyright 2016 Amazon.com,
- * Inc. or its affiliates. All Rights Reserved.
- *
- * Licensed under the Amazon Software License (the "License").
- * You may not use this file except in compliance with the
- * License. A copy of the License is located at
- *
- *     http://aws.amazon.com/asl/
- *
- * or in the "license" file accompanying this file. This file is
- * distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
- * CONDITIONS OF ANY KIND, express or implied. See the License
- * for the specific language governing permissions and
- * limitations under the License.
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0
  */
 var AuthenticationDetails = /* @__PURE__ */ function() {
   function AuthenticationDetails2(data) {
@@ -28955,20 +28943,8 @@ BigInteger.prototype.modPow = bnModPow;
 BigInteger.ZERO = nbv(0);
 BigInteger.ONE = nbv(1);
 /*!
- * Copyright 2016 Amazon.com,
- * Inc. or its affiliates. All Rights Reserved.
- *
- * Licensed under the Amazon Software License (the "License").
- * You may not use this file except in compliance with the
- * License. A copy of the License is located at
- *
- *     http://aws.amazon.com/asl/
- *
- * or in the "license" file accompanying this file. This file is
- * distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
- * CONDITIONS OF ANY KIND, express or implied. See the License
- * for the specific language governing permissions and
- * limitations under the License.
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0
  */
 function randomBytes(nBytes) {
   return buffer.Buffer.from(new WordArray().random(nBytes).toString(), "hex");
@@ -29132,20 +29108,8 @@ var AuthenticationHelper = /* @__PURE__ */ function() {
   return AuthenticationHelper2;
 }();
 /*!
- * Copyright 2016 Amazon.com,
- * Inc. or its affiliates. All Rights Reserved.
- *
- * Licensed under the Amazon Software License (the "License").
- * You may not use this file except in compliance with the
- * License. A copy of the License is located at
- *
- *     http://aws.amazon.com/asl/
- *
- * or in the "license" file accompanying this file. This file is
- * distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
- * CONDITIONS OF ANY KIND, express or implied. See the License
- * for the specific language governing permissions and
- * limitations under the License.
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0
  */
 var CognitoJwtToken = /* @__PURE__ */ function() {
   function CognitoJwtToken2(token) {
@@ -29213,20 +29177,8 @@ var CognitoIdToken = /* @__PURE__ */ function(_CognitoJwtToken) {
   return CognitoIdToken2;
 }(CognitoJwtToken);
 /*!
- * Copyright 2016 Amazon.com,
- * Inc. or its affiliates. All Rights Reserved.
- *
- * Licensed under the Amazon Software License (the "License").
- * You may not use this file except in compliance with the
- * License. A copy of the License is located at
- *
- *     http://aws.amazon.com/asl/
- *
- * or in the "license" file accompanying this file. This file is
- * distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
- * CONDITIONS OF ANY KIND, express or implied. See the License
- * for the specific language governing permissions and
- * limitations under the License.
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0
  */
 var CognitoRefreshToken = /* @__PURE__ */ function() {
   function CognitoRefreshToken2(_temp) {
@@ -29316,20 +29268,8 @@ var encBase64 = { exports: {} };
 })(encBase64);
 var Base64 = encBase64.exports;
 /*!
- * Copyright 2016 Amazon.com,
- * Inc. or its affiliates. All Rights Reserved.
- *
- * Licensed under the Amazon Software License (the "License").
- * You may not use this file except in compliance with the
- * License. A copy of the License is located at
- *
- *     http://aws.amazon.com/asl/
- *
- * or in the "license" file accompanying this file. This file is
- * distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
- * CONDITIONS OF ANY KIND, express or implied. See the License
- * for the specific language governing permissions and
- * limitations under the License.
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0
  */
 var CognitoUserSession = /* @__PURE__ */ function() {
   function CognitoUserSession2(_temp) {
@@ -29368,20 +29308,8 @@ var CognitoUserSession = /* @__PURE__ */ function() {
   return CognitoUserSession2;
 }();
 /*!
- * Copyright 2016 Amazon.com,
- * Inc. or its affiliates. All Rights Reserved.
- *
- * Licensed under the Amazon Software License (the "License").
- * You may not use this file except in compliance with the
- * License. A copy of the License is located at
- *
- *     http://aws.amazon.com/asl/
- *
- * or in the "license" file accompanying this file. This file is
- * distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
- * CONDITIONS OF ANY KIND, express or implied. See the License
- * for the specific language governing permissions and
- * limitations under the License.
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0
  */
 var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 var weekNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
@@ -29413,20 +29341,8 @@ var DateHelper = /* @__PURE__ */ function() {
   return DateHelper2;
 }();
 /*!
- * Copyright 2016 Amazon.com,
- * Inc. or its affiliates. All Rights Reserved.
- *
- * Licensed under the Amazon Software License (the "License").
- * You may not use this file except in compliance with the
- * License. A copy of the License is located at
- *
- *     http://aws.amazon.com/asl/
- *
- * or in the "license" file accompanying this file. This file is
- * distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
- * CONDITIONS OF ANY KIND, express or implied. See the License
- * for the specific language governing permissions and
- * limitations under the License.
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0
  */
 var CognitoUserAttribute = /* @__PURE__ */ function() {
   function CognitoUserAttribute2(_temp) {
@@ -29461,20 +29377,8 @@ var CognitoUserAttribute = /* @__PURE__ */ function() {
   return CognitoUserAttribute2;
 }();
 /*!
- * Copyright 2016 Amazon.com,
- * Inc. or its affiliates. All Rights Reserved.
- *
- * Licensed under the Amazon Software License (the "License").
- * You may not use this file except in compliance with the
- * License. A copy of the License is located at
- *
- *     http://aws.amazon.com/asl/
- *
- * or in the "license" file accompanying this file. This file is
- * distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
- * CONDITIONS OF ANY KIND, express or implied. See the License
- * for the specific language governing permissions and
- * limitations under the License.
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0
  */
 var dataMemory = {};
 var MemoryStorage = /* @__PURE__ */ function() {
@@ -29513,20 +29417,8 @@ var StorageHelper = /* @__PURE__ */ function() {
   return StorageHelper2;
 }();
 /*!
- * Copyright 2016 Amazon.com,
- * Inc. or its affiliates. All Rights Reserved.
- *
- * Licensed under the Amazon Software License (the "License").
- * You may not use this file except in compliance with the
- * License. A copy of the License is located at
- *
- *     http://aws.amazon.com/asl/
- *
- * or in the "license" file accompanying this file. This file is
- * distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
- * CONDITIONS OF ANY KIND, express or implied. See the License
- * for the specific language governing permissions and
- * limitations under the License.
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0
  */
 var isBrowser = typeof navigator !== "undefined";
 var userAgent = isBrowser ? navigator.userAgent : "nodejs";
@@ -30815,6 +30707,10 @@ var unfetch_module$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defi
 var require$$0 = /* @__PURE__ */ getAugmentedNamespace(unfetch_module$1);
 self.fetch || (self.fetch = require$$0.default || require$$0);
 var version = "5.0.4";
+/*!
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0
+ */
 var BASE_USER_AGENT = "aws-amplify/" + version;
 var Platform = {
   userAgent: BASE_USER_AGENT + " js",
@@ -31072,20 +30968,8 @@ function jitteredExponentialRetry(functionToRetry, args, maxDelayMs) {
   return retry(functionToRetry, args, jitteredBackoff(maxDelayMs));
 }
 /*!
- * Copyright 2016 Amazon.com,
- * Inc. or its affiliates. All Rights Reserved.
- *
- * Licensed under the Amazon Software License (the "License").
- * You may not use this file except in compliance with the
- * License. A copy of the License is located at
- *
- *     http://aws.amazon.com/asl/
- *
- * or in the "license" file accompanying this file. This file is
- * distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
- * CONDITIONS OF ANY KIND, express or implied. See the License
- * for the specific language governing permissions and
- * limitations under the License.
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0
  */
 var USER_POOL_ID_MAX_LENGTH = 55;
 var CognitoUserPool = /* @__PURE__ */ function() {
@@ -31412,8 +31296,10 @@ const refreshSession = () => async (dispatch, getState) => {
       ClientId: config2.aws.cognito.userPoolClientId,
       UserPoolId: config2.aws.cognito.userPoolId
     };
+    console.log("poolData", poolData);
     const userPool = new CognitoUserPool(poolData);
     const cognitoUser = userPool.getCurrentUser();
+    console.log("cognitoUser", cognitoUser);
     if (cognitoUser === null) {
       dispatch(setLoggedOut());
       dispatch(setLoginInProgress(false));
@@ -31424,6 +31310,7 @@ const refreshSession = () => async (dispatch, getState) => {
           dispatch(setLoginInProgress(false));
           return;
         }
+        console.log("session", session);
         if (!session) {
           dispatch(setLoggedOut());
           dispatch(setLoginInProgress(false));

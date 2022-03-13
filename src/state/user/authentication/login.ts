@@ -263,8 +263,12 @@ export const refreshSession = (): AppThunk => async (dispatch, getState) => {
       ClientId: config.aws.cognito.userPoolClientId,
       UserPoolId: config.aws.cognito.userPoolId,
     };
+
+    console.log('poolData', poolData);
     const userPool = new CognitoUserPool(poolData);
     const cognitoUser = userPool.getCurrentUser();
+
+    console.log('cognitoUser', cognitoUser);
 
     if (cognitoUser === null) {
       dispatch(setLoggedOut());
@@ -278,6 +282,8 @@ export const refreshSession = (): AppThunk => async (dispatch, getState) => {
 
             return;
           }
+
+          console.log('session', session);
 
           if (!session) {
             dispatch(setLoggedOut());
