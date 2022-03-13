@@ -18,8 +18,8 @@ import {
   CognitoUserPool,
   CognitoUserSession,
 } from 'amazon-cognito-identity-js';
-// import AWS from 'aws-sdk';
-// import { Credentials } from 'aws-sdk/lib/credentials';
+import AWS from 'aws-sdk';
+import { Credentials } from 'aws-sdk/lib/credentials';
 import { DateTime } from 'luxon';
 
 import { AppThunk } from '../../../index';
@@ -298,72 +298,70 @@ export const refreshSession = (): AppThunk => async (dispatch, getState) => {
           } else {
             const accessToken = session.getIdToken().getJwtToken();
 
-            // const credentials: Credentials = new AWS.CognitoIdentityCredentials(
-            //   {
-            //     IdentityPoolId: config.aws.cognito.identityPoolId,
-            //     Logins: {
-            //       // Change the key below according to the specific region your user pool is in.
-            //       [`cognito-idp.${config.aws.region}.amazonaws.com/${config.aws.cognito.userPoolId}`]:
-            //         session.getIdToken().getJwtToken(),
-            //     },
-            //   },
-            // );
+            const credentials: Credentials = new AWS.CognitoIdentityCredentials(
+              {
+                IdentityPoolId: config.aws.cognito.identityPoolId,
+                Logins: {
+                  // Change the key below according to the specific region your user pool is in.
+                  [`cognito-idp.${config.aws.region}.amazonaws.com/${config.aws.cognito.userPoolId}`]:
+                    session.getIdToken().getJwtToken(),
+                },
+              },
+            );
 
-            // AWS.config.credentials = credentials as Credentials;
-            // // @ts-ignore
-            // AWS.config.credentials.refresh(err => {
-            //   if (err) {
-            //     const exception = new Exception(
-            //       'Error encountered while refreshing credentials',
-            //       {
-            //         cause: err,
-            //       },
-            //     );
+            AWS.config.credentials = credentials as Credentials;
+            // @ts-ignore
+            AWS.config.credentials.refresh(err => {
+              if (err) {
+                const exception = new Exception(
+                  'Error encountered while refreshing credentials',
+                  {
+                    cause: err,
+                  },
+                );
 
-            //     logger.exception(exception.toJSON());
+                logger.exception(exception.toJSON());
 
-            //     dispatch(setLoggedOut());
-            //     dispatch(setLoginInProgress(false));
-            //   } else {
-            //     cognitoUser.getUserAttributes((err2, attributes) => {
-            //       if (err2) {
-            //         const exception = new Exception(
-            //           'Error encountered getting user attributes',
-            //           {
-            //             cause: err,
-            //           },
-            //         );
+                dispatch(setLoggedOut());
+                dispatch(setLoginInProgress(false));
+              } else {
+                cognitoUser.getUserAttributes((err2, attributes) => {
+                  if (err2) {
+                    const exception = new Exception(
+                      'Error encountered getting user attributes',
+                      {
+                        cause: err,
+                      },
+                    );
 
-            //         logger.exception(exception.toJSON());
+                    logger.exception(exception.toJSON());
 
-            //         dispatch(setLoggedOut());
-            //         dispatch(setLoginInProgress(false));
-            //       } else {
-            //         if (!attributes) {
-            //           dispatch(setLoggedOut());
-            //           dispatch(setLoginInProgress(false));
-            //         } else {
-            //           let attrs = {};
+                    dispatch(setLoggedOut());
+                    dispatch(setLoginInProgress(false));
+                  } else if (!attributes) {
+                    dispatch(setLoggedOut());
+                    dispatch(setLoginInProgress(false));
+                  } else {
+                    let attrs = {};
 
-            //           Object.entries(attributes).forEach(attr => {
-            //             attrs = {
-            //               ...attrs,
-            //               [attr[1].Name]: attr[1].Value,
-            //             };
-            //           });
+                    for (const attr of Object.entries(attributes)) {
+                      attrs = {
+                        ...attrs,
+                        [attr[1].Name]: attr[1].Value,
+                      };
+                    }
 
-            //           dispatch(setUserAttributes(attrs));
-            //           dispatch(
-            //             setLoggedIn({
-            //               accessToken,
-            //             }),
-            //           );
-            //           dispatch(setLoginSuccess());
-            //         }
-            //       }
-            //     });
-            //   }
-            // });
+                    dispatch(setUserAttributes(attrs));
+                    dispatch(
+                      setLoggedIn({
+                        accessToken,
+                      }),
+                    );
+                    dispatch(setLoginSuccess());
+                  }
+                });
+              }
+            });
           }
         },
       );

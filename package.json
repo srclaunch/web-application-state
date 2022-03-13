@@ -54,6 +54,7 @@
     "@srclaunch/validation": "^0.1.2",
     "@srclaunch/web-environment": "^0.1.2",
     "amazon-cognito-identity-js": "^5.2.8",
+    "aws-sdk": "^2.1092.0",
     "crypto-js": "^4.1.1",
     "history": "5.2.0",
     "luxon": "^2.3.0",
