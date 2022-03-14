@@ -1747,14 +1747,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@srclaunch/themes@npm:^0.1.14":
-  version: 0.1.14
-  resolution: "@srclaunch/themes@npm:0.1.14"
+"@srclaunch/themes@npm:^0.1.15":
+  version: 0.1.15
+  resolution: "@srclaunch/themes@npm:0.1.15"
   peerDependencies:
     react: ^17.0.2
     react-dom: ^17.0.2
     styled-components: ^5.3.3
-  checksum: 526ef9e344560c40c8f91d8eb9e47d98aed7ec32e23060812acdd20d97e663322636ab2b183c4092513dfdc0de8ebe7e61298551a021f55f3a3d28bd1b207565
+  checksum: 0a56e5df94392535c2519884068e8da52021a007218391065d1b055ff4c818a78feca55465af080a4dc89901bd03a5f110860632ef8cb892f3c0d19ab3397e2e
   languageName: node
   linkType: hard
 
@@ -1788,7 +1788,7 @@ __metadata:
     "@srclaunch/http-client": ^0.1.2
     "@srclaunch/i18n": ^0.1.2
     "@srclaunch/logger": ^0.1.2
-    "@srclaunch/themes": ^0.1.14
+    "@srclaunch/themes": ^0.1.15
     "@srclaunch/types": ^0.1.2
     "@srclaunch/validation": ^0.1.2
     "@srclaunch/web-environment": ^0.1.2
