@@ -19,7 +19,7 @@ import {
   CognitoUserSession,
 } from 'amazon-cognito-identity-js';
 // import { Credentials } from 'aws-sdk/credentials';
-import * as AWS from 'aws-sdk/global';
+import * as AWS from 'aws-sdk';
 import { DateTime } from 'luxon';
 
 import { AppThunk } from '../../../index';
@@ -296,6 +296,17 @@ export const refreshSession = (): AppThunk => async (dispatch, getState) => {
             AWS.config.update({
               region: config.aws.region,
             });
+
+            cognitoUser.refreshSession(
+              session.getRefreshToken(),
+              (err2, result) => {
+                if (err2) {
+                  console.log('error in line 302', err2);
+                }
+
+                console.log('result', result);
+              },
+            );
 
             const credentials = new AWS.CognitoIdentityCredentials({
               IdentityPoolId: config.aws.cognito.identityPoolId,

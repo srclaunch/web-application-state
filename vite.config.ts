@@ -23,7 +23,7 @@ export default defineConfig({
         // '@srclaunch/http-client',
         // '@srclaunch/i18n',
         // '@srclaunch/logger',
-        'aws-sdk/{}',
+        // 'aws-sdk/{}',
         '@srclaunch/themes',
         // '@srclaunch/types',
         // '@srclaunch/validation',
