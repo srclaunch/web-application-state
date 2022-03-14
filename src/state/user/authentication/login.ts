@@ -19,7 +19,7 @@ import {
   CognitoUserSession,
 } from 'amazon-cognito-identity-js';
 // import { Credentials } from 'aws-sdk/credentials';
-import * as AWS from 'aws-sdk/global';
+// import * as AWS from 'aws-sdk/global';
 import { DateTime } from 'luxon';
 
 import { AppThunk } from '../../../index';
@@ -133,6 +133,9 @@ export const login =
       }
 
       const config = getState().app.config;
+
+      // @ts-ignore
+      const AWS = global.AWS || {};
 
       AWS.config.update({
         region: config.aws.region,
@@ -249,6 +252,9 @@ export const refreshSession = (): AppThunk => async (dispatch, getState) => {
     dispatch(setLoginInProgress(true));
 
     const config = getState().app.config;
+
+    // @ts-ignore
+    const AWS = global.AWS || {};
 
     AWS.config.update({
       region: config.aws.region,

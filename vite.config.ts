@@ -17,7 +17,7 @@ export default defineConfig({
       // Externalize deps that shouldn't be bundled
       external: [
         // 'aws-sdk',
-        'aws-sdk',
+        // 'aws-sdk',
         // '@reduxjs/toolkit',
         // '@srclaunch/exceptions',
         // '@srclaunch/http-client',
@@ -48,7 +48,7 @@ export default defineConfig({
     },
   },
   optimizeDeps: {
-    exclude: ['aws-sdk/global', 'aws-sdk/{}', 'react', 'react-dom'],
+    exclude: ['react', 'react-dom'],
     include: [],
   },
   define: {
