@@ -34,7 +34,6 @@ import ReactDOM, { unstable_batchedUpdates } from "react-dom";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 export { Link, NavLink, Navigate, Outlet, Route, Router, Routes, useLocation, useMatch, useNavigate, useParams, useResolvedPath, useSearchParams } from "react-router-dom";
 import { AppLabLightTheme, AppLabDarkTheme } from "@srclaunch/themes";
-import * as AWS from "aws-sdk";
 export { matchPath, matchRoutes } from "react-router";
 function n$6(n2) {
   for (var r2 = arguments.length, t2 = Array(r2 > 1 ? r2 - 1 : 0), e2 = 1; e2 < r2; e2++)
@@ -57,7 +56,7 @@ function t$4(n2) {
     return t2 === Object || typeof t2 == "function" && Function.toString.call(t2) === Z$1;
   }(n2) || Array.isArray(n2) || !!n2[L$1] || !!n2.constructor[L$1] || s$4(n2) || v$3(n2));
 }
-function i$4(n2, r2, t2) {
+function i$5(n2, r2, t2) {
   t2 === void 0 && (t2 = false), o$2(n2) === 0 ? (t2 ? Object.keys : nn)(n2).forEach(function(e2) {
     t2 && typeof e2 == "symbol" || r2(e2, n2[e2], n2);
   }) : n2.forEach(function(t3, e2) {
@@ -102,7 +101,7 @@ function l$4(n2) {
   return Object.create(Object.getPrototypeOf(n2), r2);
 }
 function d$3(n2, e2) {
-  return e2 === void 0 && (e2 = false), y$3(n2) || r$6(n2) || !t$4(n2) ? n2 : (o$2(n2) > 1 && (n2.set = n2.add = n2.clear = n2.delete = h$4), Object.freeze(n2), e2 && i$4(n2, function(n3, r2) {
+  return e2 === void 0 && (e2 = false), y$3(n2) || r$6(n2) || !t$4(n2) ? n2 : (o$2(n2) > 1 && (n2.set = n2.add = n2.clear = n2.delete = h$4), Object.freeze(n2), e2 && i$5(n2, function(n3, r2) {
     return d$3(r2, true);
   }, true), n2);
 }
@@ -148,7 +147,7 @@ function M(n2, r2, t2) {
     return r2;
   var e2 = r2[Q$1];
   if (!e2)
-    return i$4(r2, function(i, o3) {
+    return i$5(r2, function(i, o3) {
       return A$2(n2, e2, r2, i, o3, t2);
     }, true), r2;
   if (e2.A !== n2)
@@ -158,7 +157,7 @@ function M(n2, r2, t2) {
   if (!e2.I) {
     e2.I = true, e2.A._--;
     var o2 = e2.i === 4 || e2.i === 5 ? e2.o = l$4(e2.k) : e2.o;
-    i$4(e2.i === 3 ? new Set(o2) : o2, function(r3, i) {
+    i$5(e2.i === 3 ? new Set(o2) : o2, function(r3, i) {
       return A$2(n2, e2, o2, r3, i, t2);
     }), x$4(n2, o2, false), t2 && n2.u && b$3("Patches").R(e2, t2, n2.u, n2.s);
   }
@@ -219,7 +218,7 @@ function D$2(e2) {
       u2.I = true, e3 = F$3(r2, c2), u2.I = false;
     } else
       e3 = F$3(r2, c2);
-    return i$4(e3, function(r3, t2) {
+    return i$5(e3, function(r3, t2) {
       u2 && a(u2.t, r3) === t2 || f$3(e3, r3, n2(t2));
     }), c2 === 3 ? new Set(e3) : e3;
   }(e2);
@@ -264,8 +263,8 @@ function N$1() {
         var a3 = r2[o3];
         if (a3 === void 0 && !u$2(r2, o3))
           return true;
-        var f2 = t3[o3], s3 = f2 && f2[Q$1];
-        if (s3 ? s3.t !== a3 : !c$3(f2, a3))
+        var f2 = t3[o3], s4 = f2 && f2[Q$1];
+        if (s4 ? s4.t !== a3 : !c$3(f2, a3))
           return true;
       }
     }
@@ -308,15 +307,15 @@ function N$1() {
         if (t4) {
           var e3 = t4.t, o4 = t4.k, f2 = t4.D, c2 = t4.i;
           if (c2 === 4)
-            i$4(o4, function(r3) {
+            i$5(o4, function(r3) {
               r3 !== Q$1 && (e3[r3] !== void 0 || u$2(e3, r3) ? f2[r3] || n3(o4[r3]) : (f2[r3] = true, k$3(t4)));
-            }), i$4(e3, function(n4) {
+            }), i$5(e3, function(n4) {
               o4[n4] !== void 0 || u$2(o4, n4) || (f2[n4] = false, k$3(t4));
             });
           else if (c2 === 5) {
             if (a2(t4) && (k$3(t4), f2.length = true), o4.length < e3.length)
-              for (var s3 = o4.length; s3 < e3.length; s3++)
-                f2[s3] = false;
+              for (var s4 = o4.length; s4 < e3.length; s4++)
+                f2[s4] = false;
             else
               for (var v2 = e3.length; v2 < o4.length; v2++)
                 f2[v2] = true;
@@ -377,7 +376,7 @@ var G$3, U$1, W$1 = typeof Symbol != "undefined" && typeof Symbol("x") == "symbo
 }, setPrototypeOf: function() {
   n$6(12);
 } }, on = {};
-i$4(en, function(n2, r2) {
+i$5(en, function(n2, r2) {
   on[n2] = function() {
     return arguments[0] = arguments[0][0], r2.apply(this, arguments);
   };
@@ -613,9 +612,9 @@ function createStore$1(reducer, preloadedState, enhancer) {
     } finally {
       isDispatching = false;
     }
-    var listeners = currentListeners = nextListeners;
-    for (var i = 0; i < listeners.length; i++) {
-      var listener = listeners[i];
+    var listeners2 = currentListeners = nextListeners;
+    for (var i = 0; i < listeners2.length; i++) {
+      var listener = listeners2[i];
       listener();
     }
     return action;
@@ -767,7 +766,7 @@ var NOT_FOUND = "NOT_FOUND";
 function createSingletonCache(equals) {
   var entry;
   return {
-    get: function get2(key) {
+    get: function get5(key) {
       if (entry && equals(entry.key, key)) {
         return entry.value;
       }
@@ -782,14 +781,14 @@ function createSingletonCache(equals) {
     getEntries: function getEntries() {
       return entry ? [entry] : [];
     },
-    clear: function clear() {
+    clear: function clear2() {
       entry = void 0;
     }
   };
 }
 function createLruCache(maxSize, equals) {
   var entries = [];
-  function get2(key) {
+  function get5(key) {
     var cacheIndex = entries.findIndex(function(entry2) {
       return equals(key, entry2.key);
     });
@@ -804,7 +803,7 @@ function createLruCache(maxSize, equals) {
     return NOT_FOUND;
   }
   function put(key, value) {
-    if (get2(key) === NOT_FOUND) {
+    if (get5(key) === NOT_FOUND) {
       entries.unshift({
         key,
         value
@@ -817,14 +816,14 @@ function createLruCache(maxSize, equals) {
   function getEntries() {
     return entries;
   }
-  function clear() {
+  function clear2() {
     entries = [];
   }
   return {
-    get: get2,
+    get: get5,
     put,
     getEntries,
-    clear
+    clear: clear2
   };
 }
 var defaultEqualityCheck = function defaultEqualityCheck2(a2, b2) {
@@ -885,7 +884,7 @@ function getDependencies(funcs) {
   }
   return dependencies;
 }
-function createSelectorCreator(memoize) {
+function createSelectorCreator(memoize2) {
   for (var _len = arguments.length, memoizeOptionsFromArgs = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
     memoizeOptionsFromArgs[_key - 1] = arguments[_key];
   }
@@ -909,11 +908,11 @@ function createSelectorCreator(memoize) {
     var _directlyPassedOption = directlyPassedOptions, _directlyPassedOption2 = _directlyPassedOption.memoizeOptions, memoizeOptions = _directlyPassedOption2 === void 0 ? memoizeOptionsFromArgs : _directlyPassedOption2;
     var finalMemoizeOptions = Array.isArray(memoizeOptions) ? memoizeOptions : [memoizeOptions];
     var dependencies = getDependencies(funcs);
-    var memoizedResultFunc = memoize.apply(void 0, [function() {
+    var memoizedResultFunc = memoize2.apply(void 0, [function() {
       _recomputations++;
       return resultFunc.apply(null, arguments);
     }].concat(finalMemoizeOptions));
-    var selector = memoize(function() {
+    var selector = memoize2(function() {
       var params = [];
       var length = dependencies.length;
       for (var i = 0; i < length; i++) {
@@ -1086,11 +1085,11 @@ var createDraftSafeSelector = function() {
   }
   var selector = createSelector.apply(void 0, args);
   var wrappedSelector = function(value) {
-    var rest = [];
+    var rest2 = [];
     for (var _i3 = 1; _i3 < arguments.length; _i3++) {
-      rest[_i3 - 1] = arguments[_i3];
+      rest2[_i3 - 1] = arguments[_i3];
     }
-    return selector.apply(void 0, __spreadArray([r$6(value) ? D$2(value) : value], rest));
+    return selector.apply(void 0, __spreadArray([r$6(value) ? D$2(value) : value], rest2));
   };
   return wrappedSelector;
 };
@@ -1244,25 +1243,25 @@ function executeReducerBuilderCallback(builderCallback) {
   var actionsMap = {};
   var actionMatchers = [];
   var defaultCaseReducer;
-  var builder = {
+  var builder2 = {
     addCase: function(typeOrActionCreator, reducer) {
       var type = typeof typeOrActionCreator === "string" ? typeOrActionCreator : typeOrActionCreator.type;
       if (type in actionsMap) {
         throw new Error("addCase cannot be called with two reducers for the same action type");
       }
       actionsMap[type] = reducer;
-      return builder;
+      return builder2;
     },
     addMatcher: function(matcher, reducer) {
       actionMatchers.push({ matcher, reducer });
-      return builder;
+      return builder2;
     },
     addDefaultCase: function(reducer) {
       defaultCaseReducer = reducer;
-      return builder;
+      return builder2;
     }
   };
-  builderCallback(builder);
+  builderCallback(builder2);
   return [actionsMap, actionMatchers, defaultCaseReducer];
 }
 function isStateFunction(x2) {
@@ -1447,12 +1446,12 @@ function createSingleArgumentStateOperator(mutator) {
   var operator = createStateOperator(function(_2, state) {
     return mutator(state);
   });
-  return function operation(state) {
+  return function operation2(state) {
     return operator(state, void 0);
   };
 }
 function createStateOperator(mutator) {
-  return function operation(state, arg) {
+  return function operation2(state, arg) {
     function isPayloadActionArgument(arg2) {
       return isFSA(arg2);
     }
@@ -1555,37 +1554,37 @@ function createUnsortedStateAdapter(selectId) {
       entities: {}
     });
   }
-  function takeNewKey(keys, update, state) {
-    var original2 = state.entities[update.id];
-    var updated = Object.assign({}, original2, update.changes);
+  function takeNewKey(keys, update3, state) {
+    var original2 = state.entities[update3.id];
+    var updated = Object.assign({}, original2, update3.changes);
     var newKey = selectIdValue(updated, selectId);
-    var hasNewKey = newKey !== update.id;
+    var hasNewKey = newKey !== update3.id;
     if (hasNewKey) {
-      keys[update.id] = newKey;
-      delete state.entities[update.id];
+      keys[update3.id] = newKey;
+      delete state.entities[update3.id];
     }
     state.entities[newKey] = updated;
     return hasNewKey;
   }
-  function updateOneMutably(update, state) {
-    return updateManyMutably([update], state);
+  function updateOneMutably(update3, state) {
+    return updateManyMutably([update3], state);
   }
   function updateManyMutably(updates, state) {
     var newKeys = {};
     var updatesPerEntity = {};
-    updates.forEach(function(update) {
-      if (update.id in state.entities) {
-        updatesPerEntity[update.id] = {
-          id: update.id,
-          changes: __spreadValues2(__spreadValues2({}, updatesPerEntity[update.id] ? updatesPerEntity[update.id].changes : null), update.changes)
+    updates.forEach(function(update3) {
+      if (update3.id in state.entities) {
+        updatesPerEntity[update3.id] = {
+          id: update3.id,
+          changes: __spreadValues2(__spreadValues2({}, updatesPerEntity[update3.id] ? updatesPerEntity[update3.id].changes : null), update3.changes)
         };
       }
     });
     updates = Object.values(updatesPerEntity);
     var didMutateEntities = updates.length > 0;
     if (didMutateEntities) {
-      var didMutateIds = updates.filter(function(update) {
-        return takeNewKey(newKeys, update, state);
+      var didMutateIds = updates.filter(function(update3) {
+        return takeNewKey(newKeys, update3, state);
       }).length > 0;
       if (didMutateIds) {
         state.ids = state.ids.map(function(id) {
@@ -1628,7 +1627,7 @@ function createSortedStateAdapter(selectId, sort) {
       return !(selectIdValue(model, selectId) in state.entities);
     });
     if (models.length !== 0) {
-      merge(models, state);
+      merge2(models, state);
     }
   }
   function setOneMutably(entity, state) {
@@ -1637,7 +1636,7 @@ function createSortedStateAdapter(selectId, sort) {
   function setManyMutably(newEntities, state) {
     newEntities = ensureEntitiesArray(newEntities);
     if (newEntities.length !== 0) {
-      merge(newEntities, state);
+      merge2(newEntities, state);
     }
   }
   function setAllMutably(newEntities, state) {
@@ -1646,27 +1645,27 @@ function createSortedStateAdapter(selectId, sort) {
     state.ids = [];
     addManyMutably(newEntities, state);
   }
-  function updateOneMutably(update, state) {
-    return updateManyMutably([update], state);
+  function updateOneMutably(update3, state) {
+    return updateManyMutably([update3], state);
   }
-  function takeUpdatedModel(models, update, state) {
-    if (!(update.id in state.entities)) {
+  function takeUpdatedModel(models, update3, state) {
+    if (!(update3.id in state.entities)) {
       return false;
     }
-    var original2 = state.entities[update.id];
-    var updated = Object.assign({}, original2, update.changes);
+    var original2 = state.entities[update3.id];
+    var updated = Object.assign({}, original2, update3.changes);
     var newKey = selectIdValue(updated, selectId);
-    delete state.entities[update.id];
+    delete state.entities[update3.id];
     models.push(updated);
-    return newKey !== update.id;
+    return newKey !== update3.id;
   }
   function updateManyMutably(updates, state) {
     var models = [];
-    updates.forEach(function(update) {
-      return takeUpdatedModel(models, update, state);
+    updates.forEach(function(update3) {
+      return takeUpdatedModel(models, update3, state);
     });
     if (models.length !== 0) {
-      merge(models, state);
+      merge2(models, state);
     }
   }
   function upsertOneMutably(entity, state) {
@@ -1689,7 +1688,7 @@ function createSortedStateAdapter(selectId, sort) {
     }
     return true;
   }
-  function merge(models, state) {
+  function merge2(models, state) {
     models.forEach(function(model) {
       state.entities[selectId(model)] = model;
     });
@@ -17284,11 +17283,11 @@ var SubRegion;
   offset: TimezoneOffset.UTC_PLUS_10,
   timezone: Timezones.ChuukTime
 });
-const o$1 = { id: "dev", type: EnvironmentType.Development, public: false, name: "Development", description: "Development environment" }, t$3 = { id: "test", type: EnvironmentType.NonProduction, public: false, name: "Test", description: "Test environment" }, i$3 = { id: "prod", type: EnvironmentType.Production, public: true, name: "Production", description: "Production environment" };
+const o$1 = { id: "dev", type: EnvironmentType.Development, public: false, name: "Development", description: "Development environment" }, t$3 = { id: "test", type: EnvironmentType.NonProduction, public: false, name: "Test", description: "Test environment" }, i$4 = { id: "prod", type: EnvironmentType.Production, public: true, name: "Production", description: "Production environment" };
 function s$3() {
   if (window) {
     const n2 = window.location.hostname;
-    return n2.includes("localhost") || n2.includes("127.0.0.1") ? o$1 : n2.includes("test") ? t$3 : i$3;
+    return n2.includes("localhost") || n2.includes("127.0.0.1") ? o$1 : n2.includes("test") ? t$3 : i$4;
   }
   return t$3;
 }
@@ -17472,19 +17471,19 @@ var ReactReduxContext = /* @__PURE__ */ React.createContext(null);
 function defaultNoopBatch(callback) {
   callback();
 }
-var batch = defaultNoopBatch;
+var batch$1 = defaultNoopBatch;
 var setBatch = function setBatch2(newBatch) {
-  return batch = newBatch;
+  return batch$1 = newBatch;
 };
 var getBatch = function getBatch2() {
-  return batch;
+  return batch$1;
 };
 function createListenerCollection() {
   var batch2 = getBatch();
   var first = null;
   var last = null;
   return {
-    clear: function clear() {
+    clear: function clear2() {
       first = null;
       last = null;
     },
@@ -17497,14 +17496,14 @@ function createListenerCollection() {
         }
       });
     },
-    get: function get2() {
-      var listeners = [];
+    get: function get5() {
+      var listeners2 = [];
       var listener = first;
       while (listener) {
-        listeners.push(listener);
+        listeners2.push(listener);
         listener = listener.next;
       }
-      return listeners;
+      return listeners2;
     },
     subscribe: function subscribe(callback) {
       var isSubscribed = true;
@@ -17545,13 +17544,13 @@ var nullListeners = {
 };
 function createSubscription(store, parentSub) {
   var unsubscribe;
-  var listeners = nullListeners;
+  var listeners2 = nullListeners;
   function addNestedSub(listener) {
     trySubscribe();
-    return listeners.subscribe(listener);
+    return listeners2.subscribe(listener);
   }
   function notifyNestedSubs() {
-    listeners.notify();
+    listeners2.notify();
   }
   function handleChangeWrapper() {
     if (subscription.onStateChange) {
@@ -17564,15 +17563,15 @@ function createSubscription(store, parentSub) {
   function trySubscribe() {
     if (!unsubscribe) {
       unsubscribe = parentSub ? parentSub.addNestedSub(handleChangeWrapper) : store.subscribe(handleChangeWrapper);
-      listeners = createListenerCollection();
+      listeners2 = createListenerCollection();
     }
   }
   function tryUnsubscribe() {
     if (unsubscribe) {
       unsubscribe();
       unsubscribe = void 0;
-      listeners.clear();
-      listeners = nullListeners;
+      listeners2.clear();
+      listeners2 = nullListeners;
     }
   }
   var subscription = {
@@ -17583,7 +17582,7 @@ function createSubscription(store, parentSub) {
     trySubscribe,
     tryUnsubscribe,
     getListeners: function getListeners() {
-      return listeners;
+      return listeners2;
     }
   };
   return subscription;
@@ -17597,7 +17596,7 @@ object-assign
 @license MIT
 */
 var getOwnPropertySymbols = Object.getOwnPropertySymbols;
-var hasOwnProperty$1 = Object.prototype.hasOwnProperty;
+var hasOwnProperty$3 = Object.prototype.hasOwnProperty;
 var propIsEnumerable = Object.prototype.propertyIsEnumerable;
 function toObject(val) {
   if (val === null || val === void 0) {
@@ -17644,7 +17643,7 @@ shouldUseNative() ? Object.assign : function(target, source) {
   for (var s2 = 1; s2 < arguments.length; s2++) {
     from = Object(arguments[s2]);
     for (var key in from) {
-      if (hasOwnProperty$1.call(from, key)) {
+      if (hasOwnProperty$3.call(from, key)) {
         to[key] = from[key];
       }
     }
@@ -18396,10 +18395,10 @@ var di$1;
 (function(a2) {
   a2.Contains = "contains", a2.IsEIN = "is-ein", a2.IsEqual = "is-equal", a2.IsInList = "is-in-list", a2.IsNotEqual = "is-not-equal", a2.IsNotInList = "is-not-in-list", a2.IsNotNull = "is-not-null", a2.IsString = "is-string";
 })(di$1 || (di$1 = {}));
-var pi;
+var pi$1;
 (function(a2) {
   a2.Contains = "contains", a2.IsEqual = "is-equal", a2.IsIBAN = "is-iban", a2.IsInList = "is-in-list", a2.IsNotEqual = "is-not-equal", a2.IsNotInList = "is-not-in-list", a2.IsNotNull = "is-not-null", a2.IsString = "is-string";
-})(pi || (pi = {}));
+})(pi$1 || (pi$1 = {}));
 var Ai$1;
 (function(a2) {
   a2.Contains = "contains", a2.IsEqual = "is-equal", a2.IsISBN = "is-isbn", a2.IsInList = "is-in-list", a2.IsNotEqual = "is-not-equal", a2.IsNotInList = "is-not-in-list", a2.IsNotNull = "is-not-null", a2.IsString = "is-string";
@@ -18525,221 +18524,221 @@ var t$1;
 (function(a2) {
   a2.AfricaAbidjan = "Africa/Abidjan", a2.AfricaAccra = "Africa/Accra", a2.AfricaAddisAbaba = "Africa/Addis_Ababa", a2.AfricaAlgiers = "Africa/Algiers", a2.AfricaAsmara = "Africa/Asmara", a2.AfricaBamako = "Africa/Bamako", a2.AfricaBangui = "Africa/Bangui", a2.AfricaBanjul = "Africa/Banjul", a2.AfricaBissau = "Africa/Bissau", a2.AfricaBlantyre = "Africa/Blantyre", a2.AfricaBrazzaville = "Africa/Brazzaville", a2.AfricaBujumbura = "Africa/Bujumbura", a2.AfricaCairo = "Africa/Cairo", a2.AfricaCasablanca = "Africa/Casablanca", a2.AfricaCeuta = "Africa/Ceuta", a2.AfricaConakry = "Africa/Conakry", a2.AfricaDakar = "Africa/Dakar", a2.AfricaDarEsSalaam = "Africa/Dar_es_Salaam", a2.AfricaDjibouti = "Africa/Djibouti", a2.AfricaDouala = "Africa/Douala", a2.AfricaElAaiun = "Africa/El_Aaiun", a2.AfricaFreetown = "Africa/Freetown", a2.AfricaGaborone = "Africa/Gaborone", a2.AfricaHarare = "Africa/Harare", a2.AfricaJohannesburg = "Africa/Johannesburg", a2.AfricaJuba = "Africa/Juba", a2.AfricaKampala = "Africa/Kampala", a2.AfricaKhartoum = "Africa/Khartoum", a2.AfricaKigali = "Africa/Kigali", a2.AfricaKinshasa = "Africa/Kinshasa", a2.AfricaLagos = "Africa/Lagos", a2.AfricaLibreville = "Africa/Libreville", a2.AfricaLome = "Africa/Lome", a2.AfricaLuanda = "Africa/Luanda", a2.AfricaLubumbashi = "Africa/Lubumbashi", a2.AfricaLusaka = "Africa/Lusaka", a2.AfricaMalabo = "Africa/Malabo", a2.AfricaMaputo = "Africa/Maputo", a2.AfricaMaseru = "Africa/Maseru", a2.AfricaMbabane = "Africa/Mbabane", a2.AfricaMogadishu = "Africa/Mogadishu", a2.AfricaMonrovia = "Africa/Monrovia", a2.AfricaNairobi = "Africa/Nairobi", a2.AfricaNdjamena = "Africa/Ndjamena", a2.AfricaNiamey = "Africa/Niamey", a2.AfricaNouakchott = "Africa/Nouakchott", a2.AfricaOuagadougou = "Africa/Ouagadougou", a2.AfricaPortoNovo = "Africa/Porto-Novo", a2.AfricaSaoTome = "Africa/Sao_Tome", a2.AfricaTripoli = "Africa/Tripoli", a2.AfricaTunis = "Africa/Tunis", a2.AfricaWindhoek = "Africa/Windhoek", a2.AmericaAdak = "America/Adak", a2.AmericaAnchorage = "America/Anchorage", a2.AmericaAnguilla = "America/Anguilla", a2.AmericaAntigua = "America/Antigua", a2.AmericaAraguaina = "America/Araguaina", a2.AmericaArgentinaBuenosAires = "America/Argentina/Buenos_Aires", a2.AmericaArgentinaCatamarca = "America/Argentina/Catamarca", a2.AmericaArgentinaCordoba = "America/Argentina/Cordoba", a2.AmericaArgentinaJujuy = "America/Argentina/Jujuy", a2.AmericaArgentinaLaRioja = "America/Argentina/La_Rioja", a2.AmericaArgentinaMendoza = "America/Argentina/Mendoza", a2.AmericaArgentinaRioGallegos = "America/Argentina/Rio_Gallegos", a2.AmericaArgentinaSalta = "America/Argentina/Salta", a2.AmericaArgentinaSanJuan = "America/Argentina/San_Juan", a2.AmericaArgentinaSanLuis = "America/Argentina/San_Luis", a2.AmericaArgentinaTucuman = "America/Argentina/Tucuman", a2.AmericaArgentinaUshuaia = "America/Argentina/Ushuaia", a2.AmericaAruba = "America/Aruba", a2.AmericaAsuncion = "America/Asuncion", a2.AmericaAtikokan = "America/Atikokan", a2.AmericaAtka = "America/Atka", a2.AmericaBahia = "America/Bahia", a2.AmericaBahiaBanderas = "America/Bahia_Banderas", a2.AmericaBarbados = "America/Barbados", a2.AmericaBelem = "America/Belem", a2.AmericaBelize = "America/Belize", a2.AmericaBlancSablon = "America/Blanc-Sablon", a2.AmericaBoaVista = "America/Boa_Vista", a2.AmericaBogota = "America/Bogota", a2.AmericaBoise = "America/Boise", a2.AmericaCambridgeBay = "America/Cambridge_Bay", a2.AmericaCampoGrande = "America/Campo_Grande", a2.AmericaCancun = "America/Cancun", a2.AmericaCaracas = "America/Caracas", a2.AmericaCayenne = "America/Cayenne", a2.AmericaCayman = "America/Cayman", a2.AmericaChicago = "America/Chicago", a2.AmericaChihuahua = "America/Chihuahua", a2.AmericaCoralHarbour = "America/Coral_Harbour", a2.AmericaCordoba = "America/Cordoba", a2.AmericaCostaRica = "America/Costa_Rica", a2.AmericaCreston = "America/Creston", a2.AmericaCuiaba = "America/Cuiaba", a2.AmericaCuracao = "America/Curacao", a2.AmericaDanmarkshavn = "America/Danmarkshavn", a2.AmericaDawson = "America/Dawson", a2.AmericaDawsonCreek = "America/Dawson_Creek", a2.AmericaDenver = "America/Denver", a2.AmericaDetroit = "America/Detroit", a2.AmericaDominica = "America/Dominica", a2.AmericaEdmonton = "America/Edmonton", a2.AmericaEirunepe = "America/Eirunepe", a2.AmericaElSalvador = "America/El_Salvador", a2.AmericaFortaleza = "America/Fortaleza", a2.AmericaGlaceBay = "America/Glace_Bay", a2.AmericaGodthab = "America/Godthab", a2.AmericaGooseBay = "America/Goose_Bay", a2.AmericaGrandTurk = "America/Grand_Turk", a2.AmericaGrenada = "America/Grenada", a2.AmericaGuadeloupe = "America/Guadeloupe", a2.AmericaGuatemala = "America/Guatemala", a2.AmericaGuayaquil = "America/Guayaquil", a2.AmericaGuyana = "America/Guyana", a2.AmericaHalifax = "America/Halifax", a2.AmericaHavana = "America/Havana", a2.AmericaHermosillo = "America/Hermosillo", a2.AmericaIndianaIndianapolis = "America/Indiana/Indianapolis", a2.AmericaIndianaKnox = "America/Indiana/Knox", a2.AmericaIndianaMarengo = "America/Indiana/Marengo", a2.AmericaIndianaPetersburg = "America/Indiana/Petersburg", a2.AmericaIndianaTellCity = "America/Indiana/Tell_City", a2.AmericaIndianaVevay = "America/Indiana/Vevay", a2.AmericaIndianaVincennes = "America/Indiana/Vincennes", a2.AmericaIndianaWinamac = "America/Indiana/Winamac", a2.AmericaInuvik = "America/Inuvik", a2.AmericaIqaluit = "America/Iqaluit", a2.AmericaJamaica = "America/Jamaica", a2.AmericaJuneau = "America/Juneau", a2.AmericaKentuckyLouisville = "America/Kentucky/Louisville", a2.AmericaKentuckyMonticello = "America/Kentucky/Monticello", a2.AmericaKralendijk = "America/Kralendijk", a2.AmericaLaPaz = "America/La_Paz", a2.AmericaLima = "America/Lima", a2.AmericaLosAngeles = "America/Los_Angeles", a2.AmericaLouisville = "America/Louisville", a2.AmericaLowerPrinces = "America/Lower_Princes", a2.AmericaMaceio = "America/Maceio", a2.AmericaManagua = "America/Managua", a2.AmericaManaus = "America/Manaus", a2.AmericaMarigot = "America/Marigot", a2.AmericaMartinique = "America/Martinique", a2.AmericaMatamoros = "America/Matamoros", a2.AmericaMazatlan = "America/Mazatlan", a2.AmericaMenominee = "America/Menominee", a2.AmericaMerida = "America/Merida", a2.AmericaMetlakatla = "America/Metlakatla", a2.AmericaMexicoCity = "America/Mexico_City", a2.AmericaMiquelon = "America/Miquelon", a2.AmericaMoncton = "America/Moncton", a2.AmericaMonterrey = "America/Monterrey", a2.AmericaMontevideo = "America/Montevideo", a2.AmericaMontserrat = "America/Montserrat", a2.AmericaMontreal = "America/Montreal", a2.AmericaNassau = "America/Nassau", a2.AmericaNewYork = "America/New_York", a2.AmericaNipigon = "America/Nipigon", a2.AmericaNome = "America/Nome", a2.AmericaNoronha = "America/Noronha", a2.AmericaNorthDakotaBeulah = "America/North_Dakota/Beulah", a2.AmericaNorthDakotaCenter = "America/North_Dakota/Center", a2.AmericaNorthDakotaNewSalem = "America/North_Dakota/New_Salem", a2.AmericaOjinaga = "America/Ojinaga", a2.AmericaPanama = "America/Panama", a2.AmericaPangnirtung = "America/Pangnirtung", a2.AmericaParamaribo = "America/Paramaribo", a2.AmericaPhoenix = "America/Phoenix", a2.AmericaPortAuPrince = "America/Port-au-Prince", a2.AmericaPortOfSpain = "America/Port_of_Spain", a2.AmericaPortoVelho = "America/Porto_Velho", a2.AmericaPuertoRico = "America/Puerto_Rico", a2.AmericaRainyRiver = "America/Rainy_River", a2.AmericaRankinInlet = "America/Rankin_Inlet", a2.AmericaRecife = "America/Recife", a2.AmericaRegina = "America/Regina", a2.AmericaResolute = "America/Resolute", a2.AmericaRioBranco = "America/Rio_Branco", a2.AmericaSantaIsabel = "America/Santa_Isabel", a2.AmericaSantarem = "America/Santarem", a2.AmericaSantiago = "America/Santiago", a2.AmericaSantoDomingo = "America/Santo_Domingo", a2.AmericaSaoPaulo = "America/Sao_Paulo", a2.AmericaScoresbysund = "America/Scoresbysund", a2.AmericaShiprock = "America/Shiprock", a2.AmericaSitka = "America/Sitka", a2.AmericaStBarthelemy = "America/St_Barthelemy", a2.AmericaStJohns = "America/St_Johns", a2.AmericaStKitts = "America/St_Kitts", a2.AmericaStLucia = "America/St_Lucia", a2.AmericaStThomas = "America/St_Thomas", a2.AmericaStVincent = "America/St_Vincent", a2.AmericaSwiftCurrent = "America/Swift_Current", a2.AmericaTegucigalpa = "America/Tegucigalpa", a2.AmericaThule = "America/Thule", a2.AmericaThunderBay = "America/Thunder_Bay", a2.AmericaTijuana = "America/Tijuana", a2.AmericaToronto = "America/Toronto", a2.AmericaTortola = "America/Tortola", a2.AmericaVancouver = "America/Vancouver", a2.AmericaWhitehorse = "America/Whitehorse", a2.AmericaWinnipeg = "America/Winnipeg", a2.AmericaYakutat = "America/Yakutat", a2.AmericaYellowknife = "America/Yellowknife", a2.AntarcticaCasey = "Antarctica/Casey", a2.AntarcticaDavis = "Antarctica/Davis", a2.AntarcticaDumontDUrville = "Antarctica/DumontDUrville", a2.AntarcticaMacquarie = "Antarctica/Macquarie", a2.AntarcticaMawson = "Antarctica/Mawson", a2.AntarcticaMcMurdo = "Antarctica/McMurdo", a2.AntarcticaPalmer = "Antarctica/Palmer", a2.AntarcticaRothera = "Antarctica/Rothera", a2.AntarcticaSyowa = "Antarctica/Syowa", a2.AntarcticaTroll = "Antarctica/Troll", a2.AntarcticaVostok = "Antarctica/Vostok", a2.ArcticLongyearbyen = "Arctic/Longyearbyen", a2.AsiaAden = "Asia/Aden", a2.AsiaAlmaty = "Asia/Almaty", a2.AsiaAmman = "Asia/Amman", a2.AsiaAnadyr = "Asia/Anadyr", a2.AsiaAqtau = "Asia/Aqtau", a2.AsiaAqtobe = "Asia/Aqtobe", a2.AsiaAshgabat = "Asia/Ashgabat", a2.AsiaBaghdad = "Asia/Baghdad", a2.AsiaBahrain = "Asia/Bahrain", a2.AsiaBaku = "Asia/Baku", a2.AsiaBangkok = "Asia/Bangkok", a2.AsiaBarnaul = "Asia/Barnaul", a2.AsiaBeirut = "Asia/Beirut", a2.AsiaBishkek = "Asia/Bishkek", a2.AsiaBrunei = "Asia/Brunei", a2.AsiaChita = "Asia/Chita", a2.AsiaChoibalsan = "Asia/Choibalsan", a2.AsiaColombo = "Asia/Colombo", a2.AsiaDamascus = "Asia/Damascus", a2.AsiaDhaka = "Asia/Dhaka", a2.AsiaDili = "Asia/Dili", a2.AsiaDubai = "Asia/Dubai", a2.AsiaDushanbe = "Asia/Dushanbe", a2.AsiaFamagusta = "Asia/Famagusta", a2.AsiaGaza = "Asia/Gaza", a2.AsiaHebron = "Asia/Hebron", a2.AsiaHoChiMinh = "Asia/Ho_Chi_Minh", a2.AsiaHongKong = "Asia/Hong_Kong", a2.AsiaHovd = "Asia/Hovd", a2.AsiaIrkutsk = "Asia/Irkutsk", a2.AsiaJakarta = "Asia/Jakarta", a2.AsiaJayapura = "Asia/Jayapura", a2.AsiaJerusalem = "Asia/Jerusalem", a2.AsiaKabul = "Asia/Kabul", a2.AsiaKamchatka = "Asia/Kamchatka", a2.AsiaKarachi = "Asia/Karachi", a2.AsiaKathmandu = "Asia/Kathmandu", a2.AsiaKhandyga = "Asia/Khandyga", a2.AsiaKolkata = "Asia/Kolkata", a2.AsiaKrasnoyarsk = "Asia/Krasnoyarsk", a2.AsiaKualaLumpur = "Asia/Kuala_Lumpur", a2.AsiaKuching = "Asia/Kuching", a2.AsiaKuwait = "Asia/Kuwait", a2.AsiaMacau = "Asia/Macau", a2.AsiaMagadan = "Asia/Magadan", a2.AsiaMakassar = "Asia/Makassar", a2.AsiaManila = "Asia/Manila", a2.AsiaMuscat = "Asia/Muscat", a2.AsiaNicosia = "Asia/Nicosia", a2.AsiaNovokuznetsk = "Asia/Novokuznetsk", a2.AsiaNovosibirsk = "Asia/Novosibirsk", a2.AsiaOmsk = "Asia/Omsk", a2.AsiaOral = "Asia/Oral", a2.AsiaPhnomPenh = "Asia/Phnom_Penh", a2.AsiaPontianak = "Asia/Pontianak", a2.AsiaPyongyang = "Asia/Pyongyang", a2.AsiaQatar = "Asia/Qatar", a2.AsiaQyzylorda = "Asia/Qyzylorda", a2.AsiaRangoon = "Asia/Rangoon", a2.AsiaRiyadh = "Asia/Riyadh", a2.AsiaSakhalin = "Asia/Sakhalin", a2.AsiaSamarkand = "Asia/Samarkand", a2.AsiaSeoul = "Asia/Seoul", a2.AsiaShanghai = "Asia/Shanghai", a2.AsiaSingapore = "Asia/Singapore", a2.AsiaSrednekolymsk = "Asia/Srednekolymsk", a2.AsiaTaipei = "Asia/Taipei", a2.AsiaTashkent = "Asia/Tashkent", a2.AsiaTbilisi = "Asia/Tbilisi", a2.AsiaTehran = "Asia/Tehran", a2.AsiaThimphu = "Asia/Thimphu", a2.AsiaTokyo = "Asia/Tokyo", a2.AsiaTomsk = "Asia/Tomsk", a2.AsiaUlaanbaatar = "Asia/Ulaanbaatar", a2.AsiaUrumqi = "Asia/Urumqi", a2.AsiaUstNera = "Asia/Ust-Nera", a2.AsiaVientiane = "Asia/Vientiane", a2.AsiaVladivostok = "Asia/Vladivostok", a2.AsiaYakutsk = "Asia/Yakutsk", a2.AsiaYekaterinburg = "Asia/Yekaterinburg", a2.AsiaYerevan = "Asia/Yerevan", a2.AtlanticAzores = "Atlantic/Azores", a2.AtlanticBermuda = "Atlantic/Bermuda", a2.AtlanticCanary = "Atlantic/Canary", a2.AtlanticCapeVerde = "Atlantic/Cape_Verde", a2.AtlanticFaroe = "Atlantic/Faroe", a2.AtlanticMadeira = "Atlantic/Madeira", a2.AtlanticReykjavik = "Atlantic/Reykjavik", a2.AtlanticSouthGeorgia = "Atlantic/South_Georgia", a2.AtlanticStHelena = "Atlantic/St_Helena", a2.AtlanticStanley = "Atlantic/Stanley", a2.AustraliaAdelaide = "Australia/Adelaide", a2.AustraliaBrisbane = "Australia/Brisbane", a2.AustraliaBrokenHill = "Australia/Broken_Hill", a2.AustraliaCanberra = "Australia/Canberra", a2.AustraliaCurrie = "Australia/Currie", a2.AustraliaDarwin = "Australia/Darwin", a2.AustraliaEucla = "Australia/Eucla", a2.AustraliaHobart = "Australia/Hobart", a2.AustraliaLindeman = "Australia/Lindeman", a2.AustraliaLordHowe = "Australia/Lord_Howe", a2.AustraliaMelbourne = "Australia/Melbourne", a2.AustraliaPerth = "Australia/Perth", a2.AustraliaSydney = "Australia/Sydney", a2.EuropeAmsterdam = "Europe/Amsterdam", a2.EuropeAndorra = "Europe/Andorra", a2.EuropeAthens = "Europe/Athens", a2.EuropeBelgrade = "Europe/Belgrade", a2.EuropeBerlin = "Europe/Berlin", a2.EuropeBratislava = "Europe/Bratislava", a2.EuropeBrussels = "Europe/Brussels", a2.EuropeBucharest = "Europe/Bucharest", a2.EuropeBudapest = "Europe/Budapest", a2.EuropeBusingen = "Europe/Busingen", a2.EuropeChisinau = "Europe/Chisinau", a2.EuropeCopenhagen = "Europe/Copenhagen", a2.EuropeDublin = "Europe/Dublin", a2.EuropeGibraltar = "Europe/Gibraltar", a2.EuropeGuernsey = "Europe/Guernsey", a2.EuropeHelsinki = "Europe/Helsinki", a2.EuropeIsleOfMan = "Europe/Isle_of_Man", a2.EuropeIstanbul = "Europe/Istanbul", a2.EuropeJersey = "Europe/Jersey", a2.EuropeKaliningrad = "Europe/Kaliningrad", a2.EuropeKiev = "Europe/Kiev", a2.EuropeKirov = "Europe/Kirov", a2.EuropeLisbon = "Europe/Lisbon", a2.EuropeLjubljana = "Europe/Ljubljana", a2.EuropeLondon = "Europe/London", a2.EuropeLuxembourg = "Europe/Luxembourg", a2.EuropeMadrid = "Europe/Madrid", a2.EuropeMalta = "Europe/Malta", a2.EuropeMariehamn = "Europe/Mariehamn", a2.EuropeMinsk = "Europe/Minsk", a2.EuropeMonaco = "Europe/Monaco", a2.EuropeMoscow = "Europe/Moscow", a2.EuropeOslo = "Europe/Oslo", a2.EuropeParis = "Europe/Paris", a2.EuropePodgorica = "Europe/Podgorica", a2.EuropePrague = "Europe/Prague", a2.EuropeRiga = "Europe/Riga", a2.EuropeRome = "Europe/Rome", a2.EuropeSamara = "Europe/Samara", a2.EuropeSanMarino = "Europe/San_Marino", a2.EuropeSarajevo = "Europe/Sarajevo", a2.EuropeSimferopol = "Europe/Simferopol", a2.EuropeSkopje = "Europe/Skopje", a2.EuropeSofia = "Europe/Sofia", a2.EuropeStockholm = "Europe/Stockholm", a2.EuropeTallinn = "Europe/Tallinn", a2.EuropeTirane = "Europe/Tirane", a2.EuropeUzhgorod = "Europe/Uzhgorod", a2.EuropeVaduz = "Europe/Vaduz", a2.EuropeVatican = "Europe/Vatican", a2.EuropeVienna = "Europe/Vienna", a2.EuropeVilnius = "Europe/Vilnius", a2.EuropeVolgograd = "Europe/Volgograd", a2.EuropeWarsaw = "Europe/Warsaw", a2.EuropeZagreb = "Europe/Zagreb", a2.EuropeZaporozhye = "Europe/Zaporozhye", a2.EuropeZurich = "Europe/Zurich", a2.GMT = "GMT", a2.IndianAntananarivo = "Indian/Antananarivo", a2.IndianChagos = "Indian/Chagos", a2.IndianChristmas = "Indian/Christmas", a2.IndianCocos = "Indian/Cocos", a2.IndianComoro = "Indian/Comoro", a2.IndianKerguelen = "Indian/Kerguelen", a2.IndianMahe = "Indian/Mahe", a2.IndianMaldives = "Indian/Maldives", a2.IndianMauritius = "Indian/Mauritius", a2.IndianMayotte = "Indian/Mayotte", a2.IndianReunion = "Indian/Reunion", a2.PacificApia = "Pacific/Apia", a2.PacificAuckland = "Pacific/Auckland", a2.PacificBougainville = "Pacific/Bougainville", a2.PacificChatham = "Pacific/Chatham", a2.PacificChuuk = "Pacific/Chuuk", a2.PacificEaster = "Pacific/Easter", a2.PacificEfate = "Pacific/Efate", a2.PacificEnderbury = "Pacific/Enderbury", a2.PacificFakaofo = "Pacific/Fakaofo", a2.PacificFiji = "Pacific/Fiji", a2.PacificFunafuti = "Pacific/Funafuti", a2.PacificGalapagos = "Pacific/Galapagos", a2.PacificGambier = "Pacific/Gambier", a2.PacificGuadalcanal = "Pacific/Guadalcanal", a2.PacificGuam = "Pacific/Guam", a2.PacificHonolulu = "Pacific/Honolulu", a2.PacificJohnston = "Pacific/Johnston", a2.PacificKiritimati = "Pacific/Kiritimati", a2.PacificKosrae = "Pacific/Kosrae", a2.PacificKwajalein = "Pacific/Kwajalein", a2.PacificMajuro = "Pacific/Majuro", a2.PacificMarquesas = "Pacific/Marquesas", a2.PacificMidway = "Pacific/Midway", a2.PacificNauru = "Pacific/Nauru", a2.PacificNiue = "Pacific/Niue", a2.PacificNorfolk = "Pacific/Norfolk", a2.PacificNoumea = "Pacific/Noumea", a2.PacificPagoPago = "Pacific/Pago_Pago", a2.PacificPalau = "Pacific/Palau", a2.PacificPitcairn = "Pacific/Pitcairn", a2.PacificPohnpei = "Pacific/Pohnpei", a2.PacificPonape = "Pacific/Ponape", a2.PacificPortMoresby = "Pacific/Port_Moresby", a2.PacificRarotonga = "Pacific/Rarotonga", a2.PacificSaipan = "Pacific/Saipan", a2.PacificSamoa = "Pacific/Samoa", a2.PacificTahiti = "Pacific/Tahiti", a2.PacificTarawa = "Pacific/Tarawa", a2.PacificTongatapu = "Pacific/Tongatapu", a2.PacificTruk = "Pacific/Truk", a2.PacificWake = "Pacific/Wake", a2.PacificWallis = "Pacific/Wallis", a2.PacificYap = "Pacific/Yap";
 })(t$1 || (t$1 = {}));
-var i$2;
+var i$3;
 (function(a2) {
   a2.UTC_MINUS_12 = "UTC-12", a2.UTC_MINUS_11_30 = "UTC-11:30", a2.UTC_MINUS_11 = "UTC-11", a2.UTC_MINUS_10_30 = "UTC-10:30", a2.UTC_MINUS_10 = "UTC-10", a2.UTC_MINUS_9_30 = "UTC-9:30", a2.UTC_MINUS_9 = "UTC-09", a2.UTC_MINUS_8_45 = "UTC-8:45", a2.UTC_MINUS_8 = "UTC-08", a2.UTC_MINUS_7 = "UTC-07", a2.UTC_MINUS_6_30 = "UTC-6:30", a2.UTC_MINUS_6 = "UTC-06", a2.UTC_MINUS_5_45 = "UTC-5:45", a2.UTC_MINUS_5_30 = "UTC-5:30", a2.UTC_MINUS_5 = "UTC-05", a2.UTC_MINUS_4_30 = "UTC-4:30", a2.UTC_MINUS_4 = "UTC-04", a2.UTC_MINUS_3_30 = "UTC-3:30", a2.UTC_MINUS_3 = "UTC-03", a2.UTC_MINUS_2_30 = "UTC-2:30", a2.UTC_MINUS_2 = "UTC-02", a2.UTC_MINUS_1 = "UTC-01", a2.UTC_0 = "UTC+00", a2.UTC_PLUS_1 = "UTC+01", a2.UTC_PLUS_2 = "UTC+02", a2.UTC_PLUS_3 = "UTC+03", a2.UTC_PLUS_3_30 = "UTC+3:30", a2.UTC_PLUS_4 = "UTC+04", a2.UTC_PLUS_4_30 = "UTC+4:30", a2.UTC_PLUS_5 = "UTC+05", a2.UTC_PLUS_5_30 = "UTC+5:30", a2.UTC_PLUS_5_45 = "UTC+5:45", a2.UTC_PLUS_6 = "UTC+06", a2.UTC_PLUS_6_30 = "UTC+6:30", a2.UTC_PLUS_7 = "UTC+07", a2.UTC_PLUS_8 = "UTC+08", a2.UTC_PLUS_8_45 = "UTC+8:45", a2.UTC_PLUS_9 = "UTC+09", a2.UTC_PLUS_9_30 = "UTC+9:30", a2.UTC_PLUS_10 = "UTC+10", a2.UTC_PLUS_10_30 = "UTC+10:30", a2.UTC_PLUS_11 = "UTC+11", a2.UTC_PLUS_11_30 = "UTC+11:30", a2.UTC_PLUS_12 = "UTC+12", a2.UTC_PLUS_12_45 = "UTC+12:45", a2.UTC_PLUS_13 = "UTC+13", a2.UTC_PLUS_13_45 = "UTC+13:45", a2.UTC_PLUS_14 = "UTC+14";
-})(i$2 || (i$2 = {}));
+})(i$3 || (i$3 = {}));
 var n$2;
 (function(a2) {
   a2.AcreTime = "ACT", a2.AfghanistanTime = "AFT", a2.AIXCentralEuropeanTime = "DFT", a2.AlaskaDaylightTime = "AKDT", a2.AlaskaStandardTime = "AKST", a2.AlmaAtaTime = "ALMT", a2.AmazonSummerTime = "AMST", a2.AmazonTime = "AMT", a2.AnadyrTime = "ANAT", a2.AqtobeTime = "AQTT", a2.ArabiaStandardTime = "AST", a2.ArgentinaTime = "ART", a2.ArmeniaTime = "AMT", a2.ASEANCommonTime = "ASEAN", a2.AtlanticDaylightTime = "ADT", a2.AtlanticStandardTime = "AST", a2.AustralianCentralDaylightSavingTime = "ACDT", a2.AustralianCentralStandardTime = "ACST", a2.AustralianCentralWesternStandardTime = "ACWST", a2.AustralianEasternDaylightSavingTime = "AEDT", a2.AustralianEasternStandardTime = "AEST", a2.AustralianEasternTime = "AET", a2.AustralianWesternStandardTime = "AWST", a2.AzerbaijanTime = "AZT", a2.AzoresStandardTime = "AZOT", a2.AzoresSummerTime = "AZOST", a2.BakerIslandTime = "BIT", a2.BangladeshStandardTime = "BST", a2.BhutanTime = "BTT", a2.BoliviaTime = "BOT", a2.BougainvilleStandardTime = "BST", a2.BrasiliaSummerTime = "BRST", a2.BrasiliaTime = "BRT", a2.BritishIndianOceanTime = "BIOT", a2.BritishSummerTime = "BST", a2.BruneiTime = "BNT", a2.CapeVerdeTime = "CVT", a2.CentralAfricaTime = "CAT", a2.CentralDaylightTime = "CDT", a2.CentralEuropeanSummerTime = "CEST", a2.CentralEuropeanTime = "CET", a2.CentralIndonesiaTime = "WITA", a2.CentralStandardTime = "CST", a2.CentralTime = "CT", a2.CentralWesternStandardTime = "CWST", a2.ChamorroStandardTime = "CHST", a2.ChathamDaylightTime = "CHADT", a2.ChathamStandardTime = "CHAST", a2.ChileStandardTime = "CLT", a2.ChileSummerTime = "CLST", a2.ChinaStandardTime = "CST", a2.ChoibalsanStandardTime = "CHOT", a2.ChoibalsanSummerTime = "CHOST", a2.ChristmasIslandTime = "CXT", a2.ChuukTime = "CHUT", a2.ClipptertonIslandStandardTime = "CIST", a2.CocosIslandsTime = "CCT", a2.ColombiaSummerTime = "COST", a2.ColombiaTime = "COT", a2.CookIslandTime = "CKT", a2.CoordinatedUniversalTime = "UTC", a2.CubaDaylightTime = "CDT", a2.CubaStandardTime = "CST", a2.DavisTime = "DAVT", a2.DumontDUrvilleTime = "DDUT", a2.EastAfricaTime = "EAT", a2.EasterIslandStandardTime = "EAST", a2.EasterIslandSummerTime = "EASST", a2.EasternCaribbeanTime = "ECT", a2.EasternDaylightTime = "EDT", a2.EasternEuropeanSummerTime = "EEST", a2.EasternEuropeanTime = "EET", a2.EasternGreenlandSummerTime = "EGST", a2.EasternGreenlandTime = "EGT", a2.EasternIndonesianTime = "WIT", a2.EasternStandardTime = "EST", a2.EasternTime = "ET", a2.EcuadorTime = "ECT", a2.FalklandIslandsSummerTime = "FKST", a2.FalklandIslandsTime = "FKT", a2.FernandoDeNoronhaTime = "FNT", a2.FijiTime = "FJT", a2.FrenchGuianaTime = "GFT", a2.FrenchSouthernAndAntarcticTime = "TFT", a2.FurtherEasternEuropeanTime = "FET", a2.GalapagosTime = "GALT", a2.GambierIslandTime = "GIT", a2.GambierIslandsTime = "GAMT", a2.GeorgiaStandardTime = "GET", a2.GilbertIslandTime = "GILT", a2.GreenwichMeanTime = "GMT", a2.GulfStandardTime = "GST", a2.GuyanaTime = "GYT", a2.HawaiiAleutianDaylightTime = "HDT", a2.HawaiiAleutianStandardTime = "HST", a2.HeardAndMcDonaldIslandsTime = "HMT", a2.HeureAvanceeDEuropeCentraleTime = "HAEC", a2.HongKongTime = "HKT", a2.HovdSummerTime = "HOVST", a2.HovdTime = "HOVT", a2.IndianOceanTime = "IOT", a2.IndianStandardTime = "IST", a2.IndochinaTime = "ICT", a2.InternationalDayLineWestTime = "IDLW", a2.IranDaylightTime = "IRDT", a2.IranStandardTime = "IRST", a2.IrishStandardTime = "IST", a2.IrkutskSummerTime = "IRKST", a2.IrkutskTime = "IRKT", a2.IsraelDaylightTime = "IDT", a2.IsraelStandardTime = "IST", a2.JapanStandardTime = "JST", a2.KaliningradTime = "KALT", a2.KamchatkaTime = "KAMT", a2.KoreaStandardTime = "KST", a2.KosraeTime = "KOST", a2.KrasnoyarskSummerTime = "KRAST", a2.KrasnoyarskTime = "KRAT", a2.KyrgyzstanTime = "KGT", a2.LineIslandsTime = "LINT", a2.KazakhstanStandardTime = "KAST", a2.LordHoweStandardTime = "LHST", a2.LordHoweSummerTime = "LHST", a2.MacquarieIslandStationTime = "MIST", a2.MagadanTime = "MAGT", a2.MalaysiaStandardTime = "MST", a2.MalaysiaTime = "MYT", a2.MaldivesTime = "MVT", a2.MarquesasIslandsTime = "MART", a2.MarshallIslandsTime = "MHT", a2.MauritiusTime = "MUT", a2.MawsonStationTime = "MAWT", a2.MiddleEuropeanSummerTime = "MEDT", a2.MiddleEuropeanTime = "MET", a2.MoscowTime = "MSK", a2.MountainDaylightTime = "MDT", a2.MountainStandardTime = "MST", a2.MyanmarStandardTime = "MMT", a2.NepalTime = "NCT", a2.NauruTime = "NRT", a2.NewCaledoniaTime = "NCT", a2.NewZealandDaylightTime = "NZDT", a2.NewZealandStandardTime = "NZST", a2.NewfoundlandDaylightTime = "NDT", a2.NewfoundlandStandardTime = "NST", a2.NewfoundlandTime = "NT", a2.NiueTime = "NUT", a2.NorfolkIslandTime = "NFT", a2.NovosibirskTime = "NOVT", a2.OmskTime = "OMST", a2.OralTime = "ORAT", a2.PacificDaylightTime = "PDT", a2.PacificStandardTime = "PST", a2.PakistanStandardTime = "PKT", a2.PalauTime = "PWT", a2.PapuaNewGuineaTime = "PGT", a2.ParaguaySummerTime = "PYST", a2.ParaguayTime = "PYT", a2.PeruTime = "PET", a2.PhilippineStandardTime = "PHST", a2.PhilippineTime = "PHT", a2.PhoenixIslandTime = "PHOT", a2.PitcairnTime = "PST", a2.PohnpeiStandardTime = "PONT", a2.ReunionTime = "RET", a2.RotheraResearchStationTime = "ROTT", a2.SaintPierreAndMiquelonDaylightTime = "PMDT", a2.SaintPierreAndMiquelonStandardTime = "PMST", a2.SakhalinIslandTime = "SAKT", a2.SamaraTime = "SAMT", a2.SamoaDaylightTime = "SDT", a2.SamoaStandardTime = "SST", a2.SeychellesTime = "SCT", a2.ShowaStationTime = "SYOT", a2.SingaporeStandardTime = "SST", a2.SingaporeTime = "SGT", a2.SolomonIslandsTime = "SBT", a2.SouthAfricanStandardTime = "SAST", a2.SouthGeorgiaAndTheSouthSandwichIslandsTime = "GST", a2.SrednekolymskTime = "SRET", a2.SriLankaStandardTime = "SLST", a2.SurinameTime = "SRT", a2.TahitiTime = "TAHT", a2.TajikistanTime = "TJT", a2.ThailandStandardTime = "THA", a2.TimorLesteTime = "TLT", a2.TokelauTime = "TKT", a2.TongaTime = "TOT", a2.TurkeyTime = "TRT", a2.TurkmenistanTime = "TMT", a2.TuvaluTime = "TVT", a2.UlaanbaatarStandardTime = "ULAT", a2.UlaanbaatarSummerTime = "ULAST", a2.UruguayStandardTime = "UYT", a2.UruguaySummerTime = "UYST", a2.UzbekistanTime = "UZT", a2.VanuatuTime = "VUT", a2.VenezuelaStandardTime = "VET", a2.VladivostokTime = "VLAT", a2.VolgogradTime = "VOLT", a2.VostokStationTime = "VOST", a2.WakeIslandTime = "WAKT", a2.WestAfricaSummerTime = "WAST", a2.WestAfricaTime = "WAT", a2.WestGreenlandSummerTime = "WGST", a2.WestGreenlandTime = "WGT", a2.WestKazakhstanTime = "WKT", a2.WesternEuropeanSummerTime = "WEDT", a2.WesternEuropeanTime = "WET", a2.WesternIndonesianTime = "WIT", a2.WesternStandardTime = "WST", a2.YakutskTime = "YAKT", a2.YekaterinburgTime = "YEKT";
 })(n$2 || (n$2 = {}));
-({ dst: { is: false, uses: true }, id: n$2.AcreTime, name: "Acre Time", offset: i$2.UTC_MINUS_5 });
-({ dst: { is: false, uses: true }, id: n$2.AfghanistanTime, name: "Afghanistan Time", offset: i$2.UTC_PLUS_4_30 });
-({ dst: { is: false, uses: true }, id: n$2.AIXCentralEuropeanTime, name: "AIX Central European Time", offset: i$2.UTC_PLUS_1 });
-({ dst: { is: true, uses: true }, id: n$2.AlaskaDaylightTime, name: "Alaska Daylight Time", offset: i$2.UTC_MINUS_8 });
-({ dst: { is: false, uses: true }, id: n$2.AlaskaStandardTime, name: "Alaska Standard Time", offset: i$2.UTC_MINUS_9 });
-({ dst: { is: false, uses: true }, id: n$2.AlmaAtaTime, name: "Alma-Ata Time", offset: i$2.UTC_PLUS_6 });
-({ dst: { is: false, uses: true }, id: n$2.AmazonSummerTime, name: "Amazon Summer Time", offset: i$2.UTC_MINUS_3 });
-({ dst: { is: false, uses: true }, id: n$2.AmazonTime, name: "Amazon Time", offset: i$2.UTC_MINUS_4 });
-({ dst: { is: false, uses: true }, id: n$2.AnadyrTime, name: "Anadyr Time", offset: i$2.UTC_PLUS_12 });
-({ dst: { is: false, uses: true }, id: n$2.AqtobeTime, name: "Aqtobe Time", offset: i$2.UTC_PLUS_5 });
-({ dst: { is: false, uses: true }, id: n$2.ArabiaStandardTime, name: "Arabia Standard Time", offset: i$2.UTC_PLUS_3 });
-({ dst: { is: false, uses: true }, id: n$2.ArgentinaTime, name: "Argentina Time", offset: i$2.UTC_MINUS_3 });
-({ dst: { is: false, uses: true }, id: n$2.ArmeniaTime, name: "Armenia Time", offset: i$2.UTC_PLUS_4 });
-({ dst: { is: true, uses: true }, id: n$2.AtlanticDaylightTime, name: "Atlantic Daylight Time", offset: i$2.UTC_MINUS_3 });
-({ dst: { is: false, uses: true }, id: n$2.AtlanticStandardTime, name: "Atlantic Standard Time", offset: i$2.UTC_MINUS_4 });
-({ dst: { is: true, uses: true }, id: n$2.AustralianCentralDaylightSavingTime, name: "Australian Central Daylight Saving Time", offset: i$2.UTC_PLUS_10_30 });
-({ dst: { is: false, uses: true }, id: n$2.AustralianCentralStandardTime, name: "Australian Central Standard Time", offset: i$2.UTC_PLUS_9_30 });
-({ dst: { is: false, uses: true }, id: n$2.AustralianCentralWesternStandardTime, name: "Australian Central Western Standard Time", offset: i$2.UTC_PLUS_8_45 });
-({ dst: { is: true, uses: true }, id: n$2.AustralianEasternDaylightSavingTime, name: "Australian Eastern Daylight Saving Time", offset: i$2.UTC_PLUS_11 });
-({ dst: { is: false, uses: true }, id: n$2.AustralianEasternStandardTime, name: "Australian Eastern Standard Time", offset: i$2.UTC_PLUS_10 });
-({ dst: { is: false, uses: true }, id: n$2.AustralianEasternTime, name: "Australian Eastern Time", offset: i$2.UTC_PLUS_10 });
-({ dst: { is: false, uses: true }, id: n$2.AustralianWesternStandardTime, name: "Australian Western Standard Time", offset: i$2.UTC_PLUS_8 });
-({ dst: { is: false, uses: true }, id: n$2.AzerbaijanTime, name: "Azerbaijan Time", offset: i$2.UTC_PLUS_4 });
-({ dst: { is: false, uses: true }, id: n$2.AzoresStandardTime, name: "Azores Standard Time", offset: i$2.UTC_MINUS_1 });
-({ dst: { is: true, uses: true }, id: n$2.AzoresSummerTime, name: "Azores Summer Time", offset: i$2.UTC_0 });
-({ dst: { is: false, uses: true }, id: n$2.BakerIslandTime, name: "Baker Island Time", offset: i$2.UTC_MINUS_12 });
-({ dst: { is: false, uses: true }, id: n$2.BangladeshStandardTime, name: "Bangladesh Standard Time", offset: i$2.UTC_PLUS_6 });
-({ dst: { is: false, uses: true }, id: n$2.BhutanTime, name: "Bhutan Time", offset: i$2.UTC_PLUS_6 });
-({ dst: { is: false, uses: true }, id: n$2.BoliviaTime, name: "Bolivia Time", offset: i$2.UTC_MINUS_4 });
-({ dst: { is: false, uses: true }, id: n$2.BougainvilleStandardTime, name: "Bougainville Standard Time", offset: i$2.UTC_PLUS_11 });
-({ dst: { is: true, uses: true }, id: n$2.BrasiliaSummerTime, name: "Brasilia Summer Time", offset: i$2.UTC_MINUS_2 });
-({ dst: { is: false, uses: true }, id: n$2.BrasiliaTime, name: "Brasilia Time", offset: i$2.UTC_MINUS_3 });
-({ dst: { is: false, uses: true }, id: n$2.BritishIndianOceanTime, name: "British Indian Ocean Time", offset: i$2.UTC_PLUS_6 });
-({ dst: { is: true, uses: true }, id: n$2.BritishSummerTime, name: "British Summer Time", offset: i$2.UTC_PLUS_1 });
-({ dst: { is: false, uses: true }, id: n$2.BruneiTime, name: "Brunei Time", offset: i$2.UTC_PLUS_8 });
-({ dst: { is: false, uses: true }, id: n$2.CapeVerdeTime, name: "Cape Verde Time", offset: i$2.UTC_MINUS_1 });
-({ dst: { is: false, uses: true }, id: n$2.CentralAfricaTime, name: "Central Africa Time", offset: i$2.UTC_PLUS_2 });
-({ dst: { is: true, uses: true }, id: n$2.CentralDaylightTime, name: "Central Daylight Time", offset: i$2.UTC_MINUS_5 });
-({ dst: { is: true, uses: true }, id: n$2.CentralEuropeanSummerTime, name: "Central European Summer Time", offset: i$2.UTC_PLUS_2 });
-({ dst: { is: false, uses: true }, id: n$2.CentralEuropeanTime, name: "Central European Time", offset: i$2.UTC_PLUS_1 });
-({ dst: { is: false, uses: true }, id: n$2.CentralIndonesiaTime, name: "Central Indonesia Time", offset: i$2.UTC_PLUS_8 });
-({ dst: { is: false, uses: true }, id: n$2.CentralStandardTime, name: "Central Standard Time", offset: i$2.UTC_MINUS_6 });
-({ dst: { is: false, uses: true }, id: n$2.CentralTime, name: "Central Time", offset: i$2.UTC_MINUS_5 });
-({ dst: { is: false, uses: true }, id: n$2.CentralWesternStandardTime, name: "Central Western Standard Time", offset: i$2.UTC_PLUS_8_45 });
-({ dst: { is: false, uses: true }, id: n$2.ChamorroStandardTime, name: "Chamorro Standard Time", offset: i$2.UTC_PLUS_10 });
-({ dst: { is: true, uses: true }, id: n$2.ChathamDaylightTime, name: "Chatham Daylight Time", offset: i$2.UTC_PLUS_13_45 });
-({ dst: { is: false, uses: true }, id: n$2.ChathamStandardTime, name: "Chatham Standard Time", offset: i$2.UTC_PLUS_12_45 });
-({ dst: { is: false, uses: true }, id: n$2.ChileStandardTime, name: "Chile Standard Time", offset: i$2.UTC_MINUS_4 });
-({ dst: { is: true, uses: true }, id: n$2.ChileSummerTime, name: "Chile Summer Time", offset: i$2.UTC_MINUS_3 });
-({ dst: { is: false, uses: true }, id: n$2.ChinaStandardTime, name: "China Standard Time", offset: i$2.UTC_PLUS_8 });
-({ dst: { is: false, uses: true }, id: n$2.ChoibalsanStandardTime, name: "Choibalsan Standard Time", offset: i$2.UTC_PLUS_8 });
-({ dst: { is: true, uses: true }, id: n$2.ChoibalsanSummerTime, name: "Choibalsan Summer Time", offset: i$2.UTC_PLUS_9 });
-({ dst: { is: false, uses: true }, id: n$2.ChristmasIslandTime, name: "Christmas Island Time", offset: i$2.UTC_PLUS_7 });
-({ dst: { is: false, uses: true }, id: n$2.ChuukTime, name: "Chuuk Time", offset: i$2.UTC_PLUS_10 });
-({ dst: { is: false, uses: true }, id: n$2.ClipptertonIslandStandardTime, name: "Clippterton Island Standard Time", offset: i$2.UTC_MINUS_8 });
-({ dst: { is: false, uses: true }, id: n$2.CocosIslandsTime, name: "Cocos Standard Time", offset: i$2.UTC_PLUS_6_30 });
-({ dst: { is: true, uses: true }, id: n$2.ColombiaSummerTime, name: "Colombia Summer Time", offset: i$2.UTC_MINUS_4 });
-({ dst: { is: false, uses: true }, id: n$2.ColombiaTime, name: "Colombia Time", offset: i$2.UTC_MINUS_5 });
-({ dst: { is: false, uses: true }, id: n$2.CookIslandTime, name: "Cook Island Time", offset: i$2.UTC_MINUS_10 });
-({ dst: { is: false, uses: true }, id: n$2.CoordinatedUniversalTime, name: "Coordinated Universal Time", offset: i$2.UTC_0 });
-({ dst: { is: true, uses: true }, id: n$2.CubaDaylightTime, name: "Cuba Daylight Time", offset: i$2.UTC_MINUS_4 });
-({ dst: { is: false, uses: true }, id: n$2.CubaStandardTime, name: "Cuba Standard Time", offset: i$2.UTC_MINUS_5 });
-({ dst: { is: false, uses: true }, id: n$2.DavisTime, name: "Davis Time", offset: i$2.UTC_PLUS_7 });
-({ dst: { is: false, uses: true }, id: n$2.DumontDUrvilleTime, name: "Dumont D'Urville Time", offset: i$2.UTC_PLUS_10 });
-({ dst: { is: false, uses: true }, id: n$2.EastAfricaTime, name: "East Africa Time", offset: i$2.UTC_PLUS_3 });
-({ dst: { is: false, uses: true }, id: n$2.EasterIslandStandardTime, name: "Easter Island Standard Time", offset: i$2.UTC_MINUS_6 });
-({ dst: { is: true, uses: true }, id: n$2.EasterIslandSummerTime, name: "Easter Island Summer Time", offset: i$2.UTC_MINUS_5 });
-({ dst: { is: false, uses: true }, id: n$2.EasternCaribbeanTime, name: "Eastern Caribbean Time", offset: i$2.UTC_MINUS_4 });
-({ dst: { is: true, uses: true }, id: n$2.EasternDaylightTime, name: "Eastern Daylight Time", offset: i$2.UTC_MINUS_4 });
-({ dst: { is: true, uses: true }, id: n$2.EasternEuropeanSummerTime, name: "Eastern European Summer Time", offset: i$2.UTC_PLUS_3 });
-({ dst: { is: false, uses: true }, id: n$2.EasternEuropeanTime, name: "Eastern European Time", offset: i$2.UTC_PLUS_2 });
-({ dst: { is: true, uses: true }, id: n$2.EasternGreenlandSummerTime, name: "Eastern Greenland Summer Time", offset: i$2.UTC_0 });
-({ dst: { is: false, uses: true }, id: n$2.EasternGreenlandTime, name: "Eastern Greenland Time", offset: i$2.UTC_MINUS_1 });
-({ dst: { is: false, uses: true }, id: n$2.EasternIndonesianTime, name: "Eastern Indonesian Time", offset: i$2.UTC_PLUS_9 });
-({ dst: { is: false, uses: true }, id: n$2.EasternStandardTime, name: "Eastern Standard Time", offset: i$2.UTC_MINUS_5 });
-({ dst: { is: false, uses: true }, id: n$2.EasternTime, name: "Eastern Time", offset: i$2.UTC_MINUS_5 });
-({ dst: { is: false, uses: true }, id: n$2.EcuadorTime, name: "Ecuador Time", offset: i$2.UTC_MINUS_5 });
-({ dst: { is: true, uses: true }, id: n$2.FalklandIslandsSummerTime, name: "Falkland Islands Summer Time", offset: i$2.UTC_MINUS_3 });
-({ dst: { is: false, uses: true }, id: n$2.FalklandIslandsTime, name: "Falkland Islands Time", offset: i$2.UTC_MINUS_4 });
-({ dst: { is: false, uses: true }, id: n$2.FernandoDeNoronhaTime, name: "Fernando de Noronha Time", offset: i$2.UTC_MINUS_2 });
-({ dst: { is: false, uses: true }, id: n$2.FijiTime, name: "Fiji Time", offset: i$2.UTC_PLUS_12 });
-({ dst: { is: false, uses: true }, id: n$2.FrenchGuianaTime, name: "French Guiana Time", offset: i$2.UTC_MINUS_3 });
-({ dst: { is: false, uses: true }, id: n$2.FrenchSouthernAndAntarcticTime, name: "French Southern and Antarctic Time", offset: i$2.UTC_PLUS_5 });
-({ dst: { is: false, uses: true }, id: n$2.FurtherEasternEuropeanTime, name: "Further Eastern European Time", offset: i$2.UTC_PLUS_3 });
-({ dst: { is: false, uses: true }, id: n$2.GalapagosTime, name: "Galapagos Time", offset: i$2.UTC_MINUS_6 });
-({ dst: { is: false, uses: true }, id: n$2.GambierIslandTime, name: "Gambier Island Time", offset: i$2.UTC_MINUS_9 });
-({ dst: { is: false, uses: true }, id: n$2.GambierIslandsTime, name: "Gambier Islands Time", offset: i$2.UTC_MINUS_9 });
-({ dst: { is: false, uses: true }, id: n$2.GeorgiaStandardTime, name: "Georgia Standard Time", offset: i$2.UTC_PLUS_4 });
-({ dst: { is: false, uses: true }, id: n$2.GilbertIslandTime, name: "Gilbert Island Time", offset: i$2.UTC_PLUS_12 });
-({ dst: { is: false, uses: true }, id: n$2.GreenwichMeanTime, name: "Greenwich Mean Time", offset: i$2.UTC_0 });
-({ dst: { is: false, uses: true }, id: n$2.GulfStandardTime, name: "Gulf Standard Time", offset: i$2.UTC_PLUS_4 });
-({ dst: { is: false, uses: true }, id: n$2.GuyanaTime, name: "Guyana Time", offset: i$2.UTC_MINUS_4 });
-({ dst: { is: true, uses: true }, id: n$2.HawaiiAleutianDaylightTime, name: "Hawaii-Aleutian Daylight Time", offset: i$2.UTC_MINUS_9 });
-({ dst: { is: false, uses: true }, id: n$2.HawaiiAleutianStandardTime, name: "Hawaii-Aleutian Standard Time", offset: i$2.UTC_MINUS_10 });
-({ dst: { is: false, uses: true }, id: n$2.HeardAndMcDonaldIslandsTime, name: "Heard and McDonald Islands Time", offset: i$2.UTC_PLUS_5 });
-({ dst: { is: false, uses: true }, id: n$2.HongKongTime, name: "Hong Kong Time", offset: i$2.UTC_PLUS_8 });
-({ dst: { is: true, uses: true }, id: n$2.HovdSummerTime, name: "Hovd Summer Time", offset: i$2.UTC_PLUS_8 });
-({ dst: { is: false, uses: true }, id: n$2.HovdTime, name: "Hovd Time", offset: i$2.UTC_PLUS_7 });
-({ dst: { is: false, uses: true }, id: n$2.IndianOceanTime, name: "Indian Ocean Time", offset: i$2.UTC_PLUS_3 });
-({ dst: { is: false, uses: true }, id: n$2.IndianStandardTime, name: "Indian Standard Time", offset: i$2.UTC_PLUS_5_30 });
-({ dst: { is: false, uses: true }, id: n$2.IndochinaTime, name: "Indochina Time", offset: i$2.UTC_PLUS_7 });
-({ dst: { is: false, uses: true }, id: n$2.InternationalDayLineWestTime, name: "International Day Line West Time", offset: i$2.UTC_MINUS_12 });
-({ dst: { is: true, uses: true }, id: n$2.IranDaylightTime, name: "Iran Daylight Time", offset: i$2.UTC_PLUS_4_30 });
-({ dst: { is: false, uses: true }, id: n$2.IranStandardTime, name: "Iran Standard Time", offset: i$2.UTC_PLUS_3_30 });
-({ dst: { is: false, uses: true }, id: n$2.IrishStandardTime, name: "Irish Standard Time", offset: i$2.UTC_PLUS_1 });
-({ dst: { is: false, uses: true }, id: n$2.IrkutskTime, name: "Irkutsk Time", offset: i$2.UTC_PLUS_8 });
-({ dst: { is: true, uses: true }, id: n$2.IsraelDaylightTime, name: "Israel Daylight Time", offset: i$2.UTC_PLUS_3 });
-({ dst: { is: false, uses: true }, id: n$2.IsraelStandardTime, name: "Israel Standard Time", offset: i$2.UTC_PLUS_2 });
-({ dst: { is: false, uses: true }, id: n$2.JapanStandardTime, name: "Japan Standard Time", offset: i$2.UTC_PLUS_9 });
-({ dst: { is: false, uses: true }, id: n$2.KaliningradTime, name: "Kaliningrad Time", offset: i$2.UTC_PLUS_2 });
-({ dst: { is: false, uses: true }, id: n$2.KamchatkaTime, name: "Kamchatka Time", offset: i$2.UTC_PLUS_12 });
-({ dst: { is: false, uses: true }, id: n$2.KoreaStandardTime, name: "Korea Standard Time", offset: i$2.UTC_PLUS_9 });
-({ dst: { is: false, uses: true }, id: n$2.KosraeTime, name: "Kosrae Time", offset: i$2.UTC_PLUS_11 });
-({ dst: { is: false, uses: true }, id: n$2.KrasnoyarskTime, name: "Krasnoyarsk Time", offset: i$2.UTC_PLUS_7 });
-({ dst: { is: false, uses: true }, id: n$2.KyrgyzstanTime, name: "Kyrgyzstan Time", offset: i$2.UTC_PLUS_6 });
-({ dst: { is: false, uses: true }, id: n$2.LineIslandsTime, name: "Line Islands Time", offset: i$2.UTC_PLUS_14 });
-({ dst: { is: false, uses: true }, id: n$2.LordHoweStandardTime, name: "Lord Howe Standard Time", offset: i$2.UTC_PLUS_10_30 });
-({ dst: { is: false, uses: true }, id: n$2.LordHoweSummerTime, name: "Lord Howe Summer Time", offset: i$2.UTC_PLUS_11 });
-({ dst: { is: false, uses: true }, id: n$2.MacquarieIslandStationTime, name: "Macquarie Island Station Time", offset: i$2.UTC_PLUS_11 });
-({ dst: { is: false, uses: true }, id: n$2.MagadanTime, name: "Magadan Time", offset: i$2.UTC_PLUS_12 });
-({ dst: { is: false, uses: true }, id: n$2.MalaysiaStandardTime, name: "Malaysia Standard Time", offset: i$2.UTC_PLUS_8 });
-({ dst: { is: false, uses: true }, id: n$2.MalaysiaTime, name: "Malaysia Time", offset: i$2.UTC_PLUS_8 });
-({ dst: { is: false, uses: true }, id: n$2.MaldivesTime, name: "Maldives Time", offset: i$2.UTC_PLUS_5 });
-({ dst: { is: false, uses: true }, id: n$2.MarquesasIslandsTime, name: "Marquesas Islands Time", offset: i$2.UTC_PLUS_9_30 });
-({ dst: { is: false, uses: true }, id: n$2.MarshallIslandsTime, name: "Marshall Islands Time", offset: i$2.UTC_PLUS_12 });
-({ dst: { is: false, uses: true }, id: n$2.MauritiusTime, name: "Mauritius Time", offset: i$2.UTC_PLUS_4 });
-({ dst: { is: false, uses: true }, id: n$2.MawsonStationTime, name: "Mawson Station Time", offset: i$2.UTC_PLUS_5 });
-({ dst: { is: false, uses: true }, id: n$2.MiddleEuropeanSummerTime, name: "Middle European Summer Time", offset: i$2.UTC_PLUS_2 });
-({ dst: { is: false, uses: true }, id: n$2.MiddleEuropeanTime, name: "Middle European Time", offset: i$2.UTC_PLUS_1 });
-({ dst: { is: false, uses: true }, id: n$2.MoscowTime, name: "Moscow Time", offset: i$2.UTC_PLUS_3 });
-({ dst: { is: false, uses: true }, id: n$2.MountainDaylightTime, name: "Mountain Daylight Time", offset: i$2.UTC_MINUS_6 });
-({ dst: { is: false, uses: true }, id: n$2.MountainStandardTime, name: "Mountain Standard Time", offset: i$2.UTC_MINUS_7 });
-({ dst: { is: false, uses: true }, id: n$2.MyanmarStandardTime, name: "Myanmar Standard Time", offset: i$2.UTC_PLUS_6_30 });
-({ dst: { is: false, uses: true }, id: n$2.NepalTime, name: "Nepal Time", offset: i$2.UTC_PLUS_5_45 });
-({ dst: { is: false, uses: true }, id: n$2.NauruTime, name: "Nauru Time", offset: i$2.UTC_PLUS_12 });
-({ dst: { is: false, uses: true }, id: n$2.NewCaledoniaTime, name: "New Caledonia Time", offset: i$2.UTC_PLUS_11 });
-({ dst: { is: false, uses: true }, id: n$2.NewZealandDaylightTime, name: "New Zealand Daylight Time", offset: i$2.UTC_PLUS_13 });
-({ dst: { is: false, uses: true }, id: n$2.NewZealandStandardTime, name: "New Zealand Standard Time", offset: i$2.UTC_PLUS_12 });
-({ dst: { is: false, uses: true }, id: n$2.NewfoundlandDaylightTime, name: "Newfoundland Daylight Time", offset: i$2.UTC_MINUS_2_30 });
-({ dst: { is: false, uses: true }, id: n$2.NewfoundlandTime, name: "Newfoundland Time", offset: i$2.UTC_MINUS_3_30 });
-({ dst: { is: false, uses: true }, id: n$2.NiueTime, name: "Niue Time", offset: i$2.UTC_MINUS_11 });
-({ dst: { is: false, uses: true }, id: n$2.NorfolkIslandTime, name: "Norfolk Island Time", offset: i$2.UTC_PLUS_11 });
-({ dst: { is: false, uses: true }, id: n$2.NovosibirskTime, name: "Novosibirsk Time", offset: i$2.UTC_PLUS_7 });
-({ dst: { is: false, uses: true }, id: n$2.OmskTime, name: "Omsk Time", offset: i$2.UTC_PLUS_6 });
-({ dst: { is: false, uses: true }, id: n$2.OralTime, name: "Oral Time", offset: i$2.UTC_PLUS_5 });
-({ dst: { is: false, uses: true }, id: n$2.PacificDaylightTime, name: "Pacific Daylight Time", offset: i$2.UTC_MINUS_7 });
-({ dst: { is: false, uses: true }, id: n$2.PacificStandardTime, name: "Pacific Standard Time", offset: i$2.UTC_MINUS_8 });
-({ dst: { is: false, uses: true }, id: n$2.PakistanStandardTime, name: "Pakistan Standard Time", offset: i$2.UTC_PLUS_5 });
-({ dst: { is: false, uses: true }, id: n$2.PalauTime, name: "Palau Time", offset: i$2.UTC_PLUS_9 });
-({ dst: { is: false, uses: true }, id: n$2.PapuaNewGuineaTime, name: "Papua New Guinea Time", offset: i$2.UTC_PLUS_10 });
-({ dst: { is: false, uses: true }, id: n$2.ParaguaySummerTime, name: "Paraguay Summer Time", offset: i$2.UTC_MINUS_3 });
-({ dst: { is: false, uses: true }, id: n$2.ParaguayTime, name: "Paraguay Time", offset: i$2.UTC_MINUS_4 });
-({ dst: { is: false, uses: true }, id: n$2.PeruTime, name: "Peru Time", offset: i$2.UTC_MINUS_5 });
-({ dst: { is: false, uses: true }, id: n$2.PhilippineStandardTime, name: "Philippine Standard Time", offset: i$2.UTC_PLUS_8 });
-({ dst: { is: false, uses: true }, id: n$2.PhilippineTime, name: "Philippine Time", offset: i$2.UTC_PLUS_8 });
-({ dst: { is: false, uses: true }, id: n$2.PhoenixIslandTime, name: "Phoenix Island Time", offset: i$2.UTC_PLUS_13 });
-({ dst: { is: false, uses: true }, id: n$2.PitcairnTime, name: "Pitcairn Time", offset: i$2.UTC_MINUS_8 });
-({ dst: { is: false, uses: true }, id: n$2.PohnpeiStandardTime, name: "Pohnpei Standard Time", offset: i$2.UTC_PLUS_11 });
-({ dst: { is: false, uses: true }, id: n$2.ReunionTime, name: "Reunion Time", offset: i$2.UTC_PLUS_4 });
-({ dst: { is: false, uses: true }, id: n$2.RotheraResearchStationTime, name: "Rothera Research Station Time", offset: i$2.UTC_MINUS_3 });
-({ dst: { is: false, uses: true }, id: n$2.SaintPierreAndMiquelonDaylightTime, name: "Saint Pierre and Miquelon Daylight Time", offset: i$2.UTC_MINUS_2 });
-({ dst: { is: false, uses: true }, id: n$2.SaintPierreAndMiquelonStandardTime, name: "Saint Pierre and Miquelon Standard Time", offset: i$2.UTC_MINUS_3 });
-({ dst: { is: false, uses: true }, id: n$2.SakhalinIslandTime, name: "Sakhalin Island Time", offset: i$2.UTC_PLUS_11 });
-({ dst: { is: false, uses: true }, id: n$2.SamaraTime, name: "Samara Time", offset: i$2.UTC_PLUS_4 });
-({ dst: { is: false, uses: true }, id: n$2.SamoaDaylightTime, name: "Samoa Daylight Time", offset: i$2.UTC_MINUS_10 });
-({ dst: { is: false, uses: true }, id: n$2.SamoaStandardTime, name: "Samoa Standard Time", offset: i$2.UTC_MINUS_11 });
-({ dst: { is: false, uses: true }, id: n$2.SeychellesTime, name: "Seychelles Time", offset: i$2.UTC_PLUS_4 });
-({ dst: { is: false, uses: true }, id: n$2.ShowaStationTime, name: "Showa Station Time", offset: i$2.UTC_PLUS_3 });
-({ dst: { is: false, uses: true }, id: n$2.SingaporeStandardTime, name: "Singapore Standard Time", offset: i$2.UTC_PLUS_8 });
-({ dst: { is: false, uses: true }, id: n$2.SingaporeTime, name: "Singapore Time", offset: i$2.UTC_PLUS_8 });
-({ dst: { is: false, uses: true }, id: n$2.SolomonIslandsTime, name: "Solomon Islands Time", offset: i$2.UTC_PLUS_11 });
-({ dst: { is: false, uses: true }, id: n$2.SouthAfricanStandardTime, name: "South African Standard Time", offset: i$2.UTC_PLUS_2 });
-({ dst: { is: false, uses: true }, id: n$2.SouthGeorgiaAndTheSouthSandwichIslandsTime, name: "South Georgia and the South Sandwich Islands Time", offset: i$2.UTC_MINUS_2 });
-({ dst: { is: false, uses: true }, id: n$2.SrednekolymskTime, name: "Srednekolymsk Time", offset: i$2.UTC_PLUS_11 });
-({ dst: { is: false, uses: true }, id: n$2.SriLankaStandardTime, name: "Sri Lanka Standard Time", offset: i$2.UTC_PLUS_5_30 });
-({ dst: { is: false, uses: true }, id: n$2.SurinameTime, name: "Suriname Time", offset: i$2.UTC_MINUS_3 });
-({ dst: { is: false, uses: true }, id: n$2.TahitiTime, name: "Tahiti Time", offset: i$2.UTC_MINUS_10 });
-({ dst: { is: false, uses: true }, id: n$2.TajikistanTime, name: "Tajikistan Time", offset: i$2.UTC_PLUS_5 });
-({ dst: { is: false, uses: true }, id: n$2.ThailandStandardTime, name: "Thailand Standard Time", offset: i$2.UTC_PLUS_7 });
-({ dst: { is: false, uses: true }, id: n$2.TimorLesteTime, name: "Timor-Leste Time", offset: i$2.UTC_PLUS_9 });
-({ dst: { is: false, uses: true }, id: n$2.TokelauTime, name: "Tokelau Time", offset: i$2.UTC_PLUS_13 });
-({ dst: { is: false, uses: true }, id: n$2.TongaTime, name: "Tonga Time", offset: i$2.UTC_PLUS_13 });
-({ dst: { is: false, uses: true }, id: n$2.TurkeyTime, name: "Turkey Time", offset: i$2.UTC_PLUS_3 });
-({ dst: { is: false, uses: true }, id: n$2.TurkmenistanTime, name: "Turkmenistan Time", offset: i$2.UTC_PLUS_5 });
-({ dst: { is: false, uses: true }, id: n$2.TuvaluTime, name: "Tuvalu Time", offset: i$2.UTC_PLUS_12 });
-({ dst: { is: false, uses: true }, id: n$2.UlaanbaatarStandardTime, name: "Ulaanbaatar Standard Time", offset: i$2.UTC_PLUS_8 });
-({ dst: { is: false, uses: true }, id: n$2.UlaanbaatarSummerTime, name: "Ulaanbaatar Summer Time", offset: i$2.UTC_PLUS_9 });
-({ dst: { is: false, uses: true }, id: n$2.UruguayStandardTime, name: "Uruguay Standard Time", offset: i$2.UTC_MINUS_3 });
-({ dst: { is: false, uses: true }, id: n$2.UruguaySummerTime, name: "Uruguay Summer Time", offset: i$2.UTC_MINUS_2 });
-({ dst: { is: false, uses: true }, id: n$2.UzbekistanTime, name: "Uzbekistan Time", offset: i$2.UTC_PLUS_5 });
-({ dst: { is: false, uses: true }, id: n$2.VanuatuTime, name: "Vanuatu Time", offset: i$2.UTC_PLUS_11 });
-({ dst: { is: false, uses: true }, id: n$2.VenezuelaStandardTime, name: "Venezuela Standard Time", offset: i$2.UTC_MINUS_4 });
-({ dst: { is: false, uses: true }, id: n$2.VladivostokTime, name: "Vladivostok Time", offset: i$2.UTC_PLUS_10 });
-({ dst: { is: false, uses: true }, id: n$2.VolgogradTime, name: "Volgograd Time", offset: i$2.UTC_PLUS_4 });
-({ dst: { is: false, uses: true }, id: n$2.VostokStationTime, name: "Vostok Station Time", offset: i$2.UTC_PLUS_6 });
-({ dst: { is: false, uses: true }, id: n$2.WakeIslandTime, name: "Wake Island Time", offset: i$2.UTC_PLUS_12 });
-({ dst: { is: false, uses: true }, id: n$2.WestAfricaSummerTime, name: "West Africa Summer Time", offset: i$2.UTC_PLUS_2 });
-({ dst: { is: false, uses: true }, id: n$2.WestAfricaTime, name: "West Africa Time", offset: i$2.UTC_PLUS_1 });
-({ dst: { is: false, uses: true }, id: n$2.WestGreenlandSummerTime, name: "West Greenland Summer Time", offset: i$2.UTC_MINUS_2 });
-({ dst: { is: false, uses: true }, id: n$2.WestGreenlandTime, name: "West Greenland Time", offset: i$2.UTC_MINUS_3 });
-({ dst: { is: false, uses: true }, id: n$2.WestKazakhstanTime, name: "West Kazakhstan Time", offset: i$2.UTC_PLUS_5 });
-({ dst: { is: false, uses: true }, id: n$2.WesternEuropeanSummerTime, name: "Western European Summer Time", offset: i$2.UTC_PLUS_1 });
-({ dst: { is: false, uses: true }, id: n$2.WesternEuropeanTime, name: "Western European Time", offset: i$2.UTC_0 });
-({ dst: { is: false, uses: true }, id: n$2.WesternIndonesianTime, name: "Western Indonesian Time", offset: i$2.UTC_PLUS_7 });
-({ dst: { is: false, uses: true }, id: n$2.WesternStandardTime, name: "Western Standard Time", offset: i$2.UTC_PLUS_8 });
-({ dst: { is: false, uses: true }, id: n$2.YakutskTime, name: "Yakutsk Time", offset: i$2.UTC_PLUS_9 });
-({ dst: { is: false, uses: true }, id: n$2.YekaterinburgTime, name: "Yekaterinburg Time", offset: i$2.UTC_PLUS_5 });
+({ dst: { is: false, uses: true }, id: n$2.AcreTime, name: "Acre Time", offset: i$3.UTC_MINUS_5 });
+({ dst: { is: false, uses: true }, id: n$2.AfghanistanTime, name: "Afghanistan Time", offset: i$3.UTC_PLUS_4_30 });
+({ dst: { is: false, uses: true }, id: n$2.AIXCentralEuropeanTime, name: "AIX Central European Time", offset: i$3.UTC_PLUS_1 });
+({ dst: { is: true, uses: true }, id: n$2.AlaskaDaylightTime, name: "Alaska Daylight Time", offset: i$3.UTC_MINUS_8 });
+({ dst: { is: false, uses: true }, id: n$2.AlaskaStandardTime, name: "Alaska Standard Time", offset: i$3.UTC_MINUS_9 });
+({ dst: { is: false, uses: true }, id: n$2.AlmaAtaTime, name: "Alma-Ata Time", offset: i$3.UTC_PLUS_6 });
+({ dst: { is: false, uses: true }, id: n$2.AmazonSummerTime, name: "Amazon Summer Time", offset: i$3.UTC_MINUS_3 });
+({ dst: { is: false, uses: true }, id: n$2.AmazonTime, name: "Amazon Time", offset: i$3.UTC_MINUS_4 });
+({ dst: { is: false, uses: true }, id: n$2.AnadyrTime, name: "Anadyr Time", offset: i$3.UTC_PLUS_12 });
+({ dst: { is: false, uses: true }, id: n$2.AqtobeTime, name: "Aqtobe Time", offset: i$3.UTC_PLUS_5 });
+({ dst: { is: false, uses: true }, id: n$2.ArabiaStandardTime, name: "Arabia Standard Time", offset: i$3.UTC_PLUS_3 });
+({ dst: { is: false, uses: true }, id: n$2.ArgentinaTime, name: "Argentina Time", offset: i$3.UTC_MINUS_3 });
+({ dst: { is: false, uses: true }, id: n$2.ArmeniaTime, name: "Armenia Time", offset: i$3.UTC_PLUS_4 });
+({ dst: { is: true, uses: true }, id: n$2.AtlanticDaylightTime, name: "Atlantic Daylight Time", offset: i$3.UTC_MINUS_3 });
+({ dst: { is: false, uses: true }, id: n$2.AtlanticStandardTime, name: "Atlantic Standard Time", offset: i$3.UTC_MINUS_4 });
+({ dst: { is: true, uses: true }, id: n$2.AustralianCentralDaylightSavingTime, name: "Australian Central Daylight Saving Time", offset: i$3.UTC_PLUS_10_30 });
+({ dst: { is: false, uses: true }, id: n$2.AustralianCentralStandardTime, name: "Australian Central Standard Time", offset: i$3.UTC_PLUS_9_30 });
+({ dst: { is: false, uses: true }, id: n$2.AustralianCentralWesternStandardTime, name: "Australian Central Western Standard Time", offset: i$3.UTC_PLUS_8_45 });
+({ dst: { is: true, uses: true }, id: n$2.AustralianEasternDaylightSavingTime, name: "Australian Eastern Daylight Saving Time", offset: i$3.UTC_PLUS_11 });
+({ dst: { is: false, uses: true }, id: n$2.AustralianEasternStandardTime, name: "Australian Eastern Standard Time", offset: i$3.UTC_PLUS_10 });
+({ dst: { is: false, uses: true }, id: n$2.AustralianEasternTime, name: "Australian Eastern Time", offset: i$3.UTC_PLUS_10 });
+({ dst: { is: false, uses: true }, id: n$2.AustralianWesternStandardTime, name: "Australian Western Standard Time", offset: i$3.UTC_PLUS_8 });
+({ dst: { is: false, uses: true }, id: n$2.AzerbaijanTime, name: "Azerbaijan Time", offset: i$3.UTC_PLUS_4 });
+({ dst: { is: false, uses: true }, id: n$2.AzoresStandardTime, name: "Azores Standard Time", offset: i$3.UTC_MINUS_1 });
+({ dst: { is: true, uses: true }, id: n$2.AzoresSummerTime, name: "Azores Summer Time", offset: i$3.UTC_0 });
+({ dst: { is: false, uses: true }, id: n$2.BakerIslandTime, name: "Baker Island Time", offset: i$3.UTC_MINUS_12 });
+({ dst: { is: false, uses: true }, id: n$2.BangladeshStandardTime, name: "Bangladesh Standard Time", offset: i$3.UTC_PLUS_6 });
+({ dst: { is: false, uses: true }, id: n$2.BhutanTime, name: "Bhutan Time", offset: i$3.UTC_PLUS_6 });
+({ dst: { is: false, uses: true }, id: n$2.BoliviaTime, name: "Bolivia Time", offset: i$3.UTC_MINUS_4 });
+({ dst: { is: false, uses: true }, id: n$2.BougainvilleStandardTime, name: "Bougainville Standard Time", offset: i$3.UTC_PLUS_11 });
+({ dst: { is: true, uses: true }, id: n$2.BrasiliaSummerTime, name: "Brasilia Summer Time", offset: i$3.UTC_MINUS_2 });
+({ dst: { is: false, uses: true }, id: n$2.BrasiliaTime, name: "Brasilia Time", offset: i$3.UTC_MINUS_3 });
+({ dst: { is: false, uses: true }, id: n$2.BritishIndianOceanTime, name: "British Indian Ocean Time", offset: i$3.UTC_PLUS_6 });
+({ dst: { is: true, uses: true }, id: n$2.BritishSummerTime, name: "British Summer Time", offset: i$3.UTC_PLUS_1 });
+({ dst: { is: false, uses: true }, id: n$2.BruneiTime, name: "Brunei Time", offset: i$3.UTC_PLUS_8 });
+({ dst: { is: false, uses: true }, id: n$2.CapeVerdeTime, name: "Cape Verde Time", offset: i$3.UTC_MINUS_1 });
+({ dst: { is: false, uses: true }, id: n$2.CentralAfricaTime, name: "Central Africa Time", offset: i$3.UTC_PLUS_2 });
+({ dst: { is: true, uses: true }, id: n$2.CentralDaylightTime, name: "Central Daylight Time", offset: i$3.UTC_MINUS_5 });
+({ dst: { is: true, uses: true }, id: n$2.CentralEuropeanSummerTime, name: "Central European Summer Time", offset: i$3.UTC_PLUS_2 });
+({ dst: { is: false, uses: true }, id: n$2.CentralEuropeanTime, name: "Central European Time", offset: i$3.UTC_PLUS_1 });
+({ dst: { is: false, uses: true }, id: n$2.CentralIndonesiaTime, name: "Central Indonesia Time", offset: i$3.UTC_PLUS_8 });
+({ dst: { is: false, uses: true }, id: n$2.CentralStandardTime, name: "Central Standard Time", offset: i$3.UTC_MINUS_6 });
+({ dst: { is: false, uses: true }, id: n$2.CentralTime, name: "Central Time", offset: i$3.UTC_MINUS_5 });
+({ dst: { is: false, uses: true }, id: n$2.CentralWesternStandardTime, name: "Central Western Standard Time", offset: i$3.UTC_PLUS_8_45 });
+({ dst: { is: false, uses: true }, id: n$2.ChamorroStandardTime, name: "Chamorro Standard Time", offset: i$3.UTC_PLUS_10 });
+({ dst: { is: true, uses: true }, id: n$2.ChathamDaylightTime, name: "Chatham Daylight Time", offset: i$3.UTC_PLUS_13_45 });
+({ dst: { is: false, uses: true }, id: n$2.ChathamStandardTime, name: "Chatham Standard Time", offset: i$3.UTC_PLUS_12_45 });
+({ dst: { is: false, uses: true }, id: n$2.ChileStandardTime, name: "Chile Standard Time", offset: i$3.UTC_MINUS_4 });
+({ dst: { is: true, uses: true }, id: n$2.ChileSummerTime, name: "Chile Summer Time", offset: i$3.UTC_MINUS_3 });
+({ dst: { is: false, uses: true }, id: n$2.ChinaStandardTime, name: "China Standard Time", offset: i$3.UTC_PLUS_8 });
+({ dst: { is: false, uses: true }, id: n$2.ChoibalsanStandardTime, name: "Choibalsan Standard Time", offset: i$3.UTC_PLUS_8 });
+({ dst: { is: true, uses: true }, id: n$2.ChoibalsanSummerTime, name: "Choibalsan Summer Time", offset: i$3.UTC_PLUS_9 });
+({ dst: { is: false, uses: true }, id: n$2.ChristmasIslandTime, name: "Christmas Island Time", offset: i$3.UTC_PLUS_7 });
+({ dst: { is: false, uses: true }, id: n$2.ChuukTime, name: "Chuuk Time", offset: i$3.UTC_PLUS_10 });
+({ dst: { is: false, uses: true }, id: n$2.ClipptertonIslandStandardTime, name: "Clippterton Island Standard Time", offset: i$3.UTC_MINUS_8 });
+({ dst: { is: false, uses: true }, id: n$2.CocosIslandsTime, name: "Cocos Standard Time", offset: i$3.UTC_PLUS_6_30 });
+({ dst: { is: true, uses: true }, id: n$2.ColombiaSummerTime, name: "Colombia Summer Time", offset: i$3.UTC_MINUS_4 });
+({ dst: { is: false, uses: true }, id: n$2.ColombiaTime, name: "Colombia Time", offset: i$3.UTC_MINUS_5 });
+({ dst: { is: false, uses: true }, id: n$2.CookIslandTime, name: "Cook Island Time", offset: i$3.UTC_MINUS_10 });
+({ dst: { is: false, uses: true }, id: n$2.CoordinatedUniversalTime, name: "Coordinated Universal Time", offset: i$3.UTC_0 });
+({ dst: { is: true, uses: true }, id: n$2.CubaDaylightTime, name: "Cuba Daylight Time", offset: i$3.UTC_MINUS_4 });
+({ dst: { is: false, uses: true }, id: n$2.CubaStandardTime, name: "Cuba Standard Time", offset: i$3.UTC_MINUS_5 });
+({ dst: { is: false, uses: true }, id: n$2.DavisTime, name: "Davis Time", offset: i$3.UTC_PLUS_7 });
+({ dst: { is: false, uses: true }, id: n$2.DumontDUrvilleTime, name: "Dumont D'Urville Time", offset: i$3.UTC_PLUS_10 });
+({ dst: { is: false, uses: true }, id: n$2.EastAfricaTime, name: "East Africa Time", offset: i$3.UTC_PLUS_3 });
+({ dst: { is: false, uses: true }, id: n$2.EasterIslandStandardTime, name: "Easter Island Standard Time", offset: i$3.UTC_MINUS_6 });
+({ dst: { is: true, uses: true }, id: n$2.EasterIslandSummerTime, name: "Easter Island Summer Time", offset: i$3.UTC_MINUS_5 });
+({ dst: { is: false, uses: true }, id: n$2.EasternCaribbeanTime, name: "Eastern Caribbean Time", offset: i$3.UTC_MINUS_4 });
+({ dst: { is: true, uses: true }, id: n$2.EasternDaylightTime, name: "Eastern Daylight Time", offset: i$3.UTC_MINUS_4 });
+({ dst: { is: true, uses: true }, id: n$2.EasternEuropeanSummerTime, name: "Eastern European Summer Time", offset: i$3.UTC_PLUS_3 });
+({ dst: { is: false, uses: true }, id: n$2.EasternEuropeanTime, name: "Eastern European Time", offset: i$3.UTC_PLUS_2 });
+({ dst: { is: true, uses: true }, id: n$2.EasternGreenlandSummerTime, name: "Eastern Greenland Summer Time", offset: i$3.UTC_0 });
+({ dst: { is: false, uses: true }, id: n$2.EasternGreenlandTime, name: "Eastern Greenland Time", offset: i$3.UTC_MINUS_1 });
+({ dst: { is: false, uses: true }, id: n$2.EasternIndonesianTime, name: "Eastern Indonesian Time", offset: i$3.UTC_PLUS_9 });
+({ dst: { is: false, uses: true }, id: n$2.EasternStandardTime, name: "Eastern Standard Time", offset: i$3.UTC_MINUS_5 });
+({ dst: { is: false, uses: true }, id: n$2.EasternTime, name: "Eastern Time", offset: i$3.UTC_MINUS_5 });
+({ dst: { is: false, uses: true }, id: n$2.EcuadorTime, name: "Ecuador Time", offset: i$3.UTC_MINUS_5 });
+({ dst: { is: true, uses: true }, id: n$2.FalklandIslandsSummerTime, name: "Falkland Islands Summer Time", offset: i$3.UTC_MINUS_3 });
+({ dst: { is: false, uses: true }, id: n$2.FalklandIslandsTime, name: "Falkland Islands Time", offset: i$3.UTC_MINUS_4 });
+({ dst: { is: false, uses: true }, id: n$2.FernandoDeNoronhaTime, name: "Fernando de Noronha Time", offset: i$3.UTC_MINUS_2 });
+({ dst: { is: false, uses: true }, id: n$2.FijiTime, name: "Fiji Time", offset: i$3.UTC_PLUS_12 });
+({ dst: { is: false, uses: true }, id: n$2.FrenchGuianaTime, name: "French Guiana Time", offset: i$3.UTC_MINUS_3 });
+({ dst: { is: false, uses: true }, id: n$2.FrenchSouthernAndAntarcticTime, name: "French Southern and Antarctic Time", offset: i$3.UTC_PLUS_5 });
+({ dst: { is: false, uses: true }, id: n$2.FurtherEasternEuropeanTime, name: "Further Eastern European Time", offset: i$3.UTC_PLUS_3 });
+({ dst: { is: false, uses: true }, id: n$2.GalapagosTime, name: "Galapagos Time", offset: i$3.UTC_MINUS_6 });
+({ dst: { is: false, uses: true }, id: n$2.GambierIslandTime, name: "Gambier Island Time", offset: i$3.UTC_MINUS_9 });
+({ dst: { is: false, uses: true }, id: n$2.GambierIslandsTime, name: "Gambier Islands Time", offset: i$3.UTC_MINUS_9 });
+({ dst: { is: false, uses: true }, id: n$2.GeorgiaStandardTime, name: "Georgia Standard Time", offset: i$3.UTC_PLUS_4 });
+({ dst: { is: false, uses: true }, id: n$2.GilbertIslandTime, name: "Gilbert Island Time", offset: i$3.UTC_PLUS_12 });
+({ dst: { is: false, uses: true }, id: n$2.GreenwichMeanTime, name: "Greenwich Mean Time", offset: i$3.UTC_0 });
+({ dst: { is: false, uses: true }, id: n$2.GulfStandardTime, name: "Gulf Standard Time", offset: i$3.UTC_PLUS_4 });
+({ dst: { is: false, uses: true }, id: n$2.GuyanaTime, name: "Guyana Time", offset: i$3.UTC_MINUS_4 });
+({ dst: { is: true, uses: true }, id: n$2.HawaiiAleutianDaylightTime, name: "Hawaii-Aleutian Daylight Time", offset: i$3.UTC_MINUS_9 });
+({ dst: { is: false, uses: true }, id: n$2.HawaiiAleutianStandardTime, name: "Hawaii-Aleutian Standard Time", offset: i$3.UTC_MINUS_10 });
+({ dst: { is: false, uses: true }, id: n$2.HeardAndMcDonaldIslandsTime, name: "Heard and McDonald Islands Time", offset: i$3.UTC_PLUS_5 });
+({ dst: { is: false, uses: true }, id: n$2.HongKongTime, name: "Hong Kong Time", offset: i$3.UTC_PLUS_8 });
+({ dst: { is: true, uses: true }, id: n$2.HovdSummerTime, name: "Hovd Summer Time", offset: i$3.UTC_PLUS_8 });
+({ dst: { is: false, uses: true }, id: n$2.HovdTime, name: "Hovd Time", offset: i$3.UTC_PLUS_7 });
+({ dst: { is: false, uses: true }, id: n$2.IndianOceanTime, name: "Indian Ocean Time", offset: i$3.UTC_PLUS_3 });
+({ dst: { is: false, uses: true }, id: n$2.IndianStandardTime, name: "Indian Standard Time", offset: i$3.UTC_PLUS_5_30 });
+({ dst: { is: false, uses: true }, id: n$2.IndochinaTime, name: "Indochina Time", offset: i$3.UTC_PLUS_7 });
+({ dst: { is: false, uses: true }, id: n$2.InternationalDayLineWestTime, name: "International Day Line West Time", offset: i$3.UTC_MINUS_12 });
+({ dst: { is: true, uses: true }, id: n$2.IranDaylightTime, name: "Iran Daylight Time", offset: i$3.UTC_PLUS_4_30 });
+({ dst: { is: false, uses: true }, id: n$2.IranStandardTime, name: "Iran Standard Time", offset: i$3.UTC_PLUS_3_30 });
+({ dst: { is: false, uses: true }, id: n$2.IrishStandardTime, name: "Irish Standard Time", offset: i$3.UTC_PLUS_1 });
+({ dst: { is: false, uses: true }, id: n$2.IrkutskTime, name: "Irkutsk Time", offset: i$3.UTC_PLUS_8 });
+({ dst: { is: true, uses: true }, id: n$2.IsraelDaylightTime, name: "Israel Daylight Time", offset: i$3.UTC_PLUS_3 });
+({ dst: { is: false, uses: true }, id: n$2.IsraelStandardTime, name: "Israel Standard Time", offset: i$3.UTC_PLUS_2 });
+({ dst: { is: false, uses: true }, id: n$2.JapanStandardTime, name: "Japan Standard Time", offset: i$3.UTC_PLUS_9 });
+({ dst: { is: false, uses: true }, id: n$2.KaliningradTime, name: "Kaliningrad Time", offset: i$3.UTC_PLUS_2 });
+({ dst: { is: false, uses: true }, id: n$2.KamchatkaTime, name: "Kamchatka Time", offset: i$3.UTC_PLUS_12 });
+({ dst: { is: false, uses: true }, id: n$2.KoreaStandardTime, name: "Korea Standard Time", offset: i$3.UTC_PLUS_9 });
+({ dst: { is: false, uses: true }, id: n$2.KosraeTime, name: "Kosrae Time", offset: i$3.UTC_PLUS_11 });
+({ dst: { is: false, uses: true }, id: n$2.KrasnoyarskTime, name: "Krasnoyarsk Time", offset: i$3.UTC_PLUS_7 });
+({ dst: { is: false, uses: true }, id: n$2.KyrgyzstanTime, name: "Kyrgyzstan Time", offset: i$3.UTC_PLUS_6 });
+({ dst: { is: false, uses: true }, id: n$2.LineIslandsTime, name: "Line Islands Time", offset: i$3.UTC_PLUS_14 });
+({ dst: { is: false, uses: true }, id: n$2.LordHoweStandardTime, name: "Lord Howe Standard Time", offset: i$3.UTC_PLUS_10_30 });
+({ dst: { is: false, uses: true }, id: n$2.LordHoweSummerTime, name: "Lord Howe Summer Time", offset: i$3.UTC_PLUS_11 });
+({ dst: { is: false, uses: true }, id: n$2.MacquarieIslandStationTime, name: "Macquarie Island Station Time", offset: i$3.UTC_PLUS_11 });
+({ dst: { is: false, uses: true }, id: n$2.MagadanTime, name: "Magadan Time", offset: i$3.UTC_PLUS_12 });
+({ dst: { is: false, uses: true }, id: n$2.MalaysiaStandardTime, name: "Malaysia Standard Time", offset: i$3.UTC_PLUS_8 });
+({ dst: { is: false, uses: true }, id: n$2.MalaysiaTime, name: "Malaysia Time", offset: i$3.UTC_PLUS_8 });
+({ dst: { is: false, uses: true }, id: n$2.MaldivesTime, name: "Maldives Time", offset: i$3.UTC_PLUS_5 });
+({ dst: { is: false, uses: true }, id: n$2.MarquesasIslandsTime, name: "Marquesas Islands Time", offset: i$3.UTC_PLUS_9_30 });
+({ dst: { is: false, uses: true }, id: n$2.MarshallIslandsTime, name: "Marshall Islands Time", offset: i$3.UTC_PLUS_12 });
+({ dst: { is: false, uses: true }, id: n$2.MauritiusTime, name: "Mauritius Time", offset: i$3.UTC_PLUS_4 });
+({ dst: { is: false, uses: true }, id: n$2.MawsonStationTime, name: "Mawson Station Time", offset: i$3.UTC_PLUS_5 });
+({ dst: { is: false, uses: true }, id: n$2.MiddleEuropeanSummerTime, name: "Middle European Summer Time", offset: i$3.UTC_PLUS_2 });
+({ dst: { is: false, uses: true }, id: n$2.MiddleEuropeanTime, name: "Middle European Time", offset: i$3.UTC_PLUS_1 });
+({ dst: { is: false, uses: true }, id: n$2.MoscowTime, name: "Moscow Time", offset: i$3.UTC_PLUS_3 });
+({ dst: { is: false, uses: true }, id: n$2.MountainDaylightTime, name: "Mountain Daylight Time", offset: i$3.UTC_MINUS_6 });
+({ dst: { is: false, uses: true }, id: n$2.MountainStandardTime, name: "Mountain Standard Time", offset: i$3.UTC_MINUS_7 });
+({ dst: { is: false, uses: true }, id: n$2.MyanmarStandardTime, name: "Myanmar Standard Time", offset: i$3.UTC_PLUS_6_30 });
+({ dst: { is: false, uses: true }, id: n$2.NepalTime, name: "Nepal Time", offset: i$3.UTC_PLUS_5_45 });
+({ dst: { is: false, uses: true }, id: n$2.NauruTime, name: "Nauru Time", offset: i$3.UTC_PLUS_12 });
+({ dst: { is: false, uses: true }, id: n$2.NewCaledoniaTime, name: "New Caledonia Time", offset: i$3.UTC_PLUS_11 });
+({ dst: { is: false, uses: true }, id: n$2.NewZealandDaylightTime, name: "New Zealand Daylight Time", offset: i$3.UTC_PLUS_13 });
+({ dst: { is: false, uses: true }, id: n$2.NewZealandStandardTime, name: "New Zealand Standard Time", offset: i$3.UTC_PLUS_12 });
+({ dst: { is: false, uses: true }, id: n$2.NewfoundlandDaylightTime, name: "Newfoundland Daylight Time", offset: i$3.UTC_MINUS_2_30 });
+({ dst: { is: false, uses: true }, id: n$2.NewfoundlandTime, name: "Newfoundland Time", offset: i$3.UTC_MINUS_3_30 });
+({ dst: { is: false, uses: true }, id: n$2.NiueTime, name: "Niue Time", offset: i$3.UTC_MINUS_11 });
+({ dst: { is: false, uses: true }, id: n$2.NorfolkIslandTime, name: "Norfolk Island Time", offset: i$3.UTC_PLUS_11 });
+({ dst: { is: false, uses: true }, id: n$2.NovosibirskTime, name: "Novosibirsk Time", offset: i$3.UTC_PLUS_7 });
+({ dst: { is: false, uses: true }, id: n$2.OmskTime, name: "Omsk Time", offset: i$3.UTC_PLUS_6 });
+({ dst: { is: false, uses: true }, id: n$2.OralTime, name: "Oral Time", offset: i$3.UTC_PLUS_5 });
+({ dst: { is: false, uses: true }, id: n$2.PacificDaylightTime, name: "Pacific Daylight Time", offset: i$3.UTC_MINUS_7 });
+({ dst: { is: false, uses: true }, id: n$2.PacificStandardTime, name: "Pacific Standard Time", offset: i$3.UTC_MINUS_8 });
+({ dst: { is: false, uses: true }, id: n$2.PakistanStandardTime, name: "Pakistan Standard Time", offset: i$3.UTC_PLUS_5 });
+({ dst: { is: false, uses: true }, id: n$2.PalauTime, name: "Palau Time", offset: i$3.UTC_PLUS_9 });
+({ dst: { is: false, uses: true }, id: n$2.PapuaNewGuineaTime, name: "Papua New Guinea Time", offset: i$3.UTC_PLUS_10 });
+({ dst: { is: false, uses: true }, id: n$2.ParaguaySummerTime, name: "Paraguay Summer Time", offset: i$3.UTC_MINUS_3 });
+({ dst: { is: false, uses: true }, id: n$2.ParaguayTime, name: "Paraguay Time", offset: i$3.UTC_MINUS_4 });
+({ dst: { is: false, uses: true }, id: n$2.PeruTime, name: "Peru Time", offset: i$3.UTC_MINUS_5 });
+({ dst: { is: false, uses: true }, id: n$2.PhilippineStandardTime, name: "Philippine Standard Time", offset: i$3.UTC_PLUS_8 });
+({ dst: { is: false, uses: true }, id: n$2.PhilippineTime, name: "Philippine Time", offset: i$3.UTC_PLUS_8 });
+({ dst: { is: false, uses: true }, id: n$2.PhoenixIslandTime, name: "Phoenix Island Time", offset: i$3.UTC_PLUS_13 });
+({ dst: { is: false, uses: true }, id: n$2.PitcairnTime, name: "Pitcairn Time", offset: i$3.UTC_MINUS_8 });
+({ dst: { is: false, uses: true }, id: n$2.PohnpeiStandardTime, name: "Pohnpei Standard Time", offset: i$3.UTC_PLUS_11 });
+({ dst: { is: false, uses: true }, id: n$2.ReunionTime, name: "Reunion Time", offset: i$3.UTC_PLUS_4 });
+({ dst: { is: false, uses: true }, id: n$2.RotheraResearchStationTime, name: "Rothera Research Station Time", offset: i$3.UTC_MINUS_3 });
+({ dst: { is: false, uses: true }, id: n$2.SaintPierreAndMiquelonDaylightTime, name: "Saint Pierre and Miquelon Daylight Time", offset: i$3.UTC_MINUS_2 });
+({ dst: { is: false, uses: true }, id: n$2.SaintPierreAndMiquelonStandardTime, name: "Saint Pierre and Miquelon Standard Time", offset: i$3.UTC_MINUS_3 });
+({ dst: { is: false, uses: true }, id: n$2.SakhalinIslandTime, name: "Sakhalin Island Time", offset: i$3.UTC_PLUS_11 });
+({ dst: { is: false, uses: true }, id: n$2.SamaraTime, name: "Samara Time", offset: i$3.UTC_PLUS_4 });
+({ dst: { is: false, uses: true }, id: n$2.SamoaDaylightTime, name: "Samoa Daylight Time", offset: i$3.UTC_MINUS_10 });
+({ dst: { is: false, uses: true }, id: n$2.SamoaStandardTime, name: "Samoa Standard Time", offset: i$3.UTC_MINUS_11 });
+({ dst: { is: false, uses: true }, id: n$2.SeychellesTime, name: "Seychelles Time", offset: i$3.UTC_PLUS_4 });
+({ dst: { is: false, uses: true }, id: n$2.ShowaStationTime, name: "Showa Station Time", offset: i$3.UTC_PLUS_3 });
+({ dst: { is: false, uses: true }, id: n$2.SingaporeStandardTime, name: "Singapore Standard Time", offset: i$3.UTC_PLUS_8 });
+({ dst: { is: false, uses: true }, id: n$2.SingaporeTime, name: "Singapore Time", offset: i$3.UTC_PLUS_8 });
+({ dst: { is: false, uses: true }, id: n$2.SolomonIslandsTime, name: "Solomon Islands Time", offset: i$3.UTC_PLUS_11 });
+({ dst: { is: false, uses: true }, id: n$2.SouthAfricanStandardTime, name: "South African Standard Time", offset: i$3.UTC_PLUS_2 });
+({ dst: { is: false, uses: true }, id: n$2.SouthGeorgiaAndTheSouthSandwichIslandsTime, name: "South Georgia and the South Sandwich Islands Time", offset: i$3.UTC_MINUS_2 });
+({ dst: { is: false, uses: true }, id: n$2.SrednekolymskTime, name: "Srednekolymsk Time", offset: i$3.UTC_PLUS_11 });
+({ dst: { is: false, uses: true }, id: n$2.SriLankaStandardTime, name: "Sri Lanka Standard Time", offset: i$3.UTC_PLUS_5_30 });
+({ dst: { is: false, uses: true }, id: n$2.SurinameTime, name: "Suriname Time", offset: i$3.UTC_MINUS_3 });
+({ dst: { is: false, uses: true }, id: n$2.TahitiTime, name: "Tahiti Time", offset: i$3.UTC_MINUS_10 });
+({ dst: { is: false, uses: true }, id: n$2.TajikistanTime, name: "Tajikistan Time", offset: i$3.UTC_PLUS_5 });
+({ dst: { is: false, uses: true }, id: n$2.ThailandStandardTime, name: "Thailand Standard Time", offset: i$3.UTC_PLUS_7 });
+({ dst: { is: false, uses: true }, id: n$2.TimorLesteTime, name: "Timor-Leste Time", offset: i$3.UTC_PLUS_9 });
+({ dst: { is: false, uses: true }, id: n$2.TokelauTime, name: "Tokelau Time", offset: i$3.UTC_PLUS_13 });
+({ dst: { is: false, uses: true }, id: n$2.TongaTime, name: "Tonga Time", offset: i$3.UTC_PLUS_13 });
+({ dst: { is: false, uses: true }, id: n$2.TurkeyTime, name: "Turkey Time", offset: i$3.UTC_PLUS_3 });
+({ dst: { is: false, uses: true }, id: n$2.TurkmenistanTime, name: "Turkmenistan Time", offset: i$3.UTC_PLUS_5 });
+({ dst: { is: false, uses: true }, id: n$2.TuvaluTime, name: "Tuvalu Time", offset: i$3.UTC_PLUS_12 });
+({ dst: { is: false, uses: true }, id: n$2.UlaanbaatarStandardTime, name: "Ulaanbaatar Standard Time", offset: i$3.UTC_PLUS_8 });
+({ dst: { is: false, uses: true }, id: n$2.UlaanbaatarSummerTime, name: "Ulaanbaatar Summer Time", offset: i$3.UTC_PLUS_9 });
+({ dst: { is: false, uses: true }, id: n$2.UruguayStandardTime, name: "Uruguay Standard Time", offset: i$3.UTC_MINUS_3 });
+({ dst: { is: false, uses: true }, id: n$2.UruguaySummerTime, name: "Uruguay Summer Time", offset: i$3.UTC_MINUS_2 });
+({ dst: { is: false, uses: true }, id: n$2.UzbekistanTime, name: "Uzbekistan Time", offset: i$3.UTC_PLUS_5 });
+({ dst: { is: false, uses: true }, id: n$2.VanuatuTime, name: "Vanuatu Time", offset: i$3.UTC_PLUS_11 });
+({ dst: { is: false, uses: true }, id: n$2.VenezuelaStandardTime, name: "Venezuela Standard Time", offset: i$3.UTC_MINUS_4 });
+({ dst: { is: false, uses: true }, id: n$2.VladivostokTime, name: "Vladivostok Time", offset: i$3.UTC_PLUS_10 });
+({ dst: { is: false, uses: true }, id: n$2.VolgogradTime, name: "Volgograd Time", offset: i$3.UTC_PLUS_4 });
+({ dst: { is: false, uses: true }, id: n$2.VostokStationTime, name: "Vostok Station Time", offset: i$3.UTC_PLUS_6 });
+({ dst: { is: false, uses: true }, id: n$2.WakeIslandTime, name: "Wake Island Time", offset: i$3.UTC_PLUS_12 });
+({ dst: { is: false, uses: true }, id: n$2.WestAfricaSummerTime, name: "West Africa Summer Time", offset: i$3.UTC_PLUS_2 });
+({ dst: { is: false, uses: true }, id: n$2.WestAfricaTime, name: "West Africa Time", offset: i$3.UTC_PLUS_1 });
+({ dst: { is: false, uses: true }, id: n$2.WestGreenlandSummerTime, name: "West Greenland Summer Time", offset: i$3.UTC_MINUS_2 });
+({ dst: { is: false, uses: true }, id: n$2.WestGreenlandTime, name: "West Greenland Time", offset: i$3.UTC_MINUS_3 });
+({ dst: { is: false, uses: true }, id: n$2.WestKazakhstanTime, name: "West Kazakhstan Time", offset: i$3.UTC_PLUS_5 });
+({ dst: { is: false, uses: true }, id: n$2.WesternEuropeanSummerTime, name: "Western European Summer Time", offset: i$3.UTC_PLUS_1 });
+({ dst: { is: false, uses: true }, id: n$2.WesternEuropeanTime, name: "Western European Time", offset: i$3.UTC_0 });
+({ dst: { is: false, uses: true }, id: n$2.WesternIndonesianTime, name: "Western Indonesian Time", offset: i$3.UTC_PLUS_7 });
+({ dst: { is: false, uses: true }, id: n$2.WesternStandardTime, name: "Western Standard Time", offset: i$3.UTC_PLUS_8 });
+({ dst: { is: false, uses: true }, id: n$2.YakutskTime, name: "Yakutsk Time", offset: i$3.UTC_PLUS_9 });
+({ dst: { is: false, uses: true }, id: n$2.YekaterinburgTime, name: "Yekaterinburg Time", offset: i$3.UTC_PLUS_5 });
 var I;
 (function(a2) {
   a2.Africa = "Africa", a2.Americas = "Americas", a2.Asia = "Asia", a2.Europe = "Europe", a2.Oceania = "Oceania", a2.Polar = "Polar";
@@ -18748,7 +18747,7 @@ var x$1;
 (function(a2) {
   a2.CentralAmerica = "Central America", a2.EasternAsia = "Eastern Asia", a2.EasternEurope = "Eastern Europe", a2.EasternAfrica = "Eastern Africa", a2.MiddleAfrica = "Middle Africa", a2.MiddleEast = "Middle East", a2.NorthernAfrica = "Northern Africa", a2.NorthernAmerica = "Northern America", a2.NorthernEurope = "Northern Europe", a2.Polynesia = "Polynesia", a2.SouthAmerica = "South America", a2.SouthernAfrica = "Southern Africa", a2.SouthernAsia = "Southern Asia", a2.SouthernEurope = "Southern Europe", a2.WesternAfrica = "Western Africa", a2.WesternAsia = "Western Asia", a2.WesternEurope = "Western Europe", a2.WesternAustralia = "Western Australia";
 })(x$1 || (x$1 = {}));
-({ Afghanistan: { i18n: { calling_codes: [93], currencies: [l$1.AfghanistanAfghani], languages: [e$2.Pashto, e$2.Dari, e$2.Turkmen, e$2.Uzbek], tz: { offsets: [i$2.UTC_PLUS_4_30], regions: [t$1.AsiaKabul], timezones: [n$2.AfghanistanTime] } }, id: r$2.Afghanistan, info: { flag: { emoji: "\u{1F1E6}\u{1F1EB}", emoji_unicode: "U+1F1E6 U+1F1EB", svg: "https://www.countryflags.io/af/flat/64.svg" }, tld: [".af"] }, iso: { alpha2: r$2.Afghanistan, alpha3: "AFG", numeric: "004" }, name: { alt_spellings: ["AF", "Af\u0121\u0101nist\u0101n"], demonym: "Afghan", native: { endonym: "\u0627\u0641\u063A\u0627\u0646\u0633\u062A\u0627\u0646" }, official: "Islamic Republic of Afghanistan", short: "Afghanistan", translations: { [e$2.Afrikaans]: "Afghanistan", [e$2.Albanian]: "Shqip\xEBri", [e$2.Amharic]: "\u12A0\u134D\u130B\u1295", [e$2.Arabic]: "\u0623\u0641\u063A\u0627\u0646\u0633\u062A\u0627\u0646", [e$2.Armenian]: "\u0540\u0561\u0575\u0561\u057D\u057F\u0561\u0576", [e$2.Azerbaijani]: "Az\u0259rbaycan", [e$2.Bashkir]: "\u0410\u0444\u0433\u0430\u043D\u0438\u0441\u0442\u0430\u043D", [e$2.Basque]: "Afganist\xE1n", [e$2.Belarusian]: "\u0410\u0444\u0433\u0430\u043D\u0438\u0441\u0442\u0430\u043D", [e$2.Bengali]: "\u0986\u09AB\u0997\u09BE\u09A8\u09BF\u09B8\u09CD\u09A4\u09BE\u09A8", [e$2.Berber]: "\u0623\u0641\u063A\u0627\u0646\u0633\u062A\u0627\u0646", [e$2.Bhutani]: "\u0F60\u0F56\u0FB2\u0F74\u0F42\u0F0B\u0F61\u0F74\u0F63\u0F0B\u0F66\u0FA4\u0FB2\u0F7C\u0F51\u0F0B\u0F40\u0FB1\u0F72\u0F0B\u0F51\u0F7C\u0F53\u0F0B\u0F63\u0F7A\u0F0B\u0F66\u0F90\u0F51\u0F0B\u0F46\u0F0D", [e$2.Bosnian]: "\u0410\u0444\u0433\u0430\u043D\u0438\u0441\u0442\u0430\u043D", [e$2.Breton]: "Afganistan", [e$2.Bulgarian]: "\u0410\u0444\u0433\u0430\u043D\u0438\u0441\u0442\u0430\u043D", [e$2.Burmese]: "\u1021\u102C\u1019\u1001\u103B\u1004\u103A\u1010\u1031\u102C\u103A", [e$2.Catalan]: "Afganistan", [e$2.Chinese]: "\u963F\u5BCC\u6C57", [e$2.Croatian]: "Afganistan", [e$2.Czech]: "Afganistan", [e$2.Danish]: "Afghanistan", [e$2.Dutch]: "Afghanistan", [e$2.English]: "Afghanistan", [e$2.Esperanto]: "Afganistan", [e$2.Estonian]: "Afganistan", [e$2.Finnish]: "Afghanistan", [e$2.French]: "Afghanistan", [e$2.Frisian]: "Afghanistan", [e$2.Galician]: "Afganist\xE1n", [e$2.Georgian]: "\u10D0\u10D5\u10E6\u10D0\u10DC\u10D4\u10D7\u10D8", [e$2.German]: "Afghanistan", [e$2.Greenlandic]: "Afghanistan", [e$2.Greek]: "\u0391\u03C6\u03B3\u03B1\u03BD\u03B9\u03C3\u03C4\u03AC\u03BD", [e$2.Gujarati]: "\u0A85\u0AAB\u0A97\u0ABE\u0AA8\u0ABF\u0AB8\u0ACD\u0AA4\u0ABE\u0AA8", [e$2.Haitian]: "Afghanistan", [e$2.Hausa]: "Afghanistan", [e$2.Hebrew]: "\u05D0\u05E4\u05D2\u05E0\u05D9\u05E1\u05D8\u05DF", [e$2.Hindi]: "\u0905\u092B\u0917\u093E\u0928\u093F\u0938\u094D\u0924\u093E\u0928", [e$2.Hungarian]: "Afganistan", [e$2.Icelandic]: "Afghanistan", [e$2.Igbo]: "Afghanistan", [e$2.Indonesian]: "Afghanistan", [e$2.Irish]: "Afghanistan", [e$2.Italian]: "Afghanistan", [e$2.Japanese]: "\u30A2\u30D5\u30AC\u30CB\u30B9\u30BF\u30F3", [e$2.Javanese]: "Afghanistan", [e$2.Kannada]: "\u0C85\u0CAB\u0C97\u0CBE\u0CA8\u0CBF\u0CB8\u0CCD\u0CA4\u0CBE\u0CA8", [e$2.Kazakh]: "\u0410\u0444\u0433\u0430\u043D\u0438\u0441\u0442\u0430\u043D", [e$2.Khmer]: "\u17A2\u17B6\u17A0\u17D2\u179C\u17D2\u179A\u17B7\u1780", [e$2.Korean]: "\uC544\uD504\uAC00\uB2C8\uC2A4\uD0C4", [e$2.Kurdish]: "Afghanistan", [e$2.Kyrgyz]: "\u0410\u0444\u0433\u0430\u043D\u0438\u0441\u0442\u0430\u043D", [e$2.Lao]: "\u0EAD\u0EB2\u0E9F\u0EB2\u0EA5\u0EBD\u0E99", [e$2.Latin]: "Afghanistan", [e$2.Latvian]: "Afghanistan", [e$2.Lithuanian]: "Afganistanas", [e$2.Luxembourgish]: "Afghanistan", [e$2.Macedonian]: "\u0410\u0444\u0433\u0430\u043D\u0438\u0441\u0442\u0430\u043D", [e$2.Malagasy]: "Afghanistan", [e$2.Malay]: "Afghanistan", [e$2.Malayalam]: "\u0D05\u0D2B\u0D17\u0D3E\u0D28\u0D3F\u0D38\u0D4D\u0D24\u0D3E\u0D28", [e$2.Maltese]: "Afghanistan", [e$2.Maori]: "Afghanistan", [e$2.Marathi]: "\u0905\u092B\u0917\u093E\u0928\u093F\u0938\u094D\u0924\u093E\u0928", [e$2.Mongolian]: "\u0410\u0444\u0433\u0430\u043D\u0438\u0441\u0442\u0430\u043D", [e$2.Nepali]: "\u0905\u092B\u0917\u093E\u0928\u093F\u0938\u094D\u0924\u093E\u0928", [e$2.Norwegian]: "Afghanistan", [e$2.Pashto]: "\u0627\u0641\u063A\u0627\u0646\u0633\u062A\u0627\u0646", [e$2.Persian]: "\u0627\u0641\u063A\u0627\u0646\u0633\u062A\u0627\u0646", [e$2.Polish]: "Afganistan", [e$2.Portuguese]: "Afghanistan", [e$2.Punjabi]: "Afghanistan", [e$2.Romanian]: "Afghanistan", [e$2.Polish]: "Afganistan", [e$2.Russian]: "\u0410\u0444\u0433\u0430\u043D\u0438\u0441\u0442\u0430\u043D", [e$2.Samoan]: "Afghanistan", [e$2.Sanskrit]: "\u0905\u092B\u0917\u093E\u0928\u093F\u0938\u094D\u0924\u093E\u0928", [e$2.Scots]: "Afghanistan", [e$2.Serbian]: "\u0410\u0444\u0433\u0430\u043D\u0438\u0441\u0442\u0430\u043D", [e$2.Sesotho]: "Afghanistan", [e$2.Shona]: "Afghanistan", [e$2.Sindhi]: "Afghanistan", [e$2.Sinhala]: "\u0D86\u0D9C\u0DCA\u200D\u0DBB\u0DDC\u0D9A\u0DCA\u0D9A\u0DD2\u0DBA\u0DCF\u0DC0", [e$2.Slovak]: "Afganistan", [e$2.Slovenian]: "Afganistan", [e$2.Somali]: "Afghanistan", [e$2.Spanish]: "Afganist\xE1n", [e$2.Sudanese]: "Afghanistan", [e$2.Swahili]: "Afghanistan", [e$2.Swedish]: "Afghanistan", [e$2.Tagalog]: "Afghanistan", [e$2.Tajik]: "\u0410\u0444\u0433\u0430\u043D\u0438\u0441\u0442\u0430\u043D", [e$2.Tatar]: "\u0410\u0444\u0433\u0430\u043D\u0438\u0441\u0442\u0430\u043D", [e$2.Tamil]: "\u0B86\u0BAA\u0BCD\u0BAA\u0B95\u0BBE\u0BA9\u0BBF\u0BB8\u0BCD\u0BA4\u0BBE\u0BA9\u0BCD", [e$2.Telugu]: "\u0C06\u0C2B\u0C4D\u0C18\u0C28\u0C3F\u0C38\u0C4D\u0C24\u0C3E\u0C28\u0C4D", [e$2.Thai]: "\u0E2D\u0E31\u0E1F\u0E01\u0E32\u0E19\u0E34\u0E2A\u0E16\u0E32\u0E19", [e$2.Tibetan]: "\u0F68\u0F55\u0F0B\u0F42\u0F7A\u0F0B\u0F53\u0F72\u0F66\u0F72\u0F0B\u0F4F\u0F7A\u0F53\u0F66\u0F72\u0F0D", [e$2.Turkish]: "Afganistan", [e$2.Ukrainian]: "\u0410\u0444\u0433\u0430\u043D\u0438\u0441\u0442\u0430\u043D", [e$2.Urdu]: "\u0627\u0641\u063A\u0627\u0646\u0633\u062A\u0627\u0646", [e$2.Uzbek]: "\u0410\u0444\u0433\u0430\u043D\u0438\u0441\u0442\u0430\u043D", [e$2.Vietnamese]: "Afghanistan", [e$2.Welsh]: "Afghanistan", [e$2.Xhosa]: "Afghanistan", [e$2.Yiddish]: "Afghanistan", [e$2.Yoruba]: "Afghanistan", [e$2.Zulu]: "Afghanistan" } }, statistics: { demographics: { age: { distribution: [{ age: "0 to 14 years", percentage: 15.3 }, { age: "15 to 64 years", percentage: 66.7 }, { age: "65 years and over", percentage: 14.6 }], median_age: 35.5 }, population: { largest_city: "Kabul", total: 341e5 } }, geography: { area: 652230, region: I.Asia, sub_region: x$1.SouthernAsia }, government: { capital: "Kabul", type: "Islamic Emirate" } } }, Albania: { i18n: { calling_codes: [355], currencies: [l$1.AlbaniaLek], languages: [e$2.Albanian, e$2.Greek, e$2.Turkish], tz: { offsets: [i$2.UTC_PLUS_1], regions: [t$1.EuropeBrussels], timezones: [n$2.CentralEuropeanTime] } }, id: r$2.Albania, info: { flag: { emoji: "\u{1F1E6}\u{1F1F1}", emoji_unicode: "U+1F1E6 U+1F1F1", svg: "https://www.countryflags.io/al/flat/64.svg" }, tld: [".al"] }, iso: { alpha2: r$2.Albania, alpha3: "ALB", numeric: "008" }, name: { alt_spellings: ["AL", "Shqip\xEBri", "Shqip\xEBria", "Shqipnia"], demonym: "Albanian", native: { endonym: "Shqip\xEBri" }, official: "Republic of Albania", short: "Albania", translations: { [e$2.Afrikaans]: "Albania", [e$2.Albanian]: "Albania", [e$2.Amharic]: "\u12A0\u120D\u1263\u1295\u12EB", [e$2.Arabic]: "\u0623\u0644\u0628\u0627\u0646\u064A\u0627", [e$2.Armenian]: "\u0540\u0561\u0575\u0561\u057D\u057F\u0561\u0576", [e$2.Azerbaijani]: "Az\u0259rbaycan", [e$2.Bashkir]: "\u0410\u043B\u0431\u0430\u043D\u0438\u044F", [e$2.Basque]: "Albania", [e$2.Belarusian]: "\u0410\u043B\u0431\u0430\u043D\u0438\u044F", [e$2.Bengali]: "\u0986\u09B2\u09AC\u09BE\u09A8\u09BF\u09AF\u09BC\u09BE", [e$2.Berber]: "\u0623\u0644\u0628\u0627\u0646\u064A\u0627", [e$2.Bhutani]: "\u0F60\u0F56\u0FB2\u0F74\u0F42\u0F0B\u0F61\u0F74\u0F63\u0F0B", [e$2.Bosnian]: "Albanija", [e$2.Breton]: "Albania", [e$2.Bulgarian]: "\u0410\u043B\u0431\u0430\u043D\u0438\u044F", [e$2.Burmese]: "\u1021\u102C\u1019\u1001\u103B\u1004\u103A\u1010\u1031\u102C\u103A", [e$2.Catalan]: "Alb\xE0nia", [e$2.Chinese]: "\u963F\u5C14\u5DF4\u5C3C\u4E9A", [e$2.Croatian]: "Albanija", [e$2.Czech]: "Alb\xE1nie", [e$2.Danish]: "Albanien", [e$2.Dutch]: "Albani\xEB", [e$2.English]: "Albania", [e$2.Esperanto]: "Albanio", [e$2.Estonian]: "Albaania", [e$2.Finnish]: "Albania", [e$2.French]: "Albanie", [e$2.Frisian]: "Albani\xEB", [e$2.Galician]: "Alb\xE2nia", [e$2.Georgian]: "\u10D0\u10DA\u10D1\u10D0\u10DC\u10D8\u10D0", [e$2.German]: "Albanien", [e$2.Greenlandic]: "Albania", [e$2.Greek]: "\u0391\u03BB\u03B2\u03B1\u03BD\u03AF\u03B1", [e$2.Gujarati]: "\u0A85\u0AB2\u0AAC\u0AA8\u0ABF\u0AAF\u0ABE", [e$2.Haitian]: "Albanais", [e$2.Hausa]: "Albania", [e$2.Hebrew]: "\u05D0\u05DC\u05D1\u05E0\u05D9\u05D4", [e$2.Hindi]: "\u0905\u0932\u094D\u092C\u093E\u0928\u093F\u092F\u093E", [e$2.Hungarian]: "Alb\xE1nia", [e$2.Icelandic]: "Alb\xFAnir", [e$2.Igbo]: "Albania", [e$2.Indonesian]: "Albania", [e$2.Irish]: "Alb\xE1in", [e$2.Italian]: "Albania", [e$2.Japanese]: "\u30A2\u30EB\u30D0\u30CB\u30A2", [e$2.Javanese]: "Albania", [e$2.Kannada]: "\u0C85\u0CB2\u0CCD\u0CAC\u0CBE\u0CA8\u0CBF\u0CAF\u0CBE", [e$2.Kazakh]: "\u0410\u043B\u0431\u0430\u043D\u0438\u044F", [e$2.Khmer]: "\u17A2\u17B6\u17A0\u17D2\u179C\u17D2\u179A\u17C1\u179F\u17CA\u17B8", [e$2.Korean]: "\uC54C\uBC14\uB2C8\uC544", [e$2.Kurdish]: "\u0622\u0644\u0628\u0627\u0646\u06CC\u0627", [e$2.Kyrgyz]: "\u0410\u043B\u0431\u0430\u043D\u0438\u044F", [e$2.Lao]: "\u0EAD\u0EB2\u0EA5\u0EB2\u0E99\u0EB5", [e$2.Latin]: "Albania", [e$2.Latvian]: "Alb\u0101nija", [e$2.Lithuanian]: "Albanija", [e$2.Luxembourgish]: "Albani\xEB", [e$2.Macedonian]: "\u0410\u043B\u0431\u0430\u043D\u0438\u0458\u0430", [e$2.Malagasy]: "Albania", [e$2.Malay]: "Albania", [e$2.Malayalam]: "\u0D05\u0D32\u0D4D\u0D2C\u0D3E\u0D28\u0D3F\u0D2F\u0D3E", [e$2.Maltese]: "Albania", [e$2.Maori]: "Albania", [e$2.Marathi]: "\u0905\u0932\u094D\u092C\u093E\u0928\u093F\u092F\u093E", [e$2.Mongolian]: "\u0410\u043B\u0431\u0430\u043D\u0438\u044F", [e$2.Nepali]: "\u0905\u0932\u094D\u092C\u093E\u0928\u093F\u092F\u093E", [e$2.Norwegian]: "Albania", [e$2.Pashto]: "\u0627\u0627\u0644\u0628\u0627\u0646\u06CC", [e$2.Persian]: "\u0622\u0644\u0628\u0627\u0646\u06CC", [e$2.Polish]: "Albania", [e$2.Portuguese]: "Alb\xE2nia", [e$2.Punjabi]: "\u0A05\u0A32\u0A2C\u0A28\u0A40\u0A06", [e$2.Romanian]: "Alb\u0103n", [e$2.Russian]: "\u0410\u043B\u0431\u0430\u043D\u0438\u044F", [e$2.Samoan]: "Albania", [e$2.Sanskrit]: "Albani", [e$2.Scots]: "Alb\xE0inia", [e$2.Serbian]: "\u0410\u043B\u0431\u0430\u043D\u0438\u0458\u0430", [e$2.Sesotho]: "Albania", [e$2.Shona]: "Albania", [e$2.Sindhi]: "Albania", [e$2.Sinhala]: "\u0D87\u0DBD\u0DCA\u0DB6\u0DCF\u0DB1\u0DD2\u0DBA", [e$2.Slovak]: "Alb\xE1nsko", [e$2.Slovenian]: "Albanija", [e$2.Somali]: "Albania", [e$2.Spanish]: "Albania", [e$2.Sudanese]: "Albania", [e$2.Swahili]: "Albania", [e$2.Swedish]: "Albanien", [e$2.Tagalog]: "Albania", [e$2.Tajik]: "\u0410\u043B\u0431\u0430\u043D\u0438\u044F", [e$2.Tamil]: "\u0B85\u0BB2\u0BCD\u0BAA\u0BBE\u0BA9\u0BBF\u0BAF\u0BBE", [e$2.Tatar]: "\u0410\u043B\u0431\u0430\u043D\u0438\u044F", [e$2.Telugu]: "\u0C05\u0C32\u0C4D\u0C2C\u0C3E\u0C28\u0C3F\u0C2F\u0C3E", [e$2.Thai]: "\u0E2D\u0E31\u0E25\u0E41\u0E1A\u0E19\u0E34\u0E19\u0E35", [e$2.Tibetan]: "\u0F68\u0F63\u0F0B\u0F56\u0F72\u0F0B\u0F53\u0F72\u0F0B\u0F61\u0F72", [e$2.Turkish]: "Albaniye", [e$2.Ukrainian]: "\u0410\u043B\u0431\u0430\u043D\u0456\u044F", [e$2.Urdu]: "\u0622\u0644\u0628\u0627\u0646\u06CC", [e$2.Uzbek]: "\u0410\u043B\u0431\u0430\u043D\u0438\u044F", [e$2.Vietnamese]: "Albanie", [e$2.Welsh]: "Albania", [e$2.Xhosa]: "Albania", [e$2.Yiddish]: "\u05D0\u05DC\u05D1\u05E0\u05D9\u05E9", [e$2.Yoruba]: "Albania", [e$2.Zulu]: "Albania" } }, statistics: { demographics: { age: { distribution: [{ age: "0 to 14 years", percentage: 15.3 }, { age: "15 to 64 years", percentage: 66.7 }, { age: "65 years and over", percentage: 14.6 }], median_age: 35.5 }, population: { largest_city: "Tirana", total: 2853e3 } }, geography: { area: 28748, region: I.Europe, sub_region: x$1.SouthernEurope }, government: { capital: "Tirana", type: "Republic" } } }, Algeria: { i18n: { calling_codes: [213], currencies: [l$1.AlgeriaDinar], languages: [e$2.Arabic, e$2.French, e$2.Berber, e$2.Tamazight], tz: { offsets: [i$2.UTC_PLUS_1, i$2.UTC_PLUS_2], regions: [t$1.AfricaAlgiers], timezones: [n$2.CentralEuropeanTime] } }, id: r$2.Algeria, info: { flag: { emoji: "\u{1F1E9}\u{1F1FF}", emoji_unicode: "U+1F1E9 U+1F1FF", svg: "https://www.countryflags.io/dz/flat/64.svg" }, tld: [".dz", ".\u062C\u0632\u0627\u0626\u0631"] }, iso: { alpha2: r$2.Algeria, alpha3: "DZA", numeric: "012" }, name: { alt_spellings: ["DZ", "Dzayer", "Alg\xE9rie"], demonym: "Algerian", native: { endonym: "\u0627\u0644\u062C\u0632\u0627\u0626\u0631" }, official: "People's Democratic Republic of Algeria", short: "Algeria", translations: { [e$2.Afrikaans]: "Algerije", [e$2.Albanian]: "Algeria", [e$2.Amharic]: "\u12A0\u120D\u1300\u122D\u1235", [e$2.Arabic]: "\u0627\u0644\u062C\u0632\u0627\u0626\u0631", [e$2.Armenian]: "\u0531\u056C\u0563\u0578\u0580\u056B\u0561", [e$2.Azerbaijani]: "Az\u0259rbaycan", [e$2.Bashkir]: "\u0410\u043B\u0436\u0438\u0440", [e$2.Basque]: "Algeria", [e$2.Belarusian]: "\u0410\u043B\u0436\u0438\u0440", [e$2.Bengali]: "\u0986\u09B2\u099C\u09C7\u09B0", [e$2.Berber]: "\u062C\u0632\u0627\u0626\u0631", [e$2.Bhutani]: "\u0F62\u0FAB\u0F7C\u0F44\u0F0B\u0F41", [e$2.Bosnian]: "Al\u017Eir", [e$2.Breton]: "Algeria", [e$2.Bulgarian]: "\u0410\u043B\u0436\u0438\u0440", [e$2.Burmese]: "\u1021\u102C\u101B\u1015\u103A", [e$2.Catalan]: "Alg\xE8ria", [e$2.Chinese]: "\u963F\u5C14\u53CA\u5229\u4E9A", [e$2.Croatian]: "Al\u017Eir", [e$2.Czech]: "Al\u017E\xEDrsko", [e$2.Danish]: "Algeriet", [e$2.Dutch]: "Algerije", [e$2.English]: "Algeria", [e$2.Esperanto]: "Al\u011Derio", [e$2.Estonian]: "Al\u017Eira", [e$2.Finnish]: "Algeria", [e$2.French]: "Alg\xE9rie", [e$2.Frisian]: "Algeri\xEB", [e$2.Galician]: "Alxeria", [e$2.Georgian]: "\u10D0\u10DA\u10D2\u10D8\u10E3\u10E0\u10D8", [e$2.German]: "Algerien", [e$2.Greenlandic]: "Algeria", [e$2.Greek]: "\u0391\u03BB\u03B3\u03B5\u03C1\u03AF\u03B1", [e$2.Gujarati]: "\u0A86\u0AB2\u0AC7\u0A97\u0AB0\u0ABF\u0AAF\u0ABE", [e$2.Haitian]: "Alg\xE9rie", [e$2.Hausa]: "Algeria", [e$2.Hebrew]: "\u05D0\u05DC\u05D2\u05F3\u05D9\u05E8\u05D9\u05D4", [e$2.Hindi]: "\u0906\u0932\u094D\u0917\u0947\u0930\u093F\u092F\u093E", [e$2.Hungarian]: "Alg\xE1r", [e$2.Icelandic]: "Alg\xFAra", [e$2.Igbo]: "Algeria", [e$2.Indonesian]: "Aljir", [e$2.Irish]: "Alg\xE9rie", [e$2.Italian]: "Algeria", [e$2.Japanese]: "\u30A2\u30EB\u30B8\u30A7\u30EA\u30A2", [e$2.Javanese]: "Aljir", [e$2.Kannada]: "\u0C86\u0CB2\u0CCD\u0C97\u0CC7\u0CB0\u0CBF\u0CAF\u0CA8\u0CCD", [e$2.Kazakh]: "\u0410\u043B\u0436\u0438\u0440", [e$2.Khmer]: "\u17A2\u17B6\u179B\u17CB\u1794\u17B6\u1793\u17B8", [e$2.Korean]: "\uC54C\uC81C\uB9AC", [e$2.Kurdish]: "\u062C\u0632\u0627\u06CC\u0631 \u0627\u0644\u062C\u0632\u0627\u06CC\u0631", [e$2.Kyrgyz]: "\u0410\u043B\u0436\u0438\u0440", [e$2.Lao]: "\u0EAD\u0EB2\u0EA5\u0EB2\u0E88\u0EB5\u0E99", [e$2.Latin]: "Algeria", [e$2.Latvian]: "Al\u017E\u012Brija", [e$2.Lithuanian]: "Al\u017Eyras", [e$2.Luxembourgish]: "Algeria", [e$2.Macedonian]: "\u0410\u043B\u0436\u0438\u0440", [e$2.Malagasy]: "Alg\xE9rie", [e$2.Malay]: "Aljir", [e$2.Malayalam]: "\u0D06\u0D32\u0D02\u0D17\u0D47\u0D30\u0D3F\u0D2F\u0D7B", [e$2.Maltese]: "Alg\xE9rie", [e$2.Maori]: "Algeria", [e$2.Marathi]: "\u0906\u0932\u094D\u0917\u0947\u0930\u093F\u092F\u093E", [e$2.Mongolian]: "\u0410\u043B\u0436\u0438\u0440", [e$2.Nepali]: "\u0906\u0932\u094D\u0917\u0947\u0930\u093F\u092F\u093E", [e$2.Norwegian]: "Algeria", [e$2.Pashto]: "\u0627\u0644\u062C\u0632\u0627\u0626\u0631", [e$2.Persian]: "\u062C\u0632\u0627\u06CC\u0631 \u0627\u0644\u0639\u0631\u0628", [e$2.Polish]: "Algieria", [e$2.Portuguese]: "Alg\xE9ria", [e$2.Punjabi]: "\u0A06\u0A32\u0A47\u0A17\u0A40\u0A06", [e$2.Romanian]: "Algeria", [e$2.Russian]: "\u0410\u043B\u0436\u0438\u0440", [e$2.Samoan]: "Algeria", [e$2.Sanskrit]: "\u0906\u0932\u094D\u0917\u0947\u0930\u093F\u092F\u093E", [e$2.Scots]: "Algeria", [e$2.Serbian]: "\u0410\u043B\u0436\u0438\u0440", [e$2.Sesotho]: "Algeria", [e$2.Shona]: "Algeria", [e$2.Sindhi]: "Algeria", [e$2.Sinhala]: "\u0D86\u0DBD\u0DCA\u0DB6\u0DCF\u0DB1\u0DD2\u0DBA", [e$2.Slovak]: "Al\u017E\xEDrsko", [e$2.Slovenian]: "Al\u017Eir", [e$2.Somali]: "Algeria", [e$2.Spanish]: "Algeria", [e$2.Sudanese]: "Aljir", [e$2.Swahili]: "Aljir", [e$2.Swedish]: "Algeriet", [e$2.Tagalog]: "Algeria", [e$2.Tajik]: "\u0410\u043B\u0436\u0438\u0440", [e$2.Tamil]: "\u0B86\u0BB2\u0BCD\u0B95\u0BC7\u0BB0\u0BBF\u0BAF\u0BBE", [e$2.Tatar]: "\u0410\u043B\u0436\u0438\u0440", [e$2.Telugu]: "\u0C06\u0C32\u0C4D\u0C17\u0C47\u0C30\u0C3F\u0C2F\u0C3E", [e$2.Thai]: "\u0E2D\u0E32\u0E23\u0E32\u0E01\u0E2D\u0E19", [e$2.Tibetan]: "\u0F68\u0F63\u0F9F\u0F72\u0F0B\u0F62\u0F72\u0F0B\u0F61\u0F72", [e$2.Turkish]: "Cezayir", [e$2.Ukrainian]: "\u0410\u043B\u0436\u0438\u0440", [e$2.Urdu]: "\u0622\u0644\u062C\u06CC\u0631", [e$2.Uzbek]: "\u0410\u043B\u0436\u0438\u0440", [e$2.Vietnamese]: "\u1EA2\u0301\u1EA1\u1EA3\u1EAD\u1EB5", [e$2.Welsh]: "Algeria", [e$2.Xhosa]: "Algeria", [e$2.Yiddish]: "\u05D0\u05DC\u05D2\u05F3\u05D9\u05E8\u05D9\u05D4", [e$2.Yoruba]: "Algeria", [e$2.Zulu]: "Algeria" } }, statistics: { demographics: { age: { distribution: [{ age: "0 to 14 years", percentage: 15.3 }, { age: "15 to 64 years", percentage: 66.7 }, { age: "65 years and over", percentage: 14.6 }], median_age: 35.5 }, population: { largest_city: "Oran", total: 371e5 } }, geography: { area: 2381740, region: I.Africa, sub_region: x$1.NorthernAfrica }, government: { capital: "Algiers", type: "Republic" } } }, AmericanSamoa: { i18n: { calling_codes: [1684], currencies: [l$1.AmericanSamoaTala], languages: [e$2.English, e$2.Samoan], tz: { offsets: [i$2.UTC_MINUS_11], regions: [t$1.PacificSamoa], timezones: [n$2.SamoaStandardTime] } }, id: r$2.AmericanSamoa, info: { flag: { emoji: "\u{1F1E6}\u{1F1F8}", emoji_unicode: "U+1F1E6 U+1F1F8", svg: "https://www.countryflags.io/as/flat/64.svg" }, tld: [".as"] }, iso: { alpha2: r$2.AmericanSamoa, alpha3: "ASM", numeric: "016" }, name: { alt_spellings: ["AS", "Amerika S\u0101moa", "Amelika S\u0101moa", "S\u0101moa Amelika"], demonym: "American Samoan", native: { endonym: "American Samoa" }, official: "American Samoa", short: "American Samoa", translations: { [e$2.Afrikaans]: "Amerikaans Samoa", [e$2.Albanian]: "Samoa Amerikane", [e$2.Amharic]: "\u1233\u121E\u12A0\u122D", [e$2.Arabic]: "\u0633\u0627\u0645\u0648\u0627 \u0627\u0644\u0623\u0645\u0631\u064A\u0643\u064A\u0629", [e$2.Armenian]: "\u054D\u0561\u0570\u0561\u0574\u0561\u056C\u056B\u0561", [e$2.Azerbaijani]: "Samoa Amerikana", [e$2.Bashkir]: "\u0410\u043C\u0435\u0440\u0438\u043A\u0430\u043D\u0441\u043A\u0438 \u0421\u0430\u043C\u043E\u0430", [e$2.Basque]: "Samoa Amerikana", [e$2.Belarusian]: "\u0410\u043C\u0435\u0440\u0438\u043A\u0430\u043D\u0441\u043A\u0430\u044F \u0421\u0430\u043C\u043E\u0430", [e$2.Bengali]: "\u0986\u09AE\u09C7\u09B0\u09BF\u0995\u09BE\u09A8 \u09B8\u09BE\u09AE\u09CB\u09AF\u09BC\u09BE", [e$2.Berber]: "\u062C\u0632\u0631 \u0633\u0627\u0645\u0648\u0627 \u0627\u0644\u0623\u0645\u0631\u064A\u0643\u064A\u0629", [e$2.Bhutani]: "\u0F68\u0F62\u0F92\u0FB1\u0F0B\u0F58\u0F72\u0F0B\u0F51\u0F58\u0F44\u0F66\u0F0B\u0F66\u0FA4\u0FB2\u0F7C\u0F51\u0F0B\u0F40\u0FB1\u0F72\u0F0B\u0F66\u0F90\u0F56\u0F66\u0F0B\u0F62\u0F92\u0FB1\u0F74\u0F51\u0F0B\u0F46\u0F7A\u0F53\u0F0B\u0F54\u0F7C\u0F0D", [e$2.Bosnian]: "Ameri\u010Dka Samoa", [e$2.Breton]: "Samoa Amerikan", [e$2.Bulgarian]: "\u0410\u043C\u0435\u0440\u0438\u043A\u0430\u043D\u0441\u043A\u0430 \u0421\u0430\u043C\u043E\u0430", [e$2.Burmese]: "\u1021\u1019\u1039\u1038\u1019\u101B\u102D\u102F\u1018\u102C\u101E\u102C", [e$2.Catalan]: "Samoa Americana", [e$2.Chinese]: "\u7F8E\u5C5E\u8428\u6469\u4E9A", [e$2.Croatian]: "Ameri\u010Dka Samoa", [e$2.Czech]: "Americk\xE1 Samoa", [e$2.Danish]: "Amerikansk Samoa", [e$2.Dutch]: "Amerikaans Samoa", [e$2.English]: "American Samoa", [e$2.Esperanto]: "Samoa Amerika", [e$2.Estonian]: "Ameerika Samoa", [e$2.Finnish]: "Amerikka Samoa", [e$2.French]: "American Samoa", [e$2.Frisian]: "Amerikaans Samoa", [e$2.Galician]: "Samoa Americana", [e$2.Georgian]: "\u10D0\u10DB\u10D4\u10E0\u10D8\u10D9\u10D8\u10E1 \u10E1\u10D0\u10DB\u10DD\u10D0", [e$2.German]: "Amerikanisch-Samoa", [e$2.Greenlandic]: "Amerikaans Samoa", [e$2.Greek]: "\u0391\u03BC\u03B5\u03C1\u03B9\u03BA\u03B1\u03BD\u03B9\u03BA\u03AE \u03A3\u03B1\u03BC\u03CC\u03B1", [e$2.Gujarati]: "\u0A86\u0AAE\u0AC7\u0AB0\u0ABF\u0A95\u0AA8 \u0AB8\u0ABE\u0AAE\u0ACB\u0AAF\u0ABE", [e$2.Haitian]: "Amerikaans Samoa", [e$2.Hausa]: "Amerikaans Samoa", [e$2.Hebrew]: "\u05D0\u05DE\u05E8\u05D9\u05E7\u05E0\u05D9\u05D4 \u05E1\u05DE\u05D5\u05D0\u05D4", [e$2.Hindi]: "\u0905\u092E\u0947\u0930\u093F\u0915\u093E \u0938\u092E\u094B\u0906", [e$2.Hungarian]: "Amerikai Szamoa", [e$2.Icelandic]: "Amerikai Szamoa", [e$2.Igbo]: "Ikina Amerika", [e$2.Indonesian]: "Samoa Amerika", [e$2.Irish]: "Samoa Amerikana", [e$2.Italian]: "Samoa Americane", [e$2.Japanese]: "\u30A2\u30E1\u30EA\u30AB\u9818\u30B5\u30E2\u30A2", [e$2.Javanese]: "Samoa Amerika", [e$2.Kannada]: "\u0C85\u0CAE\u0CC7\u0CB0\u0CBF\u0C95\u0CA8\u0CCD \u0CB8\u0CAE\u0CCB\u0C86", [e$2.Kazakh]: "\u0410\u043C\u0435\u0440\u0438\u043A\u0430\u043D\u0441\u043A\u0438\u0439 \u0421\u0430\u043C\u043E\u0430", [e$2.Khmer]: "\u17A2\u17B6\u1798\u17C9\u17B6\u179A\u17B8\u179F\u17D2\u178F\u1784\u17CB", [e$2.Korean]: "\uC544\uBA54\uB9AC\uCE74 \uC0AC\uBAA8\uC544", [e$2.Kurdish]: "Amerikaans Samoa", [e$2.Kyrgyz]: "\u0410\u043C\u0435\u0440\u0438\u043A\u0430\u043D\u0441\u043A\u0438\u0439 \u0421\u0430\u043C\u043E\u0430", [e$2.Lao]: "\u0EAD\u0EB2\u0EA1\u0EB2\u0E99\u0EB2\u0E94\u0EB2\u0EA1\u0EB2\u0E99\u0EB2\u0E94", [e$2.Latin]: "Samoa Amerikana", [e$2.Latvian]: "Amerikas Samoa", [e$2.Lithuanian]: "Amerikos Samoa", [e$2.Luxembourgish]: "Amerikaans Samoa", [e$2.Macedonian]: "\u0410\u043C\u0435\u0440\u0438\u043A\u0430\u043D\u0441\u043A\u0430 \u0421\u0430\u043C\u043E\u0430", [e$2.Malagasy]: "Samoa Amerika", [e$2.Malay]: "Amerika Samo", [e$2.Malayalam]: "\u0D05\u0D2E\u0D47\u0D30\u0D3F\u0D15\u0D4D\u0D15\u0D28\u0D4D\u0D31\u0D4D \u0D38\u0D2E\u0D4B\u0D06", [e$2.Maltese]: "Samoa Amerika", [e$2.Maori]: "Samoa Amerika", [e$2.Marathi]: "\u0905\u092E\u0947\u0930\u093F\u0915\u093E \u0938\u092E\u094B\u0906", [e$2.Mongolian]: "\u0410\u043C\u0435\u0440\u0438\u043A\u0430\u043D\u0441\u043A\u0438\u0439 \u0421\u0430\u043C\u043E\u0430", [e$2.Nepali]: "\u0905\u092E\u0947\u0930\u093F\u0915\u093E \u0938\u092E\u094B\u0906", [e$2.Norwegian]: "Amerikansk Samoa", [e$2.Pashto]: "\u0627\u0645\u0631\u06CC\u06A9\u0627\u06CC \u0633\u0645\u0648\u0627", [e$2.Persian]: "\u0622\u0645\u0631\u06CC\u06A9\u0627\u06CC \u0633\u0645\u0648\u0627", [e$2.Polish]: "Samoa Ameryka\u0144skie", [e$2.Portuguese]: "Samoa Americana", [e$2.Punjabi]: "\u0A05\u0A2E\u0A30\u0A40\u0A15\u0A40 \u0A38\u0A3E\u0A2E\u0A4B\u0A06", [e$2.Romanian]: "Samoa americane", [e$2.Russian]: "\u0410\u043C\u0435\u0440\u0438\u043A\u0430\u043D\u0441\u043A\u0430\u044F \u0421\u0430\u043C\u043E\u0430", [e$2.Samoan]: "Samoa Amerika", [e$2.Sanskrit]: "\u0905\u092E\u0947\u0930\u093F\u0915\u093E \u0938\u092E\u094B\u0906", [e$2.Scots]: "Amerikaans Samoa", [e$2.Serbian]: "\u0410\u043C\u0435\u0440\u0438\u043A\u0430\u043D\u0441\u043A\u0430 \u0421\u0430\u043C\u043E\u0430", [e$2.Sesotho]: "Amerikaans Samoa", [e$2.Shona]: "Amerikaans Samoa", [e$2.Sindhi]: "Amerikaans Samoa", [e$2.Sinhala]: "\u0D86\u0DBB\u0DCA\u0DA2\u0DD2\u0DB1\u0DCF\u0DB1\u0DD4 \u0DC3\u0DD0\u0DB8\u0DD0\u0DBD\u0DCA\u0DC0", [e$2.Slovak]: "Amerikaans Samoa", [e$2.Slovenian]: "Amerikaans Samoa", [e$2.Somali]: "Amerikaans Samoa", [e$2.Spanish]: "Samoa Americana", [e$2.Sudanese]: "Amerikaans Samoa", [e$2.Swahili]: "Amerikaans Samoa", [e$2.Swedish]: "Amerikansk Samoa", [e$2.Tagalog]: "Amerikaans Samoa", [e$2.Tajik]: "\u0410\u043C\u0435\u0440\u0438\u043A\u0430\u043D\u0441\u043A\u0438 \u0441\u0430\u043C\u043E\u0430", [e$2.Tamil]: "\u0B85\u0BAE\u0BC6\u0BB0\u0BBF\u0B95\u0BCD \u0B9A\u0BAE\u0BCB\u0BB5\u0BBE", [e$2.Tatar]: "\u0410\u043C\u0435\u0440\u0438\u043A\u0430\u043D\u0441\u043A\u0438 \u0441\u0430\u043C\u043E\u0430", [e$2.Telugu]: "\u0C05\u0C2E\u0C46\u0C30\u0C3F\u0C15\u0C4D \u0C38\u0C2E\u0C4B\u0C35\u0C3E", [e$2.Thai]: "\u0E2A\u0E2B\u0E23\u0E32\u0E0A\u0E2D\u0E32\u0E13\u0E32\u0E08\u0E31\u0E01\u0E23\u0E41\u0E2D\u0E1F\u0E23\u0E34\u0E01\u0E32", [e$2.Tibetan]: "\u0F68\u0F7A\u0F0B\u0F62\u0F72\u0F0B\u0F40\u0F0B\u0F68\u0F7A\u0F0B\u0F58\u0F72\u0F0B\u0F51\u0F74\u0F0B\u0F61\u0F72\u0F0B\u0F62\u0F72\u0F0B\u0F40", [e$2.Turkish]: "Amerikan Samoas\u0131", [e$2.Ukrainian]: "\u0410\u043C\u0435\u0440\u0438\u043A\u0430\u043D\u0441\u044C\u043A\u0430 \u0421\u0430\u043C\u043E\u0430", [e$2.Urdu]: "\u0627\u0645\u0631\u06CC\u06A9\u06CC \u0633\u0645\u0648\u0627", [e$2.Uzbek]: "\u0410\u043C\u0435\u0440\u0438\u043A\u0430\u043D\u0441\u043A\u0438 \u0441\u0430\u043C\u043E\u0430", [e$2.Vietnamese]: "Amerikaans Samoa", [e$2.Welsh]: "Amerikaans Samoa", [e$2.Xhosa]: "Amerikaans Samoa", [e$2.Yiddish]: "Amerikaans Samoa", [e$2.Yoruba]: "Amerikaans Samoa", [e$2.Zulu]: "Amerikaans Samoa" } }, statistics: { demographics: { age: { distribution: [{ age: "0 to 14 years", percentage: 15.3 }, { age: "15 to 64 years", percentage: 66.7 }, { age: "65 years and over", percentage: 14.6 }], median_age: 35.5 }, population: { largest_city: "Pago Pago", total: 558e3 } }, geography: { area: 199, region: I.Oceania, sub_region: x$1.Polynesia }, government: { capital: "Pago Pago", type: "Nonmetropolitan Territory of the US" } } }, Andorra: { i18n: { calling_codes: [376], currencies: [l$1.Euro], languages: [e$2.Catalan, e$2.Spanish], tz: { offsets: [i$2.UTC_PLUS_1, i$2.UTC_PLUS_2], regions: [t$1.EuropeAndorra], timezones: [n$2.CentralEuropeanTime] } }, id: r$2.Andorra, info: { flag: { emoji: "\u{1F1E6}\u{1F1F4}", emoji_unicode: "U+1F1E6 U+1F1F4", svg: "https://www.countryflags.io/ad/flat/64.svg" }, tld: [".ad"] }, iso: { alpha2: r$2.Andorra, alpha3: "AND", numeric: "020" }, name: { alt_spellings: ["AD", "Principality of Andorra", "Principat d'Andorra"], demonym: "Andorran", native: { endonym: "Andorra" }, official: "Principality of Andorra", short: "Andorra", translations: { [e$2.Afrikaans]: "Andorra", [e$2.Albanian]: "Andorra", [e$2.Amharic]: "\u12A0\u1295\u12F6\u122B", [e$2.Arabic]: "\u0623\u0646\u062F\u0648\u0631\u0627", [e$2.Armenian]: "\u0540\u0561\u0576\u0564\u0561\u0580\u0561\u057E\u0561\u0575\u0584", [e$2.Azerbaijani]: "Andorra", [e$2.Bashkir]: "\u0410\u043D\u0434\u043E\u0440\u0430", [e$2.Basque]: "Andorra", [e$2.Belarusian]: "\u0410\u043D\u0434\u043E\u0440\u0440\u0430", [e$2.Bengali]: "\u0985\u09A8\u09CD\u09A1\u09CB\u09B0\u09BE", [e$2.Berber]: "\u0623\u0646\u062F\u0648\u0631\u0627", [e$2.Bhutani]: "\u0F68\u0F53\u0F0B\u0F4C\u0F7C\u0F0B", [e$2.Bosnian]: "Andora", [e$2.Breton]: "Andorra", [e$2.Bulgarian]: "\u0410\u043D\u0434\u043E\u0440\u0430", [e$2.Burmese]: "\u1021\u1014\u1039\u1010\u102C\u101B\u102D\u102F\u1038", [e$2.Catalan]: "Andorra", [e$2.Chinese]: "\u5B89\u9053\u5C14", [e$2.Croatian]: "Andora", [e$2.Czech]: "Andorra", [e$2.Danish]: "Andorra", [e$2.Dutch]: "Andorra", [e$2.English]: "Andorra", [e$2.Esperanto]: "Andora", [e$2.Estonian]: "Andorra", [e$2.Finnish]: "Andorra", [e$2.French]: "Andorra", [e$2.Frisian]: "Andorra", [e$2.Galician]: "Andorra", [e$2.Georgian]: "\u12A0\u1295\u12F6\u122B", [e$2.German]: "Andorra", [e$2.Greek]: "\u0391\u03BD\u03B4\u03CC\u03C1\u03B1", [e$2.Hebrew]: "\u05D0\u05E0\u05D3\u05D5\u05E8\u05D4", [e$2.Hindi]: "\u0905\u0902\u0921\u094B\u0930\u093E", [e$2.Hungarian]: "Andorra", [e$2.Icelandic]: "Andorra", [e$2.Igbo]: "Andorra", [e$2.Indonesian]: "Andorra", [e$2.Irish]: "Andorra", [e$2.Italian]: "Andorra", [e$2.Japanese]: "\u30A2\u30F3\u30C9\u30E9", [e$2.Javanese]: "Andorra", [e$2.Kannada]: "\u0C85\u0C82\u0CA1\u0CCB\u0CB0\u0CBF\u0CAF\u0CA8\u0CCD", [e$2.Kazakh]: "\u0410\u043D\u0434\u043E\u0440\u0440\u0430", [e$2.Khmer]: "\u17A2\u1784\u17CB\u178A\u17B6\u179A\u17B6", [e$2.Korean]: "\uC548\uB3C4\uB77C", [e$2.Kurdish]: "Andorra", [e$2.Kyrgyz]: "\u0410\u043D\u0434\u043E\u0440\u0440\u0430", [e$2.Lao]: "\u0EAD\u0EB1\u0E99\u0EC2\u0E94\u0EA3\u0EB2", [e$2.Latin]: "Andorra", [e$2.Latvian]: "Andora", [e$2.Lithuanian]: "Andora", [e$2.Luxembourgish]: "Andorra", [e$2.Macedonian]: "\u0410\u043D\u0434\u043E\u0440\u0440\u0430", [e$2.Malagasy]: "Andorra", [e$2.Malay]: "Andorra", [e$2.Malayalam]: "\u0D05\u0D02\u0D21\u0D4B\u0D30\u0D3F\u0D2F\u0D28\u0D4D", [e$2.Maltese]: "Andorra", [e$2.Maori]: "Andorra", [e$2.Marathi]: "\u0905\u0902\u0921\u094B\u0930\u093E", [e$2.Mongolian]: "\u0410\u043D\u0434\u043E\u0440\u0440\u0430", [e$2.Nepali]: "\u0905\u0902\u0921\u094B\u0930\u093E", [e$2.Norwegian]: "Andorra", [e$2.Pashto]: "\u0622\u0646\u062F\u0648\u0631\u0627", [e$2.Persian]: "\u0622\u0646\u062F\u0648\u0631\u0627", [e$2.Polish]: "Andora", [e$2.Portuguese]: "Andorra", [e$2.Punjabi]: "\u0A05\u0A70\u0A21\u0A4B\u0A30\u0A3E", [e$2.Romanian]: "Andorra", [e$2.Russian]: "\u0410\u043D\u0434\u043E\u0440\u0440\u0430", [e$2.Samoan]: "Andorra", [e$2.Sanskrit]: "\u0905\u0902\u0921\u094B\u0930\u093E", [e$2.Scots]: "Andorra", [e$2.Serbian]: "\u0410\u043D\u0434\u043E\u0440\u0440\u0430", [e$2.Sesotho]: "Andorra", [e$2.Shona]: "Andorra", [e$2.Sindhi]: "\u0905\u0902\u0921\u094B\u0930\u093E", [e$2.Sinhala]: "\u0D86\u0DB1\u0DCA\u0DAF\u0DDA", [e$2.Slovak]: "Andorra", [e$2.Slovenian]: "Andora", [e$2.Somali]: "Andorra", [e$2.Spanish]: "Andorra", [e$2.Sudanese]: "Andorra", [e$2.Swahili]: "Andorra", [e$2.Swedish]: "Andorra", [e$2.Tagalog]: "Andorra", [e$2.Tajik]: "\u0410\u043D\u0434\u043E\u0440\u0440\u0430", [e$2.Tamil]: "\u0B85\u0BA9\u0BCB\u0BB0\u0BCD\u0B9F\u0BBE", [e$2.Tatar]: "\u0410\u043D\u0434\u043E\u0440\u0440\u0430", [e$2.Telugu]: "\u0C05\u0C02\u0C21\u0C4B\u0C30\u0C4D\u0C30\u0C3E", [e$2.Thai]: "\u0E2D\u0E31\u0E19\u0E14\u0E2D\u0E23\u0E4C\u0E23\u0E32", [e$2.Tibetan]: "\u0F68\u0F53\u0F0B\u0F4C\u0F7C\u0F0B", [e$2.Turkish]: "Andora", [e$2.Ukrainian]: "\u0410\u043D\u0434\u043E\u0440\u0440\u0430", [e$2.Urdu]: "\u0622\u0646\u062F\u0648\u0631\u0627", [e$2.Uzbek]: "\u0410\u043D\u0434\u043E\u0440\u0440\u0430", [e$2.Vietnamese]: "Andorra", [e$2.Welsh]: "Andorra", [e$2.Xhosa]: "Andorra", [e$2.Yiddish]: "\u05D0\u05E0\u05D3\u05D5\u05E8\u05D4", [e$2.Yoruba]: "Andorra", [e$2.Zulu]: "Andorra" } }, statistics: { demographics: { age: { distribution: [{ age: "0 to 14 years", percentage: 15.3 }, { age: "15 to 64 years", percentage: 66.7 }, { age: "65 years and over", percentage: 14.6 }], median_age: 35.5 }, population: { largest_city: "Andorra la Vella", total: 78e3 } }, geography: { area: 468, region: I.Europe, sub_region: x$1.SouthernEurope }, government: { capital: "Andorra la Vella", type: "Constitutional Monarchy" } } }, Angola: { i18n: { calling_codes: [244], currencies: [l$1.AngolaKwanza], languages: [e$2.Portuguese, e$2.Spanish, e$2.French, e$2.Italian, e$2.German, e$2.English], tz: { offsets: [i$2.UTC_0, i$2.UTC_PLUS_1, i$2.UTC_PLUS_2], regions: [t$1.AfricaLuanda], timezones: [n$2.WestAfricaTime] } }, id: r$2.Angola, info: { flag: { emoji: "\u{1F1E6}\u{1F1EC}", emoji_unicode: "U+1F1E6 U+1F1EC", svg: "https://www.countryflags.io/ao/flat/64.svg" }, tld: [".ao"] }, iso: { alpha2: r$2.Angola, alpha3: "AGO", numeric: "024" }, name: { alt_spellings: ["AO", "Rep\xFAblica de Angola", "\u0281\u025Bpublika de an"], demonym: "Angolan", native: { endonym: "Angola" }, official: "Republic of Angola", short: "Angola", translations: { [e$2.Afrikaans]: "Angola", [e$2.Albanian]: "Ang\xF2la", [e$2.Amharic]: "\u12A0\u1295\u130E\u120A\u12EB", [e$2.Arabic]: "\u0623\u0646\u063A\u0648\u0644\u0627", [e$2.Armenian]: "\u0540\u0561\u0576\u0563\u0561\u056C\u0561\u056F\u0561", [e$2.Azerbaijani]: "Ang\u0259l", [e$2.Bashkir]: "\u0410\u043D\u0433\u043E\u043B\u0430", [e$2.Basque]: "Angola", [e$2.Belarusian]: "\u0410\u043D\u0433\u043E\u043B\u0430", [e$2.Bengali]: "\u0985\u0999\u09CD\u0997\u09B2\u09BE", [e$2.Berber]: "Angola", [e$2.Bhutani]: "\u0F60\u0F56\u0FB2\u0F74\u0F42", [e$2.Bosnian]: "Angola", [e$2.Breton]: "Angola", [e$2.Bulgarian]: "\u0410\u043D\u0433\u043E\u043B\u0430", [e$2.Burmese]: "\u1021\u1004\u103A\u1039\u1002\u101C\u102D\u1010\u103A", [e$2.Catalan]: "Angola", [e$2.Chinese]: "\u5B89\u54E5\u62C9", [e$2.Croatian]: "Angola", [e$2.Czech]: "Angola", [e$2.Danish]: "Angola", [e$2.Dutch]: "Angola", [e$2.English]: "Angola", [e$2.Esperanto]: "Angolo", [e$2.Estonian]: "Angola", [e$2.Finnish]: "Angola", [e$2.French]: "Angola", [e$2.Frisian]: "Angola", [e$2.Galician]: "Angola", [e$2.Georgian]: "\u10D0\u10DC\u10D2\u10DD\u10DA\u10D0", [e$2.German]: "Angola", [e$2.Greenlandic]: "Angola", [e$2.Greek]: "\u0391\u03B3\u03BA\u03CC\u03BB\u03B1", [e$2.Gujarati]: "\u0A85\u0A82\u0A97\u0ACB\u0AB2\u0ABE", [e$2.Haitian]: "Angola", [e$2.Hausa]: "Angola", [e$2.Hebrew]: "\u05D0\u05E0\u05D2\u05D5\u05DC\u05D4", [e$2.Hindi]: "\u0905\u0919\u094D\u0917\u094B\u0932\u093E", [e$2.Hungarian]: "Angola", [e$2.Icelandic]: "Angola", [e$2.Igbo]: "Angola", [e$2.Indonesian]: "Angola", [e$2.Irish]: "Angola", [e$2.Italian]: "Angola", [e$2.Japanese]: "\u30A2\u30F3\u30B4\u30E9", [e$2.Javanese]: "Anggol", [e$2.Kannada]: "\u0C85\u0C82\u0C97\u0CCB\u0CB2\u0CBE", [e$2.Kazakh]: "\u0410\u043D\u0433\u043E\u043B\u0430", [e$2.Khmer]: "\u17A2\u1784\u17CB\u1780\u17B6\u179B\u17A2\u1784\u17CB\u1782\u17D2\u179B\u17C1\u179F", [e$2.Korean]: "\uC559\uACE8\uB77C", [e$2.Kurdish]: "Angola", [e$2.Kyrgyz]: "\u0410\u043D\u0433\u043E\u043B\u0430", [e$2.Lao]: "\u0EAD\u0EB0\u0E99\u0EB2\u0E94\u0EB2", [e$2.Latin]: "Angola", [e$2.Latvian]: "Angola", [e$2.Lithuanian]: "Angola", [e$2.Luxembourgish]: "Angola", [e$2.Macedonian]: "\u0410\u043D\u0433\u043E\u043B\u0430", [e$2.Malagasy]: "Angola", [e$2.Malay]: "Angola", [e$2.Malayalam]: "\u0D05\u0D02\u0D17\u0D4B\u0D33\u0D3E", [e$2.Maltese]: "Angola", [e$2.Maori]: "Angola", [e$2.Marathi]: "\u0905\u0919\u094D\u0917\u094B\u0932\u093E", [e$2.Mongolian]: "\u0410\u043D\u0433\u043E\u043B\u0430", [e$2.Nepali]: "\u0905\u0919\u094D\u0917\u094B\u0932\u093E", [e$2.Norwegian]: "Angola", [e$2.Pashto]: "\u0627\u0646\u06AB\u0648\u0644\u0627", [e$2.Persian]: "\u0622\u0646\u06AF\u0648\u0644\u0627", [e$2.Polish]: "Angola", [e$2.Portuguese]: "Angola", [e$2.Punjabi]: "\u0A05\u0A19\u0A4D\u0A17\u0A4B\u0A32\u0A3E", [e$2.Romanian]: "Angole", [e$2.Russian]: "\u0410\u043D\u0433\u043E\u043B\u0430", [e$2.Samoan]: "Angola", [e$2.Sanskrit]: "\u0905\u0919\u094D\u0917\u094B\u0932\u093E", [e$2.Scots]: "Angola", [e$2.Serbian]: "\u0410\u043D\u0433\u043E\u043B\u0430", [e$2.Sesotho]: "Angola", [e$2.Shona]: "Angola", [e$2.Sindhi]: "\u0905\u0919\u094D\u0917\u094B\u0932\u093E", [e$2.Sinhala]: "\u0D86\u0D9C\u0DBD\u0DD2\u0DBA\u0DCF\u0DC0", [e$2.Slovak]: "Angola", [e$2.Slovenian]: "Angola", [e$2.Somali]: "Angola", [e$2.Spanish]: "Angola", [e$2.Sudanese]: "Angola", [e$2.Swahili]: "Angola", [e$2.Swedish]: "Angola", [e$2.Tagalog]: "Angola", [e$2.Tajik]: "\u0410\u043D\u0433\u043E\u043B\u0430", [e$2.Tamil]: "\u0B85\u0B99\u0BCD\u0B95\u0BCB\u0BB2\u0BBE", [e$2.Tatar]: "\u0410\u043D\u0433\u043E\u043B\u0430", [e$2.Telugu]: "\u0C05\u0C02\u0C17\u0C4B\u0C32\u0C3E", [e$2.Thai]: "\u0E2D\u0E07\u0E04\u0E4C\u0E01\u0E32\u0E23\u0E2D\u0E32\u0E19\u0E32\u0E21\u0E34\u0E2A\u0E16\u0E32\u0E19", [e$2.Tibetan]: "\u0F68\u0F44\u0F0B\u0F63\u0F7C\u0F0B", [e$2.Turkish]: "Angola", [e$2.Ukrainian]: "\u0410\u043D\u0433\u043E\u043B\u0430", [e$2.Urdu]: "\u0627\u0646\u06AF\u0648\u0644\u0627", [e$2.Uzbek]: "Angola", [e$2.Vietnamese]: "Angola", [e$2.Xhosa]: "Angola", [e$2.Welsh]: "Angola", [e$2.Yiddish]: "\u05D0\u05E0\u05D2\u05D5\u05DC\u05D4", [e$2.Yoruba]: "Angola", [e$2.Zulu]: "Angola" } } }, Anguilla: { i18n: { calling_codes: [1264], currencies: [l$1.DominicaDollar, l$1.EastCaribbeanDollar, l$1.Euro, l$1.UnitedStatesDollar, l$1.BritishPound], languages: [e$2.English, e$2.Spanish], tz: { offsets: [i$2.UTC_MINUS_4], regions: [t$1.AmericaAnguilla], timezones: [n$2.AtlanticStandardTime] } }, id: r$2.Anguilla, info: { flag: { emoji: "\u{1F1E6}\u{1F1EC}", emoji_unicode: "U+1F1E6 U+1F1EC", svg: "https://www.countryflags.io/ai/flat/64.svg" }, tld: [".ai"] }, iso: { alpha2: r$2.Anguilla, alpha3: "AIA", numeric: "660" }, name: { alt_spellings: ["AI"], demonym: "Anguillian", native: { endonym: "Anguilla" }, official: "Anguilla", short: "Anguilla", translations: { [e$2.Afrikaans]: "Anguilla", [e$2.Albanian]: "Anguilla", [e$2.Amharic]: "\u12A0\u1295\u1309\u120B", [e$2.Arabic]: "\u0623\u0646\u063A\u0648\u064A\u0644\u0627", [e$2.Armenian]: "\u0531\u0576\u0563\u056B\u056C\u0561", [e$2.Azerbaijani]: "Az\u0259rbaycan", [e$2.Bashkir]: "\u0410\u043D\u0433\u0438\u043B\u0438", [e$2.Basque]: "Angila", [e$2.Belarusian]: "\u0410\u043D\u0433\u0438\u043B\u0438", [e$2.Bengali]: "\u0985\u0999\u09CD\u0997\u09C0\u09B2\u09BE", [e$2.Berber]: "\u0623\u0646\u063A\u0648\u064A\u0644\u0627", [e$2.Bhutani]: "\u0F68\u0F44\u0F0B\u0F63\u0F7C\u0F0B", [e$2.Bosnian]: "Angila", [e$2.Breton]: "Angila", [e$2.Bulgarian]: "\u0410\u043D\u0433\u0438\u043B\u0438", [e$2.Burmese]: "\u1021\u1004\u103A\u1039\u1002\u101C\u102D\u1010\u103A", [e$2.Catalan]: "Angilla", [e$2.Chinese]: "\u5B89\u572D\u62C9", [e$2.Croatian]: "Angila", [e$2.Czech]: "Anguilla", [e$2.Danish]: "Anguilla", [e$2.Dutch]: "Anguilla", [e$2.English]: "Anguilla", [e$2.Esperanto]: "Angila", [e$2.Estonian]: "Anguilla", [e$2.Finnish]: "Anguilla", [e$2.French]: "Anguilla", [e$2.Frisian]: "Angila", [e$2.Galician]: "Anguilla", [e$2.Georgian]: "\u10D0\u10DC\u10D2\u10D8\u10DA\u10D0", [e$2.German]: "Anguilla", [e$2.Greenlandic]: "Anguilla", [e$2.Greek]: "\u0391\u03BD\u03B3\u03BA\u03C5\u03BB\u03AC", [e$2.Gujarati]: "\u0A85\u0A82\u0A97\u0ACD\u0AAF\u0ABE\u0AB2\u0ABE", [e$2.Haitian]: "Anguilla", [e$2.Hausa]: "Anguilla", [e$2.Hebrew]: "\u05D0\u05E0\u05D2\u05D5\u05D9\u05D0\u05DC\u05D4", [e$2.Hindi]: "\u0905\u0902\u0917\u094D\u0935\u0947\u0932\u093E", [e$2.Hungarian]: "Anguilla", [e$2.Icelandic]: "Anguilla", [e$2.Igbo]: "Anguilla", [e$2.Indonesian]: "Anguilla", [e$2.Irish]: "Anguilla", [e$2.Italian]: "Anguilla", [e$2.Japanese]: "\u30A2\u30F3\u30AE\u30E9", [e$2.Javanese]: "Anguilla", [e$2.Kannada]: "\u0C85\u0C82\u0C97\u0CCD\u0CB5\u0CC7\u0CB2\u0CBE", [e$2.Kazakh]: "\u0410\u043D\u0433\u0438\u043B\u0438", [e$2.Khmer]: "\u17A2\u1784\u17CB\u1780\u17B6\u179A\u17A0\u17D2\u1782\u17B8\u1798", [e$2.Korean]: "\uC575\uADC8\uB77C", [e$2.Kurdish]: "Anguilla", [e$2.Kyrgyz]: "\u0410\u043D\u0433\u0438\u043B\u0438", [e$2.Lao]: "\u0EAD\u0EB0\u0E99\u0EB0\u0E88\u0EB3", [e$2.Latin]: "Anguilla", [e$2.Latvian]: "Anguilla", [e$2.Lithuanian]: "Anguilla", [e$2.Luxembourgish]: "Angilla", [e$2.Macedonian]: "\u0410\u043D\u0433\u0438\u043B\u0438", [e$2.Malagasy]: "Angila", [e$2.Malay]: "Anguilla", [e$2.Malayalam]: "\u0D05\u0D02\u0D17\u0D4D\u0D35\u0D47\u0D32\u0D3E", [e$2.Maltese]: "Anguilla", [e$2.Maori]: "Anguilla", [e$2.Marathi]: "\u0905\u0902\u0917\u094D\u0935\u0947\u0932\u093E", [e$2.Mongolian]: "\u0410\u043D\u0433\u0438\u043B\u0438", [e$2.Nepali]: "\u0905\u0902\u0917\u094D\u0935\u0947\u0932\u093E", [e$2.Norwegian]: "Anguilla", [e$2.Pashto]: "\u0622\u0646\u06AF\u0648\u0644\u0627", [e$2.Persian]: "\u0622\u0646\u06AF\u0648\u0644\u0627", [e$2.Polish]: "Anguilla", [e$2.Portuguese]: "Anguilla", [e$2.Punjabi]: "\u0A05\u0A02\u0A17\u0A40\u0A32\u0A3E", [e$2.Romanian]: "Anguilla", [e$2.Russian]: "\u0410\u043D\u0433\u0438\u043B\u0438", [e$2.Samoan]: "Anguilla", [e$2.Sanskrit]: "\u0905\u0902\u0917\u094D\u0935\u0947\u0932\u093E", [e$2.Scots]: "Anguilla", [e$2.Serbian]: "\u0410\u043D\u0433\u0438\u043B\u0438", [e$2.Sesotho]: "Anguilla", [e$2.Shona]: "Anguilla", [e$2.Sindhi]: "\u0905\u0902\u0917\u094D\u0935\u0947\u0932\u093E", [e$2.Sinhala]: "\u0D86\u0D82\u0D9C\u0DD2\u0DBD\u0DCF\u0DC0", [e$2.Slovak]: "Anguilla", [e$2.Slovenian]: "Anguilla", [e$2.Somali]: "Anguilla", [e$2.Spanish]: "Anguilla", [e$2.Sudanese]: "Anguilla", [e$2.Swahili]: "Anguilla", [e$2.Swedish]: "Anguilla", [e$2.Tagalog]: "Anguilla", [e$2.Tajik]: "\u0410\u043D\u0433\u0438\u043B\u0438", [e$2.Tamil]: "\u0B85\u0B99\u0BCD\u0B95\u0BC8\u0BB2\u0BBE", [e$2.Tatar]: "\u0410\u043D\u0433\u0438\u043B\u0438", [e$2.Telugu]: "\u0C05\u0C02\u0C17\u0C4D\u0C35\u0C47\u0C32\u0C3E", [e$2.Thai]: "\u0E2D\u0E31\u0E07\u0E01\u0E32\u0E25\u0E32", [e$2.Tibetan]: "\u0F68\u0F44\u0F0B\u0F63\u0F72\u0F0B", [e$2.Turkish]: "Anguilla", [e$2.Ukrainian]: "\u0410\u043D\u0433\u0438\u043B\u0438", [e$2.Urdu]: "\u0622\u0646\u06AF\u0648\u0644\u0627", [e$2.Uzbek]: "\u0410\u043D\u0433\u0438\u043B\u0438", [e$2.Vietnamese]: "Anguilla", [e$2.Welsh]: "Anguilla", [e$2.Xhosa]: "Anguilla", [e$2.Yiddish]: "Anguilla", [e$2.Yoruba]: "Anguilla", [e$2.Zulu]: "Anguilla" } } }, Antarctica: { i18n: { calling_codes: [672], currencies: [l$1.UnitedStatesDollar, l$1.Euro], languages: [e$2.English, e$2.Spanish, e$2.French, e$2.Portuguese, e$2.Italian, e$2.Dutch, e$2.German, e$2.Swedish, e$2.Norwegian, e$2.Danish, e$2.Finnish], tz: { offsets: [i$2.UTC_PLUS_1, i$2.UTC_PLUS_2], regions: [t$1.AntarcticaCasey, t$1.AntarcticaDavis, t$1.AntarcticaMcMurdo, t$1.AntarcticaPalmer, t$1.AntarcticaRothera], timezones: [n$2.AtlanticStandardTime, n$2.CentralTime, n$2.EasternTime, n$2.AtlanticStandardTime, n$2.AzoresStandardTime, n$2.NewfoundlandStandardTime] } }, id: r$2.Antarctica, info: { flag: { emoji: "\u{1F1E6}\u{1F1F6}", emoji_unicode: "U+1F1E6 U+1F1F6", svg: "https://www.countryflags.io/aq/flat/64.svg" }, tld: [".aq"] }, iso: { alpha2: r$2.Antarctica, alpha3: "ATA", numeric: "010" }, name: { alt_spellings: ["AQ"], demonym: "Antarctican", native: { endonym: "Antarctica" }, official: "Antarctica", short: "Antarctica", translations: { [e$2.Afrikaans]: "Antarctica", [e$2.Albanian]: "Antarktika", [e$2.Amharic]: "\u12A0\u1295\u1272\u120D\u12AB\u1293", [e$2.Arabic]: "\u0623\u0646\u062A\u0627\u0631\u0643\u062A\u064A\u0643\u0627", [e$2.Armenian]: "\u0540\u0561\u0576\u0561\u0580\u0561\u057F\u056F\u0578", [e$2.Azerbaijani]: "Az\u0259rbaycan", [e$2.Bashkir]: "\u0410\u043D\u0442\u0430\u0440\u043A\u0442\u0438\u043A\u0430", [e$2.Basque]: "Antarktika", [e$2.Belarusian]: "\u0410\u043D\u0442\u0430\u0440\u043A\u0442\u0438\u043A\u0430", [e$2.Bengali]: "\u0985\u09A8\u09CD\u09A4\u09B0\u09BE\u09B6\u09CD\u09AC\u09C0", [e$2.Berber]: "\u0623\u0646\u062A\u0627\u0631\u0643\u062A\u064A\u0643\u0627", [e$2.Bhutani]: "\u0F68\u0F44\u0F0B\u0F63\u0F72\u0F0B", [e$2.Bosnian]: "Antarktika", [e$2.Breton]: "Antarktika", [e$2.Bulgarian]: "\u0410\u043D\u0442\u0430\u0440\u043A\u0442\u0438\u043A\u0430", [e$2.Burmese]: "\u1021\u1014\u1039\u1010\u102C\u101B\u102E\u1038\u101A\u102C\u1038", [e$2.Catalan]: "Ant\xE0rtida", [e$2.Chinese]: "\u5357\u6781\u6D32", [e$2.Croatian]: "Antarktika", [e$2.Czech]: "Antarktida", [e$2.Danish]: "Antarktis", [e$2.Dutch]: "Antarctica", [e$2.English]: "Antarctica", [e$2.Esperanto]: "Antarktika", [e$2.Estonian]: "Antarktika", [e$2.Finnish]: "Antarktis", [e$2.French]: "Antarctica", [e$2.Frisian]: "Antarktis", [e$2.Galician]: "Ant\xE1rtida", [e$2.Georgian]: "\u10D0\u10DC\u10E2\u10D0\u10E0\u10E5\u10E2\u10D8\u10D9\u10D0", [e$2.German]: "Antarktis", [e$2.Greenlandic]: "Antarktis", [e$2.Greek]: "\u0391\u03BD\u03C4\u03B1\u03C1\u03BA\u03C4\u03B9\u03BA\u03AE", [e$2.Gujarati]: "\u0A85\u0AA8\u0ACD\u0AA4\u0AB0\u0ABE\u0AB6\u0ACD\u0AB5\u0AC0", [e$2.Haitian]: "Antarctica", [e$2.Hausa]: "Antarktika", [e$2.Hebrew]: "\u05D0\u05E0\u05D8\u05E8\u05E7\u05D8\u05D9\u05E7\u05D4", [e$2.Hindi]: "\u0905\u0928\u094D\u0924\u0930\u0915\u094D\u0937\u0947\u0924\u094D\u0930", [e$2.Hungarian]: "Antarktika", [e$2.Icelandic]: "Antarktis", [e$2.Igbo]: "Antarktika", [e$2.Indonesian]: "Antarktika", [e$2.Irish]: "Antarktika", [e$2.Italian]: "Antartide", [e$2.Japanese]: "\u5357\u6975", [e$2.Javanese]: "Antarktika", [e$2.Kannada]: "\u0C85\u0CA8\u0CCD\u0CA4\u0CB0\u0CBE\u0CB6\u0CCD\u0CB5\u0CBF", [e$2.Kazakh]: "\u0410\u043D\u0442\u0430\u0440\u043A\u0442\u0438\u043A\u0430", [e$2.Khmer]: "\u17A2\u1784\u17CB\u179F\u17D2\u1780\u179A\u17A2\u17B6\u1798\u17C9\u17BB\u1799", [e$2.Korean]: "\uC564\uD2F0\uCE74\uD1A0\uB2C9", [e$2.Kurdish]: "Antarktika", [e$2.Kyrgyz]: "\u0410\u043D\u0442\u0430\u0440\u043A\u0442\u0438\u043A\u0430", [e$2.Lao]: "\u0EAD\u0EB0\u0E99\u0EAD\u0EA5\u0EB2\u0E81\u0EB4\u0EAA\u0EB0", [e$2.Latin]: "Antarctica", [e$2.Latvian]: "Antarktika", [e$2.Lithuanian]: "Antarktis", [e$2.Luxembourgish]: "Antarktis", [e$2.Macedonian]: "\u0410\u043D\u0442\u0430\u0440\u043A\u0442\u0438\u043A\u0430", [e$2.Malagasy]: "Antarctica", [e$2.Malay]: "Antarktika", [e$2.Malayalam]: "\u0D05\u0D28\u0D4D\u0D24\u0D30\u0D3E\u0D36\u0D4D\u0D35\u0D3F", [e$2.Maltese]: "Antarktika", [e$2.Maori]: "Antarktika", [e$2.Marathi]: "\u0905\u0928\u094D\u0924\u0930\u093E\u0936\u094D\u0935\u093F\u0915\u093E", [e$2.Mongolian]: "\u0410\u043D\u0442\u0430\u0440\u043A\u0442\u0438\u043A\u0430", [e$2.Nepali]: "\u0905\u0928\u094D\u0924\u0930\u093E\u0936\u094D\u0935\u093F\u0915\u093E", [e$2.Norwegian]: "Antarktis", [e$2.Pashto]: "\u0627\u0646\u062A\u0627\u0631\u0643\u062A\u064A\u0643\u0627", [e$2.Persian]: "\u0622\u0646\u062A\u0627\u0631\u06A9\u062A\u06CC\u06A9\u0627", [e$2.Polish]: "Antarktyka", [e$2.Portuguese]: "Ant\xE1rtida", [e$2.Punjabi]: "\u0A05\u0A28\u0A4D\u0A24\u0A30\u0A3E\u0A36\u0A3F\u0A15\u0A3E", [e$2.Romanian]: "Antarctica", [e$2.Russian]: "\u0410\u043D\u0442\u0430\u0440\u043A\u0442\u0438\u043A\u0430", [e$2.Samoan]: "Antarktika", [e$2.Sanskrit]: "\u0905\u0928\u094D\u0924\u0930\u093E\u0936\u094D\u0935\u093F\u0915\u093E", [e$2.Scots]: "Antarktika", [e$2.Serbian]: "\u0410\u043D\u0442\u0430\u0440\u043A\u0442\u0438\u043A\u0430", [e$2.Sesotho]: "Antarktika", [e$2.Shona]: "Antarktika", [e$2.Sindhi]: "Antarktika", [e$2.Sinhala]: "\u0D86\u0DB1\u0DCA\u0DA7\u0DCA\u0DA7\u0DD2\u0D9A\u0DCF\u0DC0", [e$2.Slovak]: "Antarktika", [e$2.Slovenian]: "Antarktika", [e$2.Somali]: "Antarktika", [e$2.Spanish]: "Ant\xE1rtida", [e$2.Sudanese]: "Antarktika", [e$2.Swahili]: "Antarktika", [e$2.Swedish]: "Antarktis", [e$2.Tagalog]: "Antarktika", [e$2.Tajik]: "\u0410\u043D\u0442\u0430\u0440\u043A\u0442\u0438\u043A\u0430", [e$2.Tamil]: "\u0B85\u0BA9\u0BCD\u0BA4\u0BBE\u0BB0\u0BCD\u0B95\u0BCD\u0B95\u0BBF\u0B95\u0BCD", [e$2.Tatar]: "\u0410\u043D\u0442\u0430\u0440\u043A\u0442\u0438\u043A\u0430", [e$2.Telugu]: "\u0C05\u0C28\u0C4D\u0C24\u0C30\u0C3E\u0C36\u0C4D\u0C35\u0C3F\u0C15\u0C3E", [e$2.Thai]: "\u0E20\u0E39\u0E21\u0E34\u0E20\u0E32\u0E04\u0E2D\u0E32\u0E19\u0E31\u0E19\u0E15\u0E34\u0E01\u0E32", [e$2.Tibetan]: "\u0F68\u0F7A\u0F53\u0F0B\u0F4A\u0F72\u0F4A\u0F7A\u0F53\u0F0B\u0F40\u0F72\u0F66\u0F72\u0F0B\u0F68\u0F7A\u0F53\u0F0B\u0F4A\u0F72\u0F4A\u0F7A\u0F53\u0F0B\u0F40\u0F72\u0F66\u0F72", [e$2.Turkish]: "Antarktika", [e$2.Ukrainian]: "\u0410\u043D\u0442\u0430\u0440\u043A\u0442\u0438\u043A\u0430", [e$2.Urdu]: "\u0627\u0646\u062A\u0627\u0631\u06A9\u062A\u06CC\u06A9\u0627", [e$2.Uzbek]: "\u0410\u043D\u0442\u0430\u0440\u043A\u0442\u0438\u043A\u0430", [e$2.Vietnamese]: "\u0110\u1EA5t Antarktik", [e$2.Welsh]: "Antarktika", [e$2.Xhosa]: "Antarktika", [e$2.Yiddish]: "Antarktika", [e$2.Yoruba]: "Antarktika", [e$2.Zulu]: "Antarktika" } } }, Armenia: { i18n: { calling_codes: [374], currencies: [l$1.ArmeniaDram], languages: [e$2.Armenian], tz: { offsets: [i$2.UTC_PLUS_4], regions: [t$1.AsiaJakarta], timezones: [n$2.ArmeniaTime] } }, id: r$2.Armenia, info: { flag: { emoji: "\u{1F1E6}\u{1F1F2}", emoji_unicode: "U+1F1E6 U+1F1F2", svg: "https://www.countryflags.io/am/flat/64.svg" }, tld: [".am"] }, iso: { alpha2: r$2.Armenia, alpha3: "ARM", numeric: "051" }, name: { alt_spellings: ["AM", "Hayastan", "Republic of Armenia", "\u0540\u0561\u0575\u0561\u057D\u057F\u0561\u0576"], demonym: "Armenian", native: { endonym: "\u0540\u0561\u0575\u0561\u057D\u057F\u0561\u0576" }, official: "Republic of Armenia", short: "Armenia", translations: { [e$2.Afrikaans]: "Armeni\xEB", [e$2.Albanian]: "Armenia", [e$2.Amharic]: "\u12A0\u121B\u122D\u129B", [e$2.Arabic]: "\u0623\u0631\u0645\u064A\u0646\u064A\u0627", [e$2.Armenian]: "\u0540\u0561\u0575\u0561\u057D\u057F\u0561\u0576", [e$2.Azerbaijani]: "Az\u0259rbaycan", [e$2.Bashkir]: "\u0410\u0440\u043C\u0435\u043D\u0438\u044F", [e$2.Basque]: "Arm\xE9nia", [e$2.Belarusian]: "\u0410\u0440\u043C\u0435\u043D\u0438\u044F", [e$2.Bengali]: "\u0986\u09B0\u09CD\u09AE\u09C7\u09A8\u09BF", [e$2.Berber]: "\u0623\u0631\u0645\u064A\u0646\u064A\u0627", [e$2.Bhutani]: "\u0F62\u0F92\u0FB1\u0F0B\u0F53\u0F42", [e$2.Bosnian]: "Armenija", [e$2.Breton]: "Armeni\xEB", [e$2.Bulgarian]: "\u0410\u0440\u043C\u0435\u043D\u0438\u044F", [e$2.Burmese]: "\u1021\u102C\u1019\u1010\u102D\u1010\u1039", [e$2.Catalan]: "Arm\xE8nia", [e$2.Chinese]: "\u4E9A\u7F8E\u5C3C\u4E9A", [e$2.Croatian]: "Armenija", [e$2.Czech]: "Arm\xE9nie", [e$2.Danish]: "Armenien", [e$2.Dutch]: "Armeni\xEB", [e$2.English]: "Armenia", [e$2.Esperanto]: "Armenia", [e$2.Estonian]: "Armeenia", [e$2.Finnish]: "Armenia", [e$2.French]: "Armenia", [e$2.Frisian]: "Armeenia", [e$2.Galician]: "Arm\xE9nia", [e$2.Georgian]: "\u10D0\u10E0\u10DB\u10DD\u10DC\u10D8", [e$2.German]: "Armenien", [e$2.Greenlandic]: "Armenia", [e$2.Greek]: "\u0391\u03C1\u03BC\u03B5\u03BD\u03AF\u03B1", [e$2.Gujarati]: "\u0A85\u0AB0\u0ACD\u0AAE\u0AC7\u0AA8\u0ABF", [e$2.Haitian]: "Armenia", [e$2.Hausa]: "Armenia", [e$2.Hebrew]: "\u05D0\u05E8\u05DE\u05E0\u05D9\u05D4", [e$2.Hindi]: "\u0905\u05E8\u05DE\u05E0\u093F\u092F\u093E", [e$2.Hungarian]: "\xD6rm\xE9nyorsz\xE1g", [e$2.Icelandic]: "Armenia", [e$2.Igbo]: "Armenia", [e$2.Indonesian]: "Armenia", [e$2.Irish]: "Armenia", [e$2.Italian]: "Armenia", [e$2.Japanese]: "\u30A2\u30EB\u30E1\u30CB\u30A2", [e$2.Javanese]: "Armenia", [e$2.Kannada]: "\u0C85\u0CB0\u0CCD\u0CAE\u0CC7\u0CA8\u0CBF", [e$2.Kazakh]: "\u0410\u0440\u043C\u0435\u043D\u0438\u044F", [e$2.Khmer]: "\u17A2\u17B6\u1798\u17C9\u17C1\u179A\u17B8", [e$2.Korean]: "\uC544\uB974\uBA54\uB2C8\uC544", [e$2.Kurdish]: "Armenia", [e$2.Kyrgyz]: "\u0410\u0440\u043C\u0435\u043D\u0438\u044F", [e$2.Lao]: "\u0EAD\u0EB2\u0EAB\u0EBC\u0E99\u0EB2", [e$2.Latin]: "Armenia", [e$2.Latvian]: "Armeenia", [e$2.Lithuanian]: "Arm\u0117nija", [e$2.Luxembourgish]: "Armenien", [e$2.Macedonian]: "\u0410\u0440\u043C\u0435\u043D\u0438\u0458\u0430", [e$2.Malagasy]: "Armenia", [e$2.Malay]: "Armenia", [e$2.Malayalam]: "\u0D05\u0D30\u0D4D\u200D\u0D2E\u0D47\u0D28\u0D3F", [e$2.Maltese]: "Armenia", [e$2.Maori]: "Armenia", [e$2.Marathi]: "\u0905\u0930\u094D\u092E\u0947\u0928\u093F", [e$2.Mongolian]: "\u0410\u0440\u043C\u0435\u043D\u0438\u044F", [e$2.Nepali]: "\u0905\u0930\u094D\u092E\u0947\u0928\u093F", [e$2.Norwegian]: "Armenia", [e$2.Pashto]: "\u0622\u0631\u0645\u06CC\u0646\u06CC\u0627", [e$2.Persian]: "\u0627\u0631\u0645\u0646\u0633\u062A\u0627\u0646", [e$2.Polish]: "Armenia", [e$2.Portuguese]: "Armenia", [e$2.Punjabi]: "\u0A05\u0A30\u0A2E\u0A40\u0A28\u0A40", [e$2.Romanian]: "Armenia", [e$2.Russian]: "\u0410\u0440\u043C\u0435\u043D\u0438\u044F", [e$2.Samoan]: "Armenia", [e$2.Sanskrit]: "Armenia", [e$2.Scots]: "Armenia", [e$2.Serbian]: "\u0410\u0440\u043C\u0435\u043D\u0438\u0458\u0430", [e$2.Sesotho]: "Armenia", [e$2.Shona]: "Armenia", [e$2.Sindhi]: "Armenia", [e$2.Sinhala]: "\u0D86\u0DBB\u0DCA\u0DB8\u0DD3\u0DB1\u0DD2", [e$2.Slovak]: "Armenia", [e$2.Slovenian]: "Armenija", [e$2.Somali]: "Armenia", [e$2.Spanish]: "Armenia", [e$2.Sudanese]: "Armenia", [e$2.Swahili]: "Armenia", [e$2.Swedish]: "Armenien", [e$2.Tagalog]: "Armenia", [e$2.Tajik]: "\u0410\u0440\u043C\u0435\u043D\u0438\u044F", [e$2.Tamil]: "\u0B85\u0BB0\u0BCD\u0BAE\u0BC7\u0BA9\u0BBF\u0BAF\u0BA9\u0BCD", [e$2.Tatar]: "\u0410\u0440\u043C\u0435\u043D\u0438\u044F", [e$2.Telugu]: "\u0C05\u0C30\u0C4D\u0C2E\u0C47\u0C28\u0C3F", [e$2.Thai]: "\u0E2D\u0E32\u0E23\u0E4C\u0E40\u0E21\u0E19\u0E34\u0E2A\u0E16\u0E32\u0E19", [e$2.Tibetan]: "\u0F68\u0F62\u0F0B\u0F58\u0F7A\u0F0B\u0F53\u0F72\u0F0B\u0F61\u0F74\u0F0D", [e$2.Turkish]: "Ermenistan", [e$2.Ukrainian]: "\u0410\u0440\u043C\u0435\u043D\u0456\u044F", [e$2.Urdu]: "\u0627\u0631\u0645\u0646\u0633\u062A\u0627\u0646", [e$2.Uzbek]: "\u0410\u0440\u043C\u0435\u043D\u0438\u044F", [e$2.Vietnamese]: "Armenia", [e$2.Welsh]: "Armenia", [e$2.Xhosa]: "Armenia", [e$2.Yiddish]: "\u05D0\u05E8\u05DE\u05E0\u05D9\u05D4", [e$2.Yoruba]: "Armenia", [e$2.Zulu]: "Armenia" } } }, SomeCountry: { i18n: { calling_codes: [], currencies: [], languages: [], tz: { offsets: [], regions: [], timezones: [] } }, id: r$2.AmericanSamoa, info: { flag: { emoji: "", emoji_unicode: "", svg: "" }, tld: [] }, iso: { alpha2: r$2.AmericanSamoa, alpha3: "", numeric: "" }, name: { alt_spellings: [], demonym: "", native: { endonym: "" }, official: "", short: "", translations: { [e$2.Afrikaans]: "", [e$2.Albanian]: "", [e$2.Amharic]: "", [e$2.Arabic]: "", [e$2.Armenian]: "", [e$2.Azerbaijani]: "", [e$2.Bashkir]: "", [e$2.Basque]: "", [e$2.Belarusian]: "", [e$2.Bengali]: "", [e$2.Berber]: "", [e$2.Bhutani]: "", [e$2.Bosnian]: "", [e$2.Breton]: "", [e$2.Bulgarian]: "", [e$2.Burmese]: "", [e$2.Catalan]: "", [e$2.Chinese]: "", [e$2.Croatian]: "", [e$2.Czech]: "", [e$2.Danish]: "", [e$2.Dutch]: "", [e$2.English]: "", [e$2.Esperanto]: "", [e$2.Estonian]: "", [e$2.Finnish]: "", [e$2.French]: "", [e$2.Frisian]: "", [e$2.Galician]: "", [e$2.Georgian]: "", [e$2.German]: "", [e$2.Greenlandic]: "", [e$2.Greek]: "", [e$2.Gujarati]: "", [e$2.Haitian]: "", [e$2.Hausa]: "", [e$2.Hebrew]: "", [e$2.Hindi]: "", [e$2.Hungarian]: "", [e$2.Icelandic]: "", [e$2.Igbo]: "", [e$2.Indonesian]: "", [e$2.Irish]: "", [e$2.Italian]: "", [e$2.Japanese]: "", [e$2.Javanese]: "", [e$2.Kannada]: "", [e$2.Kazakh]: "", [e$2.Khmer]: "", [e$2.Korean]: "", [e$2.Kurdish]: "", [e$2.Kyrgyz]: "", [e$2.Lao]: "", [e$2.Latin]: "", [e$2.Latvian]: "", [e$2.Lithuanian]: "", [e$2.Luxembourgish]: "", [e$2.Macedonian]: "", [e$2.Malagasy]: "", [e$2.Malay]: "", [e$2.Malayalam]: "", [e$2.Maltese]: "", [e$2.Maori]: "", [e$2.Marathi]: "", [e$2.Mongolian]: "", [e$2.Nepali]: "", [e$2.Norwegian]: "", [e$2.Pashto]: "", [e$2.Persian]: "", [e$2.Polish]: "", [e$2.Portuguese]: "", [e$2.Punjabi]: "", [e$2.Romanian]: "", [e$2.Russian]: "", [e$2.Samoan]: "", [e$2.Sanskrit]: "", [e$2.Scots]: "", [e$2.Serbian]: "", [e$2.Sesotho]: "", [e$2.Shona]: "", [e$2.Sindhi]: "", [e$2.Sinhala]: "", [e$2.Slovak]: "", [e$2.Slovenian]: "", [e$2.Somali]: "", [e$2.Spanish]: "", [e$2.Sudanese]: "", [e$2.Swahili]: "", [e$2.Swedish]: "", [e$2.Tagalog]: "", [e$2.Tajik]: "", [e$2.Tamil]: "", [e$2.Tatar]: "", [e$2.Telugu]: "", [e$2.Thai]: "", [e$2.Tibetan]: "", [e$2.Turkish]: "", [e$2.Ukrainian]: "", [e$2.Urdu]: "", [e$2.Uzbek]: "", [e$2.Vietnamese]: "", [e$2.Welsh]: "", [e$2.Xhosa]: "", [e$2.Yiddish]: "", [e$2.Yoruba]: "", [e$2.Zulu]: "" } } } });
+({ Afghanistan: { i18n: { calling_codes: [93], currencies: [l$1.AfghanistanAfghani], languages: [e$2.Pashto, e$2.Dari, e$2.Turkmen, e$2.Uzbek], tz: { offsets: [i$3.UTC_PLUS_4_30], regions: [t$1.AsiaKabul], timezones: [n$2.AfghanistanTime] } }, id: r$2.Afghanistan, info: { flag: { emoji: "\u{1F1E6}\u{1F1EB}", emoji_unicode: "U+1F1E6 U+1F1EB", svg: "https://www.countryflags.io/af/flat/64.svg" }, tld: [".af"] }, iso: { alpha2: r$2.Afghanistan, alpha3: "AFG", numeric: "004" }, name: { alt_spellings: ["AF", "Af\u0121\u0101nist\u0101n"], demonym: "Afghan", native: { endonym: "\u0627\u0641\u063A\u0627\u0646\u0633\u062A\u0627\u0646" }, official: "Islamic Republic of Afghanistan", short: "Afghanistan", translations: { [e$2.Afrikaans]: "Afghanistan", [e$2.Albanian]: "Shqip\xEBri", [e$2.Amharic]: "\u12A0\u134D\u130B\u1295", [e$2.Arabic]: "\u0623\u0641\u063A\u0627\u0646\u0633\u062A\u0627\u0646", [e$2.Armenian]: "\u0540\u0561\u0575\u0561\u057D\u057F\u0561\u0576", [e$2.Azerbaijani]: "Az\u0259rbaycan", [e$2.Bashkir]: "\u0410\u0444\u0433\u0430\u043D\u0438\u0441\u0442\u0430\u043D", [e$2.Basque]: "Afganist\xE1n", [e$2.Belarusian]: "\u0410\u0444\u0433\u0430\u043D\u0438\u0441\u0442\u0430\u043D", [e$2.Bengali]: "\u0986\u09AB\u0997\u09BE\u09A8\u09BF\u09B8\u09CD\u09A4\u09BE\u09A8", [e$2.Berber]: "\u0623\u0641\u063A\u0627\u0646\u0633\u062A\u0627\u0646", [e$2.Bhutani]: "\u0F60\u0F56\u0FB2\u0F74\u0F42\u0F0B\u0F61\u0F74\u0F63\u0F0B\u0F66\u0FA4\u0FB2\u0F7C\u0F51\u0F0B\u0F40\u0FB1\u0F72\u0F0B\u0F51\u0F7C\u0F53\u0F0B\u0F63\u0F7A\u0F0B\u0F66\u0F90\u0F51\u0F0B\u0F46\u0F0D", [e$2.Bosnian]: "\u0410\u0444\u0433\u0430\u043D\u0438\u0441\u0442\u0430\u043D", [e$2.Breton]: "Afganistan", [e$2.Bulgarian]: "\u0410\u0444\u0433\u0430\u043D\u0438\u0441\u0442\u0430\u043D", [e$2.Burmese]: "\u1021\u102C\u1019\u1001\u103B\u1004\u103A\u1010\u1031\u102C\u103A", [e$2.Catalan]: "Afganistan", [e$2.Chinese]: "\u963F\u5BCC\u6C57", [e$2.Croatian]: "Afganistan", [e$2.Czech]: "Afganistan", [e$2.Danish]: "Afghanistan", [e$2.Dutch]: "Afghanistan", [e$2.English]: "Afghanistan", [e$2.Esperanto]: "Afganistan", [e$2.Estonian]: "Afganistan", [e$2.Finnish]: "Afghanistan", [e$2.French]: "Afghanistan", [e$2.Frisian]: "Afghanistan", [e$2.Galician]: "Afganist\xE1n", [e$2.Georgian]: "\u10D0\u10D5\u10E6\u10D0\u10DC\u10D4\u10D7\u10D8", [e$2.German]: "Afghanistan", [e$2.Greenlandic]: "Afghanistan", [e$2.Greek]: "\u0391\u03C6\u03B3\u03B1\u03BD\u03B9\u03C3\u03C4\u03AC\u03BD", [e$2.Gujarati]: "\u0A85\u0AAB\u0A97\u0ABE\u0AA8\u0ABF\u0AB8\u0ACD\u0AA4\u0ABE\u0AA8", [e$2.Haitian]: "Afghanistan", [e$2.Hausa]: "Afghanistan", [e$2.Hebrew]: "\u05D0\u05E4\u05D2\u05E0\u05D9\u05E1\u05D8\u05DF", [e$2.Hindi]: "\u0905\u092B\u0917\u093E\u0928\u093F\u0938\u094D\u0924\u093E\u0928", [e$2.Hungarian]: "Afganistan", [e$2.Icelandic]: "Afghanistan", [e$2.Igbo]: "Afghanistan", [e$2.Indonesian]: "Afghanistan", [e$2.Irish]: "Afghanistan", [e$2.Italian]: "Afghanistan", [e$2.Japanese]: "\u30A2\u30D5\u30AC\u30CB\u30B9\u30BF\u30F3", [e$2.Javanese]: "Afghanistan", [e$2.Kannada]: "\u0C85\u0CAB\u0C97\u0CBE\u0CA8\u0CBF\u0CB8\u0CCD\u0CA4\u0CBE\u0CA8", [e$2.Kazakh]: "\u0410\u0444\u0433\u0430\u043D\u0438\u0441\u0442\u0430\u043D", [e$2.Khmer]: "\u17A2\u17B6\u17A0\u17D2\u179C\u17D2\u179A\u17B7\u1780", [e$2.Korean]: "\uC544\uD504\uAC00\uB2C8\uC2A4\uD0C4", [e$2.Kurdish]: "Afghanistan", [e$2.Kyrgyz]: "\u0410\u0444\u0433\u0430\u043D\u0438\u0441\u0442\u0430\u043D", [e$2.Lao]: "\u0EAD\u0EB2\u0E9F\u0EB2\u0EA5\u0EBD\u0E99", [e$2.Latin]: "Afghanistan", [e$2.Latvian]: "Afghanistan", [e$2.Lithuanian]: "Afganistanas", [e$2.Luxembourgish]: "Afghanistan", [e$2.Macedonian]: "\u0410\u0444\u0433\u0430\u043D\u0438\u0441\u0442\u0430\u043D", [e$2.Malagasy]: "Afghanistan", [e$2.Malay]: "Afghanistan", [e$2.Malayalam]: "\u0D05\u0D2B\u0D17\u0D3E\u0D28\u0D3F\u0D38\u0D4D\u0D24\u0D3E\u0D28", [e$2.Maltese]: "Afghanistan", [e$2.Maori]: "Afghanistan", [e$2.Marathi]: "\u0905\u092B\u0917\u093E\u0928\u093F\u0938\u094D\u0924\u093E\u0928", [e$2.Mongolian]: "\u0410\u0444\u0433\u0430\u043D\u0438\u0441\u0442\u0430\u043D", [e$2.Nepali]: "\u0905\u092B\u0917\u093E\u0928\u093F\u0938\u094D\u0924\u093E\u0928", [e$2.Norwegian]: "Afghanistan", [e$2.Pashto]: "\u0627\u0641\u063A\u0627\u0646\u0633\u062A\u0627\u0646", [e$2.Persian]: "\u0627\u0641\u063A\u0627\u0646\u0633\u062A\u0627\u0646", [e$2.Polish]: "Afganistan", [e$2.Portuguese]: "Afghanistan", [e$2.Punjabi]: "Afghanistan", [e$2.Romanian]: "Afghanistan", [e$2.Polish]: "Afganistan", [e$2.Russian]: "\u0410\u0444\u0433\u0430\u043D\u0438\u0441\u0442\u0430\u043D", [e$2.Samoan]: "Afghanistan", [e$2.Sanskrit]: "\u0905\u092B\u0917\u093E\u0928\u093F\u0938\u094D\u0924\u093E\u0928", [e$2.Scots]: "Afghanistan", [e$2.Serbian]: "\u0410\u0444\u0433\u0430\u043D\u0438\u0441\u0442\u0430\u043D", [e$2.Sesotho]: "Afghanistan", [e$2.Shona]: "Afghanistan", [e$2.Sindhi]: "Afghanistan", [e$2.Sinhala]: "\u0D86\u0D9C\u0DCA\u200D\u0DBB\u0DDC\u0D9A\u0DCA\u0D9A\u0DD2\u0DBA\u0DCF\u0DC0", [e$2.Slovak]: "Afganistan", [e$2.Slovenian]: "Afganistan", [e$2.Somali]: "Afghanistan", [e$2.Spanish]: "Afganist\xE1n", [e$2.Sudanese]: "Afghanistan", [e$2.Swahili]: "Afghanistan", [e$2.Swedish]: "Afghanistan", [e$2.Tagalog]: "Afghanistan", [e$2.Tajik]: "\u0410\u0444\u0433\u0430\u043D\u0438\u0441\u0442\u0430\u043D", [e$2.Tatar]: "\u0410\u0444\u0433\u0430\u043D\u0438\u0441\u0442\u0430\u043D", [e$2.Tamil]: "\u0B86\u0BAA\u0BCD\u0BAA\u0B95\u0BBE\u0BA9\u0BBF\u0BB8\u0BCD\u0BA4\u0BBE\u0BA9\u0BCD", [e$2.Telugu]: "\u0C06\u0C2B\u0C4D\u0C18\u0C28\u0C3F\u0C38\u0C4D\u0C24\u0C3E\u0C28\u0C4D", [e$2.Thai]: "\u0E2D\u0E31\u0E1F\u0E01\u0E32\u0E19\u0E34\u0E2A\u0E16\u0E32\u0E19", [e$2.Tibetan]: "\u0F68\u0F55\u0F0B\u0F42\u0F7A\u0F0B\u0F53\u0F72\u0F66\u0F72\u0F0B\u0F4F\u0F7A\u0F53\u0F66\u0F72\u0F0D", [e$2.Turkish]: "Afganistan", [e$2.Ukrainian]: "\u0410\u0444\u0433\u0430\u043D\u0438\u0441\u0442\u0430\u043D", [e$2.Urdu]: "\u0627\u0641\u063A\u0627\u0646\u0633\u062A\u0627\u0646", [e$2.Uzbek]: "\u0410\u0444\u0433\u0430\u043D\u0438\u0441\u0442\u0430\u043D", [e$2.Vietnamese]: "Afghanistan", [e$2.Welsh]: "Afghanistan", [e$2.Xhosa]: "Afghanistan", [e$2.Yiddish]: "Afghanistan", [e$2.Yoruba]: "Afghanistan", [e$2.Zulu]: "Afghanistan" } }, statistics: { demographics: { age: { distribution: [{ age: "0 to 14 years", percentage: 15.3 }, { age: "15 to 64 years", percentage: 66.7 }, { age: "65 years and over", percentage: 14.6 }], median_age: 35.5 }, population: { largest_city: "Kabul", total: 341e5 } }, geography: { area: 652230, region: I.Asia, sub_region: x$1.SouthernAsia }, government: { capital: "Kabul", type: "Islamic Emirate" } } }, Albania: { i18n: { calling_codes: [355], currencies: [l$1.AlbaniaLek], languages: [e$2.Albanian, e$2.Greek, e$2.Turkish], tz: { offsets: [i$3.UTC_PLUS_1], regions: [t$1.EuropeBrussels], timezones: [n$2.CentralEuropeanTime] } }, id: r$2.Albania, info: { flag: { emoji: "\u{1F1E6}\u{1F1F1}", emoji_unicode: "U+1F1E6 U+1F1F1", svg: "https://www.countryflags.io/al/flat/64.svg" }, tld: [".al"] }, iso: { alpha2: r$2.Albania, alpha3: "ALB", numeric: "008" }, name: { alt_spellings: ["AL", "Shqip\xEBri", "Shqip\xEBria", "Shqipnia"], demonym: "Albanian", native: { endonym: "Shqip\xEBri" }, official: "Republic of Albania", short: "Albania", translations: { [e$2.Afrikaans]: "Albania", [e$2.Albanian]: "Albania", [e$2.Amharic]: "\u12A0\u120D\u1263\u1295\u12EB", [e$2.Arabic]: "\u0623\u0644\u0628\u0627\u0646\u064A\u0627", [e$2.Armenian]: "\u0540\u0561\u0575\u0561\u057D\u057F\u0561\u0576", [e$2.Azerbaijani]: "Az\u0259rbaycan", [e$2.Bashkir]: "\u0410\u043B\u0431\u0430\u043D\u0438\u044F", [e$2.Basque]: "Albania", [e$2.Belarusian]: "\u0410\u043B\u0431\u0430\u043D\u0438\u044F", [e$2.Bengali]: "\u0986\u09B2\u09AC\u09BE\u09A8\u09BF\u09AF\u09BC\u09BE", [e$2.Berber]: "\u0623\u0644\u0628\u0627\u0646\u064A\u0627", [e$2.Bhutani]: "\u0F60\u0F56\u0FB2\u0F74\u0F42\u0F0B\u0F61\u0F74\u0F63\u0F0B", [e$2.Bosnian]: "Albanija", [e$2.Breton]: "Albania", [e$2.Bulgarian]: "\u0410\u043B\u0431\u0430\u043D\u0438\u044F", [e$2.Burmese]: "\u1021\u102C\u1019\u1001\u103B\u1004\u103A\u1010\u1031\u102C\u103A", [e$2.Catalan]: "Alb\xE0nia", [e$2.Chinese]: "\u963F\u5C14\u5DF4\u5C3C\u4E9A", [e$2.Croatian]: "Albanija", [e$2.Czech]: "Alb\xE1nie", [e$2.Danish]: "Albanien", [e$2.Dutch]: "Albani\xEB", [e$2.English]: "Albania", [e$2.Esperanto]: "Albanio", [e$2.Estonian]: "Albaania", [e$2.Finnish]: "Albania", [e$2.French]: "Albanie", [e$2.Frisian]: "Albani\xEB", [e$2.Galician]: "Alb\xE2nia", [e$2.Georgian]: "\u10D0\u10DA\u10D1\u10D0\u10DC\u10D8\u10D0", [e$2.German]: "Albanien", [e$2.Greenlandic]: "Albania", [e$2.Greek]: "\u0391\u03BB\u03B2\u03B1\u03BD\u03AF\u03B1", [e$2.Gujarati]: "\u0A85\u0AB2\u0AAC\u0AA8\u0ABF\u0AAF\u0ABE", [e$2.Haitian]: "Albanais", [e$2.Hausa]: "Albania", [e$2.Hebrew]: "\u05D0\u05DC\u05D1\u05E0\u05D9\u05D4", [e$2.Hindi]: "\u0905\u0932\u094D\u092C\u093E\u0928\u093F\u092F\u093E", [e$2.Hungarian]: "Alb\xE1nia", [e$2.Icelandic]: "Alb\xFAnir", [e$2.Igbo]: "Albania", [e$2.Indonesian]: "Albania", [e$2.Irish]: "Alb\xE1in", [e$2.Italian]: "Albania", [e$2.Japanese]: "\u30A2\u30EB\u30D0\u30CB\u30A2", [e$2.Javanese]: "Albania", [e$2.Kannada]: "\u0C85\u0CB2\u0CCD\u0CAC\u0CBE\u0CA8\u0CBF\u0CAF\u0CBE", [e$2.Kazakh]: "\u0410\u043B\u0431\u0430\u043D\u0438\u044F", [e$2.Khmer]: "\u17A2\u17B6\u17A0\u17D2\u179C\u17D2\u179A\u17C1\u179F\u17CA\u17B8", [e$2.Korean]: "\uC54C\uBC14\uB2C8\uC544", [e$2.Kurdish]: "\u0622\u0644\u0628\u0627\u0646\u06CC\u0627", [e$2.Kyrgyz]: "\u0410\u043B\u0431\u0430\u043D\u0438\u044F", [e$2.Lao]: "\u0EAD\u0EB2\u0EA5\u0EB2\u0E99\u0EB5", [e$2.Latin]: "Albania", [e$2.Latvian]: "Alb\u0101nija", [e$2.Lithuanian]: "Albanija", [e$2.Luxembourgish]: "Albani\xEB", [e$2.Macedonian]: "\u0410\u043B\u0431\u0430\u043D\u0438\u0458\u0430", [e$2.Malagasy]: "Albania", [e$2.Malay]: "Albania", [e$2.Malayalam]: "\u0D05\u0D32\u0D4D\u0D2C\u0D3E\u0D28\u0D3F\u0D2F\u0D3E", [e$2.Maltese]: "Albania", [e$2.Maori]: "Albania", [e$2.Marathi]: "\u0905\u0932\u094D\u092C\u093E\u0928\u093F\u092F\u093E", [e$2.Mongolian]: "\u0410\u043B\u0431\u0430\u043D\u0438\u044F", [e$2.Nepali]: "\u0905\u0932\u094D\u092C\u093E\u0928\u093F\u092F\u093E", [e$2.Norwegian]: "Albania", [e$2.Pashto]: "\u0627\u0627\u0644\u0628\u0627\u0646\u06CC", [e$2.Persian]: "\u0622\u0644\u0628\u0627\u0646\u06CC", [e$2.Polish]: "Albania", [e$2.Portuguese]: "Alb\xE2nia", [e$2.Punjabi]: "\u0A05\u0A32\u0A2C\u0A28\u0A40\u0A06", [e$2.Romanian]: "Alb\u0103n", [e$2.Russian]: "\u0410\u043B\u0431\u0430\u043D\u0438\u044F", [e$2.Samoan]: "Albania", [e$2.Sanskrit]: "Albani", [e$2.Scots]: "Alb\xE0inia", [e$2.Serbian]: "\u0410\u043B\u0431\u0430\u043D\u0438\u0458\u0430", [e$2.Sesotho]: "Albania", [e$2.Shona]: "Albania", [e$2.Sindhi]: "Albania", [e$2.Sinhala]: "\u0D87\u0DBD\u0DCA\u0DB6\u0DCF\u0DB1\u0DD2\u0DBA", [e$2.Slovak]: "Alb\xE1nsko", [e$2.Slovenian]: "Albanija", [e$2.Somali]: "Albania", [e$2.Spanish]: "Albania", [e$2.Sudanese]: "Albania", [e$2.Swahili]: "Albania", [e$2.Swedish]: "Albanien", [e$2.Tagalog]: "Albania", [e$2.Tajik]: "\u0410\u043B\u0431\u0430\u043D\u0438\u044F", [e$2.Tamil]: "\u0B85\u0BB2\u0BCD\u0BAA\u0BBE\u0BA9\u0BBF\u0BAF\u0BBE", [e$2.Tatar]: "\u0410\u043B\u0431\u0430\u043D\u0438\u044F", [e$2.Telugu]: "\u0C05\u0C32\u0C4D\u0C2C\u0C3E\u0C28\u0C3F\u0C2F\u0C3E", [e$2.Thai]: "\u0E2D\u0E31\u0E25\u0E41\u0E1A\u0E19\u0E34\u0E19\u0E35", [e$2.Tibetan]: "\u0F68\u0F63\u0F0B\u0F56\u0F72\u0F0B\u0F53\u0F72\u0F0B\u0F61\u0F72", [e$2.Turkish]: "Albaniye", [e$2.Ukrainian]: "\u0410\u043B\u0431\u0430\u043D\u0456\u044F", [e$2.Urdu]: "\u0622\u0644\u0628\u0627\u0646\u06CC", [e$2.Uzbek]: "\u0410\u043B\u0431\u0430\u043D\u0438\u044F", [e$2.Vietnamese]: "Albanie", [e$2.Welsh]: "Albania", [e$2.Xhosa]: "Albania", [e$2.Yiddish]: "\u05D0\u05DC\u05D1\u05E0\u05D9\u05E9", [e$2.Yoruba]: "Albania", [e$2.Zulu]: "Albania" } }, statistics: { demographics: { age: { distribution: [{ age: "0 to 14 years", percentage: 15.3 }, { age: "15 to 64 years", percentage: 66.7 }, { age: "65 years and over", percentage: 14.6 }], median_age: 35.5 }, population: { largest_city: "Tirana", total: 2853e3 } }, geography: { area: 28748, region: I.Europe, sub_region: x$1.SouthernEurope }, government: { capital: "Tirana", type: "Republic" } } }, Algeria: { i18n: { calling_codes: [213], currencies: [l$1.AlgeriaDinar], languages: [e$2.Arabic, e$2.French, e$2.Berber, e$2.Tamazight], tz: { offsets: [i$3.UTC_PLUS_1, i$3.UTC_PLUS_2], regions: [t$1.AfricaAlgiers], timezones: [n$2.CentralEuropeanTime] } }, id: r$2.Algeria, info: { flag: { emoji: "\u{1F1E9}\u{1F1FF}", emoji_unicode: "U+1F1E9 U+1F1FF", svg: "https://www.countryflags.io/dz/flat/64.svg" }, tld: [".dz", ".\u062C\u0632\u0627\u0626\u0631"] }, iso: { alpha2: r$2.Algeria, alpha3: "DZA", numeric: "012" }, name: { alt_spellings: ["DZ", "Dzayer", "Alg\xE9rie"], demonym: "Algerian", native: { endonym: "\u0627\u0644\u062C\u0632\u0627\u0626\u0631" }, official: "People's Democratic Republic of Algeria", short: "Algeria", translations: { [e$2.Afrikaans]: "Algerije", [e$2.Albanian]: "Algeria", [e$2.Amharic]: "\u12A0\u120D\u1300\u122D\u1235", [e$2.Arabic]: "\u0627\u0644\u062C\u0632\u0627\u0626\u0631", [e$2.Armenian]: "\u0531\u056C\u0563\u0578\u0580\u056B\u0561", [e$2.Azerbaijani]: "Az\u0259rbaycan", [e$2.Bashkir]: "\u0410\u043B\u0436\u0438\u0440", [e$2.Basque]: "Algeria", [e$2.Belarusian]: "\u0410\u043B\u0436\u0438\u0440", [e$2.Bengali]: "\u0986\u09B2\u099C\u09C7\u09B0", [e$2.Berber]: "\u062C\u0632\u0627\u0626\u0631", [e$2.Bhutani]: "\u0F62\u0FAB\u0F7C\u0F44\u0F0B\u0F41", [e$2.Bosnian]: "Al\u017Eir", [e$2.Breton]: "Algeria", [e$2.Bulgarian]: "\u0410\u043B\u0436\u0438\u0440", [e$2.Burmese]: "\u1021\u102C\u101B\u1015\u103A", [e$2.Catalan]: "Alg\xE8ria", [e$2.Chinese]: "\u963F\u5C14\u53CA\u5229\u4E9A", [e$2.Croatian]: "Al\u017Eir", [e$2.Czech]: "Al\u017E\xEDrsko", [e$2.Danish]: "Algeriet", [e$2.Dutch]: "Algerije", [e$2.English]: "Algeria", [e$2.Esperanto]: "Al\u011Derio", [e$2.Estonian]: "Al\u017Eira", [e$2.Finnish]: "Algeria", [e$2.French]: "Alg\xE9rie", [e$2.Frisian]: "Algeri\xEB", [e$2.Galician]: "Alxeria", [e$2.Georgian]: "\u10D0\u10DA\u10D2\u10D8\u10E3\u10E0\u10D8", [e$2.German]: "Algerien", [e$2.Greenlandic]: "Algeria", [e$2.Greek]: "\u0391\u03BB\u03B3\u03B5\u03C1\u03AF\u03B1", [e$2.Gujarati]: "\u0A86\u0AB2\u0AC7\u0A97\u0AB0\u0ABF\u0AAF\u0ABE", [e$2.Haitian]: "Alg\xE9rie", [e$2.Hausa]: "Algeria", [e$2.Hebrew]: "\u05D0\u05DC\u05D2\u05F3\u05D9\u05E8\u05D9\u05D4", [e$2.Hindi]: "\u0906\u0932\u094D\u0917\u0947\u0930\u093F\u092F\u093E", [e$2.Hungarian]: "Alg\xE1r", [e$2.Icelandic]: "Alg\xFAra", [e$2.Igbo]: "Algeria", [e$2.Indonesian]: "Aljir", [e$2.Irish]: "Alg\xE9rie", [e$2.Italian]: "Algeria", [e$2.Japanese]: "\u30A2\u30EB\u30B8\u30A7\u30EA\u30A2", [e$2.Javanese]: "Aljir", [e$2.Kannada]: "\u0C86\u0CB2\u0CCD\u0C97\u0CC7\u0CB0\u0CBF\u0CAF\u0CA8\u0CCD", [e$2.Kazakh]: "\u0410\u043B\u0436\u0438\u0440", [e$2.Khmer]: "\u17A2\u17B6\u179B\u17CB\u1794\u17B6\u1793\u17B8", [e$2.Korean]: "\uC54C\uC81C\uB9AC", [e$2.Kurdish]: "\u062C\u0632\u0627\u06CC\u0631 \u0627\u0644\u062C\u0632\u0627\u06CC\u0631", [e$2.Kyrgyz]: "\u0410\u043B\u0436\u0438\u0440", [e$2.Lao]: "\u0EAD\u0EB2\u0EA5\u0EB2\u0E88\u0EB5\u0E99", [e$2.Latin]: "Algeria", [e$2.Latvian]: "Al\u017E\u012Brija", [e$2.Lithuanian]: "Al\u017Eyras", [e$2.Luxembourgish]: "Algeria", [e$2.Macedonian]: "\u0410\u043B\u0436\u0438\u0440", [e$2.Malagasy]: "Alg\xE9rie", [e$2.Malay]: "Aljir", [e$2.Malayalam]: "\u0D06\u0D32\u0D02\u0D17\u0D47\u0D30\u0D3F\u0D2F\u0D7B", [e$2.Maltese]: "Alg\xE9rie", [e$2.Maori]: "Algeria", [e$2.Marathi]: "\u0906\u0932\u094D\u0917\u0947\u0930\u093F\u092F\u093E", [e$2.Mongolian]: "\u0410\u043B\u0436\u0438\u0440", [e$2.Nepali]: "\u0906\u0932\u094D\u0917\u0947\u0930\u093F\u092F\u093E", [e$2.Norwegian]: "Algeria", [e$2.Pashto]: "\u0627\u0644\u062C\u0632\u0627\u0626\u0631", [e$2.Persian]: "\u062C\u0632\u0627\u06CC\u0631 \u0627\u0644\u0639\u0631\u0628", [e$2.Polish]: "Algieria", [e$2.Portuguese]: "Alg\xE9ria", [e$2.Punjabi]: "\u0A06\u0A32\u0A47\u0A17\u0A40\u0A06", [e$2.Romanian]: "Algeria", [e$2.Russian]: "\u0410\u043B\u0436\u0438\u0440", [e$2.Samoan]: "Algeria", [e$2.Sanskrit]: "\u0906\u0932\u094D\u0917\u0947\u0930\u093F\u092F\u093E", [e$2.Scots]: "Algeria", [e$2.Serbian]: "\u0410\u043B\u0436\u0438\u0440", [e$2.Sesotho]: "Algeria", [e$2.Shona]: "Algeria", [e$2.Sindhi]: "Algeria", [e$2.Sinhala]: "\u0D86\u0DBD\u0DCA\u0DB6\u0DCF\u0DB1\u0DD2\u0DBA", [e$2.Slovak]: "Al\u017E\xEDrsko", [e$2.Slovenian]: "Al\u017Eir", [e$2.Somali]: "Algeria", [e$2.Spanish]: "Algeria", [e$2.Sudanese]: "Aljir", [e$2.Swahili]: "Aljir", [e$2.Swedish]: "Algeriet", [e$2.Tagalog]: "Algeria", [e$2.Tajik]: "\u0410\u043B\u0436\u0438\u0440", [e$2.Tamil]: "\u0B86\u0BB2\u0BCD\u0B95\u0BC7\u0BB0\u0BBF\u0BAF\u0BBE", [e$2.Tatar]: "\u0410\u043B\u0436\u0438\u0440", [e$2.Telugu]: "\u0C06\u0C32\u0C4D\u0C17\u0C47\u0C30\u0C3F\u0C2F\u0C3E", [e$2.Thai]: "\u0E2D\u0E32\u0E23\u0E32\u0E01\u0E2D\u0E19", [e$2.Tibetan]: "\u0F68\u0F63\u0F9F\u0F72\u0F0B\u0F62\u0F72\u0F0B\u0F61\u0F72", [e$2.Turkish]: "Cezayir", [e$2.Ukrainian]: "\u0410\u043B\u0436\u0438\u0440", [e$2.Urdu]: "\u0622\u0644\u062C\u06CC\u0631", [e$2.Uzbek]: "\u0410\u043B\u0436\u0438\u0440", [e$2.Vietnamese]: "\u1EA2\u0301\u1EA1\u1EA3\u1EAD\u1EB5", [e$2.Welsh]: "Algeria", [e$2.Xhosa]: "Algeria", [e$2.Yiddish]: "\u05D0\u05DC\u05D2\u05F3\u05D9\u05E8\u05D9\u05D4", [e$2.Yoruba]: "Algeria", [e$2.Zulu]: "Algeria" } }, statistics: { demographics: { age: { distribution: [{ age: "0 to 14 years", percentage: 15.3 }, { age: "15 to 64 years", percentage: 66.7 }, { age: "65 years and over", percentage: 14.6 }], median_age: 35.5 }, population: { largest_city: "Oran", total: 371e5 } }, geography: { area: 2381740, region: I.Africa, sub_region: x$1.NorthernAfrica }, government: { capital: "Algiers", type: "Republic" } } }, AmericanSamoa: { i18n: { calling_codes: [1684], currencies: [l$1.AmericanSamoaTala], languages: [e$2.English, e$2.Samoan], tz: { offsets: [i$3.UTC_MINUS_11], regions: [t$1.PacificSamoa], timezones: [n$2.SamoaStandardTime] } }, id: r$2.AmericanSamoa, info: { flag: { emoji: "\u{1F1E6}\u{1F1F8}", emoji_unicode: "U+1F1E6 U+1F1F8", svg: "https://www.countryflags.io/as/flat/64.svg" }, tld: [".as"] }, iso: { alpha2: r$2.AmericanSamoa, alpha3: "ASM", numeric: "016" }, name: { alt_spellings: ["AS", "Amerika S\u0101moa", "Amelika S\u0101moa", "S\u0101moa Amelika"], demonym: "American Samoan", native: { endonym: "American Samoa" }, official: "American Samoa", short: "American Samoa", translations: { [e$2.Afrikaans]: "Amerikaans Samoa", [e$2.Albanian]: "Samoa Amerikane", [e$2.Amharic]: "\u1233\u121E\u12A0\u122D", [e$2.Arabic]: "\u0633\u0627\u0645\u0648\u0627 \u0627\u0644\u0623\u0645\u0631\u064A\u0643\u064A\u0629", [e$2.Armenian]: "\u054D\u0561\u0570\u0561\u0574\u0561\u056C\u056B\u0561", [e$2.Azerbaijani]: "Samoa Amerikana", [e$2.Bashkir]: "\u0410\u043C\u0435\u0440\u0438\u043A\u0430\u043D\u0441\u043A\u0438 \u0421\u0430\u043C\u043E\u0430", [e$2.Basque]: "Samoa Amerikana", [e$2.Belarusian]: "\u0410\u043C\u0435\u0440\u0438\u043A\u0430\u043D\u0441\u043A\u0430\u044F \u0421\u0430\u043C\u043E\u0430", [e$2.Bengali]: "\u0986\u09AE\u09C7\u09B0\u09BF\u0995\u09BE\u09A8 \u09B8\u09BE\u09AE\u09CB\u09AF\u09BC\u09BE", [e$2.Berber]: "\u062C\u0632\u0631 \u0633\u0627\u0645\u0648\u0627 \u0627\u0644\u0623\u0645\u0631\u064A\u0643\u064A\u0629", [e$2.Bhutani]: "\u0F68\u0F62\u0F92\u0FB1\u0F0B\u0F58\u0F72\u0F0B\u0F51\u0F58\u0F44\u0F66\u0F0B\u0F66\u0FA4\u0FB2\u0F7C\u0F51\u0F0B\u0F40\u0FB1\u0F72\u0F0B\u0F66\u0F90\u0F56\u0F66\u0F0B\u0F62\u0F92\u0FB1\u0F74\u0F51\u0F0B\u0F46\u0F7A\u0F53\u0F0B\u0F54\u0F7C\u0F0D", [e$2.Bosnian]: "Ameri\u010Dka Samoa", [e$2.Breton]: "Samoa Amerikan", [e$2.Bulgarian]: "\u0410\u043C\u0435\u0440\u0438\u043A\u0430\u043D\u0441\u043A\u0430 \u0421\u0430\u043C\u043E\u0430", [e$2.Burmese]: "\u1021\u1019\u1039\u1038\u1019\u101B\u102D\u102F\u1018\u102C\u101E\u102C", [e$2.Catalan]: "Samoa Americana", [e$2.Chinese]: "\u7F8E\u5C5E\u8428\u6469\u4E9A", [e$2.Croatian]: "Ameri\u010Dka Samoa", [e$2.Czech]: "Americk\xE1 Samoa", [e$2.Danish]: "Amerikansk Samoa", [e$2.Dutch]: "Amerikaans Samoa", [e$2.English]: "American Samoa", [e$2.Esperanto]: "Samoa Amerika", [e$2.Estonian]: "Ameerika Samoa", [e$2.Finnish]: "Amerikka Samoa", [e$2.French]: "American Samoa", [e$2.Frisian]: "Amerikaans Samoa", [e$2.Galician]: "Samoa Americana", [e$2.Georgian]: "\u10D0\u10DB\u10D4\u10E0\u10D8\u10D9\u10D8\u10E1 \u10E1\u10D0\u10DB\u10DD\u10D0", [e$2.German]: "Amerikanisch-Samoa", [e$2.Greenlandic]: "Amerikaans Samoa", [e$2.Greek]: "\u0391\u03BC\u03B5\u03C1\u03B9\u03BA\u03B1\u03BD\u03B9\u03BA\u03AE \u03A3\u03B1\u03BC\u03CC\u03B1", [e$2.Gujarati]: "\u0A86\u0AAE\u0AC7\u0AB0\u0ABF\u0A95\u0AA8 \u0AB8\u0ABE\u0AAE\u0ACB\u0AAF\u0ABE", [e$2.Haitian]: "Amerikaans Samoa", [e$2.Hausa]: "Amerikaans Samoa", [e$2.Hebrew]: "\u05D0\u05DE\u05E8\u05D9\u05E7\u05E0\u05D9\u05D4 \u05E1\u05DE\u05D5\u05D0\u05D4", [e$2.Hindi]: "\u0905\u092E\u0947\u0930\u093F\u0915\u093E \u0938\u092E\u094B\u0906", [e$2.Hungarian]: "Amerikai Szamoa", [e$2.Icelandic]: "Amerikai Szamoa", [e$2.Igbo]: "Ikina Amerika", [e$2.Indonesian]: "Samoa Amerika", [e$2.Irish]: "Samoa Amerikana", [e$2.Italian]: "Samoa Americane", [e$2.Japanese]: "\u30A2\u30E1\u30EA\u30AB\u9818\u30B5\u30E2\u30A2", [e$2.Javanese]: "Samoa Amerika", [e$2.Kannada]: "\u0C85\u0CAE\u0CC7\u0CB0\u0CBF\u0C95\u0CA8\u0CCD \u0CB8\u0CAE\u0CCB\u0C86", [e$2.Kazakh]: "\u0410\u043C\u0435\u0440\u0438\u043A\u0430\u043D\u0441\u043A\u0438\u0439 \u0421\u0430\u043C\u043E\u0430", [e$2.Khmer]: "\u17A2\u17B6\u1798\u17C9\u17B6\u179A\u17B8\u179F\u17D2\u178F\u1784\u17CB", [e$2.Korean]: "\uC544\uBA54\uB9AC\uCE74 \uC0AC\uBAA8\uC544", [e$2.Kurdish]: "Amerikaans Samoa", [e$2.Kyrgyz]: "\u0410\u043C\u0435\u0440\u0438\u043A\u0430\u043D\u0441\u043A\u0438\u0439 \u0421\u0430\u043C\u043E\u0430", [e$2.Lao]: "\u0EAD\u0EB2\u0EA1\u0EB2\u0E99\u0EB2\u0E94\u0EB2\u0EA1\u0EB2\u0E99\u0EB2\u0E94", [e$2.Latin]: "Samoa Amerikana", [e$2.Latvian]: "Amerikas Samoa", [e$2.Lithuanian]: "Amerikos Samoa", [e$2.Luxembourgish]: "Amerikaans Samoa", [e$2.Macedonian]: "\u0410\u043C\u0435\u0440\u0438\u043A\u0430\u043D\u0441\u043A\u0430 \u0421\u0430\u043C\u043E\u0430", [e$2.Malagasy]: "Samoa Amerika", [e$2.Malay]: "Amerika Samo", [e$2.Malayalam]: "\u0D05\u0D2E\u0D47\u0D30\u0D3F\u0D15\u0D4D\u0D15\u0D28\u0D4D\u0D31\u0D4D \u0D38\u0D2E\u0D4B\u0D06", [e$2.Maltese]: "Samoa Amerika", [e$2.Maori]: "Samoa Amerika", [e$2.Marathi]: "\u0905\u092E\u0947\u0930\u093F\u0915\u093E \u0938\u092E\u094B\u0906", [e$2.Mongolian]: "\u0410\u043C\u0435\u0440\u0438\u043A\u0430\u043D\u0441\u043A\u0438\u0439 \u0421\u0430\u043C\u043E\u0430", [e$2.Nepali]: "\u0905\u092E\u0947\u0930\u093F\u0915\u093E \u0938\u092E\u094B\u0906", [e$2.Norwegian]: "Amerikansk Samoa", [e$2.Pashto]: "\u0627\u0645\u0631\u06CC\u06A9\u0627\u06CC \u0633\u0645\u0648\u0627", [e$2.Persian]: "\u0622\u0645\u0631\u06CC\u06A9\u0627\u06CC \u0633\u0645\u0648\u0627", [e$2.Polish]: "Samoa Ameryka\u0144skie", [e$2.Portuguese]: "Samoa Americana", [e$2.Punjabi]: "\u0A05\u0A2E\u0A30\u0A40\u0A15\u0A40 \u0A38\u0A3E\u0A2E\u0A4B\u0A06", [e$2.Romanian]: "Samoa americane", [e$2.Russian]: "\u0410\u043C\u0435\u0440\u0438\u043A\u0430\u043D\u0441\u043A\u0430\u044F \u0421\u0430\u043C\u043E\u0430", [e$2.Samoan]: "Samoa Amerika", [e$2.Sanskrit]: "\u0905\u092E\u0947\u0930\u093F\u0915\u093E \u0938\u092E\u094B\u0906", [e$2.Scots]: "Amerikaans Samoa", [e$2.Serbian]: "\u0410\u043C\u0435\u0440\u0438\u043A\u0430\u043D\u0441\u043A\u0430 \u0421\u0430\u043C\u043E\u0430", [e$2.Sesotho]: "Amerikaans Samoa", [e$2.Shona]: "Amerikaans Samoa", [e$2.Sindhi]: "Amerikaans Samoa", [e$2.Sinhala]: "\u0D86\u0DBB\u0DCA\u0DA2\u0DD2\u0DB1\u0DCF\u0DB1\u0DD4 \u0DC3\u0DD0\u0DB8\u0DD0\u0DBD\u0DCA\u0DC0", [e$2.Slovak]: "Amerikaans Samoa", [e$2.Slovenian]: "Amerikaans Samoa", [e$2.Somali]: "Amerikaans Samoa", [e$2.Spanish]: "Samoa Americana", [e$2.Sudanese]: "Amerikaans Samoa", [e$2.Swahili]: "Amerikaans Samoa", [e$2.Swedish]: "Amerikansk Samoa", [e$2.Tagalog]: "Amerikaans Samoa", [e$2.Tajik]: "\u0410\u043C\u0435\u0440\u0438\u043A\u0430\u043D\u0441\u043A\u0438 \u0441\u0430\u043C\u043E\u0430", [e$2.Tamil]: "\u0B85\u0BAE\u0BC6\u0BB0\u0BBF\u0B95\u0BCD \u0B9A\u0BAE\u0BCB\u0BB5\u0BBE", [e$2.Tatar]: "\u0410\u043C\u0435\u0440\u0438\u043A\u0430\u043D\u0441\u043A\u0438 \u0441\u0430\u043C\u043E\u0430", [e$2.Telugu]: "\u0C05\u0C2E\u0C46\u0C30\u0C3F\u0C15\u0C4D \u0C38\u0C2E\u0C4B\u0C35\u0C3E", [e$2.Thai]: "\u0E2A\u0E2B\u0E23\u0E32\u0E0A\u0E2D\u0E32\u0E13\u0E32\u0E08\u0E31\u0E01\u0E23\u0E41\u0E2D\u0E1F\u0E23\u0E34\u0E01\u0E32", [e$2.Tibetan]: "\u0F68\u0F7A\u0F0B\u0F62\u0F72\u0F0B\u0F40\u0F0B\u0F68\u0F7A\u0F0B\u0F58\u0F72\u0F0B\u0F51\u0F74\u0F0B\u0F61\u0F72\u0F0B\u0F62\u0F72\u0F0B\u0F40", [e$2.Turkish]: "Amerikan Samoas\u0131", [e$2.Ukrainian]: "\u0410\u043C\u0435\u0440\u0438\u043A\u0430\u043D\u0441\u044C\u043A\u0430 \u0421\u0430\u043C\u043E\u0430", [e$2.Urdu]: "\u0627\u0645\u0631\u06CC\u06A9\u06CC \u0633\u0645\u0648\u0627", [e$2.Uzbek]: "\u0410\u043C\u0435\u0440\u0438\u043A\u0430\u043D\u0441\u043A\u0438 \u0441\u0430\u043C\u043E\u0430", [e$2.Vietnamese]: "Amerikaans Samoa", [e$2.Welsh]: "Amerikaans Samoa", [e$2.Xhosa]: "Amerikaans Samoa", [e$2.Yiddish]: "Amerikaans Samoa", [e$2.Yoruba]: "Amerikaans Samoa", [e$2.Zulu]: "Amerikaans Samoa" } }, statistics: { demographics: { age: { distribution: [{ age: "0 to 14 years", percentage: 15.3 }, { age: "15 to 64 years", percentage: 66.7 }, { age: "65 years and over", percentage: 14.6 }], median_age: 35.5 }, population: { largest_city: "Pago Pago", total: 558e3 } }, geography: { area: 199, region: I.Oceania, sub_region: x$1.Polynesia }, government: { capital: "Pago Pago", type: "Nonmetropolitan Territory of the US" } } }, Andorra: { i18n: { calling_codes: [376], currencies: [l$1.Euro], languages: [e$2.Catalan, e$2.Spanish], tz: { offsets: [i$3.UTC_PLUS_1, i$3.UTC_PLUS_2], regions: [t$1.EuropeAndorra], timezones: [n$2.CentralEuropeanTime] } }, id: r$2.Andorra, info: { flag: { emoji: "\u{1F1E6}\u{1F1F4}", emoji_unicode: "U+1F1E6 U+1F1F4", svg: "https://www.countryflags.io/ad/flat/64.svg" }, tld: [".ad"] }, iso: { alpha2: r$2.Andorra, alpha3: "AND", numeric: "020" }, name: { alt_spellings: ["AD", "Principality of Andorra", "Principat d'Andorra"], demonym: "Andorran", native: { endonym: "Andorra" }, official: "Principality of Andorra", short: "Andorra", translations: { [e$2.Afrikaans]: "Andorra", [e$2.Albanian]: "Andorra", [e$2.Amharic]: "\u12A0\u1295\u12F6\u122B", [e$2.Arabic]: "\u0623\u0646\u062F\u0648\u0631\u0627", [e$2.Armenian]: "\u0540\u0561\u0576\u0564\u0561\u0580\u0561\u057E\u0561\u0575\u0584", [e$2.Azerbaijani]: "Andorra", [e$2.Bashkir]: "\u0410\u043D\u0434\u043E\u0440\u0430", [e$2.Basque]: "Andorra", [e$2.Belarusian]: "\u0410\u043D\u0434\u043E\u0440\u0440\u0430", [e$2.Bengali]: "\u0985\u09A8\u09CD\u09A1\u09CB\u09B0\u09BE", [e$2.Berber]: "\u0623\u0646\u062F\u0648\u0631\u0627", [e$2.Bhutani]: "\u0F68\u0F53\u0F0B\u0F4C\u0F7C\u0F0B", [e$2.Bosnian]: "Andora", [e$2.Breton]: "Andorra", [e$2.Bulgarian]: "\u0410\u043D\u0434\u043E\u0440\u0430", [e$2.Burmese]: "\u1021\u1014\u1039\u1010\u102C\u101B\u102D\u102F\u1038", [e$2.Catalan]: "Andorra", [e$2.Chinese]: "\u5B89\u9053\u5C14", [e$2.Croatian]: "Andora", [e$2.Czech]: "Andorra", [e$2.Danish]: "Andorra", [e$2.Dutch]: "Andorra", [e$2.English]: "Andorra", [e$2.Esperanto]: "Andora", [e$2.Estonian]: "Andorra", [e$2.Finnish]: "Andorra", [e$2.French]: "Andorra", [e$2.Frisian]: "Andorra", [e$2.Galician]: "Andorra", [e$2.Georgian]: "\u12A0\u1295\u12F6\u122B", [e$2.German]: "Andorra", [e$2.Greek]: "\u0391\u03BD\u03B4\u03CC\u03C1\u03B1", [e$2.Hebrew]: "\u05D0\u05E0\u05D3\u05D5\u05E8\u05D4", [e$2.Hindi]: "\u0905\u0902\u0921\u094B\u0930\u093E", [e$2.Hungarian]: "Andorra", [e$2.Icelandic]: "Andorra", [e$2.Igbo]: "Andorra", [e$2.Indonesian]: "Andorra", [e$2.Irish]: "Andorra", [e$2.Italian]: "Andorra", [e$2.Japanese]: "\u30A2\u30F3\u30C9\u30E9", [e$2.Javanese]: "Andorra", [e$2.Kannada]: "\u0C85\u0C82\u0CA1\u0CCB\u0CB0\u0CBF\u0CAF\u0CA8\u0CCD", [e$2.Kazakh]: "\u0410\u043D\u0434\u043E\u0440\u0440\u0430", [e$2.Khmer]: "\u17A2\u1784\u17CB\u178A\u17B6\u179A\u17B6", [e$2.Korean]: "\uC548\uB3C4\uB77C", [e$2.Kurdish]: "Andorra", [e$2.Kyrgyz]: "\u0410\u043D\u0434\u043E\u0440\u0440\u0430", [e$2.Lao]: "\u0EAD\u0EB1\u0E99\u0EC2\u0E94\u0EA3\u0EB2", [e$2.Latin]: "Andorra", [e$2.Latvian]: "Andora", [e$2.Lithuanian]: "Andora", [e$2.Luxembourgish]: "Andorra", [e$2.Macedonian]: "\u0410\u043D\u0434\u043E\u0440\u0440\u0430", [e$2.Malagasy]: "Andorra", [e$2.Malay]: "Andorra", [e$2.Malayalam]: "\u0D05\u0D02\u0D21\u0D4B\u0D30\u0D3F\u0D2F\u0D28\u0D4D", [e$2.Maltese]: "Andorra", [e$2.Maori]: "Andorra", [e$2.Marathi]: "\u0905\u0902\u0921\u094B\u0930\u093E", [e$2.Mongolian]: "\u0410\u043D\u0434\u043E\u0440\u0440\u0430", [e$2.Nepali]: "\u0905\u0902\u0921\u094B\u0930\u093E", [e$2.Norwegian]: "Andorra", [e$2.Pashto]: "\u0622\u0646\u062F\u0648\u0631\u0627", [e$2.Persian]: "\u0622\u0646\u062F\u0648\u0631\u0627", [e$2.Polish]: "Andora", [e$2.Portuguese]: "Andorra", [e$2.Punjabi]: "\u0A05\u0A70\u0A21\u0A4B\u0A30\u0A3E", [e$2.Romanian]: "Andorra", [e$2.Russian]: "\u0410\u043D\u0434\u043E\u0440\u0440\u0430", [e$2.Samoan]: "Andorra", [e$2.Sanskrit]: "\u0905\u0902\u0921\u094B\u0930\u093E", [e$2.Scots]: "Andorra", [e$2.Serbian]: "\u0410\u043D\u0434\u043E\u0440\u0440\u0430", [e$2.Sesotho]: "Andorra", [e$2.Shona]: "Andorra", [e$2.Sindhi]: "\u0905\u0902\u0921\u094B\u0930\u093E", [e$2.Sinhala]: "\u0D86\u0DB1\u0DCA\u0DAF\u0DDA", [e$2.Slovak]: "Andorra", [e$2.Slovenian]: "Andora", [e$2.Somali]: "Andorra", [e$2.Spanish]: "Andorra", [e$2.Sudanese]: "Andorra", [e$2.Swahili]: "Andorra", [e$2.Swedish]: "Andorra", [e$2.Tagalog]: "Andorra", [e$2.Tajik]: "\u0410\u043D\u0434\u043E\u0440\u0440\u0430", [e$2.Tamil]: "\u0B85\u0BA9\u0BCB\u0BB0\u0BCD\u0B9F\u0BBE", [e$2.Tatar]: "\u0410\u043D\u0434\u043E\u0440\u0440\u0430", [e$2.Telugu]: "\u0C05\u0C02\u0C21\u0C4B\u0C30\u0C4D\u0C30\u0C3E", [e$2.Thai]: "\u0E2D\u0E31\u0E19\u0E14\u0E2D\u0E23\u0E4C\u0E23\u0E32", [e$2.Tibetan]: "\u0F68\u0F53\u0F0B\u0F4C\u0F7C\u0F0B", [e$2.Turkish]: "Andora", [e$2.Ukrainian]: "\u0410\u043D\u0434\u043E\u0440\u0440\u0430", [e$2.Urdu]: "\u0622\u0646\u062F\u0648\u0631\u0627", [e$2.Uzbek]: "\u0410\u043D\u0434\u043E\u0440\u0440\u0430", [e$2.Vietnamese]: "Andorra", [e$2.Welsh]: "Andorra", [e$2.Xhosa]: "Andorra", [e$2.Yiddish]: "\u05D0\u05E0\u05D3\u05D5\u05E8\u05D4", [e$2.Yoruba]: "Andorra", [e$2.Zulu]: "Andorra" } }, statistics: { demographics: { age: { distribution: [{ age: "0 to 14 years", percentage: 15.3 }, { age: "15 to 64 years", percentage: 66.7 }, { age: "65 years and over", percentage: 14.6 }], median_age: 35.5 }, population: { largest_city: "Andorra la Vella", total: 78e3 } }, geography: { area: 468, region: I.Europe, sub_region: x$1.SouthernEurope }, government: { capital: "Andorra la Vella", type: "Constitutional Monarchy" } } }, Angola: { i18n: { calling_codes: [244], currencies: [l$1.AngolaKwanza], languages: [e$2.Portuguese, e$2.Spanish, e$2.French, e$2.Italian, e$2.German, e$2.English], tz: { offsets: [i$3.UTC_0, i$3.UTC_PLUS_1, i$3.UTC_PLUS_2], regions: [t$1.AfricaLuanda], timezones: [n$2.WestAfricaTime] } }, id: r$2.Angola, info: { flag: { emoji: "\u{1F1E6}\u{1F1EC}", emoji_unicode: "U+1F1E6 U+1F1EC", svg: "https://www.countryflags.io/ao/flat/64.svg" }, tld: [".ao"] }, iso: { alpha2: r$2.Angola, alpha3: "AGO", numeric: "024" }, name: { alt_spellings: ["AO", "Rep\xFAblica de Angola", "\u0281\u025Bpublika de an"], demonym: "Angolan", native: { endonym: "Angola" }, official: "Republic of Angola", short: "Angola", translations: { [e$2.Afrikaans]: "Angola", [e$2.Albanian]: "Ang\xF2la", [e$2.Amharic]: "\u12A0\u1295\u130E\u120A\u12EB", [e$2.Arabic]: "\u0623\u0646\u063A\u0648\u0644\u0627", [e$2.Armenian]: "\u0540\u0561\u0576\u0563\u0561\u056C\u0561\u056F\u0561", [e$2.Azerbaijani]: "Ang\u0259l", [e$2.Bashkir]: "\u0410\u043D\u0433\u043E\u043B\u0430", [e$2.Basque]: "Angola", [e$2.Belarusian]: "\u0410\u043D\u0433\u043E\u043B\u0430", [e$2.Bengali]: "\u0985\u0999\u09CD\u0997\u09B2\u09BE", [e$2.Berber]: "Angola", [e$2.Bhutani]: "\u0F60\u0F56\u0FB2\u0F74\u0F42", [e$2.Bosnian]: "Angola", [e$2.Breton]: "Angola", [e$2.Bulgarian]: "\u0410\u043D\u0433\u043E\u043B\u0430", [e$2.Burmese]: "\u1021\u1004\u103A\u1039\u1002\u101C\u102D\u1010\u103A", [e$2.Catalan]: "Angola", [e$2.Chinese]: "\u5B89\u54E5\u62C9", [e$2.Croatian]: "Angola", [e$2.Czech]: "Angola", [e$2.Danish]: "Angola", [e$2.Dutch]: "Angola", [e$2.English]: "Angola", [e$2.Esperanto]: "Angolo", [e$2.Estonian]: "Angola", [e$2.Finnish]: "Angola", [e$2.French]: "Angola", [e$2.Frisian]: "Angola", [e$2.Galician]: "Angola", [e$2.Georgian]: "\u10D0\u10DC\u10D2\u10DD\u10DA\u10D0", [e$2.German]: "Angola", [e$2.Greenlandic]: "Angola", [e$2.Greek]: "\u0391\u03B3\u03BA\u03CC\u03BB\u03B1", [e$2.Gujarati]: "\u0A85\u0A82\u0A97\u0ACB\u0AB2\u0ABE", [e$2.Haitian]: "Angola", [e$2.Hausa]: "Angola", [e$2.Hebrew]: "\u05D0\u05E0\u05D2\u05D5\u05DC\u05D4", [e$2.Hindi]: "\u0905\u0919\u094D\u0917\u094B\u0932\u093E", [e$2.Hungarian]: "Angola", [e$2.Icelandic]: "Angola", [e$2.Igbo]: "Angola", [e$2.Indonesian]: "Angola", [e$2.Irish]: "Angola", [e$2.Italian]: "Angola", [e$2.Japanese]: "\u30A2\u30F3\u30B4\u30E9", [e$2.Javanese]: "Anggol", [e$2.Kannada]: "\u0C85\u0C82\u0C97\u0CCB\u0CB2\u0CBE", [e$2.Kazakh]: "\u0410\u043D\u0433\u043E\u043B\u0430", [e$2.Khmer]: "\u17A2\u1784\u17CB\u1780\u17B6\u179B\u17A2\u1784\u17CB\u1782\u17D2\u179B\u17C1\u179F", [e$2.Korean]: "\uC559\uACE8\uB77C", [e$2.Kurdish]: "Angola", [e$2.Kyrgyz]: "\u0410\u043D\u0433\u043E\u043B\u0430", [e$2.Lao]: "\u0EAD\u0EB0\u0E99\u0EB2\u0E94\u0EB2", [e$2.Latin]: "Angola", [e$2.Latvian]: "Angola", [e$2.Lithuanian]: "Angola", [e$2.Luxembourgish]: "Angola", [e$2.Macedonian]: "\u0410\u043D\u0433\u043E\u043B\u0430", [e$2.Malagasy]: "Angola", [e$2.Malay]: "Angola", [e$2.Malayalam]: "\u0D05\u0D02\u0D17\u0D4B\u0D33\u0D3E", [e$2.Maltese]: "Angola", [e$2.Maori]: "Angola", [e$2.Marathi]: "\u0905\u0919\u094D\u0917\u094B\u0932\u093E", [e$2.Mongolian]: "\u0410\u043D\u0433\u043E\u043B\u0430", [e$2.Nepali]: "\u0905\u0919\u094D\u0917\u094B\u0932\u093E", [e$2.Norwegian]: "Angola", [e$2.Pashto]: "\u0627\u0646\u06AB\u0648\u0644\u0627", [e$2.Persian]: "\u0622\u0646\u06AF\u0648\u0644\u0627", [e$2.Polish]: "Angola", [e$2.Portuguese]: "Angola", [e$2.Punjabi]: "\u0A05\u0A19\u0A4D\u0A17\u0A4B\u0A32\u0A3E", [e$2.Romanian]: "Angole", [e$2.Russian]: "\u0410\u043D\u0433\u043E\u043B\u0430", [e$2.Samoan]: "Angola", [e$2.Sanskrit]: "\u0905\u0919\u094D\u0917\u094B\u0932\u093E", [e$2.Scots]: "Angola", [e$2.Serbian]: "\u0410\u043D\u0433\u043E\u043B\u0430", [e$2.Sesotho]: "Angola", [e$2.Shona]: "Angola", [e$2.Sindhi]: "\u0905\u0919\u094D\u0917\u094B\u0932\u093E", [e$2.Sinhala]: "\u0D86\u0D9C\u0DBD\u0DD2\u0DBA\u0DCF\u0DC0", [e$2.Slovak]: "Angola", [e$2.Slovenian]: "Angola", [e$2.Somali]: "Angola", [e$2.Spanish]: "Angola", [e$2.Sudanese]: "Angola", [e$2.Swahili]: "Angola", [e$2.Swedish]: "Angola", [e$2.Tagalog]: "Angola", [e$2.Tajik]: "\u0410\u043D\u0433\u043E\u043B\u0430", [e$2.Tamil]: "\u0B85\u0B99\u0BCD\u0B95\u0BCB\u0BB2\u0BBE", [e$2.Tatar]: "\u0410\u043D\u0433\u043E\u043B\u0430", [e$2.Telugu]: "\u0C05\u0C02\u0C17\u0C4B\u0C32\u0C3E", [e$2.Thai]: "\u0E2D\u0E07\u0E04\u0E4C\u0E01\u0E32\u0E23\u0E2D\u0E32\u0E19\u0E32\u0E21\u0E34\u0E2A\u0E16\u0E32\u0E19", [e$2.Tibetan]: "\u0F68\u0F44\u0F0B\u0F63\u0F7C\u0F0B", [e$2.Turkish]: "Angola", [e$2.Ukrainian]: "\u0410\u043D\u0433\u043E\u043B\u0430", [e$2.Urdu]: "\u0627\u0646\u06AF\u0648\u0644\u0627", [e$2.Uzbek]: "Angola", [e$2.Vietnamese]: "Angola", [e$2.Xhosa]: "Angola", [e$2.Welsh]: "Angola", [e$2.Yiddish]: "\u05D0\u05E0\u05D2\u05D5\u05DC\u05D4", [e$2.Yoruba]: "Angola", [e$2.Zulu]: "Angola" } } }, Anguilla: { i18n: { calling_codes: [1264], currencies: [l$1.DominicaDollar, l$1.EastCaribbeanDollar, l$1.Euro, l$1.UnitedStatesDollar, l$1.BritishPound], languages: [e$2.English, e$2.Spanish], tz: { offsets: [i$3.UTC_MINUS_4], regions: [t$1.AmericaAnguilla], timezones: [n$2.AtlanticStandardTime] } }, id: r$2.Anguilla, info: { flag: { emoji: "\u{1F1E6}\u{1F1EC}", emoji_unicode: "U+1F1E6 U+1F1EC", svg: "https://www.countryflags.io/ai/flat/64.svg" }, tld: [".ai"] }, iso: { alpha2: r$2.Anguilla, alpha3: "AIA", numeric: "660" }, name: { alt_spellings: ["AI"], demonym: "Anguillian", native: { endonym: "Anguilla" }, official: "Anguilla", short: "Anguilla", translations: { [e$2.Afrikaans]: "Anguilla", [e$2.Albanian]: "Anguilla", [e$2.Amharic]: "\u12A0\u1295\u1309\u120B", [e$2.Arabic]: "\u0623\u0646\u063A\u0648\u064A\u0644\u0627", [e$2.Armenian]: "\u0531\u0576\u0563\u056B\u056C\u0561", [e$2.Azerbaijani]: "Az\u0259rbaycan", [e$2.Bashkir]: "\u0410\u043D\u0433\u0438\u043B\u0438", [e$2.Basque]: "Angila", [e$2.Belarusian]: "\u0410\u043D\u0433\u0438\u043B\u0438", [e$2.Bengali]: "\u0985\u0999\u09CD\u0997\u09C0\u09B2\u09BE", [e$2.Berber]: "\u0623\u0646\u063A\u0648\u064A\u0644\u0627", [e$2.Bhutani]: "\u0F68\u0F44\u0F0B\u0F63\u0F7C\u0F0B", [e$2.Bosnian]: "Angila", [e$2.Breton]: "Angila", [e$2.Bulgarian]: "\u0410\u043D\u0433\u0438\u043B\u0438", [e$2.Burmese]: "\u1021\u1004\u103A\u1039\u1002\u101C\u102D\u1010\u103A", [e$2.Catalan]: "Angilla", [e$2.Chinese]: "\u5B89\u572D\u62C9", [e$2.Croatian]: "Angila", [e$2.Czech]: "Anguilla", [e$2.Danish]: "Anguilla", [e$2.Dutch]: "Anguilla", [e$2.English]: "Anguilla", [e$2.Esperanto]: "Angila", [e$2.Estonian]: "Anguilla", [e$2.Finnish]: "Anguilla", [e$2.French]: "Anguilla", [e$2.Frisian]: "Angila", [e$2.Galician]: "Anguilla", [e$2.Georgian]: "\u10D0\u10DC\u10D2\u10D8\u10DA\u10D0", [e$2.German]: "Anguilla", [e$2.Greenlandic]: "Anguilla", [e$2.Greek]: "\u0391\u03BD\u03B3\u03BA\u03C5\u03BB\u03AC", [e$2.Gujarati]: "\u0A85\u0A82\u0A97\u0ACD\u0AAF\u0ABE\u0AB2\u0ABE", [e$2.Haitian]: "Anguilla", [e$2.Hausa]: "Anguilla", [e$2.Hebrew]: "\u05D0\u05E0\u05D2\u05D5\u05D9\u05D0\u05DC\u05D4", [e$2.Hindi]: "\u0905\u0902\u0917\u094D\u0935\u0947\u0932\u093E", [e$2.Hungarian]: "Anguilla", [e$2.Icelandic]: "Anguilla", [e$2.Igbo]: "Anguilla", [e$2.Indonesian]: "Anguilla", [e$2.Irish]: "Anguilla", [e$2.Italian]: "Anguilla", [e$2.Japanese]: "\u30A2\u30F3\u30AE\u30E9", [e$2.Javanese]: "Anguilla", [e$2.Kannada]: "\u0C85\u0C82\u0C97\u0CCD\u0CB5\u0CC7\u0CB2\u0CBE", [e$2.Kazakh]: "\u0410\u043D\u0433\u0438\u043B\u0438", [e$2.Khmer]: "\u17A2\u1784\u17CB\u1780\u17B6\u179A\u17A0\u17D2\u1782\u17B8\u1798", [e$2.Korean]: "\uC575\uADC8\uB77C", [e$2.Kurdish]: "Anguilla", [e$2.Kyrgyz]: "\u0410\u043D\u0433\u0438\u043B\u0438", [e$2.Lao]: "\u0EAD\u0EB0\u0E99\u0EB0\u0E88\u0EB3", [e$2.Latin]: "Anguilla", [e$2.Latvian]: "Anguilla", [e$2.Lithuanian]: "Anguilla", [e$2.Luxembourgish]: "Angilla", [e$2.Macedonian]: "\u0410\u043D\u0433\u0438\u043B\u0438", [e$2.Malagasy]: "Angila", [e$2.Malay]: "Anguilla", [e$2.Malayalam]: "\u0D05\u0D02\u0D17\u0D4D\u0D35\u0D47\u0D32\u0D3E", [e$2.Maltese]: "Anguilla", [e$2.Maori]: "Anguilla", [e$2.Marathi]: "\u0905\u0902\u0917\u094D\u0935\u0947\u0932\u093E", [e$2.Mongolian]: "\u0410\u043D\u0433\u0438\u043B\u0438", [e$2.Nepali]: "\u0905\u0902\u0917\u094D\u0935\u0947\u0932\u093E", [e$2.Norwegian]: "Anguilla", [e$2.Pashto]: "\u0622\u0646\u06AF\u0648\u0644\u0627", [e$2.Persian]: "\u0622\u0646\u06AF\u0648\u0644\u0627", [e$2.Polish]: "Anguilla", [e$2.Portuguese]: "Anguilla", [e$2.Punjabi]: "\u0A05\u0A02\u0A17\u0A40\u0A32\u0A3E", [e$2.Romanian]: "Anguilla", [e$2.Russian]: "\u0410\u043D\u0433\u0438\u043B\u0438", [e$2.Samoan]: "Anguilla", [e$2.Sanskrit]: "\u0905\u0902\u0917\u094D\u0935\u0947\u0932\u093E", [e$2.Scots]: "Anguilla", [e$2.Serbian]: "\u0410\u043D\u0433\u0438\u043B\u0438", [e$2.Sesotho]: "Anguilla", [e$2.Shona]: "Anguilla", [e$2.Sindhi]: "\u0905\u0902\u0917\u094D\u0935\u0947\u0932\u093E", [e$2.Sinhala]: "\u0D86\u0D82\u0D9C\u0DD2\u0DBD\u0DCF\u0DC0", [e$2.Slovak]: "Anguilla", [e$2.Slovenian]: "Anguilla", [e$2.Somali]: "Anguilla", [e$2.Spanish]: "Anguilla", [e$2.Sudanese]: "Anguilla", [e$2.Swahili]: "Anguilla", [e$2.Swedish]: "Anguilla", [e$2.Tagalog]: "Anguilla", [e$2.Tajik]: "\u0410\u043D\u0433\u0438\u043B\u0438", [e$2.Tamil]: "\u0B85\u0B99\u0BCD\u0B95\u0BC8\u0BB2\u0BBE", [e$2.Tatar]: "\u0410\u043D\u0433\u0438\u043B\u0438", [e$2.Telugu]: "\u0C05\u0C02\u0C17\u0C4D\u0C35\u0C47\u0C32\u0C3E", [e$2.Thai]: "\u0E2D\u0E31\u0E07\u0E01\u0E32\u0E25\u0E32", [e$2.Tibetan]: "\u0F68\u0F44\u0F0B\u0F63\u0F72\u0F0B", [e$2.Turkish]: "Anguilla", [e$2.Ukrainian]: "\u0410\u043D\u0433\u0438\u043B\u0438", [e$2.Urdu]: "\u0622\u0646\u06AF\u0648\u0644\u0627", [e$2.Uzbek]: "\u0410\u043D\u0433\u0438\u043B\u0438", [e$2.Vietnamese]: "Anguilla", [e$2.Welsh]: "Anguilla", [e$2.Xhosa]: "Anguilla", [e$2.Yiddish]: "Anguilla", [e$2.Yoruba]: "Anguilla", [e$2.Zulu]: "Anguilla" } } }, Antarctica: { i18n: { calling_codes: [672], currencies: [l$1.UnitedStatesDollar, l$1.Euro], languages: [e$2.English, e$2.Spanish, e$2.French, e$2.Portuguese, e$2.Italian, e$2.Dutch, e$2.German, e$2.Swedish, e$2.Norwegian, e$2.Danish, e$2.Finnish], tz: { offsets: [i$3.UTC_PLUS_1, i$3.UTC_PLUS_2], regions: [t$1.AntarcticaCasey, t$1.AntarcticaDavis, t$1.AntarcticaMcMurdo, t$1.AntarcticaPalmer, t$1.AntarcticaRothera], timezones: [n$2.AtlanticStandardTime, n$2.CentralTime, n$2.EasternTime, n$2.AtlanticStandardTime, n$2.AzoresStandardTime, n$2.NewfoundlandStandardTime] } }, id: r$2.Antarctica, info: { flag: { emoji: "\u{1F1E6}\u{1F1F6}", emoji_unicode: "U+1F1E6 U+1F1F6", svg: "https://www.countryflags.io/aq/flat/64.svg" }, tld: [".aq"] }, iso: { alpha2: r$2.Antarctica, alpha3: "ATA", numeric: "010" }, name: { alt_spellings: ["AQ"], demonym: "Antarctican", native: { endonym: "Antarctica" }, official: "Antarctica", short: "Antarctica", translations: { [e$2.Afrikaans]: "Antarctica", [e$2.Albanian]: "Antarktika", [e$2.Amharic]: "\u12A0\u1295\u1272\u120D\u12AB\u1293", [e$2.Arabic]: "\u0623\u0646\u062A\u0627\u0631\u0643\u062A\u064A\u0643\u0627", [e$2.Armenian]: "\u0540\u0561\u0576\u0561\u0580\u0561\u057F\u056F\u0578", [e$2.Azerbaijani]: "Az\u0259rbaycan", [e$2.Bashkir]: "\u0410\u043D\u0442\u0430\u0440\u043A\u0442\u0438\u043A\u0430", [e$2.Basque]: "Antarktika", [e$2.Belarusian]: "\u0410\u043D\u0442\u0430\u0440\u043A\u0442\u0438\u043A\u0430", [e$2.Bengali]: "\u0985\u09A8\u09CD\u09A4\u09B0\u09BE\u09B6\u09CD\u09AC\u09C0", [e$2.Berber]: "\u0623\u0646\u062A\u0627\u0631\u0643\u062A\u064A\u0643\u0627", [e$2.Bhutani]: "\u0F68\u0F44\u0F0B\u0F63\u0F72\u0F0B", [e$2.Bosnian]: "Antarktika", [e$2.Breton]: "Antarktika", [e$2.Bulgarian]: "\u0410\u043D\u0442\u0430\u0440\u043A\u0442\u0438\u043A\u0430", [e$2.Burmese]: "\u1021\u1014\u1039\u1010\u102C\u101B\u102E\u1038\u101A\u102C\u1038", [e$2.Catalan]: "Ant\xE0rtida", [e$2.Chinese]: "\u5357\u6781\u6D32", [e$2.Croatian]: "Antarktika", [e$2.Czech]: "Antarktida", [e$2.Danish]: "Antarktis", [e$2.Dutch]: "Antarctica", [e$2.English]: "Antarctica", [e$2.Esperanto]: "Antarktika", [e$2.Estonian]: "Antarktika", [e$2.Finnish]: "Antarktis", [e$2.French]: "Antarctica", [e$2.Frisian]: "Antarktis", [e$2.Galician]: "Ant\xE1rtida", [e$2.Georgian]: "\u10D0\u10DC\u10E2\u10D0\u10E0\u10E5\u10E2\u10D8\u10D9\u10D0", [e$2.German]: "Antarktis", [e$2.Greenlandic]: "Antarktis", [e$2.Greek]: "\u0391\u03BD\u03C4\u03B1\u03C1\u03BA\u03C4\u03B9\u03BA\u03AE", [e$2.Gujarati]: "\u0A85\u0AA8\u0ACD\u0AA4\u0AB0\u0ABE\u0AB6\u0ACD\u0AB5\u0AC0", [e$2.Haitian]: "Antarctica", [e$2.Hausa]: "Antarktika", [e$2.Hebrew]: "\u05D0\u05E0\u05D8\u05E8\u05E7\u05D8\u05D9\u05E7\u05D4", [e$2.Hindi]: "\u0905\u0928\u094D\u0924\u0930\u0915\u094D\u0937\u0947\u0924\u094D\u0930", [e$2.Hungarian]: "Antarktika", [e$2.Icelandic]: "Antarktis", [e$2.Igbo]: "Antarktika", [e$2.Indonesian]: "Antarktika", [e$2.Irish]: "Antarktika", [e$2.Italian]: "Antartide", [e$2.Japanese]: "\u5357\u6975", [e$2.Javanese]: "Antarktika", [e$2.Kannada]: "\u0C85\u0CA8\u0CCD\u0CA4\u0CB0\u0CBE\u0CB6\u0CCD\u0CB5\u0CBF", [e$2.Kazakh]: "\u0410\u043D\u0442\u0430\u0440\u043A\u0442\u0438\u043A\u0430", [e$2.Khmer]: "\u17A2\u1784\u17CB\u179F\u17D2\u1780\u179A\u17A2\u17B6\u1798\u17C9\u17BB\u1799", [e$2.Korean]: "\uC564\uD2F0\uCE74\uD1A0\uB2C9", [e$2.Kurdish]: "Antarktika", [e$2.Kyrgyz]: "\u0410\u043D\u0442\u0430\u0440\u043A\u0442\u0438\u043A\u0430", [e$2.Lao]: "\u0EAD\u0EB0\u0E99\u0EAD\u0EA5\u0EB2\u0E81\u0EB4\u0EAA\u0EB0", [e$2.Latin]: "Antarctica", [e$2.Latvian]: "Antarktika", [e$2.Lithuanian]: "Antarktis", [e$2.Luxembourgish]: "Antarktis", [e$2.Macedonian]: "\u0410\u043D\u0442\u0430\u0440\u043A\u0442\u0438\u043A\u0430", [e$2.Malagasy]: "Antarctica", [e$2.Malay]: "Antarktika", [e$2.Malayalam]: "\u0D05\u0D28\u0D4D\u0D24\u0D30\u0D3E\u0D36\u0D4D\u0D35\u0D3F", [e$2.Maltese]: "Antarktika", [e$2.Maori]: "Antarktika", [e$2.Marathi]: "\u0905\u0928\u094D\u0924\u0930\u093E\u0936\u094D\u0935\u093F\u0915\u093E", [e$2.Mongolian]: "\u0410\u043D\u0442\u0430\u0440\u043A\u0442\u0438\u043A\u0430", [e$2.Nepali]: "\u0905\u0928\u094D\u0924\u0930\u093E\u0936\u094D\u0935\u093F\u0915\u093E", [e$2.Norwegian]: "Antarktis", [e$2.Pashto]: "\u0627\u0646\u062A\u0627\u0631\u0643\u062A\u064A\u0643\u0627", [e$2.Persian]: "\u0622\u0646\u062A\u0627\u0631\u06A9\u062A\u06CC\u06A9\u0627", [e$2.Polish]: "Antarktyka", [e$2.Portuguese]: "Ant\xE1rtida", [e$2.Punjabi]: "\u0A05\u0A28\u0A4D\u0A24\u0A30\u0A3E\u0A36\u0A3F\u0A15\u0A3E", [e$2.Romanian]: "Antarctica", [e$2.Russian]: "\u0410\u043D\u0442\u0430\u0440\u043A\u0442\u0438\u043A\u0430", [e$2.Samoan]: "Antarktika", [e$2.Sanskrit]: "\u0905\u0928\u094D\u0924\u0930\u093E\u0936\u094D\u0935\u093F\u0915\u093E", [e$2.Scots]: "Antarktika", [e$2.Serbian]: "\u0410\u043D\u0442\u0430\u0440\u043A\u0442\u0438\u043A\u0430", [e$2.Sesotho]: "Antarktika", [e$2.Shona]: "Antarktika", [e$2.Sindhi]: "Antarktika", [e$2.Sinhala]: "\u0D86\u0DB1\u0DCA\u0DA7\u0DCA\u0DA7\u0DD2\u0D9A\u0DCF\u0DC0", [e$2.Slovak]: "Antarktika", [e$2.Slovenian]: "Antarktika", [e$2.Somali]: "Antarktika", [e$2.Spanish]: "Ant\xE1rtida", [e$2.Sudanese]: "Antarktika", [e$2.Swahili]: "Antarktika", [e$2.Swedish]: "Antarktis", [e$2.Tagalog]: "Antarktika", [e$2.Tajik]: "\u0410\u043D\u0442\u0430\u0440\u043A\u0442\u0438\u043A\u0430", [e$2.Tamil]: "\u0B85\u0BA9\u0BCD\u0BA4\u0BBE\u0BB0\u0BCD\u0B95\u0BCD\u0B95\u0BBF\u0B95\u0BCD", [e$2.Tatar]: "\u0410\u043D\u0442\u0430\u0440\u043A\u0442\u0438\u043A\u0430", [e$2.Telugu]: "\u0C05\u0C28\u0C4D\u0C24\u0C30\u0C3E\u0C36\u0C4D\u0C35\u0C3F\u0C15\u0C3E", [e$2.Thai]: "\u0E20\u0E39\u0E21\u0E34\u0E20\u0E32\u0E04\u0E2D\u0E32\u0E19\u0E31\u0E19\u0E15\u0E34\u0E01\u0E32", [e$2.Tibetan]: "\u0F68\u0F7A\u0F53\u0F0B\u0F4A\u0F72\u0F4A\u0F7A\u0F53\u0F0B\u0F40\u0F72\u0F66\u0F72\u0F0B\u0F68\u0F7A\u0F53\u0F0B\u0F4A\u0F72\u0F4A\u0F7A\u0F53\u0F0B\u0F40\u0F72\u0F66\u0F72", [e$2.Turkish]: "Antarktika", [e$2.Ukrainian]: "\u0410\u043D\u0442\u0430\u0440\u043A\u0442\u0438\u043A\u0430", [e$2.Urdu]: "\u0627\u0646\u062A\u0627\u0631\u06A9\u062A\u06CC\u06A9\u0627", [e$2.Uzbek]: "\u0410\u043D\u0442\u0430\u0440\u043A\u0442\u0438\u043A\u0430", [e$2.Vietnamese]: "\u0110\u1EA5t Antarktik", [e$2.Welsh]: "Antarktika", [e$2.Xhosa]: "Antarktika", [e$2.Yiddish]: "Antarktika", [e$2.Yoruba]: "Antarktika", [e$2.Zulu]: "Antarktika" } } }, Armenia: { i18n: { calling_codes: [374], currencies: [l$1.ArmeniaDram], languages: [e$2.Armenian], tz: { offsets: [i$3.UTC_PLUS_4], regions: [t$1.AsiaJakarta], timezones: [n$2.ArmeniaTime] } }, id: r$2.Armenia, info: { flag: { emoji: "\u{1F1E6}\u{1F1F2}", emoji_unicode: "U+1F1E6 U+1F1F2", svg: "https://www.countryflags.io/am/flat/64.svg" }, tld: [".am"] }, iso: { alpha2: r$2.Armenia, alpha3: "ARM", numeric: "051" }, name: { alt_spellings: ["AM", "Hayastan", "Republic of Armenia", "\u0540\u0561\u0575\u0561\u057D\u057F\u0561\u0576"], demonym: "Armenian", native: { endonym: "\u0540\u0561\u0575\u0561\u057D\u057F\u0561\u0576" }, official: "Republic of Armenia", short: "Armenia", translations: { [e$2.Afrikaans]: "Armeni\xEB", [e$2.Albanian]: "Armenia", [e$2.Amharic]: "\u12A0\u121B\u122D\u129B", [e$2.Arabic]: "\u0623\u0631\u0645\u064A\u0646\u064A\u0627", [e$2.Armenian]: "\u0540\u0561\u0575\u0561\u057D\u057F\u0561\u0576", [e$2.Azerbaijani]: "Az\u0259rbaycan", [e$2.Bashkir]: "\u0410\u0440\u043C\u0435\u043D\u0438\u044F", [e$2.Basque]: "Arm\xE9nia", [e$2.Belarusian]: "\u0410\u0440\u043C\u0435\u043D\u0438\u044F", [e$2.Bengali]: "\u0986\u09B0\u09CD\u09AE\u09C7\u09A8\u09BF", [e$2.Berber]: "\u0623\u0631\u0645\u064A\u0646\u064A\u0627", [e$2.Bhutani]: "\u0F62\u0F92\u0FB1\u0F0B\u0F53\u0F42", [e$2.Bosnian]: "Armenija", [e$2.Breton]: "Armeni\xEB", [e$2.Bulgarian]: "\u0410\u0440\u043C\u0435\u043D\u0438\u044F", [e$2.Burmese]: "\u1021\u102C\u1019\u1010\u102D\u1010\u1039", [e$2.Catalan]: "Arm\xE8nia", [e$2.Chinese]: "\u4E9A\u7F8E\u5C3C\u4E9A", [e$2.Croatian]: "Armenija", [e$2.Czech]: "Arm\xE9nie", [e$2.Danish]: "Armenien", [e$2.Dutch]: "Armeni\xEB", [e$2.English]: "Armenia", [e$2.Esperanto]: "Armenia", [e$2.Estonian]: "Armeenia", [e$2.Finnish]: "Armenia", [e$2.French]: "Armenia", [e$2.Frisian]: "Armeenia", [e$2.Galician]: "Arm\xE9nia", [e$2.Georgian]: "\u10D0\u10E0\u10DB\u10DD\u10DC\u10D8", [e$2.German]: "Armenien", [e$2.Greenlandic]: "Armenia", [e$2.Greek]: "\u0391\u03C1\u03BC\u03B5\u03BD\u03AF\u03B1", [e$2.Gujarati]: "\u0A85\u0AB0\u0ACD\u0AAE\u0AC7\u0AA8\u0ABF", [e$2.Haitian]: "Armenia", [e$2.Hausa]: "Armenia", [e$2.Hebrew]: "\u05D0\u05E8\u05DE\u05E0\u05D9\u05D4", [e$2.Hindi]: "\u0905\u05E8\u05DE\u05E0\u093F\u092F\u093E", [e$2.Hungarian]: "\xD6rm\xE9nyorsz\xE1g", [e$2.Icelandic]: "Armenia", [e$2.Igbo]: "Armenia", [e$2.Indonesian]: "Armenia", [e$2.Irish]: "Armenia", [e$2.Italian]: "Armenia", [e$2.Japanese]: "\u30A2\u30EB\u30E1\u30CB\u30A2", [e$2.Javanese]: "Armenia", [e$2.Kannada]: "\u0C85\u0CB0\u0CCD\u0CAE\u0CC7\u0CA8\u0CBF", [e$2.Kazakh]: "\u0410\u0440\u043C\u0435\u043D\u0438\u044F", [e$2.Khmer]: "\u17A2\u17B6\u1798\u17C9\u17C1\u179A\u17B8", [e$2.Korean]: "\uC544\uB974\uBA54\uB2C8\uC544", [e$2.Kurdish]: "Armenia", [e$2.Kyrgyz]: "\u0410\u0440\u043C\u0435\u043D\u0438\u044F", [e$2.Lao]: "\u0EAD\u0EB2\u0EAB\u0EBC\u0E99\u0EB2", [e$2.Latin]: "Armenia", [e$2.Latvian]: "Armeenia", [e$2.Lithuanian]: "Arm\u0117nija", [e$2.Luxembourgish]: "Armenien", [e$2.Macedonian]: "\u0410\u0440\u043C\u0435\u043D\u0438\u0458\u0430", [e$2.Malagasy]: "Armenia", [e$2.Malay]: "Armenia", [e$2.Malayalam]: "\u0D05\u0D30\u0D4D\u200D\u0D2E\u0D47\u0D28\u0D3F", [e$2.Maltese]: "Armenia", [e$2.Maori]: "Armenia", [e$2.Marathi]: "\u0905\u0930\u094D\u092E\u0947\u0928\u093F", [e$2.Mongolian]: "\u0410\u0440\u043C\u0435\u043D\u0438\u044F", [e$2.Nepali]: "\u0905\u0930\u094D\u092E\u0947\u0928\u093F", [e$2.Norwegian]: "Armenia", [e$2.Pashto]: "\u0622\u0631\u0645\u06CC\u0646\u06CC\u0627", [e$2.Persian]: "\u0627\u0631\u0645\u0646\u0633\u062A\u0627\u0646", [e$2.Polish]: "Armenia", [e$2.Portuguese]: "Armenia", [e$2.Punjabi]: "\u0A05\u0A30\u0A2E\u0A40\u0A28\u0A40", [e$2.Romanian]: "Armenia", [e$2.Russian]: "\u0410\u0440\u043C\u0435\u043D\u0438\u044F", [e$2.Samoan]: "Armenia", [e$2.Sanskrit]: "Armenia", [e$2.Scots]: "Armenia", [e$2.Serbian]: "\u0410\u0440\u043C\u0435\u043D\u0438\u0458\u0430", [e$2.Sesotho]: "Armenia", [e$2.Shona]: "Armenia", [e$2.Sindhi]: "Armenia", [e$2.Sinhala]: "\u0D86\u0DBB\u0DCA\u0DB8\u0DD3\u0DB1\u0DD2", [e$2.Slovak]: "Armenia", [e$2.Slovenian]: "Armenija", [e$2.Somali]: "Armenia", [e$2.Spanish]: "Armenia", [e$2.Sudanese]: "Armenia", [e$2.Swahili]: "Armenia", [e$2.Swedish]: "Armenien", [e$2.Tagalog]: "Armenia", [e$2.Tajik]: "\u0410\u0440\u043C\u0435\u043D\u0438\u044F", [e$2.Tamil]: "\u0B85\u0BB0\u0BCD\u0BAE\u0BC7\u0BA9\u0BBF\u0BAF\u0BA9\u0BCD", [e$2.Tatar]: "\u0410\u0440\u043C\u0435\u043D\u0438\u044F", [e$2.Telugu]: "\u0C05\u0C30\u0C4D\u0C2E\u0C47\u0C28\u0C3F", [e$2.Thai]: "\u0E2D\u0E32\u0E23\u0E4C\u0E40\u0E21\u0E19\u0E34\u0E2A\u0E16\u0E32\u0E19", [e$2.Tibetan]: "\u0F68\u0F62\u0F0B\u0F58\u0F7A\u0F0B\u0F53\u0F72\u0F0B\u0F61\u0F74\u0F0D", [e$2.Turkish]: "Ermenistan", [e$2.Ukrainian]: "\u0410\u0440\u043C\u0435\u043D\u0456\u044F", [e$2.Urdu]: "\u0627\u0631\u0645\u0646\u0633\u062A\u0627\u0646", [e$2.Uzbek]: "\u0410\u0440\u043C\u0435\u043D\u0438\u044F", [e$2.Vietnamese]: "Armenia", [e$2.Welsh]: "Armenia", [e$2.Xhosa]: "Armenia", [e$2.Yiddish]: "\u05D0\u05E8\u05DE\u05E0\u05D9\u05D4", [e$2.Yoruba]: "Armenia", [e$2.Zulu]: "Armenia" } } }, SomeCountry: { i18n: { calling_codes: [], currencies: [], languages: [], tz: { offsets: [], regions: [], timezones: [] } }, id: r$2.AmericanSamoa, info: { flag: { emoji: "", emoji_unicode: "", svg: "" }, tld: [] }, iso: { alpha2: r$2.AmericanSamoa, alpha3: "", numeric: "" }, name: { alt_spellings: [], demonym: "", native: { endonym: "" }, official: "", short: "", translations: { [e$2.Afrikaans]: "", [e$2.Albanian]: "", [e$2.Amharic]: "", [e$2.Arabic]: "", [e$2.Armenian]: "", [e$2.Azerbaijani]: "", [e$2.Bashkir]: "", [e$2.Basque]: "", [e$2.Belarusian]: "", [e$2.Bengali]: "", [e$2.Berber]: "", [e$2.Bhutani]: "", [e$2.Bosnian]: "", [e$2.Breton]: "", [e$2.Bulgarian]: "", [e$2.Burmese]: "", [e$2.Catalan]: "", [e$2.Chinese]: "", [e$2.Croatian]: "", [e$2.Czech]: "", [e$2.Danish]: "", [e$2.Dutch]: "", [e$2.English]: "", [e$2.Esperanto]: "", [e$2.Estonian]: "", [e$2.Finnish]: "", [e$2.French]: "", [e$2.Frisian]: "", [e$2.Galician]: "", [e$2.Georgian]: "", [e$2.German]: "", [e$2.Greenlandic]: "", [e$2.Greek]: "", [e$2.Gujarati]: "", [e$2.Haitian]: "", [e$2.Hausa]: "", [e$2.Hebrew]: "", [e$2.Hindi]: "", [e$2.Hungarian]: "", [e$2.Icelandic]: "", [e$2.Igbo]: "", [e$2.Indonesian]: "", [e$2.Irish]: "", [e$2.Italian]: "", [e$2.Japanese]: "", [e$2.Javanese]: "", [e$2.Kannada]: "", [e$2.Kazakh]: "", [e$2.Khmer]: "", [e$2.Korean]: "", [e$2.Kurdish]: "", [e$2.Kyrgyz]: "", [e$2.Lao]: "", [e$2.Latin]: "", [e$2.Latvian]: "", [e$2.Lithuanian]: "", [e$2.Luxembourgish]: "", [e$2.Macedonian]: "", [e$2.Malagasy]: "", [e$2.Malay]: "", [e$2.Malayalam]: "", [e$2.Maltese]: "", [e$2.Maori]: "", [e$2.Marathi]: "", [e$2.Mongolian]: "", [e$2.Nepali]: "", [e$2.Norwegian]: "", [e$2.Pashto]: "", [e$2.Persian]: "", [e$2.Polish]: "", [e$2.Portuguese]: "", [e$2.Punjabi]: "", [e$2.Romanian]: "", [e$2.Russian]: "", [e$2.Samoan]: "", [e$2.Sanskrit]: "", [e$2.Scots]: "", [e$2.Serbian]: "", [e$2.Sesotho]: "", [e$2.Shona]: "", [e$2.Sindhi]: "", [e$2.Sinhala]: "", [e$2.Slovak]: "", [e$2.Slovenian]: "", [e$2.Somali]: "", [e$2.Spanish]: "", [e$2.Sudanese]: "", [e$2.Swahili]: "", [e$2.Swedish]: "", [e$2.Tagalog]: "", [e$2.Tajik]: "", [e$2.Tamil]: "", [e$2.Tatar]: "", [e$2.Telugu]: "", [e$2.Thai]: "", [e$2.Tibetan]: "", [e$2.Turkish]: "", [e$2.Ukrainian]: "", [e$2.Urdu]: "", [e$2.Uzbek]: "", [e$2.Vietnamese]: "", [e$2.Welsh]: "", [e$2.Xhosa]: "", [e$2.Yiddish]: "", [e$2.Yoruba]: "", [e$2.Zulu]: "" } } } });
 ({ id: e$2.Afrikaans, language: { code: o.Afrikaans, name: "Afrikaans", native: "Afrikaans" }, name: "Afrikaans", native_name: "Afrikaans", rtl: false });
 ({ country: { code: r$2.SouthAfrica, name: "South Africa", native: "South Africa" }, id: e$2.AfrikaansSouthAfrica, language: { code: o.Afrikaans, name: "Afrikaans", native: "Afrikaans" }, name: "Afrikaans (South Africa)", native_name: "Afrikaans (Suid-Afrika)", rtl: false });
 ({ id: e$2.Albanian, language: { code: o.Albanian, name: "Albanian", native: "Shqip" }, name: "Albanian", native_name: "Shqip", rtl: false });
@@ -19046,430 +19045,430 @@ var x$1;
 ({ country: { code: r$2.Nigeria, name: "Nigeria", native: "Nigeria" }, id: e$2.YorubaNigeria, language: { code: o.Yoruba, name: "Yoruba", native: "Yor\xF9b\xE1" }, name: "Yoruba (Nigeria)", native_name: "Yor\xF9b\xE1 (Nigeria)", rtl: false });
 ({ id: e$2.Zulu, language: { code: o.Zulu, name: "Zulu", native: "isiZulu" }, name: "Zulu", native_name: "isiZulu", rtl: false });
 ({ country: { code: r$2.SouthAfrica, name: "South Africa", native: "South Africa" }, id: e$2.ZuluSouthAfrica, language: { code: o.Zulu, name: "Zulu", native: "isiZulu" }, name: "Zulu (South Africa)", native_name: "isiZulu (South Africa)", rtl: false });
-({ id: t$1.AfricaAbidjan, name: "Africa/Abidjan", offset: i$2.UTC_0, timezone: n$2.CoordinatedUniversalTime });
-({ id: t$1.AfricaAccra, name: "Africa/Accra", offset: i$2.UTC_0, timezone: n$2.CoordinatedUniversalTime });
-({ id: t$1.AfricaAddisAbaba, name: "Africa/Addis_Ababa", offset: i$2.UTC_PLUS_3, timezone: n$2.EastAfricaTime });
-({ id: t$1.AfricaAlgiers, name: "Africa/Algiers", offset: i$2.UTC_PLUS_1, timezone: n$2.CentralEuropeanTime });
-({ id: t$1.AfricaAsmara, name: "Africa/Asmara", offset: i$2.UTC_PLUS_3, timezone: n$2.EastAfricaTime });
-({ id: t$1.AfricaBamako, name: "Africa/Bamako", offset: i$2.UTC_0, timezone: n$2.CoordinatedUniversalTime });
-({ id: t$1.AfricaBangui, name: "Africa/Bangui", offset: i$2.UTC_PLUS_1, timezone: n$2.WestAfricaTime });
-({ id: t$1.AfricaBanjul, name: "Africa/Banjul", offset: i$2.UTC_0, timezone: n$2.CoordinatedUniversalTime });
-({ id: t$1.AfricaBissau, name: "Africa/Bissau", offset: i$2.UTC_0, timezone: n$2.CoordinatedUniversalTime });
-({ id: t$1.AfricaBlantyre, name: "Africa/Blantyre", offset: i$2.UTC_PLUS_2, timezone: n$2.CentralAfricaTime });
-({ id: t$1.AfricaBrazzaville, name: "Africa/Brazzaville", offset: i$2.UTC_PLUS_1, timezone: n$2.WestAfricaTime });
-({ id: t$1.AfricaBujumbura, name: "Africa/Bujumbura", offset: i$2.UTC_PLUS_2, timezone: n$2.CentralAfricaTime });
-({ id: t$1.AfricaCairo, name: "Africa/Cairo", offset: i$2.UTC_PLUS_2, timezone: n$2.EasternEuropeanTime });
-({ id: t$1.AfricaCasablanca, name: "Africa/Casablanca", offset: i$2.UTC_PLUS_1, timezone: n$2.WesternEuropeanTime });
-({ id: t$1.AfricaCeuta, name: "Africa/Ceuta", offset: i$2.UTC_PLUS_1, timezone: n$2.CentralEuropeanTime });
-({ id: t$1.AfricaConakry, name: "Africa/Conakry", offset: i$2.UTC_0, timezone: n$2.CoordinatedUniversalTime });
-({ id: t$1.AfricaDakar, name: "Africa/Dakar", offset: i$2.UTC_0, timezone: n$2.CoordinatedUniversalTime });
-({ id: t$1.AfricaDarEsSalaam, name: "Africa/Dar_es_Salaam", offset: i$2.UTC_PLUS_3, timezone: n$2.EastAfricaTime });
-({ id: t$1.AfricaDjibouti, name: "Africa/Djibouti", offset: i$2.UTC_PLUS_3, timezone: n$2.EastAfricaTime });
-({ id: t$1.AfricaDouala, name: "Africa/Douala", offset: i$2.UTC_PLUS_1, timezone: n$2.WestAfricaTime });
-({ id: t$1.AfricaElAaiun, name: "Africa/El_Aaiun", offset: i$2.UTC_PLUS_1, timezone: n$2.WestAfricaTime });
-({ id: t$1.AfricaFreetown, name: "Africa/Freetown", offset: i$2.UTC_0, timezone: n$2.CoordinatedUniversalTime });
-({ id: t$1.AfricaGaborone, name: "Africa/Gaborone", offset: i$2.UTC_PLUS_2, timezone: n$2.CentralAfricaTime });
-({ id: t$1.AfricaHarare, name: "Africa/Harare", offset: i$2.UTC_PLUS_2, timezone: n$2.CentralAfricaTime });
-({ id: t$1.AfricaJohannesburg, name: "Africa/Johannesburg", offset: i$2.UTC_PLUS_2, timezone: n$2.SouthAfricanStandardTime });
-({ id: t$1.AfricaJuba, name: "Africa/Juba", offset: i$2.UTC_PLUS_3, timezone: n$2.EastAfricaTime });
-({ id: t$1.AfricaKampala, name: "Africa/Kampala", offset: i$2.UTC_PLUS_3, timezone: n$2.EastAfricaTime });
-({ id: t$1.AfricaKhartoum, name: "Africa/Khartoum", offset: i$2.UTC_PLUS_2, timezone: n$2.EastAfricaTime });
-({ id: t$1.AfricaKigali, name: "Africa/Kigali", offset: i$2.UTC_PLUS_2, timezone: n$2.CentralAfricaTime });
-({ id: t$1.AfricaKinshasa, name: "Africa/Kinshasa", offset: i$2.UTC_PLUS_1, timezone: n$2.WestAfricaTime });
-({ id: t$1.AfricaLagos, name: "Africa/Lagos", offset: i$2.UTC_PLUS_1, timezone: n$2.WestAfricaTime });
-({ id: t$1.AfricaLibreville, name: "Africa/Libreville", offset: i$2.UTC_PLUS_1, timezone: n$2.WestAfricaTime });
-({ id: t$1.AfricaLome, name: "Africa/Lome", offset: i$2.UTC_0, timezone: n$2.CoordinatedUniversalTime });
-({ id: t$1.AfricaLuanda, name: "Africa/Luanda", offset: i$2.UTC_PLUS_1, timezone: n$2.WestAfricaTime });
-({ id: t$1.AfricaLubumbashi, name: "Africa/Lubumbashi", offset: i$2.UTC_PLUS_2, timezone: n$2.CentralAfricaTime });
-({ id: t$1.AfricaLusaka, name: "Africa/Lusaka", offset: i$2.UTC_PLUS_2, timezone: n$2.CentralAfricaTime });
-({ id: t$1.AfricaMalabo, name: "Africa/Malabo", offset: i$2.UTC_PLUS_1, timezone: n$2.WestAfricaTime });
-({ id: t$1.AfricaMaputo, name: "Africa/Maputo", offset: i$2.UTC_PLUS_2, timezone: n$2.CentralAfricaTime });
-({ id: t$1.AfricaMaseru, name: "Africa/Maseru", offset: i$2.UTC_PLUS_2, timezone: n$2.SouthAfricanStandardTime });
-({ id: t$1.AfricaMbabane, name: "Africa/Mbabane", offset: i$2.UTC_PLUS_2, timezone: n$2.SouthAfricanStandardTime });
-({ id: t$1.AfricaMogadishu, name: "Africa/Mogadishu", offset: i$2.UTC_PLUS_3, timezone: n$2.EastAfricaTime });
-({ id: t$1.AfricaMonrovia, name: "Africa/Monrovia", offset: i$2.UTC_0, timezone: n$2.CoordinatedUniversalTime });
-({ id: t$1.AfricaNairobi, name: "Africa/Nairobi", offset: i$2.UTC_PLUS_3, timezone: n$2.EastAfricaTime });
-({ id: t$1.AfricaNdjamena, name: "Africa/Ndjamena", offset: i$2.UTC_PLUS_1, timezone: n$2.WestAfricaTime });
-({ id: t$1.AfricaNiamey, name: "Africa/Niamey", offset: i$2.UTC_PLUS_1, timezone: n$2.WestAfricaTime });
-({ id: t$1.AfricaNouakchott, name: "Africa/Nouakchott", offset: i$2.UTC_0, timezone: n$2.GreenwichMeanTime });
-({ id: t$1.AfricaOuagadougou, name: "Africa/Ouagadougou", offset: i$2.UTC_0, timezone: n$2.CoordinatedUniversalTime });
-({ id: t$1.AfricaPortoNovo, name: "Africa/Porto-Novo", offset: i$2.UTC_PLUS_1, timezone: n$2.WestAfricaTime });
-({ id: t$1.AfricaSaoTome, name: "Africa/SaoTome", offset: i$2.UTC_0, timezone: n$2.CoordinatedUniversalTime });
-({ id: t$1.AfricaTripoli, name: "Africa/Tripoli", offset: i$2.UTC_0, timezone: n$2.CoordinatedUniversalTime });
-({ id: t$1.AfricaTunis, name: "Africa/Tunis", offset: i$2.UTC_0, timezone: n$2.CoordinatedUniversalTime });
-({ id: t$1.AfricaWindhoek, name: "Africa/Windhoek", offset: i$2.UTC_PLUS_2, timezone: n$2.WestAfricaTime });
-({ id: t$1.AmericaAdak, name: "America/Adak", offset: i$2.UTC_PLUS_10, timezone: n$2.HawaiiAleutianStandardTime });
-({ id: t$1.AmericaAnchorage, name: "America/Anchorage", offset: i$2.UTC_PLUS_9, timezone: n$2.AlaskaStandardTime });
-({ id: t$1.AmericaAnguilla, name: "America/Anguilla", offset: i$2.UTC_0, timezone: n$2.AtlanticStandardTime });
-({ id: t$1.AmericaAntigua, name: "America/Antigua", offset: i$2.UTC_0, timezone: n$2.AtlanticStandardTime });
-({ id: t$1.AmericaAraguaina, name: "America/Araguaina", offset: i$2.UTC_MINUS_3, timezone: n$2.BrasiliaTime });
-({ id: t$1.AmericaArgentinaBuenosAires, name: "America/Argentina/Buenos_Aires", offset: i$2.UTC_MINUS_3, timezone: n$2.ArgentinaTime });
-({ id: t$1.AmericaArgentinaCatamarca, name: "America/Argentina/Catamarca", offset: i$2.UTC_MINUS_3, timezone: n$2.ArgentinaTime });
-({ id: t$1.AmericaArgentinaCordoba, name: "America/Argentina/Cordoba", offset: i$2.UTC_MINUS_3, timezone: n$2.ArgentinaTime });
-({ id: t$1.AmericaArgentinaJujuy, name: "America/Argentina/Jujuy", offset: i$2.UTC_MINUS_3, timezone: n$2.ArgentinaTime });
-({ id: t$1.AmericaArgentinaLaRioja, name: "America/Argentina/La_Rioja", offset: i$2.UTC_MINUS_3, timezone: n$2.ArgentinaTime });
-({ id: t$1.AmericaArgentinaMendoza, name: "America/Argentina/Mendoza", offset: i$2.UTC_MINUS_3, timezone: n$2.ArgentinaTime });
-({ id: t$1.AmericaArgentinaRioGallegos, name: "America/Argentina/Rio_Gallegos", offset: i$2.UTC_MINUS_3, timezone: n$2.ArgentinaTime });
-({ id: t$1.AmericaArgentinaSalta, name: "America/Argentina/Salta", offset: i$2.UTC_MINUS_3, timezone: n$2.ArgentinaTime });
-({ id: t$1.AmericaArgentinaSanJuan, name: "America/Argentina/San_Juan", offset: i$2.UTC_MINUS_3, timezone: n$2.ArgentinaTime });
-({ id: t$1.AmericaArgentinaSanLuis, name: "America/Argentina/San_Luis", offset: i$2.UTC_MINUS_3, timezone: n$2.ArgentinaTime });
-({ id: t$1.AmericaArgentinaTucuman, name: "America/Argentina/Tucuman", offset: i$2.UTC_MINUS_3, timezone: n$2.ArgentinaTime });
-({ id: t$1.AmericaArgentinaUshuaia, name: "America/Argentina/Ushuaia", offset: i$2.UTC_MINUS_3, timezone: n$2.ArgentinaTime });
-({ id: t$1.AmericaAruba, name: "America/Aruba", offset: i$2.UTC_0, timezone: n$2.AtlanticStandardTime });
-({ id: t$1.AmericaAsuncion, name: "America/Asuncion", offset: i$2.UTC_MINUS_4, timezone: n$2.ParaguayTime });
-({ id: t$1.AmericaAtikokan, name: "America/Atikokan", offset: i$2.UTC_0, timezone: n$2.EasternStandardTime });
-({ id: t$1.AmericaAtka, name: "America/Atka", offset: i$2.UTC_MINUS_10, timezone: n$2.HawaiiAleutianStandardTime });
-({ id: t$1.AmericaBahia, name: "America/Bahia", offset: i$2.UTC_MINUS_3, timezone: n$2.BrasiliaTime });
-({ id: t$1.AmericaBahiaBanderas, name: "America/Bahia_Banderas", offset: i$2.UTC_MINUS_6, timezone: n$2.CentralStandardTime });
-({ id: t$1.AmericaBarbados, name: "America/Barbados", offset: i$2.UTC_MINUS_4, timezone: n$2.AtlanticStandardTime });
-({ id: t$1.AmericaBelem, name: "America/Belem", offset: i$2.UTC_MINUS_3, timezone: n$2.BrasiliaTime });
-({ id: t$1.AmericaBelize, name: "America/Belize", offset: i$2.UTC_MINUS_6, timezone: n$2.CentralStandardTime });
-({ id: t$1.AmericaBlancSablon, name: "America/Blanc-Sablon", offset: i$2.UTC_MINUS_4, timezone: n$2.AtlanticStandardTime });
-({ id: t$1.AmericaBoaVista, name: "America/Boa_Vista", offset: i$2.UTC_MINUS_4, timezone: n$2.AmazonTime });
-({ id: t$1.AmericaBogota, name: "America/Bogota", offset: i$2.UTC_MINUS_5, timezone: n$2.ColombiaTime });
-({ id: t$1.AmericaBoise, name: "America/Boise", offset: i$2.UTC_MINUS_7, timezone: n$2.MountainStandardTime });
-({ id: t$1.AmericaCambridgeBay, name: "America/Cambridge_Bay", offset: i$2.UTC_MINUS_7, timezone: n$2.MountainStandardTime });
-({ id: t$1.AmericaCampoGrande, name: "America/Campo_Grande", offset: i$2.UTC_MINUS_4, timezone: n$2.AmazonTime });
-({ id: t$1.AmericaCancun, name: "America/Cancun", offset: i$2.UTC_MINUS_5, timezone: n$2.EasternStandardTime });
-({ id: t$1.AmericaCaracas, name: "America/Caracas", offset: i$2.UTC_MINUS_4, timezone: n$2.VenezuelaStandardTime });
-({ id: t$1.AmericaCayenne, name: "America/Cayenne", offset: i$2.UTC_MINUS_3, timezone: n$2.FrenchGuianaTime });
-({ id: t$1.AmericaCayman, name: "America/Cayman", offset: i$2.UTC_0, timezone: n$2.AtlanticStandardTime });
-({ id: t$1.AmericaChicago, name: "America/Chicago", offset: i$2.UTC_MINUS_6, timezone: n$2.CentralStandardTime });
-({ id: t$1.AmericaChihuahua, name: "America/Chihuahua", offset: i$2.UTC_MINUS_7, timezone: n$2.MountainStandardTime });
-({ id: t$1.AmericaCoralHarbour, name: "America/Coral_Harbour", offset: i$2.UTC_MINUS_5, timezone: n$2.EasternStandardTime });
-({ id: t$1.AmericaCordoba, name: "America/Cordoba", offset: i$2.UTC_MINUS_3, timezone: n$2.ArgentinaTime });
-({ id: t$1.AmericaCostaRica, name: "America/Costa_Rica", offset: i$2.UTC_MINUS_6, timezone: n$2.CentralStandardTime });
-({ id: t$1.AmericaCreston, name: "America/Creston", offset: i$2.UTC_MINUS_7, timezone: n$2.MountainStandardTime });
-({ id: t$1.AmericaCuiaba, name: "America/Cuiaba", offset: i$2.UTC_MINUS_4, timezone: n$2.AmazonTime });
-({ id: t$1.AmericaCuracao, name: "America/Curacao", offset: i$2.UTC_MINUS_4, timezone: n$2.AtlanticStandardTime });
-({ id: t$1.AmericaDanmarkshavn, name: "America/Danmarkshavn", offset: i$2.UTC_0, timezone: n$2.GreenwichMeanTime });
-({ id: t$1.AmericaDawson, name: "America/Dawson", offset: i$2.UTC_MINUS_8, timezone: n$2.PacificStandardTime });
-({ id: t$1.AmericaDawsonCreek, name: "America/Dawson_Creek", offset: i$2.UTC_MINUS_8, timezone: n$2.PacificStandardTime });
-({ id: t$1.AmericaDenver, name: "America/Denver", offset: i$2.UTC_MINUS_7, timezone: n$2.MountainStandardTime });
-({ id: t$1.AmericaDetroit, name: "America/Detroit", offset: i$2.UTC_MINUS_5, timezone: n$2.EasternStandardTime });
-({ id: t$1.AmericaDominica, name: "America/Dominica", offset: i$2.UTC_0, timezone: n$2.AtlanticStandardTime });
-({ id: t$1.AmericaEdmonton, name: "America/Edmonton", offset: i$2.UTC_MINUS_7, timezone: n$2.MountainStandardTime });
-({ id: t$1.AmericaEirunepe, name: "America/Eirunepe", offset: i$2.UTC_MINUS_5, timezone: n$2.AcreTime });
-({ id: t$1.AmericaElSalvador, name: "America/El_Salvador", offset: i$2.UTC_MINUS_6, timezone: n$2.CentralStandardTime });
-({ id: t$1.AmericaFortaleza, name: "America/Fortaleza", offset: i$2.UTC_MINUS_3, timezone: n$2.BrasiliaTime });
-({ id: t$1.AmericaGlaceBay, name: "America/Glace_Bay", offset: i$2.UTC_0, timezone: n$2.AtlanticStandardTime });
-({ id: t$1.AmericaGodthab, name: "America/Godthab", offset: i$2.UTC_MINUS_3, timezone: n$2.WestGreenlandTime });
-({ id: t$1.AmericaGooseBay, name: "America/Goose_Bay", offset: i$2.UTC_0, timezone: n$2.AtlanticStandardTime });
-({ id: t$1.AmericaGrandTurk, name: "America/Grand_Turk", offset: i$2.UTC_0, timezone: n$2.AtlanticStandardTime });
-({ id: t$1.AmericaGrenada, name: "America/Grenada", offset: i$2.UTC_0, timezone: n$2.AtlanticStandardTime });
-({ id: t$1.AmericaGuadeloupe, name: "America/Guadeloupe", offset: i$2.UTC_0, timezone: n$2.AtlanticStandardTime });
-({ id: t$1.AmericaGuatemala, name: "America/Guatemala", offset: i$2.UTC_MINUS_6, timezone: n$2.CentralStandardTime });
-({ id: t$1.AmericaGuayaquil, name: "America/Guayaquil", offset: i$2.UTC_MINUS_5, timezone: n$2.EcuadorTime });
-({ id: t$1.AmericaGuyana, name: "America/Guyana", offset: i$2.UTC_0, timezone: n$2.AtlanticStandardTime });
-({ id: t$1.AmericaHalifax, name: "America/Halifax", offset: i$2.UTC_0, timezone: n$2.AtlanticStandardTime });
-({ id: t$1.AmericaHavana, name: "America/Havana", offset: i$2.UTC_MINUS_5, timezone: n$2.CubaStandardTime });
-({ id: t$1.AmericaHermosillo, name: "America/Hermosillo", offset: i$2.UTC_MINUS_7, timezone: n$2.MountainStandardTime });
-({ id: t$1.AmericaIndianaIndianapolis, name: "America/Indiana/Indianapolis", offset: i$2.UTC_MINUS_5, timezone: n$2.EasternStandardTime });
-({ id: t$1.AmericaIndianaKnox, name: "America/Indiana/Knox", offset: i$2.UTC_MINUS_6, timezone: n$2.CentralStandardTime });
-({ id: t$1.AmericaIndianaMarengo, name: "America/Indiana/Marengo", offset: i$2.UTC_MINUS_5, timezone: n$2.EasternStandardTime });
-({ id: t$1.AmericaIndianaPetersburg, name: "America/Indiana/Petersburg", offset: i$2.UTC_MINUS_5, timezone: n$2.EasternStandardTime });
-({ id: t$1.AmericaIndianaTellCity, name: "America/Indiana/Tell_City", offset: i$2.UTC_MINUS_6, timezone: n$2.CentralStandardTime });
-({ id: t$1.AmericaIndianaVevay, name: "America/Indiana/Vevay", offset: i$2.UTC_MINUS_5, timezone: n$2.EasternStandardTime });
-({ id: t$1.AmericaIndianaVincennes, name: "America/Indiana/Vincennes", offset: i$2.UTC_MINUS_5, timezone: n$2.EasternStandardTime });
-({ id: t$1.AmericaIndianaWinamac, name: "America/Indiana/Winamac", offset: i$2.UTC_MINUS_5, timezone: n$2.EasternStandardTime });
-({ id: t$1.AmericaInuvik, name: "America/Inuvik", offset: i$2.UTC_MINUS_7, timezone: n$2.MountainStandardTime });
-({ id: t$1.AmericaIqaluit, name: "America/Iqaluit", offset: i$2.UTC_0, timezone: n$2.EasternStandardTime });
-({ id: t$1.AmericaJamaica, name: "America/Jamaica", offset: i$2.UTC_MINUS_4, timezone: n$2.AtlanticStandardTime });
-({ id: t$1.AmericaJuneau, name: "America/Juneau", offset: i$2.UTC_MINUS_9, timezone: n$2.AlaskaStandardTime });
-({ id: t$1.AmericaKentuckyLouisville, name: "America/Kentucky/Louisville", offset: i$2.UTC_MINUS_5, timezone: n$2.EasternStandardTime });
-({ id: t$1.AmericaKentuckyMonticello, name: "America/Kentucky/Monticello", offset: i$2.UTC_MINUS_5, timezone: n$2.EasternStandardTime });
-({ id: t$1.AmericaKralendijk, name: "America/Kralendijk", offset: i$2.UTC_MINUS_4, timezone: n$2.AtlanticStandardTime });
-({ id: t$1.AmericaLaPaz, name: "America/La_Paz", offset: i$2.UTC_MINUS_4, timezone: n$2.BoliviaTime });
-({ id: t$1.AmericaLima, name: "America/Lima", offset: i$2.UTC_MINUS_5, timezone: n$2.PeruTime });
-({ id: t$1.AmericaLosAngeles, name: "America/Los_Angeles", offset: i$2.UTC_MINUS_8, timezone: n$2.PacificStandardTime });
-({ id: t$1.AmericaLouisville, name: "America/Louisville", offset: i$2.UTC_MINUS_5, timezone: n$2.EasternStandardTime });
-({ id: t$1.AmericaLowerPrinces, name: "America/Lower_Princes", offset: i$2.UTC_MINUS_4, timezone: n$2.AtlanticStandardTime });
-({ id: t$1.AmericaMaceio, name: "America/Maceio", offset: i$2.UTC_MINUS_3, timezone: n$2.BrasiliaTime });
-({ id: t$1.AmericaManagua, name: "America/Managua", offset: i$2.UTC_MINUS_6, timezone: n$2.CentralStandardTime });
-({ id: t$1.AmericaManaus, name: "America/Manaus", offset: i$2.UTC_MINUS_4, timezone: n$2.AmazonTime });
-({ id: t$1.AmericaMarigot, name: "America/Marigot", offset: i$2.UTC_MINUS_4, timezone: n$2.AtlanticStandardTime });
-({ id: t$1.AmericaMartinique, name: "America/Martinique", offset: i$2.UTC_MINUS_4, timezone: n$2.AtlanticStandardTime });
-({ id: t$1.AmericaMatamoros, name: "America/Matamoros", offset: i$2.UTC_MINUS_6, timezone: n$2.CentralStandardTime });
-({ id: t$1.AmericaMazatlan, name: "America/Mazatlan", offset: i$2.UTC_MINUS_7, timezone: n$2.MountainStandardTime });
-({ id: t$1.AmericaMenominee, name: "America/Menominee", offset: i$2.UTC_MINUS_5, timezone: n$2.CentralStandardTime });
-({ id: t$1.AmericaMerida, name: "America/Merida", offset: i$2.UTC_MINUS_6, timezone: n$2.CentralStandardTime });
-({ id: t$1.AmericaMetlakatla, name: "America/Metlakatla", offset: i$2.UTC_MINUS_9, timezone: n$2.AlaskaStandardTime });
-({ id: t$1.AmericaMexicoCity, name: "America/Mexico_City", offset: i$2.UTC_MINUS_6, timezone: n$2.CentralStandardTime });
-({ id: t$1.AmericaMiquelon, name: "America/Miquelon", offset: i$2.UTC_MINUS_3, timezone: n$2.SaintPierreAndMiquelonStandardTime });
-({ id: t$1.AmericaMoncton, name: "America/Moncton", offset: i$2.UTC_MINUS_4, timezone: n$2.AtlanticStandardTime });
-({ id: t$1.AmericaMonterrey, name: "America/Monterrey", offset: i$2.UTC_MINUS_6, timezone: n$2.CentralStandardTime });
-({ id: t$1.AmericaMontevideo, name: "America/Montevideo", offset: i$2.UTC_MINUS_3, timezone: n$2.UruguayStandardTime });
-({ id: t$1.AmericaMontreal, name: "America/Montreal", offset: i$2.UTC_MINUS_5, timezone: n$2.EasternStandardTime });
-({ id: t$1.AmericaMontserrat, name: "America/Montserrat", offset: i$2.UTC_MINUS_4, timezone: n$2.AtlanticStandardTime });
-({ id: t$1.AmericaNassau, name: "America/Nassau", offset: i$2.UTC_MINUS_5, timezone: n$2.EasternStandardTime });
-({ id: t$1.AmericaNewYork, name: "America/New_York", offset: i$2.UTC_MINUS_5, timezone: n$2.EasternStandardTime });
-({ id: t$1.AmericaNipigon, name: "America/Nipigon", offset: i$2.UTC_MINUS_5, timezone: n$2.EasternStandardTime });
-({ id: t$1.AmericaNome, name: "America/Nome", offset: i$2.UTC_MINUS_9, timezone: n$2.AlaskaStandardTime });
-({ id: t$1.AmericaNoronha, name: "America/Noronha", offset: i$2.UTC_MINUS_2, timezone: n$2.FernandoDeNoronhaTime });
-({ id: t$1.AmericaNorthDakotaBeulah, name: "America/North_Dakota/Beulah", offset: i$2.UTC_MINUS_6, timezone: n$2.CentralStandardTime });
-({ id: t$1.AmericaNorthDakotaCenter, name: "America/North_Dakota/Center", offset: i$2.UTC_MINUS_6, timezone: n$2.CentralStandardTime });
-({ id: t$1.AmericaNorthDakotaNewSalem, name: "America/North_Dakota/New_Salem", offset: i$2.UTC_MINUS_6, timezone: n$2.CentralStandardTime });
-({ id: t$1.AmericaOjinaga, name: "America/Ojinaga", offset: i$2.UTC_MINUS_7, timezone: n$2.MountainStandardTime });
-({ id: t$1.AmericaPanama, name: "America/Panama", offset: i$2.UTC_MINUS_5, timezone: n$2.EasternStandardTime });
-({ id: t$1.AmericaPangnirtung, name: "America/Pangnirtung", offset: i$2.UTC_MINUS_5, timezone: n$2.EasternStandardTime });
-({ id: t$1.AmericaParamaribo, name: "America/Paramaribo", offset: i$2.UTC_MINUS_3, timezone: n$2.SurinameTime });
-({ id: t$1.AmericaPhoenix, name: "America/Phoenix", offset: i$2.UTC_MINUS_7, timezone: n$2.MountainStandardTime });
-({ id: t$1.AmericaPortAuPrince, name: "America/Port-au-Prince", offset: i$2.UTC_MINUS_5, timezone: n$2.EasternStandardTime });
-({ id: t$1.AmericaPortOfSpain, name: "America/Port_of_Spain", offset: i$2.UTC_MINUS_4, timezone: n$2.AtlanticStandardTime });
-({ id: t$1.AmericaPortoVelho, name: "America/Porto_Velho", offset: i$2.UTC_MINUS_4, timezone: n$2.AmazonTime });
-({ id: t$1.AmericaPuertoRico, name: "America/Puerto_Rico", offset: i$2.UTC_MINUS_4, timezone: n$2.AtlanticStandardTime });
-({ id: t$1.AmericaRainyRiver, name: "America/Rainy_River", offset: i$2.UTC_MINUS_6, timezone: n$2.CentralStandardTime });
-({ id: t$1.AmericaRankinInlet, name: "America/Rankin_Inlet", offset: i$2.UTC_MINUS_6, timezone: n$2.CentralStandardTime });
-({ id: t$1.AmericaRecife, name: "America/Recife", offset: i$2.UTC_MINUS_3, timezone: n$2.BrasiliaTime });
-({ id: t$1.AmericaRegina, name: "America/Regina", offset: i$2.UTC_MINUS_6, timezone: n$2.CentralStandardTime });
-({ id: t$1.AmericaResolute, name: "America/Resolute", offset: i$2.UTC_MINUS_6, timezone: n$2.CentralStandardTime });
-({ id: t$1.AmericaRioBranco, name: "America/Rio_Branco", offset: i$2.UTC_MINUS_5, timezone: n$2.AcreTime });
-({ id: t$1.AmericaSantaIsabel, name: "America/Santa_Isabel", offset: i$2.UTC_MINUS_8, timezone: n$2.PacificStandardTime });
-({ id: t$1.AmericaSantarem, name: "America/Santarem", offset: i$2.UTC_MINUS_3, timezone: n$2.BrasiliaTime });
-({ id: t$1.AmericaSantiago, name: "America/Santiago", offset: i$2.UTC_MINUS_4, timezone: n$2.ChileStandardTime });
-({ id: t$1.AmericaSantoDomingo, name: "America/Santo_Domingo", offset: i$2.UTC_MINUS_4, timezone: n$2.AtlanticStandardTime });
-({ id: t$1.AmericaSaoPaulo, name: "America/Sao_Paulo", offset: i$2.UTC_MINUS_3, timezone: n$2.BrasiliaTime });
-({ id: t$1.AmericaScoresbysund, name: "America/Scoresbysund", offset: i$2.UTC_MINUS_1, timezone: n$2.EasternGreenlandTime });
-({ id: t$1.AmericaShiprock, name: "America/Shiprock", offset: i$2.UTC_MINUS_7, timezone: n$2.MountainStandardTime });
-({ id: t$1.AmericaSitka, name: "America/Sitka", offset: i$2.UTC_MINUS_9, timezone: n$2.AlaskaStandardTime });
-({ id: t$1.AmericaStBarthelemy, name: "America/St_Barthelemy", offset: i$2.UTC_MINUS_4, timezone: n$2.AtlanticStandardTime });
-({ id: t$1.AmericaStJohns, name: "America/St_Johns", offset: i$2.UTC_MINUS_3, timezone: n$2.NewfoundlandStandardTime });
-({ id: t$1.AmericaStKitts, name: "America/St_Kitts", offset: i$2.UTC_MINUS_4, timezone: n$2.AtlanticStandardTime });
-({ id: t$1.AmericaStLucia, name: "America/St_Lucia", offset: i$2.UTC_MINUS_4, timezone: n$2.AtlanticStandardTime });
-({ id: t$1.AmericaStThomas, name: "America/St_Thomas", offset: i$2.UTC_MINUS_4, timezone: n$2.AtlanticStandardTime });
-({ id: t$1.AmericaStVincent, name: "America/St_Vincent", offset: i$2.UTC_MINUS_4, timezone: n$2.AtlanticStandardTime });
-({ id: t$1.AmericaSwiftCurrent, name: "America/Swift_Current", offset: i$2.UTC_MINUS_6, timezone: n$2.CentralStandardTime });
-({ id: t$1.AmericaTegucigalpa, name: "America/Tegucigalpa", offset: i$2.UTC_MINUS_6, timezone: n$2.CentralStandardTime });
-({ id: t$1.AmericaThule, name: "America/Thule", offset: i$2.UTC_MINUS_4, timezone: n$2.AtlanticStandardTime });
-({ id: t$1.AmericaThunderBay, name: "America/Thunder_Bay", offset: i$2.UTC_MINUS_4, timezone: n$2.EasternStandardTime });
-({ id: t$1.AmericaTijuana, name: "America/Tijuana", offset: i$2.UTC_MINUS_8, timezone: n$2.PacificStandardTime });
-({ id: t$1.AmericaToronto, name: "America/Toronto", offset: i$2.UTC_MINUS_5, timezone: n$2.EasternStandardTime });
-({ id: t$1.AmericaTortola, name: "America/Tortola", offset: i$2.UTC_MINUS_4, timezone: n$2.AtlanticStandardTime });
-({ id: t$1.AmericaVancouver, name: "America/Vancouver", offset: i$2.UTC_MINUS_8, timezone: n$2.PacificStandardTime });
-({ id: t$1.AmericaWhitehorse, name: "America/Whitehorse", offset: i$2.UTC_MINUS_8, timezone: n$2.PacificStandardTime });
-({ id: t$1.AmericaWinnipeg, name: "America/Winnipeg", offset: i$2.UTC_MINUS_6, timezone: n$2.CentralStandardTime });
-({ id: t$1.AmericaYakutat, name: "America/Yakutat", offset: i$2.UTC_MINUS_9, timezone: n$2.AlaskaStandardTime });
-({ id: t$1.AmericaYellowknife, name: "America/Yellowknife", offset: i$2.UTC_MINUS_6, timezone: n$2.MountainStandardTime });
-({ id: t$1.AntarcticaCasey, name: "Antarctica/Casey", offset: i$2.UTC_MINUS_8, timezone: n$2.WesternStandardTime });
-({ id: t$1.AntarcticaDavis, name: "Antarctica/Davis", offset: i$2.UTC_MINUS_7, timezone: n$2.NewfoundlandStandardTime });
-({ id: t$1.AntarcticaDumontDUrville, name: "Antarctica/DumontDUrville", offset: i$2.UTC_MINUS_10, timezone: n$2.CentralStandardTime });
-({ id: t$1.AntarcticaMacquarie, name: "Antarctica/Macquarie", offset: i$2.UTC_MINUS_11, timezone: n$2.CentralStandardTime });
-({ id: t$1.AntarcticaMawson, name: "Antarctica/Mawson", offset: i$2.UTC_MINUS_6, timezone: n$2.CentralStandardTime });
-({ id: t$1.AntarcticaMcMurdo, name: "Antarctica/McMurdo", offset: i$2.UTC_MINUS_12, timezone: n$2.NewZealandStandardTime });
-({ id: t$1.AntarcticaPalmer, name: "Antarctica/Palmer", offset: i$2.UTC_MINUS_4, timezone: n$2.ChathamStandardTime });
-({ id: t$1.AntarcticaRothera, name: "Antarctica/Rothera", offset: i$2.UTC_MINUS_3, timezone: n$2.RotheraResearchStationTime });
-({ id: t$1.AntarcticaSyowa, name: "Antarctica/Syowa", offset: i$2.UTC_MINUS_3, timezone: n$2.ShowaStationTime });
-({ id: t$1.AntarcticaTroll, name: "Antarctica/Troll", offset: i$2.UTC_MINUS_2, timezone: n$2.CentralStandardTime });
-({ id: t$1.AntarcticaVostok, name: "Antarctica/Vostok", offset: i$2.UTC_MINUS_6, timezone: n$2.CentralStandardTime });
-({ id: t$1.ArcticLongyearbyen, name: "Arctic/Longyearbyen", offset: i$2.UTC_MINUS_1, timezone: n$2.CentralEuropeanTime });
-({ id: t$1.AsiaAden, name: "Asia/Aden", offset: i$2.UTC_PLUS_3, timezone: n$2.ArabiaStandardTime });
-({ id: t$1.AsiaAlmaty, name: "Asia/Almaty", offset: i$2.UTC_PLUS_6, timezone: n$2.AlmaAtaTime });
-({ id: t$1.AsiaAmman, name: "Asia/Amman", offset: i$2.UTC_PLUS_2, timezone: n$2.EasternEuropeanTime });
-({ id: t$1.AsiaAnadyr, name: "Asia/Anadyr", offset: i$2.UTC_PLUS_12, timezone: n$2.NewCaledoniaTime });
-({ id: t$1.AsiaAqtau, name: "Asia/Aqtau", offset: i$2.UTC_PLUS_5, timezone: n$2.AqtobeTime });
-({ id: t$1.AsiaAqtobe, name: "Asia/Aqtobe", offset: i$2.UTC_PLUS_5, timezone: n$2.AqtobeTime });
-({ id: t$1.AsiaAshgabat, name: "Asia/Ashgabat", offset: i$2.UTC_PLUS_5, timezone: n$2.TurkmenistanTime });
-({ id: t$1.AsiaBaghdad, name: "Asia/Baghdad", offset: i$2.UTC_PLUS_3, timezone: n$2.ArabiaStandardTime });
-({ id: t$1.AsiaBahrain, name: "Asia/Bahrain", offset: i$2.UTC_PLUS_3, timezone: n$2.ArabiaStandardTime });
-({ id: t$1.AsiaBaku, name: "Asia/Baku", offset: i$2.UTC_PLUS_4, timezone: n$2.AzerbaijanTime });
-({ id: t$1.AsiaBangkok, name: "Asia/Bangkok", offset: i$2.UTC_PLUS_7, timezone: n$2.IndochinaTime });
-({ id: t$1.AsiaBarnaul, name: "Asia/Barnaul", offset: i$2.UTC_PLUS_7, timezone: n$2.KrasnoyarskTime });
-({ id: t$1.AsiaBeirut, name: "Asia/Beirut", offset: i$2.UTC_PLUS_2, timezone: n$2.EasternEuropeanTime });
-({ id: t$1.AsiaBishkek, name: "Asia/Bishkek", offset: i$2.UTC_PLUS_6, timezone: n$2.KyrgyzstanTime });
-({ id: t$1.AsiaBrunei, name: "Asia/Brunei", offset: i$2.UTC_PLUS_8, timezone: n$2.BruneiTime });
-({ id: t$1.AsiaChita, name: "Asia/Chita", offset: i$2.UTC_PLUS_9, timezone: n$2.YakutskTime });
-({ id: t$1.AsiaChoibalsan, name: "Asia/Choibalsan", offset: i$2.UTC_PLUS_8, timezone: n$2.ChoibalsanStandardTime });
-({ id: t$1.AsiaColombo, name: "Asia/Colombo", offset: i$2.UTC_PLUS_5, timezone: n$2.IndianStandardTime });
-({ id: t$1.AsiaDamascus, name: "Asia/Damascus", offset: i$2.UTC_PLUS_2, timezone: n$2.EasternEuropeanTime });
-({ id: t$1.AsiaDhaka, name: "Asia/Dhaka", offset: i$2.UTC_PLUS_6, timezone: n$2.BangladeshStandardTime });
-({ id: t$1.AsiaDili, name: "Asia/Dili", offset: i$2.UTC_PLUS_9, timezone: n$2.JapanStandardTime });
-({ id: t$1.AsiaDubai, name: "Asia/Dubai", offset: i$2.UTC_PLUS_4, timezone: n$2.GulfStandardTime });
-({ id: t$1.AsiaDushanbe, name: "Asia/Dushanbe", offset: i$2.UTC_PLUS_5, timezone: n$2.TajikistanTime });
-({ id: t$1.AsiaFamagusta, name: "Asia/Famagusta", offset: i$2.UTC_PLUS_2, timezone: n$2.EasternEuropeanTime });
-({ id: t$1.AsiaGaza, name: "Asia/Gaza", offset: i$2.UTC_PLUS_2, timezone: n$2.EasternEuropeanTime });
-({ id: t$1.AsiaHebron, name: "Asia/Hebron", offset: i$2.UTC_PLUS_2, timezone: n$2.EasternEuropeanTime });
-({ id: t$1.AsiaHoChiMinh, name: "Asia/Ho_Chi_Minh", offset: i$2.UTC_PLUS_7, timezone: n$2.IndochinaTime });
-({ id: t$1.AsiaHongKong, name: "Asia/Hong_Kong", offset: i$2.UTC_PLUS_8, timezone: n$2.HongKongTime });
-({ id: t$1.AsiaHovd, name: "Asia/Hovd", offset: i$2.UTC_PLUS_7, timezone: n$2.HovdTime });
-({ id: t$1.AsiaIrkutsk, name: "Asia/Irkutsk", offset: i$2.UTC_PLUS_8, timezone: n$2.IrkutskTime });
-({ id: t$1.AsiaJakarta, name: "Asia/Jakarta", offset: i$2.UTC_PLUS_7, timezone: n$2.WesternIndonesianTime });
-({ id: t$1.AsiaJayapura, name: "Asia/Jayapura", offset: i$2.UTC_PLUS_9, timezone: n$2.JapanStandardTime });
-({ id: t$1.AsiaJerusalem, name: "Asia/Jerusalem", offset: i$2.UTC_PLUS_2, timezone: n$2.EasternEuropeanTime });
-({ id: t$1.AsiaKabul, name: "Asia/Kabul", offset: i$2.UTC_PLUS_4, timezone: n$2.AfghanistanTime });
-({ id: t$1.AsiaKamchatka, name: "Asia/Kamchatka", offset: i$2.UTC_PLUS_12, timezone: n$2.KamchatkaTime });
-({ id: t$1.AsiaKarachi, name: "Asia/Karachi", offset: i$2.UTC_PLUS_5, timezone: n$2.PakistanStandardTime });
-({ id: t$1.AsiaKathmandu, name: "Asia/Kathmandu", offset: i$2.UTC_PLUS_5, timezone: n$2.NepalTime });
-({ id: t$1.AsiaKhandyga, name: "Asia/Khandyga", offset: i$2.UTC_PLUS_9, timezone: n$2.YakutskTime });
-({ id: t$1.AsiaKolkata, name: "Asia/Kolkata", offset: i$2.UTC_PLUS_5, timezone: n$2.IndianStandardTime });
-({ id: t$1.AsiaKrasnoyarsk, name: "Asia/Krasnoyarsk", offset: i$2.UTC_PLUS_7, timezone: n$2.KrasnoyarskTime });
-({ id: t$1.AsiaKualaLumpur, name: "Asia/Kuala_Lumpur", offset: i$2.UTC_PLUS_8, timezone: n$2.MalaysiaStandardTime });
-({ id: t$1.AsiaKuching, name: "Asia/Kuching", offset: i$2.UTC_PLUS_8, timezone: n$2.MalaysiaStandardTime });
-({ id: t$1.AsiaKuwait, name: "Asia/Kuwait", offset: i$2.UTC_PLUS_3, timezone: n$2.ArabiaStandardTime });
-({ id: t$1.AsiaMacau, name: "Asia/Macau", offset: i$2.UTC_PLUS_8, timezone: n$2.ChinaStandardTime });
-({ id: t$1.AsiaMagadan, name: "Asia/Magadan", offset: i$2.UTC_PLUS_11, timezone: n$2.MagadanTime });
-({ id: t$1.AsiaMakassar, name: "Asia/Makassar", offset: i$2.UTC_PLUS_8, timezone: n$2.MalaysiaTime });
-({ id: t$1.AsiaManila, name: "Asia/Manila", offset: i$2.UTC_PLUS_8, timezone: n$2.PhilippineTime });
-({ id: t$1.AsiaMuscat, name: "Asia/Muscat", offset: i$2.UTC_PLUS_4, timezone: n$2.GulfStandardTime });
-({ id: t$1.AsiaNovokuznetsk, name: "Asia/Novokuznetsk", offset: i$2.UTC_PLUS_6, timezone: n$2.NovosibirskTime });
-({ id: t$1.AsiaNovosibirsk, name: "Asia/Novosibirsk", offset: i$2.UTC_PLUS_6, timezone: n$2.NovosibirskTime });
-({ id: t$1.AsiaOmsk, name: "Asia/Omsk", offset: i$2.UTC_PLUS_6, timezone: n$2.OmskTime });
-({ id: t$1.AsiaOral, name: "Asia/Oral", offset: i$2.UTC_PLUS_5, timezone: n$2.OralTime });
-({ id: t$1.AsiaPhnomPenh, name: "Asia/Phnom_Penh", offset: i$2.UTC_PLUS_7, timezone: n$2.IndochinaTime });
-({ id: t$1.AsiaPontianak, name: "Asia/Pontianak", offset: i$2.UTC_PLUS_7, timezone: n$2.WesternIndonesianTime });
-({ id: t$1.AsiaPyongyang, name: "Asia/Pyongyang", offset: i$2.UTC_PLUS_9, timezone: n$2.KoreaStandardTime });
-({ id: t$1.AsiaQatar, name: "Asia/Qatar", offset: i$2.UTC_PLUS_3, timezone: n$2.ArabiaStandardTime });
-({ id: t$1.AsiaQyzylorda, name: "Asia/Qyzylorda", offset: i$2.UTC_PLUS_5, timezone: n$2.WestKazakhstanTime });
-({ id: t$1.AsiaRangoon, name: "Asia/Rangoon", offset: i$2.UTC_PLUS_6, timezone: n$2.MyanmarStandardTime });
-({ id: t$1.AsiaRiyadh, name: "Asia/Riyadh", offset: i$2.UTC_PLUS_3, timezone: n$2.ArabiaStandardTime });
-({ id: t$1.AsiaSakhalin, name: "Asia/Sakhalin", offset: i$2.UTC_PLUS_11, timezone: n$2.SakhalinIslandTime });
-({ id: t$1.AsiaSamarkand, name: "Asia/Samarkand", offset: i$2.UTC_PLUS_5, timezone: n$2.UzbekistanTime });
-({ id: t$1.AsiaSeoul, name: "Asia/Seoul", offset: i$2.UTC_PLUS_9, timezone: n$2.KoreaStandardTime });
-({ id: t$1.AsiaShanghai, name: "Asia/Shanghai", offset: i$2.UTC_PLUS_8, timezone: n$2.ChinaStandardTime });
-({ id: t$1.AsiaSingapore, name: "Asia/Singapore", offset: i$2.UTC_PLUS_8, timezone: n$2.SingaporeStandardTime });
-({ id: t$1.AsiaSrednekolymsk, name: "Asia/Srednekolymsk", offset: i$2.UTC_PLUS_11, timezone: n$2.SrednekolymskTime });
-({ id: t$1.AsiaTaipei, name: "Asia/Taipei", offset: i$2.UTC_PLUS_8, timezone: n$2.ChinaStandardTime });
-({ id: t$1.AsiaTashkent, name: "Asia/Tashkent", offset: i$2.UTC_PLUS_5, timezone: n$2.UzbekistanTime });
-({ id: t$1.AsiaTbilisi, name: "Asia/Tbilisi", offset: i$2.UTC_PLUS_4, timezone: n$2.GeorgiaStandardTime });
-({ id: t$1.AsiaTehran, name: "Asia/Tehran", offset: i$2.UTC_PLUS_3, timezone: n$2.IranStandardTime });
-({ id: t$1.AsiaThimphu, name: "Asia/Thimphu", offset: i$2.UTC_PLUS_6, timezone: n$2.BhutanTime });
-({ id: t$1.AsiaTokyo, name: "Asia/Tokyo", offset: i$2.UTC_PLUS_9, timezone: n$2.JapanStandardTime });
-({ id: t$1.AsiaTomsk, name: "Asia/Tomsk", offset: i$2.UTC_PLUS_6, timezone: n$2.KrasnoyarskTime });
-({ id: t$1.AsiaUlaanbaatar, name: "Asia/Ulaanbaatar", offset: i$2.UTC_PLUS_8, timezone: n$2.UlaanbaatarStandardTime });
-({ id: t$1.AsiaUrumqi, name: "Asia/Urumqi", offset: i$2.UTC_PLUS_8, timezone: n$2.ChinaStandardTime });
-({ id: t$1.AsiaUstNera, name: "Asia/Ust-Nera", offset: i$2.UTC_PLUS_10, timezone: n$2.VladivostokTime });
-({ id: t$1.AsiaVientiane, name: "Asia/Vientiane", offset: i$2.UTC_PLUS_7, timezone: n$2.IndochinaTime });
-({ id: t$1.AsiaVladivostok, name: "Asia/Vladivostok", offset: i$2.UTC_PLUS_10, timezone: n$2.VladivostokTime });
-({ id: t$1.AsiaYakutsk, name: "Asia/Yakutsk", offset: i$2.UTC_PLUS_9, timezone: n$2.YakutskTime });
-({ id: t$1.AsiaYekaterinburg, name: "Asia/Yekaterinburg", offset: i$2.UTC_PLUS_5, timezone: n$2.YekaterinburgTime });
-({ id: t$1.AsiaYerevan, name: "Asia/Yerevan", offset: i$2.UTC_PLUS_4, timezone: n$2.ArmeniaTime });
-({ id: t$1.AtlanticAzores, name: "Atlantic/Azores", offset: i$2.UTC_MINUS_1, timezone: n$2.AzoresStandardTime });
-({ id: t$1.AtlanticBermuda, name: "Atlantic/Bermuda", offset: i$2.UTC_MINUS_4, timezone: n$2.AtlanticStandardTime });
-({ id: t$1.AtlanticCanary, name: "Atlantic/Canary", offset: i$2.UTC_MINUS_1, timezone: n$2.WesternEuropeanTime });
-({ id: t$1.AtlanticCapeVerde, name: "Atlantic/Cape_Verde", offset: i$2.UTC_0, timezone: n$2.CapeVerdeTime });
-({ id: t$1.AtlanticFaroe, name: "Atlantic/Faroe", offset: i$2.UTC_0, timezone: n$2.GreenwichMeanTime });
-({ id: t$1.AtlanticMadeira, name: "Atlantic/Madeira", offset: i$2.UTC_0, timezone: n$2.WesternEuropeanTime });
-({ id: t$1.AtlanticReykjavik, name: "Atlantic/Reykjavik", offset: i$2.UTC_0, timezone: n$2.GreenwichMeanTime });
-({ id: t$1.AtlanticSouthGeorgia, name: "Atlantic/South_Georgia", offset: i$2.UTC_0, timezone: n$2.CoordinatedUniversalTime });
-({ id: t$1.AtlanticStHelena, name: "Atlantic/St_Helena", offset: i$2.UTC_0, timezone: n$2.GreenwichMeanTime });
-({ id: t$1.AtlanticStanley, name: "Atlantic/Stanley", offset: i$2.UTC_0, timezone: n$2.FalklandIslandsTime });
-({ id: t$1.AustraliaAdelaide, name: "Australia/Adelaide", offset: i$2.UTC_PLUS_9_30, timezone: n$2.AustralianCentralStandardTime });
-({ id: t$1.AustraliaBrisbane, name: "Australia/Brisbane", offset: i$2.UTC_PLUS_10, timezone: n$2.AustralianEasternStandardTime });
-({ id: t$1.AustraliaBrokenHill, name: "Australia/Broken_Hill", offset: i$2.UTC_PLUS_9_30, timezone: n$2.AustralianCentralStandardTime });
-({ id: t$1.AustraliaCanberra, name: "Australia/Canberra", offset: i$2.UTC_PLUS_10, timezone: n$2.AustralianEasternStandardTime });
-({ id: t$1.AustraliaCurrie, name: "Australia/Currie", offset: i$2.UTC_PLUS_10, timezone: n$2.AustralianEasternStandardTime });
-({ id: t$1.AustraliaDarwin, name: "Australia/Darwin", offset: i$2.UTC_PLUS_9_30, timezone: n$2.AustralianCentralStandardTime });
-({ id: t$1.AustraliaEucla, name: "Australia/Eucla", offset: i$2.UTC_PLUS_8_45, timezone: n$2.AustralianCentralWesternStandardTime });
-({ id: t$1.AustraliaHobart, name: "Australia/Hobart", offset: i$2.UTC_PLUS_10, timezone: n$2.AustralianEasternStandardTime });
-({ id: t$1.AustraliaLindeman, name: "Australia/Lindeman", offset: i$2.UTC_PLUS_10, timezone: n$2.AustralianEasternStandardTime });
-({ id: t$1.AustraliaLordHowe, name: "Australia/Lord_Howe", offset: i$2.UTC_PLUS_10_30, timezone: n$2.LordHoweStandardTime });
-({ id: t$1.AustraliaMelbourne, name: "Australia/Melbourne", offset: i$2.UTC_PLUS_10, timezone: n$2.AustralianEasternStandardTime });
-({ id: t$1.AustraliaPerth, name: "Australia/Perth", offset: i$2.UTC_PLUS_8, timezone: n$2.AustralianWesternStandardTime });
-({ id: t$1.AustraliaSydney, name: "Australia/Sydney", offset: i$2.UTC_PLUS_10, timezone: n$2.AustralianEasternStandardTime });
-({ id: t$1.EuropeAmsterdam, name: "Europe/Amsterdam", offset: i$2.UTC_PLUS_1, timezone: n$2.CentralEuropeanTime });
-({ id: t$1.EuropeAndorra, name: "Europe/Andorra", offset: i$2.UTC_PLUS_1, timezone: n$2.CentralEuropeanTime });
-({ id: t$1.EuropeAthens, name: "Europe/Athens", offset: i$2.UTC_PLUS_2, timezone: n$2.EasternEuropeanTime });
-({ id: t$1.EuropeBelgrade, name: "Europe/Belgrade", offset: i$2.UTC_PLUS_1, timezone: n$2.CentralEuropeanTime });
-({ id: t$1.EuropeBerlin, name: "Europe/Berlin", offset: i$2.UTC_PLUS_1, timezone: n$2.CentralEuropeanTime });
-({ id: t$1.EuropeBratislava, name: "Europe/Bratislava", offset: i$2.UTC_PLUS_1, timezone: n$2.CentralEuropeanTime });
-({ id: t$1.EuropeBrussels, name: "Europe/Brussels", offset: i$2.UTC_PLUS_1, timezone: n$2.CentralEuropeanTime });
-({ id: t$1.EuropeBucharest, name: "Europe/Bucharest", offset: i$2.UTC_PLUS_2, timezone: n$2.EasternEuropeanTime });
-({ id: t$1.EuropeBudapest, name: "Europe/Budapest", offset: i$2.UTC_PLUS_1, timezone: n$2.CentralEuropeanTime });
-({ id: t$1.EuropeBusingen, name: "Europe/Busingen", offset: i$2.UTC_PLUS_1, timezone: n$2.CentralEuropeanTime });
-({ id: t$1.EuropeChisinau, name: "Europe/Chisinau", offset: i$2.UTC_PLUS_2, timezone: n$2.EasternEuropeanTime });
-({ id: t$1.EuropeCopenhagen, name: "Europe/Copenhagen", offset: i$2.UTC_PLUS_1, timezone: n$2.CentralEuropeanTime });
-({ id: t$1.EuropeDublin, name: "Europe/Dublin", offset: i$2.UTC_0, timezone: n$2.GreenwichMeanTime });
-({ id: t$1.EuropeGibraltar, name: "Europe/Gibraltar", offset: i$2.UTC_PLUS_1, timezone: n$2.CentralEuropeanTime });
-({ id: t$1.EuropeGuernsey, name: "Europe/Guernsey", offset: i$2.UTC_PLUS_1, timezone: n$2.CentralEuropeanTime });
-({ id: t$1.EuropeHelsinki, name: "Europe/Helsinki", offset: i$2.UTC_PLUS_2, timezone: n$2.EasternEuropeanTime });
-({ id: t$1.EuropeIsleOfMan, name: "Europe/Isle_of_Man", offset: i$2.UTC_0, timezone: n$2.GreenwichMeanTime });
-({ id: t$1.EuropeIstanbul, name: "Europe/Istanbul", offset: i$2.UTC_PLUS_3, timezone: n$2.EasternEuropeanTime });
-({ id: t$1.EuropeJersey, name: "Europe/Jersey", offset: i$2.UTC_PLUS_1, timezone: n$2.CentralEuropeanTime });
-({ id: t$1.EuropeKaliningrad, name: "Europe/Kaliningrad", offset: i$2.UTC_PLUS_2, timezone: n$2.EasternEuropeanTime });
-({ id: t$1.EuropeKiev, name: "Europe/Kiev", offset: i$2.UTC_PLUS_2, timezone: n$2.EasternEuropeanTime });
-({ id: t$1.EuropeLisbon, name: "Europe/Lisbon", offset: i$2.UTC_0, timezone: n$2.GreenwichMeanTime });
-({ id: t$1.EuropeLjubljana, name: "Europe/Ljubljana", offset: i$2.UTC_PLUS_1, timezone: n$2.CentralEuropeanTime });
-({ id: t$1.EuropeLondon, name: "Europe/London", offset: i$2.UTC_0, timezone: n$2.GreenwichMeanTime });
-({ id: t$1.EuropeLuxembourg, name: "Europe/Luxembourg", offset: i$2.UTC_PLUS_1, timezone: n$2.CentralEuropeanTime });
-({ id: t$1.EuropeMadrid, name: "Europe/Madrid", offset: i$2.UTC_PLUS_1, timezone: n$2.CentralEuropeanTime });
-({ id: t$1.EuropeMalta, name: "Europe/Malta", offset: i$2.UTC_PLUS_1, timezone: n$2.CentralEuropeanTime });
-({ id: t$1.EuropeMariehamn, name: "Europe/Mariehamn", offset: i$2.UTC_PLUS_2, timezone: n$2.EasternEuropeanTime });
-({ id: t$1.EuropeMinsk, name: "Europe/Minsk", offset: i$2.UTC_PLUS_3, timezone: n$2.EasternEuropeanTime });
-({ id: t$1.EuropeMonaco, name: "Europe/Monaco", offset: i$2.UTC_PLUS_1, timezone: n$2.CentralEuropeanTime });
-({ id: t$1.EuropeMoscow, name: "Europe/Moscow", offset: i$2.UTC_PLUS_3, timezone: n$2.EasternEuropeanTime });
-({ id: t$1.EuropeOslo, name: "Europe/Oslo", offset: i$2.UTC_PLUS_1, timezone: n$2.CentralEuropeanTime });
-({ id: t$1.EuropeParis, name: "Europe/Paris", offset: i$2.UTC_PLUS_1, timezone: n$2.CentralEuropeanTime });
-({ id: t$1.EuropePodgorica, name: "Europe/Podgorica", offset: i$2.UTC_PLUS_1, timezone: n$2.CentralEuropeanTime });
-({ id: t$1.EuropePrague, name: "Europe/Prague", offset: i$2.UTC_PLUS_1, timezone: n$2.CentralEuropeanTime });
-({ id: t$1.EuropeRiga, name: "Europe/Riga", offset: i$2.UTC_PLUS_2, timezone: n$2.EasternEuropeanTime });
-({ id: t$1.EuropeRome, name: "Europe/Rome", offset: i$2.UTC_PLUS_1, timezone: n$2.CentralEuropeanTime });
-({ id: t$1.EuropeSamara, name: "Europe/Samara", offset: i$2.UTC_PLUS_4, timezone: n$2.EasternEuropeanTime });
-({ id: t$1.EuropeSanMarino, name: "Europe/San_Marino", offset: i$2.UTC_PLUS_1, timezone: n$2.CentralEuropeanTime });
-({ id: t$1.EuropeSarajevo, name: "Europe/Sarajevo", offset: i$2.UTC_PLUS_1, timezone: n$2.CentralEuropeanTime });
-({ id: t$1.EuropeSimferopol, name: "Europe/Simferopol", offset: i$2.UTC_PLUS_3, timezone: n$2.EasternEuropeanTime });
-({ id: t$1.EuropeSkopje, name: "Europe/Skopje", offset: i$2.UTC_PLUS_1, timezone: n$2.CentralEuropeanTime });
-({ id: t$1.EuropeSofia, name: "Europe/Sofia", offset: i$2.UTC_PLUS_2, timezone: n$2.EasternEuropeanTime });
-({ id: t$1.EuropeStockholm, name: "Europe/Stockholm", offset: i$2.UTC_PLUS_1, timezone: n$2.CentralEuropeanTime });
-({ id: t$1.EuropeTallinn, name: "Europe/Tallinn", offset: i$2.UTC_PLUS_2, timezone: n$2.EasternEuropeanTime });
-({ id: t$1.EuropeTirane, name: "Europe/Tirane", offset: i$2.UTC_PLUS_1, timezone: n$2.CentralEuropeanTime });
-({ id: t$1.EuropeUzhgorod, name: "Europe/Uzhgorod", offset: i$2.UTC_PLUS_2, timezone: n$2.EasternEuropeanTime });
-({ id: t$1.EuropeVaduz, name: "Europe/Vaduz", offset: i$2.UTC_PLUS_1, timezone: n$2.CentralEuropeanTime });
-({ id: t$1.EuropeVatican, name: "Europe/Vatican", offset: i$2.UTC_PLUS_1, timezone: n$2.CentralEuropeanTime });
-({ id: t$1.EuropeVienna, name: "Europe/Vienna", offset: i$2.UTC_PLUS_1, timezone: n$2.CentralEuropeanTime });
-({ id: t$1.EuropeVilnius, name: "Europe/Vilnius", offset: i$2.UTC_PLUS_2, timezone: n$2.EasternEuropeanTime });
-({ id: t$1.EuropeVolgograd, name: "Europe/Volgograd", offset: i$2.UTC_PLUS_4, timezone: n$2.EasternEuropeanTime });
-({ id: t$1.EuropeWarsaw, name: "Europe/Warsaw", offset: i$2.UTC_PLUS_1, timezone: n$2.CentralEuropeanTime });
-({ id: t$1.EuropeZagreb, name: "Europe/Zagreb", offset: i$2.UTC_PLUS_1, timezone: n$2.CentralEuropeanTime });
-({ id: t$1.EuropeZaporozhye, name: "Europe/Zaporozhye", offset: i$2.UTC_PLUS_2, timezone: n$2.EasternEuropeanTime });
-({ id: t$1.EuropeZurich, name: "Europe/Zurich", offset: i$2.UTC_PLUS_1, timezone: n$2.CentralEuropeanTime });
-({ id: t$1.IndianAntananarivo, name: "Indian/Antananarivo", offset: i$2.UTC_PLUS_3, timezone: n$2.EastAfricaTime });
-({ id: t$1.IndianChagos, name: "Indian/Chagos", offset: i$2.UTC_PLUS_6, timezone: n$2.IndianOceanTime });
-({ id: t$1.IndianChristmas, name: "Indian/Christmas", offset: i$2.UTC_PLUS_7, timezone: n$2.ChristmasIslandTime });
-({ id: t$1.IndianCocos, name: "Indian/Cocos", offset: i$2.UTC_PLUS_6, timezone: n$2.CocosIslandsTime });
-({ id: t$1.IndianComoro, name: "Indian/Comoro", offset: i$2.UTC_PLUS_3, timezone: n$2.EastAfricaTime });
-({ id: t$1.IndianKerguelen, name: "Indian/Kerguelen", offset: i$2.UTC_PLUS_5, timezone: n$2.FrenchSouthernAndAntarcticTime });
-({ id: t$1.IndianMahe, name: "Indian/Mahe", offset: i$2.UTC_PLUS_4, timezone: n$2.SeychellesTime });
-({ id: t$1.IndianMaldives, name: "Indian/Maldives", offset: i$2.UTC_PLUS_5, timezone: n$2.MaldivesTime });
-({ id: t$1.IndianMauritius, name: "Indian/Mauritius", offset: i$2.UTC_PLUS_4, timezone: n$2.MauritiusTime });
-({ id: t$1.IndianMayotte, name: "Indian/Mayotte", offset: i$2.UTC_PLUS_3, timezone: n$2.EastAfricaTime });
-({ id: t$1.IndianReunion, name: "Indian/Reunion", offset: i$2.UTC_PLUS_4, timezone: n$2.ReunionTime });
-({ id: t$1.PacificApia, name: "Pacific/Apia", offset: i$2.UTC_PLUS_13, timezone: n$2.SamoaStandardTime });
-({ id: t$1.PacificAuckland, name: "Pacific/Auckland", offset: i$2.UTC_PLUS_13, timezone: n$2.NewZealandStandardTime });
-({ id: t$1.PacificChatham, name: "Pacific/Chatham", offset: i$2.UTC_PLUS_13, timezone: n$2.ChathamStandardTime });
-({ id: t$1.PacificEaster, name: "Pacific/Easter", offset: i$2.UTC_PLUS_6, timezone: n$2.EasterIslandStandardTime });
-({ id: t$1.PacificEfate, name: "Pacific/Efate", offset: i$2.UTC_PLUS_11, timezone: n$2.VanuatuTime });
-({ id: t$1.PacificEnderbury, name: "Pacific/Enderbury", offset: i$2.UTC_PLUS_13, timezone: n$2.TongaTime });
-({ id: t$1.PacificFakaofo, name: "Pacific/Fakaofo", offset: i$2.UTC_PLUS_13, timezone: n$2.TongaTime });
-({ id: t$1.PacificFiji, name: "Pacific/Fiji", offset: i$2.UTC_PLUS_12, timezone: n$2.FijiTime });
-({ id: t$1.PacificFunafuti, name: "Pacific/Funafuti", offset: i$2.UTC_PLUS_12, timezone: n$2.TuvaluTime });
-({ id: t$1.PacificGalapagos, name: "Pacific/Galapagos", offset: i$2.UTC_PLUS_6, timezone: n$2.GalapagosTime });
-({ id: t$1.PacificGambier, name: "Pacific/Gambier", offset: i$2.UTC_PLUS_9, timezone: n$2.GambierIslandTime });
-({ id: t$1.PacificGuadalcanal, name: "Pacific/Guadalcanal", offset: i$2.UTC_PLUS_11, timezone: n$2.SolomonIslandsTime });
-({ id: t$1.PacificGuam, name: "Pacific/Guam", offset: i$2.UTC_PLUS_10, timezone: n$2.ChamorroStandardTime });
-({ id: t$1.PacificHonolulu, name: "Pacific/Honolulu", offset: i$2.UTC_PLUS_10, timezone: n$2.HawaiiAleutianStandardTime });
-({ id: t$1.PacificJohnston, name: "Pacific/Johnston", offset: i$2.UTC_PLUS_10, timezone: n$2.HawaiiAleutianStandardTime });
-({ id: t$1.PacificKiritimati, name: "Pacific/Kiritimati", offset: i$2.UTC_PLUS_14, timezone: n$2.LineIslandsTime });
-({ id: t$1.PacificKosrae, name: "Pacific/Kosrae", offset: i$2.UTC_PLUS_11, timezone: n$2.KosraeTime });
-({ id: t$1.PacificKwajalein, name: "Pacific/Kwajalein", offset: i$2.UTC_PLUS_12, timezone: n$2.MarshallIslandsTime });
-({ id: t$1.PacificMajuro, name: "Pacific/Majuro", offset: i$2.UTC_PLUS_12, timezone: n$2.MarshallIslandsTime });
-({ id: t$1.PacificMarquesas, name: "Pacific/Marquesas", offset: i$2.UTC_PLUS_9, timezone: n$2.MarquesasIslandsTime });
-({ id: t$1.PacificMidway, name: "Pacific/Midway", offset: i$2.UTC_PLUS_11, timezone: n$2.SamoaStandardTime });
-({ id: t$1.PacificNauru, name: "Pacific/Nauru", offset: i$2.UTC_PLUS_12, timezone: n$2.NauruTime });
-({ id: t$1.PacificNiue, name: "Pacific/Niue", offset: i$2.UTC_PLUS_11, timezone: n$2.NiueTime });
-({ id: t$1.PacificNorfolk, name: "Pacific/Norfolk", offset: i$2.UTC_PLUS_11, timezone: n$2.NorfolkIslandTime });
-({ id: t$1.PacificNoumea, name: "Pacific/Noumea", offset: i$2.UTC_PLUS_11, timezone: n$2.NewCaledoniaTime });
-({ id: t$1.PacificPagoPago, name: "Pacific/Pago_Pago", offset: i$2.UTC_PLUS_11, timezone: n$2.SamoaStandardTime });
-({ id: t$1.PacificPalau, name: "Pacific/Palau", offset: i$2.UTC_PLUS_9, timezone: n$2.PalauTime });
-({ id: t$1.PacificPitcairn, name: "Pacific/Pitcairn", offset: i$2.UTC_PLUS_8, timezone: n$2.PitcairnTime });
-({ id: t$1.PacificPonape, name: "Pacific/Ponape", offset: i$2.UTC_PLUS_11, timezone: n$2.PohnpeiStandardTime });
-({ id: t$1.PacificPortMoresby, name: "Pacific/Port_Moresby", offset: i$2.UTC_PLUS_10, timezone: n$2.PapuaNewGuineaTime });
-({ id: t$1.PacificRarotonga, name: "Pacific/Rarotonga", offset: i$2.UTC_PLUS_10, timezone: n$2.CookIslandTime });
-({ id: t$1.PacificSaipan, name: "Pacific/Saipan", offset: i$2.UTC_PLUS_10, timezone: n$2.ChamorroStandardTime });
-({ id: t$1.PacificTahiti, name: "Pacific/Tahiti", offset: i$2.UTC_PLUS_10, timezone: n$2.TahitiTime });
-({ id: t$1.PacificTarawa, name: "Pacific/Tarawa", offset: i$2.UTC_PLUS_12, timezone: n$2.GilbertIslandTime });
-({ id: t$1.PacificTongatapu, name: "Pacific/Tongatapu", offset: i$2.UTC_PLUS_13, timezone: n$2.TongaTime });
-({ id: t$1.PacificChuuk, name: "Pacific/Chuuk", offset: i$2.UTC_PLUS_10, timezone: n$2.ChuukTime });
-({ id: t$1.PacificPohnpei, name: "Pacific/Pohnpei", offset: i$2.UTC_PLUS_11, timezone: n$2.PohnpeiStandardTime });
-({ id: t$1.PacificYap, name: "Pacific/Yap", offset: i$2.UTC_PLUS_10, timezone: n$2.ChuukTime });
+({ id: t$1.AfricaAbidjan, name: "Africa/Abidjan", offset: i$3.UTC_0, timezone: n$2.CoordinatedUniversalTime });
+({ id: t$1.AfricaAccra, name: "Africa/Accra", offset: i$3.UTC_0, timezone: n$2.CoordinatedUniversalTime });
+({ id: t$1.AfricaAddisAbaba, name: "Africa/Addis_Ababa", offset: i$3.UTC_PLUS_3, timezone: n$2.EastAfricaTime });
+({ id: t$1.AfricaAlgiers, name: "Africa/Algiers", offset: i$3.UTC_PLUS_1, timezone: n$2.CentralEuropeanTime });
+({ id: t$1.AfricaAsmara, name: "Africa/Asmara", offset: i$3.UTC_PLUS_3, timezone: n$2.EastAfricaTime });
+({ id: t$1.AfricaBamako, name: "Africa/Bamako", offset: i$3.UTC_0, timezone: n$2.CoordinatedUniversalTime });
+({ id: t$1.AfricaBangui, name: "Africa/Bangui", offset: i$3.UTC_PLUS_1, timezone: n$2.WestAfricaTime });
+({ id: t$1.AfricaBanjul, name: "Africa/Banjul", offset: i$3.UTC_0, timezone: n$2.CoordinatedUniversalTime });
+({ id: t$1.AfricaBissau, name: "Africa/Bissau", offset: i$3.UTC_0, timezone: n$2.CoordinatedUniversalTime });
+({ id: t$1.AfricaBlantyre, name: "Africa/Blantyre", offset: i$3.UTC_PLUS_2, timezone: n$2.CentralAfricaTime });
+({ id: t$1.AfricaBrazzaville, name: "Africa/Brazzaville", offset: i$3.UTC_PLUS_1, timezone: n$2.WestAfricaTime });
+({ id: t$1.AfricaBujumbura, name: "Africa/Bujumbura", offset: i$3.UTC_PLUS_2, timezone: n$2.CentralAfricaTime });
+({ id: t$1.AfricaCairo, name: "Africa/Cairo", offset: i$3.UTC_PLUS_2, timezone: n$2.EasternEuropeanTime });
+({ id: t$1.AfricaCasablanca, name: "Africa/Casablanca", offset: i$3.UTC_PLUS_1, timezone: n$2.WesternEuropeanTime });
+({ id: t$1.AfricaCeuta, name: "Africa/Ceuta", offset: i$3.UTC_PLUS_1, timezone: n$2.CentralEuropeanTime });
+({ id: t$1.AfricaConakry, name: "Africa/Conakry", offset: i$3.UTC_0, timezone: n$2.CoordinatedUniversalTime });
+({ id: t$1.AfricaDakar, name: "Africa/Dakar", offset: i$3.UTC_0, timezone: n$2.CoordinatedUniversalTime });
+({ id: t$1.AfricaDarEsSalaam, name: "Africa/Dar_es_Salaam", offset: i$3.UTC_PLUS_3, timezone: n$2.EastAfricaTime });
+({ id: t$1.AfricaDjibouti, name: "Africa/Djibouti", offset: i$3.UTC_PLUS_3, timezone: n$2.EastAfricaTime });
+({ id: t$1.AfricaDouala, name: "Africa/Douala", offset: i$3.UTC_PLUS_1, timezone: n$2.WestAfricaTime });
+({ id: t$1.AfricaElAaiun, name: "Africa/El_Aaiun", offset: i$3.UTC_PLUS_1, timezone: n$2.WestAfricaTime });
+({ id: t$1.AfricaFreetown, name: "Africa/Freetown", offset: i$3.UTC_0, timezone: n$2.CoordinatedUniversalTime });
+({ id: t$1.AfricaGaborone, name: "Africa/Gaborone", offset: i$3.UTC_PLUS_2, timezone: n$2.CentralAfricaTime });
+({ id: t$1.AfricaHarare, name: "Africa/Harare", offset: i$3.UTC_PLUS_2, timezone: n$2.CentralAfricaTime });
+({ id: t$1.AfricaJohannesburg, name: "Africa/Johannesburg", offset: i$3.UTC_PLUS_2, timezone: n$2.SouthAfricanStandardTime });
+({ id: t$1.AfricaJuba, name: "Africa/Juba", offset: i$3.UTC_PLUS_3, timezone: n$2.EastAfricaTime });
+({ id: t$1.AfricaKampala, name: "Africa/Kampala", offset: i$3.UTC_PLUS_3, timezone: n$2.EastAfricaTime });
+({ id: t$1.AfricaKhartoum, name: "Africa/Khartoum", offset: i$3.UTC_PLUS_2, timezone: n$2.EastAfricaTime });
+({ id: t$1.AfricaKigali, name: "Africa/Kigali", offset: i$3.UTC_PLUS_2, timezone: n$2.CentralAfricaTime });
+({ id: t$1.AfricaKinshasa, name: "Africa/Kinshasa", offset: i$3.UTC_PLUS_1, timezone: n$2.WestAfricaTime });
+({ id: t$1.AfricaLagos, name: "Africa/Lagos", offset: i$3.UTC_PLUS_1, timezone: n$2.WestAfricaTime });
+({ id: t$1.AfricaLibreville, name: "Africa/Libreville", offset: i$3.UTC_PLUS_1, timezone: n$2.WestAfricaTime });
+({ id: t$1.AfricaLome, name: "Africa/Lome", offset: i$3.UTC_0, timezone: n$2.CoordinatedUniversalTime });
+({ id: t$1.AfricaLuanda, name: "Africa/Luanda", offset: i$3.UTC_PLUS_1, timezone: n$2.WestAfricaTime });
+({ id: t$1.AfricaLubumbashi, name: "Africa/Lubumbashi", offset: i$3.UTC_PLUS_2, timezone: n$2.CentralAfricaTime });
+({ id: t$1.AfricaLusaka, name: "Africa/Lusaka", offset: i$3.UTC_PLUS_2, timezone: n$2.CentralAfricaTime });
+({ id: t$1.AfricaMalabo, name: "Africa/Malabo", offset: i$3.UTC_PLUS_1, timezone: n$2.WestAfricaTime });
+({ id: t$1.AfricaMaputo, name: "Africa/Maputo", offset: i$3.UTC_PLUS_2, timezone: n$2.CentralAfricaTime });
+({ id: t$1.AfricaMaseru, name: "Africa/Maseru", offset: i$3.UTC_PLUS_2, timezone: n$2.SouthAfricanStandardTime });
+({ id: t$1.AfricaMbabane, name: "Africa/Mbabane", offset: i$3.UTC_PLUS_2, timezone: n$2.SouthAfricanStandardTime });
+({ id: t$1.AfricaMogadishu, name: "Africa/Mogadishu", offset: i$3.UTC_PLUS_3, timezone: n$2.EastAfricaTime });
+({ id: t$1.AfricaMonrovia, name: "Africa/Monrovia", offset: i$3.UTC_0, timezone: n$2.CoordinatedUniversalTime });
+({ id: t$1.AfricaNairobi, name: "Africa/Nairobi", offset: i$3.UTC_PLUS_3, timezone: n$2.EastAfricaTime });
+({ id: t$1.AfricaNdjamena, name: "Africa/Ndjamena", offset: i$3.UTC_PLUS_1, timezone: n$2.WestAfricaTime });
+({ id: t$1.AfricaNiamey, name: "Africa/Niamey", offset: i$3.UTC_PLUS_1, timezone: n$2.WestAfricaTime });
+({ id: t$1.AfricaNouakchott, name: "Africa/Nouakchott", offset: i$3.UTC_0, timezone: n$2.GreenwichMeanTime });
+({ id: t$1.AfricaOuagadougou, name: "Africa/Ouagadougou", offset: i$3.UTC_0, timezone: n$2.CoordinatedUniversalTime });
+({ id: t$1.AfricaPortoNovo, name: "Africa/Porto-Novo", offset: i$3.UTC_PLUS_1, timezone: n$2.WestAfricaTime });
+({ id: t$1.AfricaSaoTome, name: "Africa/SaoTome", offset: i$3.UTC_0, timezone: n$2.CoordinatedUniversalTime });
+({ id: t$1.AfricaTripoli, name: "Africa/Tripoli", offset: i$3.UTC_0, timezone: n$2.CoordinatedUniversalTime });
+({ id: t$1.AfricaTunis, name: "Africa/Tunis", offset: i$3.UTC_0, timezone: n$2.CoordinatedUniversalTime });
+({ id: t$1.AfricaWindhoek, name: "Africa/Windhoek", offset: i$3.UTC_PLUS_2, timezone: n$2.WestAfricaTime });
+({ id: t$1.AmericaAdak, name: "America/Adak", offset: i$3.UTC_PLUS_10, timezone: n$2.HawaiiAleutianStandardTime });
+({ id: t$1.AmericaAnchorage, name: "America/Anchorage", offset: i$3.UTC_PLUS_9, timezone: n$2.AlaskaStandardTime });
+({ id: t$1.AmericaAnguilla, name: "America/Anguilla", offset: i$3.UTC_0, timezone: n$2.AtlanticStandardTime });
+({ id: t$1.AmericaAntigua, name: "America/Antigua", offset: i$3.UTC_0, timezone: n$2.AtlanticStandardTime });
+({ id: t$1.AmericaAraguaina, name: "America/Araguaina", offset: i$3.UTC_MINUS_3, timezone: n$2.BrasiliaTime });
+({ id: t$1.AmericaArgentinaBuenosAires, name: "America/Argentina/Buenos_Aires", offset: i$3.UTC_MINUS_3, timezone: n$2.ArgentinaTime });
+({ id: t$1.AmericaArgentinaCatamarca, name: "America/Argentina/Catamarca", offset: i$3.UTC_MINUS_3, timezone: n$2.ArgentinaTime });
+({ id: t$1.AmericaArgentinaCordoba, name: "America/Argentina/Cordoba", offset: i$3.UTC_MINUS_3, timezone: n$2.ArgentinaTime });
+({ id: t$1.AmericaArgentinaJujuy, name: "America/Argentina/Jujuy", offset: i$3.UTC_MINUS_3, timezone: n$2.ArgentinaTime });
+({ id: t$1.AmericaArgentinaLaRioja, name: "America/Argentina/La_Rioja", offset: i$3.UTC_MINUS_3, timezone: n$2.ArgentinaTime });
+({ id: t$1.AmericaArgentinaMendoza, name: "America/Argentina/Mendoza", offset: i$3.UTC_MINUS_3, timezone: n$2.ArgentinaTime });
+({ id: t$1.AmericaArgentinaRioGallegos, name: "America/Argentina/Rio_Gallegos", offset: i$3.UTC_MINUS_3, timezone: n$2.ArgentinaTime });
+({ id: t$1.AmericaArgentinaSalta, name: "America/Argentina/Salta", offset: i$3.UTC_MINUS_3, timezone: n$2.ArgentinaTime });
+({ id: t$1.AmericaArgentinaSanJuan, name: "America/Argentina/San_Juan", offset: i$3.UTC_MINUS_3, timezone: n$2.ArgentinaTime });
+({ id: t$1.AmericaArgentinaSanLuis, name: "America/Argentina/San_Luis", offset: i$3.UTC_MINUS_3, timezone: n$2.ArgentinaTime });
+({ id: t$1.AmericaArgentinaTucuman, name: "America/Argentina/Tucuman", offset: i$3.UTC_MINUS_3, timezone: n$2.ArgentinaTime });
+({ id: t$1.AmericaArgentinaUshuaia, name: "America/Argentina/Ushuaia", offset: i$3.UTC_MINUS_3, timezone: n$2.ArgentinaTime });
+({ id: t$1.AmericaAruba, name: "America/Aruba", offset: i$3.UTC_0, timezone: n$2.AtlanticStandardTime });
+({ id: t$1.AmericaAsuncion, name: "America/Asuncion", offset: i$3.UTC_MINUS_4, timezone: n$2.ParaguayTime });
+({ id: t$1.AmericaAtikokan, name: "America/Atikokan", offset: i$3.UTC_0, timezone: n$2.EasternStandardTime });
+({ id: t$1.AmericaAtka, name: "America/Atka", offset: i$3.UTC_MINUS_10, timezone: n$2.HawaiiAleutianStandardTime });
+({ id: t$1.AmericaBahia, name: "America/Bahia", offset: i$3.UTC_MINUS_3, timezone: n$2.BrasiliaTime });
+({ id: t$1.AmericaBahiaBanderas, name: "America/Bahia_Banderas", offset: i$3.UTC_MINUS_6, timezone: n$2.CentralStandardTime });
+({ id: t$1.AmericaBarbados, name: "America/Barbados", offset: i$3.UTC_MINUS_4, timezone: n$2.AtlanticStandardTime });
+({ id: t$1.AmericaBelem, name: "America/Belem", offset: i$3.UTC_MINUS_3, timezone: n$2.BrasiliaTime });
+({ id: t$1.AmericaBelize, name: "America/Belize", offset: i$3.UTC_MINUS_6, timezone: n$2.CentralStandardTime });
+({ id: t$1.AmericaBlancSablon, name: "America/Blanc-Sablon", offset: i$3.UTC_MINUS_4, timezone: n$2.AtlanticStandardTime });
+({ id: t$1.AmericaBoaVista, name: "America/Boa_Vista", offset: i$3.UTC_MINUS_4, timezone: n$2.AmazonTime });
+({ id: t$1.AmericaBogota, name: "America/Bogota", offset: i$3.UTC_MINUS_5, timezone: n$2.ColombiaTime });
+({ id: t$1.AmericaBoise, name: "America/Boise", offset: i$3.UTC_MINUS_7, timezone: n$2.MountainStandardTime });
+({ id: t$1.AmericaCambridgeBay, name: "America/Cambridge_Bay", offset: i$3.UTC_MINUS_7, timezone: n$2.MountainStandardTime });
+({ id: t$1.AmericaCampoGrande, name: "America/Campo_Grande", offset: i$3.UTC_MINUS_4, timezone: n$2.AmazonTime });
+({ id: t$1.AmericaCancun, name: "America/Cancun", offset: i$3.UTC_MINUS_5, timezone: n$2.EasternStandardTime });
+({ id: t$1.AmericaCaracas, name: "America/Caracas", offset: i$3.UTC_MINUS_4, timezone: n$2.VenezuelaStandardTime });
+({ id: t$1.AmericaCayenne, name: "America/Cayenne", offset: i$3.UTC_MINUS_3, timezone: n$2.FrenchGuianaTime });
+({ id: t$1.AmericaCayman, name: "America/Cayman", offset: i$3.UTC_0, timezone: n$2.AtlanticStandardTime });
+({ id: t$1.AmericaChicago, name: "America/Chicago", offset: i$3.UTC_MINUS_6, timezone: n$2.CentralStandardTime });
+({ id: t$1.AmericaChihuahua, name: "America/Chihuahua", offset: i$3.UTC_MINUS_7, timezone: n$2.MountainStandardTime });
+({ id: t$1.AmericaCoralHarbour, name: "America/Coral_Harbour", offset: i$3.UTC_MINUS_5, timezone: n$2.EasternStandardTime });
+({ id: t$1.AmericaCordoba, name: "America/Cordoba", offset: i$3.UTC_MINUS_3, timezone: n$2.ArgentinaTime });
+({ id: t$1.AmericaCostaRica, name: "America/Costa_Rica", offset: i$3.UTC_MINUS_6, timezone: n$2.CentralStandardTime });
+({ id: t$1.AmericaCreston, name: "America/Creston", offset: i$3.UTC_MINUS_7, timezone: n$2.MountainStandardTime });
+({ id: t$1.AmericaCuiaba, name: "America/Cuiaba", offset: i$3.UTC_MINUS_4, timezone: n$2.AmazonTime });
+({ id: t$1.AmericaCuracao, name: "America/Curacao", offset: i$3.UTC_MINUS_4, timezone: n$2.AtlanticStandardTime });
+({ id: t$1.AmericaDanmarkshavn, name: "America/Danmarkshavn", offset: i$3.UTC_0, timezone: n$2.GreenwichMeanTime });
+({ id: t$1.AmericaDawson, name: "America/Dawson", offset: i$3.UTC_MINUS_8, timezone: n$2.PacificStandardTime });
+({ id: t$1.AmericaDawsonCreek, name: "America/Dawson_Creek", offset: i$3.UTC_MINUS_8, timezone: n$2.PacificStandardTime });
+({ id: t$1.AmericaDenver, name: "America/Denver", offset: i$3.UTC_MINUS_7, timezone: n$2.MountainStandardTime });
+({ id: t$1.AmericaDetroit, name: "America/Detroit", offset: i$3.UTC_MINUS_5, timezone: n$2.EasternStandardTime });
+({ id: t$1.AmericaDominica, name: "America/Dominica", offset: i$3.UTC_0, timezone: n$2.AtlanticStandardTime });
+({ id: t$1.AmericaEdmonton, name: "America/Edmonton", offset: i$3.UTC_MINUS_7, timezone: n$2.MountainStandardTime });
+({ id: t$1.AmericaEirunepe, name: "America/Eirunepe", offset: i$3.UTC_MINUS_5, timezone: n$2.AcreTime });
+({ id: t$1.AmericaElSalvador, name: "America/El_Salvador", offset: i$3.UTC_MINUS_6, timezone: n$2.CentralStandardTime });
+({ id: t$1.AmericaFortaleza, name: "America/Fortaleza", offset: i$3.UTC_MINUS_3, timezone: n$2.BrasiliaTime });
+({ id: t$1.AmericaGlaceBay, name: "America/Glace_Bay", offset: i$3.UTC_0, timezone: n$2.AtlanticStandardTime });
+({ id: t$1.AmericaGodthab, name: "America/Godthab", offset: i$3.UTC_MINUS_3, timezone: n$2.WestGreenlandTime });
+({ id: t$1.AmericaGooseBay, name: "America/Goose_Bay", offset: i$3.UTC_0, timezone: n$2.AtlanticStandardTime });
+({ id: t$1.AmericaGrandTurk, name: "America/Grand_Turk", offset: i$3.UTC_0, timezone: n$2.AtlanticStandardTime });
+({ id: t$1.AmericaGrenada, name: "America/Grenada", offset: i$3.UTC_0, timezone: n$2.AtlanticStandardTime });
+({ id: t$1.AmericaGuadeloupe, name: "America/Guadeloupe", offset: i$3.UTC_0, timezone: n$2.AtlanticStandardTime });
+({ id: t$1.AmericaGuatemala, name: "America/Guatemala", offset: i$3.UTC_MINUS_6, timezone: n$2.CentralStandardTime });
+({ id: t$1.AmericaGuayaquil, name: "America/Guayaquil", offset: i$3.UTC_MINUS_5, timezone: n$2.EcuadorTime });
+({ id: t$1.AmericaGuyana, name: "America/Guyana", offset: i$3.UTC_0, timezone: n$2.AtlanticStandardTime });
+({ id: t$1.AmericaHalifax, name: "America/Halifax", offset: i$3.UTC_0, timezone: n$2.AtlanticStandardTime });
+({ id: t$1.AmericaHavana, name: "America/Havana", offset: i$3.UTC_MINUS_5, timezone: n$2.CubaStandardTime });
+({ id: t$1.AmericaHermosillo, name: "America/Hermosillo", offset: i$3.UTC_MINUS_7, timezone: n$2.MountainStandardTime });
+({ id: t$1.AmericaIndianaIndianapolis, name: "America/Indiana/Indianapolis", offset: i$3.UTC_MINUS_5, timezone: n$2.EasternStandardTime });
+({ id: t$1.AmericaIndianaKnox, name: "America/Indiana/Knox", offset: i$3.UTC_MINUS_6, timezone: n$2.CentralStandardTime });
+({ id: t$1.AmericaIndianaMarengo, name: "America/Indiana/Marengo", offset: i$3.UTC_MINUS_5, timezone: n$2.EasternStandardTime });
+({ id: t$1.AmericaIndianaPetersburg, name: "America/Indiana/Petersburg", offset: i$3.UTC_MINUS_5, timezone: n$2.EasternStandardTime });
+({ id: t$1.AmericaIndianaTellCity, name: "America/Indiana/Tell_City", offset: i$3.UTC_MINUS_6, timezone: n$2.CentralStandardTime });
+({ id: t$1.AmericaIndianaVevay, name: "America/Indiana/Vevay", offset: i$3.UTC_MINUS_5, timezone: n$2.EasternStandardTime });
+({ id: t$1.AmericaIndianaVincennes, name: "America/Indiana/Vincennes", offset: i$3.UTC_MINUS_5, timezone: n$2.EasternStandardTime });
+({ id: t$1.AmericaIndianaWinamac, name: "America/Indiana/Winamac", offset: i$3.UTC_MINUS_5, timezone: n$2.EasternStandardTime });
+({ id: t$1.AmericaInuvik, name: "America/Inuvik", offset: i$3.UTC_MINUS_7, timezone: n$2.MountainStandardTime });
+({ id: t$1.AmericaIqaluit, name: "America/Iqaluit", offset: i$3.UTC_0, timezone: n$2.EasternStandardTime });
+({ id: t$1.AmericaJamaica, name: "America/Jamaica", offset: i$3.UTC_MINUS_4, timezone: n$2.AtlanticStandardTime });
+({ id: t$1.AmericaJuneau, name: "America/Juneau", offset: i$3.UTC_MINUS_9, timezone: n$2.AlaskaStandardTime });
+({ id: t$1.AmericaKentuckyLouisville, name: "America/Kentucky/Louisville", offset: i$3.UTC_MINUS_5, timezone: n$2.EasternStandardTime });
+({ id: t$1.AmericaKentuckyMonticello, name: "America/Kentucky/Monticello", offset: i$3.UTC_MINUS_5, timezone: n$2.EasternStandardTime });
+({ id: t$1.AmericaKralendijk, name: "America/Kralendijk", offset: i$3.UTC_MINUS_4, timezone: n$2.AtlanticStandardTime });
+({ id: t$1.AmericaLaPaz, name: "America/La_Paz", offset: i$3.UTC_MINUS_4, timezone: n$2.BoliviaTime });
+({ id: t$1.AmericaLima, name: "America/Lima", offset: i$3.UTC_MINUS_5, timezone: n$2.PeruTime });
+({ id: t$1.AmericaLosAngeles, name: "America/Los_Angeles", offset: i$3.UTC_MINUS_8, timezone: n$2.PacificStandardTime });
+({ id: t$1.AmericaLouisville, name: "America/Louisville", offset: i$3.UTC_MINUS_5, timezone: n$2.EasternStandardTime });
+({ id: t$1.AmericaLowerPrinces, name: "America/Lower_Princes", offset: i$3.UTC_MINUS_4, timezone: n$2.AtlanticStandardTime });
+({ id: t$1.AmericaMaceio, name: "America/Maceio", offset: i$3.UTC_MINUS_3, timezone: n$2.BrasiliaTime });
+({ id: t$1.AmericaManagua, name: "America/Managua", offset: i$3.UTC_MINUS_6, timezone: n$2.CentralStandardTime });
+({ id: t$1.AmericaManaus, name: "America/Manaus", offset: i$3.UTC_MINUS_4, timezone: n$2.AmazonTime });
+({ id: t$1.AmericaMarigot, name: "America/Marigot", offset: i$3.UTC_MINUS_4, timezone: n$2.AtlanticStandardTime });
+({ id: t$1.AmericaMartinique, name: "America/Martinique", offset: i$3.UTC_MINUS_4, timezone: n$2.AtlanticStandardTime });
+({ id: t$1.AmericaMatamoros, name: "America/Matamoros", offset: i$3.UTC_MINUS_6, timezone: n$2.CentralStandardTime });
+({ id: t$1.AmericaMazatlan, name: "America/Mazatlan", offset: i$3.UTC_MINUS_7, timezone: n$2.MountainStandardTime });
+({ id: t$1.AmericaMenominee, name: "America/Menominee", offset: i$3.UTC_MINUS_5, timezone: n$2.CentralStandardTime });
+({ id: t$1.AmericaMerida, name: "America/Merida", offset: i$3.UTC_MINUS_6, timezone: n$2.CentralStandardTime });
+({ id: t$1.AmericaMetlakatla, name: "America/Metlakatla", offset: i$3.UTC_MINUS_9, timezone: n$2.AlaskaStandardTime });
+({ id: t$1.AmericaMexicoCity, name: "America/Mexico_City", offset: i$3.UTC_MINUS_6, timezone: n$2.CentralStandardTime });
+({ id: t$1.AmericaMiquelon, name: "America/Miquelon", offset: i$3.UTC_MINUS_3, timezone: n$2.SaintPierreAndMiquelonStandardTime });
+({ id: t$1.AmericaMoncton, name: "America/Moncton", offset: i$3.UTC_MINUS_4, timezone: n$2.AtlanticStandardTime });
+({ id: t$1.AmericaMonterrey, name: "America/Monterrey", offset: i$3.UTC_MINUS_6, timezone: n$2.CentralStandardTime });
+({ id: t$1.AmericaMontevideo, name: "America/Montevideo", offset: i$3.UTC_MINUS_3, timezone: n$2.UruguayStandardTime });
+({ id: t$1.AmericaMontreal, name: "America/Montreal", offset: i$3.UTC_MINUS_5, timezone: n$2.EasternStandardTime });
+({ id: t$1.AmericaMontserrat, name: "America/Montserrat", offset: i$3.UTC_MINUS_4, timezone: n$2.AtlanticStandardTime });
+({ id: t$1.AmericaNassau, name: "America/Nassau", offset: i$3.UTC_MINUS_5, timezone: n$2.EasternStandardTime });
+({ id: t$1.AmericaNewYork, name: "America/New_York", offset: i$3.UTC_MINUS_5, timezone: n$2.EasternStandardTime });
+({ id: t$1.AmericaNipigon, name: "America/Nipigon", offset: i$3.UTC_MINUS_5, timezone: n$2.EasternStandardTime });
+({ id: t$1.AmericaNome, name: "America/Nome", offset: i$3.UTC_MINUS_9, timezone: n$2.AlaskaStandardTime });
+({ id: t$1.AmericaNoronha, name: "America/Noronha", offset: i$3.UTC_MINUS_2, timezone: n$2.FernandoDeNoronhaTime });
+({ id: t$1.AmericaNorthDakotaBeulah, name: "America/North_Dakota/Beulah", offset: i$3.UTC_MINUS_6, timezone: n$2.CentralStandardTime });
+({ id: t$1.AmericaNorthDakotaCenter, name: "America/North_Dakota/Center", offset: i$3.UTC_MINUS_6, timezone: n$2.CentralStandardTime });
+({ id: t$1.AmericaNorthDakotaNewSalem, name: "America/North_Dakota/New_Salem", offset: i$3.UTC_MINUS_6, timezone: n$2.CentralStandardTime });
+({ id: t$1.AmericaOjinaga, name: "America/Ojinaga", offset: i$3.UTC_MINUS_7, timezone: n$2.MountainStandardTime });
+({ id: t$1.AmericaPanama, name: "America/Panama", offset: i$3.UTC_MINUS_5, timezone: n$2.EasternStandardTime });
+({ id: t$1.AmericaPangnirtung, name: "America/Pangnirtung", offset: i$3.UTC_MINUS_5, timezone: n$2.EasternStandardTime });
+({ id: t$1.AmericaParamaribo, name: "America/Paramaribo", offset: i$3.UTC_MINUS_3, timezone: n$2.SurinameTime });
+({ id: t$1.AmericaPhoenix, name: "America/Phoenix", offset: i$3.UTC_MINUS_7, timezone: n$2.MountainStandardTime });
+({ id: t$1.AmericaPortAuPrince, name: "America/Port-au-Prince", offset: i$3.UTC_MINUS_5, timezone: n$2.EasternStandardTime });
+({ id: t$1.AmericaPortOfSpain, name: "America/Port_of_Spain", offset: i$3.UTC_MINUS_4, timezone: n$2.AtlanticStandardTime });
+({ id: t$1.AmericaPortoVelho, name: "America/Porto_Velho", offset: i$3.UTC_MINUS_4, timezone: n$2.AmazonTime });
+({ id: t$1.AmericaPuertoRico, name: "America/Puerto_Rico", offset: i$3.UTC_MINUS_4, timezone: n$2.AtlanticStandardTime });
+({ id: t$1.AmericaRainyRiver, name: "America/Rainy_River", offset: i$3.UTC_MINUS_6, timezone: n$2.CentralStandardTime });
+({ id: t$1.AmericaRankinInlet, name: "America/Rankin_Inlet", offset: i$3.UTC_MINUS_6, timezone: n$2.CentralStandardTime });
+({ id: t$1.AmericaRecife, name: "America/Recife", offset: i$3.UTC_MINUS_3, timezone: n$2.BrasiliaTime });
+({ id: t$1.AmericaRegina, name: "America/Regina", offset: i$3.UTC_MINUS_6, timezone: n$2.CentralStandardTime });
+({ id: t$1.AmericaResolute, name: "America/Resolute", offset: i$3.UTC_MINUS_6, timezone: n$2.CentralStandardTime });
+({ id: t$1.AmericaRioBranco, name: "America/Rio_Branco", offset: i$3.UTC_MINUS_5, timezone: n$2.AcreTime });
+({ id: t$1.AmericaSantaIsabel, name: "America/Santa_Isabel", offset: i$3.UTC_MINUS_8, timezone: n$2.PacificStandardTime });
+({ id: t$1.AmericaSantarem, name: "America/Santarem", offset: i$3.UTC_MINUS_3, timezone: n$2.BrasiliaTime });
+({ id: t$1.AmericaSantiago, name: "America/Santiago", offset: i$3.UTC_MINUS_4, timezone: n$2.ChileStandardTime });
+({ id: t$1.AmericaSantoDomingo, name: "America/Santo_Domingo", offset: i$3.UTC_MINUS_4, timezone: n$2.AtlanticStandardTime });
+({ id: t$1.AmericaSaoPaulo, name: "America/Sao_Paulo", offset: i$3.UTC_MINUS_3, timezone: n$2.BrasiliaTime });
+({ id: t$1.AmericaScoresbysund, name: "America/Scoresbysund", offset: i$3.UTC_MINUS_1, timezone: n$2.EasternGreenlandTime });
+({ id: t$1.AmericaShiprock, name: "America/Shiprock", offset: i$3.UTC_MINUS_7, timezone: n$2.MountainStandardTime });
+({ id: t$1.AmericaSitka, name: "America/Sitka", offset: i$3.UTC_MINUS_9, timezone: n$2.AlaskaStandardTime });
+({ id: t$1.AmericaStBarthelemy, name: "America/St_Barthelemy", offset: i$3.UTC_MINUS_4, timezone: n$2.AtlanticStandardTime });
+({ id: t$1.AmericaStJohns, name: "America/St_Johns", offset: i$3.UTC_MINUS_3, timezone: n$2.NewfoundlandStandardTime });
+({ id: t$1.AmericaStKitts, name: "America/St_Kitts", offset: i$3.UTC_MINUS_4, timezone: n$2.AtlanticStandardTime });
+({ id: t$1.AmericaStLucia, name: "America/St_Lucia", offset: i$3.UTC_MINUS_4, timezone: n$2.AtlanticStandardTime });
+({ id: t$1.AmericaStThomas, name: "America/St_Thomas", offset: i$3.UTC_MINUS_4, timezone: n$2.AtlanticStandardTime });
+({ id: t$1.AmericaStVincent, name: "America/St_Vincent", offset: i$3.UTC_MINUS_4, timezone: n$2.AtlanticStandardTime });
+({ id: t$1.AmericaSwiftCurrent, name: "America/Swift_Current", offset: i$3.UTC_MINUS_6, timezone: n$2.CentralStandardTime });
+({ id: t$1.AmericaTegucigalpa, name: "America/Tegucigalpa", offset: i$3.UTC_MINUS_6, timezone: n$2.CentralStandardTime });
+({ id: t$1.AmericaThule, name: "America/Thule", offset: i$3.UTC_MINUS_4, timezone: n$2.AtlanticStandardTime });
+({ id: t$1.AmericaThunderBay, name: "America/Thunder_Bay", offset: i$3.UTC_MINUS_4, timezone: n$2.EasternStandardTime });
+({ id: t$1.AmericaTijuana, name: "America/Tijuana", offset: i$3.UTC_MINUS_8, timezone: n$2.PacificStandardTime });
+({ id: t$1.AmericaToronto, name: "America/Toronto", offset: i$3.UTC_MINUS_5, timezone: n$2.EasternStandardTime });
+({ id: t$1.AmericaTortola, name: "America/Tortola", offset: i$3.UTC_MINUS_4, timezone: n$2.AtlanticStandardTime });
+({ id: t$1.AmericaVancouver, name: "America/Vancouver", offset: i$3.UTC_MINUS_8, timezone: n$2.PacificStandardTime });
+({ id: t$1.AmericaWhitehorse, name: "America/Whitehorse", offset: i$3.UTC_MINUS_8, timezone: n$2.PacificStandardTime });
+({ id: t$1.AmericaWinnipeg, name: "America/Winnipeg", offset: i$3.UTC_MINUS_6, timezone: n$2.CentralStandardTime });
+({ id: t$1.AmericaYakutat, name: "America/Yakutat", offset: i$3.UTC_MINUS_9, timezone: n$2.AlaskaStandardTime });
+({ id: t$1.AmericaYellowknife, name: "America/Yellowknife", offset: i$3.UTC_MINUS_6, timezone: n$2.MountainStandardTime });
+({ id: t$1.AntarcticaCasey, name: "Antarctica/Casey", offset: i$3.UTC_MINUS_8, timezone: n$2.WesternStandardTime });
+({ id: t$1.AntarcticaDavis, name: "Antarctica/Davis", offset: i$3.UTC_MINUS_7, timezone: n$2.NewfoundlandStandardTime });
+({ id: t$1.AntarcticaDumontDUrville, name: "Antarctica/DumontDUrville", offset: i$3.UTC_MINUS_10, timezone: n$2.CentralStandardTime });
+({ id: t$1.AntarcticaMacquarie, name: "Antarctica/Macquarie", offset: i$3.UTC_MINUS_11, timezone: n$2.CentralStandardTime });
+({ id: t$1.AntarcticaMawson, name: "Antarctica/Mawson", offset: i$3.UTC_MINUS_6, timezone: n$2.CentralStandardTime });
+({ id: t$1.AntarcticaMcMurdo, name: "Antarctica/McMurdo", offset: i$3.UTC_MINUS_12, timezone: n$2.NewZealandStandardTime });
+({ id: t$1.AntarcticaPalmer, name: "Antarctica/Palmer", offset: i$3.UTC_MINUS_4, timezone: n$2.ChathamStandardTime });
+({ id: t$1.AntarcticaRothera, name: "Antarctica/Rothera", offset: i$3.UTC_MINUS_3, timezone: n$2.RotheraResearchStationTime });
+({ id: t$1.AntarcticaSyowa, name: "Antarctica/Syowa", offset: i$3.UTC_MINUS_3, timezone: n$2.ShowaStationTime });
+({ id: t$1.AntarcticaTroll, name: "Antarctica/Troll", offset: i$3.UTC_MINUS_2, timezone: n$2.CentralStandardTime });
+({ id: t$1.AntarcticaVostok, name: "Antarctica/Vostok", offset: i$3.UTC_MINUS_6, timezone: n$2.CentralStandardTime });
+({ id: t$1.ArcticLongyearbyen, name: "Arctic/Longyearbyen", offset: i$3.UTC_MINUS_1, timezone: n$2.CentralEuropeanTime });
+({ id: t$1.AsiaAden, name: "Asia/Aden", offset: i$3.UTC_PLUS_3, timezone: n$2.ArabiaStandardTime });
+({ id: t$1.AsiaAlmaty, name: "Asia/Almaty", offset: i$3.UTC_PLUS_6, timezone: n$2.AlmaAtaTime });
+({ id: t$1.AsiaAmman, name: "Asia/Amman", offset: i$3.UTC_PLUS_2, timezone: n$2.EasternEuropeanTime });
+({ id: t$1.AsiaAnadyr, name: "Asia/Anadyr", offset: i$3.UTC_PLUS_12, timezone: n$2.NewCaledoniaTime });
+({ id: t$1.AsiaAqtau, name: "Asia/Aqtau", offset: i$3.UTC_PLUS_5, timezone: n$2.AqtobeTime });
+({ id: t$1.AsiaAqtobe, name: "Asia/Aqtobe", offset: i$3.UTC_PLUS_5, timezone: n$2.AqtobeTime });
+({ id: t$1.AsiaAshgabat, name: "Asia/Ashgabat", offset: i$3.UTC_PLUS_5, timezone: n$2.TurkmenistanTime });
+({ id: t$1.AsiaBaghdad, name: "Asia/Baghdad", offset: i$3.UTC_PLUS_3, timezone: n$2.ArabiaStandardTime });
+({ id: t$1.AsiaBahrain, name: "Asia/Bahrain", offset: i$3.UTC_PLUS_3, timezone: n$2.ArabiaStandardTime });
+({ id: t$1.AsiaBaku, name: "Asia/Baku", offset: i$3.UTC_PLUS_4, timezone: n$2.AzerbaijanTime });
+({ id: t$1.AsiaBangkok, name: "Asia/Bangkok", offset: i$3.UTC_PLUS_7, timezone: n$2.IndochinaTime });
+({ id: t$1.AsiaBarnaul, name: "Asia/Barnaul", offset: i$3.UTC_PLUS_7, timezone: n$2.KrasnoyarskTime });
+({ id: t$1.AsiaBeirut, name: "Asia/Beirut", offset: i$3.UTC_PLUS_2, timezone: n$2.EasternEuropeanTime });
+({ id: t$1.AsiaBishkek, name: "Asia/Bishkek", offset: i$3.UTC_PLUS_6, timezone: n$2.KyrgyzstanTime });
+({ id: t$1.AsiaBrunei, name: "Asia/Brunei", offset: i$3.UTC_PLUS_8, timezone: n$2.BruneiTime });
+({ id: t$1.AsiaChita, name: "Asia/Chita", offset: i$3.UTC_PLUS_9, timezone: n$2.YakutskTime });
+({ id: t$1.AsiaChoibalsan, name: "Asia/Choibalsan", offset: i$3.UTC_PLUS_8, timezone: n$2.ChoibalsanStandardTime });
+({ id: t$1.AsiaColombo, name: "Asia/Colombo", offset: i$3.UTC_PLUS_5, timezone: n$2.IndianStandardTime });
+({ id: t$1.AsiaDamascus, name: "Asia/Damascus", offset: i$3.UTC_PLUS_2, timezone: n$2.EasternEuropeanTime });
+({ id: t$1.AsiaDhaka, name: "Asia/Dhaka", offset: i$3.UTC_PLUS_6, timezone: n$2.BangladeshStandardTime });
+({ id: t$1.AsiaDili, name: "Asia/Dili", offset: i$3.UTC_PLUS_9, timezone: n$2.JapanStandardTime });
+({ id: t$1.AsiaDubai, name: "Asia/Dubai", offset: i$3.UTC_PLUS_4, timezone: n$2.GulfStandardTime });
+({ id: t$1.AsiaDushanbe, name: "Asia/Dushanbe", offset: i$3.UTC_PLUS_5, timezone: n$2.TajikistanTime });
+({ id: t$1.AsiaFamagusta, name: "Asia/Famagusta", offset: i$3.UTC_PLUS_2, timezone: n$2.EasternEuropeanTime });
+({ id: t$1.AsiaGaza, name: "Asia/Gaza", offset: i$3.UTC_PLUS_2, timezone: n$2.EasternEuropeanTime });
+({ id: t$1.AsiaHebron, name: "Asia/Hebron", offset: i$3.UTC_PLUS_2, timezone: n$2.EasternEuropeanTime });
+({ id: t$1.AsiaHoChiMinh, name: "Asia/Ho_Chi_Minh", offset: i$3.UTC_PLUS_7, timezone: n$2.IndochinaTime });
+({ id: t$1.AsiaHongKong, name: "Asia/Hong_Kong", offset: i$3.UTC_PLUS_8, timezone: n$2.HongKongTime });
+({ id: t$1.AsiaHovd, name: "Asia/Hovd", offset: i$3.UTC_PLUS_7, timezone: n$2.HovdTime });
+({ id: t$1.AsiaIrkutsk, name: "Asia/Irkutsk", offset: i$3.UTC_PLUS_8, timezone: n$2.IrkutskTime });
+({ id: t$1.AsiaJakarta, name: "Asia/Jakarta", offset: i$3.UTC_PLUS_7, timezone: n$2.WesternIndonesianTime });
+({ id: t$1.AsiaJayapura, name: "Asia/Jayapura", offset: i$3.UTC_PLUS_9, timezone: n$2.JapanStandardTime });
+({ id: t$1.AsiaJerusalem, name: "Asia/Jerusalem", offset: i$3.UTC_PLUS_2, timezone: n$2.EasternEuropeanTime });
+({ id: t$1.AsiaKabul, name: "Asia/Kabul", offset: i$3.UTC_PLUS_4, timezone: n$2.AfghanistanTime });
+({ id: t$1.AsiaKamchatka, name: "Asia/Kamchatka", offset: i$3.UTC_PLUS_12, timezone: n$2.KamchatkaTime });
+({ id: t$1.AsiaKarachi, name: "Asia/Karachi", offset: i$3.UTC_PLUS_5, timezone: n$2.PakistanStandardTime });
+({ id: t$1.AsiaKathmandu, name: "Asia/Kathmandu", offset: i$3.UTC_PLUS_5, timezone: n$2.NepalTime });
+({ id: t$1.AsiaKhandyga, name: "Asia/Khandyga", offset: i$3.UTC_PLUS_9, timezone: n$2.YakutskTime });
+({ id: t$1.AsiaKolkata, name: "Asia/Kolkata", offset: i$3.UTC_PLUS_5, timezone: n$2.IndianStandardTime });
+({ id: t$1.AsiaKrasnoyarsk, name: "Asia/Krasnoyarsk", offset: i$3.UTC_PLUS_7, timezone: n$2.KrasnoyarskTime });
+({ id: t$1.AsiaKualaLumpur, name: "Asia/Kuala_Lumpur", offset: i$3.UTC_PLUS_8, timezone: n$2.MalaysiaStandardTime });
+({ id: t$1.AsiaKuching, name: "Asia/Kuching", offset: i$3.UTC_PLUS_8, timezone: n$2.MalaysiaStandardTime });
+({ id: t$1.AsiaKuwait, name: "Asia/Kuwait", offset: i$3.UTC_PLUS_3, timezone: n$2.ArabiaStandardTime });
+({ id: t$1.AsiaMacau, name: "Asia/Macau", offset: i$3.UTC_PLUS_8, timezone: n$2.ChinaStandardTime });
+({ id: t$1.AsiaMagadan, name: "Asia/Magadan", offset: i$3.UTC_PLUS_11, timezone: n$2.MagadanTime });
+({ id: t$1.AsiaMakassar, name: "Asia/Makassar", offset: i$3.UTC_PLUS_8, timezone: n$2.MalaysiaTime });
+({ id: t$1.AsiaManila, name: "Asia/Manila", offset: i$3.UTC_PLUS_8, timezone: n$2.PhilippineTime });
+({ id: t$1.AsiaMuscat, name: "Asia/Muscat", offset: i$3.UTC_PLUS_4, timezone: n$2.GulfStandardTime });
+({ id: t$1.AsiaNovokuznetsk, name: "Asia/Novokuznetsk", offset: i$3.UTC_PLUS_6, timezone: n$2.NovosibirskTime });
+({ id: t$1.AsiaNovosibirsk, name: "Asia/Novosibirsk", offset: i$3.UTC_PLUS_6, timezone: n$2.NovosibirskTime });
+({ id: t$1.AsiaOmsk, name: "Asia/Omsk", offset: i$3.UTC_PLUS_6, timezone: n$2.OmskTime });
+({ id: t$1.AsiaOral, name: "Asia/Oral", offset: i$3.UTC_PLUS_5, timezone: n$2.OralTime });
+({ id: t$1.AsiaPhnomPenh, name: "Asia/Phnom_Penh", offset: i$3.UTC_PLUS_7, timezone: n$2.IndochinaTime });
+({ id: t$1.AsiaPontianak, name: "Asia/Pontianak", offset: i$3.UTC_PLUS_7, timezone: n$2.WesternIndonesianTime });
+({ id: t$1.AsiaPyongyang, name: "Asia/Pyongyang", offset: i$3.UTC_PLUS_9, timezone: n$2.KoreaStandardTime });
+({ id: t$1.AsiaQatar, name: "Asia/Qatar", offset: i$3.UTC_PLUS_3, timezone: n$2.ArabiaStandardTime });
+({ id: t$1.AsiaQyzylorda, name: "Asia/Qyzylorda", offset: i$3.UTC_PLUS_5, timezone: n$2.WestKazakhstanTime });
+({ id: t$1.AsiaRangoon, name: "Asia/Rangoon", offset: i$3.UTC_PLUS_6, timezone: n$2.MyanmarStandardTime });
+({ id: t$1.AsiaRiyadh, name: "Asia/Riyadh", offset: i$3.UTC_PLUS_3, timezone: n$2.ArabiaStandardTime });
+({ id: t$1.AsiaSakhalin, name: "Asia/Sakhalin", offset: i$3.UTC_PLUS_11, timezone: n$2.SakhalinIslandTime });
+({ id: t$1.AsiaSamarkand, name: "Asia/Samarkand", offset: i$3.UTC_PLUS_5, timezone: n$2.UzbekistanTime });
+({ id: t$1.AsiaSeoul, name: "Asia/Seoul", offset: i$3.UTC_PLUS_9, timezone: n$2.KoreaStandardTime });
+({ id: t$1.AsiaShanghai, name: "Asia/Shanghai", offset: i$3.UTC_PLUS_8, timezone: n$2.ChinaStandardTime });
+({ id: t$1.AsiaSingapore, name: "Asia/Singapore", offset: i$3.UTC_PLUS_8, timezone: n$2.SingaporeStandardTime });
+({ id: t$1.AsiaSrednekolymsk, name: "Asia/Srednekolymsk", offset: i$3.UTC_PLUS_11, timezone: n$2.SrednekolymskTime });
+({ id: t$1.AsiaTaipei, name: "Asia/Taipei", offset: i$3.UTC_PLUS_8, timezone: n$2.ChinaStandardTime });
+({ id: t$1.AsiaTashkent, name: "Asia/Tashkent", offset: i$3.UTC_PLUS_5, timezone: n$2.UzbekistanTime });
+({ id: t$1.AsiaTbilisi, name: "Asia/Tbilisi", offset: i$3.UTC_PLUS_4, timezone: n$2.GeorgiaStandardTime });
+({ id: t$1.AsiaTehran, name: "Asia/Tehran", offset: i$3.UTC_PLUS_3, timezone: n$2.IranStandardTime });
+({ id: t$1.AsiaThimphu, name: "Asia/Thimphu", offset: i$3.UTC_PLUS_6, timezone: n$2.BhutanTime });
+({ id: t$1.AsiaTokyo, name: "Asia/Tokyo", offset: i$3.UTC_PLUS_9, timezone: n$2.JapanStandardTime });
+({ id: t$1.AsiaTomsk, name: "Asia/Tomsk", offset: i$3.UTC_PLUS_6, timezone: n$2.KrasnoyarskTime });
+({ id: t$1.AsiaUlaanbaatar, name: "Asia/Ulaanbaatar", offset: i$3.UTC_PLUS_8, timezone: n$2.UlaanbaatarStandardTime });
+({ id: t$1.AsiaUrumqi, name: "Asia/Urumqi", offset: i$3.UTC_PLUS_8, timezone: n$2.ChinaStandardTime });
+({ id: t$1.AsiaUstNera, name: "Asia/Ust-Nera", offset: i$3.UTC_PLUS_10, timezone: n$2.VladivostokTime });
+({ id: t$1.AsiaVientiane, name: "Asia/Vientiane", offset: i$3.UTC_PLUS_7, timezone: n$2.IndochinaTime });
+({ id: t$1.AsiaVladivostok, name: "Asia/Vladivostok", offset: i$3.UTC_PLUS_10, timezone: n$2.VladivostokTime });
+({ id: t$1.AsiaYakutsk, name: "Asia/Yakutsk", offset: i$3.UTC_PLUS_9, timezone: n$2.YakutskTime });
+({ id: t$1.AsiaYekaterinburg, name: "Asia/Yekaterinburg", offset: i$3.UTC_PLUS_5, timezone: n$2.YekaterinburgTime });
+({ id: t$1.AsiaYerevan, name: "Asia/Yerevan", offset: i$3.UTC_PLUS_4, timezone: n$2.ArmeniaTime });
+({ id: t$1.AtlanticAzores, name: "Atlantic/Azores", offset: i$3.UTC_MINUS_1, timezone: n$2.AzoresStandardTime });
+({ id: t$1.AtlanticBermuda, name: "Atlantic/Bermuda", offset: i$3.UTC_MINUS_4, timezone: n$2.AtlanticStandardTime });
+({ id: t$1.AtlanticCanary, name: "Atlantic/Canary", offset: i$3.UTC_MINUS_1, timezone: n$2.WesternEuropeanTime });
+({ id: t$1.AtlanticCapeVerde, name: "Atlantic/Cape_Verde", offset: i$3.UTC_0, timezone: n$2.CapeVerdeTime });
+({ id: t$1.AtlanticFaroe, name: "Atlantic/Faroe", offset: i$3.UTC_0, timezone: n$2.GreenwichMeanTime });
+({ id: t$1.AtlanticMadeira, name: "Atlantic/Madeira", offset: i$3.UTC_0, timezone: n$2.WesternEuropeanTime });
+({ id: t$1.AtlanticReykjavik, name: "Atlantic/Reykjavik", offset: i$3.UTC_0, timezone: n$2.GreenwichMeanTime });
+({ id: t$1.AtlanticSouthGeorgia, name: "Atlantic/South_Georgia", offset: i$3.UTC_0, timezone: n$2.CoordinatedUniversalTime });
+({ id: t$1.AtlanticStHelena, name: "Atlantic/St_Helena", offset: i$3.UTC_0, timezone: n$2.GreenwichMeanTime });
+({ id: t$1.AtlanticStanley, name: "Atlantic/Stanley", offset: i$3.UTC_0, timezone: n$2.FalklandIslandsTime });
+({ id: t$1.AustraliaAdelaide, name: "Australia/Adelaide", offset: i$3.UTC_PLUS_9_30, timezone: n$2.AustralianCentralStandardTime });
+({ id: t$1.AustraliaBrisbane, name: "Australia/Brisbane", offset: i$3.UTC_PLUS_10, timezone: n$2.AustralianEasternStandardTime });
+({ id: t$1.AustraliaBrokenHill, name: "Australia/Broken_Hill", offset: i$3.UTC_PLUS_9_30, timezone: n$2.AustralianCentralStandardTime });
+({ id: t$1.AustraliaCanberra, name: "Australia/Canberra", offset: i$3.UTC_PLUS_10, timezone: n$2.AustralianEasternStandardTime });
+({ id: t$1.AustraliaCurrie, name: "Australia/Currie", offset: i$3.UTC_PLUS_10, timezone: n$2.AustralianEasternStandardTime });
+({ id: t$1.AustraliaDarwin, name: "Australia/Darwin", offset: i$3.UTC_PLUS_9_30, timezone: n$2.AustralianCentralStandardTime });
+({ id: t$1.AustraliaEucla, name: "Australia/Eucla", offset: i$3.UTC_PLUS_8_45, timezone: n$2.AustralianCentralWesternStandardTime });
+({ id: t$1.AustraliaHobart, name: "Australia/Hobart", offset: i$3.UTC_PLUS_10, timezone: n$2.AustralianEasternStandardTime });
+({ id: t$1.AustraliaLindeman, name: "Australia/Lindeman", offset: i$3.UTC_PLUS_10, timezone: n$2.AustralianEasternStandardTime });
+({ id: t$1.AustraliaLordHowe, name: "Australia/Lord_Howe", offset: i$3.UTC_PLUS_10_30, timezone: n$2.LordHoweStandardTime });
+({ id: t$1.AustraliaMelbourne, name: "Australia/Melbourne", offset: i$3.UTC_PLUS_10, timezone: n$2.AustralianEasternStandardTime });
+({ id: t$1.AustraliaPerth, name: "Australia/Perth", offset: i$3.UTC_PLUS_8, timezone: n$2.AustralianWesternStandardTime });
+({ id: t$1.AustraliaSydney, name: "Australia/Sydney", offset: i$3.UTC_PLUS_10, timezone: n$2.AustralianEasternStandardTime });
+({ id: t$1.EuropeAmsterdam, name: "Europe/Amsterdam", offset: i$3.UTC_PLUS_1, timezone: n$2.CentralEuropeanTime });
+({ id: t$1.EuropeAndorra, name: "Europe/Andorra", offset: i$3.UTC_PLUS_1, timezone: n$2.CentralEuropeanTime });
+({ id: t$1.EuropeAthens, name: "Europe/Athens", offset: i$3.UTC_PLUS_2, timezone: n$2.EasternEuropeanTime });
+({ id: t$1.EuropeBelgrade, name: "Europe/Belgrade", offset: i$3.UTC_PLUS_1, timezone: n$2.CentralEuropeanTime });
+({ id: t$1.EuropeBerlin, name: "Europe/Berlin", offset: i$3.UTC_PLUS_1, timezone: n$2.CentralEuropeanTime });
+({ id: t$1.EuropeBratislava, name: "Europe/Bratislava", offset: i$3.UTC_PLUS_1, timezone: n$2.CentralEuropeanTime });
+({ id: t$1.EuropeBrussels, name: "Europe/Brussels", offset: i$3.UTC_PLUS_1, timezone: n$2.CentralEuropeanTime });
+({ id: t$1.EuropeBucharest, name: "Europe/Bucharest", offset: i$3.UTC_PLUS_2, timezone: n$2.EasternEuropeanTime });
+({ id: t$1.EuropeBudapest, name: "Europe/Budapest", offset: i$3.UTC_PLUS_1, timezone: n$2.CentralEuropeanTime });
+({ id: t$1.EuropeBusingen, name: "Europe/Busingen", offset: i$3.UTC_PLUS_1, timezone: n$2.CentralEuropeanTime });
+({ id: t$1.EuropeChisinau, name: "Europe/Chisinau", offset: i$3.UTC_PLUS_2, timezone: n$2.EasternEuropeanTime });
+({ id: t$1.EuropeCopenhagen, name: "Europe/Copenhagen", offset: i$3.UTC_PLUS_1, timezone: n$2.CentralEuropeanTime });
+({ id: t$1.EuropeDublin, name: "Europe/Dublin", offset: i$3.UTC_0, timezone: n$2.GreenwichMeanTime });
+({ id: t$1.EuropeGibraltar, name: "Europe/Gibraltar", offset: i$3.UTC_PLUS_1, timezone: n$2.CentralEuropeanTime });
+({ id: t$1.EuropeGuernsey, name: "Europe/Guernsey", offset: i$3.UTC_PLUS_1, timezone: n$2.CentralEuropeanTime });
+({ id: t$1.EuropeHelsinki, name: "Europe/Helsinki", offset: i$3.UTC_PLUS_2, timezone: n$2.EasternEuropeanTime });
+({ id: t$1.EuropeIsleOfMan, name: "Europe/Isle_of_Man", offset: i$3.UTC_0, timezone: n$2.GreenwichMeanTime });
+({ id: t$1.EuropeIstanbul, name: "Europe/Istanbul", offset: i$3.UTC_PLUS_3, timezone: n$2.EasternEuropeanTime });
+({ id: t$1.EuropeJersey, name: "Europe/Jersey", offset: i$3.UTC_PLUS_1, timezone: n$2.CentralEuropeanTime });
+({ id: t$1.EuropeKaliningrad, name: "Europe/Kaliningrad", offset: i$3.UTC_PLUS_2, timezone: n$2.EasternEuropeanTime });
+({ id: t$1.EuropeKiev, name: "Europe/Kiev", offset: i$3.UTC_PLUS_2, timezone: n$2.EasternEuropeanTime });
+({ id: t$1.EuropeLisbon, name: "Europe/Lisbon", offset: i$3.UTC_0, timezone: n$2.GreenwichMeanTime });
+({ id: t$1.EuropeLjubljana, name: "Europe/Ljubljana", offset: i$3.UTC_PLUS_1, timezone: n$2.CentralEuropeanTime });
+({ id: t$1.EuropeLondon, name: "Europe/London", offset: i$3.UTC_0, timezone: n$2.GreenwichMeanTime });
+({ id: t$1.EuropeLuxembourg, name: "Europe/Luxembourg", offset: i$3.UTC_PLUS_1, timezone: n$2.CentralEuropeanTime });
+({ id: t$1.EuropeMadrid, name: "Europe/Madrid", offset: i$3.UTC_PLUS_1, timezone: n$2.CentralEuropeanTime });
+({ id: t$1.EuropeMalta, name: "Europe/Malta", offset: i$3.UTC_PLUS_1, timezone: n$2.CentralEuropeanTime });
+({ id: t$1.EuropeMariehamn, name: "Europe/Mariehamn", offset: i$3.UTC_PLUS_2, timezone: n$2.EasternEuropeanTime });
+({ id: t$1.EuropeMinsk, name: "Europe/Minsk", offset: i$3.UTC_PLUS_3, timezone: n$2.EasternEuropeanTime });
+({ id: t$1.EuropeMonaco, name: "Europe/Monaco", offset: i$3.UTC_PLUS_1, timezone: n$2.CentralEuropeanTime });
+({ id: t$1.EuropeMoscow, name: "Europe/Moscow", offset: i$3.UTC_PLUS_3, timezone: n$2.EasternEuropeanTime });
+({ id: t$1.EuropeOslo, name: "Europe/Oslo", offset: i$3.UTC_PLUS_1, timezone: n$2.CentralEuropeanTime });
+({ id: t$1.EuropeParis, name: "Europe/Paris", offset: i$3.UTC_PLUS_1, timezone: n$2.CentralEuropeanTime });
+({ id: t$1.EuropePodgorica, name: "Europe/Podgorica", offset: i$3.UTC_PLUS_1, timezone: n$2.CentralEuropeanTime });
+({ id: t$1.EuropePrague, name: "Europe/Prague", offset: i$3.UTC_PLUS_1, timezone: n$2.CentralEuropeanTime });
+({ id: t$1.EuropeRiga, name: "Europe/Riga", offset: i$3.UTC_PLUS_2, timezone: n$2.EasternEuropeanTime });
+({ id: t$1.EuropeRome, name: "Europe/Rome", offset: i$3.UTC_PLUS_1, timezone: n$2.CentralEuropeanTime });
+({ id: t$1.EuropeSamara, name: "Europe/Samara", offset: i$3.UTC_PLUS_4, timezone: n$2.EasternEuropeanTime });
+({ id: t$1.EuropeSanMarino, name: "Europe/San_Marino", offset: i$3.UTC_PLUS_1, timezone: n$2.CentralEuropeanTime });
+({ id: t$1.EuropeSarajevo, name: "Europe/Sarajevo", offset: i$3.UTC_PLUS_1, timezone: n$2.CentralEuropeanTime });
+({ id: t$1.EuropeSimferopol, name: "Europe/Simferopol", offset: i$3.UTC_PLUS_3, timezone: n$2.EasternEuropeanTime });
+({ id: t$1.EuropeSkopje, name: "Europe/Skopje", offset: i$3.UTC_PLUS_1, timezone: n$2.CentralEuropeanTime });
+({ id: t$1.EuropeSofia, name: "Europe/Sofia", offset: i$3.UTC_PLUS_2, timezone: n$2.EasternEuropeanTime });
+({ id: t$1.EuropeStockholm, name: "Europe/Stockholm", offset: i$3.UTC_PLUS_1, timezone: n$2.CentralEuropeanTime });
+({ id: t$1.EuropeTallinn, name: "Europe/Tallinn", offset: i$3.UTC_PLUS_2, timezone: n$2.EasternEuropeanTime });
+({ id: t$1.EuropeTirane, name: "Europe/Tirane", offset: i$3.UTC_PLUS_1, timezone: n$2.CentralEuropeanTime });
+({ id: t$1.EuropeUzhgorod, name: "Europe/Uzhgorod", offset: i$3.UTC_PLUS_2, timezone: n$2.EasternEuropeanTime });
+({ id: t$1.EuropeVaduz, name: "Europe/Vaduz", offset: i$3.UTC_PLUS_1, timezone: n$2.CentralEuropeanTime });
+({ id: t$1.EuropeVatican, name: "Europe/Vatican", offset: i$3.UTC_PLUS_1, timezone: n$2.CentralEuropeanTime });
+({ id: t$1.EuropeVienna, name: "Europe/Vienna", offset: i$3.UTC_PLUS_1, timezone: n$2.CentralEuropeanTime });
+({ id: t$1.EuropeVilnius, name: "Europe/Vilnius", offset: i$3.UTC_PLUS_2, timezone: n$2.EasternEuropeanTime });
+({ id: t$1.EuropeVolgograd, name: "Europe/Volgograd", offset: i$3.UTC_PLUS_4, timezone: n$2.EasternEuropeanTime });
+({ id: t$1.EuropeWarsaw, name: "Europe/Warsaw", offset: i$3.UTC_PLUS_1, timezone: n$2.CentralEuropeanTime });
+({ id: t$1.EuropeZagreb, name: "Europe/Zagreb", offset: i$3.UTC_PLUS_1, timezone: n$2.CentralEuropeanTime });
+({ id: t$1.EuropeZaporozhye, name: "Europe/Zaporozhye", offset: i$3.UTC_PLUS_2, timezone: n$2.EasternEuropeanTime });
+({ id: t$1.EuropeZurich, name: "Europe/Zurich", offset: i$3.UTC_PLUS_1, timezone: n$2.CentralEuropeanTime });
+({ id: t$1.IndianAntananarivo, name: "Indian/Antananarivo", offset: i$3.UTC_PLUS_3, timezone: n$2.EastAfricaTime });
+({ id: t$1.IndianChagos, name: "Indian/Chagos", offset: i$3.UTC_PLUS_6, timezone: n$2.IndianOceanTime });
+({ id: t$1.IndianChristmas, name: "Indian/Christmas", offset: i$3.UTC_PLUS_7, timezone: n$2.ChristmasIslandTime });
+({ id: t$1.IndianCocos, name: "Indian/Cocos", offset: i$3.UTC_PLUS_6, timezone: n$2.CocosIslandsTime });
+({ id: t$1.IndianComoro, name: "Indian/Comoro", offset: i$3.UTC_PLUS_3, timezone: n$2.EastAfricaTime });
+({ id: t$1.IndianKerguelen, name: "Indian/Kerguelen", offset: i$3.UTC_PLUS_5, timezone: n$2.FrenchSouthernAndAntarcticTime });
+({ id: t$1.IndianMahe, name: "Indian/Mahe", offset: i$3.UTC_PLUS_4, timezone: n$2.SeychellesTime });
+({ id: t$1.IndianMaldives, name: "Indian/Maldives", offset: i$3.UTC_PLUS_5, timezone: n$2.MaldivesTime });
+({ id: t$1.IndianMauritius, name: "Indian/Mauritius", offset: i$3.UTC_PLUS_4, timezone: n$2.MauritiusTime });
+({ id: t$1.IndianMayotte, name: "Indian/Mayotte", offset: i$3.UTC_PLUS_3, timezone: n$2.EastAfricaTime });
+({ id: t$1.IndianReunion, name: "Indian/Reunion", offset: i$3.UTC_PLUS_4, timezone: n$2.ReunionTime });
+({ id: t$1.PacificApia, name: "Pacific/Apia", offset: i$3.UTC_PLUS_13, timezone: n$2.SamoaStandardTime });
+({ id: t$1.PacificAuckland, name: "Pacific/Auckland", offset: i$3.UTC_PLUS_13, timezone: n$2.NewZealandStandardTime });
+({ id: t$1.PacificChatham, name: "Pacific/Chatham", offset: i$3.UTC_PLUS_13, timezone: n$2.ChathamStandardTime });
+({ id: t$1.PacificEaster, name: "Pacific/Easter", offset: i$3.UTC_PLUS_6, timezone: n$2.EasterIslandStandardTime });
+({ id: t$1.PacificEfate, name: "Pacific/Efate", offset: i$3.UTC_PLUS_11, timezone: n$2.VanuatuTime });
+({ id: t$1.PacificEnderbury, name: "Pacific/Enderbury", offset: i$3.UTC_PLUS_13, timezone: n$2.TongaTime });
+({ id: t$1.PacificFakaofo, name: "Pacific/Fakaofo", offset: i$3.UTC_PLUS_13, timezone: n$2.TongaTime });
+({ id: t$1.PacificFiji, name: "Pacific/Fiji", offset: i$3.UTC_PLUS_12, timezone: n$2.FijiTime });
+({ id: t$1.PacificFunafuti, name: "Pacific/Funafuti", offset: i$3.UTC_PLUS_12, timezone: n$2.TuvaluTime });
+({ id: t$1.PacificGalapagos, name: "Pacific/Galapagos", offset: i$3.UTC_PLUS_6, timezone: n$2.GalapagosTime });
+({ id: t$1.PacificGambier, name: "Pacific/Gambier", offset: i$3.UTC_PLUS_9, timezone: n$2.GambierIslandTime });
+({ id: t$1.PacificGuadalcanal, name: "Pacific/Guadalcanal", offset: i$3.UTC_PLUS_11, timezone: n$2.SolomonIslandsTime });
+({ id: t$1.PacificGuam, name: "Pacific/Guam", offset: i$3.UTC_PLUS_10, timezone: n$2.ChamorroStandardTime });
+({ id: t$1.PacificHonolulu, name: "Pacific/Honolulu", offset: i$3.UTC_PLUS_10, timezone: n$2.HawaiiAleutianStandardTime });
+({ id: t$1.PacificJohnston, name: "Pacific/Johnston", offset: i$3.UTC_PLUS_10, timezone: n$2.HawaiiAleutianStandardTime });
+({ id: t$1.PacificKiritimati, name: "Pacific/Kiritimati", offset: i$3.UTC_PLUS_14, timezone: n$2.LineIslandsTime });
+({ id: t$1.PacificKosrae, name: "Pacific/Kosrae", offset: i$3.UTC_PLUS_11, timezone: n$2.KosraeTime });
+({ id: t$1.PacificKwajalein, name: "Pacific/Kwajalein", offset: i$3.UTC_PLUS_12, timezone: n$2.MarshallIslandsTime });
+({ id: t$1.PacificMajuro, name: "Pacific/Majuro", offset: i$3.UTC_PLUS_12, timezone: n$2.MarshallIslandsTime });
+({ id: t$1.PacificMarquesas, name: "Pacific/Marquesas", offset: i$3.UTC_PLUS_9, timezone: n$2.MarquesasIslandsTime });
+({ id: t$1.PacificMidway, name: "Pacific/Midway", offset: i$3.UTC_PLUS_11, timezone: n$2.SamoaStandardTime });
+({ id: t$1.PacificNauru, name: "Pacific/Nauru", offset: i$3.UTC_PLUS_12, timezone: n$2.NauruTime });
+({ id: t$1.PacificNiue, name: "Pacific/Niue", offset: i$3.UTC_PLUS_11, timezone: n$2.NiueTime });
+({ id: t$1.PacificNorfolk, name: "Pacific/Norfolk", offset: i$3.UTC_PLUS_11, timezone: n$2.NorfolkIslandTime });
+({ id: t$1.PacificNoumea, name: "Pacific/Noumea", offset: i$3.UTC_PLUS_11, timezone: n$2.NewCaledoniaTime });
+({ id: t$1.PacificPagoPago, name: "Pacific/Pago_Pago", offset: i$3.UTC_PLUS_11, timezone: n$2.SamoaStandardTime });
+({ id: t$1.PacificPalau, name: "Pacific/Palau", offset: i$3.UTC_PLUS_9, timezone: n$2.PalauTime });
+({ id: t$1.PacificPitcairn, name: "Pacific/Pitcairn", offset: i$3.UTC_PLUS_8, timezone: n$2.PitcairnTime });
+({ id: t$1.PacificPonape, name: "Pacific/Ponape", offset: i$3.UTC_PLUS_11, timezone: n$2.PohnpeiStandardTime });
+({ id: t$1.PacificPortMoresby, name: "Pacific/Port_Moresby", offset: i$3.UTC_PLUS_10, timezone: n$2.PapuaNewGuineaTime });
+({ id: t$1.PacificRarotonga, name: "Pacific/Rarotonga", offset: i$3.UTC_PLUS_10, timezone: n$2.CookIslandTime });
+({ id: t$1.PacificSaipan, name: "Pacific/Saipan", offset: i$3.UTC_PLUS_10, timezone: n$2.ChamorroStandardTime });
+({ id: t$1.PacificTahiti, name: "Pacific/Tahiti", offset: i$3.UTC_PLUS_10, timezone: n$2.TahitiTime });
+({ id: t$1.PacificTarawa, name: "Pacific/Tarawa", offset: i$3.UTC_PLUS_12, timezone: n$2.GilbertIslandTime });
+({ id: t$1.PacificTongatapu, name: "Pacific/Tongatapu", offset: i$3.UTC_PLUS_13, timezone: n$2.TongaTime });
+({ id: t$1.PacificChuuk, name: "Pacific/Chuuk", offset: i$3.UTC_PLUS_10, timezone: n$2.ChuukTime });
+({ id: t$1.PacificPohnpei, name: "Pacific/Pohnpei", offset: i$3.UTC_PLUS_11, timezone: n$2.PohnpeiStandardTime });
+({ id: t$1.PacificYap, name: "Pacific/Yap", offset: i$3.UTC_PLUS_10, timezone: n$2.ChuukTime });
 var Vi = (a2 = 21) => {
   let u2 = "", A2 = crypto.getRandomValues(new Uint8Array(a2));
   for (; a2--; ) {
@@ -19545,8 +19544,8 @@ var d = class extends Error {
     s$2(this, "__proto__");
     let f2 = new.target.prototype;
     if (this.__proto__ = f2, Error.captureStackTrace && Error.captureStackTrace((_a2 = A2 == null ? void 0 : A2.cause) != null ? _a2 : this, d), this.id = Vi(), this.name = this.constructor.name, this.created = new Date().toString(), this.description = (_b = A2 == null ? void 0 : A2.description) != null ? _b : this.description, this.remediation = (_c = A2 == null ? void 0 : A2.remediation) != null ? _c : this.remediation, this.scope = (_d = A2 == null ? void 0 : A2.scope) != null ? _d : this.scope, A2) {
-      let { cause: U2, context: E2, data: v2, model: _2, form: S2, origin: nn2, pii: tn2, request: rn2, response: sn, tags: on2, task: ln, user: mn } = A2;
-      this.cause = U2, this.context = E2, this.data = v2, this.model = _2, this.form = S2, this.origin = nn2, this.pii = tn2, this.request = rn2, this.response = sn, this.task = ln, this.tags = on2, this.user = mn;
+      let { cause: U2, context: E2, data: v2, model: _2, form: S2, origin: nn2, pii: tn2, request: rn2, response: sn, tags: on3, task: ln, user: mn } = A2;
+      this.cause = U2, this.context = E2, this.data = v2, this.model = _2, this.form = S2, this.origin = nn2, this.pii = tn2, this.request = rn2, this.response = sn, this.task = ln, this.tags = on3, this.user = mn;
     }
   }
   toJSON() {
@@ -19672,9 +19671,9 @@ var reduxLogger = { exports: {} };
       var t3 = typeof e3 == "undefined" ? "undefined" : N2(e3);
       return t3 !== "object" ? t3 : e3 === Math ? "math" : e3 === null ? "null" : Array.isArray(e3) ? "array" : Object.prototype.toString.call(e3) === "[object Date]" ? "date" : typeof e3.toString == "function" && /^\/.*\//.test(e3.toString()) ? "regexp" : "object";
     }
-    function l2(e3, t3, r3, c3, s3, d3, p3) {
-      s3 = s3 || [], p3 = p3 || [];
-      var g3 = s3.slice(0);
+    function l2(e3, t3, r3, c3, s4, d3, p3) {
+      s4 = s4 || [], p3 = p3 || [];
+      var g3 = s4.slice(0);
       if (typeof d3 != "undefined") {
         if (c3) {
           if (typeof c3 == "function" && c3(g3, d3))
@@ -19895,8 +19894,8 @@ var reduxLogger = { exports: {} };
     }
     function x2(e3, t3) {
       var r3 = t3.logger, n3 = t3.actionTransformer, o3 = t3.titleFormatter, i2 = o3 === void 0 ? w2(t3) : o3, a3 = t3.collapsed, f3 = t3.colors, u3 = t3.level, l3 = t3.diff, c3 = typeof t3.titleFormatter == "undefined";
-      e3.forEach(function(o4, s3) {
-        var d3 = o4.started, p3 = o4.startedTime, g3 = o4.action, h3 = o4.prevState, y3 = o4.error, v3 = o4.took, w3 = o4.nextState, x3 = e3[s3 + 1];
+      e3.forEach(function(o4, s4) {
+        var d3 = o4.started, p3 = o4.startedTime, g3 = o4.action, h3 = o4.prevState, y3 = o4.error, v3 = o4.took, w3 = o4.nextState, x3 = e3[s4 + 1];
         x3 && (w3 = x3.prevState, v3 = x3.started - d3);
         var S3 = n3(g3), k3 = typeof a3 == "function" ? a3(function() {
           return w3;
@@ -19968,20 +19967,20 @@ var reduxLogger = { exports: {} };
               return e5(l3);
             var c3 = {};
             u3.push(c3), c3.started = O2.now(), c3.startedTime = new Date(), c3.prevState = n3(r4()), c3.action = l3;
-            var s3 = void 0;
+            var s4 = void 0;
             if (a3)
               try {
-                s3 = e5(l3);
+                s4 = e5(l3);
               } catch (e6) {
                 c3.error = o3(e6);
               }
             else
-              s3 = e5(l3);
+              s4 = e5(l3);
             c3.took = O2.now() - c3.started, c3.nextState = n3(r4());
             var d3 = t3.diff && typeof f3 == "function" ? f3(r4, l3) : t3.diff;
             if (x2(u3, Object.assign({}, t3, { diff: d3 })), u3.length = 0, c3.error)
               throw c3.error;
-            return s3;
+            return s4;
           };
         };
       };
@@ -20403,16 +20402,16 @@ const DATETIME_HUGE_WITH_SECONDS = {
   second: n$1,
   timeZoneName: l
 };
-function isUndefined(o2) {
+function isUndefined$1(o2) {
   return typeof o2 === "undefined";
 }
-function isNumber(o2) {
+function isNumber$1(o2) {
   return typeof o2 === "number";
 }
 function isInteger(o2) {
   return typeof o2 === "number" && o2 % 1 === 0;
 }
-function isString(o2) {
+function isString$1(o2) {
   return typeof o2 === "string";
 }
 function isDate(o2) {
@@ -20449,7 +20448,7 @@ function pick(obj, keys) {
     return a2;
   }, {});
 }
-function hasOwnProperty(obj, prop) {
+function hasOwnProperty$2(obj, prop) {
   return Object.prototype.hasOwnProperty.call(obj, prop);
 }
 function integerBetween(thing, bottom, top) {
@@ -20468,22 +20467,22 @@ function padStart(input, n2 = 2) {
   }
   return padded;
 }
-function parseInteger(string) {
-  if (isUndefined(string) || string === null || string === "") {
+function parseInteger(string2) {
+  if (isUndefined$1(string2) || string2 === null || string2 === "") {
     return void 0;
   } else {
-    return parseInt(string, 10);
+    return parseInt(string2, 10);
   }
 }
-function parseFloating(string) {
-  if (isUndefined(string) || string === null || string === "") {
+function parseFloating(string2) {
+  if (isUndefined$1(string2) || string2 === null || string2 === "") {
     return void 0;
   } else {
-    return parseFloat(string);
+    return parseFloat(string2);
   }
 }
 function parseMillis(fraction) {
-  if (isUndefined(fraction) || fraction === null || fraction === "") {
+  if (isUndefined$1(fraction) || fraction === null || fraction === "") {
     return void 0;
   } else {
     const f2 = parseFloat("0." + fraction) * 1e3;
@@ -20559,7 +20558,7 @@ function asNumber(value) {
 function normalizeObject(obj, normalizer) {
   const normalized = {};
   for (const u2 in obj) {
-    if (hasOwnProperty(obj, u2)) {
+    if (hasOwnProperty$2(obj, u2)) {
       const v2 = obj[u2];
       if (v2 === void 0 || v2 === null)
         continue;
@@ -20568,17 +20567,17 @@ function normalizeObject(obj, normalizer) {
   }
   return normalized;
 }
-function formatOffset(offset2, format) {
-  const hours = Math.trunc(Math.abs(offset2 / 60)), minutes = Math.trunc(Math.abs(offset2 % 60)), sign = offset2 >= 0 ? "+" : "-";
-  switch (format) {
+function formatOffset(offset2, format3) {
+  const hours = Math.trunc(Math.abs(offset2 / 60)), minutes = Math.trunc(Math.abs(offset2 % 60)), sign3 = offset2 >= 0 ? "+" : "-";
+  switch (format3) {
     case "short":
-      return `${sign}${padStart(hours, 2)}:${padStart(minutes, 2)}`;
+      return `${sign3}${padStart(hours, 2)}:${padStart(minutes, 2)}`;
     case "narrow":
-      return `${sign}${hours}${minutes > 0 ? `:${minutes}` : ""}`;
+      return `${sign3}${hours}${minutes > 0 ? `:${minutes}` : ""}`;
     case "techie":
-      return `${sign}${padStart(hours, 2)}${padStart(minutes, 2)}`;
+      return `${sign3}${padStart(hours, 2)}${padStart(minutes, 2)}`;
     default:
-      throw new RangeError(`Value format ${format} is out of range for property format`);
+      throw new RangeError(`Value format ${format3} is out of range for property format`);
   }
 }
 function timeObject(obj) {
@@ -20813,19 +20812,19 @@ class Formatter {
     return this.loc.numberFormatter(opts).format(n2);
   }
   formatDateTimeFromString(dt, fmt) {
-    const knownEnglish = this.loc.listingMode() === "en", useDateTimeFormatter = this.loc.outputCalendar && this.loc.outputCalendar !== "gregory", string = (opts, extract) => this.loc.extract(dt, opts, extract), formatOffset2 = (opts) => {
+    const knownEnglish = this.loc.listingMode() === "en", useDateTimeFormatter = this.loc.outputCalendar && this.loc.outputCalendar !== "gregory", string2 = (opts, extract) => this.loc.extract(dt, opts, extract), formatOffset2 = (opts) => {
       if (dt.isOffsetFixed && dt.offset === 0 && opts.allowZ) {
         return "Z";
       }
       return dt.isValid ? dt.zone.formatOffset(dt.ts, opts.format) : "";
-    }, meridiem = () => knownEnglish ? meridiemForDateTime(dt) : string({ hour: "numeric", hourCycle: "h12" }, "dayperiod"), month = (length, standalone) => knownEnglish ? monthForDateTime(dt, length) : string(standalone ? { month: length } : { month: length, day: "numeric" }, "month"), weekday = (length, standalone) => knownEnglish ? weekdayForDateTime(dt, length) : string(standalone ? { weekday: length } : { weekday: length, month: "long", day: "numeric" }, "weekday"), maybeMacro = (token) => {
+    }, meridiem = () => knownEnglish ? meridiemForDateTime(dt) : string2({ hour: "numeric", hourCycle: "h12" }, "dayperiod"), month = (length, standalone) => knownEnglish ? monthForDateTime(dt, length) : string2(standalone ? { month: length } : { month: length, day: "numeric" }, "month"), weekday = (length, standalone) => knownEnglish ? weekdayForDateTime(dt, length) : string2(standalone ? { weekday: length } : { weekday: length, month: "long", day: "numeric" }, "weekday"), maybeMacro = (token) => {
       const formatOpts = Formatter.macroTokenToFormatOpts(token);
       if (formatOpts) {
         return this.formatWithSystemDefault(dt, formatOpts);
       } else {
         return token;
       }
-    }, era = (length) => knownEnglish ? eraForDateTime(dt, length) : string({ era: length }, "era"), tokenToString = (token) => {
+    }, era = (length) => knownEnglish ? eraForDateTime(dt, length) : string2({ era: length }, "era"), tokenToString = (token) => {
       switch (token) {
         case "S":
           return this.num(dt.millisecond);
@@ -20867,9 +20866,9 @@ class Formatter {
         case "a":
           return meridiem();
         case "d":
-          return useDateTimeFormatter ? string({ day: "numeric" }, "day") : this.num(dt.day);
+          return useDateTimeFormatter ? string2({ day: "numeric" }, "day") : this.num(dt.day);
         case "dd":
-          return useDateTimeFormatter ? string({ day: "2-digit" }, "day") : this.num(dt.day, 2);
+          return useDateTimeFormatter ? string2({ day: "2-digit" }, "day") : this.num(dt.day, 2);
         case "c":
           return this.num(dt.weekday);
         case "ccc":
@@ -20887,9 +20886,9 @@ class Formatter {
         case "EEEEE":
           return weekday("narrow", false);
         case "L":
-          return useDateTimeFormatter ? string({ month: "numeric", day: "numeric" }, "month") : this.num(dt.month);
+          return useDateTimeFormatter ? string2({ month: "numeric", day: "numeric" }, "month") : this.num(dt.month);
         case "LL":
-          return useDateTimeFormatter ? string({ month: "2-digit", day: "numeric" }, "month") : this.num(dt.month, 2);
+          return useDateTimeFormatter ? string2({ month: "2-digit", day: "numeric" }, "month") : this.num(dt.month, 2);
         case "LLL":
           return month("short", true);
         case "LLLL":
@@ -20897,9 +20896,9 @@ class Formatter {
         case "LLLLL":
           return month("narrow", true);
         case "M":
-          return useDateTimeFormatter ? string({ month: "numeric" }, "month") : this.num(dt.month);
+          return useDateTimeFormatter ? string2({ month: "numeric" }, "month") : this.num(dt.month);
         case "MM":
-          return useDateTimeFormatter ? string({ month: "2-digit" }, "month") : this.num(dt.month, 2);
+          return useDateTimeFormatter ? string2({ month: "2-digit" }, "month") : this.num(dt.month, 2);
         case "MMM":
           return month("short", false);
         case "MMMM":
@@ -20907,13 +20906,13 @@ class Formatter {
         case "MMMMM":
           return month("narrow", false);
         case "y":
-          return useDateTimeFormatter ? string({ year: "numeric" }, "year") : this.num(dt.year);
+          return useDateTimeFormatter ? string2({ year: "numeric" }, "year") : this.num(dt.year);
         case "yy":
-          return useDateTimeFormatter ? string({ year: "2-digit" }, "year") : this.num(dt.year.toString().slice(-2), 2);
+          return useDateTimeFormatter ? string2({ year: "2-digit" }, "year") : this.num(dt.year.toString().slice(-2), 2);
         case "yyyy":
-          return useDateTimeFormatter ? string({ year: "numeric" }, "year") : this.num(dt.year, 4);
+          return useDateTimeFormatter ? string2({ year: "numeric" }, "year") : this.num(dt.year, 4);
         case "yyyyyy":
-          return useDateTimeFormatter ? string({ year: "numeric" }, "year") : this.num(dt.year, 6);
+          return useDateTimeFormatter ? string2({ year: "numeric" }, "year") : this.num(dt.year, 6);
         case "G":
           return era("short");
         case "GG":
@@ -21003,7 +21002,7 @@ class Zone {
   offsetName(ts, opts) {
     throw new ZoneIsAbstractError();
   }
-  formatOffset(ts, format) {
+  formatOffset(ts, format3) {
     throw new ZoneIsAbstractError();
   }
   offset(ts) {
@@ -21033,11 +21032,11 @@ class SystemZone extends Zone {
   get isUniversal() {
     return false;
   }
-  offsetName(ts, { format, locale }) {
-    return parseZoneInfo(ts, format, locale);
+  offsetName(ts, { format: format3, locale }) {
+    return parseZoneInfo(ts, format3, locale);
   }
-  formatOffset(ts, format) {
-    return formatOffset(this.offset(ts), format);
+  formatOffset(ts, format3) {
+    return formatOffset(this.offset(ts), format3);
   }
   offset(ts) {
     return -new Date(ts).getTimezoneOffset();
@@ -21081,7 +21080,7 @@ function partsOffset(dtf, date) {
   const formatted = dtf.formatToParts(date), filled = [];
   for (let i = 0; i < formatted.length; i++) {
     const { type, value } = formatted[i], pos = typeToPos[type];
-    if (!isUndefined(pos)) {
+    if (!isUndefined$1(pos)) {
       filled[pos] = parseInt(value, 10);
     }
   }
@@ -21127,11 +21126,11 @@ class IANAZone extends Zone {
   get isUniversal() {
     return false;
   }
-  offsetName(ts, { format, locale }) {
-    return parseZoneInfo(ts, format, locale, this.name);
+  offsetName(ts, { format: format3, locale }) {
+    return parseZoneInfo(ts, format3, locale, this.name);
   }
-  formatOffset(ts, format) {
-    return formatOffset(this.offset(ts), format);
+  formatOffset(ts, format3) {
+    return formatOffset(this.offset(ts), format3);
   }
   offset(ts) {
     const date = new Date(ts);
@@ -21193,8 +21192,8 @@ class FixedOffsetZone extends Zone {
   offsetName() {
     return this.name;
   }
-  formatOffset(ts, format) {
-    return formatOffset(this.fixed, format);
+  formatOffset(ts, format3) {
+    return formatOffset(this.fixed, format3);
   }
   get isUniversal() {
     return true;
@@ -21240,11 +21239,11 @@ class InvalidZone extends Zone {
   }
 }
 function normalizeZone(input, defaultZone2) {
-  if (isUndefined(input) || input === null) {
+  if (isUndefined$1(input) || input === null) {
     return defaultZone2;
   } else if (input instanceof Zone) {
     return input;
-  } else if (isString(input)) {
+  } else if (isString$1(input)) {
     const lowered = input.toLowerCase();
     if (lowered === "local" || lowered === "system")
       return defaultZone2;
@@ -21252,7 +21251,7 @@ function normalizeZone(input, defaultZone2) {
       return FixedOffsetZone.utcInstance;
     else
       return FixedOffsetZone.parseSpecifier(lowered) || IANAZone.create(input);
-  } else if (isNumber(input)) {
+  } else if (isNumber$1(input)) {
     return FixedOffsetZone.instance(input);
   } else if (typeof input === "object" && input.offset && typeof input.offset === "number") {
     return input;
@@ -21557,18 +21556,18 @@ class Locale {
   redefaultToSystem(alts = {}) {
     return this.clone(__spreadProps(__spreadValues({}, alts), { defaultToEN: false }));
   }
-  months(length, format = false, defaultOK = true) {
+  months(length, format3 = false, defaultOK = true) {
     return listStuff(this, length, defaultOK, months, () => {
-      const intl = format ? { month: length, day: "numeric" } : { month: length }, formatStr = format ? "format" : "standalone";
+      const intl = format3 ? { month: length, day: "numeric" } : { month: length }, formatStr = format3 ? "format" : "standalone";
       if (!this.monthsCache[formatStr][length]) {
         this.monthsCache[formatStr][length] = mapMonths((dt) => this.extract(dt, intl, "month"));
       }
       return this.monthsCache[formatStr][length];
     });
   }
-  weekdays(length, format = false, defaultOK = true) {
+  weekdays(length, format3 = false, defaultOK = true) {
     return listStuff(this, length, defaultOK, weekdays, () => {
-      const intl = format ? { weekday: length, year: "numeric", month: "long", day: "numeric" } : { weekday: length }, formatStr = format ? "format" : "standalone";
+      const intl = format3 ? { weekday: length, year: "numeric", month: "long", day: "numeric" } : { weekday: length }, formatStr = format3 ? "format" : "standalone";
       if (!this.weekdaysCache[formatStr][length]) {
         this.weekdaysCache[formatStr][length] = mapWeekdays((dt) => this.extract(dt, intl, "weekday"));
       }
@@ -21626,11 +21625,11 @@ function combineExtractors(...extractors) {
     return [__spreadValues(__spreadValues({}, mergedVals), val), mergedZone || zone, next];
   }, [{}, null, 1]).slice(0, 2);
 }
-function parse(s2, ...patterns) {
+function parse(s2, ...patterns2) {
   if (s2 == null) {
     return [null, null];
   }
-  for (const [regex, extractor] of patterns) {
+  for (const [regex, extractor] of patterns2) {
     const m2 = regex.exec(s2);
     if (m2) {
       return extractor(m2);
@@ -21651,7 +21650,7 @@ function simpleParse(...keys) {
 const offsetRegex = /(?:(Z)|([+-]\d\d)(?::?(\d\d))?)/, isoTimeBaseRegex = /(\d\d)(?::?(\d\d)(?::?(\d\d)(?:[.,](\d{1,30}))?)?)?/, isoTimeRegex = RegExp(`${isoTimeBaseRegex.source}${offsetRegex.source}?`), isoTimeExtensionRegex = RegExp(`(?:T${isoTimeRegex.source})?`), isoYmdRegex = /([+-]\d{6}|\d{4})(?:-?(\d\d)(?:-?(\d\d))?)?/, isoWeekRegex = /(\d{4})-?W(\d\d)(?:-?(\d))?/, isoOrdinalRegex = /(\d{4})-?(\d{3})/, extractISOWeekData = simpleParse("weekYear", "weekNumber", "weekDay"), extractISOOrdinalData = simpleParse("year", "ordinal"), sqlYmdRegex = /(\d{4})-(\d\d)-(\d\d)/, sqlTimeRegex = RegExp(`${isoTimeBaseRegex.source} ?(?:${offsetRegex.source}|(${ianaRegex.source}))?`), sqlTimeExtensionRegex = RegExp(`(?: ${sqlTimeRegex.source})?`);
 function int(match2, pos, fallback) {
   const m2 = match2[pos];
-  return isUndefined(m2) ? fallback : parseInteger(m2);
+  return isUndefined$1(m2) ? fallback : parseInteger(m2);
 }
 function extractISOYmd(match2, cursor) {
   const item = {
@@ -21880,9 +21879,9 @@ const orderedUnits$1 = [
   "milliseconds"
 ];
 const reverseUnits = orderedUnits$1.slice(0).reverse();
-function clone$1(dur, alts, clear = false) {
+function clone$1(dur, alts, clear2 = false) {
   const conf = {
-    values: clear ? alts.values : __spreadValues(__spreadValues({}, dur.values), alts.values || {}),
+    values: clear2 ? alts.values : __spreadValues(__spreadValues({}, dur.values), alts.values || {}),
     loc: dur.loc.clone(alts.loc),
     conversionAccuracy: alts.conversionAccuracy || dur.conversionAccuracy
   };
@@ -21898,7 +21897,7 @@ function convert(matrix, fromMap, fromUnit, toMap, toUnit) {
 }
 function normalizeValues(matrix, vals) {
   reverseUnits.reduce((previous, current) => {
-    if (!isUndefined(vals[current])) {
+    if (!isUndefined$1(vals[current])) {
       if (previous) {
         convert(matrix, vals, previous, vals, current);
       }
@@ -21932,7 +21931,7 @@ class Duration {
     });
   }
   static fromDurationLike(durationLike) {
-    if (isNumber(durationLike)) {
+    if (isNumber$1(durationLike)) {
       return Duration.fromMillis(durationLike);
     } else if (Duration.isDuration(durationLike)) {
       return durationLike;
@@ -22012,7 +22011,7 @@ class Duration {
   toHuman(opts = {}) {
     const l2 = orderedUnits$1.map((unit) => {
       const val = this.values[unit];
-      if (isUndefined(val)) {
+      if (isUndefined$1(val)) {
         return null;
       }
       return this.loc.numberFormatter(__spreadProps(__spreadValues({ style: "unit", unitDisplay: "long" }, opts), { unit: unit.slice(0, -1) })).format(val);
@@ -22091,7 +22090,7 @@ class Duration {
       return this;
     const dur = Duration.fromDurationLike(duration), result = {};
     for (const k2 of orderedUnits$1) {
-      if (hasOwnProperty(dur.values, k2) || hasOwnProperty(this.values, k2)) {
+      if (hasOwnProperty$2(dur.values, k2) || hasOwnProperty$2(this.values, k2)) {
         result[k2] = dur.get(k2) + this.get(k2);
       }
     }
@@ -22155,7 +22154,7 @@ class Duration {
           own += this.matrix[ak][k2] * accumulated[ak];
           accumulated[ak] = 0;
         }
-        if (isNumber(vals[k2])) {
+        if (isNumber$1(vals[k2])) {
           own += vals[k2];
         }
         const i = Math.trunc(own);
@@ -22166,7 +22165,7 @@ class Duration {
             convert(this.matrix, vals, down, built, k2);
           }
         }
-      } else if (isNumber(vals[k2])) {
+      } else if (isNumber$1(vals[k2])) {
         accumulated[k2] = vals[k2];
       }
     }
@@ -22229,10 +22228,10 @@ class Duration {
     if (!this.loc.equals(other.loc)) {
       return false;
     }
-    function eq(v1, v2) {
-      if (v1 === void 0 || v1 === 0)
+    function eq(v12, v2) {
+      if (v12 === void 0 || v12 === 0)
         return v2 === void 0 || v2 === 0;
-      return v1 === v2;
+      return v12 === v2;
     }
     for (const u2 of orderedUnits$1) {
       if (!eq(this.values[u2], other.values[u2])) {
@@ -22892,7 +22891,7 @@ function match(input, regex, handlers) {
     const all = {};
     let matchIndex = 1;
     for (const i in handlers) {
-      if (hasOwnProperty(handlers, i)) {
+      if (hasOwnProperty$2(handlers, i)) {
         const h2 = handlers[i], groups = h2.groups ? h2.groups + 1 : 1;
         if (!h2.literal && h2.token) {
           all[h2.token.val[0]] = h2.deser(matches.slice(matchIndex, matchIndex + groups));
@@ -22941,19 +22940,19 @@ function dateTimeFromMatches(matches) {
   };
   let zone = null;
   let specificOffset;
-  if (!isUndefined(matches.z)) {
+  if (!isUndefined$1(matches.z)) {
     zone = IANAZone.create(matches.z);
   }
-  if (!isUndefined(matches.Z)) {
+  if (!isUndefined$1(matches.Z)) {
     if (!zone) {
       zone = new FixedOffsetZone(matches.Z);
     }
     specificOffset = matches.Z;
   }
-  if (!isUndefined(matches.q)) {
+  if (!isUndefined$1(matches.q)) {
     matches.M = (matches.q - 1) * 3 + 1;
   }
-  if (!isUndefined(matches.h)) {
+  if (!isUndefined$1(matches.h)) {
     if (matches.h < 12 && matches.a === 1) {
       matches.h += 12;
     } else if (matches.h === 12 && matches.a === 0) {
@@ -22963,7 +22962,7 @@ function dateTimeFromMatches(matches) {
   if (matches.G === 0 && matches.y) {
     matches.y = -matches.y;
   }
-  if (!isUndefined(matches.u)) {
+  if (!isUndefined$1(matches.u)) {
     matches.S = parseMillis(matches.u);
   }
   const vals = Object.keys(matches).reduce((r2, k2) => {
@@ -23001,20 +23000,20 @@ function maybeExpandMacroToken(token, locale) {
 function expandMacroTokens(tokens, locale) {
   return Array.prototype.concat(...tokens.map((t2) => maybeExpandMacroToken(t2, locale)));
 }
-function explainFromTokens(locale, input, format) {
-  const tokens = expandMacroTokens(Formatter.parseFormat(format), locale), units = tokens.map((t2) => unitForToken(t2, locale)), disqualifyingUnit = units.find((t2) => t2.invalidReason);
+function explainFromTokens(locale, input, format3) {
+  const tokens = expandMacroTokens(Formatter.parseFormat(format3), locale), units = tokens.map((t2) => unitForToken(t2, locale)), disqualifyingUnit = units.find((t2) => t2.invalidReason);
   if (disqualifyingUnit) {
     return { input, tokens, invalidReason: disqualifyingUnit.invalidReason };
   } else {
     const [regexString, handlers] = buildRegex(units), regex = RegExp(regexString, "i"), [rawMatches, matches] = match(input, regex, handlers), [result, zone, specificOffset] = matches ? dateTimeFromMatches(matches) : [null, null, void 0];
-    if (hasOwnProperty(matches, "a") && hasOwnProperty(matches, "H")) {
+    if (hasOwnProperty$2(matches, "a") && hasOwnProperty$2(matches, "H")) {
       throw new ConflictingSpecificationError("Can't include meridiem when specifying 24-hour format");
     }
     return { input, tokens, regex, rawMatches, matches, result, zone, specificOffset };
   }
 }
-function parseFromTokens(locale, input, format) {
-  const { result, zone, specificOffset, invalidReason } = explainFromTokens(locale, input, format);
+function parseFromTokens(locale, input, format3) {
+  const { result, zone, specificOffset, invalidReason } = explainFromTokens(locale, input, format3);
   return [result, zone, specificOffset, invalidReason];
 }
 const nonLeapLadder = [0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334], leapLadder = [0, 31, 60, 91, 121, 152, 182, 213, 244, 274, 305, 335];
@@ -23190,7 +23189,7 @@ function adjustTime(inst, dur) {
   }
   return { ts, o: o2 };
 }
-function parseDataToDateTime(parsed, parsedZone, opts, format, text, specificOffset) {
+function parseDataToDateTime(parsed, parsedZone, opts, format3, text, specificOffset) {
   const { setZone, zone } = opts;
   if (parsed && Object.keys(parsed).length !== 0) {
     const interpretationZone = parsedZone || zone, inst = DateTime.fromObject(parsed, __spreadProps(__spreadValues({}, opts), {
@@ -23199,14 +23198,14 @@ function parseDataToDateTime(parsed, parsedZone, opts, format, text, specificOff
     }));
     return setZone ? inst : inst.setZone(zone);
   } else {
-    return DateTime.invalid(new Invalid("unparsable", `the input "${text}" can't be parsed as ${format}`));
+    return DateTime.invalid(new Invalid("unparsable", `the input "${text}" can't be parsed as ${format3}`));
   }
 }
-function toTechFormat(dt, format, allowZ = true) {
+function toTechFormat(dt, format3, allowZ = true) {
   return dt.isValid ? Formatter.create(Locale.create("en-US"), {
     allowZ,
     forceSimple: true
-  }).formatDateTimeFromString(dt, format) : null;
+  }).formatDateTimeFromString(dt, format3) : null;
 }
 function toISODate(o2, extended) {
   const longFormat = o2.c.year > 9999 || o2.c.year < 0;
@@ -23324,9 +23323,9 @@ function normalizeUnit(unit) {
 function quickDT(obj, opts) {
   const zone = normalizeZone(opts.zone, Settings.defaultZone), loc = Locale.fromObject(opts), tsNow = Settings.now();
   let ts, o2;
-  if (!isUndefined(obj.year)) {
+  if (!isUndefined$1(obj.year)) {
     for (const u2 of orderedUnits) {
-      if (isUndefined(obj[u2])) {
+      if (isUndefined$1(obj[u2])) {
         obj[u2] = defaultUnitValues[u2];
       }
     }
@@ -23342,7 +23341,7 @@ function quickDT(obj, opts) {
   return new DateTime({ ts, zone, loc, o: o2 });
 }
 function diffRelative(start, end, opts) {
-  const round = isUndefined(opts.round) ? true : opts.round, format = (c2, unit) => {
+  const round = isUndefined$1(opts.round) ? true : opts.round, format3 = (c2, unit) => {
     c2 = roundTo(c2, round || opts.calendary ? 0 : 2, true);
     const formatter = end.loc.clone(opts).relFormatter(opts);
     return formatter.format(c2, unit);
@@ -23357,15 +23356,15 @@ function diffRelative(start, end, opts) {
     }
   };
   if (opts.unit) {
-    return format(differ(opts.unit), opts.unit);
+    return format3(differ(opts.unit), opts.unit);
   }
   for (const unit of opts.units) {
     const count = differ(unit);
     if (Math.abs(count) >= 1) {
-      return format(count, unit);
+      return format3(count, unit);
     }
   }
-  return format(start > end ? -0 : 0, opts.units[opts.units.length - 1]);
+  return format3(start > end ? -0 : 0, opts.units[opts.units.length - 1]);
 }
 function lastOpts(argList) {
   let opts = {}, args;
@@ -23381,7 +23380,7 @@ class DateTime {
   constructor(config2) {
     const zone = config2.zone || Settings.defaultZone;
     let invalid = config2.invalid || (Number.isNaN(config2.ts) ? new Invalid("invalid input") : null) || (!zone.isValid ? unsupportedZone(zone) : null);
-    this.ts = isUndefined(config2.ts) ? Settings.now() : config2.ts;
+    this.ts = isUndefined$1(config2.ts) ? Settings.now() : config2.ts;
     let c2 = null, o2 = null;
     if (!invalid) {
       const unchanged = config2.old && config2.old.ts === this.ts && config2.old.zone.equals(zone);
@@ -23431,7 +23430,7 @@ class DateTime {
     });
   }
   static fromMillis(milliseconds, options = {}) {
-    if (!isNumber(milliseconds)) {
+    if (!isNumber$1(milliseconds)) {
       throw new InvalidArgumentError(`fromMillis requires a numerical input, but received a ${typeof milliseconds} with value ${milliseconds}`);
     } else if (milliseconds < -MAX_DATE || milliseconds > MAX_DATE) {
       return DateTime.invalid("Timestamp out of range");
@@ -23444,7 +23443,7 @@ class DateTime {
     }
   }
   static fromSeconds(seconds, options = {}) {
-    if (!isNumber(seconds)) {
+    if (!isNumber$1(seconds)) {
       throw new InvalidArgumentError("fromSeconds requires a numerical input");
     } else {
       return new DateTime({
@@ -23460,7 +23459,7 @@ class DateTime {
     if (!zoneToUse.isValid) {
       return DateTime.invalid(unsupportedZone(zoneToUse));
     }
-    const tsNow = Settings.now(), offsetProvis = !isUndefined(opts.specificOffset) ? opts.specificOffset : zoneToUse.offset(tsNow), normalized = normalizeObject(obj, normalizeUnit), containsOrdinal = !isUndefined(normalized.ordinal), containsGregorYear = !isUndefined(normalized.year), containsGregorMD = !isUndefined(normalized.month) || !isUndefined(normalized.day), containsGregor = containsGregorYear || containsGregorMD, definiteWeekDef = normalized.weekYear || normalized.weekNumber, loc = Locale.fromObject(opts);
+    const tsNow = Settings.now(), offsetProvis = !isUndefined$1(opts.specificOffset) ? opts.specificOffset : zoneToUse.offset(tsNow), normalized = normalizeObject(obj, normalizeUnit), containsOrdinal = !isUndefined$1(normalized.ordinal), containsGregorYear = !isUndefined$1(normalized.year), containsGregorMD = !isUndefined$1(normalized.month) || !isUndefined$1(normalized.day), containsGregor = containsGregorYear || containsGregorMD, definiteWeekDef = normalized.weekYear || normalized.weekNumber, loc = Locale.fromObject(opts);
     if ((containsGregor || containsOrdinal) && definiteWeekDef) {
       throw new ConflictingSpecificationError("Can't mix weekYear/weekNumber units with year/month/day or ordinals");
     }
@@ -23484,7 +23483,7 @@ class DateTime {
     let foundFirst = false;
     for (const u2 of units) {
       const v2 = normalized[u2];
-      if (!isUndefined(v2)) {
+      if (!isUndefined$1(v2)) {
         foundFirst = true;
       } else if (foundFirst) {
         normalized[u2] = defaultValues[u2];
@@ -23520,7 +23519,7 @@ class DateTime {
     return parseDataToDateTime(vals, parsedZone, opts, "HTTP", opts);
   }
   static fromFormat(text, fmt, opts = {}) {
-    if (isUndefined(text) || isUndefined(fmt)) {
+    if (isUndefined$1(text) || isUndefined$1(fmt)) {
       throw new InvalidArgumentError("fromFormat requires an input string and a format");
     }
     const { locale = null, numberingSystem = null } = opts, localeToUse = Locale.fromOpts({
@@ -23711,7 +23710,7 @@ class DateTime {
   set(values) {
     if (!this.isValid)
       return this;
-    const normalized = normalizeObject(values, normalizeUnit), settingWeekStuff = !isUndefined(normalized.weekYear) || !isUndefined(normalized.weekNumber) || !isUndefined(normalized.weekday), containsOrdinal = !isUndefined(normalized.ordinal), containsGregorYear = !isUndefined(normalized.year), containsGregorMD = !isUndefined(normalized.month) || !isUndefined(normalized.day), containsGregor = containsGregorYear || containsGregorMD, definiteWeekDef = normalized.weekYear || normalized.weekNumber;
+    const normalized = normalizeObject(values, normalizeUnit), settingWeekStuff = !isUndefined$1(normalized.weekYear) || !isUndefined$1(normalized.weekNumber) || !isUndefined$1(normalized.weekday), containsOrdinal = !isUndefined$1(normalized.ordinal), containsGregorYear = !isUndefined$1(normalized.year), containsGregorMD = !isUndefined$1(normalized.month) || !isUndefined$1(normalized.day), containsGregor = containsGregorYear || containsGregorMD, definiteWeekDef = normalized.weekYear || normalized.weekNumber;
     if ((containsGregor || containsOrdinal) && definiteWeekDef) {
       throw new ConflictingSpecificationError("Can't mix weekYear/weekNumber units with year/month/day or ordinals");
     }
@@ -23721,11 +23720,11 @@ class DateTime {
     let mixed;
     if (settingWeekStuff) {
       mixed = weekToGregorian(__spreadValues(__spreadValues({}, gregorianToWeek(this.c)), normalized));
-    } else if (!isUndefined(normalized.ordinal)) {
+    } else if (!isUndefined$1(normalized.ordinal)) {
       mixed = ordinalToGregorian(__spreadValues(__spreadValues({}, gregorianToOrdinal(this.c)), normalized));
     } else {
       mixed = __spreadValues(__spreadValues({}, this.toObject()), normalized);
-      if (isUndefined(normalized.day)) {
+      if (isUndefined$1(normalized.day)) {
         mixed.day = Math.min(daysInMonth(mixed.year, mixed.month), mixed.day);
       }
     }
@@ -23787,7 +23786,7 @@ class DateTime {
     return this.isValid ? Formatter.create(this.loc.clone(opts), opts).formatDateTimeParts(this) : [];
   }
   toISO({
-    format = "extended",
+    format: format3 = "extended",
     suppressSeconds = false,
     suppressMilliseconds = false,
     includeOffset = true
@@ -23795,17 +23794,17 @@ class DateTime {
     if (!this.isValid) {
       return null;
     }
-    const ext = format === "extended";
+    const ext = format3 === "extended";
     let c2 = toISODate(this, ext);
     c2 += "T";
     c2 += toISOTime(this, ext, suppressSeconds, suppressMilliseconds, includeOffset);
     return c2;
   }
-  toISODate({ format = "extended" } = {}) {
+  toISODate({ format: format3 = "extended" } = {}) {
     if (!this.isValid) {
       return null;
     }
-    return toISODate(this, format === "extended");
+    return toISODate(this, format3 === "extended");
   }
   toISOWeekDate() {
     return toTechFormat(this, "kkkk-'W'WW-c");
@@ -23815,13 +23814,13 @@ class DateTime {
     suppressSeconds = false,
     includeOffset = true,
     includePrefix = false,
-    format = "extended"
+    format: format3 = "extended"
   } = {}) {
     if (!this.isValid) {
       return null;
     }
     let c2 = includePrefix ? "T" : "";
-    return c2 + toISOTime(this, format === "extended", suppressSeconds, suppressMilliseconds, includeOffset);
+    return c2 + toISOTime(this, format3 === "extended", suppressSeconds, suppressMilliseconds, includeOffset);
   }
   toRFC2822() {
     return toTechFormat(this, "EEE, dd LLL yyyy HH:mm:ss ZZZ", false);
@@ -24032,7 +24031,7 @@ class DateTime {
 function friendlyDateTime(dateTimeish) {
   if (DateTime.isDateTime(dateTimeish)) {
     return dateTimeish;
-  } else if (dateTimeish && dateTimeish.valueOf && isNumber(dateTimeish.valueOf())) {
+  } else if (dateTimeish && dateTimeish.valueOf && isNumber$1(dateTimeish.valueOf())) {
     return DateTime.fromJSDate(dateTimeish);
   } else if (dateTimeish && typeof dateTimeish === "object") {
     return DateTime.fromObject(dateTimeish);
@@ -24286,281 +24285,281 @@ var aa;
 (function(a2) {
   a2.Critical = "Critical", a2.Error = "Error", a2.Fatal = "Fatal", a2.Warning = "Warning";
 })(aa || (aa = {}));
-var i$1;
+var i$2;
 (function(a2) {
   a2.Contains = "contains", a2.HasCharacterCount = "has-character-count", a2.HasNumberCount = "has-number-count", a2.HasLetterCount = "has-letter-count", a2.HasLowercaseCount = "has-lowercase-count", a2.HasSpacesCount = "has-spaces-count", a2.HasSymbolCount = "has-symbol-count", a2.HasUppercaseCount = "has-uppercase-count", a2.IsAfter = "is-after", a2.IsAfterOrEqual = "is-after-or-equal", a2.IsAirport = "is-airport", a2.IsAlpha = "is-alpha", a2.IsAlphanumeric = "is-alphanumeric", a2.IsAlgorithmHash = "is-algorithm-hash", a2.IsAscii = "is-ascii", a2.IsBase64 = "is-base-64", a2.IsBefore = "is-before", a2.IsBeforeOrAfter = "is-before-or-after", a2.IsBeforeOrEqual = "is-before-or-equal", a2.IsBetween = "is-between", a2.IsBIC = "is-bic", a2.IsBitcoinAddress = "is-bitcoin-address", a2.IsBoolean = "is-boolean", a2.IsColor = "is-color", a2.IsComplexEnough = "is-complex-enough", a2.IsCountry = "is-country", a2.IsCreditCard = "is-credit-card", a2.IsCurrency = "is-currency", a2.IsDataURI = "is-data-uri", a2.IsDate = "is-date", a2.IsDateRange = "is-date-range", a2.IsDateTime = "is-date-time", a2.IsDayOfMonth = "is-day-of-month", a2.IsDecimal = "is-decimal", a2.IsDivisibleBy = "is-divisible-by", a2.IsDomainName = "is-domain-name", a2.IsEmailAddress = "is-email-address", a2.IsEthereumAddress = "is-ethereum-address", a2.IsEAN = "is-ean", a2.IsEIN = "is-ein", a2.IsEqual = "is-equal", a2.IsEvenNumber = "is-even-number", a2.IsFloat = "is-float", a2.IsIBAN = "is-iban", a2.IsGreaterThan = "greater-than", a2.IsGreaterThanOrEqual = "greater-than-or-equal", a2.IsHSLColor = "is-hsl-color", a2.IsHexColor = "is-hex-color", a2.IsHexadecimal = "is-hexadecimal", a2.IsIdentityCardCode = "is-identity-card-code", a2.IsIMEI = "is-imei", a2.IsInIPAddressRange = "is-in-ip-address-range", a2.IsInList = "is-in-list", a2.IsInTheLast = "is-in-the-last", a2.IsInteger = "is-integer", a2.IsIPAddress = "is-ip-address", a2.IsIPAddressRange = "is-ip-address-range", a2.IsISBN = "is-isbn", a2.IsISIN = "is-isin", a2.IsISMN = "is-ismn", a2.IsISRC = "is-isrc", a2.IsISSN = "is-issn", a2.IsISO4217 = "is-iso-4217", a2.IsISO8601 = "is-iso-8601", a2.IsISO31661Alpha2 = "is-iso-31661-alpha-2", a2.IsISO31661Alpha3 = "is-iso-31661-alpha-3", a2.IsJSON = "is-json", a2.IsLanguage = "is-language", a2.IsLatitude = "is-latitude", a2.IsLongitude = "is-longitude", a2.IsLengthEqual = "is-length-equal", a2.IsLengthGreaterThan = "is-length-greater-than", a2.IsLengthGreaterThanOrEqual = "is-length-great-than-or-equal", a2.IsLengthLessThan = "is-length-less-than", a2.IsLengthLessThanOrEqual = "is-length-less-than-or-equal", a2.IsLessThan = "less-than", a2.IsLessThanOrEqual = "less-than-or-equal", a2.IsLicensePlateNumber = "is-license-plate-number", a2.IsLowercase = "is-lowercase", a2.IsOctal = "is-octal", a2.IsMACAddress = "is-mac-address", a2.IsMD5 = "is-md5", a2.IsMagnetURI = "is-magnet-uri", a2.IsMarkdown = "is-markdown", a2.IsMimeType = "is-mime-type", a2.IsMonth = "is-month", a2.IsNegativeNumber = "is-negative-number", a2.IsNotDate = "is-not-date", a2.IsNotEqual = "is-not-equal", a2.IsNotInIPAddressRange = "is-not-in-ip-address-range", a2.IsNotInList = "is-not-in-list", a2.IsNotNull = "is-not-null", a2.IsNotRegexMatch = "is-not-regex-match", a2.IsNotToday = "is-not-today", a2.IsNumber = "is-number", a2.IsNumeric = "is-numeric", a2.IsOddNumber = "is-odd-number", a2.IsPassportNumber = "is-passport-number", a2.IsPhoneNumber = "is-phone-number", a2.IsPort = "is-port", a2.IsPositiveNumber = "is-positive-number", a2.IsPostalCode = "is-postal-code", a2.IsProvince = "is-province", a2.IsRGBColor = "is-rgb-color", a2.IsRegexMatch = "is-regex-match", a2.IsRequired = "is-required", a2.IsSemanticVersion = "is-semantic-version", a2.IsSlug = "is-slug", a2.IsSSN = "is-ssn", a2.IsState = "is-state", a2.IsStreetAddress = "is-street-address", a2.IsString = "is-string", a2.IsStrongPassword = "is-strong-password", a2.IsTags = "is-tags", a2.IsTaxIDNumber = "is-tax-id-number", a2.IsThisMonth = "is-this-month", a2.IsThisQuarter = "is-this-quarter", a2.IsThisWeek = "is-this-week", a2.IsThisWeekend = "is-this-weekend", a2.IsThisYear = "is-this-year", a2.IsTime = "is-time", a2.IsTimeOfDay = "is-time-of-day", a2.IsTimeRange = "is-time-range", a2.IsToday = "is-today", a2.IsURL = "is-url", a2.IsUUID = "is-uuid", a2.IsUppercase = "is-uppercase", a2.IsUsernameAvailable = "is-username-available", a2.IsValidStreetAddress = "is-valid-street-address", a2.IsVATIDNumber = "is-vat-id-number", a2.IsWeekday = "is-weekday", a2.IsWeekend = "is-weekend", a2.IsYear = "is-year";
-})(i$1 || (i$1 = {}));
+})(i$2 || (i$2 = {}));
 var ea;
 (function(a2) {
   a2.IsAuthenticated = "is-authenticated", a2.IsNotAuthenticated = "is-not-authenticated", a2.IsUsernameAvailable = "is-username-available", a2.PasswordMismatch = "password-mismatch";
 })(ea || (ea = {}));
 var ia;
 (function(a2) {
-  a2[a2.IsHSLColor = i$1.IsHSLColor] = "IsHSLColor", a2[a2.IsHexColor = i$1.IsHexColor] = "IsHexColor", a2[a2.IsNotNull = i$1.IsNotNull] = "IsNotNull", a2[a2.IsRGBColor = i$1.IsRGBColor] = "IsRGBColor", a2[a2.IsString = i$1.IsString] = "IsString";
+  a2[a2.IsHSLColor = i$2.IsHSLColor] = "IsHSLColor", a2[a2.IsHexColor = i$2.IsHexColor] = "IsHexColor", a2[a2.IsNotNull = i$2.IsNotNull] = "IsNotNull", a2[a2.IsRGBColor = i$2.IsRGBColor] = "IsRGBColor", a2[a2.IsString = i$2.IsString] = "IsString";
 })(ia || (ia = {}));
 var na;
 (function(a2) {
-  a2[a2.IsBetween = i$1.IsBetween] = "IsBetween", a2[a2.IsCurrency = i$1.IsCurrency] = "IsCurrency", a2[a2.IsDecimal = i$1.IsDecimal] = "IsDecimal", a2[a2.IsDivisibleBy = i$1.IsDivisibleBy] = "IsDivisibleBy", a2[a2.IsEvenNumber = i$1.IsEvenNumber] = "IsEvenNumber", a2[a2.IsFloat = i$1.IsFloat] = "IsFloat", a2[a2.IsGreaterThan = i$1.IsGreaterThan] = "IsGreaterThan", a2[a2.IsGreaterThanOrEqual = i$1.IsGreaterThanOrEqual] = "IsGreaterThanOrEqual", a2[a2.IsInteger = i$1.IsInteger] = "IsInteger", a2[a2.IsISO8601 = i$1.IsISO8601] = "IsISO8601", a2[a2.IsLessThan = i$1.IsLessThan] = "IsLessThan", a2[a2.IsLessThanOrEqual = i$1.IsLessThanOrEqual] = "IsLessThanOrEqual", a2[a2.IsNegativeNumber = i$1.IsNegativeNumber] = "IsNegativeNumber", a2[a2.IsNotEqual = i$1.IsNotEqual] = "IsNotEqual", a2[a2.IsNotNull = i$1.IsNotNull] = "IsNotNull", a2[a2.IsNumber = i$1.IsNumber] = "IsNumber", a2[a2.IsOddNumber = i$1.IsOddNumber] = "IsOddNumber", a2[a2.IsPositiveNumber = i$1.IsPositiveNumber] = "IsPositiveNumber";
+  a2[a2.IsBetween = i$2.IsBetween] = "IsBetween", a2[a2.IsCurrency = i$2.IsCurrency] = "IsCurrency", a2[a2.IsDecimal = i$2.IsDecimal] = "IsDecimal", a2[a2.IsDivisibleBy = i$2.IsDivisibleBy] = "IsDivisibleBy", a2[a2.IsEvenNumber = i$2.IsEvenNumber] = "IsEvenNumber", a2[a2.IsFloat = i$2.IsFloat] = "IsFloat", a2[a2.IsGreaterThan = i$2.IsGreaterThan] = "IsGreaterThan", a2[a2.IsGreaterThanOrEqual = i$2.IsGreaterThanOrEqual] = "IsGreaterThanOrEqual", a2[a2.IsInteger = i$2.IsInteger] = "IsInteger", a2[a2.IsISO8601 = i$2.IsISO8601] = "IsISO8601", a2[a2.IsLessThan = i$2.IsLessThan] = "IsLessThan", a2[a2.IsLessThanOrEqual = i$2.IsLessThanOrEqual] = "IsLessThanOrEqual", a2[a2.IsNegativeNumber = i$2.IsNegativeNumber] = "IsNegativeNumber", a2[a2.IsNotEqual = i$2.IsNotEqual] = "IsNotEqual", a2[a2.IsNotNull = i$2.IsNotNull] = "IsNotNull", a2[a2.IsNumber = i$2.IsNumber] = "IsNumber", a2[a2.IsOddNumber = i$2.IsOddNumber] = "IsOddNumber", a2[a2.IsPositiveNumber = i$2.IsPositiveNumber] = "IsPositiveNumber";
 })(na || (na = {}));
 var sa;
 (function(a2) {
-  a2[a2.IsBitcoinAddress = i$1.IsBitcoinAddress] = "IsBitcoinAddress", a2[a2.IsEqual = i$1.IsEqual] = "IsEqual", a2[a2.IsNotEqual = i$1.IsNotEqual] = "IsNotEqual", a2[a2.IsNotNull = i$1.IsNotNull] = "IsNotNull";
+  a2[a2.IsBitcoinAddress = i$2.IsBitcoinAddress] = "IsBitcoinAddress", a2[a2.IsEqual = i$2.IsEqual] = "IsEqual", a2[a2.IsNotEqual = i$2.IsNotEqual] = "IsNotEqual", a2[a2.IsNotNull = i$2.IsNotNull] = "IsNotNull";
 })(sa || (sa = {}));
 var ua;
 (function(a2) {
-  a2[a2.IsEthereumAddress = i$1.IsEthereumAddress] = "IsEthereumAddress", a2[a2.IsEqual = i$1.IsEqual] = "IsEqual", a2[a2.IsNotEqual = i$1.IsNotEqual] = "IsNotEqual", a2[a2.IsNotNull = i$1.IsNotNull] = "IsNotNull";
+  a2[a2.IsEthereumAddress = i$2.IsEthereumAddress] = "IsEthereumAddress", a2[a2.IsEqual = i$2.IsEqual] = "IsEqual", a2[a2.IsNotEqual = i$2.IsNotEqual] = "IsNotEqual", a2[a2.IsNotNull = i$2.IsNotNull] = "IsNotNull";
 })(ua || (ua = {}));
 var ra;
 (function(a2) {
-  a2[a2.IsEqual = i$1.IsEqual] = "IsEqual", a2[a2.IsJSON = i$1.IsJSON] = "IsJSON", a2[a2.IsLanguage = i$1.IsLanguage] = "IsLanguage", a2[a2.IsNotEqual = i$1.IsNotEqual] = "IsNotEqual", a2[a2.IsNotNull = i$1.IsNotNull] = "IsNotNull";
+  a2[a2.IsEqual = i$2.IsEqual] = "IsEqual", a2[a2.IsJSON = i$2.IsJSON] = "IsJSON", a2[a2.IsLanguage = i$2.IsLanguage] = "IsLanguage", a2[a2.IsNotEqual = i$2.IsNotEqual] = "IsNotEqual", a2[a2.IsNotNull = i$2.IsNotNull] = "IsNotNull";
 })(ra || (ra = {}));
 var ta;
 (function(a2) {
-  a2[a2.IsAlpha = i$1.IsAlpha] = "IsAlpha", a2[a2.IsEqual = i$1.IsEqual] = "IsEqual", a2[a2.IsInList = i$1.IsInList] = "IsInList", a2[a2.IsNotEqual = i$1.IsNotEqual] = "IsNotEqual", a2[a2.IsNotInList = i$1.IsNotInList] = "IsNotInList", a2[a2.IsNotNull = i$1.IsNotNull] = "IsNotNull", a2[a2.IsString = i$1.IsString] = "IsString";
+  a2[a2.IsAlpha = i$2.IsAlpha] = "IsAlpha", a2[a2.IsEqual = i$2.IsEqual] = "IsEqual", a2[a2.IsInList = i$2.IsInList] = "IsInList", a2[a2.IsNotEqual = i$2.IsNotEqual] = "IsNotEqual", a2[a2.IsNotInList = i$2.IsNotInList] = "IsNotInList", a2[a2.IsNotNull = i$2.IsNotNull] = "IsNotNull", a2[a2.IsString = i$2.IsString] = "IsString";
 })(ta || (ta = {}));
 var la;
 (function(a2) {
-  a2[a2.IsAlpha = i$1.IsAlpha] = "IsAlpha", a2[a2.IsCountry = i$1.IsCountry] = "IsCountry", a2[a2.IsEqual = i$1.IsEqual] = "IsEqual", a2[a2.IsInList = i$1.IsInList] = "IsInList", a2[a2.IsNotEqual = i$1.IsNotEqual] = "IsNotEqual", a2[a2.IsNotInList = i$1.IsNotInList] = "IsNotInList", a2[a2.IsNotNull = i$1.IsNotNull] = "IsNotNull", a2[a2.IsString = i$1.IsString] = "IsString";
+  a2[a2.IsAlpha = i$2.IsAlpha] = "IsAlpha", a2[a2.IsCountry = i$2.IsCountry] = "IsCountry", a2[a2.IsEqual = i$2.IsEqual] = "IsEqual", a2[a2.IsInList = i$2.IsInList] = "IsInList", a2[a2.IsNotEqual = i$2.IsNotEqual] = "IsNotEqual", a2[a2.IsNotInList = i$2.IsNotInList] = "IsNotInList", a2[a2.IsNotNull = i$2.IsNotNull] = "IsNotNull", a2[a2.IsString = i$2.IsString] = "IsString";
 })(la || (la = {}));
 var ma;
 (function(a2) {
-  a2[a2.IsEqual = i$1.IsEqual] = "IsEqual", a2[a2.IsFloat = i$1.IsFloat] = "IsFloat", a2[a2.IsNotEqual = i$1.IsNotEqual] = "IsNotEqual", a2[a2.IsNotNull = i$1.IsNotNull] = "IsNotNull", a2[a2.IsNumeric = i$1.IsNumeric] = "IsNumeric";
+  a2[a2.IsEqual = i$2.IsEqual] = "IsEqual", a2[a2.IsFloat = i$2.IsFloat] = "IsFloat", a2[a2.IsNotEqual = i$2.IsNotEqual] = "IsNotEqual", a2[a2.IsNotNull = i$2.IsNotNull] = "IsNotNull", a2[a2.IsNumeric = i$2.IsNumeric] = "IsNumeric";
 })(ma || (ma = {}));
 var oa;
 (function(a2) {
-  a2[a2.IsEqual = i$1.IsEqual] = "IsEqual", a2[a2.IsFloat = i$1.IsFloat] = "IsFloat", a2[a2.IsNotEqual = i$1.IsNotEqual] = "IsNotEqual", a2[a2.IsNotNull = i$1.IsNotNull] = "IsNotNull", a2[a2.IsNumeric = i$1.IsNumeric] = "IsNumeric";
+  a2[a2.IsEqual = i$2.IsEqual] = "IsEqual", a2[a2.IsFloat = i$2.IsFloat] = "IsFloat", a2[a2.IsNotEqual = i$2.IsNotEqual] = "IsNotEqual", a2[a2.IsNotNull = i$2.IsNotNull] = "IsNotNull", a2[a2.IsNumeric = i$2.IsNumeric] = "IsNumeric";
 })(oa || (oa = {}));
 var ca;
 (function(a2) {
-  a2[a2.IsEqual = i$1.IsEqual] = "IsEqual", a2[a2.IsNotEqual = i$1.IsNotEqual] = "IsNotEqual", a2[a2.IsPostalCode = i$1.IsPostalCode] = "IsPostalCode", a2[a2.IsNotNull = i$1.IsNotNull] = "IsNotNull";
+  a2[a2.IsEqual = i$2.IsEqual] = "IsEqual", a2[a2.IsNotEqual = i$2.IsNotEqual] = "IsNotEqual", a2[a2.IsPostalCode = i$2.IsPostalCode] = "IsPostalCode", a2[a2.IsNotNull = i$2.IsNotNull] = "IsNotNull";
 })(ca || (ca = {}));
 var Aa;
 (function(a2) {
-  a2[a2.IsAlpha = i$1.IsAlpha] = "IsAlpha", a2[a2.IsEqual = i$1.IsEqual] = "IsEqual", a2[a2.IsInList = i$1.IsInList] = "IsInList", a2[a2.IsNotEqual = i$1.IsNotEqual] = "IsNotEqual", a2[a2.IsNotInList = i$1.IsNotInList] = "IsNotInList", a2[a2.IsNotNull = i$1.IsNotNull] = "IsNotNull", a2[a2.IsProvince = i$1.IsProvince] = "IsProvince", a2[a2.IsString = i$1.IsString] = "IsString";
+  a2[a2.IsAlpha = i$2.IsAlpha] = "IsAlpha", a2[a2.IsEqual = i$2.IsEqual] = "IsEqual", a2[a2.IsInList = i$2.IsInList] = "IsInList", a2[a2.IsNotEqual = i$2.IsNotEqual] = "IsNotEqual", a2[a2.IsNotInList = i$2.IsNotInList] = "IsNotInList", a2[a2.IsNotNull = i$2.IsNotNull] = "IsNotNull", a2[a2.IsProvince = i$2.IsProvince] = "IsProvince", a2[a2.IsString = i$2.IsString] = "IsString";
 })(Aa || (Aa = {}));
 var da;
 (function(a2) {
-  a2[a2.IsAlpha = i$1.IsAlpha] = "IsAlpha", a2[a2.IsEqual = i$1.IsEqual] = "IsEqual", a2[a2.IsInList = i$1.IsInList] = "IsInList", a2[a2.IsNotEqual = i$1.IsNotEqual] = "IsNotEqual", a2[a2.IsNotInList = i$1.IsNotInList] = "IsNotInList", a2[a2.IsNotNull = i$1.IsNotNull] = "IsNotNull", a2[a2.IsState = i$1.IsState] = "IsState", a2[a2.IsString = i$1.IsString] = "IsString";
+  a2[a2.IsAlpha = i$2.IsAlpha] = "IsAlpha", a2[a2.IsEqual = i$2.IsEqual] = "IsEqual", a2[a2.IsInList = i$2.IsInList] = "IsInList", a2[a2.IsNotEqual = i$2.IsNotEqual] = "IsNotEqual", a2[a2.IsNotInList = i$2.IsNotInList] = "IsNotInList", a2[a2.IsNotNull = i$2.IsNotNull] = "IsNotNull", a2[a2.IsState = i$2.IsState] = "IsState", a2[a2.IsString = i$2.IsString] = "IsString";
 })(da || (da = {}));
 var Ia;
 (function(a2) {
-  a2[a2.IsAlphanumeric = i$1.IsAlphanumeric] = "IsAlphanumeric", a2[a2.IsEqual = i$1.IsEqual] = "IsEqual", a2[a2.IsNotEqual = i$1.IsNotEqual] = "IsNotEqual", a2[a2.IsNotNull = i$1.IsNotNull] = "IsNotNull", a2[a2.IsString = i$1.IsString] = "IsString", a2[a2.IsStreetAddress = i$1.IsStreetAddress] = "IsStreetAddress";
+  a2[a2.IsAlphanumeric = i$2.IsAlphanumeric] = "IsAlphanumeric", a2[a2.IsEqual = i$2.IsEqual] = "IsEqual", a2[a2.IsNotEqual = i$2.IsNotEqual] = "IsNotEqual", a2[a2.IsNotNull = i$2.IsNotNull] = "IsNotNull", a2[a2.IsString = i$2.IsString] = "IsString", a2[a2.IsStreetAddress = i$2.IsStreetAddress] = "IsStreetAddress";
 })(Ia || (Ia = {}));
 var ha;
 (function(a2) {
-  a2[a2.IsAirport = i$1.IsAirport] = "IsAirport", a2[a2.IsAlpha = i$1.IsAlpha] = "IsAlpha", a2[a2.IsEqual = i$1.IsEqual] = "IsEqual", a2[a2.IsInList = i$1.IsInList] = "IsInList", a2[a2.IsNotEqual = i$1.IsNotEqual] = "IsNotEqual", a2[a2.IsNotInList = i$1.IsNotInList] = "IsNotInList", a2[a2.IsNotNull = i$1.IsNotNull] = "IsNotNull", a2[a2.IsString = i$1.IsString] = "IsString";
+  a2[a2.IsAirport = i$2.IsAirport] = "IsAirport", a2[a2.IsAlpha = i$2.IsAlpha] = "IsAlpha", a2[a2.IsEqual = i$2.IsEqual] = "IsEqual", a2[a2.IsInList = i$2.IsInList] = "IsInList", a2[a2.IsNotEqual = i$2.IsNotEqual] = "IsNotEqual", a2[a2.IsNotInList = i$2.IsNotInList] = "IsNotInList", a2[a2.IsNotNull = i$2.IsNotNull] = "IsNotNull", a2[a2.IsString = i$2.IsString] = "IsString";
 })(ha || (ha = {}));
 var ga;
 (function(a2) {
-  a2[a2.IsAlgorithmHash = i$1.IsAlgorithmHash] = "IsAlgorithmHash", a2[a2.IsEqual = i$1.IsEqual] = "IsEqual", a2[a2.IsInList = i$1.IsInList] = "IsInList", a2[a2.IsNotEqual = i$1.IsNotEqual] = "IsNotEqual", a2[a2.IsNotInList = i$1.IsNotInList] = "IsNotInList", a2[a2.IsNotNull = i$1.IsNotNull] = "IsNotNull", a2[a2.IsString = i$1.IsString] = "IsString";
+  a2[a2.IsAlgorithmHash = i$2.IsAlgorithmHash] = "IsAlgorithmHash", a2[a2.IsEqual = i$2.IsEqual] = "IsEqual", a2[a2.IsInList = i$2.IsInList] = "IsInList", a2[a2.IsNotEqual = i$2.IsNotEqual] = "IsNotEqual", a2[a2.IsNotInList = i$2.IsNotInList] = "IsNotInList", a2[a2.IsNotNull = i$2.IsNotNull] = "IsNotNull", a2[a2.IsString = i$2.IsString] = "IsString";
 })(ga || (ga = {}));
 var fa;
 (function(a2) {
-  a2[a2.IsEqual = i$1.IsEqual] = "IsEqual", a2[a2.IsInList = i$1.IsInList] = "IsInList", a2[a2.IsNotEqual = i$1.IsNotEqual] = "IsNotEqual", a2[a2.IsNotInList = i$1.IsNotInList] = "IsNotInList", a2[a2.IsNotNull = i$1.IsNotNull] = "IsNotNull", a2[a2.IsSemanticVersion = i$1.IsSemanticVersion] = "IsSemanticVersion", a2[a2.IsString = i$1.IsString] = "IsString";
+  a2[a2.IsEqual = i$2.IsEqual] = "IsEqual", a2[a2.IsInList = i$2.IsInList] = "IsInList", a2[a2.IsNotEqual = i$2.IsNotEqual] = "IsNotEqual", a2[a2.IsNotInList = i$2.IsNotInList] = "IsNotInList", a2[a2.IsNotNull = i$2.IsNotNull] = "IsNotNull", a2[a2.IsSemanticVersion = i$2.IsSemanticVersion] = "IsSemanticVersion", a2[a2.IsString = i$2.IsString] = "IsString";
 })(fa || (fa = {}));
 var _a;
 (function(a2) {
-  a2[a2.IsEqual = i$1.IsEqual] = "IsEqual", a2[a2.IsInList = i$1.IsInList] = "IsInList", a2[a2.IsNotEqual = i$1.IsNotEqual] = "IsNotEqual", a2[a2.IsNotInList = i$1.IsNotInList] = "IsNotInList", a2[a2.IsNotNull = i$1.IsNotNull] = "IsNotNull", a2[a2.IsString = i$1.IsString] = "IsString", a2[a2.IsUUID = i$1.IsUUID] = "IsUUID";
+  a2[a2.IsEqual = i$2.IsEqual] = "IsEqual", a2[a2.IsInList = i$2.IsInList] = "IsInList", a2[a2.IsNotEqual = i$2.IsNotEqual] = "IsNotEqual", a2[a2.IsNotInList = i$2.IsNotInList] = "IsNotInList", a2[a2.IsNotNull = i$2.IsNotNull] = "IsNotNull", a2[a2.IsString = i$2.IsString] = "IsString", a2[a2.IsUUID = i$2.IsUUID] = "IsUUID";
 })(_a || (_a = {}));
 var Ea;
 (function(a2) {
-  a2[a2.IsEqual = i$1.IsEqual] = "IsEqual", a2[a2.IsInList = i$1.IsInList] = "IsInList", a2[a2.IsMD5 = i$1.IsMD5] = "IsMD5", a2[a2.IsNotEqual = i$1.IsNotEqual] = "IsNotEqual", a2[a2.IsNotInList = i$1.IsNotInList] = "IsNotInList", a2[a2.IsNotNull = i$1.IsNotNull] = "IsNotNull", a2[a2.IsString = i$1.IsString] = "IsString";
+  a2[a2.IsEqual = i$2.IsEqual] = "IsEqual", a2[a2.IsInList = i$2.IsInList] = "IsInList", a2[a2.IsMD5 = i$2.IsMD5] = "IsMD5", a2[a2.IsNotEqual = i$2.IsNotEqual] = "IsNotEqual", a2[a2.IsNotInList = i$2.IsNotInList] = "IsNotInList", a2[a2.IsNotNull = i$2.IsNotNull] = "IsNotNull", a2[a2.IsString = i$2.IsString] = "IsString";
 })(Ea || (Ea = {}));
 var Sa;
 (function(a2) {
-  a2[a2.IsBoolean = i$1.IsBoolean] = "IsBoolean", a2[a2.IsEqual = i$1.IsEqual] = "IsEqual", a2[a2.IsNotEqual = i$1.IsNotEqual] = "IsNotEqual", a2[a2.IsNotNull = i$1.IsNotNull] = "IsNotNull";
+  a2[a2.IsBoolean = i$2.IsBoolean] = "IsBoolean", a2[a2.IsEqual = i$2.IsEqual] = "IsEqual", a2[a2.IsNotEqual = i$2.IsNotEqual] = "IsNotEqual", a2[a2.IsNotNull = i$2.IsNotNull] = "IsNotNull";
 })(Sa || (Sa = {}));
 var Ta;
 (function(a2) {
-  a2[a2.IsAfter = i$1.IsAfter] = "IsAfter", a2[a2.IsAfterOrEqual = i$1.IsAfterOrEqual] = "IsAfterOrEqual", a2[a2.IsBefore = i$1.IsBefore] = "IsBefore", a2[a2.IsBeforeOrEqual = i$1.IsBeforeOrEqual] = "IsBeforeOrEqual", a2[a2.IsBetween = i$1.IsBetween] = "IsBetween", a2[a2.IsDate = i$1.IsDate] = "IsDate", a2[a2.IsEqual = i$1.IsEqual] = "IsEqual", a2[a2.IsNotDate = i$1.IsNotDate] = "IsNotDate", a2[a2.IsNotEqual = i$1.IsNotEqual] = "IsNotEqual", a2[a2.IsNotNull = i$1.IsNotNull] = "IsNotNull", a2[a2.IsNotToday = i$1.IsNotToday] = "IsNotToday", a2[a2.IsThisWeek = i$1.IsThisWeek] = "IsThisWeek", a2[a2.IsThisMonth = i$1.IsThisMonth] = "IsThisMonth", a2[a2.IsThisQuarter = i$1.IsThisQuarter] = "IsThisQuarter", a2[a2.IsThisYear = i$1.IsThisYear] = "IsThisYear", a2[a2.IsToday = i$1.IsToday] = "IsToday", a2[a2.IsWeekend = i$1.IsWeekend] = "IsWeekend";
+  a2[a2.IsAfter = i$2.IsAfter] = "IsAfter", a2[a2.IsAfterOrEqual = i$2.IsAfterOrEqual] = "IsAfterOrEqual", a2[a2.IsBefore = i$2.IsBefore] = "IsBefore", a2[a2.IsBeforeOrEqual = i$2.IsBeforeOrEqual] = "IsBeforeOrEqual", a2[a2.IsBetween = i$2.IsBetween] = "IsBetween", a2[a2.IsDate = i$2.IsDate] = "IsDate", a2[a2.IsEqual = i$2.IsEqual] = "IsEqual", a2[a2.IsNotDate = i$2.IsNotDate] = "IsNotDate", a2[a2.IsNotEqual = i$2.IsNotEqual] = "IsNotEqual", a2[a2.IsNotNull = i$2.IsNotNull] = "IsNotNull", a2[a2.IsNotToday = i$2.IsNotToday] = "IsNotToday", a2[a2.IsThisWeek = i$2.IsThisWeek] = "IsThisWeek", a2[a2.IsThisMonth = i$2.IsThisMonth] = "IsThisMonth", a2[a2.IsThisQuarter = i$2.IsThisQuarter] = "IsThisQuarter", a2[a2.IsThisYear = i$2.IsThisYear] = "IsThisYear", a2[a2.IsToday = i$2.IsToday] = "IsToday", a2[a2.IsWeekend = i$2.IsWeekend] = "IsWeekend";
 })(Ta || (Ta = {}));
 var pa;
 (function(a2) {
-  a2[a2.IsAfter = i$1.IsAfter] = "IsAfter", a2[a2.IsBefore = i$1.IsBefore] = "IsBefore", a2[a2.IsBeforeOrAfter = i$1.IsBeforeOrAfter] = "IsBeforeOrAfter", a2[a2.IsBetween = i$1.IsBetween] = "IsBetween", a2[a2.IsDate = i$1.IsDate] = "IsDate", a2[a2.IsDateRange = i$1.IsDateRange] = "IsDateRange", a2[a2.IsEqual = i$1.IsEqual] = "IsEqual", a2[a2.IsNotEqual = i$1.IsNotEqual] = "IsNotEqual", a2[a2.IsNotNull = i$1.IsNotNull] = "IsNotNull";
+  a2[a2.IsAfter = i$2.IsAfter] = "IsAfter", a2[a2.IsBefore = i$2.IsBefore] = "IsBefore", a2[a2.IsBeforeOrAfter = i$2.IsBeforeOrAfter] = "IsBeforeOrAfter", a2[a2.IsBetween = i$2.IsBetween] = "IsBetween", a2[a2.IsDate = i$2.IsDate] = "IsDate", a2[a2.IsDateRange = i$2.IsDateRange] = "IsDateRange", a2[a2.IsEqual = i$2.IsEqual] = "IsEqual", a2[a2.IsNotEqual = i$2.IsNotEqual] = "IsNotEqual", a2[a2.IsNotNull = i$2.IsNotNull] = "IsNotNull";
 })(pa || (pa = {}));
 var ba;
 (function(a2) {
-  a2[a2.IsAfter = i$1.IsAfter] = "IsAfter", a2[a2.IsAfterOrEqual = i$1.IsAfterOrEqual] = "IsAfterOrEqual", a2[a2.IsBefore = i$1.IsBefore] = "IsBefore", a2[a2.IsBeforeOrEqual = i$1.IsBeforeOrEqual] = "IsBeforeOrEqual", a2[a2.IsBetween = i$1.IsBetween] = "IsBetween", a2[a2.IsDate = i$1.IsDate] = "IsDate", a2[a2.IsEqual = i$1.IsEqual] = "IsEqual", a2[a2.IsNotDate = i$1.IsNotDate] = "IsNotDate", a2[a2.IsNotEqual = i$1.IsNotEqual] = "IsNotEqual", a2[a2.IsNotNull = i$1.IsNotNull] = "IsNotNull", a2[a2.IsNotToday = i$1.IsNotToday] = "IsNotToday", a2[a2.IsThisWeek = i$1.IsThisWeek] = "IsThisWeek", a2[a2.IsThisMonth = i$1.IsThisMonth] = "IsThisMonth", a2[a2.IsThisQuarter = i$1.IsThisQuarter] = "IsThisQuarter", a2[a2.IsThisYear = i$1.IsThisYear] = "IsThisYear", a2[a2.IsToday = i$1.IsToday] = "IsToday", a2[a2.IsWeekend = i$1.IsWeekend] = "IsWeekend";
+  a2[a2.IsAfter = i$2.IsAfter] = "IsAfter", a2[a2.IsAfterOrEqual = i$2.IsAfterOrEqual] = "IsAfterOrEqual", a2[a2.IsBefore = i$2.IsBefore] = "IsBefore", a2[a2.IsBeforeOrEqual = i$2.IsBeforeOrEqual] = "IsBeforeOrEqual", a2[a2.IsBetween = i$2.IsBetween] = "IsBetween", a2[a2.IsDate = i$2.IsDate] = "IsDate", a2[a2.IsEqual = i$2.IsEqual] = "IsEqual", a2[a2.IsNotDate = i$2.IsNotDate] = "IsNotDate", a2[a2.IsNotEqual = i$2.IsNotEqual] = "IsNotEqual", a2[a2.IsNotNull = i$2.IsNotNull] = "IsNotNull", a2[a2.IsNotToday = i$2.IsNotToday] = "IsNotToday", a2[a2.IsThisWeek = i$2.IsThisWeek] = "IsThisWeek", a2[a2.IsThisMonth = i$2.IsThisMonth] = "IsThisMonth", a2[a2.IsThisQuarter = i$2.IsThisQuarter] = "IsThisQuarter", a2[a2.IsThisYear = i$2.IsThisYear] = "IsThisYear", a2[a2.IsToday = i$2.IsToday] = "IsToday", a2[a2.IsWeekend = i$2.IsWeekend] = "IsWeekend";
 })(ba || (ba = {}));
 var va;
 (function(a2) {
-  a2[a2.IsAfter = i$1.IsAfter] = "IsAfter", a2[a2.IsAfterOrEqual = i$1.IsAfterOrEqual] = "IsAfterOrEqual", a2[a2.IsBefore = i$1.IsBefore] = "IsBefore", a2[a2.IsBeforeOrEqual = i$1.IsBeforeOrEqual] = "IsBeforeOrEqual", a2[a2.IsBetween = i$1.IsBetween] = "IsBetween", a2[a2.IsDayOfMonth = i$1.IsDayOfMonth] = "IsDayOfMonth", a2[a2.IsEvenNumber = i$1.IsEvenNumber] = "IsEvenNumber", a2[a2.IsEqual = i$1.IsEqual] = "IsEqual", a2[a2.IsGreaterThan = i$1.IsGreaterThan] = "IsGreaterThan", a2[a2.IsGreaterThanOrEqual = i$1.IsGreaterThanOrEqual] = "IsGreaterThanOrEqual", a2[a2.IsInteger = i$1.IsInteger] = "IsInteger", a2[a2.IsLessThan = i$1.IsLessThan] = "IsLessThan", a2[a2.IsLessThanOrEqual = i$1.IsLessThanOrEqual] = "IsLessThanOrEqual", a2[a2.IsNotEqual = i$1.IsNotEqual] = "IsNotEqual", a2[a2.IsNotNull = i$1.IsNotNull] = "IsNotNull", a2[a2.IsNumber = i$1.IsNumber] = "IsNumber", a2[a2.IsOddNumber = i$1.IsOddNumber] = "IsOddNumber", a2[a2.IsToday = i$1.IsToday] = "IsToday", a2[a2.IsWeekday = i$1.IsWeekday] = "IsWeekday", a2[a2.IsWeekend = i$1.IsWeekend] = "IsWeekend";
+  a2[a2.IsAfter = i$2.IsAfter] = "IsAfter", a2[a2.IsAfterOrEqual = i$2.IsAfterOrEqual] = "IsAfterOrEqual", a2[a2.IsBefore = i$2.IsBefore] = "IsBefore", a2[a2.IsBeforeOrEqual = i$2.IsBeforeOrEqual] = "IsBeforeOrEqual", a2[a2.IsBetween = i$2.IsBetween] = "IsBetween", a2[a2.IsDayOfMonth = i$2.IsDayOfMonth] = "IsDayOfMonth", a2[a2.IsEvenNumber = i$2.IsEvenNumber] = "IsEvenNumber", a2[a2.IsEqual = i$2.IsEqual] = "IsEqual", a2[a2.IsGreaterThan = i$2.IsGreaterThan] = "IsGreaterThan", a2[a2.IsGreaterThanOrEqual = i$2.IsGreaterThanOrEqual] = "IsGreaterThanOrEqual", a2[a2.IsInteger = i$2.IsInteger] = "IsInteger", a2[a2.IsLessThan = i$2.IsLessThan] = "IsLessThan", a2[a2.IsLessThanOrEqual = i$2.IsLessThanOrEqual] = "IsLessThanOrEqual", a2[a2.IsNotEqual = i$2.IsNotEqual] = "IsNotEqual", a2[a2.IsNotNull = i$2.IsNotNull] = "IsNotNull", a2[a2.IsNumber = i$2.IsNumber] = "IsNumber", a2[a2.IsOddNumber = i$2.IsOddNumber] = "IsOddNumber", a2[a2.IsToday = i$2.IsToday] = "IsToday", a2[a2.IsWeekday = i$2.IsWeekday] = "IsWeekday", a2[a2.IsWeekend = i$2.IsWeekend] = "IsWeekend";
 })(va || (va = {}));
 var Ba;
 (function(a2) {
-  a2[a2.IsAfter = i$1.IsAfter] = "IsAfter", a2[a2.IsAfterOrEqual = i$1.IsAfterOrEqual] = "IsAfterOrEqual", a2[a2.IsBefore = i$1.IsBefore] = "IsBefore", a2[a2.IsBeforeOrEqual = i$1.IsBeforeOrEqual] = "IsBeforeOrEqual", a2[a2.IsBetween = i$1.IsBetween] = "IsBetween", a2[a2.IsEvenNumber = i$1.IsEvenNumber] = "IsEvenNumber", a2[a2.IsEqual = i$1.IsEqual] = "IsEqual", a2[a2.IsGreaterThan = i$1.IsGreaterThan] = "IsGreaterThan", a2[a2.IsGreaterThanOrEqual = i$1.IsGreaterThanOrEqual] = "IsGreaterThanOrEqual", a2[a2.IsInteger = i$1.IsInteger] = "IsInteger", a2[a2.IsLessThan = i$1.IsLessThan] = "IsLessThan", a2[a2.IsLessThanOrEqual = i$1.IsLessThanOrEqual] = "IsLessThanOrEqual", a2[a2.IsMonth = i$1.IsMonth] = "IsMonth", a2[a2.IsNotEqual = i$1.IsNotEqual] = "IsNotEqual", a2[a2.IsNotNull = i$1.IsNotNull] = "IsNotNull", a2[a2.IsNumber = i$1.IsNumber] = "IsNumber", a2[a2.IsOddNumber = i$1.IsOddNumber] = "IsOddNumber", a2[a2.IsThisMonth = i$1.IsThisMonth] = "IsThisMonth";
+  a2[a2.IsAfter = i$2.IsAfter] = "IsAfter", a2[a2.IsAfterOrEqual = i$2.IsAfterOrEqual] = "IsAfterOrEqual", a2[a2.IsBefore = i$2.IsBefore] = "IsBefore", a2[a2.IsBeforeOrEqual = i$2.IsBeforeOrEqual] = "IsBeforeOrEqual", a2[a2.IsBetween = i$2.IsBetween] = "IsBetween", a2[a2.IsEvenNumber = i$2.IsEvenNumber] = "IsEvenNumber", a2[a2.IsEqual = i$2.IsEqual] = "IsEqual", a2[a2.IsGreaterThan = i$2.IsGreaterThan] = "IsGreaterThan", a2[a2.IsGreaterThanOrEqual = i$2.IsGreaterThanOrEqual] = "IsGreaterThanOrEqual", a2[a2.IsInteger = i$2.IsInteger] = "IsInteger", a2[a2.IsLessThan = i$2.IsLessThan] = "IsLessThan", a2[a2.IsLessThanOrEqual = i$2.IsLessThanOrEqual] = "IsLessThanOrEqual", a2[a2.IsMonth = i$2.IsMonth] = "IsMonth", a2[a2.IsNotEqual = i$2.IsNotEqual] = "IsNotEqual", a2[a2.IsNotNull = i$2.IsNotNull] = "IsNotNull", a2[a2.IsNumber = i$2.IsNumber] = "IsNumber", a2[a2.IsOddNumber = i$2.IsOddNumber] = "IsOddNumber", a2[a2.IsThisMonth = i$2.IsThisMonth] = "IsThisMonth";
 })(Ba || (Ba = {}));
 var Na;
 (function(a2) {
-  a2[a2.IsAfter = i$1.IsAfter] = "IsAfter", a2[a2.IsAfterOrEqual = i$1.IsAfterOrEqual] = "IsAfterOrEqual", a2[a2.IsBefore = i$1.IsBefore] = "IsBefore", a2[a2.IsBeforeOrEqual = i$1.IsBeforeOrEqual] = "IsBeforeOrEqual", a2[a2.IsBetween = i$1.IsBetween] = "IsBetween", a2[a2.IsEqual = i$1.IsEqual] = "IsEqual", a2[a2.IsNotEqual = i$1.IsNotEqual] = "IsNotEqual", a2[a2.IsNotNull = i$1.IsNotNull] = "IsNotNull", a2[a2.IsTime = i$1.IsTime] = "IsTime";
+  a2[a2.IsAfter = i$2.IsAfter] = "IsAfter", a2[a2.IsAfterOrEqual = i$2.IsAfterOrEqual] = "IsAfterOrEqual", a2[a2.IsBefore = i$2.IsBefore] = "IsBefore", a2[a2.IsBeforeOrEqual = i$2.IsBeforeOrEqual] = "IsBeforeOrEqual", a2[a2.IsBetween = i$2.IsBetween] = "IsBetween", a2[a2.IsEqual = i$2.IsEqual] = "IsEqual", a2[a2.IsNotEqual = i$2.IsNotEqual] = "IsNotEqual", a2[a2.IsNotNull = i$2.IsNotNull] = "IsNotNull", a2[a2.IsTime = i$2.IsTime] = "IsTime";
 })(Na || (Na = {}));
 var Ua;
 (function(a2) {
-  a2[a2.IsAfter = i$1.IsAfter] = "IsAfter", a2[a2.IsBefore = i$1.IsBefore] = "IsBefore", a2[a2.IsBeforeOrAfter = i$1.IsBeforeOrAfter] = "IsBeforeOrAfter", a2[a2.IsBetween = i$1.IsBetween] = "IsBetween", a2[a2.IsTime = i$1.IsTime] = "IsTime", a2[a2.IsEqual = i$1.IsEqual] = "IsEqual", a2[a2.IsNotEqual = i$1.IsNotEqual] = "IsNotEqual", a2[a2.IsNotNull = i$1.IsNotNull] = "IsNotNull", a2[a2.IsTimeRange = i$1.IsTimeRange] = "IsTimeRange";
+  a2[a2.IsAfter = i$2.IsAfter] = "IsAfter", a2[a2.IsBefore = i$2.IsBefore] = "IsBefore", a2[a2.IsBeforeOrAfter = i$2.IsBeforeOrAfter] = "IsBeforeOrAfter", a2[a2.IsBetween = i$2.IsBetween] = "IsBetween", a2[a2.IsTime = i$2.IsTime] = "IsTime", a2[a2.IsEqual = i$2.IsEqual] = "IsEqual", a2[a2.IsNotEqual = i$2.IsNotEqual] = "IsNotEqual", a2[a2.IsNotNull = i$2.IsNotNull] = "IsNotNull", a2[a2.IsTimeRange = i$2.IsTimeRange] = "IsTimeRange";
 })(Ua || (Ua = {}));
 var Da;
 (function(a2) {
-  a2[a2.IsAfter = i$1.IsAfter] = "IsAfter", a2[a2.IsBefore = i$1.IsBefore] = "IsBefore", a2[a2.IsBeforeOrAfter = i$1.IsBeforeOrAfter] = "IsBeforeOrAfter", a2[a2.IsBetween = i$1.IsBetween] = "IsBetween", a2[a2.IsEqual = i$1.IsEqual] = "IsEqual", a2[a2.IsInList = i$1.IsInList] = "IsInList", a2[a2.IsNotEqual = i$1.IsNotEqual] = "IsNotEqual", a2[a2.IsNotInList = i$1.IsNotInList] = "IsNotInList", a2[a2.IsNotNull = i$1.IsNotNull] = "IsNotNull", a2[a2.IsTimeOfDay = i$1.IsTimeOfDay] = "IsTimeOfDay", a2[a2.IsTimeRange = i$1.IsTimeRange] = "IsTimeRange";
+  a2[a2.IsAfter = i$2.IsAfter] = "IsAfter", a2[a2.IsBefore = i$2.IsBefore] = "IsBefore", a2[a2.IsBeforeOrAfter = i$2.IsBeforeOrAfter] = "IsBeforeOrAfter", a2[a2.IsBetween = i$2.IsBetween] = "IsBetween", a2[a2.IsEqual = i$2.IsEqual] = "IsEqual", a2[a2.IsInList = i$2.IsInList] = "IsInList", a2[a2.IsNotEqual = i$2.IsNotEqual] = "IsNotEqual", a2[a2.IsNotInList = i$2.IsNotInList] = "IsNotInList", a2[a2.IsNotNull = i$2.IsNotNull] = "IsNotNull", a2[a2.IsTimeOfDay = i$2.IsTimeOfDay] = "IsTimeOfDay", a2[a2.IsTimeRange = i$2.IsTimeRange] = "IsTimeRange";
 })(Da || (Da = {}));
 var Pa;
 (function(a2) {
-  a2[a2.IsAfter = i$1.IsAfter] = "IsAfter", a2[a2.IsAfterOrEqual = i$1.IsAfterOrEqual] = "IsAfterOrEqual", a2[a2.IsBefore = i$1.IsBefore] = "IsBefore", a2[a2.IsBeforeOrEqual = i$1.IsBeforeOrEqual] = "IsBeforeOrEqual", a2[a2.IsBetween = i$1.IsBetween] = "IsBetween", a2[a2.IsEvenNumber = i$1.IsEvenNumber] = "IsEvenNumber", a2[a2.IsEqual = i$1.IsEqual] = "IsEqual", a2[a2.IsGreaterThan = i$1.IsGreaterThan] = "IsGreaterThan", a2[a2.IsGreaterThanOrEqual = i$1.IsGreaterThanOrEqual] = "IsGreaterThanOrEqual", a2[a2.IsLessThan = i$1.IsLessThan] = "IsLessThan", a2[a2.IsLessThanOrEqual = i$1.IsLessThanOrEqual] = "IsLessThanOrEqual", a2[a2.IsNotEqual = i$1.IsNotEqual] = "IsNotEqual", a2[a2.IsNotNull = i$1.IsNotNull] = "IsNotNull", a2[a2.IsNumber = i$1.IsNumber] = "IsNumber", a2[a2.IsOddNumber = i$1.IsOddNumber] = "IsOddNumber", a2[a2.IsWeekday = i$1.IsWeekday] = "IsWeekday", a2[a2.IsWeekend = i$1.IsWeekend] = "IsWeekend";
+  a2[a2.IsAfter = i$2.IsAfter] = "IsAfter", a2[a2.IsAfterOrEqual = i$2.IsAfterOrEqual] = "IsAfterOrEqual", a2[a2.IsBefore = i$2.IsBefore] = "IsBefore", a2[a2.IsBeforeOrEqual = i$2.IsBeforeOrEqual] = "IsBeforeOrEqual", a2[a2.IsBetween = i$2.IsBetween] = "IsBetween", a2[a2.IsEvenNumber = i$2.IsEvenNumber] = "IsEvenNumber", a2[a2.IsEqual = i$2.IsEqual] = "IsEqual", a2[a2.IsGreaterThan = i$2.IsGreaterThan] = "IsGreaterThan", a2[a2.IsGreaterThanOrEqual = i$2.IsGreaterThanOrEqual] = "IsGreaterThanOrEqual", a2[a2.IsLessThan = i$2.IsLessThan] = "IsLessThan", a2[a2.IsLessThanOrEqual = i$2.IsLessThanOrEqual] = "IsLessThanOrEqual", a2[a2.IsNotEqual = i$2.IsNotEqual] = "IsNotEqual", a2[a2.IsNotNull = i$2.IsNotNull] = "IsNotNull", a2[a2.IsNumber = i$2.IsNumber] = "IsNumber", a2[a2.IsOddNumber = i$2.IsOddNumber] = "IsOddNumber", a2[a2.IsWeekday = i$2.IsWeekday] = "IsWeekday", a2[a2.IsWeekend = i$2.IsWeekend] = "IsWeekend";
 })(Pa || (Pa = {}));
 var ka;
 (function(a2) {
-  a2[a2.IsAfter = i$1.IsAfter] = "IsAfter", a2[a2.IsAfterOrEqual = i$1.IsAfterOrEqual] = "IsAfterOrEqual", a2[a2.IsBefore = i$1.IsBefore] = "IsBefore", a2[a2.IsBeforeOrEqual = i$1.IsBeforeOrEqual] = "IsBeforeOrEqual", a2[a2.IsBetween = i$1.IsBetween] = "IsBetween", a2[a2.IsEvenNumber = i$1.IsEvenNumber] = "IsEvenNumber", a2[a2.IsEqual = i$1.IsEqual] = "IsEqual", a2[a2.IsGreaterThan = i$1.IsGreaterThan] = "IsGreaterThan", a2[a2.IsGreaterThanOrEqual = i$1.IsGreaterThanOrEqual] = "IsGreaterThanOrEqual", a2[a2.IsInteger = i$1.IsInteger] = "IsInteger", a2[a2.IsLessThan = i$1.IsLessThan] = "IsLessThan", a2[a2.IsLessThanOrEqual = i$1.IsLessThanOrEqual] = "IsLessThanOrEqual", a2[a2.IsNotEqual = i$1.IsNotEqual] = "IsNotEqual", a2[a2.IsNotNull = i$1.IsNotNull] = "IsNotNull", a2[a2.IsNumber = i$1.IsNumber] = "IsNumber", a2[a2.IsOddNumber = i$1.IsOddNumber] = "IsOddNumber", a2[a2.IsThisYear = i$1.IsThisYear] = "IsThisYear", a2[a2.IsYear = i$1.IsYear] = "IsYear";
+  a2[a2.IsAfter = i$2.IsAfter] = "IsAfter", a2[a2.IsAfterOrEqual = i$2.IsAfterOrEqual] = "IsAfterOrEqual", a2[a2.IsBefore = i$2.IsBefore] = "IsBefore", a2[a2.IsBeforeOrEqual = i$2.IsBeforeOrEqual] = "IsBeforeOrEqual", a2[a2.IsBetween = i$2.IsBetween] = "IsBetween", a2[a2.IsEvenNumber = i$2.IsEvenNumber] = "IsEvenNumber", a2[a2.IsEqual = i$2.IsEqual] = "IsEqual", a2[a2.IsGreaterThan = i$2.IsGreaterThan] = "IsGreaterThan", a2[a2.IsGreaterThanOrEqual = i$2.IsGreaterThanOrEqual] = "IsGreaterThanOrEqual", a2[a2.IsInteger = i$2.IsInteger] = "IsInteger", a2[a2.IsLessThan = i$2.IsLessThan] = "IsLessThan", a2[a2.IsLessThanOrEqual = i$2.IsLessThanOrEqual] = "IsLessThanOrEqual", a2[a2.IsNotEqual = i$2.IsNotEqual] = "IsNotEqual", a2[a2.IsNotNull = i$2.IsNotNull] = "IsNotNull", a2[a2.IsNumber = i$2.IsNumber] = "IsNumber", a2[a2.IsOddNumber = i$2.IsOddNumber] = "IsOddNumber", a2[a2.IsThisYear = i$2.IsThisYear] = "IsThisYear", a2[a2.IsYear = i$2.IsYear] = "IsYear";
 })(ka || (ka = {}));
 var Ma;
 (function(a2) {
-  a2[a2.IsEqual = i$1.IsEqual] = "IsEqual", a2[a2.IsHexadecimal = i$1.IsHexadecimal] = "IsHexadecimal", a2[a2.IsLengthEqual = i$1.IsLengthEqual] = "IsLengthEqual", a2[a2.IsLengthGreaterThan = i$1.IsLengthGreaterThan] = "IsLengthGreaterThan", a2[a2.IsLengthGreaterThanOrEqual = i$1.IsLengthGreaterThanOrEqual] = "IsLengthGreaterThanOrEqual", a2[a2.IsLengthLessThan = i$1.IsLengthLessThan] = "IsLengthLessThan", a2[a2.IsLengthLessThanOrEqual = i$1.IsLengthLessThanOrEqual] = "IsLengthLessThanOrEqual", a2[a2.IsNotEqual = i$1.IsNotEqual] = "IsNotEqual", a2[a2.IsNotNull = i$1.IsNotNull] = "IsNotNull", a2[a2.IsString = i$1.IsString] = "IsString";
+  a2[a2.IsEqual = i$2.IsEqual] = "IsEqual", a2[a2.IsHexadecimal = i$2.IsHexadecimal] = "IsHexadecimal", a2[a2.IsLengthEqual = i$2.IsLengthEqual] = "IsLengthEqual", a2[a2.IsLengthGreaterThan = i$2.IsLengthGreaterThan] = "IsLengthGreaterThan", a2[a2.IsLengthGreaterThanOrEqual = i$2.IsLengthGreaterThanOrEqual] = "IsLengthGreaterThanOrEqual", a2[a2.IsLengthLessThan = i$2.IsLengthLessThan] = "IsLengthLessThan", a2[a2.IsLengthLessThanOrEqual = i$2.IsLengthLessThanOrEqual] = "IsLengthLessThanOrEqual", a2[a2.IsNotEqual = i$2.IsNotEqual] = "IsNotEqual", a2[a2.IsNotNull = i$2.IsNotNull] = "IsNotNull", a2[a2.IsString = i$2.IsString] = "IsString";
 })(Ma || (Ma = {}));
 var ya;
 (function(a2) {
-  a2[a2.IsEqual = i$1.IsEqual] = "IsEqual", a2[a2.IsJSON = i$1.IsJSON] = "IsJSON", a2[a2.IsNotEqual = i$1.IsNotEqual] = "IsNotEqual", a2[a2.IsNotNull = i$1.IsNotNull] = "IsNotNull";
+  a2[a2.IsEqual = i$2.IsEqual] = "IsEqual", a2[a2.IsJSON = i$2.IsJSON] = "IsJSON", a2[a2.IsNotEqual = i$2.IsNotEqual] = "IsNotEqual", a2[a2.IsNotNull = i$2.IsNotNull] = "IsNotNull";
 })(ya || (ya = {}));
 var Fa;
 (function(a2) {
-  a2[a2.IsEqual = i$1.IsEqual] = "IsEqual", a2[a2.IsNotEqual = i$1.IsNotEqual] = "IsNotEqual", a2[a2.IsNotNull = i$1.IsNotNull] = "IsNotNull", a2[a2.IsMarkdown = i$1.IsMarkdown] = "IsMarkdown", a2[a2.IsString = i$1.IsString] = "IsString";
+  a2[a2.IsEqual = i$2.IsEqual] = "IsEqual", a2[a2.IsNotEqual = i$2.IsNotEqual] = "IsNotEqual", a2[a2.IsNotNull = i$2.IsNotNull] = "IsNotNull", a2[a2.IsMarkdown = i$2.IsMarkdown] = "IsMarkdown", a2[a2.IsString = i$2.IsString] = "IsString";
 })(Fa || (Fa = {}));
 var La;
 (function(a2) {
-  a2[a2.Contains = i$1.Contains] = "Contains", a2[a2.IsEqual = i$1.IsEqual] = "IsEqual", a2[a2.IsNotEqual = i$1.IsNotEqual] = "IsNotEqual", a2[a2.IsNotNull = i$1.IsNotNull] = "IsNotNull";
+  a2[a2.Contains = i$2.Contains] = "Contains", a2[a2.IsEqual = i$2.IsEqual] = "IsEqual", a2[a2.IsNotEqual = i$2.IsNotEqual] = "IsNotEqual", a2[a2.IsNotNull = i$2.IsNotNull] = "IsNotNull";
 })(La || (La = {}));
 var qa;
 (function(a2) {
-  a2[a2.Contains = i$1.Contains] = "Contains", a2[a2.IsEqual = i$1.IsEqual] = "IsEqual", a2[a2.IsNotEqual = i$1.IsNotEqual] = "IsNotEqual", a2[a2.IsNotNull = i$1.IsNotNull] = "IsNotNull";
+  a2[a2.Contains = i$2.Contains] = "Contains", a2[a2.IsEqual = i$2.IsEqual] = "IsEqual", a2[a2.IsNotEqual = i$2.IsNotEqual] = "IsNotEqual", a2[a2.IsNotNull = i$2.IsNotNull] = "IsNotNull";
 })(qa || (qa = {}));
 var Ga;
 (function(a2) {
-  a2[a2.Contains = i$1.Contains] = "Contains", a2[a2.IsDataURI = i$1.IsDataURI] = "IsDataURI", a2[a2.IsEqual = i$1.IsEqual] = "IsEqual", a2[a2.IsNotEqual = i$1.IsNotEqual] = "IsNotEqual", a2[a2.IsNotNull = i$1.IsNotNull] = "IsNotNull", a2[a2.IsString = i$1.IsString] = "IsString";
+  a2[a2.Contains = i$2.Contains] = "Contains", a2[a2.IsDataURI = i$2.IsDataURI] = "IsDataURI", a2[a2.IsEqual = i$2.IsEqual] = "IsEqual", a2[a2.IsNotEqual = i$2.IsNotEqual] = "IsNotEqual", a2[a2.IsNotNull = i$2.IsNotNull] = "IsNotNull", a2[a2.IsString = i$2.IsString] = "IsString";
 })(Ga || (Ga = {}));
 var wa;
 (function(a2) {
-  a2[a2.Contains = i$1.Contains] = "Contains", a2[a2.IsDomainName = i$1.IsDomainName] = "IsDomainName", a2[a2.IsEqual = i$1.IsEqual] = "IsEqual", a2[a2.IsNotEqual = i$1.IsNotEqual] = "IsNotEqual", a2[a2.IsNotNull = i$1.IsNotNull] = "IsNotNull", a2[a2.IsString = i$1.IsString] = "IsString";
+  a2[a2.Contains = i$2.Contains] = "Contains", a2[a2.IsDomainName = i$2.IsDomainName] = "IsDomainName", a2[a2.IsEqual = i$2.IsEqual] = "IsEqual", a2[a2.IsNotEqual = i$2.IsNotEqual] = "IsNotEqual", a2[a2.IsNotNull = i$2.IsNotNull] = "IsNotNull", a2[a2.IsString = i$2.IsString] = "IsString";
 })(wa || (wa = {}));
 var Ka;
 (function(a2) {
-  a2[a2.Contains = i$1.Contains] = "Contains", a2[a2.IsEmailAddress = i$1.IsEmailAddress] = "IsEmailAddress", a2[a2.IsEqual = i$1.IsEqual] = "IsEqual", a2[a2.IsInList = i$1.IsInList] = "IsInList", a2[a2.IsNotEqual = i$1.IsNotEqual] = "IsNotEqual", a2[a2.IsNotInList = i$1.IsNotInList] = "IsNotInList", a2[a2.IsNotNull = i$1.IsNotNull] = "IsNotNull", a2[a2.IsString = i$1.IsString] = "IsString";
+  a2[a2.Contains = i$2.Contains] = "Contains", a2[a2.IsEmailAddress = i$2.IsEmailAddress] = "IsEmailAddress", a2[a2.IsEqual = i$2.IsEqual] = "IsEqual", a2[a2.IsInList = i$2.IsInList] = "IsInList", a2[a2.IsNotEqual = i$2.IsNotEqual] = "IsNotEqual", a2[a2.IsNotInList = i$2.IsNotInList] = "IsNotInList", a2[a2.IsNotNull = i$2.IsNotNull] = "IsNotNull", a2[a2.IsString = i$2.IsString] = "IsString";
 })(Ka || (Ka = {}));
 var xa;
 (function(a2) {
-  a2[a2.Contains = i$1.Contains] = "Contains", a2[a2.IsEqual = i$1.IsEqual] = "IsEqual", a2[a2.IsIPAddress = i$1.IsIPAddress] = "IsIPAddress", a2[a2.IsInIPAddressRange = i$1.IsInIPAddressRange] = "IsInIPAddressRange", a2[a2.IsInList = i$1.IsInList] = "IsInList", a2[a2.IsNotEqual = i$1.IsNotEqual] = "IsNotEqual", a2[a2.IsNotInList = i$1.IsNotInList] = "IsNotInList", a2[a2.IsNotInIPAddressRange = i$1.IsNotInIPAddressRange] = "IsNotInIPAddressRange", a2[a2.IsNotNull = i$1.IsNotNull] = "IsNotNull", a2[a2.IsString = i$1.IsString] = "IsString";
+  a2[a2.Contains = i$2.Contains] = "Contains", a2[a2.IsEqual = i$2.IsEqual] = "IsEqual", a2[a2.IsIPAddress = i$2.IsIPAddress] = "IsIPAddress", a2[a2.IsInIPAddressRange = i$2.IsInIPAddressRange] = "IsInIPAddressRange", a2[a2.IsInList = i$2.IsInList] = "IsInList", a2[a2.IsNotEqual = i$2.IsNotEqual] = "IsNotEqual", a2[a2.IsNotInList = i$2.IsNotInList] = "IsNotInList", a2[a2.IsNotInIPAddressRange = i$2.IsNotInIPAddressRange] = "IsNotInIPAddressRange", a2[a2.IsNotNull = i$2.IsNotNull] = "IsNotNull", a2[a2.IsString = i$2.IsString] = "IsString";
 })(xa || (xa = {}));
 var Oa;
 (function(a2) {
-  a2[a2.IsEqual = i$1.IsEqual] = "IsEqual", a2[a2.IsIPAddressRange = i$1.IsIPAddressRange] = "IsIPAddressRange", a2[a2.IsInList = i$1.IsInList] = "IsInList", a2[a2.IsNotEqual = i$1.IsNotEqual] = "IsNotEqual", a2[a2.IsNotInList = i$1.IsNotInList] = "IsNotInList", a2[a2.IsNotInIPAddressRange = i$1.IsNotInIPAddressRange] = "IsNotInIPAddressRange", a2[a2.IsNotNull = i$1.IsNotNull] = "IsNotNull", a2[a2.IsString = i$1.IsString] = "IsString";
+  a2[a2.IsEqual = i$2.IsEqual] = "IsEqual", a2[a2.IsIPAddressRange = i$2.IsIPAddressRange] = "IsIPAddressRange", a2[a2.IsInList = i$2.IsInList] = "IsInList", a2[a2.IsNotEqual = i$2.IsNotEqual] = "IsNotEqual", a2[a2.IsNotInList = i$2.IsNotInList] = "IsNotInList", a2[a2.IsNotInIPAddressRange = i$2.IsNotInIPAddressRange] = "IsNotInIPAddressRange", a2[a2.IsNotNull = i$2.IsNotNull] = "IsNotNull", a2[a2.IsString = i$2.IsString] = "IsString";
 })(Oa || (Oa = {}));
 var Ha;
 (function(a2) {
-  a2[a2.IsEqual = i$1.IsEqual] = "IsEqual", a2[a2.IsGreaterThan = i$1.IsGreaterThan] = "IsGreaterThan", a2[a2.IsGreaterThanOrEqual = i$1.IsGreaterThanOrEqual] = "IsGreaterThanOrEqual", a2[a2.IsInteger = i$1.IsInteger] = "IsInteger", a2[a2.IsLessThan = i$1.IsLessThan] = "IsLessThan", a2[a2.IsLessThanOrEqual = i$1.IsLessThanOrEqual] = "IsLessThanOrEqual", a2[a2.IsNotEqual = i$1.IsNotEqual] = "IsNotEqual", a2[a2.IsNotNull = i$1.IsNotNull] = "IsNotNull";
+  a2[a2.IsEqual = i$2.IsEqual] = "IsEqual", a2[a2.IsGreaterThan = i$2.IsGreaterThan] = "IsGreaterThan", a2[a2.IsGreaterThanOrEqual = i$2.IsGreaterThanOrEqual] = "IsGreaterThanOrEqual", a2[a2.IsInteger = i$2.IsInteger] = "IsInteger", a2[a2.IsLessThan = i$2.IsLessThan] = "IsLessThan", a2[a2.IsLessThanOrEqual = i$2.IsLessThanOrEqual] = "IsLessThanOrEqual", a2[a2.IsNotEqual = i$2.IsNotEqual] = "IsNotEqual", a2[a2.IsNotNull = i$2.IsNotNull] = "IsNotNull";
 })(Ha || (Ha = {}));
 var ja;
 (function(a2) {
-  a2[a2.Contains = i$1.Contains] = "Contains", a2[a2.IsEqual = i$1.IsEqual] = "IsEqual", a2[a2.IsInList = i$1.IsInList] = "IsInList", a2[a2.IsMACAddress = i$1.IsMACAddress] = "IsMACAddress", a2[a2.IsNotEqual = i$1.IsNotEqual] = "IsNotEqual", a2[a2.IsNotInList = i$1.IsNotInList] = "IsNotInList", a2[a2.IsNotNull = i$1.IsNotNull] = "IsNotNull", a2[a2.IsString = i$1.IsString] = "IsString";
+  a2[a2.Contains = i$2.Contains] = "Contains", a2[a2.IsEqual = i$2.IsEqual] = "IsEqual", a2[a2.IsInList = i$2.IsInList] = "IsInList", a2[a2.IsMACAddress = i$2.IsMACAddress] = "IsMACAddress", a2[a2.IsNotEqual = i$2.IsNotEqual] = "IsNotEqual", a2[a2.IsNotInList = i$2.IsNotInList] = "IsNotInList", a2[a2.IsNotNull = i$2.IsNotNull] = "IsNotNull", a2[a2.IsString = i$2.IsString] = "IsString";
 })(ja || (ja = {}));
 var Va;
 (function(a2) {
-  a2[a2.Contains = i$1.Contains] = "Contains", a2[a2.IsEqual = i$1.IsEqual] = "IsEqual", a2[a2.IsInList = i$1.IsInList] = "IsInList", a2[a2.IsMagnetURI = i$1.IsMagnetURI] = "IsMagnetURI", a2[a2.IsNotEqual = i$1.IsNotEqual] = "IsNotEqual", a2[a2.IsNotInList = i$1.IsNotInList] = "IsNotInList", a2[a2.IsNotNull = i$1.IsNotNull] = "IsNotNull", a2[a2.IsString = i$1.IsString] = "IsString";
+  a2[a2.Contains = i$2.Contains] = "Contains", a2[a2.IsEqual = i$2.IsEqual] = "IsEqual", a2[a2.IsInList = i$2.IsInList] = "IsInList", a2[a2.IsMagnetURI = i$2.IsMagnetURI] = "IsMagnetURI", a2[a2.IsNotEqual = i$2.IsNotEqual] = "IsNotEqual", a2[a2.IsNotInList = i$2.IsNotInList] = "IsNotInList", a2[a2.IsNotNull = i$2.IsNotNull] = "IsNotNull", a2[a2.IsString = i$2.IsString] = "IsString";
 })(Va || (Va = {}));
 var za;
 (function(a2) {
-  a2[a2.Contains = i$1.Contains] = "Contains", a2[a2.IsEqual = i$1.IsEqual] = "IsEqual", a2[a2.IsInList = i$1.IsInList] = "IsInList", a2[a2.IsMimeType = i$1.IsMimeType] = "IsMimeType", a2[a2.IsNotEqual = i$1.IsNotEqual] = "IsNotEqual", a2[a2.IsNotInList = i$1.IsNotInList] = "IsNotInList", a2[a2.IsNotNull = i$1.IsNotNull] = "IsNotNull", a2[a2.IsString = i$1.IsString] = "IsString";
+  a2[a2.Contains = i$2.Contains] = "Contains", a2[a2.IsEqual = i$2.IsEqual] = "IsEqual", a2[a2.IsInList = i$2.IsInList] = "IsInList", a2[a2.IsMimeType = i$2.IsMimeType] = "IsMimeType", a2[a2.IsNotEqual = i$2.IsNotEqual] = "IsNotEqual", a2[a2.IsNotInList = i$2.IsNotInList] = "IsNotInList", a2[a2.IsNotNull = i$2.IsNotNull] = "IsNotNull", a2[a2.IsString = i$2.IsString] = "IsString";
 })(za || (za = {}));
 var Wa;
 (function(a2) {
-  a2[a2.Contains = i$1.Contains] = "Contains", a2[a2.IsEqual = i$1.IsEqual] = "IsEqual", a2[a2.IsInList = i$1.IsInList] = "IsInList", a2[a2.IsNotEqual = i$1.IsNotEqual] = "IsNotEqual", a2[a2.IsNotInList = i$1.IsNotInList] = "IsNotInList", a2[a2.IsNotNull = i$1.IsNotNull] = "IsNotNull", a2[a2.IsString = i$1.IsString] = "IsString", a2[a2.IsSlug = i$1.IsSlug] = "IsSlug";
+  a2[a2.Contains = i$2.Contains] = "Contains", a2[a2.IsEqual = i$2.IsEqual] = "IsEqual", a2[a2.IsInList = i$2.IsInList] = "IsInList", a2[a2.IsNotEqual = i$2.IsNotEqual] = "IsNotEqual", a2[a2.IsNotInList = i$2.IsNotInList] = "IsNotInList", a2[a2.IsNotNull = i$2.IsNotNull] = "IsNotNull", a2[a2.IsString = i$2.IsString] = "IsString", a2[a2.IsSlug = i$2.IsSlug] = "IsSlug";
 })(Wa || (Wa = {}));
 var Ra;
 (function(a2) {
-  a2[a2.Contains = i$1.Contains] = "Contains", a2[a2.IsEqual = i$1.IsEqual] = "IsEqual", a2[a2.IsInList = i$1.IsInList] = "IsInList", a2[a2.IsNotEqual = i$1.IsNotEqual] = "IsNotEqual", a2[a2.IsNotInList = i$1.IsNotInList] = "IsNotInList", a2[a2.IsNotNull = i$1.IsNotNull] = "IsNotNull", a2[a2.IsString = i$1.IsString] = "IsString", a2[a2.IsURL = i$1.IsURL] = "IsURL";
+  a2[a2.Contains = i$2.Contains] = "Contains", a2[a2.IsEqual = i$2.IsEqual] = "IsEqual", a2[a2.IsInList = i$2.IsInList] = "IsInList", a2[a2.IsNotEqual = i$2.IsNotEqual] = "IsNotEqual", a2[a2.IsNotInList = i$2.IsNotInList] = "IsNotInList", a2[a2.IsNotNull = i$2.IsNotNull] = "IsNotNull", a2[a2.IsString = i$2.IsString] = "IsString", a2[a2.IsURL = i$2.IsURL] = "IsURL";
 })(Ra || (Ra = {}));
 var Ja;
 (function(a2) {
-  a2[a2.IsAfter = i$1.IsAfter] = "IsAfter", a2[a2.IsAfterOrEqual = i$1.IsAfterOrEqual] = "IsAfterOrEqual", a2[a2.IsBefore = i$1.IsBefore] = "IsBefore", a2[a2.IsBeforeOrEqual = i$1.IsBeforeOrEqual] = "IsBeforeOrEqual", a2[a2.IsBetween = i$1.IsBetween] = "IsBetween", a2[a2.IsDecimal = i$1.IsDecimal] = "IsDecimal", a2[a2.IsDivisibleBy = i$1.IsDivisibleBy] = "IsDivisibleBy", a2[a2.IsEAN = i$1.IsEAN] = "IsEAN", a2[a2.IsEIN = i$1.IsEIN] = "IsEIN", a2[a2.IsEqual = i$1.IsEqual] = "IsEqual", a2[a2.IsEvenNumber = i$1.IsEvenNumber] = "IsEvenNumber", a2[a2.IsFloat = i$1.IsFloat] = "IsFloat", a2[a2.IsGreaterThan = i$1.IsGreaterThan] = "IsGreaterThan", a2[a2.IsGreaterThanOrEqual = i$1.IsGreaterThanOrEqual] = "IsGreaterThanOrEqual", a2[a2.IsInt = i$1.IsInteger] = "IsInt", a2[a2.IsISBN = i$1.IsISBN] = "IsISBN", a2[a2.IsISMN = i$1.IsISMN] = "IsISMN", a2[a2.IsISSN = i$1.IsISSN] = "IsISSN", a2[a2.IsLatitude = i$1.IsLatitude] = "IsLatitude", a2[a2.IsLongitude = i$1.IsLongitude] = "IsLongitude", a2[a2.IsLessThan = i$1.IsLessThan] = "IsLessThan", a2[a2.IsLessThanOrEqual = i$1.IsLessThanOrEqual] = "IsLessThanOrEqual", a2[a2.IsMACAddress = i$1.IsMACAddress] = "IsMACAddress", a2[a2.IsNumber = i$1.IsNumber] = "IsNumber", a2[a2.IsNegativeNumber = i$1.IsNegativeNumber] = "IsNegativeNumber", a2[a2.IsNotEqual = i$1.IsNotEqual] = "IsNotEqual", a2[a2.IsNotNull = i$1.IsNotNull] = "IsNotNull", a2[a2.IsOddNumber = i$1.IsOddNumber] = "IsOddNumber", a2[a2.IsPassportNumber = i$1.IsPassportNumber] = "IsPassportNumber", a2[a2.IsPhoneNumber = i$1.IsPhoneNumber] = "IsPhoneNumber", a2[a2.IsPort = i$1.IsPort] = "IsPort", a2[a2.IsPositiveNumber = i$1.IsPositiveNumber] = "IsPositiveNumber", a2[a2.IsPostalCode = i$1.IsPostalCode] = "IsPostalCode", a2[a2.IsSemanticVersion = i$1.IsSemanticVersion] = "IsSemanticVersion", a2[a2.IsSSN = i$1.IsSSN] = "IsSSN", a2[a2.IsTaxIDNumber = i$1.IsTaxIDNumber] = "IsTaxIDNumber", a2[a2.IsUUID = i$1.IsUUID] = "IsUUID", a2[a2.IsVATIDNumber = i$1.IsVATIDNumber] = "IsVATIDNumber";
+  a2[a2.IsAfter = i$2.IsAfter] = "IsAfter", a2[a2.IsAfterOrEqual = i$2.IsAfterOrEqual] = "IsAfterOrEqual", a2[a2.IsBefore = i$2.IsBefore] = "IsBefore", a2[a2.IsBeforeOrEqual = i$2.IsBeforeOrEqual] = "IsBeforeOrEqual", a2[a2.IsBetween = i$2.IsBetween] = "IsBetween", a2[a2.IsDecimal = i$2.IsDecimal] = "IsDecimal", a2[a2.IsDivisibleBy = i$2.IsDivisibleBy] = "IsDivisibleBy", a2[a2.IsEAN = i$2.IsEAN] = "IsEAN", a2[a2.IsEIN = i$2.IsEIN] = "IsEIN", a2[a2.IsEqual = i$2.IsEqual] = "IsEqual", a2[a2.IsEvenNumber = i$2.IsEvenNumber] = "IsEvenNumber", a2[a2.IsFloat = i$2.IsFloat] = "IsFloat", a2[a2.IsGreaterThan = i$2.IsGreaterThan] = "IsGreaterThan", a2[a2.IsGreaterThanOrEqual = i$2.IsGreaterThanOrEqual] = "IsGreaterThanOrEqual", a2[a2.IsInt = i$2.IsInteger] = "IsInt", a2[a2.IsISBN = i$2.IsISBN] = "IsISBN", a2[a2.IsISMN = i$2.IsISMN] = "IsISMN", a2[a2.IsISSN = i$2.IsISSN] = "IsISSN", a2[a2.IsLatitude = i$2.IsLatitude] = "IsLatitude", a2[a2.IsLongitude = i$2.IsLongitude] = "IsLongitude", a2[a2.IsLessThan = i$2.IsLessThan] = "IsLessThan", a2[a2.IsLessThanOrEqual = i$2.IsLessThanOrEqual] = "IsLessThanOrEqual", a2[a2.IsMACAddress = i$2.IsMACAddress] = "IsMACAddress", a2[a2.IsNumber = i$2.IsNumber] = "IsNumber", a2[a2.IsNegativeNumber = i$2.IsNegativeNumber] = "IsNegativeNumber", a2[a2.IsNotEqual = i$2.IsNotEqual] = "IsNotEqual", a2[a2.IsNotNull = i$2.IsNotNull] = "IsNotNull", a2[a2.IsOddNumber = i$2.IsOddNumber] = "IsOddNumber", a2[a2.IsPassportNumber = i$2.IsPassportNumber] = "IsPassportNumber", a2[a2.IsPhoneNumber = i$2.IsPhoneNumber] = "IsPhoneNumber", a2[a2.IsPort = i$2.IsPort] = "IsPort", a2[a2.IsPositiveNumber = i$2.IsPositiveNumber] = "IsPositiveNumber", a2[a2.IsPostalCode = i$2.IsPostalCode] = "IsPostalCode", a2[a2.IsSemanticVersion = i$2.IsSemanticVersion] = "IsSemanticVersion", a2[a2.IsSSN = i$2.IsSSN] = "IsSSN", a2[a2.IsTaxIDNumber = i$2.IsTaxIDNumber] = "IsTaxIDNumber", a2[a2.IsUUID = i$2.IsUUID] = "IsUUID", a2[a2.IsVATIDNumber = i$2.IsVATIDNumber] = "IsVATIDNumber";
 })(Ja || (Ja = {}));
 var Za;
 (function(a2) {
-  a2[a2.IsEqual = i$1.IsEqual] = "IsEqual", a2[a2.IsFloat = i$1.IsFloat] = "IsFloat", a2[a2.IsGreaterThan = i$1.IsGreaterThan] = "IsGreaterThan", a2[a2.IsGreaterThanOrEqual = i$1.IsGreaterThanOrEqual] = "IsGreaterThanOrEqual", a2[a2.IsLessThan = i$1.IsLessThan] = "IsLessThan", a2[a2.IsLessThanOrEqual = i$1.IsLessThanOrEqual] = "IsLessThanOrEqual", a2[a2.IsNotEqual = i$1.IsNotEqual] = "IsNotEqual", a2[a2.IsNotNull = i$1.IsNotNull] = "IsNotNull", a2[a2.IsNumber = i$1.IsNumber] = "IsNumber", a2[a2.IsNumeric = i$1.IsNumeric] = "IsNumeric";
+  a2[a2.IsEqual = i$2.IsEqual] = "IsEqual", a2[a2.IsFloat = i$2.IsFloat] = "IsFloat", a2[a2.IsGreaterThan = i$2.IsGreaterThan] = "IsGreaterThan", a2[a2.IsGreaterThanOrEqual = i$2.IsGreaterThanOrEqual] = "IsGreaterThanOrEqual", a2[a2.IsLessThan = i$2.IsLessThan] = "IsLessThan", a2[a2.IsLessThanOrEqual = i$2.IsLessThanOrEqual] = "IsLessThanOrEqual", a2[a2.IsNotEqual = i$2.IsNotEqual] = "IsNotEqual", a2[a2.IsNotNull = i$2.IsNotNull] = "IsNotNull", a2[a2.IsNumber = i$2.IsNumber] = "IsNumber", a2[a2.IsNumeric = i$2.IsNumeric] = "IsNumeric";
 })(Za || (Za = {}));
 var Ya;
 (function(a2) {
-  a2[a2.IsEqual = i$1.IsEqual] = "IsEqual", a2[a2.IsInteger = i$1.IsInteger] = "IsInteger", a2[a2.IsGreaterThan = i$1.IsGreaterThan] = "IsGreaterThan", a2[a2.IsGreaterThanOrEqual = i$1.IsGreaterThanOrEqual] = "IsGreaterThanOrEqual", a2[a2.IsLessThan = i$1.IsLessThan] = "IsLessThan", a2[a2.IsLessThanOrEqual = i$1.IsLessThanOrEqual] = "IsLessThanOrEqual", a2[a2.IsNotEqual = i$1.IsNotEqual] = "IsNotEqual", a2[a2.IsNotNull = i$1.IsNotNull] = "IsNotNull", a2[a2.IsNumber = i$1.IsNumber] = "IsNumber", a2[a2.IsNumeric = i$1.IsNumeric] = "IsNumeric";
+  a2[a2.IsEqual = i$2.IsEqual] = "IsEqual", a2[a2.IsInteger = i$2.IsInteger] = "IsInteger", a2[a2.IsGreaterThan = i$2.IsGreaterThan] = "IsGreaterThan", a2[a2.IsGreaterThanOrEqual = i$2.IsGreaterThanOrEqual] = "IsGreaterThanOrEqual", a2[a2.IsLessThan = i$2.IsLessThan] = "IsLessThan", a2[a2.IsLessThanOrEqual = i$2.IsLessThanOrEqual] = "IsLessThanOrEqual", a2[a2.IsNotEqual = i$2.IsNotEqual] = "IsNotEqual", a2[a2.IsNotNull = i$2.IsNotNull] = "IsNotNull", a2[a2.IsNumber = i$2.IsNumber] = "IsNumber", a2[a2.IsNumeric = i$2.IsNumeric] = "IsNumeric";
 })(Ya || (Ya = {}));
 var $a;
 (function(a2) {
-  a2[a2.IsCreditCard = i$1.IsCreditCard] = "IsCreditCard", a2[a2.IsEqual = i$1.IsEqual] = "IsEqual", a2[a2.IsLengthEqual = i$1.IsLengthEqual] = "IsLengthEqual", a2[a2.IsLengthGreaterThan = i$1.IsLengthGreaterThan] = "IsLengthGreaterThan", a2[a2.IsLengthGreaterThanOrEqual = i$1.IsLengthGreaterThanOrEqual] = "IsLengthGreaterThanOrEqual", a2[a2.IsLengthLessThan = i$1.IsLengthLessThan] = "IsLengthLessThan", a2[a2.IsLengthLessThanOrEqual = i$1.IsLengthLessThanOrEqual] = "IsLengthLessThanOrEqual", a2[a2.IsNotEqual = i$1.IsNotEqual] = "IsNotEqual", a2[a2.IsNotNull = i$1.IsNotNull] = "IsNotNull", a2[a2.IsRegexMatch = i$1.IsRegexMatch] = "IsRegexMatch", a2[a2.IsNotRegexMatch = i$1.IsNotRegexMatch] = "IsNotRegexMatch";
+  a2[a2.IsCreditCard = i$2.IsCreditCard] = "IsCreditCard", a2[a2.IsEqual = i$2.IsEqual] = "IsEqual", a2[a2.IsLengthEqual = i$2.IsLengthEqual] = "IsLengthEqual", a2[a2.IsLengthGreaterThan = i$2.IsLengthGreaterThan] = "IsLengthGreaterThan", a2[a2.IsLengthGreaterThanOrEqual = i$2.IsLengthGreaterThanOrEqual] = "IsLengthGreaterThanOrEqual", a2[a2.IsLengthLessThan = i$2.IsLengthLessThan] = "IsLengthLessThan", a2[a2.IsLengthLessThanOrEqual = i$2.IsLengthLessThanOrEqual] = "IsLengthLessThanOrEqual", a2[a2.IsNotEqual = i$2.IsNotEqual] = "IsNotEqual", a2[a2.IsNotNull = i$2.IsNotNull] = "IsNotNull", a2[a2.IsRegexMatch = i$2.IsRegexMatch] = "IsRegexMatch", a2[a2.IsNotRegexMatch = i$2.IsNotRegexMatch] = "IsNotRegexMatch";
 })($a || ($a = {}));
 var Qa;
 (function(a2) {
-  a2[a2.isEmailAddress = i$1.IsEmailAddress] = "isEmailAddress", a2[a2.IsEqual = i$1.IsEqual] = "IsEqual", a2[a2.IsInList = i$1.IsInList] = "IsInList", a2[a2.IsLengthEqual = i$1.IsLengthEqual] = "IsLengthEqual", a2[a2.IsLengthGreaterThan = i$1.IsLengthGreaterThan] = "IsLengthGreaterThan", a2[a2.IsLengthGreaterThanOrEqual = i$1.IsLengthGreaterThanOrEqual] = "IsLengthGreaterThanOrEqual", a2[a2.IsLengthLessThan = i$1.IsLengthLessThan] = "IsLengthLessThan", a2[a2.IsLengthLessThanOrEqual = i$1.IsLengthLessThanOrEqual] = "IsLengthLessThanOrEqual", a2[a2.IsNotEqual = i$1.IsNotEqual] = "IsNotEqual", a2[a2.IsNotInList = i$1.IsNotInList] = "IsNotInList", a2[a2.IsNotNull = i$1.IsNotNull] = "IsNotNull", a2[a2.IsRegexMatch = i$1.IsRegexMatch] = "IsRegexMatch", a2[a2.IsNotRegexMatch = i$1.IsNotRegexMatch] = "IsNotRegexMatch";
+  a2[a2.isEmailAddress = i$2.IsEmailAddress] = "isEmailAddress", a2[a2.IsEqual = i$2.IsEqual] = "IsEqual", a2[a2.IsInList = i$2.IsInList] = "IsInList", a2[a2.IsLengthEqual = i$2.IsLengthEqual] = "IsLengthEqual", a2[a2.IsLengthGreaterThan = i$2.IsLengthGreaterThan] = "IsLengthGreaterThan", a2[a2.IsLengthGreaterThanOrEqual = i$2.IsLengthGreaterThanOrEqual] = "IsLengthGreaterThanOrEqual", a2[a2.IsLengthLessThan = i$2.IsLengthLessThan] = "IsLengthLessThan", a2[a2.IsLengthLessThanOrEqual = i$2.IsLengthLessThanOrEqual] = "IsLengthLessThanOrEqual", a2[a2.IsNotEqual = i$2.IsNotEqual] = "IsNotEqual", a2[a2.IsNotInList = i$2.IsNotInList] = "IsNotInList", a2[a2.IsNotNull = i$2.IsNotNull] = "IsNotNull", a2[a2.IsRegexMatch = i$2.IsRegexMatch] = "IsRegexMatch", a2[a2.IsNotRegexMatch = i$2.IsNotRegexMatch] = "IsNotRegexMatch";
 })(Qa || (Qa = {}));
 var Xa;
 (function(a2) {
-  a2[a2.IsLicensePlateNumber = i$1.IsLicensePlateNumber] = "IsLicensePlateNumber", a2[a2.IsNotNull = i$1.IsNotNull] = "IsNotNull", a2[a2.IsNotRegexMatch = i$1.IsNotRegexMatch] = "IsNotRegexMatch", a2[a2.IsString = i$1.IsString] = "IsString", a2[a2.IsRegexMatch = i$1.IsRegexMatch] = "IsRegexMatch";
+  a2[a2.IsLicensePlateNumber = i$2.IsLicensePlateNumber] = "IsLicensePlateNumber", a2[a2.IsNotNull = i$2.IsNotNull] = "IsNotNull", a2[a2.IsNotRegexMatch = i$2.IsNotRegexMatch] = "IsNotRegexMatch", a2[a2.IsString = i$2.IsString] = "IsString", a2[a2.IsRegexMatch = i$2.IsRegexMatch] = "IsRegexMatch";
 })(Xa || (Xa = {}));
 var Ca;
 (function(a2) {
-  a2[a2.IsNotNull = i$1.IsNotNull] = "IsNotNull", a2[a2.IsPassportNumber = i$1.IsPassportNumber] = "IsPassportNumber", a2[a2.IsString = i$1.IsString] = "IsString", a2[a2.IsRegexMatch = i$1.IsRegexMatch] = "IsRegexMatch";
+  a2[a2.IsNotNull = i$2.IsNotNull] = "IsNotNull", a2[a2.IsPassportNumber = i$2.IsPassportNumber] = "IsPassportNumber", a2[a2.IsString = i$2.IsString] = "IsString", a2[a2.IsRegexMatch = i$2.IsRegexMatch] = "IsRegexMatch";
 })(Ca || (Ca = {}));
 var ae;
 (function(a2) {
-  a2[a2.IsComplexEnough = i$1.IsComplexEnough] = "IsComplexEnough", a2[a2.IsInList = i$1.IsInList] = "IsInList", a2[a2.IsNotInList = i$1.IsNotInList] = "IsNotInList", a2[a2.IsNotNull = i$1.IsNotNull] = "IsNotNull", a2[a2.IsNotRegexMatch = i$1.IsNotRegexMatch] = "IsNotRegexMatch", a2[a2.IsLengthGreaterThan = i$1.IsLengthGreaterThan] = "IsLengthGreaterThan", a2[a2.IsLengthGreaterThanOrEqual = i$1.IsLengthGreaterThanOrEqual] = "IsLengthGreaterThanOrEqual", a2[a2.IsLengthLessThan = i$1.IsLengthLessThan] = "IsLengthLessThan", a2[a2.IsLengthLessThanOrEqual = i$1.IsLengthLessThanOrEqual] = "IsLengthLessThanOrEqual", a2[a2.IsStrongPassword = i$1.IsStrongPassword] = "IsStrongPassword", a2[a2.IsString = i$1.IsString] = "IsString", a2[a2.IsRegexMatch = i$1.IsRegexMatch] = "IsRegexMatch";
+  a2[a2.IsComplexEnough = i$2.IsComplexEnough] = "IsComplexEnough", a2[a2.IsInList = i$2.IsInList] = "IsInList", a2[a2.IsNotInList = i$2.IsNotInList] = "IsNotInList", a2[a2.IsNotNull = i$2.IsNotNull] = "IsNotNull", a2[a2.IsNotRegexMatch = i$2.IsNotRegexMatch] = "IsNotRegexMatch", a2[a2.IsLengthGreaterThan = i$2.IsLengthGreaterThan] = "IsLengthGreaterThan", a2[a2.IsLengthGreaterThanOrEqual = i$2.IsLengthGreaterThanOrEqual] = "IsLengthGreaterThanOrEqual", a2[a2.IsLengthLessThan = i$2.IsLengthLessThan] = "IsLengthLessThan", a2[a2.IsLengthLessThanOrEqual = i$2.IsLengthLessThanOrEqual] = "IsLengthLessThanOrEqual", a2[a2.IsStrongPassword = i$2.IsStrongPassword] = "IsStrongPassword", a2[a2.IsString = i$2.IsString] = "IsString", a2[a2.IsRegexMatch = i$2.IsRegexMatch] = "IsRegexMatch";
 })(ae || (ae = {}));
 var ee;
 (function(a2) {
-  a2[a2.IsNotNull = i$1.IsNotNull] = "IsNotNull", a2[a2.IsNotRegexMatch = i$1.IsNotRegexMatch] = "IsNotRegexMatch", a2[a2.IsNumber = i$1.IsNumber] = "IsNumber", a2[a2.IsPhoneNumber = i$1.IsPhoneNumber] = "IsPhoneNumber", a2[a2.IsRegexMatch = i$1.IsRegexMatch] = "IsRegexMatch";
+  a2[a2.IsNotNull = i$2.IsNotNull] = "IsNotNull", a2[a2.IsNotRegexMatch = i$2.IsNotRegexMatch] = "IsNotRegexMatch", a2[a2.IsNumber = i$2.IsNumber] = "IsNumber", a2[a2.IsPhoneNumber = i$2.IsPhoneNumber] = "IsPhoneNumber", a2[a2.IsRegexMatch = i$2.IsRegexMatch] = "IsRegexMatch";
 })(ee || (ee = {}));
 var ie;
 (function(a2) {
-  a2[a2.IsNotNull = i$1.IsNotNull] = "IsNotNull", a2[a2.IsSSN = i$1.IsSSN] = "IsSSN", a2[a2.IsString = i$1.IsString] = "IsString", a2[a2.IsRegexMatch = i$1.IsRegexMatch] = "IsRegexMatch";
+  a2[a2.IsNotNull = i$2.IsNotNull] = "IsNotNull", a2[a2.IsSSN = i$2.IsSSN] = "IsSSN", a2[a2.IsString = i$2.IsString] = "IsString", a2[a2.IsRegexMatch = i$2.IsRegexMatch] = "IsRegexMatch";
 })(ie || (ie = {}));
 var ne;
 (function(a2) {
-  a2[a2.Contains = i$1.Contains] = "Contains", a2[a2.IsBIC = i$1.IsBIC] = "IsBIC", a2[a2.IsEqual = i$1.IsEqual] = "IsEqual", a2[a2.IsInList = i$1.IsInList] = "IsInList", a2[a2.IsNotEqual = i$1.IsNotEqual] = "IsNotEqual", a2[a2.IsNotInList = i$1.IsNotInList] = "IsNotInList", a2[a2.IsNotNull = i$1.IsNotNull] = "IsNotNull", a2[a2.IsString = i$1.IsString] = "IsString";
+  a2[a2.Contains = i$2.Contains] = "Contains", a2[a2.IsBIC = i$2.IsBIC] = "IsBIC", a2[a2.IsEqual = i$2.IsEqual] = "IsEqual", a2[a2.IsInList = i$2.IsInList] = "IsInList", a2[a2.IsNotEqual = i$2.IsNotEqual] = "IsNotEqual", a2[a2.IsNotInList = i$2.IsNotInList] = "IsNotInList", a2[a2.IsNotNull = i$2.IsNotNull] = "IsNotNull", a2[a2.IsString = i$2.IsString] = "IsString";
 })(ne || (ne = {}));
 var se;
 (function(a2) {
-  a2[a2.Contains = i$1.Contains] = "Contains", a2[a2.IsEAN = i$1.IsEAN] = "IsEAN", a2[a2.IsEqual = i$1.IsEqual] = "IsEqual", a2[a2.IsInList = i$1.IsInList] = "IsInList", a2[a2.IsNotEqual = i$1.IsNotEqual] = "IsNotEqual", a2[a2.IsNotInList = i$1.IsNotInList] = "IsNotInList", a2[a2.IsNotNull = i$1.IsNotNull] = "IsNotNull", a2[a2.IsString = i$1.IsString] = "IsString";
+  a2[a2.Contains = i$2.Contains] = "Contains", a2[a2.IsEAN = i$2.IsEAN] = "IsEAN", a2[a2.IsEqual = i$2.IsEqual] = "IsEqual", a2[a2.IsInList = i$2.IsInList] = "IsInList", a2[a2.IsNotEqual = i$2.IsNotEqual] = "IsNotEqual", a2[a2.IsNotInList = i$2.IsNotInList] = "IsNotInList", a2[a2.IsNotNull = i$2.IsNotNull] = "IsNotNull", a2[a2.IsString = i$2.IsString] = "IsString";
 })(se || (se = {}));
 var ue;
 (function(a2) {
-  a2[a2.Contains = i$1.Contains] = "Contains", a2[a2.IsEIN = i$1.IsEIN] = "IsEIN", a2[a2.IsEqual = i$1.IsEqual] = "IsEqual", a2[a2.IsInList = i$1.IsInList] = "IsInList", a2[a2.IsNotEqual = i$1.IsNotEqual] = "IsNotEqual", a2[a2.IsNotInList = i$1.IsNotInList] = "IsNotInList", a2[a2.IsNotNull = i$1.IsNotNull] = "IsNotNull", a2[a2.IsString = i$1.IsString] = "IsString";
+  a2[a2.Contains = i$2.Contains] = "Contains", a2[a2.IsEIN = i$2.IsEIN] = "IsEIN", a2[a2.IsEqual = i$2.IsEqual] = "IsEqual", a2[a2.IsInList = i$2.IsInList] = "IsInList", a2[a2.IsNotEqual = i$2.IsNotEqual] = "IsNotEqual", a2[a2.IsNotInList = i$2.IsNotInList] = "IsNotInList", a2[a2.IsNotNull = i$2.IsNotNull] = "IsNotNull", a2[a2.IsString = i$2.IsString] = "IsString";
 })(ue || (ue = {}));
 var re;
 (function(a2) {
-  a2[a2.Contains = i$1.Contains] = "Contains", a2[a2.IsEqual = i$1.IsEqual] = "IsEqual", a2[a2.IsIBAN = i$1.IsIBAN] = "IsIBAN", a2[a2.IsInList = i$1.IsInList] = "IsInList", a2[a2.IsNotEqual = i$1.IsNotEqual] = "IsNotEqual", a2[a2.IsNotInList = i$1.IsNotInList] = "IsNotInList", a2[a2.IsNotNull = i$1.IsNotNull] = "IsNotNull", a2[a2.IsString = i$1.IsString] = "IsString";
+  a2[a2.Contains = i$2.Contains] = "Contains", a2[a2.IsEqual = i$2.IsEqual] = "IsEqual", a2[a2.IsIBAN = i$2.IsIBAN] = "IsIBAN", a2[a2.IsInList = i$2.IsInList] = "IsInList", a2[a2.IsNotEqual = i$2.IsNotEqual] = "IsNotEqual", a2[a2.IsNotInList = i$2.IsNotInList] = "IsNotInList", a2[a2.IsNotNull = i$2.IsNotNull] = "IsNotNull", a2[a2.IsString = i$2.IsString] = "IsString";
 })(re || (re = {}));
 var te;
 (function(a2) {
-  a2[a2.Contains = i$1.Contains] = "Contains", a2[a2.IsEqual = i$1.IsEqual] = "IsEqual", a2[a2.IsISBN = i$1.IsISBN] = "IsISBN", a2[a2.IsInList = i$1.IsInList] = "IsInList", a2[a2.IsNotEqual = i$1.IsNotEqual] = "IsNotEqual", a2[a2.IsNotInList = i$1.IsNotInList] = "IsNotInList", a2[a2.IsNotNull = i$1.IsNotNull] = "IsNotNull", a2[a2.IsString = i$1.IsString] = "IsString";
+  a2[a2.Contains = i$2.Contains] = "Contains", a2[a2.IsEqual = i$2.IsEqual] = "IsEqual", a2[a2.IsISBN = i$2.IsISBN] = "IsISBN", a2[a2.IsInList = i$2.IsInList] = "IsInList", a2[a2.IsNotEqual = i$2.IsNotEqual] = "IsNotEqual", a2[a2.IsNotInList = i$2.IsNotInList] = "IsNotInList", a2[a2.IsNotNull = i$2.IsNotNull] = "IsNotNull", a2[a2.IsString = i$2.IsString] = "IsString";
 })(te || (te = {}));
 var le;
 (function(a2) {
-  a2[a2.Contains = i$1.Contains] = "Contains", a2[a2.IsEqual = i$1.IsEqual] = "IsEqual", a2[a2.IsISIN = i$1.IsISIN] = "IsISIN", a2[a2.IsInList = i$1.IsInList] = "IsInList", a2[a2.IsNotEqual = i$1.IsNotEqual] = "IsNotEqual", a2[a2.IsNotInList = i$1.IsNotInList] = "IsNotInList", a2[a2.IsNotNull = i$1.IsNotNull] = "IsNotNull", a2[a2.IsString = i$1.IsString] = "IsString";
+  a2[a2.Contains = i$2.Contains] = "Contains", a2[a2.IsEqual = i$2.IsEqual] = "IsEqual", a2[a2.IsISIN = i$2.IsISIN] = "IsISIN", a2[a2.IsInList = i$2.IsInList] = "IsInList", a2[a2.IsNotEqual = i$2.IsNotEqual] = "IsNotEqual", a2[a2.IsNotInList = i$2.IsNotInList] = "IsNotInList", a2[a2.IsNotNull = i$2.IsNotNull] = "IsNotNull", a2[a2.IsString = i$2.IsString] = "IsString";
 })(le || (le = {}));
 var me;
 (function(a2) {
-  a2[a2.Contains = i$1.Contains] = "Contains", a2[a2.IsEqual = i$1.IsEqual] = "IsEqual", a2[a2.IsISMN = i$1.IsISMN] = "IsISMN", a2[a2.IsInList = i$1.IsInList] = "IsInList", a2[a2.IsNotEqual = i$1.IsNotEqual] = "IsNotEqual", a2[a2.IsNotInList = i$1.IsNotInList] = "IsNotInList", a2[a2.IsNotNull = i$1.IsNotNull] = "IsNotNull", a2[a2.IsString = i$1.IsString] = "IsString";
+  a2[a2.Contains = i$2.Contains] = "Contains", a2[a2.IsEqual = i$2.IsEqual] = "IsEqual", a2[a2.IsISMN = i$2.IsISMN] = "IsISMN", a2[a2.IsInList = i$2.IsInList] = "IsInList", a2[a2.IsNotEqual = i$2.IsNotEqual] = "IsNotEqual", a2[a2.IsNotInList = i$2.IsNotInList] = "IsNotInList", a2[a2.IsNotNull = i$2.IsNotNull] = "IsNotNull", a2[a2.IsString = i$2.IsString] = "IsString";
 })(me || (me = {}));
 var oe;
 (function(a2) {
-  a2[a2.Contains = i$1.Contains] = "Contains", a2[a2.IsEqual = i$1.IsEqual] = "IsEqual", a2[a2.IsISSN = i$1.IsISSN] = "IsISSN", a2[a2.IsInList = i$1.IsInList] = "IsInList", a2[a2.IsNotEqual = i$1.IsNotEqual] = "IsNotEqual", a2[a2.IsNotInList = i$1.IsNotInList] = "IsNotInList", a2[a2.IsNotNull = i$1.IsNotNull] = "IsNotNull", a2[a2.IsString = i$1.IsString] = "IsString";
+  a2[a2.Contains = i$2.Contains] = "Contains", a2[a2.IsEqual = i$2.IsEqual] = "IsEqual", a2[a2.IsISSN = i$2.IsISSN] = "IsISSN", a2[a2.IsInList = i$2.IsInList] = "IsInList", a2[a2.IsNotEqual = i$2.IsNotEqual] = "IsNotEqual", a2[a2.IsNotInList = i$2.IsNotInList] = "IsNotInList", a2[a2.IsNotNull = i$2.IsNotNull] = "IsNotNull", a2[a2.IsString = i$2.IsString] = "IsString";
 })(oe || (oe = {}));
 var ce;
 (function(a2) {
-  a2[a2.Contains = i$1.Contains] = "Contains", a2[a2.IsEqual = i$1.IsEqual] = "IsEqual", a2[a2.IsInList = i$1.IsInList] = "IsInList", a2[a2.IsNotEqual = i$1.IsNotEqual] = "IsNotEqual", a2[a2.IsNotInList = i$1.IsNotInList] = "IsNotInList", a2[a2.IsNotNull = i$1.IsNotNull] = "IsNotNull", a2[a2.IsString = i$1.IsString] = "IsString", a2[a2.IsTaxIDNumber = i$1.IsTaxIDNumber] = "IsTaxIDNumber";
+  a2[a2.Contains = i$2.Contains] = "Contains", a2[a2.IsEqual = i$2.IsEqual] = "IsEqual", a2[a2.IsInList = i$2.IsInList] = "IsInList", a2[a2.IsNotEqual = i$2.IsNotEqual] = "IsNotEqual", a2[a2.IsNotInList = i$2.IsNotInList] = "IsNotInList", a2[a2.IsNotNull = i$2.IsNotNull] = "IsNotNull", a2[a2.IsString = i$2.IsString] = "IsString", a2[a2.IsTaxIDNumber = i$2.IsTaxIDNumber] = "IsTaxIDNumber";
 })(ce || (ce = {}));
 var Ae;
 (function(a2) {
-  a2[a2.Contains = i$1.Contains] = "Contains", a2[a2.IsEqual = i$1.IsEqual] = "IsEqual", a2[a2.IsInList = i$1.IsInList] = "IsInList", a2[a2.IsNotEqual = i$1.IsNotEqual] = "IsNotEqual", a2[a2.IsNotInList = i$1.IsNotInList] = "IsNotInList", a2[a2.IsNotNull = i$1.IsNotNull] = "IsNotNull", a2[a2.IsString = i$1.IsString] = "IsString", a2[a2.IsVATIDNumber = i$1.IsVATIDNumber] = "IsVATIDNumber";
+  a2[a2.Contains = i$2.Contains] = "Contains", a2[a2.IsEqual = i$2.IsEqual] = "IsEqual", a2[a2.IsInList = i$2.IsInList] = "IsInList", a2[a2.IsNotEqual = i$2.IsNotEqual] = "IsNotEqual", a2[a2.IsNotInList = i$2.IsNotInList] = "IsNotInList", a2[a2.IsNotNull = i$2.IsNotNull] = "IsNotNull", a2[a2.IsString = i$2.IsString] = "IsString", a2[a2.IsVATIDNumber = i$2.IsVATIDNumber] = "IsVATIDNumber";
 })(Ae || (Ae = {}));
 var de;
 (function(a2) {
-  a2[a2.Contains = i$1.Contains] = "Contains", a2[a2.HasNumberCount = i$1.HasNumberCount] = "HasNumberCount", a2[a2.HasLowercaseCount = i$1.HasLowercaseCount] = "HasLowercaseCount", a2[a2.HasLetterCount = i$1.HasLetterCount] = "HasLetterCount", a2[a2.HasSpacesCount = i$1.HasSpacesCount] = "HasSpacesCount", a2[a2.HasSymbolCount = i$1.HasSymbolCount] = "HasSymbolCount", a2[a2.HasUppercaseCount = i$1.HasUppercaseCount] = "HasUppercaseCount", a2[a2.IsAlpha = i$1.IsAlpha] = "IsAlpha", a2[a2.IsAlphanumeric = i$1.IsAlphanumeric] = "IsAlphanumeric", a2[a2.IsAscii = i$1.IsAscii] = "IsAscii", a2[a2.IsBase64 = i$1.IsBase64] = "IsBase64", a2[a2.IsColor = i$1.IsColor] = "IsColor", a2[a2.IsComplexEnough = i$1.IsComplexEnough] = "IsComplexEnough", a2[a2.IsCreditCard = i$1.IsCreditCard] = "IsCreditCard", a2[a2.IsDataURI = i$1.IsDataURI] = "IsDataURI", a2[a2.IsDomainName = i$1.IsDomainName] = "IsDomainName", a2[a2.IsEmailAddress = i$1.IsEmailAddress] = "IsEmailAddress", a2[a2.IsEthereumAddress = i$1.IsEthereumAddress] = "IsEthereumAddress", a2[a2.IsEAN = i$1.IsEAN] = "IsEAN", a2[a2.IsEIN = i$1.IsEIN] = "IsEIN", a2[a2.IsEqual = i$1.IsEqual] = "IsEqual", a2[a2.IsIBAN = i$1.IsIBAN] = "IsIBAN", a2[a2.IsHSLColor = i$1.IsHSLColor] = "IsHSLColor", a2[a2.IsHexColor = i$1.IsHexColor] = "IsHexColor", a2[a2.IsHexadecimal = i$1.IsHexadecimal] = "IsHexadecimal", a2[a2.IsIdentityCardCode = i$1.IsIdentityCardCode] = "IsIdentityCardCode", a2[a2.IsIMEI = i$1.IsIMEI] = "IsIMEI", a2[a2.IsInList = i$1.IsInList] = "IsInList", a2[a2.IsIPAddress = i$1.IsIPAddress] = "IsIPAddress", a2[a2.IsInIPAddressRange = i$1.IsInIPAddressRange] = "IsInIPAddressRange", a2[a2.IsISBN = i$1.IsISBN] = "IsISBN", a2[a2.IsISIN = i$1.IsISIN] = "IsISIN", a2[a2.IsISMN = i$1.IsISMN] = "IsISMN", a2[a2.IsISRC = i$1.IsISRC] = "IsISRC", a2[a2.IsISSN = i$1.IsISSN] = "IsISSN", a2[a2.IsLanguage = i$1.IsLanguage] = "IsLanguage", a2[a2.IsLatitude = i$1.IsLatitude] = "IsLatitude", a2[a2.IsLongitude = i$1.IsLongitude] = "IsLongitude", a2[a2.IsLengthEqual = i$1.IsLengthEqual] = "IsLengthEqual", a2[a2.IsLengthGreaterThan = i$1.IsLengthGreaterThan] = "IsLengthGreaterThan", a2[a2.IsLengthGreaterThanOrEqual = i$1.IsLengthGreaterThanOrEqual] = "IsLengthGreaterThanOrEqual", a2[a2.IsLengthLessThan = i$1.IsLengthLessThan] = "IsLengthLessThan", a2[a2.IsLengthLessThanOrEqual = i$1.IsLengthLessThanOrEqual] = "IsLengthLessThanOrEqual", a2[a2.IsLicensePlateNumber = i$1.IsLicensePlateNumber] = "IsLicensePlateNumber", a2[a2.IsLowercase = i$1.IsLowercase] = "IsLowercase", a2[a2.IsOctal = i$1.IsOctal] = "IsOctal", a2[a2.IsMACAddress = i$1.IsMACAddress] = "IsMACAddress", a2[a2.IsMD5 = i$1.IsMD5] = "IsMD5", a2[a2.IsMagnetURI = i$1.IsMagnetURI] = "IsMagnetURI", a2[a2.IsMarkdown = i$1.IsMarkdown] = "IsMarkdown", a2[a2.IsMimeType = i$1.IsMimeType] = "IsMimeType", a2[a2.IsMonth = i$1.IsMonth] = "IsMonth", a2[a2.IsNotInIPAddressRange = i$1.IsNotInIPAddressRange] = "IsNotInIPAddressRange", a2[a2.IsNotInList = i$1.IsNotInList] = "IsNotInList", a2[a2.IsNotNull = i$1.IsNotNull] = "IsNotNull", a2[a2.IsNotRegexMatch = i$1.IsNotRegexMatch] = "IsNotRegexMatch", a2[a2.IsNumber = i$1.IsNumber] = "IsNumber", a2[a2.IsNumeric = i$1.IsNumeric] = "IsNumeric", a2[a2.IsPassportNumber = i$1.IsPassportNumber] = "IsPassportNumber", a2[a2.IsPhoneNumber = i$1.IsPhoneNumber] = "IsPhoneNumber", a2[a2.IsPort = i$1.IsPort] = "IsPort", a2[a2.IsPostalCode = i$1.IsPostalCode] = "IsPostalCode", a2[a2.IsProvince = i$1.IsProvince] = "IsProvince", a2[a2.IsRegexMatch = i$1.IsRegexMatch] = "IsRegexMatch", a2[a2.IsSemanticVersion = i$1.IsSemanticVersion] = "IsSemanticVersion", a2[a2.IsSlug = i$1.IsSlug] = "IsSlug", a2[a2.IsSSN = i$1.IsSSN] = "IsSSN", a2[a2.IsState = i$1.IsState] = "IsState", a2[a2.IsStreetAddress = i$1.IsStreetAddress] = "IsStreetAddress", a2[a2.IsString = i$1.IsString] = "IsString", a2[a2.IsTaxIDNumber = i$1.IsTaxIDNumber] = "IsTaxIDNumber", a2[a2.IsURL = i$1.IsURL] = "IsURL", a2[a2.IsUUID = i$1.IsUUID] = "IsUUID", a2[a2.IsUppercase = i$1.IsUppercase] = "IsUppercase", a2[a2.IsVATIDNumber = i$1.IsVATIDNumber] = "IsVATIDNumber", a2[a2.IsWeekday = i$1.IsWeekday] = "IsWeekday", a2[a2.IsWeekend = i$1.IsWeekend] = "IsWeekend", a2[a2.IsYear = i$1.IsYear] = "IsYear";
+  a2[a2.Contains = i$2.Contains] = "Contains", a2[a2.HasNumberCount = i$2.HasNumberCount] = "HasNumberCount", a2[a2.HasLowercaseCount = i$2.HasLowercaseCount] = "HasLowercaseCount", a2[a2.HasLetterCount = i$2.HasLetterCount] = "HasLetterCount", a2[a2.HasSpacesCount = i$2.HasSpacesCount] = "HasSpacesCount", a2[a2.HasSymbolCount = i$2.HasSymbolCount] = "HasSymbolCount", a2[a2.HasUppercaseCount = i$2.HasUppercaseCount] = "HasUppercaseCount", a2[a2.IsAlpha = i$2.IsAlpha] = "IsAlpha", a2[a2.IsAlphanumeric = i$2.IsAlphanumeric] = "IsAlphanumeric", a2[a2.IsAscii = i$2.IsAscii] = "IsAscii", a2[a2.IsBase64 = i$2.IsBase64] = "IsBase64", a2[a2.IsColor = i$2.IsColor] = "IsColor", a2[a2.IsComplexEnough = i$2.IsComplexEnough] = "IsComplexEnough", a2[a2.IsCreditCard = i$2.IsCreditCard] = "IsCreditCard", a2[a2.IsDataURI = i$2.IsDataURI] = "IsDataURI", a2[a2.IsDomainName = i$2.IsDomainName] = "IsDomainName", a2[a2.IsEmailAddress = i$2.IsEmailAddress] = "IsEmailAddress", a2[a2.IsEthereumAddress = i$2.IsEthereumAddress] = "IsEthereumAddress", a2[a2.IsEAN = i$2.IsEAN] = "IsEAN", a2[a2.IsEIN = i$2.IsEIN] = "IsEIN", a2[a2.IsEqual = i$2.IsEqual] = "IsEqual", a2[a2.IsIBAN = i$2.IsIBAN] = "IsIBAN", a2[a2.IsHSLColor = i$2.IsHSLColor] = "IsHSLColor", a2[a2.IsHexColor = i$2.IsHexColor] = "IsHexColor", a2[a2.IsHexadecimal = i$2.IsHexadecimal] = "IsHexadecimal", a2[a2.IsIdentityCardCode = i$2.IsIdentityCardCode] = "IsIdentityCardCode", a2[a2.IsIMEI = i$2.IsIMEI] = "IsIMEI", a2[a2.IsInList = i$2.IsInList] = "IsInList", a2[a2.IsIPAddress = i$2.IsIPAddress] = "IsIPAddress", a2[a2.IsInIPAddressRange = i$2.IsInIPAddressRange] = "IsInIPAddressRange", a2[a2.IsISBN = i$2.IsISBN] = "IsISBN", a2[a2.IsISIN = i$2.IsISIN] = "IsISIN", a2[a2.IsISMN = i$2.IsISMN] = "IsISMN", a2[a2.IsISRC = i$2.IsISRC] = "IsISRC", a2[a2.IsISSN = i$2.IsISSN] = "IsISSN", a2[a2.IsLanguage = i$2.IsLanguage] = "IsLanguage", a2[a2.IsLatitude = i$2.IsLatitude] = "IsLatitude", a2[a2.IsLongitude = i$2.IsLongitude] = "IsLongitude", a2[a2.IsLengthEqual = i$2.IsLengthEqual] = "IsLengthEqual", a2[a2.IsLengthGreaterThan = i$2.IsLengthGreaterThan] = "IsLengthGreaterThan", a2[a2.IsLengthGreaterThanOrEqual = i$2.IsLengthGreaterThanOrEqual] = "IsLengthGreaterThanOrEqual", a2[a2.IsLengthLessThan = i$2.IsLengthLessThan] = "IsLengthLessThan", a2[a2.IsLengthLessThanOrEqual = i$2.IsLengthLessThanOrEqual] = "IsLengthLessThanOrEqual", a2[a2.IsLicensePlateNumber = i$2.IsLicensePlateNumber] = "IsLicensePlateNumber", a2[a2.IsLowercase = i$2.IsLowercase] = "IsLowercase", a2[a2.IsOctal = i$2.IsOctal] = "IsOctal", a2[a2.IsMACAddress = i$2.IsMACAddress] = "IsMACAddress", a2[a2.IsMD5 = i$2.IsMD5] = "IsMD5", a2[a2.IsMagnetURI = i$2.IsMagnetURI] = "IsMagnetURI", a2[a2.IsMarkdown = i$2.IsMarkdown] = "IsMarkdown", a2[a2.IsMimeType = i$2.IsMimeType] = "IsMimeType", a2[a2.IsMonth = i$2.IsMonth] = "IsMonth", a2[a2.IsNotInIPAddressRange = i$2.IsNotInIPAddressRange] = "IsNotInIPAddressRange", a2[a2.IsNotInList = i$2.IsNotInList] = "IsNotInList", a2[a2.IsNotNull = i$2.IsNotNull] = "IsNotNull", a2[a2.IsNotRegexMatch = i$2.IsNotRegexMatch] = "IsNotRegexMatch", a2[a2.IsNumber = i$2.IsNumber] = "IsNumber", a2[a2.IsNumeric = i$2.IsNumeric] = "IsNumeric", a2[a2.IsPassportNumber = i$2.IsPassportNumber] = "IsPassportNumber", a2[a2.IsPhoneNumber = i$2.IsPhoneNumber] = "IsPhoneNumber", a2[a2.IsPort = i$2.IsPort] = "IsPort", a2[a2.IsPostalCode = i$2.IsPostalCode] = "IsPostalCode", a2[a2.IsProvince = i$2.IsProvince] = "IsProvince", a2[a2.IsRegexMatch = i$2.IsRegexMatch] = "IsRegexMatch", a2[a2.IsSemanticVersion = i$2.IsSemanticVersion] = "IsSemanticVersion", a2[a2.IsSlug = i$2.IsSlug] = "IsSlug", a2[a2.IsSSN = i$2.IsSSN] = "IsSSN", a2[a2.IsState = i$2.IsState] = "IsState", a2[a2.IsStreetAddress = i$2.IsStreetAddress] = "IsStreetAddress", a2[a2.IsString = i$2.IsString] = "IsString", a2[a2.IsTaxIDNumber = i$2.IsTaxIDNumber] = "IsTaxIDNumber", a2[a2.IsURL = i$2.IsURL] = "IsURL", a2[a2.IsUUID = i$2.IsUUID] = "IsUUID", a2[a2.IsUppercase = i$2.IsUppercase] = "IsUppercase", a2[a2.IsVATIDNumber = i$2.IsVATIDNumber] = "IsVATIDNumber", a2[a2.IsWeekday = i$2.IsWeekday] = "IsWeekday", a2[a2.IsWeekend = i$2.IsWeekend] = "IsWeekend", a2[a2.IsYear = i$2.IsYear] = "IsYear";
 })(de || (de = {}));
 var Ie;
 (function(a2) {
-  a2[a2.Contains = i$1.Contains] = "Contains", a2[a2.IsAlpha = i$1.IsAlpha] = "IsAlpha", a2[a2.IsAlphanumeric = i$1.IsAlphanumeric] = "IsAlphanumeric", a2[a2.IsInList = i$1.IsInList] = "IsInList", a2[a2.IsMarkdown = i$1.IsMarkdown] = "IsMarkdown", a2[a2.IsNotInList = i$1.IsNotInList] = "IsNotInList", a2[a2.IsNumeric = i$1.IsNumeric] = "IsNumeric", a2[a2.IsLowercase = i$1.IsLowercase] = "IsLowercase", a2[a2.IsString = i$1.IsString] = "IsString", a2[a2.IsUppercase = i$1.IsUppercase] = "IsUppercase";
+  a2[a2.Contains = i$2.Contains] = "Contains", a2[a2.IsAlpha = i$2.IsAlpha] = "IsAlpha", a2[a2.IsAlphanumeric = i$2.IsAlphanumeric] = "IsAlphanumeric", a2[a2.IsInList = i$2.IsInList] = "IsInList", a2[a2.IsMarkdown = i$2.IsMarkdown] = "IsMarkdown", a2[a2.IsNotInList = i$2.IsNotInList] = "IsNotInList", a2[a2.IsNumeric = i$2.IsNumeric] = "IsNumeric", a2[a2.IsLowercase = i$2.IsLowercase] = "IsLowercase", a2[a2.IsString = i$2.IsString] = "IsString", a2[a2.IsUppercase = i$2.IsUppercase] = "IsUppercase";
 })(Ie || (Ie = {}));
 var he;
 (function(a2) {
@@ -25697,19 +25696,19 @@ function Si(a2, l2) {
     if (!A2)
       return false;
     let o2 = A2[0];
-    if (!Object.values(i$1).includes(o2))
+    if (!Object.values(i$2).includes(o2))
       throw new k(`Configuration property "${A2[0]}" is not supported.`, {});
     return true;
   }).map(([A2, o2]) => {
     let I2 = (d2, g2) => ({ condition: d2, message: Ti(d2, g2), value: a2 });
     switch (A2) {
-      case i$1.IsRequired:
+      case i$2.IsRequired:
         if (typeof o2 != "boolean")
           throw new TypeError('Configuration property "IsRequired" must be a boolean.');
         if (o2 === true && (!a2 || a2 === ""))
           return I2(A2);
         break;
-      case i$1.HasLetterCount:
+      case i$2.HasLetterCount:
         {
           if ((Number.isNaN(o2) || !Number.isInteger(o2)) && typeof o2 != "boolean")
             throw new TypeError('Configuration property "HasLetterCount" must be a number or boolean');
@@ -25718,7 +25717,7 @@ function Si(a2, l2) {
             return I2(A2, { requirement: o2 });
         }
         break;
-      case i$1.HasLowercaseCount:
+      case i$2.HasLowercaseCount:
         {
           if ((Number.isNaN(o2) || !Number.isInteger(o2)) && typeof o2 != "boolean")
             throw new TypeError('Configuration property "HasLowercaseCount" must be a number or boolean');
@@ -25727,7 +25726,7 @@ function Si(a2, l2) {
             return I2(A2, { requirement: o2 });
         }
         break;
-      case i$1.HasNumberCount:
+      case i$2.HasNumberCount:
         {
           if ((Number.isNaN(o2) || !Number.isInteger(o2)) && typeof o2 != "boolean")
             throw new TypeError('Configuration property "HasNumberCount" must be a number or boolean');
@@ -25736,7 +25735,7 @@ function Si(a2, l2) {
             return I2(A2, { requirement: o2 });
         }
         break;
-      case i$1.HasSymbolCount:
+      case i$2.HasSymbolCount:
         {
           if ((Number.isNaN(o2) || !Number.isInteger(o2)) && typeof o2 != "boolean")
             throw new TypeError('Configuration property "HasSymbolCount" must be a number or boolean');
@@ -25745,7 +25744,7 @@ function Si(a2, l2) {
             return I2(A2, { requirement: o2 });
         }
         break;
-      case i$1.HasUppercaseCount:
+      case i$2.HasUppercaseCount:
         {
           if ((Number.isNaN(o2) || !Number.isInteger(o2)) && typeof o2 != "boolean")
             throw new TypeError('Configuration property "HasUppercaseCount" must be a number or boolean');
@@ -25754,35 +25753,35 @@ function Si(a2, l2) {
             return I2(A2, { requirement: o2 });
         }
         break;
-      case i$1.IsEmailAddress:
+      case i$2.IsEmailAddress:
         if (typeof o2 != "boolean")
           throw new TypeError('Configuration property "IsEmailAddress" must be a boolean.');
         if (typeof a2 != "string" || !Re.default.validate(a2))
           return I2(A2);
         break;
-      case i$1.IsEqual:
+      case i$2.IsEqual:
         if (a2 !== o2)
           return I2(A2);
         break;
-      case i$1.IsNotNull:
+      case i$2.IsNotNull:
         if (typeof o2 != "boolean")
           throw new TypeError('Configuration property "IsNotNull" must be a boolean.');
         if (a2 === null)
           return I2(A2);
         break;
-      case i$1.IsLengthEqual:
+      case i$2.IsLengthEqual:
         if (Number.isNaN(o2) || !Number.isInteger(o2))
           throw new TypeError('Configuration property "IsLengthEqual" must be a number.');
         if (typeof a2 != "string" || a2.length !== o2)
           return I2(A2, { requirement: o2 });
         break;
-      case i$1.IsLengthGreaterThanOrEqual:
+      case i$2.IsLengthGreaterThanOrEqual:
         if (!o2 || Number.isNaN(o2) || !Number.isInteger(o2))
           throw new TypeError('Configuration property "IsLengthGreaterThanOrEqual" must be a number.');
         if (typeof a2 != "string" || a2.length < o2)
           return I2(A2, { requirement: o2 });
         break;
-      case i$1.IsLengthLessThanOrEqual:
+      case i$2.IsLengthLessThanOrEqual:
         if (!o2 || Number.isNaN(o2) || !Number.isInteger(o2))
           throw new TypeError('Configuration property "IsLengthLessThanOrEqual" must be a number.');
         if (typeof a2 != "string" || a2.length > o2)
@@ -25793,271 +25792,271 @@ function Si(a2, l2) {
 }
 function Ti(a2, l2) {
   switch (a2) {
-    case i$1.Contains:
+    case i$2.Contains:
       return { long: "Missing a required pattern.", short: "Missing string pattern" };
-    case i$1.HasCharacterCount:
+    case i$2.HasCharacterCount:
       return { long: "Does not meet character length requirement.", short: "Not enough characters" };
-    case i$1.HasNumberCount:
+    case i$2.HasNumberCount:
       return { long: "Does not meet number count requirement.", short: "Not enough numbers" };
-    case i$1.HasLetterCount:
+    case i$2.HasLetterCount:
       return { long: "Does not contain required number of characters.", short: "Not enough letters" };
-    case i$1.HasLowercaseCount:
+    case i$2.HasLowercaseCount:
       return { long: "Does not contain enough lowercase letters.", short: "Not enough lowercase letters" };
-    case i$1.HasSpacesCount:
+    case i$2.HasSpacesCount:
       return { long: "Does not contain enough spaces.", short: "Not enough spaces" };
-    case i$1.HasSymbolCount:
+    case i$2.HasSymbolCount:
       return { long: "Does not meet symbol count requirement.", short: "Not enough symbols" };
-    case i$1.HasUppercaseCount:
+    case i$2.HasUppercaseCount:
       return { long: "Does not contain enough uppercase letters.", short: "Not enough uppercase letters" };
-    case i$1.IsAfter:
+    case i$2.IsAfter:
       return { long: `Value is not after ${l2 == null ? void 0 : l2.requirement}`, short: `Is not after ${l2 == null ? void 0 : l2.requirement}` };
-    case i$1.IsAfterOrEqual:
+    case i$2.IsAfterOrEqual:
       return { long: `Value is not after or equal to ${l2 == null ? void 0 : l2.requirement}`, short: `Is not equal or after ${l2 == null ? void 0 : l2.requirement}` };
-    case i$1.IsAirport:
+    case i$2.IsAirport:
       return { long: "Value is not a valid airport identifier code.", short: "Invalid airport code" };
-    case i$1.IsAlpha:
+    case i$2.IsAlpha:
       return { long: "Value does not consist of only letters.", short: "Only letters allowed" };
-    case i$1.IsAlphanumeric:
+    case i$2.IsAlphanumeric:
       return { long: "Provided value is not alphanumeric.", short: "Only letters and numbers allowed" };
-    case i$1.IsAlgorithmHash:
+    case i$2.IsAlgorithmHash:
       return { long: "Value does not match algorithm hash.", short: "Invalid algorithm hash" };
-    case i$1.IsAscii:
+    case i$2.IsAscii:
       return { long: "Value is not valid ASCII string.", short: "Not valid ASCII" };
-    case i$1.IsBase64:
+    case i$2.IsBase64:
       return { long: "Value is not valid Base64 string.", short: "Not valid Base64" };
-    case i$1.IsBefore:
+    case i$2.IsBefore:
       return { long: `Value is not before ${l2 == null ? void 0 : l2.requirement}.`, short: `Not before ${l2 == null ? void 0 : l2.requirement}` };
-    case i$1.IsBeforeOrAfter:
+    case i$2.IsBeforeOrAfter:
       return { long: `Value is not before or after ${l2 == null ? void 0 : l2.requirement}.`, short: `Not before or after to ${l2 == null ? void 0 : l2.requirement}` };
-    case i$1.IsBeforeOrEqual:
+    case i$2.IsBeforeOrEqual:
       return { long: `Value is not before or equal to${l2 == null ? void 0 : l2.requirement}.`, short: `Not before or equal to ${l2 == null ? void 0 : l2.requirement}` };
-    case i$1.IsBetween:
+    case i$2.IsBetween:
       return { long: `Value is not between ${l2 == null ? void 0 : l2.requirement}.`, short: `Value is not between ${l2 == null ? void 0 : l2.requirement}` };
-    case i$1.IsBIC:
+    case i$2.IsBIC:
       return { long: "Not a valid BIC number.", short: "Invalid BIC ID" };
-    case i$1.IsBitcoinAddress:
+    case i$2.IsBitcoinAddress:
       return { long: "Not a valid Bitcoin address.", short: "Invalid Bitcoin address" };
-    case i$1.IsBoolean:
+    case i$2.IsBoolean:
       return { long: "Not a valid boolean value.", short: "Must be boolean value" };
-    case i$1.IsColor:
+    case i$2.IsColor:
       return { long: "Not a valid color value.", short: "Invalid color" };
-    case i$1.IsComplexEnough:
+    case i$2.IsComplexEnough:
       return { long: "Does not meet complexity requirements.", short: "Not complex enough" };
-    case i$1.IsCountry:
+    case i$2.IsCountry:
       return { long: "Not a valid country code.", short: "Invalid country code" };
-    case i$1.IsCreditCard:
+    case i$2.IsCreditCard:
       return { long: "Not a valid credit card number.", short: "Invalid credit card number" };
-    case i$1.IsCurrency:
+    case i$2.IsCurrency:
       return { long: "Not a valid currency code.", short: "Invalid currency code" };
-    case i$1.IsDataURI:
+    case i$2.IsDataURI:
       return { long: "Not a valid data URI.", short: "Invalid data URI" };
-    case i$1.IsDate:
+    case i$2.IsDate:
       return { long: "Not a valid date.", short: "Invalid date" };
-    case i$1.IsDateRange:
+    case i$2.IsDateRange:
       return { long: "Not a valid date range.", short: "Invalid date range" };
-    case i$1.IsDateTime:
+    case i$2.IsDateTime:
       return { long: "Not a valid DateTime value.", short: "Invalid DateTime value" };
-    case i$1.IsDayOfMonth:
+    case i$2.IsDayOfMonth:
       return { long: "Not a day of the month.", short: "Not valid day of month" };
-    case i$1.IsDecimal:
+    case i$2.IsDecimal:
       return { long: "Not a valid decimal value.", short: "Invalid decimal value" };
-    case i$1.IsDivisibleBy:
+    case i$2.IsDivisibleBy:
       return { long: `Not divisible by ${l2 == null ? void 0 : l2.requirement}.`, short: `Not divisible by ${l2 == null ? void 0 : l2.requirement}` };
-    case i$1.IsDomainName:
+    case i$2.IsDomainName:
       return { long: "Not a valid domain name.", short: "Invalid domain name" };
-    case i$1.IsEmailAddress:
+    case i$2.IsEmailAddress:
       return { long: "Not a valid email address.", short: "Invalid email address" };
-    case i$1.IsEthereumAddress:
+    case i$2.IsEthereumAddress:
       return { long: "Not a valid Ethereum address.", short: "Invalid Ethereum address" };
-    case i$1.IsEAN:
+    case i$2.IsEAN:
       return { long: "Not a valid EAN number.", short: "Invalid EAN number" };
-    case i$1.IsEIN:
+    case i$2.IsEIN:
       return { long: "Not a valid EIN number.", short: "Invalid EIN number" };
-    case i$1.IsEqual:
+    case i$2.IsEqual:
       return { long: `Value is not equal to ${l2 == null ? void 0 : l2.requirement}.`, short: `Not equal to ${l2 == null ? void 0 : l2.requirement}` };
-    case i$1.IsEvenNumber:
+    case i$2.IsEvenNumber:
       return { long: "Value is not an even number.", short: "Not an even number" };
-    case i$1.IsFloat:
+    case i$2.IsFloat:
       return { long: "Value is not a floating point integer.", short: "Invalid float value" };
-    case i$1.IsIBAN:
+    case i$2.IsIBAN:
       return { long: "Not a valid IBAN number.", short: "Invalid IBAN number" };
-    case i$1.IsGreaterThan:
+    case i$2.IsGreaterThan:
       return { long: `Value is not greater than ${l2 == null ? void 0 : l2.requirement}.`, short: `Not greater than ${l2 == null ? void 0 : l2.requirement}` };
-    case i$1.IsGreaterThanOrEqual:
+    case i$2.IsGreaterThanOrEqual:
       return { long: `Value is not greater than or equal to ${l2 == null ? void 0 : l2.requirement}`, short: `Not greater or equal to ${l2 == null ? void 0 : l2.requirement}` };
-    case i$1.IsHSLColor:
+    case i$2.IsHSLColor:
       return { long: "Value is not valid HSL color string.", short: "Invalid HSL value" };
-    case i$1.IsHexColor:
+    case i$2.IsHexColor:
       return { long: "Not a valid hexadecimal color code string.", short: "Invalid hex color code" };
-    case i$1.IsHexadecimal:
+    case i$2.IsHexadecimal:
       return { long: "Not a valid hexadecimal string.", short: "Not hexadecimal value" };
-    case i$1.IsIdentityCardCode:
+    case i$2.IsIdentityCardCode:
       return { long: "Not a valid identity card code.", short: "Invalid ID card" };
-    case i$1.IsIMEI:
+    case i$2.IsIMEI:
       return { long: "Not a valid IMEI number.", short: "Invalid IMEI number" };
-    case i$1.IsInIPAddressRange:
+    case i$2.IsInIPAddressRange:
       return { long: `Value is not within ${l2 == null ? void 0 : l2.requirement} IP range`, short: "Not in IP range" };
-    case i$1.IsInList:
+    case i$2.IsInList:
       return { long: "Value is not included in given list.", short: "Not in list" };
-    case i$1.IsInTheLast:
+    case i$2.IsInTheLast:
       return { long: "Value is not the last item in given list.", short: "Not last in list" };
-    case i$1.IsInteger:
+    case i$2.IsInteger:
       return { long: "Value is not a valid integer value.", short: "Not an integer" };
-    case i$1.IsIPAddress:
+    case i$2.IsIPAddress:
       return { long: "Value is not a valid IP address.", short: "Invalid IP address" };
-    case i$1.IsIPAddressRange:
+    case i$2.IsIPAddressRange:
       return { long: "Not a valid IP address range.", short: "Invalid IP address range" };
-    case i$1.IsISBN:
+    case i$2.IsISBN:
       return { long: "Value is not valid ISBN number.", short: "Invalid ISBN number" };
-    case i$1.IsISIN:
+    case i$2.IsISIN:
       return { long: "Value is not a valid ISIN number.", short: "Invalid ISIN number" };
-    case i$1.IsISMN:
+    case i$2.IsISMN:
       return { long: "Value is not a valid ISMN number.", short: "Invalid ISMN number" };
-    case i$1.IsISRC:
+    case i$2.IsISRC:
       return { long: "Value is not a valid ISRC number.", short: "Invalid ISRC number" };
-    case i$1.IsISSN:
+    case i$2.IsISSN:
       return { long: "Value is not a valid ISSN number.", short: "Invalid ISSN number" };
-    case i$1.IsISO4217:
+    case i$2.IsISO4217:
       return { long: "Value is not ISO-4217 compliant currency code.", short: "Invalid currency code" };
-    case i$1.IsISO8601:
+    case i$2.IsISO8601:
       return { long: "Value is not ISO-8601 compliant date string.", short: "Invalid date" };
-    case i$1.IsISO31661Alpha2:
+    case i$2.IsISO31661Alpha2:
       return { long: "Not a valid ISO-3166-1 Alpha 2 country code.", short: "Invalid country code" };
-    case i$1.IsISO31661Alpha3:
+    case i$2.IsISO31661Alpha3:
       return { long: "Not a valid ISO-3166-1 Alpha 3 country code.", short: "Invalid country code" };
-    case i$1.IsJSON:
+    case i$2.IsJSON:
       return { long: "Not valid JSON data.", short: "Invalid JSON" };
-    case i$1.IsLanguage:
+    case i$2.IsLanguage:
       return { long: "Value is not a valid language code.", short: "Invalid language code" };
-    case i$1.IsLatitude:
+    case i$2.IsLatitude:
       return { long: "Not a valid latitudinal coordinate.", short: "Invalid latitude coordinate" };
-    case i$1.IsLongitude:
+    case i$2.IsLongitude:
       return { long: "Not a valid longitudinal coordinate.", short: "Invalid longitude coordinate" };
-    case i$1.IsLengthEqual:
+    case i$2.IsLengthEqual:
       return { long: `Length of value is not equal to ${l2 == null ? void 0 : l2.requirement}.`, short: `Length not equal to ${l2 == null ? void 0 : l2.requirement}` };
-    case i$1.IsLengthGreaterThan:
+    case i$2.IsLengthGreaterThan:
       return { long: `Length of value is not greater than ${l2 == null ? void 0 : l2.requirement}.`, short: "Not long enough" };
-    case i$1.IsLengthGreaterThanOrEqual:
+    case i$2.IsLengthGreaterThanOrEqual:
       return { long: `Length of value is not greater than or equal to ${l2 == null ? void 0 : l2.requirement}.`, short: "Not long enough" };
-    case i$1.IsLengthLessThan:
+    case i$2.IsLengthLessThan:
       return { long: `Length of value is not less than ${l2 == null ? void 0 : l2.requirement}.`, short: "Too long" };
-    case i$1.IsLengthLessThanOrEqual:
+    case i$2.IsLengthLessThanOrEqual:
       return { long: `Length of value is not less than or equal to ${l2 == null ? void 0 : l2.requirement}.`, short: "Too long" };
-    case i$1.IsLessThan:
+    case i$2.IsLessThan:
       return { long: `Value is not less than ${l2 == null ? void 0 : l2.requirement}.`, short: `Not less than ${l2 == null ? void 0 : l2.requirement}` };
-    case i$1.IsLessThanOrEqual:
+    case i$2.IsLessThanOrEqual:
       return { long: `Value is not less than or equal to ${l2 == null ? void 0 : l2.requirement}.`, short: `Not less or equal to ${l2 == null ? void 0 : l2.requirement}` };
-    case i$1.IsLicensePlateNumber:
+    case i$2.IsLicensePlateNumber:
       return { long: "Not a valid license plate number.", short: "Invalid license plate number" };
-    case i$1.IsLowercase:
+    case i$2.IsLowercase:
       return { long: "Value is not all lowercase.", short: "Not all lowercase" };
-    case i$1.IsOctal:
+    case i$2.IsOctal:
       return { long: "Value is not a valid octal string.", short: "Invalid octal value" };
-    case i$1.IsMACAddress:
+    case i$2.IsMACAddress:
       return { long: "Value is not a valid MAC address.", short: "Invalid MAC address" };
-    case i$1.IsMD5:
+    case i$2.IsMD5:
       return { long: "Value is not valid MD5 hash string.", short: "Invalid MD5 string" };
-    case i$1.IsMagnetURI:
+    case i$2.IsMagnetURI:
       return { long: "Not a valid Magnet URI string.", short: "Invalid Magnet URI" };
-    case i$1.IsMarkdown:
+    case i$2.IsMarkdown:
       return { long: "Value is not a valid markdown string.", short: "Invalid Markdown" };
-    case i$1.IsMimeType:
+    case i$2.IsMimeType:
       return { long: "Value is not a valid HTTP MIME type.", short: "Invalid MIME type" };
-    case i$1.IsMonth:
+    case i$2.IsMonth:
       return { long: "Value is not a valid month.", short: "Invalid month" };
-    case i$1.IsNegativeNumber:
+    case i$2.IsNegativeNumber:
       return { long: "Value is not a negative number.", short: "Number not negative" };
-    case i$1.IsNotDate:
+    case i$2.IsNotDate:
       return { long: "Value is not a valid date string.", short: "Invalid date" };
-    case i$1.IsNotEqual:
+    case i$2.IsNotEqual:
       return { long: `Value is equal to ${l2 == null ? void 0 : l2.requirement}.`, short: `Can't be equal to ${l2 == null ? void 0 : l2.requirement}` };
-    case i$1.IsNotInIPAddressRange:
+    case i$2.IsNotInIPAddressRange:
       return { long: "Value is not within IP range.", short: "Not in IP address range" };
-    case i$1.IsNotInList:
+    case i$2.IsNotInList:
       return { long: "Value is not allowed.", short: "Not allowed" };
-    case i$1.IsNotNull:
+    case i$2.IsNotNull:
       return { long: "Value is required and must not be null.", short: "Cannot be null" };
-    case i$1.IsNotRegexMatch:
+    case i$2.IsNotRegexMatch:
       return { long: "Value does not match required pattern.", short: "Invalid pattern" };
-    case i$1.IsNotToday:
+    case i$2.IsNotToday:
       return { long: "Value must not be same date as current day.", short: "Cannot be today" };
-    case i$1.IsNumber:
+    case i$2.IsNumber:
       return { long: "Value is not a number.", short: "Not a number" };
-    case i$1.IsNumeric:
+    case i$2.IsNumeric:
       return { long: "String value must be numeric only.", short: "Not numeric" };
-    case i$1.IsOddNumber:
+    case i$2.IsOddNumber:
       return { long: "Value must be an odd number.", short: "Not an odd number" };
-    case i$1.IsPassportNumber:
+    case i$2.IsPassportNumber:
       return { long: "Not a valid password number.", short: "Invalid password number" };
-    case i$1.IsPhoneNumber:
+    case i$2.IsPhoneNumber:
       return { long: "Not a valid phone number.", short: "Invalid phone number" };
-    case i$1.IsPort:
+    case i$2.IsPort:
       return { long: "Not a valid port number.", short: "Invalid port number" };
-    case i$1.IsPositiveNumber:
+    case i$2.IsPositiveNumber:
       return { long: "Not a positive number.", short: "Not a positive number" };
-    case i$1.IsPostalCode:
+    case i$2.IsPostalCode:
       return { long: "Not a valid postal code.", short: "Invalid postal code" };
-    case i$1.IsProvince:
+    case i$2.IsProvince:
       return { long: "Not a valid province code.", short: "Invalid province code" };
-    case i$1.IsRGBColor:
+    case i$2.IsRGBColor:
       return { long: "Not a valid RGB color string.", short: "Invalid RGB color" };
-    case i$1.IsRegexMatch:
+    case i$2.IsRegexMatch:
       return { long: "Value does not match required pattern.", short: "Missing string pattern" };
-    case i$1.IsRequired:
+    case i$2.IsRequired:
       return { long: "Field is required.", short: "Required field" };
-    case i$1.IsSemanticVersion:
+    case i$2.IsSemanticVersion:
       return { long: "Value is not a valid semantic version.", short: "Invalid version" };
-    case i$1.IsSlug:
+    case i$2.IsSlug:
       return { long: "Not a valid URL slug string.", short: "Invalid URL slug" };
-    case i$1.IsSSN:
+    case i$2.IsSSN:
       return { long: "Not a valid social security number.", short: "Invalid SSN" };
-    case i$1.IsState:
+    case i$2.IsState:
       return { long: "Not a valid state code.", short: "Invalid state code" };
-    case i$1.IsStreetAddress:
+    case i$2.IsStreetAddress:
       return { long: "Not a valid street address.", short: "Invalid street address" };
-    case i$1.IsString:
+    case i$2.IsString:
       return { long: "Value is not a valid string.", short: "Must be a string" };
-    case i$1.IsStrongPassword:
+    case i$2.IsStrongPassword:
       return { long: "A stronger password is required.", short: "Password must be stronger" };
-    case i$1.IsTags:
+    case i$2.IsTags:
       return { long: "Input value is not valid tags.", short: "Invalid tags" };
-    case i$1.IsTaxIDNumber:
+    case i$2.IsTaxIDNumber:
       return { long: "Value is not a valid tax ID number.", short: "Invalid tax ID number" };
-    case i$1.IsThisMonth:
+    case i$2.IsThisMonth:
       return { long: "Date is not in the current month.", short: "Not current month" };
-    case i$1.IsThisQuarter:
+    case i$2.IsThisQuarter:
       return { long: "Date is not in the current quarter.", short: "Not current quarter" };
-    case i$1.IsThisWeek:
+    case i$2.IsThisWeek:
       return { long: "Date is not this week.", short: "Not this week" };
-    case i$1.IsThisWeekend:
+    case i$2.IsThisWeekend:
       return { long: "Date is not date for upcoming weekend.", short: "Not this weekend" };
-    case i$1.IsThisYear:
+    case i$2.IsThisYear:
       return { long: "Date is not in the current year.", short: "Not in current year" };
-    case i$1.IsTime:
+    case i$2.IsTime:
       return { long: "Value is not a valid time string.", short: "Invalid time" };
-    case i$1.IsTimeOfDay:
+    case i$2.IsTimeOfDay:
       return { long: "Value is not in required time of day.", short: "Invalid time of day" };
-    case i$1.IsTimeRange:
+    case i$2.IsTimeRange:
       return { long: "Value is not a valid time range.", short: "Invalid time range" };
-    case i$1.IsToday:
+    case i$2.IsToday:
       return { long: "Date is not today.", short: "Not today's date" };
-    case i$1.IsURL:
+    case i$2.IsURL:
       return { long: "Value is not a valid URL string.", short: "Invalid URL" };
-    case i$1.IsUUID:
+    case i$2.IsUUID:
       return { long: "Value is not a valid UUID string.", short: "Invalid UUID" };
-    case i$1.IsUppercase:
+    case i$2.IsUppercase:
       return { long: "String is not completely uppercased.", short: "Not uppercase" };
-    case i$1.IsUsernameAvailable:
+    case i$2.IsUsernameAvailable:
       return { long: "Username is not available.", short: "Username not available" };
-    case i$1.IsValidStreetAddress:
+    case i$2.IsValidStreetAddress:
       return { long: "Provided address is not valid.", short: "Invalid street address" };
-    case i$1.IsVATIDNumber:
+    case i$2.IsVATIDNumber:
       return { long: "Value is not a valid VAT ID number.", short: "Invalid VAT ID" };
-    case i$1.IsWeekday:
+    case i$2.IsWeekday:
       return { long: "Date is not a weekday.", short: "Not a weekday" };
-    case i$1.IsWeekend:
+    case i$2.IsWeekend:
       return { long: "Date is not on a weekend.", short: "Not a weekend" };
-    case i$1.IsYear:
+    case i$2.IsYear:
       return { long: "Not a valid year string.", short: "Invalid year" };
   }
 }
@@ -26101,9 +26100,9 @@ var lookup = [];
 var revLookup = [];
 var Arr = typeof Uint8Array !== "undefined" ? Uint8Array : Array;
 var code$1 = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
-for (var i = 0, len = code$1.length; i < len; ++i) {
-  lookup[i] = code$1[i];
-  revLookup[code$1.charCodeAt(i)] = i;
+for (var i$1 = 0, len = code$1.length; i$1 < len; ++i$1) {
+  lookup[i$1] = code$1[i$1];
+  revLookup[code$1.charCodeAt(i$1)] = i$1;
 }
 revLookup["-".charCodeAt(0)] = 62;
 revLookup["_".charCodeAt(0)] = 63;
@@ -26388,16 +26387,16 @@ var isarray = Array.isArray || function(arr) {
   Buffer2.allocUnsafeSlow = function(size) {
     return allocUnsafe(null, size);
   };
-  function fromString(that, string, encoding) {
+  function fromString(that, string2, encoding) {
     if (typeof encoding !== "string" || encoding === "") {
       encoding = "utf8";
     }
     if (!Buffer2.isEncoding(encoding)) {
       throw new TypeError('"encoding" must be a valid string encoding');
     }
-    var length = byteLength2(string, encoding) | 0;
+    var length = byteLength3(string2, encoding) | 0;
     that = createBuffer(that, length);
-    var actual = that.write(string, encoding);
+    var actual = that.write(string2, encoding);
     if (actual !== length) {
       that = that.slice(0, actual);
     }
@@ -26537,17 +26536,17 @@ var isarray = Array.isArray || function(arr) {
     }
     return buffer2;
   };
-  function byteLength2(string, encoding) {
-    if (Buffer2.isBuffer(string)) {
-      return string.length;
+  function byteLength3(string2, encoding) {
+    if (Buffer2.isBuffer(string2)) {
+      return string2.length;
     }
-    if (typeof ArrayBuffer !== "undefined" && typeof ArrayBuffer.isView === "function" && (ArrayBuffer.isView(string) || string instanceof ArrayBuffer)) {
-      return string.byteLength;
+    if (typeof ArrayBuffer !== "undefined" && typeof ArrayBuffer.isView === "function" && (ArrayBuffer.isView(string2) || string2 instanceof ArrayBuffer)) {
+      return string2.byteLength;
     }
-    if (typeof string !== "string") {
-      string = "" + string;
+    if (typeof string2 !== "string") {
+      string2 = "" + string2;
     }
-    var len = string.length;
+    var len = string2.length;
     if (len === 0)
       return 0;
     var loweredCase = false;
@@ -26560,7 +26559,7 @@ var isarray = Array.isArray || function(arr) {
         case "utf8":
         case "utf-8":
         case void 0:
-          return utf8ToBytes(string).length;
+          return utf8ToBytes(string2).length;
         case "ucs2":
         case "ucs-2":
         case "utf16le":
@@ -26569,16 +26568,16 @@ var isarray = Array.isArray || function(arr) {
         case "hex":
           return len >>> 1;
         case "base64":
-          return base64ToBytes(string).length;
+          return base64ToBytes(string2).length;
         default:
           if (loweredCase)
-            return utf8ToBytes(string).length;
+            return utf8ToBytes(string2).length;
           encoding = ("" + encoding).toLowerCase();
           loweredCase = true;
       }
     }
   }
-  Buffer2.byteLength = byteLength2;
+  Buffer2.byteLength = byteLength3;
   function slowToString(encoding, start, end) {
     var loweredCase = false;
     if (start === void 0 || start < 0) {
@@ -26857,7 +26856,7 @@ var isarray = Array.isArray || function(arr) {
   Buffer2.prototype.lastIndexOf = function lastIndexOf(val, byteOffset, encoding) {
     return bidirectionalIndexOf(this, val, byteOffset, encoding, false);
   };
-  function hexWrite(buf, string, offset2, length) {
+  function hexWrite(buf, string2, offset2, length) {
     offset2 = Number(offset2) || 0;
     var remaining = buf.length - offset2;
     if (!length) {
@@ -26868,36 +26867,36 @@ var isarray = Array.isArray || function(arr) {
         length = remaining;
       }
     }
-    var strLen = string.length;
+    var strLen = string2.length;
     if (strLen % 2 !== 0)
       throw new TypeError("Invalid hex string");
     if (length > strLen / 2) {
       length = strLen / 2;
     }
     for (var i = 0; i < length; ++i) {
-      var parsed = parseInt(string.substr(i * 2, 2), 16);
+      var parsed = parseInt(string2.substr(i * 2, 2), 16);
       if (isNaN(parsed))
         return i;
       buf[offset2 + i] = parsed;
     }
     return i;
   }
-  function utf8Write(buf, string, offset2, length) {
-    return blitBuffer(utf8ToBytes(string, buf.length - offset2), buf, offset2, length);
+  function utf8Write(buf, string2, offset2, length) {
+    return blitBuffer(utf8ToBytes(string2, buf.length - offset2), buf, offset2, length);
   }
-  function asciiWrite(buf, string, offset2, length) {
-    return blitBuffer(asciiToBytes(string), buf, offset2, length);
+  function asciiWrite(buf, string2, offset2, length) {
+    return blitBuffer(asciiToBytes(string2), buf, offset2, length);
   }
-  function latin1Write(buf, string, offset2, length) {
-    return asciiWrite(buf, string, offset2, length);
+  function latin1Write(buf, string2, offset2, length) {
+    return asciiWrite(buf, string2, offset2, length);
   }
-  function base64Write(buf, string, offset2, length) {
-    return blitBuffer(base64ToBytes(string), buf, offset2, length);
+  function base64Write(buf, string2, offset2, length) {
+    return blitBuffer(base64ToBytes(string2), buf, offset2, length);
   }
-  function ucs2Write(buf, string, offset2, length) {
-    return blitBuffer(utf16leToBytes(string, buf.length - offset2), buf, offset2, length);
+  function ucs2Write(buf, string2, offset2, length) {
+    return blitBuffer(utf16leToBytes(string2, buf.length - offset2), buf, offset2, length);
   }
-  Buffer2.prototype.write = function write(string, offset2, length, encoding) {
+  Buffer2.prototype.write = function write(string2, offset2, length, encoding) {
     if (offset2 === void 0) {
       encoding = "utf8";
       length = this.length;
@@ -26922,7 +26921,7 @@ var isarray = Array.isArray || function(arr) {
     var remaining = this.length - offset2;
     if (length === void 0 || length > remaining)
       length = remaining;
-    if (string.length > 0 && (length < 0 || offset2 < 0) || offset2 > this.length) {
+    if (string2.length > 0 && (length < 0 || offset2 < 0) || offset2 > this.length) {
       throw new RangeError("Attempt to write outside buffer bounds");
     }
     if (!encoding)
@@ -26931,22 +26930,22 @@ var isarray = Array.isArray || function(arr) {
     for (; ; ) {
       switch (encoding) {
         case "hex":
-          return hexWrite(this, string, offset2, length);
+          return hexWrite(this, string2, offset2, length);
         case "utf8":
         case "utf-8":
-          return utf8Write(this, string, offset2, length);
+          return utf8Write(this, string2, offset2, length);
         case "ascii":
-          return asciiWrite(this, string, offset2, length);
+          return asciiWrite(this, string2, offset2, length);
         case "latin1":
         case "binary":
-          return latin1Write(this, string, offset2, length);
+          return latin1Write(this, string2, offset2, length);
         case "base64":
-          return base64Write(this, string, offset2, length);
+          return base64Write(this, string2, offset2, length);
         case "ucs2":
         case "ucs-2":
         case "utf16le":
         case "utf-16le":
-          return ucs2Write(this, string, offset2, length);
+          return ucs2Write(this, string2, offset2, length);
         default:
           if (loweredCase)
             throw new TypeError("Unknown encoding: " + encoding);
@@ -27065,7 +27064,7 @@ var isarray = Array.isArray || function(arr) {
       end = len;
     var out = "";
     for (var i = start; i < end; ++i) {
-      out += toHex(buf[i]);
+      out += toHex2(buf[i]);
     }
     return out;
   }
@@ -27116,29 +27115,29 @@ var isarray = Array.isArray || function(arr) {
     if (offset2 + ext > length)
       throw new RangeError("Trying to access beyond buffer length");
   }
-  Buffer2.prototype.readUIntLE = function readUIntLE(offset2, byteLength3, noAssert) {
+  Buffer2.prototype.readUIntLE = function readUIntLE(offset2, byteLength4, noAssert) {
     offset2 = offset2 | 0;
-    byteLength3 = byteLength3 | 0;
+    byteLength4 = byteLength4 | 0;
     if (!noAssert)
-      checkOffset(offset2, byteLength3, this.length);
+      checkOffset(offset2, byteLength4, this.length);
     var val = this[offset2];
     var mul = 1;
     var i = 0;
-    while (++i < byteLength3 && (mul *= 256)) {
+    while (++i < byteLength4 && (mul *= 256)) {
       val += this[offset2 + i] * mul;
     }
     return val;
   };
-  Buffer2.prototype.readUIntBE = function readUIntBE(offset2, byteLength3, noAssert) {
+  Buffer2.prototype.readUIntBE = function readUIntBE(offset2, byteLength4, noAssert) {
     offset2 = offset2 | 0;
-    byteLength3 = byteLength3 | 0;
+    byteLength4 = byteLength4 | 0;
     if (!noAssert) {
-      checkOffset(offset2, byteLength3, this.length);
+      checkOffset(offset2, byteLength4, this.length);
     }
-    var val = this[offset2 + --byteLength3];
+    var val = this[offset2 + --byteLength4];
     var mul = 1;
-    while (byteLength3 > 0 && (mul *= 256)) {
-      val += this[offset2 + --byteLength3] * mul;
+    while (byteLength4 > 0 && (mul *= 256)) {
+      val += this[offset2 + --byteLength4] * mul;
     }
     return val;
   };
@@ -27167,28 +27166,28 @@ var isarray = Array.isArray || function(arr) {
       checkOffset(offset2, 4, this.length);
     return this[offset2] * 16777216 + (this[offset2 + 1] << 16 | this[offset2 + 2] << 8 | this[offset2 + 3]);
   };
-  Buffer2.prototype.readIntLE = function readIntLE(offset2, byteLength3, noAssert) {
+  Buffer2.prototype.readIntLE = function readIntLE(offset2, byteLength4, noAssert) {
     offset2 = offset2 | 0;
-    byteLength3 = byteLength3 | 0;
+    byteLength4 = byteLength4 | 0;
     if (!noAssert)
-      checkOffset(offset2, byteLength3, this.length);
+      checkOffset(offset2, byteLength4, this.length);
     var val = this[offset2];
     var mul = 1;
     var i = 0;
-    while (++i < byteLength3 && (mul *= 256)) {
+    while (++i < byteLength4 && (mul *= 256)) {
       val += this[offset2 + i] * mul;
     }
     mul *= 128;
     if (val >= mul)
-      val -= Math.pow(2, 8 * byteLength3);
+      val -= Math.pow(2, 8 * byteLength4);
     return val;
   };
-  Buffer2.prototype.readIntBE = function readIntBE(offset2, byteLength3, noAssert) {
+  Buffer2.prototype.readIntBE = function readIntBE(offset2, byteLength4, noAssert) {
     offset2 = offset2 | 0;
-    byteLength3 = byteLength3 | 0;
+    byteLength4 = byteLength4 | 0;
     if (!noAssert)
-      checkOffset(offset2, byteLength3, this.length);
-    var i = byteLength3;
+      checkOffset(offset2, byteLength4, this.length);
+    var i = byteLength4;
     var mul = 1;
     var val = this[offset2 + --i];
     while (i > 0 && (mul *= 256)) {
@@ -27196,7 +27195,7 @@ var isarray = Array.isArray || function(arr) {
     }
     mul *= 128;
     if (val >= mul)
-      val -= Math.pow(2, 8 * byteLength3);
+      val -= Math.pow(2, 8 * byteLength4);
     return val;
   };
   Buffer2.prototype.readInt8 = function readInt8(offset2, noAssert) {
@@ -27256,37 +27255,37 @@ var isarray = Array.isArray || function(arr) {
     if (offset2 + ext > buf.length)
       throw new RangeError("Index out of range");
   }
-  Buffer2.prototype.writeUIntLE = function writeUIntLE(value, offset2, byteLength3, noAssert) {
+  Buffer2.prototype.writeUIntLE = function writeUIntLE(value, offset2, byteLength4, noAssert) {
     value = +value;
     offset2 = offset2 | 0;
-    byteLength3 = byteLength3 | 0;
+    byteLength4 = byteLength4 | 0;
     if (!noAssert) {
-      var maxBytes = Math.pow(2, 8 * byteLength3) - 1;
-      checkInt(this, value, offset2, byteLength3, maxBytes, 0);
+      var maxBytes = Math.pow(2, 8 * byteLength4) - 1;
+      checkInt(this, value, offset2, byteLength4, maxBytes, 0);
     }
     var mul = 1;
     var i = 0;
     this[offset2] = value & 255;
-    while (++i < byteLength3 && (mul *= 256)) {
+    while (++i < byteLength4 && (mul *= 256)) {
       this[offset2 + i] = value / mul & 255;
     }
-    return offset2 + byteLength3;
+    return offset2 + byteLength4;
   };
-  Buffer2.prototype.writeUIntBE = function writeUIntBE(value, offset2, byteLength3, noAssert) {
+  Buffer2.prototype.writeUIntBE = function writeUIntBE(value, offset2, byteLength4, noAssert) {
     value = +value;
     offset2 = offset2 | 0;
-    byteLength3 = byteLength3 | 0;
+    byteLength4 = byteLength4 | 0;
     if (!noAssert) {
-      var maxBytes = Math.pow(2, 8 * byteLength3) - 1;
-      checkInt(this, value, offset2, byteLength3, maxBytes, 0);
+      var maxBytes = Math.pow(2, 8 * byteLength4) - 1;
+      checkInt(this, value, offset2, byteLength4, maxBytes, 0);
     }
-    var i = byteLength3 - 1;
+    var i = byteLength4 - 1;
     var mul = 1;
     this[offset2 + i] = value & 255;
     while (--i >= 0 && (mul *= 256)) {
       this[offset2 + i] = value / mul & 255;
     }
-    return offset2 + byteLength3;
+    return offset2 + byteLength4;
   };
   Buffer2.prototype.writeUInt8 = function writeUInt8(value, offset2, noAssert) {
     value = +value;
@@ -27368,33 +27367,33 @@ var isarray = Array.isArray || function(arr) {
     }
     return offset2 + 4;
   };
-  Buffer2.prototype.writeIntLE = function writeIntLE(value, offset2, byteLength3, noAssert) {
+  Buffer2.prototype.writeIntLE = function writeIntLE(value, offset2, byteLength4, noAssert) {
     value = +value;
     offset2 = offset2 | 0;
     if (!noAssert) {
-      var limit = Math.pow(2, 8 * byteLength3 - 1);
-      checkInt(this, value, offset2, byteLength3, limit - 1, -limit);
+      var limit = Math.pow(2, 8 * byteLength4 - 1);
+      checkInt(this, value, offset2, byteLength4, limit - 1, -limit);
     }
     var i = 0;
     var mul = 1;
     var sub = 0;
     this[offset2] = value & 255;
-    while (++i < byteLength3 && (mul *= 256)) {
+    while (++i < byteLength4 && (mul *= 256)) {
       if (value < 0 && sub === 0 && this[offset2 + i - 1] !== 0) {
         sub = 1;
       }
       this[offset2 + i] = (value / mul >> 0) - sub & 255;
     }
-    return offset2 + byteLength3;
+    return offset2 + byteLength4;
   };
-  Buffer2.prototype.writeIntBE = function writeIntBE(value, offset2, byteLength3, noAssert) {
+  Buffer2.prototype.writeIntBE = function writeIntBE(value, offset2, byteLength4, noAssert) {
     value = +value;
     offset2 = offset2 | 0;
     if (!noAssert) {
-      var limit = Math.pow(2, 8 * byteLength3 - 1);
-      checkInt(this, value, offset2, byteLength3, limit - 1, -limit);
+      var limit = Math.pow(2, 8 * byteLength4 - 1);
+      checkInt(this, value, offset2, byteLength4, limit - 1, -limit);
     }
-    var i = byteLength3 - 1;
+    var i = byteLength4 - 1;
     var mul = 1;
     var sub = 0;
     this[offset2 + i] = value & 255;
@@ -27404,7 +27403,7 @@ var isarray = Array.isArray || function(arr) {
       }
       this[offset2 + i] = (value / mul >> 0) - sub & 255;
     }
-    return offset2 + byteLength3;
+    return offset2 + byteLength4;
   };
   Buffer2.prototype.writeInt8 = function writeInt8(value, offset2, noAssert) {
     value = +value;
@@ -27508,7 +27507,7 @@ var isarray = Array.isArray || function(arr) {
   Buffer2.prototype.writeDoubleBE = function writeDoubleBE(value, offset2, noAssert) {
     return writeDouble(this, value, offset2, false, noAssert);
   };
-  Buffer2.prototype.copy = function copy(target, targetStart, start, end) {
+  Buffer2.prototype.copy = function copy2(target, targetStart, start, end) {
     if (!start)
       start = 0;
     if (!end && end !== 0)
@@ -27614,19 +27613,19 @@ var isarray = Array.isArray || function(arr) {
       return str.trim();
     return str.replace(/^\s+|\s+$/g, "");
   }
-  function toHex(n2) {
+  function toHex2(n2) {
     if (n2 < 16)
       return "0" + n2.toString(16);
     return n2.toString(16);
   }
-  function utf8ToBytes(string, units) {
+  function utf8ToBytes(string2, units) {
     units = units || Infinity;
     var codePoint;
-    var length = string.length;
+    var length = string2.length;
     var leadSurrogate = null;
     var bytes = [];
     for (var i = 0; i < length; ++i) {
-      codePoint = string.charCodeAt(i);
+      codePoint = string2.charCodeAt(i);
       if (codePoint > 55295 && codePoint < 57344) {
         if (!leadSurrogate) {
           if (codePoint > 56319) {
@@ -27711,7 +27710,7 @@ var isarray = Array.isArray || function(arr) {
     return val !== val;
   }
 })(buffer);
-var core = { exports: {} };
+var core$1 = { exports: {} };
 (function(module, exports) {
   (function(root, factory) {
     {
@@ -27758,7 +27757,7 @@ var core = { exports: {} };
         }
         throw new Error("Native crypto module could not be used to get secure random number.");
       };
-      var create = Object.create || function() {
+      var create2 = Object.create || function() {
         function F2() {
         }
         return function(obj) {
@@ -27774,7 +27773,7 @@ var core = { exports: {} };
       var Base = C_lib.Base = function() {
         return {
           extend: function(overrides) {
-            var subtype = create(this);
+            var subtype = create2(this);
             if (overrides) {
               subtype.mixIn(overrides);
             }
@@ -27975,8 +27974,8 @@ var core = { exports: {} };
           if (messageUpdate) {
             this._append(messageUpdate);
           }
-          var hash = this._doFinalize();
-          return hash;
+          var hash2 = this._doFinalize();
+          return hash2;
         },
         blockSize: 512 / 32,
         _createHelper: function(hasher) {
@@ -27995,13 +27994,13 @@ var core = { exports: {} };
     }(Math);
     return CryptoJS2;
   });
-})(core);
-var CryptoJS = core.exports;
+})(core$1);
+var CryptoJS = core$1.exports;
 var libTypedarrays = { exports: {} };
 (function(module, exports) {
   (function(root, factory) {
     {
-      module.exports = factory(core.exports);
+      module.exports = factory(core$1.exports);
     }
   })(commonjsGlobal, function(CryptoJS2) {
     (function() {
@@ -28039,7 +28038,7 @@ var sha256 = { exports: {} };
 (function(module, exports) {
   (function(root, factory) {
     {
-      module.exports = factory(core.exports);
+      module.exports = factory(core$1.exports);
     }
   })(commonjsGlobal, function(CryptoJS2) {
     (function(Math2) {
@@ -28155,7 +28154,7 @@ var hmac = { exports: {} };
 (function(module, exports) {
   (function(root, factory) {
     {
-      module.exports = factory(core.exports);
+      module.exports = factory(core$1.exports);
     }
   })(commonjsGlobal, function(CryptoJS2) {
     (function() {
@@ -28201,8 +28200,8 @@ var hmac = { exports: {} };
           var hasher = this._hasher;
           var innerHash = hasher.finalize(messageUpdate);
           hasher.reset();
-          var hmac2 = hasher.finalize(this._oKey.clone().concat(innerHash));
-          return hmac2;
+          var hmac3 = hasher.finalize(this._oKey.clone().concat(innerHash));
+          return hmac3;
         }
       });
     })();
@@ -28211,7 +28210,7 @@ var hmac = { exports: {} };
 (function(module, exports) {
   (function(root, factory, undef) {
     {
-      module.exports = factory(core.exports, sha256.exports, hmac.exports);
+      module.exports = factory(core$1.exports, sha256.exports, hmac.exports);
     }
   })(commonjsGlobal, function(CryptoJS2) {
     return CryptoJS2.HmacSHA256;
@@ -29031,7 +29030,7 @@ var AuthenticationHelper = /* @__PURE__ */ function() {
     var finalU = new BigInteger(this.UHexHash, 16);
     return finalU;
   };
-  _proto.hash = function hash(buf) {
+  _proto.hash = function hash2(buf) {
     var str = buf instanceof buffer.Buffer ? CryptoJS.lib.WordArray.create(buf) : buf;
     var hashHex = SHA256(str).toString();
     return new Array(64 - hashHex.length).join("0") + hashHex;
@@ -29044,8 +29043,8 @@ var AuthenticationHelper = /* @__PURE__ */ function() {
     var ikmWordArray = ikm instanceof buffer.Buffer ? CryptoJS.lib.WordArray.create(ikm) : ikm;
     var saltWordArray = salt instanceof buffer.Buffer ? CryptoJS.lib.WordArray.create(salt) : salt;
     var prk = HmacSHA256(ikmWordArray, saltWordArray);
-    var hmac2 = HmacSHA256(infoBitsWordArray, prk);
-    return buffer.Buffer.from(hmac2.toString(), "hex").slice(0, 16);
+    var hmac3 = HmacSHA256(infoBitsWordArray, prk);
+    return buffer.Buffer.from(hmac3.toString(), "hex").slice(0, 16);
   };
   _proto.getPasswordAuthenticationKey = function getPasswordAuthenticationKey(username, password, serverBValue, salt, callback) {
     var _this4 = this;
@@ -29128,9 +29127,9 @@ var CognitoJwtToken = /* @__PURE__ */ function() {
     return this.payload.iat;
   };
   _proto.decodePayload = function decodePayload() {
-    var payload = this.jwtToken.split(".")[1];
+    var payload2 = this.jwtToken.split(".")[1];
     try {
-      return JSON.parse(buffer.Buffer.from(payload, "base64").toString("utf8"));
+      return JSON.parse(buffer.Buffer.from(payload2, "base64").toString("utf8"));
     } catch (err) {
       return {};
     }
@@ -29196,7 +29195,7 @@ var encBase64 = { exports: {} };
 (function(module, exports) {
   (function(root, factory) {
     {
-      module.exports = factory(core.exports);
+      module.exports = factory(core$1.exports);
     }
   })(commonjsGlobal, function(CryptoJS2) {
     (function() {
@@ -29297,13 +29296,13 @@ var CognitoUserSession = /* @__PURE__ */ function() {
     return this.clockDrift;
   };
   _proto.calculateClockDrift = function calculateClockDrift() {
-    var now2 = Math.floor(new Date() / 1e3);
+    var now3 = Math.floor(new Date() / 1e3);
     var iat = Math.min(this.accessToken.getIssuedAt(), this.idToken.getIssuedAt());
-    return now2 - iat;
+    return now3 - iat;
   };
   _proto.isValid = function isValid() {
-    var now2 = Math.floor(new Date() / 1e3);
-    var adjusted = now2 - this.clockDrift;
+    var now3 = Math.floor(new Date() / 1e3);
+    var adjusted = now3 - this.clockDrift;
     return adjusted < this.accessToken.getExpiration() && adjusted < this.idToken.getExpiration();
   };
   return CognitoUserSession2;
@@ -29319,23 +29318,23 @@ var DateHelper = /* @__PURE__ */ function() {
   }
   var _proto = DateHelper2.prototype;
   _proto.getNowString = function getNowString() {
-    var now2 = new Date();
-    var weekDay = weekNames[now2.getUTCDay()];
-    var month = monthNames[now2.getUTCMonth()];
-    var day = now2.getUTCDate();
-    var hours = now2.getUTCHours();
+    var now3 = new Date();
+    var weekDay = weekNames[now3.getUTCDay()];
+    var month = monthNames[now3.getUTCMonth()];
+    var day = now3.getUTCDate();
+    var hours = now3.getUTCHours();
     if (hours < 10) {
       hours = "0" + hours;
     }
-    var minutes = now2.getUTCMinutes();
+    var minutes = now3.getUTCMinutes();
     if (minutes < 10) {
       minutes = "0" + minutes;
     }
-    var seconds = now2.getUTCSeconds();
+    var seconds = now3.getUTCSeconds();
     if (seconds < 10) {
       seconds = "0" + seconds;
     }
-    var year = now2.getUTCFullYear();
+    var year = now3.getUTCFullYear();
     var dateNow = weekDay + " " + month + " " + day + " " + hours + ":" + minutes + ":" + seconds + " UTC " + year;
     return dateNow;
   };
@@ -29395,7 +29394,7 @@ var MemoryStorage = /* @__PURE__ */ function() {
   MemoryStorage2.removeItem = function removeItem(key) {
     return delete dataMemory[key];
   };
-  MemoryStorage2.clear = function clear() {
+  MemoryStorage2.clear = function clear2() {
     dataMemory = {};
     return dataMemory;
   };
@@ -29412,7 +29411,7 @@ var StorageHelper = /* @__PURE__ */ function() {
     }
   }
   var _proto = StorageHelper2.prototype;
-  _proto.getStorage = function getStorage() {
+  _proto.getStorage = function getStorage2() {
     return this.storageWindow;
   };
   return StorageHelper2;
@@ -30066,12 +30065,12 @@ var CognitoUser = /* @__PURE__ */ function() {
     if (options === void 0) {
       options = {};
     }
-    return new Promise(function(resolve) {
-      var refresh = _this11.signInUserSession.getRefreshToken();
-      if (refresh && refresh.getToken()) {
-        _this11.refreshSession(refresh, resolve, options.clientMetadata);
+    return new Promise(function(resolve3) {
+      var refresh7 = _this11.signInUserSession.getRefreshToken();
+      if (refresh7 && refresh7.getToken()) {
+        _this11.refreshSession(refresh7, resolve3, options.clientMetadata);
       } else {
-        resolve();
+        resolve3();
       }
     });
   };
@@ -30506,9 +30505,9 @@ var CognitoUser = /* @__PURE__ */ function() {
       this.cleanClientData();
       return;
     }
-    this.getSession(function(error, _session) {
-      if (error) {
-        return revokeTokenCallback(error);
+    this.getSession(function(error2, _session) {
+      if (error2) {
+        return revokeTokenCallback(error2);
       }
       _this18.revokeTokens(function(err) {
         _this18.cleanClientData();
@@ -30525,8 +30524,8 @@ var CognitoUser = /* @__PURE__ */ function() {
       throw new Error("Invalid revokeTokenCallback. It should be a function.");
     }
     if (!this.signInUserSession) {
-      var error = new Error("User is not authenticated");
-      return revokeTokenCallback(error);
+      var error2 = new Error("User is not authenticated");
+      return revokeTokenCallback(error2);
     }
     if (!this.signInUserSession.getAccessToken()) {
       var _error = new Error("No Access token available");
@@ -30707,12 +30706,12 @@ var unfetch_module$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defi
 }, Symbol.toStringTag, { value: "Module" }));
 var require$$0 = /* @__PURE__ */ getAugmentedNamespace(unfetch_module$1);
 self.fetch || (self.fetch = require$$0.default || require$$0);
-var version = "5.0.4";
+var version$2 = "5.0.4";
 /*!
  * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * SPDX-License-Identifier: Apache-2.0
  */
-var BASE_USER_AGENT = "aws-amplify/" + version;
+var BASE_USER_AGENT = "aws-amplify/" + version$2;
 var Platform = {
   userAgent: BASE_USER_AGENT + " js",
   product: "",
@@ -30833,26 +30832,26 @@ var Client = /* @__PURE__ */ function() {
     } : {};
   }
   var _proto = Client2.prototype;
-  _proto.promisifyRequest = function promisifyRequest(operation, params) {
+  _proto.promisifyRequest = function promisifyRequest(operation2, params) {
     var _this2 = this;
-    return new Promise(function(resolve, reject) {
-      _this2.request(operation, params, function(err, data) {
+    return new Promise(function(resolve3, reject) {
+      _this2.request(operation2, params, function(err, data) {
         if (err) {
           reject(new CognitoError(err.message, err.code, err.name, err.statusCode));
         } else {
-          resolve(data);
+          resolve3(data);
         }
       });
     });
   };
-  _proto.requestWithRetry = function requestWithRetry(operation, params, callback) {
+  _proto.requestWithRetry = function requestWithRetry(operation2, params, callback) {
     var _this3 = this;
     var MAX_DELAY_IN_MILLIS = 5 * 1e3;
     jitteredExponentialRetry(function(p2) {
       return new Promise(function(res, rej) {
-        _this3.request(operation, p2, function(error, result) {
-          if (error) {
-            rej(error);
+        _this3.request(operation2, p2, function(error2, result) {
+          if (error2) {
+            rej(error2);
           } else {
             res(result);
           }
@@ -30860,14 +30859,14 @@ var Client = /* @__PURE__ */ function() {
       });
     }, [params], MAX_DELAY_IN_MILLIS).then(function(result) {
       return callback(null, result);
-    })["catch"](function(error) {
-      return callback(error);
+    })["catch"](function(error2) {
+      return callback(error2);
     });
   };
-  _proto.request = function request(operation, params, callback) {
+  _proto.request = function request(operation2, params, callback) {
     var headers = {
       "Content-Type": "application/x-amz-json-1.1",
-      "X-Amz-Target": "AWSCognitoIdentityProviderService." + operation,
+      "X-Amz-Target": "AWSCognitoIdentityProviderService." + operation2,
       "X-Amz-User-Agent": UserAgent.prototype.userAgent
     };
     var options = Object.assign({}, this.fetchOptions, {
@@ -30894,19 +30893,19 @@ var Client = /* @__PURE__ */ function() {
       if (response.ok)
         return callback(null, data);
       var code2 = (data.__type || data.code).split("#").pop();
-      var error = new Error(data.message || data.Message || null);
-      error.name = code2;
-      error.code = code2;
-      return callback(error);
+      var error2 = new Error(data.message || data.Message || null);
+      error2.name = code2;
+      error2.code = code2;
+      return callback(error2);
     })["catch"](function(err) {
       if (response && response.headers && response.headers.get("x-amzn-errortype")) {
         try {
           var code2 = response.headers.get("x-amzn-errortype").split(":")[0];
-          var error = new Error(response.status ? response.status.toString() : null);
-          error.code = code2;
-          error.name = code2;
-          error.statusCode = response.status;
-          return callback(error);
+          var error2 = new Error(response.status ? response.status.toString() : null);
+          error2.code = code2;
+          error2.name = code2;
+          error2.statusCode = response.status;
+          return callback(error2);
         } catch (ex) {
           return callback(err);
         }
@@ -31078,10 +31077,10 @@ var js_cookie = { exports: {} };
     }
     if (!registeredInModuleLoader) {
       var OldCookies = window.Cookies;
-      var api = window.Cookies = factory();
-      api.noConflict = function() {
+      var api2 = window.Cookies = factory();
+      api2.noConflict = function() {
         window.Cookies = OldCookies;
-        return api;
+        return api2;
       };
     }
   })(function() {
@@ -31096,19 +31095,19 @@ var js_cookie = { exports: {} };
       }
       return result;
     }
-    function decode(s2) {
+    function decode2(s2) {
       return s2.replace(/(%[0-9A-Z]{2})+/g, decodeURIComponent);
     }
     function init(converter) {
-      function api() {
+      function api2() {
       }
-      function set(key, value, attributes) {
+      function set2(key, value, attributes) {
         if (typeof document === "undefined") {
           return;
         }
         attributes = extend({
           path: "/"
-        }, api.defaults, attributes);
+        }, api2.defaults, attributes);
         if (typeof attributes.expires === "number") {
           attributes.expires = new Date(new Date() * 1 + attributes.expires * 864e5);
         }
@@ -31135,7 +31134,7 @@ var js_cookie = { exports: {} };
         }
         return document.cookie = key + "=" + value + stringifiedAttributes;
       }
-      function get2(key, json) {
+      function get5(key, json2) {
         if (typeof document === "undefined") {
           return;
         }
@@ -31145,13 +31144,13 @@ var js_cookie = { exports: {} };
         for (; i < cookies.length; i++) {
           var parts = cookies[i].split("=");
           var cookie = parts.slice(1).join("=");
-          if (!json && cookie.charAt(0) === '"') {
+          if (!json2 && cookie.charAt(0) === '"') {
             cookie = cookie.slice(1, -1);
           }
           try {
-            var name = decode(parts[0]);
-            cookie = (converter.read || converter)(cookie, name) || decode(cookie);
-            if (json) {
+            var name = decode2(parts[0]);
+            cookie = (converter.read || converter)(cookie, name) || decode2(cookie);
+            if (json2) {
               try {
                 cookie = JSON.parse(cookie);
               } catch (e2) {
@@ -31166,26 +31165,12886 @@ var js_cookie = { exports: {} };
         }
         return key ? jar[key] : jar;
       }
-      api.set = set;
-      api.get = function(key) {
-        return get2(key, false);
+      api2.set = set2;
+      api2.get = function(key) {
+        return get5(key, false);
       };
-      api.getJSON = function(key) {
-        return get2(key, true);
+      api2.getJSON = function(key) {
+        return get5(key, true);
       };
-      api.remove = function(key, attributes) {
-        set(key, "", extend(attributes, {
+      api2.remove = function(key, attributes) {
+        set2(key, "", extend(attributes, {
           expires: -1
         }));
       };
-      api.defaults = {};
-      api.withConverter = init;
-      return api;
+      api2.defaults = {};
+      api2.withConverter = init;
+      return api2;
     }
     return init(function() {
     });
   });
 })(js_cookie);
+var browser = { exports: {} };
+var util$k = util_1;
+function JsonBuilder$2() {
+}
+JsonBuilder$2.prototype.build = function(value, shape2) {
+  return JSON.stringify(translate$2(value, shape2));
+};
+function translate$2(value, shape2) {
+  if (!shape2 || value === void 0 || value === null)
+    return void 0;
+  switch (shape2.type) {
+    case "structure":
+      return translateStructure$1(value, shape2);
+    case "map":
+      return translateMap$1(value, shape2);
+    case "list":
+      return translateList$1(value, shape2);
+    default:
+      return translateScalar$1(value, shape2);
+  }
+}
+function translateStructure$1(structure, shape2) {
+  if (shape2.isDocument) {
+    return structure;
+  }
+  var struct = {};
+  util$k.each(structure, function(name, value) {
+    var memberShape = shape2.members[name];
+    if (memberShape) {
+      if (memberShape.location !== "body")
+        return;
+      var locationName = memberShape.isLocationName ? memberShape.name : name;
+      var result = translate$2(value, memberShape);
+      if (result !== void 0)
+        struct[locationName] = result;
+    }
+  });
+  return struct;
+}
+function translateList$1(list, shape2) {
+  var out = [];
+  util$k.arrayEach(list, function(value) {
+    var result = translate$2(value, shape2.member);
+    if (result !== void 0)
+      out.push(result);
+  });
+  return out;
+}
+function translateMap$1(map, shape2) {
+  var out = {};
+  util$k.each(map, function(key, value) {
+    var result = translate$2(value, shape2.value);
+    if (result !== void 0)
+      out[key] = result;
+  });
+  return out;
+}
+function translateScalar$1(value, shape2) {
+  return shape2.toWireFormat(value);
+}
+var builder$1 = JsonBuilder$2;
+var util$j = util_1;
+function JsonParser$2() {
+}
+JsonParser$2.prototype.parse = function(value, shape2) {
+  return translate$1(JSON.parse(value), shape2);
+};
+function translate$1(value, shape2) {
+  if (!shape2 || value === void 0)
+    return void 0;
+  switch (shape2.type) {
+    case "structure":
+      return translateStructure(value, shape2);
+    case "map":
+      return translateMap(value, shape2);
+    case "list":
+      return translateList(value, shape2);
+    default:
+      return translateScalar(value, shape2);
+  }
+}
+function translateStructure(structure, shape2) {
+  if (structure == null)
+    return void 0;
+  if (shape2.isDocument)
+    return structure;
+  var struct = {};
+  var shapeMembers = shape2.members;
+  util$j.each(shapeMembers, function(name, memberShape) {
+    var locationName = memberShape.isLocationName ? memberShape.name : name;
+    if (Object.prototype.hasOwnProperty.call(structure, locationName)) {
+      var value = structure[locationName];
+      var result = translate$1(value, memberShape);
+      if (result !== void 0)
+        struct[name] = result;
+    }
+  });
+  return struct;
+}
+function translateList(list, shape2) {
+  if (list == null)
+    return void 0;
+  var out = [];
+  util$j.arrayEach(list, function(value) {
+    var result = translate$1(value, shape2.member);
+    if (result === void 0)
+      out.push(null);
+    else
+      out.push(result);
+  });
+  return out;
+}
+function translateMap(map, shape2) {
+  if (map == null)
+    return void 0;
+  var out = {};
+  util$j.each(map, function(key, value) {
+    var result = translate$1(value, shape2.value);
+    if (result === void 0)
+      out[key] = null;
+    else
+      out[key] = result;
+  });
+  return out;
+}
+function translateScalar(value, shape2) {
+  return shape2.toType(value);
+}
+var parser = JsonParser$2;
+var util$i = util_1;
+var AWS$A = core;
+function populateHostPrefix$3(request) {
+  var enabled = request.service.config.hostPrefixEnabled;
+  if (!enabled)
+    return request;
+  var operationModel = request.service.api.operations[request.operation];
+  if (hasEndpointDiscover(request))
+    return request;
+  if (operationModel.endpoint && operationModel.endpoint.hostPrefix) {
+    var hostPrefixNotation = operationModel.endpoint.hostPrefix;
+    var hostPrefix = expandHostPrefix(hostPrefixNotation, request.params, operationModel.input);
+    prependEndpointPrefix(request.httpRequest.endpoint, hostPrefix);
+    validateHostname(request.httpRequest.endpoint.hostname);
+  }
+  return request;
+}
+function hasEndpointDiscover(request) {
+  var api2 = request.service.api;
+  var operationModel = api2.operations[request.operation];
+  var isEndpointOperation = api2.endpointOperation && api2.endpointOperation === util$i.string.lowerFirst(operationModel.name);
+  return operationModel.endpointDiscoveryRequired !== "NULL" || isEndpointOperation === true;
+}
+function expandHostPrefix(hostPrefixNotation, params, shape2) {
+  util$i.each(shape2.members, function(name, member) {
+    if (member.hostLabel === true) {
+      if (typeof params[name] !== "string" || params[name] === "") {
+        throw util$i.error(new Error(), {
+          message: "Parameter " + name + " should be a non-empty string.",
+          code: "InvalidParameter"
+        });
+      }
+      var regex = new RegExp("\\{" + name + "\\}", "g");
+      hostPrefixNotation = hostPrefixNotation.replace(regex, params[name]);
+    }
+  });
+  return hostPrefixNotation;
+}
+function prependEndpointPrefix(endpoint, prefix) {
+  if (endpoint.host) {
+    endpoint.host = prefix + endpoint.host;
+  }
+  if (endpoint.hostname) {
+    endpoint.hostname = prefix + endpoint.hostname;
+  }
+}
+function validateHostname(hostname) {
+  var labels = hostname.split(".");
+  var hostPattern = /^[a-zA-Z0-9]{1}$|^[a-zA-Z0-9][a-zA-Z0-9\-]*[a-zA-Z0-9]$/;
+  util$i.arrayEach(labels, function(label) {
+    if (!label.length || label.length < 1 || label.length > 63) {
+      throw util$i.error(new Error(), {
+        code: "ValidationError",
+        message: "Hostname label length should be between 1 to 63 characters, inclusive."
+      });
+    }
+    if (!hostPattern.test(label)) {
+      throw AWS$A.util.error(new Error(), { code: "ValidationError", message: label + " is not hostname compatible." });
+    }
+  });
+}
+var helpers = {
+  populateHostPrefix: populateHostPrefix$3
+};
+var util$h = util_1;
+var JsonBuilder$1 = builder$1;
+var JsonParser$1 = parser;
+var populateHostPrefix$2 = helpers.populateHostPrefix;
+function buildRequest$4(req) {
+  var httpRequest = req.httpRequest;
+  var api2 = req.service.api;
+  var target = api2.targetPrefix + "." + api2.operations[req.operation].name;
+  var version2 = api2.jsonVersion || "1.0";
+  var input = api2.operations[req.operation].input;
+  var builder2 = new JsonBuilder$1();
+  if (version2 === 1)
+    version2 = "1.0";
+  httpRequest.body = builder2.build(req.params || {}, input);
+  httpRequest.headers["Content-Type"] = "application/x-amz-json-" + version2;
+  httpRequest.headers["X-Amz-Target"] = target;
+  populateHostPrefix$2(req);
+}
+function extractError$4(resp) {
+  var error2 = {};
+  var httpResponse = resp.httpResponse;
+  error2.code = httpResponse.headers["x-amzn-errortype"] || "UnknownError";
+  if (typeof error2.code === "string") {
+    error2.code = error2.code.split(":")[0];
+  }
+  if (httpResponse.body.length > 0) {
+    try {
+      var e2 = JSON.parse(httpResponse.body.toString());
+      var code2 = e2.__type || e2.code || e2.Code;
+      if (code2) {
+        error2.code = code2.split("#").pop();
+      }
+      if (error2.code === "RequestEntityTooLarge") {
+        error2.message = "Request body must be less than 1 MB";
+      } else {
+        error2.message = e2.message || e2.Message || null;
+      }
+    } catch (e3) {
+      error2.statusCode = httpResponse.statusCode;
+      error2.message = httpResponse.statusMessage;
+    }
+  } else {
+    error2.statusCode = httpResponse.statusCode;
+    error2.message = httpResponse.statusCode.toString();
+  }
+  resp.error = util$h.error(new Error(), error2);
+}
+function extractData$4(resp) {
+  var body = resp.httpResponse.body.toString() || "{}";
+  if (resp.request.service.config.convertResponseTypes === false) {
+    resp.data = JSON.parse(body);
+  } else {
+    var operation2 = resp.request.service.api.operations[resp.request.operation];
+    var shape2 = operation2.output || {};
+    var parser2 = new JsonParser$1();
+    resp.data = parser2.parse(body, shape2);
+  }
+}
+var json = {
+  buildRequest: buildRequest$4,
+  extractError: extractError$4,
+  extractData: extractData$4
+};
+var util$g = util_1;
+function QueryParamSerializer$1() {
+}
+QueryParamSerializer$1.prototype.serialize = function(params, shape2, fn2) {
+  serializeStructure$1("", params, shape2, fn2);
+};
+function ucfirst(shape2) {
+  if (shape2.isQueryName || shape2.api.protocol !== "ec2") {
+    return shape2.name;
+  } else {
+    return shape2.name[0].toUpperCase() + shape2.name.substr(1);
+  }
+}
+function serializeStructure$1(prefix, struct, rules2, fn2) {
+  util$g.each(rules2.members, function(name, member) {
+    var value = struct[name];
+    if (value === null || value === void 0)
+      return;
+    var memberName = ucfirst(member);
+    memberName = prefix ? prefix + "." + memberName : memberName;
+    serializeMember(memberName, value, member, fn2);
+  });
+}
+function serializeMap$1(name, map, rules2, fn2) {
+  var i = 1;
+  util$g.each(map, function(key, value) {
+    var prefix = rules2.flattened ? "." : ".entry.";
+    var position = prefix + i++ + ".";
+    var keyName = position + (rules2.key.name || "key");
+    var valueName = position + (rules2.value.name || "value");
+    serializeMember(name + keyName, key, rules2.key, fn2);
+    serializeMember(name + valueName, value, rules2.value, fn2);
+  });
+}
+function serializeList$1(name, list, rules2, fn2) {
+  var memberRules = rules2.member || {};
+  if (list.length === 0) {
+    fn2.call(this, name, null);
+    return;
+  }
+  util$g.arrayEach(list, function(v2, n2) {
+    var suffix = "." + (n2 + 1);
+    if (rules2.api.protocol === "ec2") {
+      suffix = suffix + "";
+    } else if (rules2.flattened) {
+      if (memberRules.name) {
+        var parts = name.split(".");
+        parts.pop();
+        parts.push(ucfirst(memberRules));
+        name = parts.join(".");
+      }
+    } else {
+      suffix = "." + (memberRules.name ? memberRules.name : "member") + suffix;
+    }
+    serializeMember(name + suffix, v2, memberRules, fn2);
+  });
+}
+function serializeMember(name, value, rules2, fn2) {
+  if (value === null || value === void 0)
+    return;
+  if (rules2.type === "structure") {
+    serializeStructure$1(name, value, rules2, fn2);
+  } else if (rules2.type === "list") {
+    serializeList$1(name, value, rules2, fn2);
+  } else if (rules2.type === "map") {
+    serializeMap$1(name, value, rules2, fn2);
+  } else {
+    fn2(name, rules2.toWireFormat(value).toString());
+  }
+}
+var query_param_serializer = QueryParamSerializer$1;
+var memoizedProperty$3 = util_1.memoizedProperty;
+function memoize(name, value, factory, nameTr) {
+  memoizedProperty$3(this, nameTr(name), function() {
+    return factory(name, value);
+  });
+}
+function Collection$2(iterable, options, factory, nameTr, callback) {
+  nameTr = nameTr || String;
+  var self2 = this;
+  for (var id in iterable) {
+    if (Object.prototype.hasOwnProperty.call(iterable, id)) {
+      memoize.call(self2, id, iterable[id], factory, nameTr);
+      if (callback)
+        callback(id, iterable[id]);
+    }
+  }
+}
+var collection = Collection$2;
+var Collection$1 = collection;
+var util$f = util_1;
+function property$4(obj, name, value) {
+  if (value !== null && value !== void 0) {
+    util$f.property.apply(this, arguments);
+  }
+}
+function memoizedProperty$2(obj, name) {
+  if (!obj.constructor.prototype[name]) {
+    util$f.memoizedProperty.apply(this, arguments);
+  }
+}
+function Shape$4(shape2, options, memberName) {
+  options = options || {};
+  property$4(this, "shape", shape2.shape);
+  property$4(this, "api", options.api, false);
+  property$4(this, "type", shape2.type);
+  property$4(this, "enum", shape2.enum);
+  property$4(this, "min", shape2.min);
+  property$4(this, "max", shape2.max);
+  property$4(this, "pattern", shape2.pattern);
+  property$4(this, "location", shape2.location || this.location || "body");
+  property$4(this, "name", this.name || shape2.xmlName || shape2.queryName || shape2.locationName || memberName);
+  property$4(this, "isStreaming", shape2.streaming || this.isStreaming || false);
+  property$4(this, "requiresLength", shape2.requiresLength, false);
+  property$4(this, "isComposite", shape2.isComposite || false);
+  property$4(this, "isShape", true, false);
+  property$4(this, "isQueryName", Boolean(shape2.queryName), false);
+  property$4(this, "isLocationName", Boolean(shape2.locationName), false);
+  property$4(this, "isIdempotent", shape2.idempotencyToken === true);
+  property$4(this, "isJsonValue", shape2.jsonvalue === true);
+  property$4(this, "isSensitive", shape2.sensitive === true || shape2.prototype && shape2.prototype.sensitive === true);
+  property$4(this, "isEventStream", Boolean(shape2.eventstream), false);
+  property$4(this, "isEvent", Boolean(shape2.event), false);
+  property$4(this, "isEventPayload", Boolean(shape2.eventpayload), false);
+  property$4(this, "isEventHeader", Boolean(shape2.eventheader), false);
+  property$4(this, "isTimestampFormatSet", Boolean(shape2.timestampFormat) || shape2.prototype && shape2.prototype.isTimestampFormatSet === true, false);
+  property$4(this, "endpointDiscoveryId", Boolean(shape2.endpointdiscoveryid), false);
+  property$4(this, "hostLabel", Boolean(shape2.hostLabel), false);
+  if (options.documentation) {
+    property$4(this, "documentation", shape2.documentation);
+    property$4(this, "documentationUrl", shape2.documentationUrl);
+  }
+  if (shape2.xmlAttribute) {
+    property$4(this, "isXmlAttribute", shape2.xmlAttribute || false);
+  }
+  property$4(this, "defaultValue", null);
+  this.toWireFormat = function(value) {
+    if (value === null || value === void 0)
+      return "";
+    return value;
+  };
+  this.toType = function(value) {
+    return value;
+  };
+}
+Shape$4.normalizedTypes = {
+  character: "string",
+  double: "float",
+  long: "integer",
+  short: "integer",
+  biginteger: "integer",
+  bigdecimal: "float",
+  blob: "binary"
+};
+Shape$4.types = {
+  "structure": StructureShape,
+  "list": ListShape,
+  "map": MapShape,
+  "boolean": BooleanShape,
+  "timestamp": TimestampShape,
+  "float": FloatShape,
+  "integer": IntegerShape,
+  "string": StringShape,
+  "base64": Base64Shape,
+  "binary": BinaryShape
+};
+Shape$4.resolve = function resolve(shape2, options) {
+  if (shape2.shape) {
+    var refShape = options.api.shapes[shape2.shape];
+    if (!refShape) {
+      throw new Error("Cannot find shape reference: " + shape2.shape);
+    }
+    return refShape;
+  } else {
+    return null;
+  }
+};
+Shape$4.create = function create(shape2, options, memberName) {
+  if (shape2.isShape)
+    return shape2;
+  var refShape = Shape$4.resolve(shape2, options);
+  if (refShape) {
+    var filteredKeys = Object.keys(shape2);
+    if (!options.documentation) {
+      filteredKeys = filteredKeys.filter(function(name) {
+        return !name.match(/documentation/);
+      });
+    }
+    var InlineShape = function() {
+      refShape.constructor.call(this, shape2, options, memberName);
+    };
+    InlineShape.prototype = refShape;
+    return new InlineShape();
+  } else {
+    if (!shape2.type) {
+      if (shape2.members)
+        shape2.type = "structure";
+      else if (shape2.member)
+        shape2.type = "list";
+      else if (shape2.key)
+        shape2.type = "map";
+      else
+        shape2.type = "string";
+    }
+    var origType = shape2.type;
+    if (Shape$4.normalizedTypes[shape2.type]) {
+      shape2.type = Shape$4.normalizedTypes[shape2.type];
+    }
+    if (Shape$4.types[shape2.type]) {
+      return new Shape$4.types[shape2.type](shape2, options, memberName);
+    } else {
+      throw new Error("Unrecognized shape type: " + origType);
+    }
+  }
+};
+function CompositeShape(shape2) {
+  Shape$4.apply(this, arguments);
+  property$4(this, "isComposite", true);
+  if (shape2.flattened) {
+    property$4(this, "flattened", shape2.flattened || false);
+  }
+}
+function StructureShape(shape2, options) {
+  var self2 = this;
+  var requiredMap = null, firstInit = !this.isShape;
+  CompositeShape.apply(this, arguments);
+  if (firstInit) {
+    property$4(this, "defaultValue", function() {
+      return {};
+    });
+    property$4(this, "members", {});
+    property$4(this, "memberNames", []);
+    property$4(this, "required", []);
+    property$4(this, "isRequired", function() {
+      return false;
+    });
+    property$4(this, "isDocument", Boolean(shape2.document));
+  }
+  if (shape2.members) {
+    property$4(this, "members", new Collection$1(shape2.members, options, function(name, member) {
+      return Shape$4.create(member, options, name);
+    }));
+    memoizedProperty$2(this, "memberNames", function() {
+      return shape2.xmlOrder || Object.keys(shape2.members);
+    });
+    if (shape2.event) {
+      memoizedProperty$2(this, "eventPayloadMemberName", function() {
+        var members = self2.members;
+        var memberNames = self2.memberNames;
+        for (var i = 0, iLen = memberNames.length; i < iLen; i++) {
+          if (members[memberNames[i]].isEventPayload) {
+            return memberNames[i];
+          }
+        }
+      });
+      memoizedProperty$2(this, "eventHeaderMemberNames", function() {
+        var members = self2.members;
+        var memberNames = self2.memberNames;
+        var eventHeaderMemberNames = [];
+        for (var i = 0, iLen = memberNames.length; i < iLen; i++) {
+          if (members[memberNames[i]].isEventHeader) {
+            eventHeaderMemberNames.push(memberNames[i]);
+          }
+        }
+        return eventHeaderMemberNames;
+      });
+    }
+  }
+  if (shape2.required) {
+    property$4(this, "required", shape2.required);
+    property$4(this, "isRequired", function(name) {
+      if (!requiredMap) {
+        requiredMap = {};
+        for (var i = 0; i < shape2.required.length; i++) {
+          requiredMap[shape2.required[i]] = true;
+        }
+      }
+      return requiredMap[name];
+    }, false, true);
+  }
+  property$4(this, "resultWrapper", shape2.resultWrapper || null);
+  if (shape2.payload) {
+    property$4(this, "payload", shape2.payload);
+  }
+  if (typeof shape2.xmlNamespace === "string") {
+    property$4(this, "xmlNamespaceUri", shape2.xmlNamespace);
+  } else if (typeof shape2.xmlNamespace === "object") {
+    property$4(this, "xmlNamespacePrefix", shape2.xmlNamespace.prefix);
+    property$4(this, "xmlNamespaceUri", shape2.xmlNamespace.uri);
+  }
+}
+function ListShape(shape2, options) {
+  var self2 = this, firstInit = !this.isShape;
+  CompositeShape.apply(this, arguments);
+  if (firstInit) {
+    property$4(this, "defaultValue", function() {
+      return [];
+    });
+  }
+  if (shape2.member) {
+    memoizedProperty$2(this, "member", function() {
+      return Shape$4.create(shape2.member, options);
+    });
+  }
+  if (this.flattened) {
+    var oldName = this.name;
+    memoizedProperty$2(this, "name", function() {
+      return self2.member.name || oldName;
+    });
+  }
+}
+function MapShape(shape2, options) {
+  var firstInit = !this.isShape;
+  CompositeShape.apply(this, arguments);
+  if (firstInit) {
+    property$4(this, "defaultValue", function() {
+      return {};
+    });
+    property$4(this, "key", Shape$4.create({ type: "string" }, options));
+    property$4(this, "value", Shape$4.create({ type: "string" }, options));
+  }
+  if (shape2.key) {
+    memoizedProperty$2(this, "key", function() {
+      return Shape$4.create(shape2.key, options);
+    });
+  }
+  if (shape2.value) {
+    memoizedProperty$2(this, "value", function() {
+      return Shape$4.create(shape2.value, options);
+    });
+  }
+}
+function TimestampShape(shape2) {
+  var self2 = this;
+  Shape$4.apply(this, arguments);
+  if (shape2.timestampFormat) {
+    property$4(this, "timestampFormat", shape2.timestampFormat);
+  } else if (self2.isTimestampFormatSet && this.timestampFormat) {
+    property$4(this, "timestampFormat", this.timestampFormat);
+  } else if (this.location === "header") {
+    property$4(this, "timestampFormat", "rfc822");
+  } else if (this.location === "querystring") {
+    property$4(this, "timestampFormat", "iso8601");
+  } else if (this.api) {
+    switch (this.api.protocol) {
+      case "json":
+      case "rest-json":
+        property$4(this, "timestampFormat", "unixTimestamp");
+        break;
+      case "rest-xml":
+      case "query":
+      case "ec2":
+        property$4(this, "timestampFormat", "iso8601");
+        break;
+    }
+  }
+  this.toType = function(value) {
+    if (value === null || value === void 0)
+      return null;
+    if (typeof value.toUTCString === "function")
+      return value;
+    return typeof value === "string" || typeof value === "number" ? util$f.date.parseTimestamp(value) : null;
+  };
+  this.toWireFormat = function(value) {
+    return util$f.date.format(value, self2.timestampFormat);
+  };
+}
+function StringShape() {
+  Shape$4.apply(this, arguments);
+  var nullLessProtocols = ["rest-xml", "query", "ec2"];
+  this.toType = function(value) {
+    value = this.api && nullLessProtocols.indexOf(this.api.protocol) > -1 ? value || "" : value;
+    if (this.isJsonValue) {
+      return JSON.parse(value);
+    }
+    return value && typeof value.toString === "function" ? value.toString() : value;
+  };
+  this.toWireFormat = function(value) {
+    return this.isJsonValue ? JSON.stringify(value) : value;
+  };
+}
+function FloatShape() {
+  Shape$4.apply(this, arguments);
+  this.toType = function(value) {
+    if (value === null || value === void 0)
+      return null;
+    return parseFloat(value);
+  };
+  this.toWireFormat = this.toType;
+}
+function IntegerShape() {
+  Shape$4.apply(this, arguments);
+  this.toType = function(value) {
+    if (value === null || value === void 0)
+      return null;
+    return parseInt(value, 10);
+  };
+  this.toWireFormat = this.toType;
+}
+function BinaryShape() {
+  Shape$4.apply(this, arguments);
+  this.toType = function(value) {
+    var buf = util$f.base64.decode(value);
+    if (this.isSensitive && util$f.isNode() && typeof util$f.Buffer.alloc === "function") {
+      var secureBuf = util$f.Buffer.alloc(buf.length, buf);
+      buf.fill(0);
+      buf = secureBuf;
+    }
+    return buf;
+  };
+  this.toWireFormat = util$f.base64.encode;
+}
+function Base64Shape() {
+  BinaryShape.apply(this, arguments);
+}
+function BooleanShape() {
+  Shape$4.apply(this, arguments);
+  this.toType = function(value) {
+    if (typeof value === "boolean")
+      return value;
+    if (value === null || value === void 0)
+      return null;
+    return value === "true";
+  };
+}
+Shape$4.shapes = {
+  StructureShape,
+  ListShape,
+  MapShape,
+  StringShape,
+  BooleanShape,
+  Base64Shape
+};
+var shape = Shape$4;
+var AWS$z = core;
+var util$e = util_1;
+var QueryParamSerializer = query_param_serializer;
+var Shape$3 = shape;
+var populateHostPrefix$1 = helpers.populateHostPrefix;
+function buildRequest$3(req) {
+  var operation2 = req.service.api.operations[req.operation];
+  var httpRequest = req.httpRequest;
+  httpRequest.headers["Content-Type"] = "application/x-www-form-urlencoded; charset=utf-8";
+  httpRequest.params = {
+    Version: req.service.api.apiVersion,
+    Action: operation2.name
+  };
+  var builder2 = new QueryParamSerializer();
+  builder2.serialize(req.params, operation2.input, function(name, value) {
+    httpRequest.params[name] = value;
+  });
+  httpRequest.body = util$e.queryParamsToString(httpRequest.params);
+  populateHostPrefix$1(req);
+}
+function extractError$3(resp) {
+  var data, body = resp.httpResponse.body.toString();
+  if (body.match("<UnknownOperationException")) {
+    data = {
+      Code: "UnknownOperation",
+      Message: "Unknown operation " + resp.request.operation
+    };
+  } else {
+    try {
+      data = new AWS$z.XML.Parser().parse(body);
+    } catch (e2) {
+      data = {
+        Code: resp.httpResponse.statusCode,
+        Message: resp.httpResponse.statusMessage
+      };
+    }
+  }
+  if (data.requestId && !resp.requestId)
+    resp.requestId = data.requestId;
+  if (data.Errors)
+    data = data.Errors;
+  if (data.Error)
+    data = data.Error;
+  if (data.Code) {
+    resp.error = util$e.error(new Error(), {
+      code: data.Code,
+      message: data.Message
+    });
+  } else {
+    resp.error = util$e.error(new Error(), {
+      code: resp.httpResponse.statusCode,
+      message: null
+    });
+  }
+}
+function extractData$3(resp) {
+  var req = resp.request;
+  var operation2 = req.service.api.operations[req.operation];
+  var shape2 = operation2.output || {};
+  var origRules = shape2;
+  if (origRules.resultWrapper) {
+    var tmp = Shape$3.create({ type: "structure" });
+    tmp.members[origRules.resultWrapper] = shape2;
+    tmp.memberNames = [origRules.resultWrapper];
+    util$e.property(shape2, "name", shape2.resultWrapper);
+    shape2 = tmp;
+  }
+  var parser2 = new AWS$z.XML.Parser();
+  if (shape2 && shape2.members && !shape2.members._XAMZRequestId) {
+    var requestIdShape = Shape$3.create({ type: "string" }, { api: { protocol: "query" } }, "requestId");
+    shape2.members._XAMZRequestId = requestIdShape;
+  }
+  var data = parser2.parse(resp.httpResponse.body.toString(), shape2);
+  resp.requestId = data._XAMZRequestId || data.requestId;
+  if (data._XAMZRequestId)
+    delete data._XAMZRequestId;
+  if (origRules.resultWrapper) {
+    if (data[origRules.resultWrapper]) {
+      util$e.update(data, data[origRules.resultWrapper]);
+      delete data[origRules.resultWrapper];
+    }
+  }
+  resp.data = data;
+}
+var query = {
+  buildRequest: buildRequest$3,
+  extractError: extractError$3,
+  extractData: extractData$3
+};
+var util$d = util_1;
+var populateHostPrefix = helpers.populateHostPrefix;
+function populateMethod(req) {
+  req.httpRequest.method = req.service.api.operations[req.operation].httpMethod;
+}
+function generateURI(endpointPath, operationPath, input, params) {
+  var uri = [endpointPath, operationPath].join("/");
+  uri = uri.replace(/\/+/g, "/");
+  var queryString = {}, queryStringSet = false;
+  util$d.each(input.members, function(name, member) {
+    var paramValue = params[name];
+    if (paramValue === null || paramValue === void 0)
+      return;
+    if (member.location === "uri") {
+      var regex = new RegExp("\\{" + member.name + "(\\+)?\\}");
+      uri = uri.replace(regex, function(_2, plus) {
+        var fn2 = plus ? util$d.uriEscapePath : util$d.uriEscape;
+        return fn2(String(paramValue));
+      });
+    } else if (member.location === "querystring") {
+      queryStringSet = true;
+      if (member.type === "list") {
+        queryString[member.name] = paramValue.map(function(val) {
+          return util$d.uriEscape(member.member.toWireFormat(val).toString());
+        });
+      } else if (member.type === "map") {
+        util$d.each(paramValue, function(key, value) {
+          if (Array.isArray(value)) {
+            queryString[key] = value.map(function(val) {
+              return util$d.uriEscape(String(val));
+            });
+          } else {
+            queryString[key] = util$d.uriEscape(String(value));
+          }
+        });
+      } else {
+        queryString[member.name] = util$d.uriEscape(member.toWireFormat(paramValue).toString());
+      }
+    }
+  });
+  if (queryStringSet) {
+    uri += uri.indexOf("?") >= 0 ? "&" : "?";
+    var parts = [];
+    util$d.arrayEach(Object.keys(queryString).sort(), function(key) {
+      if (!Array.isArray(queryString[key])) {
+        queryString[key] = [queryString[key]];
+      }
+      for (var i = 0; i < queryString[key].length; i++) {
+        parts.push(util$d.uriEscape(String(key)) + "=" + queryString[key][i]);
+      }
+    });
+    uri += parts.join("&");
+  }
+  return uri;
+}
+function populateURI(req) {
+  var operation2 = req.service.api.operations[req.operation];
+  var input = operation2.input;
+  var uri = generateURI(req.httpRequest.endpoint.path, operation2.httpPath, input, req.params);
+  req.httpRequest.path = uri;
+}
+function populateHeaders(req) {
+  var operation2 = req.service.api.operations[req.operation];
+  util$d.each(operation2.input.members, function(name, member) {
+    var value = req.params[name];
+    if (value === null || value === void 0)
+      return;
+    if (member.location === "headers" && member.type === "map") {
+      util$d.each(value, function(key, memberValue) {
+        req.httpRequest.headers[member.name + key] = memberValue;
+      });
+    } else if (member.location === "header") {
+      value = member.toWireFormat(value).toString();
+      if (member.isJsonValue) {
+        value = util$d.base64.encode(value);
+      }
+      req.httpRequest.headers[member.name] = value;
+    }
+  });
+}
+function buildRequest$2(req) {
+  populateMethod(req);
+  populateURI(req);
+  populateHeaders(req);
+  populateHostPrefix(req);
+}
+function extractError$2() {
+}
+function extractData$2(resp) {
+  var req = resp.request;
+  var data = {};
+  var r2 = resp.httpResponse;
+  var operation2 = req.service.api.operations[req.operation];
+  var output = operation2.output;
+  var headers = {};
+  util$d.each(r2.headers, function(k2, v2) {
+    headers[k2.toLowerCase()] = v2;
+  });
+  util$d.each(output.members, function(name, member) {
+    var header = (member.name || name).toLowerCase();
+    if (member.location === "headers" && member.type === "map") {
+      data[name] = {};
+      var location2 = member.isLocationName ? member.name : "";
+      var pattern = new RegExp("^" + location2 + "(.+)", "i");
+      util$d.each(r2.headers, function(k2, v2) {
+        var result = k2.match(pattern);
+        if (result !== null) {
+          data[name][result[1]] = v2;
+        }
+      });
+    } else if (member.location === "header") {
+      if (headers[header] !== void 0) {
+        var value = member.isJsonValue ? util$d.base64.decode(headers[header]) : headers[header];
+        data[name] = member.toType(value);
+      }
+    } else if (member.location === "statusCode") {
+      data[name] = parseInt(r2.statusCode, 10);
+    }
+  });
+  resp.data = data;
+}
+var rest = {
+  buildRequest: buildRequest$2,
+  extractError: extractError$2,
+  extractData: extractData$2,
+  generateURI
+};
+var util$c = util_1;
+var Rest$1 = rest;
+var Json = json;
+var JsonBuilder = builder$1;
+var JsonParser = parser;
+function populateBody$1(req) {
+  var builder2 = new JsonBuilder();
+  var input = req.service.api.operations[req.operation].input;
+  if (input.payload) {
+    var params = {};
+    var payloadShape = input.members[input.payload];
+    params = req.params[input.payload];
+    if (payloadShape.type === "structure") {
+      req.httpRequest.body = builder2.build(params || {}, payloadShape);
+      applyContentTypeHeader(req);
+    } else if (params !== void 0) {
+      req.httpRequest.body = params;
+      if (payloadShape.type === "binary" || payloadShape.isStreaming) {
+        applyContentTypeHeader(req, true);
+      }
+    }
+  } else {
+    req.httpRequest.body = builder2.build(req.params, input);
+    applyContentTypeHeader(req);
+  }
+}
+function applyContentTypeHeader(req, isBinary) {
+  if (!req.httpRequest.headers["Content-Type"]) {
+    var type = isBinary ? "binary/octet-stream" : "application/json";
+    req.httpRequest.headers["Content-Type"] = type;
+  }
+}
+function buildRequest$1(req) {
+  Rest$1.buildRequest(req);
+  if (["GET", "HEAD", "DELETE"].indexOf(req.httpRequest.method) < 0) {
+    populateBody$1(req);
+  }
+}
+function extractError$1(resp) {
+  Json.extractError(resp);
+}
+function extractData$1(resp) {
+  Rest$1.extractData(resp);
+  var req = resp.request;
+  var operation2 = req.service.api.operations[req.operation];
+  var rules2 = req.service.api.operations[req.operation].output || {};
+  var parser2;
+  operation2.hasEventOutput;
+  if (rules2.payload) {
+    var payloadMember = rules2.members[rules2.payload];
+    var body = resp.httpResponse.body;
+    if (payloadMember.isEventStream) {
+      parser2 = new JsonParser();
+      resp.data[payload] = util$c.createEventStream(AWS.HttpClient.streamsApiVersion === 2 ? resp.httpResponse.stream : body, parser2, payloadMember);
+    } else if (payloadMember.type === "structure" || payloadMember.type === "list") {
+      var parser2 = new JsonParser();
+      resp.data[rules2.payload] = parser2.parse(body, payloadMember);
+    } else if (payloadMember.type === "binary" || payloadMember.isStreaming) {
+      resp.data[rules2.payload] = body;
+    } else {
+      resp.data[rules2.payload] = payloadMember.toType(body);
+    }
+  } else {
+    var data = resp.data;
+    Json.extractData(resp);
+    resp.data = util$c.merge(data, resp.data);
+  }
+}
+var rest_json = {
+  buildRequest: buildRequest$1,
+  extractError: extractError$1,
+  extractData: extractData$1
+};
+var AWS$y = core;
+var util$b = util_1;
+var Rest = rest;
+function populateBody(req) {
+  var input = req.service.api.operations[req.operation].input;
+  var builder2 = new AWS$y.XML.Builder();
+  var params = req.params;
+  var payload2 = input.payload;
+  if (payload2) {
+    var payloadMember = input.members[payload2];
+    params = params[payload2];
+    if (params === void 0)
+      return;
+    if (payloadMember.type === "structure") {
+      var rootElement = payloadMember.name;
+      req.httpRequest.body = builder2.toXML(params, payloadMember, rootElement, true);
+    } else {
+      req.httpRequest.body = params;
+    }
+  } else {
+    req.httpRequest.body = builder2.toXML(params, input, input.name || input.shape || util$b.string.upperFirst(req.operation) + "Request");
+  }
+}
+function buildRequest(req) {
+  Rest.buildRequest(req);
+  if (["GET", "HEAD"].indexOf(req.httpRequest.method) < 0) {
+    populateBody(req);
+  }
+}
+function extractError(resp) {
+  Rest.extractError(resp);
+  var data;
+  try {
+    data = new AWS$y.XML.Parser().parse(resp.httpResponse.body.toString());
+  } catch (e2) {
+    data = {
+      Code: resp.httpResponse.statusCode,
+      Message: resp.httpResponse.statusMessage
+    };
+  }
+  if (data.Errors)
+    data = data.Errors;
+  if (data.Error)
+    data = data.Error;
+  if (data.Code) {
+    resp.error = util$b.error(new Error(), {
+      code: data.Code,
+      message: data.Message
+    });
+  } else {
+    resp.error = util$b.error(new Error(), {
+      code: resp.httpResponse.statusCode,
+      message: null
+    });
+  }
+}
+function extractData(resp) {
+  Rest.extractData(resp);
+  var parser2;
+  var req = resp.request;
+  var body = resp.httpResponse.body;
+  var operation2 = req.service.api.operations[req.operation];
+  var output = operation2.output;
+  operation2.hasEventOutput;
+  var payload2 = output.payload;
+  if (payload2) {
+    var payloadMember = output.members[payload2];
+    if (payloadMember.isEventStream) {
+      parser2 = new AWS$y.XML.Parser();
+      resp.data[payload2] = util$b.createEventStream(AWS$y.HttpClient.streamsApiVersion === 2 ? resp.httpResponse.stream : resp.httpResponse.body, parser2, payloadMember);
+    } else if (payloadMember.type === "structure") {
+      parser2 = new AWS$y.XML.Parser();
+      resp.data[payload2] = parser2.parse(body.toString(), payloadMember);
+    } else if (payloadMember.type === "binary" || payloadMember.isStreaming) {
+      resp.data[payload2] = body;
+    } else {
+      resp.data[payload2] = payloadMember.toType(body);
+    }
+  } else if (body.length > 0) {
+    parser2 = new AWS$y.XML.Parser();
+    var data = parser2.parse(body.toString(), output);
+    util$b.update(resp.data, data);
+  }
+}
+var rest_xml = {
+  buildRequest,
+  extractError,
+  extractData
+};
+function escapeAttribute$1(value) {
+  return value.replace(/&/g, "&amp;").replace(/'/g, "&apos;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+}
+var escapeAttribute_1 = {
+  escapeAttribute: escapeAttribute$1
+};
+var escapeAttribute = escapeAttribute_1.escapeAttribute;
+function XmlNode$1(name, children) {
+  if (children === void 0) {
+    children = [];
+  }
+  this.name = name;
+  this.children = children;
+  this.attributes = {};
+}
+XmlNode$1.prototype.addAttribute = function(name, value) {
+  this.attributes[name] = value;
+  return this;
+};
+XmlNode$1.prototype.addChildNode = function(child) {
+  this.children.push(child);
+  return this;
+};
+XmlNode$1.prototype.removeAttribute = function(name) {
+  delete this.attributes[name];
+  return this;
+};
+XmlNode$1.prototype.toString = function() {
+  var hasChildren = Boolean(this.children.length);
+  var xmlText2 = "<" + this.name;
+  var attributes = this.attributes;
+  for (var i = 0, attributeNames = Object.keys(attributes); i < attributeNames.length; i++) {
+    var attributeName = attributeNames[i];
+    var attribute = attributes[attributeName];
+    if (typeof attribute !== "undefined" && attribute !== null) {
+      xmlText2 += " " + attributeName + '="' + escapeAttribute("" + attribute) + '"';
+    }
+  }
+  return xmlText2 += !hasChildren ? "/>" : ">" + this.children.map(function(c2) {
+    return c2.toString();
+  }).join("") + "</" + this.name + ">";
+};
+var xmlNode = {
+  XmlNode: XmlNode$1
+};
+function escapeElement$1(value) {
+  return value.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/\r/g, "&#x0D;").replace(/\n/g, "&#x0A;").replace(/\u0085/g, "&#x85;").replace(/\u2028/, "&#x2028;");
+}
+var escapeElement_1 = {
+  escapeElement: escapeElement$1
+};
+var escapeElement = escapeElement_1.escapeElement;
+function XmlText$1(value) {
+  this.value = value;
+}
+XmlText$1.prototype.toString = function() {
+  return escapeElement("" + this.value);
+};
+var xmlText = {
+  XmlText: XmlText$1
+};
+var util$a = util_1;
+var XmlNode = xmlNode.XmlNode;
+var XmlText = xmlText.XmlText;
+function XmlBuilder() {
+}
+XmlBuilder.prototype.toXML = function(params, shape2, rootElement, noEmpty) {
+  var xml = new XmlNode(rootElement);
+  applyNamespaces(xml, shape2, true);
+  serialize(xml, params, shape2);
+  return xml.children.length > 0 || noEmpty ? xml.toString() : "";
+};
+function serialize(xml, value, shape2) {
+  switch (shape2.type) {
+    case "structure":
+      return serializeStructure(xml, value, shape2);
+    case "map":
+      return serializeMap(xml, value, shape2);
+    case "list":
+      return serializeList(xml, value, shape2);
+    default:
+      return serializeScalar(xml, value, shape2);
+  }
+}
+function serializeStructure(xml, params, shape2) {
+  util$a.arrayEach(shape2.memberNames, function(memberName) {
+    var memberShape = shape2.members[memberName];
+    if (memberShape.location !== "body")
+      return;
+    var value = params[memberName];
+    var name = memberShape.name;
+    if (value !== void 0 && value !== null) {
+      if (memberShape.isXmlAttribute) {
+        xml.addAttribute(name, value);
+      } else if (memberShape.flattened) {
+        serialize(xml, value, memberShape);
+      } else {
+        var element = new XmlNode(name);
+        xml.addChildNode(element);
+        applyNamespaces(element, memberShape);
+        serialize(element, value, memberShape);
+      }
+    }
+  });
+}
+function serializeMap(xml, map, shape2) {
+  var xmlKey = shape2.key.name || "key";
+  var xmlValue = shape2.value.name || "value";
+  util$a.each(map, function(key, value) {
+    var entry = new XmlNode(shape2.flattened ? shape2.name : "entry");
+    xml.addChildNode(entry);
+    var entryKey = new XmlNode(xmlKey);
+    var entryValue = new XmlNode(xmlValue);
+    entry.addChildNode(entryKey);
+    entry.addChildNode(entryValue);
+    serialize(entryKey, key, shape2.key);
+    serialize(entryValue, value, shape2.value);
+  });
+}
+function serializeList(xml, list, shape2) {
+  if (shape2.flattened) {
+    util$a.arrayEach(list, function(value) {
+      var name = shape2.member.name || shape2.name;
+      var element = new XmlNode(name);
+      xml.addChildNode(element);
+      serialize(element, value, shape2.member);
+    });
+  } else {
+    util$a.arrayEach(list, function(value) {
+      var name = shape2.member.name || "member";
+      var element = new XmlNode(name);
+      xml.addChildNode(element);
+      serialize(element, value, shape2.member);
+    });
+  }
+}
+function serializeScalar(xml, value, shape2) {
+  xml.addChildNode(new XmlText(shape2.toWireFormat(value)));
+}
+function applyNamespaces(xml, shape2, isRoot) {
+  var uri, prefix = "xmlns";
+  if (shape2.xmlNamespaceUri) {
+    uri = shape2.xmlNamespaceUri;
+    if (shape2.xmlNamespacePrefix)
+      prefix += ":" + shape2.xmlNamespacePrefix;
+  } else if (isRoot && shape2.api.xmlNamespaceUri) {
+    uri = shape2.api.xmlNamespaceUri;
+  }
+  if (uri)
+    xml.addAttribute(prefix, uri);
+}
+var builder = XmlBuilder;
+var Shape$2 = shape;
+var util$9 = util_1;
+var property$3 = util$9.property;
+var memoizedProperty$1 = util$9.memoizedProperty;
+function Operation$1(name, operation2, options) {
+  var self2 = this;
+  options = options || {};
+  property$3(this, "name", operation2.name || name);
+  property$3(this, "api", options.api, false);
+  operation2.http = operation2.http || {};
+  property$3(this, "endpoint", operation2.endpoint);
+  property$3(this, "httpMethod", operation2.http.method || "POST");
+  property$3(this, "httpPath", operation2.http.requestUri || "/");
+  property$3(this, "authtype", operation2.authtype || "");
+  property$3(this, "endpointDiscoveryRequired", operation2.endpointdiscovery ? operation2.endpointdiscovery.required ? "REQUIRED" : "OPTIONAL" : "NULL");
+  var httpChecksumRequired = operation2.httpChecksumRequired || operation2.httpChecksum && operation2.httpChecksum.requestChecksumRequired;
+  property$3(this, "httpChecksumRequired", httpChecksumRequired, false);
+  memoizedProperty$1(this, "input", function() {
+    if (!operation2.input) {
+      return new Shape$2.create({ type: "structure" }, options);
+    }
+    return Shape$2.create(operation2.input, options);
+  });
+  memoizedProperty$1(this, "output", function() {
+    if (!operation2.output) {
+      return new Shape$2.create({ type: "structure" }, options);
+    }
+    return Shape$2.create(operation2.output, options);
+  });
+  memoizedProperty$1(this, "errors", function() {
+    var list = [];
+    if (!operation2.errors)
+      return null;
+    for (var i = 0; i < operation2.errors.length; i++) {
+      list.push(Shape$2.create(operation2.errors[i], options));
+    }
+    return list;
+  });
+  memoizedProperty$1(this, "paginator", function() {
+    return options.api.paginators[name];
+  });
+  if (options.documentation) {
+    property$3(this, "documentation", operation2.documentation);
+    property$3(this, "documentationUrl", operation2.documentationUrl);
+  }
+  memoizedProperty$1(this, "idempotentMembers", function() {
+    var idempotentMembers = [];
+    var input = self2.input;
+    var members = input.members;
+    if (!input.members) {
+      return idempotentMembers;
+    }
+    for (var name2 in members) {
+      if (!members.hasOwnProperty(name2)) {
+        continue;
+      }
+      if (members[name2].isIdempotent === true) {
+        idempotentMembers.push(name2);
+      }
+    }
+    return idempotentMembers;
+  });
+  memoizedProperty$1(this, "hasEventOutput", function() {
+    var output = self2.output;
+    return hasEventStream(output);
+  });
+}
+function hasEventStream(topLevelShape) {
+  var members = topLevelShape.members;
+  var payload2 = topLevelShape.payload;
+  if (!topLevelShape.members) {
+    return false;
+  }
+  if (payload2) {
+    var payloadMember = members[payload2];
+    return payloadMember.isEventStream;
+  }
+  for (var name in members) {
+    if (!members.hasOwnProperty(name)) {
+      if (members[name].isEventStream === true) {
+        return true;
+      }
+    }
+  }
+  return false;
+}
+var operation = Operation$1;
+var property$2 = util_1.property;
+function Paginator$1(name, paginator2) {
+  property$2(this, "inputToken", paginator2.input_token);
+  property$2(this, "limitKey", paginator2.limit_key);
+  property$2(this, "moreResults", paginator2.more_results);
+  property$2(this, "outputToken", paginator2.output_token);
+  property$2(this, "resultKey", paginator2.result_key);
+}
+var paginator = Paginator$1;
+var util$8 = util_1;
+var property$1 = util$8.property;
+function ResourceWaiter$1(name, waiter, options) {
+  options = options || {};
+  property$1(this, "name", name);
+  property$1(this, "api", options.api, false);
+  if (waiter.operation) {
+    property$1(this, "operation", util$8.string.lowerFirst(waiter.operation));
+  }
+  var self2 = this;
+  var keys = [
+    "type",
+    "description",
+    "delay",
+    "maxAttempts",
+    "acceptors"
+  ];
+  keys.forEach(function(key) {
+    var value = waiter[key];
+    if (value) {
+      property$1(self2, key, value);
+    }
+  });
+}
+var resource_waiter = ResourceWaiter$1;
+const acm = {
+  name: "ACM",
+  cors: true
+};
+const apigateway = {
+  name: "APIGateway",
+  cors: true
+};
+const applicationautoscaling = {
+  prefix: "application-autoscaling",
+  name: "ApplicationAutoScaling",
+  cors: true
+};
+const appstream = {
+  name: "AppStream"
+};
+const autoscaling = {
+  name: "AutoScaling",
+  cors: true
+};
+const batch = {
+  name: "Batch"
+};
+const budgets = {
+  name: "Budgets"
+};
+const clouddirectory = {
+  name: "CloudDirectory",
+  versions: [
+    "2016-05-10*"
+  ]
+};
+const cloudformation = {
+  name: "CloudFormation",
+  cors: true
+};
+const cloudfront = {
+  name: "CloudFront",
+  versions: [
+    "2013-05-12*",
+    "2013-11-11*",
+    "2014-05-31*",
+    "2014-10-21*",
+    "2014-11-06*",
+    "2015-04-17*",
+    "2015-07-27*",
+    "2015-09-17*",
+    "2016-01-13*",
+    "2016-01-28*",
+    "2016-08-01*",
+    "2016-08-20*",
+    "2016-09-07*",
+    "2016-09-29*",
+    "2016-11-25*",
+    "2017-03-25*",
+    "2017-10-30*",
+    "2018-06-18*",
+    "2018-11-05*",
+    "2019-03-26*"
+  ],
+  cors: true
+};
+const cloudhsm = {
+  name: "CloudHSM",
+  cors: true
+};
+const cloudsearch = {
+  name: "CloudSearch"
+};
+const cloudsearchdomain = {
+  name: "CloudSearchDomain"
+};
+const cloudtrail = {
+  name: "CloudTrail",
+  cors: true
+};
+const cloudwatch = {
+  prefix: "monitoring",
+  name: "CloudWatch",
+  cors: true
+};
+const cloudwatchevents = {
+  prefix: "events",
+  name: "CloudWatchEvents",
+  versions: [
+    "2014-02-03*"
+  ],
+  cors: true
+};
+const cloudwatchlogs = {
+  prefix: "logs",
+  name: "CloudWatchLogs",
+  cors: true
+};
+const codebuild = {
+  name: "CodeBuild",
+  cors: true
+};
+const codecommit = {
+  name: "CodeCommit",
+  cors: true
+};
+const codedeploy = {
+  name: "CodeDeploy",
+  cors: true
+};
+const codepipeline = {
+  name: "CodePipeline",
+  cors: true
+};
+const cognitoidentity$1 = {
+  prefix: "cognito-identity",
+  name: "CognitoIdentity",
+  cors: true
+};
+const cognitoidentityserviceprovider = {
+  prefix: "cognito-idp",
+  name: "CognitoIdentityServiceProvider",
+  cors: true
+};
+const cognitosync = {
+  prefix: "cognito-sync",
+  name: "CognitoSync",
+  cors: true
+};
+const configservice = {
+  prefix: "config",
+  name: "ConfigService",
+  cors: true
+};
+const cur = {
+  name: "CUR",
+  cors: true
+};
+const datapipeline = {
+  name: "DataPipeline"
+};
+const devicefarm = {
+  name: "DeviceFarm",
+  cors: true
+};
+const directconnect = {
+  name: "DirectConnect",
+  cors: true
+};
+const directoryservice = {
+  prefix: "ds",
+  name: "DirectoryService"
+};
+const discovery = {
+  name: "Discovery"
+};
+const dms = {
+  name: "DMS"
+};
+const dynamodb = {
+  name: "DynamoDB",
+  cors: true
+};
+const dynamodbstreams = {
+  prefix: "streams.dynamodb",
+  name: "DynamoDBStreams",
+  cors: true
+};
+const ec2 = {
+  name: "EC2",
+  versions: [
+    "2013-06-15*",
+    "2013-10-15*",
+    "2014-02-01*",
+    "2014-05-01*",
+    "2014-06-15*",
+    "2014-09-01*",
+    "2014-10-01*",
+    "2015-03-01*",
+    "2015-04-15*",
+    "2015-10-01*",
+    "2016-04-01*",
+    "2016-09-15*"
+  ],
+  cors: true
+};
+const ecr = {
+  name: "ECR",
+  cors: true
+};
+const ecs = {
+  name: "ECS",
+  cors: true
+};
+const efs = {
+  prefix: "elasticfilesystem",
+  name: "EFS",
+  cors: true
+};
+const elasticache = {
+  name: "ElastiCache",
+  versions: [
+    "2012-11-15*",
+    "2014-03-24*",
+    "2014-07-15*",
+    "2014-09-30*"
+  ],
+  cors: true
+};
+const elasticbeanstalk = {
+  name: "ElasticBeanstalk",
+  cors: true
+};
+const elb = {
+  prefix: "elasticloadbalancing",
+  name: "ELB",
+  cors: true
+};
+const elbv2 = {
+  prefix: "elasticloadbalancingv2",
+  name: "ELBv2",
+  cors: true
+};
+const emr = {
+  prefix: "elasticmapreduce",
+  name: "EMR",
+  cors: true
+};
+const es = {
+  name: "ES"
+};
+const elastictranscoder = {
+  name: "ElasticTranscoder",
+  cors: true
+};
+const firehose = {
+  name: "Firehose",
+  cors: true
+};
+const gamelift = {
+  name: "GameLift",
+  cors: true
+};
+const glacier = {
+  name: "Glacier"
+};
+const health = {
+  name: "Health"
+};
+const iam = {
+  name: "IAM",
+  cors: true
+};
+const importexport = {
+  name: "ImportExport"
+};
+const inspector = {
+  name: "Inspector",
+  versions: [
+    "2015-08-18*"
+  ],
+  cors: true
+};
+const iot = {
+  name: "Iot",
+  cors: true
+};
+const iotdata = {
+  prefix: "iot-data",
+  name: "IotData",
+  cors: true
+};
+const kinesis = {
+  name: "Kinesis",
+  cors: true
+};
+const kinesisanalytics = {
+  name: "KinesisAnalytics"
+};
+const kms = {
+  name: "KMS",
+  cors: true
+};
+const lambda = {
+  name: "Lambda",
+  cors: true
+};
+const lexruntime = {
+  prefix: "runtime.lex",
+  name: "LexRuntime",
+  cors: true
+};
+const lightsail = {
+  name: "Lightsail"
+};
+const machinelearning = {
+  name: "MachineLearning",
+  cors: true
+};
+const marketplacecommerceanalytics = {
+  name: "MarketplaceCommerceAnalytics",
+  cors: true
+};
+const marketplacemetering = {
+  prefix: "meteringmarketplace",
+  name: "MarketplaceMetering"
+};
+const mturk = {
+  prefix: "mturk-requester",
+  name: "MTurk",
+  cors: true
+};
+const mobileanalytics = {
+  name: "MobileAnalytics",
+  cors: true
+};
+const opsworks = {
+  name: "OpsWorks",
+  cors: true
+};
+const opsworkscm = {
+  name: "OpsWorksCM"
+};
+const organizations = {
+  name: "Organizations"
+};
+const pinpoint = {
+  name: "Pinpoint"
+};
+const polly = {
+  name: "Polly",
+  cors: true
+};
+const rds = {
+  name: "RDS",
+  versions: [
+    "2014-09-01*"
+  ],
+  cors: true
+};
+const redshift = {
+  name: "Redshift",
+  cors: true
+};
+const rekognition = {
+  name: "Rekognition",
+  cors: true
+};
+const resourcegroupstaggingapi = {
+  name: "ResourceGroupsTaggingAPI"
+};
+const route53 = {
+  name: "Route53",
+  cors: true
+};
+const route53domains = {
+  name: "Route53Domains",
+  cors: true
+};
+const s3 = {
+  name: "S3",
+  dualstackAvailable: true,
+  cors: true
+};
+const s3control = {
+  name: "S3Control",
+  dualstackAvailable: true,
+  xmlNoDefaultLists: true
+};
+const servicecatalog = {
+  name: "ServiceCatalog",
+  cors: true
+};
+const ses = {
+  prefix: "email",
+  name: "SES",
+  cors: true
+};
+const shield = {
+  name: "Shield"
+};
+const simpledb = {
+  prefix: "sdb",
+  name: "SimpleDB"
+};
+const sms = {
+  name: "SMS"
+};
+const snowball = {
+  name: "Snowball"
+};
+const sns = {
+  name: "SNS",
+  cors: true
+};
+const sqs = {
+  name: "SQS",
+  cors: true
+};
+const ssm = {
+  name: "SSM",
+  cors: true
+};
+const storagegateway = {
+  name: "StorageGateway",
+  cors: true
+};
+const stepfunctions = {
+  prefix: "states",
+  name: "StepFunctions"
+};
+const sts$1 = {
+  name: "STS",
+  cors: true
+};
+const support = {
+  name: "Support"
+};
+const swf = {
+  name: "SWF"
+};
+const xray = {
+  name: "XRay",
+  cors: true
+};
+const waf = {
+  name: "WAF",
+  cors: true
+};
+const wafregional = {
+  prefix: "waf-regional",
+  name: "WAFRegional"
+};
+const workdocs = {
+  name: "WorkDocs",
+  cors: true
+};
+const workspaces = {
+  name: "WorkSpaces"
+};
+const codestar = {
+  name: "CodeStar"
+};
+const lexmodelbuildingservice = {
+  prefix: "lex-models",
+  name: "LexModelBuildingService",
+  cors: true
+};
+const marketplaceentitlementservice = {
+  prefix: "entitlement.marketplace",
+  name: "MarketplaceEntitlementService"
+};
+const athena = {
+  name: "Athena",
+  cors: true
+};
+const greengrass = {
+  name: "Greengrass"
+};
+const dax = {
+  name: "DAX"
+};
+const migrationhub = {
+  prefix: "AWSMigrationHub",
+  name: "MigrationHub"
+};
+const cloudhsmv2 = {
+  name: "CloudHSMV2",
+  cors: true
+};
+const glue = {
+  name: "Glue"
+};
+const mobile = {
+  name: "Mobile"
+};
+const pricing = {
+  name: "Pricing",
+  cors: true
+};
+const costexplorer = {
+  prefix: "ce",
+  name: "CostExplorer",
+  cors: true
+};
+const mediaconvert = {
+  name: "MediaConvert"
+};
+const medialive = {
+  name: "MediaLive"
+};
+const mediapackage = {
+  name: "MediaPackage"
+};
+const mediastore = {
+  name: "MediaStore"
+};
+const mediastoredata = {
+  prefix: "mediastore-data",
+  name: "MediaStoreData",
+  cors: true
+};
+const appsync = {
+  name: "AppSync"
+};
+const guardduty = {
+  name: "GuardDuty"
+};
+const mq = {
+  name: "MQ"
+};
+const comprehend = {
+  name: "Comprehend",
+  cors: true
+};
+const iotjobsdataplane = {
+  prefix: "iot-jobs-data",
+  name: "IoTJobsDataPlane"
+};
+const kinesisvideoarchivedmedia = {
+  prefix: "kinesis-video-archived-media",
+  name: "KinesisVideoArchivedMedia",
+  cors: true
+};
+const kinesisvideomedia = {
+  prefix: "kinesis-video-media",
+  name: "KinesisVideoMedia",
+  cors: true
+};
+const kinesisvideo = {
+  name: "KinesisVideo",
+  cors: true
+};
+const sagemakerruntime = {
+  prefix: "runtime.sagemaker",
+  name: "SageMakerRuntime"
+};
+const sagemaker = {
+  name: "SageMaker"
+};
+const translate = {
+  name: "Translate",
+  cors: true
+};
+const resourcegroups = {
+  prefix: "resource-groups",
+  name: "ResourceGroups",
+  cors: true
+};
+const alexaforbusiness = {
+  name: "AlexaForBusiness"
+};
+const cloud9 = {
+  name: "Cloud9"
+};
+const serverlessapplicationrepository = {
+  prefix: "serverlessrepo",
+  name: "ServerlessApplicationRepository"
+};
+const servicediscovery = {
+  name: "ServiceDiscovery"
+};
+const workmail = {
+  name: "WorkMail"
+};
+const autoscalingplans = {
+  prefix: "autoscaling-plans",
+  name: "AutoScalingPlans"
+};
+const transcribeservice = {
+  prefix: "transcribe",
+  name: "TranscribeService"
+};
+const connect = {
+  name: "Connect",
+  cors: true
+};
+const acmpca = {
+  prefix: "acm-pca",
+  name: "ACMPCA"
+};
+const fms = {
+  name: "FMS"
+};
+const secretsmanager = {
+  name: "SecretsManager",
+  cors: true
+};
+const iotanalytics = {
+  name: "IoTAnalytics",
+  cors: true
+};
+const iot1clickdevicesservice = {
+  prefix: "iot1click-devices",
+  name: "IoT1ClickDevicesService"
+};
+const iot1clickprojects = {
+  prefix: "iot1click-projects",
+  name: "IoT1ClickProjects"
+};
+const pi = {
+  name: "PI"
+};
+const neptune = {
+  name: "Neptune"
+};
+const mediatailor = {
+  name: "MediaTailor"
+};
+const eks = {
+  name: "EKS"
+};
+const macie = {
+  name: "Macie"
+};
+const dlm = {
+  name: "DLM"
+};
+const signer = {
+  name: "Signer"
+};
+const chime = {
+  name: "Chime"
+};
+const pinpointemail = {
+  prefix: "pinpoint-email",
+  name: "PinpointEmail"
+};
+const ram = {
+  name: "RAM"
+};
+const route53resolver = {
+  name: "Route53Resolver"
+};
+const pinpointsmsvoice = {
+  prefix: "sms-voice",
+  name: "PinpointSMSVoice"
+};
+const quicksight = {
+  name: "QuickSight"
+};
+const rdsdataservice = {
+  prefix: "rds-data",
+  name: "RDSDataService"
+};
+const amplify = {
+  name: "Amplify"
+};
+const datasync = {
+  name: "DataSync"
+};
+const robomaker = {
+  name: "RoboMaker"
+};
+const transfer = {
+  name: "Transfer"
+};
+const globalaccelerator = {
+  name: "GlobalAccelerator"
+};
+const comprehendmedical = {
+  name: "ComprehendMedical",
+  cors: true
+};
+const kinesisanalyticsv2 = {
+  name: "KinesisAnalyticsV2"
+};
+const mediaconnect = {
+  name: "MediaConnect"
+};
+const fsx = {
+  name: "FSx"
+};
+const securityhub = {
+  name: "SecurityHub"
+};
+const appmesh = {
+  name: "AppMesh",
+  versions: [
+    "2018-10-01*"
+  ]
+};
+const licensemanager = {
+  prefix: "license-manager",
+  name: "LicenseManager"
+};
+const kafka = {
+  name: "Kafka"
+};
+const apigatewaymanagementapi = {
+  name: "ApiGatewayManagementApi"
+};
+const apigatewayv2 = {
+  name: "ApiGatewayV2"
+};
+const docdb = {
+  name: "DocDB"
+};
+const backup = {
+  name: "Backup"
+};
+const worklink = {
+  name: "WorkLink"
+};
+const textract = {
+  name: "Textract"
+};
+const managedblockchain = {
+  name: "ManagedBlockchain"
+};
+const mediapackagevod = {
+  prefix: "mediapackage-vod",
+  name: "MediaPackageVod"
+};
+const groundstation = {
+  name: "GroundStation"
+};
+const iotthingsgraph = {
+  name: "IoTThingsGraph"
+};
+const iotevents = {
+  name: "IoTEvents"
+};
+const ioteventsdata = {
+  prefix: "iotevents-data",
+  name: "IoTEventsData"
+};
+const personalize = {
+  name: "Personalize",
+  cors: true
+};
+const personalizeevents = {
+  prefix: "personalize-events",
+  name: "PersonalizeEvents",
+  cors: true
+};
+const personalizeruntime = {
+  prefix: "personalize-runtime",
+  name: "PersonalizeRuntime",
+  cors: true
+};
+const applicationinsights = {
+  prefix: "application-insights",
+  name: "ApplicationInsights"
+};
+const servicequotas = {
+  prefix: "service-quotas",
+  name: "ServiceQuotas"
+};
+const ec2instanceconnect = {
+  prefix: "ec2-instance-connect",
+  name: "EC2InstanceConnect"
+};
+const eventbridge = {
+  name: "EventBridge"
+};
+const lakeformation = {
+  name: "LakeFormation"
+};
+const forecastservice = {
+  prefix: "forecast",
+  name: "ForecastService",
+  cors: true
+};
+const forecastqueryservice = {
+  prefix: "forecastquery",
+  name: "ForecastQueryService",
+  cors: true
+};
+const qldb = {
+  name: "QLDB"
+};
+const qldbsession = {
+  prefix: "qldb-session",
+  name: "QLDBSession"
+};
+const workmailmessageflow = {
+  name: "WorkMailMessageFlow"
+};
+const codestarnotifications = {
+  prefix: "codestar-notifications",
+  name: "CodeStarNotifications"
+};
+const savingsplans = {
+  name: "SavingsPlans"
+};
+const sso = {
+  name: "SSO"
+};
+const ssooidc = {
+  prefix: "sso-oidc",
+  name: "SSOOIDC"
+};
+const marketplacecatalog = {
+  prefix: "marketplace-catalog",
+  name: "MarketplaceCatalog"
+};
+const dataexchange = {
+  name: "DataExchange"
+};
+const sesv2 = {
+  name: "SESV2"
+};
+const migrationhubconfig = {
+  prefix: "migrationhub-config",
+  name: "MigrationHubConfig"
+};
+const connectparticipant = {
+  name: "ConnectParticipant"
+};
+const appconfig = {
+  name: "AppConfig"
+};
+const iotsecuretunneling = {
+  name: "IoTSecureTunneling"
+};
+const wafv2 = {
+  name: "WAFV2"
+};
+const elasticinference = {
+  prefix: "elastic-inference",
+  name: "ElasticInference"
+};
+const imagebuilder = {
+  name: "Imagebuilder"
+};
+const schemas = {
+  name: "Schemas"
+};
+const accessanalyzer = {
+  name: "AccessAnalyzer"
+};
+const codegurureviewer = {
+  prefix: "codeguru-reviewer",
+  name: "CodeGuruReviewer"
+};
+const codeguruprofiler = {
+  name: "CodeGuruProfiler"
+};
+const computeoptimizer = {
+  prefix: "compute-optimizer",
+  name: "ComputeOptimizer"
+};
+const frauddetector = {
+  name: "FraudDetector"
+};
+const kendra = {
+  name: "Kendra"
+};
+const networkmanager = {
+  name: "NetworkManager"
+};
+const outposts = {
+  name: "Outposts"
+};
+const augmentedairuntime = {
+  prefix: "sagemaker-a2i-runtime",
+  name: "AugmentedAIRuntime"
+};
+const ebs = {
+  name: "EBS"
+};
+const kinesisvideosignalingchannels = {
+  prefix: "kinesis-video-signaling",
+  name: "KinesisVideoSignalingChannels",
+  cors: true
+};
+const detective = {
+  name: "Detective"
+};
+const codestarconnections = {
+  prefix: "codestar-connections",
+  name: "CodeStarconnections"
+};
+const synthetics = {
+  name: "Synthetics"
+};
+const iotsitewise = {
+  name: "IoTSiteWise"
+};
+const macie2 = {
+  name: "Macie2"
+};
+const codeartifact = {
+  name: "CodeArtifact"
+};
+const honeycode = {
+  name: "Honeycode"
+};
+const ivs = {
+  name: "IVS"
+};
+const braket = {
+  name: "Braket"
+};
+const identitystore = {
+  name: "IdentityStore"
+};
+const appflow = {
+  name: "Appflow"
+};
+const redshiftdata = {
+  prefix: "redshift-data",
+  name: "RedshiftData"
+};
+const ssoadmin = {
+  prefix: "sso-admin",
+  name: "SSOAdmin"
+};
+const timestreamquery = {
+  prefix: "timestream-query",
+  name: "TimestreamQuery"
+};
+const timestreamwrite = {
+  prefix: "timestream-write",
+  name: "TimestreamWrite"
+};
+const s3outposts = {
+  name: "S3Outposts"
+};
+const databrew = {
+  name: "DataBrew"
+};
+const servicecatalogappregistry = {
+  prefix: "servicecatalog-appregistry",
+  name: "ServiceCatalogAppRegistry"
+};
+const networkfirewall = {
+  prefix: "network-firewall",
+  name: "NetworkFirewall"
+};
+const mwaa = {
+  name: "MWAA"
+};
+const amplifybackend = {
+  name: "AmplifyBackend"
+};
+const appintegrations = {
+  name: "AppIntegrations"
+};
+const connectcontactlens = {
+  prefix: "connect-contact-lens",
+  name: "ConnectContactLens"
+};
+const devopsguru = {
+  prefix: "devops-guru",
+  name: "DevOpsGuru"
+};
+const ecrpublic = {
+  prefix: "ecr-public",
+  name: "ECRPUBLIC"
+};
+const lookoutvision = {
+  name: "LookoutVision"
+};
+const sagemakerfeaturestoreruntime = {
+  prefix: "sagemaker-featurestore-runtime",
+  name: "SageMakerFeatureStoreRuntime"
+};
+const customerprofiles = {
+  prefix: "customer-profiles",
+  name: "CustomerProfiles"
+};
+const auditmanager = {
+  name: "AuditManager"
+};
+const emrcontainers = {
+  prefix: "emr-containers",
+  name: "EMRcontainers"
+};
+const healthlake = {
+  name: "HealthLake"
+};
+const sagemakeredge = {
+  prefix: "sagemaker-edge",
+  name: "SagemakerEdge"
+};
+const amp = {
+  name: "Amp"
+};
+const greengrassv2 = {
+  name: "GreengrassV2"
+};
+const iotdeviceadvisor = {
+  name: "IotDeviceAdvisor"
+};
+const iotfleethub = {
+  name: "IoTFleetHub"
+};
+const iotwireless = {
+  name: "IoTWireless"
+};
+const location = {
+  name: "Location",
+  cors: true
+};
+const wellarchitected = {
+  name: "WellArchitected"
+};
+const lexmodelsv2 = {
+  prefix: "models.lex.v2",
+  name: "LexModelsV2"
+};
+const lexruntimev2 = {
+  prefix: "runtime.lex.v2",
+  name: "LexRuntimeV2",
+  cors: true
+};
+const fis = {
+  name: "Fis"
+};
+const lookoutmetrics = {
+  name: "LookoutMetrics"
+};
+const mgn = {
+  name: "Mgn"
+};
+const lookoutequipment = {
+  name: "LookoutEquipment"
+};
+const nimble = {
+  name: "Nimble"
+};
+const finspace = {
+  name: "Finspace"
+};
+const finspacedata = {
+  prefix: "finspace-data",
+  name: "Finspacedata"
+};
+const ssmcontacts = {
+  prefix: "ssm-contacts",
+  name: "SSMContacts"
+};
+const ssmincidents = {
+  prefix: "ssm-incidents",
+  name: "SSMIncidents"
+};
+const applicationcostprofiler = {
+  name: "ApplicationCostProfiler"
+};
+const apprunner = {
+  name: "AppRunner"
+};
+const proton = {
+  name: "Proton"
+};
+const route53recoverycluster = {
+  prefix: "route53-recovery-cluster",
+  name: "Route53RecoveryCluster"
+};
+const route53recoverycontrolconfig = {
+  prefix: "route53-recovery-control-config",
+  name: "Route53RecoveryControlConfig"
+};
+const route53recoveryreadiness = {
+  prefix: "route53-recovery-readiness",
+  name: "Route53RecoveryReadiness"
+};
+const chimesdkidentity = {
+  prefix: "chime-sdk-identity",
+  name: "ChimeSDKIdentity"
+};
+const chimesdkmessaging = {
+  prefix: "chime-sdk-messaging",
+  name: "ChimeSDKMessaging"
+};
+const snowdevicemanagement = {
+  prefix: "snow-device-management",
+  name: "SnowDeviceManagement"
+};
+const memorydb = {
+  name: "MemoryDB"
+};
+const opensearch = {
+  name: "OpenSearch"
+};
+const kafkaconnect = {
+  name: "KafkaConnect"
+};
+const voiceid = {
+  prefix: "voice-id",
+  name: "VoiceID"
+};
+const wisdom = {
+  name: "Wisdom"
+};
+const account = {
+  name: "Account"
+};
+const cloudcontrol = {
+  name: "CloudControl"
+};
+const grafana = {
+  name: "Grafana"
+};
+const panorama = {
+  name: "Panorama"
+};
+const chimesdkmeetings = {
+  prefix: "chime-sdk-meetings",
+  name: "ChimeSDKMeetings"
+};
+const resiliencehub = {
+  name: "Resiliencehub"
+};
+const migrationhubstrategy = {
+  name: "MigrationHubStrategy"
+};
+const appconfigdata = {
+  name: "AppConfigData"
+};
+const drs = {
+  name: "Drs"
+};
+const migrationhubrefactorspaces = {
+  prefix: "migration-hub-refactor-spaces",
+  name: "MigrationHubRefactorSpaces"
+};
+const evidently = {
+  name: "Evidently"
+};
+const inspector2 = {
+  name: "Inspector2"
+};
+const rbin = {
+  name: "Rbin"
+};
+const rum = {
+  name: "RUM"
+};
+const backupgateway = {
+  prefix: "backup-gateway",
+  name: "BackupGateway"
+};
+const iottwinmaker = {
+  name: "IoTTwinMaker"
+};
+const workspacesweb = {
+  prefix: "workspaces-web",
+  name: "WorkSpacesWeb"
+};
+const amplifyuibuilder = {
+  name: "AmplifyUIBuilder"
+};
+const keyspaces = {
+  name: "Keyspaces"
+};
+var require$$2$2 = {
+  acm,
+  apigateway,
+  applicationautoscaling,
+  appstream,
+  autoscaling,
+  batch,
+  budgets,
+  clouddirectory,
+  cloudformation,
+  cloudfront,
+  cloudhsm,
+  cloudsearch,
+  cloudsearchdomain,
+  cloudtrail,
+  cloudwatch,
+  cloudwatchevents,
+  cloudwatchlogs,
+  codebuild,
+  codecommit,
+  codedeploy,
+  codepipeline,
+  cognitoidentity: cognitoidentity$1,
+  cognitoidentityserviceprovider,
+  cognitosync,
+  configservice,
+  cur,
+  datapipeline,
+  devicefarm,
+  directconnect,
+  directoryservice,
+  discovery,
+  dms,
+  dynamodb,
+  dynamodbstreams,
+  ec2,
+  ecr,
+  ecs,
+  efs,
+  elasticache,
+  elasticbeanstalk,
+  elb,
+  elbv2,
+  emr,
+  es,
+  elastictranscoder,
+  firehose,
+  gamelift,
+  glacier,
+  health,
+  iam,
+  importexport,
+  inspector,
+  iot,
+  iotdata,
+  kinesis,
+  kinesisanalytics,
+  kms,
+  lambda,
+  lexruntime,
+  lightsail,
+  machinelearning,
+  marketplacecommerceanalytics,
+  marketplacemetering,
+  mturk,
+  mobileanalytics,
+  opsworks,
+  opsworkscm,
+  organizations,
+  pinpoint,
+  polly,
+  rds,
+  redshift,
+  rekognition,
+  resourcegroupstaggingapi,
+  route53,
+  route53domains,
+  s3,
+  s3control,
+  servicecatalog,
+  ses,
+  shield,
+  simpledb,
+  sms,
+  snowball,
+  sns,
+  sqs,
+  ssm,
+  storagegateway,
+  stepfunctions,
+  sts: sts$1,
+  support,
+  swf,
+  xray,
+  waf,
+  wafregional,
+  workdocs,
+  workspaces,
+  codestar,
+  lexmodelbuildingservice,
+  marketplaceentitlementservice,
+  athena,
+  greengrass,
+  dax,
+  migrationhub,
+  cloudhsmv2,
+  glue,
+  mobile,
+  pricing,
+  costexplorer,
+  mediaconvert,
+  medialive,
+  mediapackage,
+  mediastore,
+  mediastoredata,
+  appsync,
+  guardduty,
+  mq,
+  comprehend,
+  iotjobsdataplane,
+  kinesisvideoarchivedmedia,
+  kinesisvideomedia,
+  kinesisvideo,
+  sagemakerruntime,
+  sagemaker,
+  translate,
+  resourcegroups,
+  alexaforbusiness,
+  cloud9,
+  serverlessapplicationrepository,
+  servicediscovery,
+  workmail,
+  autoscalingplans,
+  transcribeservice,
+  connect,
+  acmpca,
+  fms,
+  secretsmanager,
+  iotanalytics,
+  iot1clickdevicesservice,
+  iot1clickprojects,
+  pi,
+  neptune,
+  mediatailor,
+  eks,
+  macie,
+  dlm,
+  signer,
+  chime,
+  pinpointemail,
+  ram,
+  route53resolver,
+  pinpointsmsvoice,
+  quicksight,
+  rdsdataservice,
+  amplify,
+  datasync,
+  robomaker,
+  transfer,
+  globalaccelerator,
+  comprehendmedical,
+  kinesisanalyticsv2,
+  mediaconnect,
+  fsx,
+  securityhub,
+  appmesh,
+  licensemanager,
+  kafka,
+  apigatewaymanagementapi,
+  apigatewayv2,
+  docdb,
+  backup,
+  worklink,
+  textract,
+  managedblockchain,
+  mediapackagevod,
+  groundstation,
+  iotthingsgraph,
+  iotevents,
+  ioteventsdata,
+  personalize,
+  personalizeevents,
+  personalizeruntime,
+  applicationinsights,
+  servicequotas,
+  ec2instanceconnect,
+  eventbridge,
+  lakeformation,
+  forecastservice,
+  forecastqueryservice,
+  qldb,
+  qldbsession,
+  workmailmessageflow,
+  codestarnotifications,
+  savingsplans,
+  sso,
+  ssooidc,
+  marketplacecatalog,
+  dataexchange,
+  sesv2,
+  migrationhubconfig,
+  connectparticipant,
+  appconfig,
+  iotsecuretunneling,
+  wafv2,
+  elasticinference,
+  imagebuilder,
+  schemas,
+  accessanalyzer,
+  codegurureviewer,
+  codeguruprofiler,
+  computeoptimizer,
+  frauddetector,
+  kendra,
+  networkmanager,
+  outposts,
+  augmentedairuntime,
+  ebs,
+  kinesisvideosignalingchannels,
+  detective,
+  codestarconnections,
+  synthetics,
+  iotsitewise,
+  macie2,
+  codeartifact,
+  honeycode,
+  ivs,
+  braket,
+  identitystore,
+  appflow,
+  redshiftdata,
+  ssoadmin,
+  timestreamquery,
+  timestreamwrite,
+  s3outposts,
+  databrew,
+  servicecatalogappregistry,
+  networkfirewall,
+  mwaa,
+  amplifybackend,
+  appintegrations,
+  connectcontactlens,
+  devopsguru,
+  ecrpublic,
+  lookoutvision,
+  sagemakerfeaturestoreruntime,
+  customerprofiles,
+  auditmanager,
+  emrcontainers,
+  healthlake,
+  sagemakeredge,
+  amp,
+  greengrassv2,
+  iotdeviceadvisor,
+  iotfleethub,
+  iotwireless,
+  location,
+  wellarchitected,
+  lexmodelsv2,
+  lexruntimev2,
+  fis,
+  lookoutmetrics,
+  mgn,
+  lookoutequipment,
+  nimble,
+  finspace,
+  finspacedata,
+  ssmcontacts,
+  ssmincidents,
+  applicationcostprofiler,
+  apprunner,
+  proton,
+  route53recoverycluster,
+  route53recoverycontrolconfig,
+  route53recoveryreadiness,
+  chimesdkidentity,
+  chimesdkmessaging,
+  snowdevicemanagement,
+  memorydb,
+  opensearch,
+  kafkaconnect,
+  voiceid,
+  wisdom,
+  account,
+  cloudcontrol,
+  grafana,
+  panorama,
+  chimesdkmeetings,
+  resiliencehub,
+  migrationhubstrategy,
+  appconfigdata,
+  drs,
+  migrationhubrefactorspaces,
+  evidently,
+  inspector2,
+  rbin,
+  rum,
+  backupgateway,
+  iottwinmaker,
+  workspacesweb,
+  amplifyuibuilder,
+  keyspaces
+};
+var Collection = collection;
+var Operation = operation;
+var Shape$1 = shape;
+var Paginator = paginator;
+var ResourceWaiter = resource_waiter;
+var metadata$2 = require$$2$2;
+var util$7 = util_1;
+var property = util$7.property;
+var memoizedProperty = util$7.memoizedProperty;
+function Api$1(api2, options) {
+  var self2 = this;
+  api2 = api2 || {};
+  options = options || {};
+  options.api = this;
+  api2.metadata = api2.metadata || {};
+  var serviceIdentifier = options.serviceIdentifier;
+  delete options.serviceIdentifier;
+  property(this, "isApi", true, false);
+  property(this, "apiVersion", api2.metadata.apiVersion);
+  property(this, "endpointPrefix", api2.metadata.endpointPrefix);
+  property(this, "signingName", api2.metadata.signingName);
+  property(this, "globalEndpoint", api2.metadata.globalEndpoint);
+  property(this, "signatureVersion", api2.metadata.signatureVersion);
+  property(this, "jsonVersion", api2.metadata.jsonVersion);
+  property(this, "targetPrefix", api2.metadata.targetPrefix);
+  property(this, "protocol", api2.metadata.protocol);
+  property(this, "timestampFormat", api2.metadata.timestampFormat);
+  property(this, "xmlNamespaceUri", api2.metadata.xmlNamespace);
+  property(this, "abbreviation", api2.metadata.serviceAbbreviation);
+  property(this, "fullName", api2.metadata.serviceFullName);
+  property(this, "serviceId", api2.metadata.serviceId);
+  if (serviceIdentifier && metadata$2[serviceIdentifier]) {
+    property(this, "xmlNoDefaultLists", metadata$2[serviceIdentifier].xmlNoDefaultLists, false);
+  }
+  memoizedProperty(this, "className", function() {
+    var name = api2.metadata.serviceAbbreviation || api2.metadata.serviceFullName;
+    if (!name)
+      return null;
+    name = name.replace(/^Amazon|AWS\s*|\(.*|\s+|\W+/g, "");
+    if (name === "ElasticLoadBalancing")
+      name = "ELB";
+    return name;
+  });
+  function addEndpointOperation(name, operation2) {
+    if (operation2.endpointoperation === true) {
+      property(self2, "endpointOperation", util$7.string.lowerFirst(name));
+    }
+    if (operation2.endpointdiscovery && !self2.hasRequiredEndpointDiscovery) {
+      property(self2, "hasRequiredEndpointDiscovery", operation2.endpointdiscovery.required === true);
+    }
+  }
+  property(this, "operations", new Collection(api2.operations, options, function(name, operation2) {
+    return new Operation(name, operation2, options);
+  }, util$7.string.lowerFirst, addEndpointOperation));
+  property(this, "shapes", new Collection(api2.shapes, options, function(name, shape2) {
+    return Shape$1.create(shape2, options);
+  }));
+  property(this, "paginators", new Collection(api2.paginators, options, function(name, paginator2) {
+    return new Paginator(name, paginator2, options);
+  }));
+  property(this, "waiters", new Collection(api2.waiters, options, function(name, waiter) {
+    return new ResourceWaiter(name, waiter, options);
+  }, util$7.string.lowerFirst));
+  if (options.documentation) {
+    property(this, "documentation", api2.documentation);
+    property(this, "documentationUrl", api2.documentationUrl);
+  }
+}
+var api = Api$1;
+function apiLoader$2(svc, version2) {
+  if (!apiLoader$2.services.hasOwnProperty(svc)) {
+    throw new Error("InvalidService: Failed to load api for " + svc);
+  }
+  return apiLoader$2.services[svc][version2];
+}
+apiLoader$2.services = {};
+var api_loader = apiLoader$2;
+var endpointCache = {};
+var LRU = {};
+Object.defineProperty(LRU, "__esModule", { value: true });
+var LinkedListNode = function() {
+  function LinkedListNode2(key, value) {
+    this.key = key;
+    this.value = value;
+  }
+  return LinkedListNode2;
+}();
+var LRUCache = function() {
+  function LRUCache2(size) {
+    this.nodeMap = {};
+    this.size = 0;
+    if (typeof size !== "number" || size < 1) {
+      throw new Error("Cache size can only be positive number");
+    }
+    this.sizeLimit = size;
+  }
+  Object.defineProperty(LRUCache2.prototype, "length", {
+    get: function() {
+      return this.size;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  LRUCache2.prototype.prependToList = function(node) {
+    if (!this.headerNode) {
+      this.tailNode = node;
+    } else {
+      this.headerNode.prev = node;
+      node.next = this.headerNode;
+    }
+    this.headerNode = node;
+    this.size++;
+  };
+  LRUCache2.prototype.removeFromTail = function() {
+    if (!this.tailNode) {
+      return void 0;
+    }
+    var node = this.tailNode;
+    var prevNode = node.prev;
+    if (prevNode) {
+      prevNode.next = void 0;
+    }
+    node.prev = void 0;
+    this.tailNode = prevNode;
+    this.size--;
+    return node;
+  };
+  LRUCache2.prototype.detachFromList = function(node) {
+    if (this.headerNode === node) {
+      this.headerNode = node.next;
+    }
+    if (this.tailNode === node) {
+      this.tailNode = node.prev;
+    }
+    if (node.prev) {
+      node.prev.next = node.next;
+    }
+    if (node.next) {
+      node.next.prev = node.prev;
+    }
+    node.next = void 0;
+    node.prev = void 0;
+    this.size--;
+  };
+  LRUCache2.prototype.get = function(key) {
+    if (this.nodeMap[key]) {
+      var node = this.nodeMap[key];
+      this.detachFromList(node);
+      this.prependToList(node);
+      return node.value;
+    }
+  };
+  LRUCache2.prototype.remove = function(key) {
+    if (this.nodeMap[key]) {
+      var node = this.nodeMap[key];
+      this.detachFromList(node);
+      delete this.nodeMap[key];
+    }
+  };
+  LRUCache2.prototype.put = function(key, value) {
+    if (this.nodeMap[key]) {
+      this.remove(key);
+    } else if (this.size === this.sizeLimit) {
+      var tailNode = this.removeFromTail();
+      var key_1 = tailNode.key;
+      delete this.nodeMap[key_1];
+    }
+    var newNode = new LinkedListNode(key, value);
+    this.nodeMap[key] = newNode;
+    this.prependToList(newNode);
+  };
+  LRUCache2.prototype.empty = function() {
+    var keys = Object.keys(this.nodeMap);
+    for (var i = 0; i < keys.length; i++) {
+      var key = keys[i];
+      var node = this.nodeMap[key];
+      this.detachFromList(node);
+      delete this.nodeMap[key];
+    }
+  };
+  return LRUCache2;
+}();
+LRU.LRUCache = LRUCache;
+Object.defineProperty(endpointCache, "__esModule", { value: true });
+var LRU_1 = LRU;
+var CACHE_SIZE = 1e3;
+var EndpointCache = function() {
+  function EndpointCache2(maxSize) {
+    if (maxSize === void 0) {
+      maxSize = CACHE_SIZE;
+    }
+    this.maxSize = maxSize;
+    this.cache = new LRU_1.LRUCache(maxSize);
+  }
+  Object.defineProperty(EndpointCache2.prototype, "size", {
+    get: function() {
+      return this.cache.length;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  EndpointCache2.prototype.put = function(key, value) {
+    var keyString = typeof key !== "string" ? EndpointCache2.getKeyString(key) : key;
+    var endpointRecord = this.populateValue(value);
+    this.cache.put(keyString, endpointRecord);
+  };
+  EndpointCache2.prototype.get = function(key) {
+    var keyString = typeof key !== "string" ? EndpointCache2.getKeyString(key) : key;
+    var now3 = Date.now();
+    var records = this.cache.get(keyString);
+    if (records) {
+      for (var i = records.length - 1; i >= 0; i--) {
+        var record = records[i];
+        if (record.Expire < now3) {
+          records.splice(i, 1);
+        }
+      }
+      if (records.length === 0) {
+        this.cache.remove(keyString);
+        return void 0;
+      }
+    }
+    return records;
+  };
+  EndpointCache2.getKeyString = function(key) {
+    var identifiers = [];
+    var identifierNames = Object.keys(key).sort();
+    for (var i = 0; i < identifierNames.length; i++) {
+      var identifierName = identifierNames[i];
+      if (key[identifierName] === void 0)
+        continue;
+      identifiers.push(key[identifierName]);
+    }
+    return identifiers.join(" ");
+  };
+  EndpointCache2.prototype.populateValue = function(endpoints) {
+    var now3 = Date.now();
+    return endpoints.map(function(endpoint) {
+      return {
+        Address: endpoint.Address || "",
+        Expire: now3 + (endpoint.CachePeriodInMinutes || 1) * 60 * 1e3
+      };
+    });
+  };
+  EndpointCache2.prototype.empty = function() {
+    this.cache.empty();
+  };
+  EndpointCache2.prototype.remove = function(key) {
+    var keyString = typeof key !== "string" ? EndpointCache2.getKeyString(key) : key;
+    this.cache.remove(keyString);
+  };
+  return EndpointCache2;
+}();
+endpointCache.EndpointCache = EndpointCache;
+var AWS$x = core;
+AWS$x.SequentialExecutor = AWS$x.util.inherit({
+  constructor: function SequentialExecutor() {
+    this._events = {};
+  },
+  listeners: function listeners(eventName) {
+    return this._events[eventName] ? this._events[eventName].slice(0) : [];
+  },
+  on: function on2(eventName, listener, toHead) {
+    if (this._events[eventName]) {
+      toHead ? this._events[eventName].unshift(listener) : this._events[eventName].push(listener);
+    } else {
+      this._events[eventName] = [listener];
+    }
+    return this;
+  },
+  onAsync: function onAsync(eventName, listener, toHead) {
+    listener._isAsync = true;
+    return this.on(eventName, listener, toHead);
+  },
+  removeListener: function removeListener(eventName, listener) {
+    var listeners2 = this._events[eventName];
+    if (listeners2) {
+      var length = listeners2.length;
+      var position = -1;
+      for (var i = 0; i < length; ++i) {
+        if (listeners2[i] === listener) {
+          position = i;
+        }
+      }
+      if (position > -1) {
+        listeners2.splice(position, 1);
+      }
+    }
+    return this;
+  },
+  removeAllListeners: function removeAllListeners(eventName) {
+    if (eventName) {
+      delete this._events[eventName];
+    } else {
+      this._events = {};
+    }
+    return this;
+  },
+  emit: function emit(eventName, eventArgs, doneCallback) {
+    if (!doneCallback)
+      doneCallback = function() {
+      };
+    var listeners2 = this.listeners(eventName);
+    var count = listeners2.length;
+    this.callListeners(listeners2, eventArgs, doneCallback);
+    return count > 0;
+  },
+  callListeners: function callListeners(listeners2, args, doneCallback, prevError) {
+    var self2 = this;
+    var error2 = prevError || null;
+    function callNextListener(err) {
+      if (err) {
+        error2 = AWS$x.util.error(error2 || new Error(), err);
+        if (self2._haltHandlersOnError) {
+          return doneCallback.call(self2, error2);
+        }
+      }
+      self2.callListeners(listeners2, args, doneCallback, error2);
+    }
+    while (listeners2.length > 0) {
+      var listener = listeners2.shift();
+      if (listener._isAsync) {
+        listener.apply(self2, args.concat([callNextListener]));
+        return;
+      } else {
+        try {
+          listener.apply(self2, args);
+        } catch (err) {
+          error2 = AWS$x.util.error(error2 || new Error(), err);
+        }
+        if (error2 && self2._haltHandlersOnError) {
+          doneCallback.call(self2, error2);
+          return;
+        }
+      }
+    }
+    doneCallback.call(self2, error2);
+  },
+  addListeners: function addListeners(listeners2) {
+    var self2 = this;
+    if (listeners2._events)
+      listeners2 = listeners2._events;
+    AWS$x.util.each(listeners2, function(event, callbacks) {
+      if (typeof callbacks === "function")
+        callbacks = [callbacks];
+      AWS$x.util.arrayEach(callbacks, function(callback) {
+        self2.on(event, callback);
+      });
+    });
+    return self2;
+  },
+  addNamedListener: function addNamedListener(name, eventName, callback, toHead) {
+    this[name] = callback;
+    this.addListener(eventName, callback, toHead);
+    return this;
+  },
+  addNamedAsyncListener: function addNamedAsyncListener(name, eventName, callback, toHead) {
+    callback._isAsync = true;
+    return this.addNamedListener(name, eventName, callback, toHead);
+  },
+  addNamedListeners: function addNamedListeners(callback) {
+    var self2 = this;
+    callback(function() {
+      self2.addNamedListener.apply(self2, arguments);
+    }, function() {
+      self2.addNamedAsyncListener.apply(self2, arguments);
+    });
+    return this;
+  }
+});
+AWS$x.SequentialExecutor.prototype.addListener = AWS$x.SequentialExecutor.prototype.on;
+var sequential_executor = AWS$x.SequentialExecutor;
+const rules = {
+  "*/*": {
+    endpoint: "{service}.{region}.amazonaws.com"
+  },
+  "cn-*/*": {
+    endpoint: "{service}.{region}.amazonaws.com.cn"
+  },
+  "us-iso-*/*": "usIso",
+  "us-isob-*/*": "usIsob",
+  "*/budgets": "globalSSL",
+  "*/cloudfront": "globalSSL",
+  "*/sts": "globalSSL",
+  "*/importexport": {
+    endpoint: "{service}.amazonaws.com",
+    signatureVersion: "v2",
+    globalEndpoint: true
+  },
+  "*/route53": "globalSSL",
+  "cn-*/route53": {
+    endpoint: "{service}.amazonaws.com.cn",
+    globalEndpoint: true,
+    signingRegion: "cn-northwest-1"
+  },
+  "us-gov-*/route53": "globalGovCloud",
+  "*/waf": "globalSSL",
+  "*/iam": "globalSSL",
+  "cn-*/iam": {
+    endpoint: "{service}.cn-north-1.amazonaws.com.cn",
+    globalEndpoint: true,
+    signingRegion: "cn-north-1"
+  },
+  "us-gov-*/iam": "globalGovCloud",
+  "us-gov-*/sts": {
+    endpoint: "{service}.{region}.amazonaws.com"
+  },
+  "us-gov-west-1/s3": "s3signature",
+  "us-west-1/s3": "s3signature",
+  "us-west-2/s3": "s3signature",
+  "eu-west-1/s3": "s3signature",
+  "ap-southeast-1/s3": "s3signature",
+  "ap-southeast-2/s3": "s3signature",
+  "ap-northeast-1/s3": "s3signature",
+  "sa-east-1/s3": "s3signature",
+  "us-east-1/s3": {
+    endpoint: "{service}.amazonaws.com",
+    signatureVersion: "s3"
+  },
+  "us-east-1/sdb": {
+    endpoint: "{service}.amazonaws.com",
+    signatureVersion: "v2"
+  },
+  "*/sdb": {
+    endpoint: "{service}.{region}.amazonaws.com",
+    signatureVersion: "v2"
+  }
+};
+const fipsRules = {
+  "*/*": "fipsStandard",
+  "us-gov-*/*": "fipsStandard",
+  "us-iso-*/*": {
+    endpoint: "{service}-fips.{region}.c2s.ic.gov"
+  },
+  "us-iso-*/dms": "usIso",
+  "us-isob-*/*": {
+    endpoint: "{service}-fips.{region}.sc2s.sgov.gov"
+  },
+  "us-isob-*/dms": "usIsob",
+  "cn-*/*": {
+    endpoint: "{service}-fips.{region}.amazonaws.com.cn"
+  },
+  "*/api.ecr": "fips.api.ecr",
+  "*/api.sagemaker": "fips.api.sagemaker",
+  "*/batch": "fipsDotPrefix",
+  "*/eks": "fipsDotPrefix",
+  "*/models.lex": "fips.models.lex",
+  "*/runtime.lex": "fips.runtime.lex",
+  "*/runtime.sagemaker": {
+    endpoint: "runtime-fips.sagemaker.{region}.amazonaws.com"
+  },
+  "*/iam": "fipsWithoutRegion",
+  "*/route53": "fipsWithoutRegion",
+  "*/transcribe": "fipsDotPrefix",
+  "*/waf": "fipsWithoutRegion",
+  "us-gov-*/transcribe": "fipsDotPrefix",
+  "us-gov-*/api.ecr": "fips.api.ecr",
+  "us-gov-*/api.sagemaker": "fips.api.sagemaker",
+  "us-gov-*/models.lex": "fips.models.lex",
+  "us-gov-*/runtime.lex": "fips.runtime.lex",
+  "us-gov-*/acm-pca": "fipsWithServiceOnly",
+  "us-gov-*/batch": "fipsWithServiceOnly",
+  "us-gov-*/config": "fipsWithServiceOnly",
+  "us-gov-*/eks": "fipsWithServiceOnly",
+  "us-gov-*/elasticmapreduce": "fipsWithServiceOnly",
+  "us-gov-*/identitystore": "fipsWithServiceOnly",
+  "us-gov-*/dynamodb": "fipsWithServiceOnly",
+  "us-gov-*/elasticloadbalancing": "fipsWithServiceOnly",
+  "us-gov-*/guardduty": "fipsWithServiceOnly",
+  "us-gov-*/monitoring": "fipsWithServiceOnly",
+  "us-gov-*/resource-groups": "fipsWithServiceOnly",
+  "us-gov-*/runtime.sagemaker": "fipsWithServiceOnly",
+  "us-gov-*/servicecatalog-appregistry": "fipsWithServiceOnly",
+  "us-gov-*/servicequotas": "fipsWithServiceOnly",
+  "us-gov-*/ssm": "fipsWithServiceOnly",
+  "us-gov-*/sts": "fipsWithServiceOnly",
+  "us-gov-*/support": "fipsWithServiceOnly",
+  "us-gov-west-1/states": "fipsWithServiceOnly",
+  "us-iso-east-1/elasticfilesystem": {
+    endpoint: "elasticfilesystem-fips.{region}.c2s.ic.gov"
+  },
+  "us-gov-west-1/organizations": "fipsWithServiceOnly",
+  "us-gov-west-1/route53": {
+    endpoint: "route53.us-gov.amazonaws.com"
+  }
+};
+const dualstackRules = {
+  "*/*": {
+    endpoint: "{service}.{region}.api.aws"
+  },
+  "cn-*/*": {
+    endpoint: "{service}.{region}.api.amazonwebservices.com.cn"
+  },
+  "*/s3": "dualstackLegacy",
+  "cn-*/s3": "dualstackLegacyCn",
+  "*/s3-control": "dualstackLegacy",
+  "cn-*/s3-control": "dualstackLegacyCn",
+  "ap-south-1/ec2": "dualstackLegacyEc2",
+  "eu-west-1/ec2": "dualstackLegacyEc2",
+  "sa-east-1/ec2": "dualstackLegacyEc2",
+  "us-east-1/ec2": "dualstackLegacyEc2",
+  "us-east-2/ec2": "dualstackLegacyEc2",
+  "us-west-2/ec2": "dualstackLegacyEc2"
+};
+const dualstackFipsRules = {
+  "*/*": {
+    endpoint: "{service}-fips.{region}.api.aws"
+  },
+  "cn-*/*": {
+    endpoint: "{service}-fips.{region}.api.amazonwebservices.com.cn"
+  },
+  "*/s3": "dualstackFipsLegacy",
+  "cn-*/s3": "dualstackFipsLegacyCn",
+  "*/s3-control": "dualstackFipsLegacy",
+  "cn-*/s3-control": "dualstackFipsLegacyCn"
+};
+const patterns = {
+  globalSSL: {
+    endpoint: "https://{service}.amazonaws.com",
+    globalEndpoint: true,
+    signingRegion: "us-east-1"
+  },
+  globalGovCloud: {
+    endpoint: "{service}.us-gov.amazonaws.com",
+    globalEndpoint: true,
+    signingRegion: "us-gov-west-1"
+  },
+  s3signature: {
+    endpoint: "{service}.{region}.amazonaws.com",
+    signatureVersion: "s3"
+  },
+  usIso: {
+    endpoint: "{service}.{region}.c2s.ic.gov"
+  },
+  usIsob: {
+    endpoint: "{service}.{region}.sc2s.sgov.gov"
+  },
+  fipsStandard: {
+    endpoint: "{service}-fips.{region}.amazonaws.com"
+  },
+  fipsDotPrefix: {
+    endpoint: "fips.{service}.{region}.amazonaws.com"
+  },
+  fipsWithoutRegion: {
+    endpoint: "{service}-fips.amazonaws.com"
+  },
+  "fips.api.ecr": {
+    endpoint: "ecr-fips.{region}.amazonaws.com"
+  },
+  "fips.api.sagemaker": {
+    endpoint: "api-fips.sagemaker.{region}.amazonaws.com"
+  },
+  "fips.models.lex": {
+    endpoint: "models-fips.lex.{region}.amazonaws.com"
+  },
+  "fips.runtime.lex": {
+    endpoint: "runtime-fips.lex.{region}.amazonaws.com"
+  },
+  fipsWithServiceOnly: {
+    endpoint: "{service}.{region}.amazonaws.com"
+  },
+  dualstackLegacy: {
+    endpoint: "{service}.dualstack.{region}.amazonaws.com"
+  },
+  dualstackLegacyCn: {
+    endpoint: "{service}.dualstack.{region}.amazonaws.com.cn"
+  },
+  dualstackFipsLegacy: {
+    endpoint: "{service}-fips.dualstack.{region}.amazonaws.com"
+  },
+  dualstackFipsLegacyCn: {
+    endpoint: "{service}-fips.dualstack.{region}.amazonaws.com.cn"
+  },
+  dualstackLegacyEc2: {
+    endpoint: "api.ec2.{region}.aws"
+  }
+};
+var require$$1$3 = {
+  rules,
+  fipsRules,
+  dualstackRules,
+  dualstackFipsRules,
+  patterns
+};
+var util$6 = util_1;
+var regionConfig$1 = require$$1$3;
+function generateRegionPrefix(region) {
+  if (!region)
+    return null;
+  var parts = region.split("-");
+  if (parts.length < 3)
+    return null;
+  return parts.slice(0, parts.length - 2).join("-") + "-*";
+}
+function derivedKeys(service) {
+  var region = service.config.region;
+  var regionPrefix = generateRegionPrefix(region);
+  var endpointPrefix = service.api.endpointPrefix;
+  return [
+    [region, endpointPrefix],
+    [regionPrefix, endpointPrefix],
+    [region, "*"],
+    [regionPrefix, "*"],
+    ["*", endpointPrefix],
+    ["*", "*"]
+  ].map(function(item) {
+    return item[0] && item[1] ? item.join("/") : null;
+  });
+}
+function applyConfig(service, config2) {
+  util$6.each(config2, function(key, value) {
+    if (key === "globalEndpoint")
+      return;
+    if (service.config[key] === void 0 || service.config[key] === null) {
+      service.config[key] = value;
+    }
+  });
+}
+function configureEndpoint(service) {
+  var keys = derivedKeys(service);
+  var useFipsEndpoint = service.config.useFipsEndpoint;
+  var useDualstackEndpoint = service.config.useDualstackEndpoint;
+  for (var i = 0; i < keys.length; i++) {
+    var key = keys[i];
+    if (!key)
+      continue;
+    var rules2 = useFipsEndpoint ? useDualstackEndpoint ? regionConfig$1.dualstackFipsRules : regionConfig$1.fipsRules : useDualstackEndpoint ? regionConfig$1.dualstackRules : regionConfig$1.rules;
+    if (Object.prototype.hasOwnProperty.call(rules2, key)) {
+      var config2 = rules2[key];
+      if (typeof config2 === "string") {
+        config2 = regionConfig$1.patterns[config2];
+      }
+      service.isGlobalEndpoint = !!config2.globalEndpoint;
+      if (config2.signingRegion) {
+        service.signingRegion = config2.signingRegion;
+      }
+      if (!config2.signatureVersion)
+        config2.signatureVersion = "v4";
+      applyConfig(service, config2);
+      return;
+    }
+  }
+}
+function getEndpointSuffix(region) {
+  var regionRegexes = {
+    "^(us|eu|ap|sa|ca|me)\\-\\w+\\-\\d+$": "amazonaws.com",
+    "^cn\\-\\w+\\-\\d+$": "amazonaws.com.cn",
+    "^us\\-gov\\-\\w+\\-\\d+$": "amazonaws.com",
+    "^us\\-iso\\-\\w+\\-\\d+$": "c2s.ic.gov",
+    "^us\\-isob\\-\\w+\\-\\d+$": "sc2s.sgov.gov"
+  };
+  var defaultSuffix = "amazonaws.com";
+  var regexes = Object.keys(regionRegexes);
+  for (var i = 0; i < regexes.length; i++) {
+    var regionPattern = RegExp(regexes[i]);
+    var dnsSuffix = regionRegexes[regexes[i]];
+    if (regionPattern.test(region))
+      return dnsSuffix;
+  }
+  return defaultSuffix;
+}
+var region_config = {
+  configureEndpoint,
+  getEndpointSuffix
+};
+function isFipsRegion(region) {
+  return typeof region === "string" && (region.startsWith("fips-") || region.endsWith("-fips"));
+}
+function isGlobalRegion(region) {
+  return typeof region === "string" && ["aws-global", "aws-us-gov-global"].includes(region);
+}
+function getRealRegion(region) {
+  return ["fips-aws-global", "aws-fips", "aws-global"].includes(region) ? "us-east-1" : ["fips-aws-us-gov-global", "aws-us-gov-global"].includes(region) ? "us-gov-west-1" : region.replace(/fips-(dkr-|prod-)?|-fips/, "");
+}
+var utils = {
+  isFipsRegion,
+  isGlobalRegion,
+  getRealRegion
+};
+var AWS$w = core;
+var Api = api;
+var regionConfig = region_config;
+var inherit$b = AWS$w.util.inherit;
+var clientCount = 0;
+var region_utils = utils;
+AWS$w.Service = inherit$b({
+  constructor: function Service(config2) {
+    if (!this.loadServiceClass) {
+      throw AWS$w.util.error(new Error(), "Service must be constructed with `new' operator");
+    }
+    if (config2) {
+      if (config2.region) {
+        var region = config2.region;
+        if (region_utils.isFipsRegion(region)) {
+          config2.region = region_utils.getRealRegion(region);
+          config2.useFipsEndpoint = true;
+        }
+        if (region_utils.isGlobalRegion(region)) {
+          config2.region = region_utils.getRealRegion(region);
+        }
+      }
+      if (typeof config2.useDualstack === "boolean" && typeof config2.useDualstackEndpoint !== "boolean") {
+        config2.useDualstackEndpoint = config2.useDualstack;
+      }
+    }
+    var ServiceClass = this.loadServiceClass(config2 || {});
+    if (ServiceClass) {
+      var originalConfig = AWS$w.util.copy(config2);
+      var svc = new ServiceClass(config2);
+      Object.defineProperty(svc, "_originalConfig", {
+        get: function() {
+          return originalConfig;
+        },
+        enumerable: false,
+        configurable: true
+      });
+      svc._clientId = ++clientCount;
+      return svc;
+    }
+    this.initialize(config2);
+  },
+  initialize: function initialize(config2) {
+    var svcConfig = AWS$w.config[this.serviceIdentifier];
+    this.config = new AWS$w.Config(AWS$w.config);
+    if (svcConfig)
+      this.config.update(svcConfig, true);
+    if (config2)
+      this.config.update(config2, true);
+    this.validateService();
+    if (!this.config.endpoint)
+      regionConfig.configureEndpoint(this);
+    this.config.endpoint = this.endpointFromTemplate(this.config.endpoint);
+    this.setEndpoint(this.config.endpoint);
+    AWS$w.SequentialExecutor.call(this);
+    AWS$w.Service.addDefaultMonitoringListeners(this);
+    if ((this.config.clientSideMonitoring || AWS$w.Service._clientSideMonitoring) && this.publisher) {
+      var publisher = this.publisher;
+      this.addNamedListener("PUBLISH_API_CALL", "apiCall", function PUBLISH_API_CALL(event) {
+        process.nextTick(function() {
+          publisher.eventHandler(event);
+        });
+      });
+      this.addNamedListener("PUBLISH_API_ATTEMPT", "apiCallAttempt", function PUBLISH_API_ATTEMPT(event) {
+        process.nextTick(function() {
+          publisher.eventHandler(event);
+        });
+      });
+    }
+  },
+  validateService: function validateService() {
+  },
+  loadServiceClass: function loadServiceClass(serviceConfig) {
+    var config2 = serviceConfig;
+    if (!AWS$w.util.isEmpty(this.api)) {
+      return null;
+    } else if (config2.apiConfig) {
+      return AWS$w.Service.defineServiceApi(this.constructor, config2.apiConfig);
+    } else if (!this.constructor.services) {
+      return null;
+    } else {
+      config2 = new AWS$w.Config(AWS$w.config);
+      config2.update(serviceConfig, true);
+      var version2 = config2.apiVersions[this.constructor.serviceIdentifier];
+      version2 = version2 || config2.apiVersion;
+      return this.getLatestServiceClass(version2);
+    }
+  },
+  getLatestServiceClass: function getLatestServiceClass(version2) {
+    version2 = this.getLatestServiceVersion(version2);
+    if (this.constructor.services[version2] === null) {
+      AWS$w.Service.defineServiceApi(this.constructor, version2);
+    }
+    return this.constructor.services[version2];
+  },
+  getLatestServiceVersion: function getLatestServiceVersion(version2) {
+    if (!this.constructor.services || this.constructor.services.length === 0) {
+      throw new Error("No services defined on " + this.constructor.serviceIdentifier);
+    }
+    if (!version2) {
+      version2 = "latest";
+    } else if (AWS$w.util.isType(version2, Date)) {
+      version2 = AWS$w.util.date.iso8601(version2).split("T")[0];
+    }
+    if (Object.hasOwnProperty(this.constructor.services, version2)) {
+      return version2;
+    }
+    var keys = Object.keys(this.constructor.services).sort();
+    var selectedVersion = null;
+    for (var i = keys.length - 1; i >= 0; i--) {
+      if (keys[i][keys[i].length - 1] !== "*") {
+        selectedVersion = keys[i];
+      }
+      if (keys[i].substr(0, 10) <= version2) {
+        return selectedVersion;
+      }
+    }
+    throw new Error("Could not find " + this.constructor.serviceIdentifier + " API to satisfy version constraint `" + version2 + "'");
+  },
+  api: {},
+  defaultRetryCount: 3,
+  customizeRequests: function customizeRequests(callback) {
+    if (!callback) {
+      this.customRequestHandler = null;
+    } else if (typeof callback === "function") {
+      this.customRequestHandler = callback;
+    } else {
+      throw new Error("Invalid callback type '" + typeof callback + "' provided in customizeRequests");
+    }
+  },
+  makeRequest: function makeRequest(operation2, params, callback) {
+    if (typeof params === "function") {
+      callback = params;
+      params = null;
+    }
+    params = params || {};
+    if (this.config.params) {
+      var rules2 = this.api.operations[operation2];
+      if (rules2) {
+        params = AWS$w.util.copy(params);
+        AWS$w.util.each(this.config.params, function(key, value) {
+          if (rules2.input.members[key]) {
+            if (params[key] === void 0 || params[key] === null) {
+              params[key] = value;
+            }
+          }
+        });
+      }
+    }
+    var request = new AWS$w.Request(this, operation2, params);
+    this.addAllRequestListeners(request);
+    this.attachMonitoringEmitter(request);
+    if (callback)
+      request.send(callback);
+    return request;
+  },
+  makeUnauthenticatedRequest: function makeUnauthenticatedRequest(operation2, params, callback) {
+    if (typeof params === "function") {
+      callback = params;
+      params = {};
+    }
+    var request = this.makeRequest(operation2, params).toUnauthenticated();
+    return callback ? request.send(callback) : request;
+  },
+  waitFor: function waitFor(state, params, callback) {
+    var waiter = new AWS$w.ResourceWaiter(this, state);
+    return waiter.wait(params, callback);
+  },
+  addAllRequestListeners: function addAllRequestListeners(request) {
+    var list = [
+      AWS$w.events,
+      AWS$w.EventListeners.Core,
+      this.serviceInterface(),
+      AWS$w.EventListeners.CorePost
+    ];
+    for (var i = 0; i < list.length; i++) {
+      if (list[i])
+        request.addListeners(list[i]);
+    }
+    if (!this.config.paramValidation) {
+      request.removeListener("validate", AWS$w.EventListeners.Core.VALIDATE_PARAMETERS);
+    }
+    if (this.config.logger) {
+      request.addListeners(AWS$w.EventListeners.Logger);
+    }
+    this.setupRequestListeners(request);
+    if (typeof this.constructor.prototype.customRequestHandler === "function") {
+      this.constructor.prototype.customRequestHandler(request);
+    }
+    if (Object.prototype.hasOwnProperty.call(this, "customRequestHandler") && typeof this.customRequestHandler === "function") {
+      this.customRequestHandler(request);
+    }
+  },
+  apiCallEvent: function apiCallEvent(request) {
+    var api2 = request.service.api.operations[request.operation];
+    var monitoringEvent = {
+      Type: "ApiCall",
+      Api: api2 ? api2.name : request.operation,
+      Version: 1,
+      Service: request.service.api.serviceId || request.service.api.endpointPrefix,
+      Region: request.httpRequest.region,
+      MaxRetriesExceeded: 0,
+      UserAgent: request.httpRequest.getUserAgent()
+    };
+    var response = request.response;
+    if (response.httpResponse.statusCode) {
+      monitoringEvent.FinalHttpStatusCode = response.httpResponse.statusCode;
+    }
+    if (response.error) {
+      var error2 = response.error;
+      var statusCode = response.httpResponse.statusCode;
+      if (statusCode > 299) {
+        if (error2.code)
+          monitoringEvent.FinalAwsException = error2.code;
+        if (error2.message)
+          monitoringEvent.FinalAwsExceptionMessage = error2.message;
+      } else {
+        if (error2.code || error2.name)
+          monitoringEvent.FinalSdkException = error2.code || error2.name;
+        if (error2.message)
+          monitoringEvent.FinalSdkExceptionMessage = error2.message;
+      }
+    }
+    return monitoringEvent;
+  },
+  apiAttemptEvent: function apiAttemptEvent(request) {
+    var api2 = request.service.api.operations[request.operation];
+    var monitoringEvent = {
+      Type: "ApiCallAttempt",
+      Api: api2 ? api2.name : request.operation,
+      Version: 1,
+      Service: request.service.api.serviceId || request.service.api.endpointPrefix,
+      Fqdn: request.httpRequest.endpoint.hostname,
+      UserAgent: request.httpRequest.getUserAgent()
+    };
+    var response = request.response;
+    if (response.httpResponse.statusCode) {
+      monitoringEvent.HttpStatusCode = response.httpResponse.statusCode;
+    }
+    if (!request._unAuthenticated && request.service.config.credentials && request.service.config.credentials.accessKeyId) {
+      monitoringEvent.AccessKey = request.service.config.credentials.accessKeyId;
+    }
+    if (!response.httpResponse.headers)
+      return monitoringEvent;
+    if (request.httpRequest.headers["x-amz-security-token"]) {
+      monitoringEvent.SessionToken = request.httpRequest.headers["x-amz-security-token"];
+    }
+    if (response.httpResponse.headers["x-amzn-requestid"]) {
+      monitoringEvent.XAmznRequestId = response.httpResponse.headers["x-amzn-requestid"];
+    }
+    if (response.httpResponse.headers["x-amz-request-id"]) {
+      monitoringEvent.XAmzRequestId = response.httpResponse.headers["x-amz-request-id"];
+    }
+    if (response.httpResponse.headers["x-amz-id-2"]) {
+      monitoringEvent.XAmzId2 = response.httpResponse.headers["x-amz-id-2"];
+    }
+    return monitoringEvent;
+  },
+  attemptFailEvent: function attemptFailEvent(request) {
+    var monitoringEvent = this.apiAttemptEvent(request);
+    var response = request.response;
+    var error2 = response.error;
+    if (response.httpResponse.statusCode > 299) {
+      if (error2.code)
+        monitoringEvent.AwsException = error2.code;
+      if (error2.message)
+        monitoringEvent.AwsExceptionMessage = error2.message;
+    } else {
+      if (error2.code || error2.name)
+        monitoringEvent.SdkException = error2.code || error2.name;
+      if (error2.message)
+        monitoringEvent.SdkExceptionMessage = error2.message;
+    }
+    return monitoringEvent;
+  },
+  attachMonitoringEmitter: function attachMonitoringEmitter(request) {
+    var attemptTimestamp;
+    var attemptStartRealTime;
+    var attemptLatency;
+    var callStartRealTime;
+    var attemptCount = 0;
+    var region;
+    var callTimestamp;
+    var self2 = this;
+    var addToHead = true;
+    request.on("validate", function() {
+      callStartRealTime = AWS$w.util.realClock.now();
+      callTimestamp = Date.now();
+    }, addToHead);
+    request.on("sign", function() {
+      attemptStartRealTime = AWS$w.util.realClock.now();
+      attemptTimestamp = Date.now();
+      region = request.httpRequest.region;
+      attemptCount++;
+    }, addToHead);
+    request.on("validateResponse", function() {
+      attemptLatency = Math.round(AWS$w.util.realClock.now() - attemptStartRealTime);
+    });
+    request.addNamedListener("API_CALL_ATTEMPT", "success", function API_CALL_ATTEMPT() {
+      var apiAttemptEvent2 = self2.apiAttemptEvent(request);
+      apiAttemptEvent2.Timestamp = attemptTimestamp;
+      apiAttemptEvent2.AttemptLatency = attemptLatency >= 0 ? attemptLatency : 0;
+      apiAttemptEvent2.Region = region;
+      self2.emit("apiCallAttempt", [apiAttemptEvent2]);
+    });
+    request.addNamedListener("API_CALL_ATTEMPT_RETRY", "retry", function API_CALL_ATTEMPT_RETRY() {
+      var apiAttemptEvent2 = self2.attemptFailEvent(request);
+      apiAttemptEvent2.Timestamp = attemptTimestamp;
+      attemptLatency = attemptLatency || Math.round(AWS$w.util.realClock.now() - attemptStartRealTime);
+      apiAttemptEvent2.AttemptLatency = attemptLatency >= 0 ? attemptLatency : 0;
+      apiAttemptEvent2.Region = region;
+      self2.emit("apiCallAttempt", [apiAttemptEvent2]);
+    });
+    request.addNamedListener("API_CALL", "complete", function API_CALL() {
+      var apiCallEvent2 = self2.apiCallEvent(request);
+      apiCallEvent2.AttemptCount = attemptCount;
+      if (apiCallEvent2.AttemptCount <= 0)
+        return;
+      apiCallEvent2.Timestamp = callTimestamp;
+      var latency = Math.round(AWS$w.util.realClock.now() - callStartRealTime);
+      apiCallEvent2.Latency = latency >= 0 ? latency : 0;
+      var response = request.response;
+      if (response.error && response.error.retryable && typeof response.retryCount === "number" && typeof response.maxRetries === "number" && response.retryCount >= response.maxRetries) {
+        apiCallEvent2.MaxRetriesExceeded = 1;
+      }
+      self2.emit("apiCall", [apiCallEvent2]);
+    });
+  },
+  setupRequestListeners: function setupRequestListeners(request) {
+  },
+  getSigningName: function getSigningName() {
+    return this.api.signingName || this.api.endpointPrefix;
+  },
+  getSignerClass: function getSignerClass(request) {
+    var version2;
+    var operation2 = null;
+    var authtype = "";
+    if (request) {
+      var operations2 = request.service.api.operations || {};
+      operation2 = operations2[request.operation] || null;
+      authtype = operation2 ? operation2.authtype : "";
+    }
+    if (this.config.signatureVersion) {
+      version2 = this.config.signatureVersion;
+    } else if (authtype === "v4" || authtype === "v4-unsigned-body") {
+      version2 = "v4";
+    } else {
+      version2 = this.api.signatureVersion;
+    }
+    return AWS$w.Signers.RequestSigner.getVersion(version2);
+  },
+  serviceInterface: function serviceInterface() {
+    switch (this.api.protocol) {
+      case "ec2":
+        return AWS$w.EventListeners.Query;
+      case "query":
+        return AWS$w.EventListeners.Query;
+      case "json":
+        return AWS$w.EventListeners.Json;
+      case "rest-json":
+        return AWS$w.EventListeners.RestJson;
+      case "rest-xml":
+        return AWS$w.EventListeners.RestXml;
+    }
+    if (this.api.protocol) {
+      throw new Error("Invalid service `protocol' " + this.api.protocol + " in API config");
+    }
+  },
+  successfulResponse: function successfulResponse(resp) {
+    return resp.httpResponse.statusCode < 300;
+  },
+  numRetries: function numRetries() {
+    if (this.config.maxRetries !== void 0) {
+      return this.config.maxRetries;
+    } else {
+      return this.defaultRetryCount;
+    }
+  },
+  retryDelays: function retryDelays(retryCount, err) {
+    return AWS$w.util.calculateRetryDelay(retryCount, this.config.retryDelayOptions, err);
+  },
+  retryableError: function retryableError(error2) {
+    if (this.timeoutError(error2))
+      return true;
+    if (this.networkingError(error2))
+      return true;
+    if (this.expiredCredentialsError(error2))
+      return true;
+    if (this.throttledError(error2))
+      return true;
+    if (error2.statusCode >= 500)
+      return true;
+    return false;
+  },
+  networkingError: function networkingError(error2) {
+    return error2.code === "NetworkingError";
+  },
+  timeoutError: function timeoutError(error2) {
+    return error2.code === "TimeoutError";
+  },
+  expiredCredentialsError: function expiredCredentialsError(error2) {
+    return error2.code === "ExpiredTokenException";
+  },
+  clockSkewError: function clockSkewError(error2) {
+    switch (error2.code) {
+      case "RequestTimeTooSkewed":
+      case "RequestExpired":
+      case "InvalidSignatureException":
+      case "SignatureDoesNotMatch":
+      case "AuthFailure":
+      case "RequestInTheFuture":
+        return true;
+      default:
+        return false;
+    }
+  },
+  getSkewCorrectedDate: function getSkewCorrectedDate() {
+    return new Date(Date.now() + this.config.systemClockOffset);
+  },
+  applyClockOffset: function applyClockOffset(newServerTime) {
+    if (newServerTime) {
+      this.config.systemClockOffset = newServerTime - Date.now();
+    }
+  },
+  isClockSkewed: function isClockSkewed(newServerTime) {
+    if (newServerTime) {
+      return Math.abs(this.getSkewCorrectedDate().getTime() - newServerTime) >= 3e5;
+    }
+  },
+  throttledError: function throttledError(error2) {
+    if (error2.statusCode === 429)
+      return true;
+    switch (error2.code) {
+      case "ProvisionedThroughputExceededException":
+      case "Throttling":
+      case "ThrottlingException":
+      case "RequestLimitExceeded":
+      case "RequestThrottled":
+      case "RequestThrottledException":
+      case "TooManyRequestsException":
+      case "TransactionInProgressException":
+      case "EC2ThrottledException":
+        return true;
+      default:
+        return false;
+    }
+  },
+  endpointFromTemplate: function endpointFromTemplate(endpoint) {
+    if (typeof endpoint !== "string")
+      return endpoint;
+    var e2 = endpoint;
+    e2 = e2.replace(/\{service\}/g, this.api.endpointPrefix);
+    e2 = e2.replace(/\{region\}/g, this.config.region);
+    e2 = e2.replace(/\{scheme\}/g, this.config.sslEnabled ? "https" : "http");
+    return e2;
+  },
+  setEndpoint: function setEndpoint(endpoint) {
+    this.endpoint = new AWS$w.Endpoint(endpoint, this.config);
+  },
+  paginationConfig: function paginationConfig(operation2, throwException) {
+    var paginator2 = this.api.operations[operation2].paginator;
+    if (!paginator2) {
+      if (throwException) {
+        var e2 = new Error();
+        throw AWS$w.util.error(e2, "No pagination configuration for " + operation2);
+      }
+      return null;
+    }
+    return paginator2;
+  }
+});
+AWS$w.util.update(AWS$w.Service, {
+  defineMethods: function defineMethods(svc) {
+    AWS$w.util.each(svc.prototype.api.operations, function iterator(method) {
+      if (svc.prototype[method])
+        return;
+      var operation2 = svc.prototype.api.operations[method];
+      if (operation2.authtype === "none") {
+        svc.prototype[method] = function(params, callback) {
+          return this.makeUnauthenticatedRequest(method, params, callback);
+        };
+      } else {
+        svc.prototype[method] = function(params, callback) {
+          return this.makeRequest(method, params, callback);
+        };
+      }
+    });
+  },
+  defineService: function defineService(serviceIdentifier, versions, features) {
+    AWS$w.Service._serviceMap[serviceIdentifier] = true;
+    if (!Array.isArray(versions)) {
+      features = versions;
+      versions = [];
+    }
+    var svc = inherit$b(AWS$w.Service, features || {});
+    if (typeof serviceIdentifier === "string") {
+      AWS$w.Service.addVersions(svc, versions);
+      var identifier = svc.serviceIdentifier || serviceIdentifier;
+      svc.serviceIdentifier = identifier;
+    } else {
+      svc.prototype.api = serviceIdentifier;
+      AWS$w.Service.defineMethods(svc);
+    }
+    AWS$w.SequentialExecutor.call(this.prototype);
+    if (!this.prototype.publisher && AWS$w.util.clientSideMonitoring) {
+      var Publisher = AWS$w.util.clientSideMonitoring.Publisher;
+      var configProvider = AWS$w.util.clientSideMonitoring.configProvider;
+      var publisherConfig = configProvider();
+      this.prototype.publisher = new Publisher(publisherConfig);
+      if (publisherConfig.enabled) {
+        AWS$w.Service._clientSideMonitoring = true;
+      }
+    }
+    AWS$w.SequentialExecutor.call(svc.prototype);
+    AWS$w.Service.addDefaultMonitoringListeners(svc.prototype);
+    return svc;
+  },
+  addVersions: function addVersions(svc, versions) {
+    if (!Array.isArray(versions))
+      versions = [versions];
+    svc.services = svc.services || {};
+    for (var i = 0; i < versions.length; i++) {
+      if (svc.services[versions[i]] === void 0) {
+        svc.services[versions[i]] = null;
+      }
+    }
+    svc.apiVersions = Object.keys(svc.services).sort();
+  },
+  defineServiceApi: function defineServiceApi(superclass, version2, apiConfig) {
+    var svc = inherit$b(superclass, {
+      serviceIdentifier: superclass.serviceIdentifier
+    });
+    function setApi(api2) {
+      if (api2.isApi) {
+        svc.prototype.api = api2;
+      } else {
+        svc.prototype.api = new Api(api2, {
+          serviceIdentifier: superclass.serviceIdentifier
+        });
+      }
+    }
+    if (typeof version2 === "string") {
+      if (apiConfig) {
+        setApi(apiConfig);
+      } else {
+        try {
+          setApi(AWS$w.apiLoader(superclass.serviceIdentifier, version2));
+        } catch (err) {
+          throw AWS$w.util.error(err, {
+            message: "Could not find API configuration " + superclass.serviceIdentifier + "-" + version2
+          });
+        }
+      }
+      if (!Object.prototype.hasOwnProperty.call(superclass.services, version2)) {
+        superclass.apiVersions = superclass.apiVersions.concat(version2).sort();
+      }
+      superclass.services[version2] = svc;
+    } else {
+      setApi(version2);
+    }
+    AWS$w.Service.defineMethods(svc);
+    return svc;
+  },
+  hasService: function(identifier) {
+    return Object.prototype.hasOwnProperty.call(AWS$w.Service._serviceMap, identifier);
+  },
+  addDefaultMonitoringListeners: function addDefaultMonitoringListeners(attachOn) {
+    attachOn.addNamedListener("MONITOR_EVENTS_BUBBLE", "apiCallAttempt", function EVENTS_BUBBLE(event) {
+      var baseClass = Object.getPrototypeOf(attachOn);
+      if (baseClass._events)
+        baseClass.emit("apiCallAttempt", [event]);
+    });
+    attachOn.addNamedListener("CALL_EVENTS_BUBBLE", "apiCall", function CALL_EVENTS_BUBBLE(event) {
+      var baseClass = Object.getPrototypeOf(attachOn);
+      if (baseClass._events)
+        baseClass.emit("apiCall", [event]);
+    });
+  },
+  _serviceMap: {}
+});
+AWS$w.util.mixin(AWS$w.Service, AWS$w.SequentialExecutor);
+AWS$w.Service;
+var AWS$v = core;
+AWS$v.Credentials = AWS$v.util.inherit({
+  constructor: function Credentials() {
+    AWS$v.util.hideProperties(this, ["secretAccessKey"]);
+    this.expired = false;
+    this.expireTime = null;
+    this.refreshCallbacks = [];
+    if (arguments.length === 1 && typeof arguments[0] === "object") {
+      var creds = arguments[0].credentials || arguments[0];
+      this.accessKeyId = creds.accessKeyId;
+      this.secretAccessKey = creds.secretAccessKey;
+      this.sessionToken = creds.sessionToken;
+    } else {
+      this.accessKeyId = arguments[0];
+      this.secretAccessKey = arguments[1];
+      this.sessionToken = arguments[2];
+    }
+  },
+  expiryWindow: 15,
+  needsRefresh: function needsRefresh() {
+    var currentTime = AWS$v.util.date.getDate().getTime();
+    var adjustedTime = new Date(currentTime + this.expiryWindow * 1e3);
+    if (this.expireTime && adjustedTime > this.expireTime) {
+      return true;
+    } else {
+      return this.expired || !this.accessKeyId || !this.secretAccessKey;
+    }
+  },
+  get: function get2(callback) {
+    var self2 = this;
+    if (this.needsRefresh()) {
+      this.refresh(function(err) {
+        if (!err)
+          self2.expired = false;
+        if (callback)
+          callback(err);
+      });
+    } else if (callback) {
+      callback();
+    }
+  },
+  refresh: function refresh(callback) {
+    this.expired = false;
+    callback();
+  },
+  coalesceRefresh: function coalesceRefresh(callback, sync) {
+    var self2 = this;
+    if (self2.refreshCallbacks.push(callback) === 1) {
+      self2.load(function onLoad(err) {
+        AWS$v.util.arrayEach(self2.refreshCallbacks, function(callback2) {
+          if (sync) {
+            callback2(err);
+          } else {
+            AWS$v.util.defer(function() {
+              callback2(err);
+            });
+          }
+        });
+        self2.refreshCallbacks.length = 0;
+      });
+    }
+  },
+  load: function load(callback) {
+    callback();
+  }
+});
+AWS$v.Credentials.addPromisesToClass = function addPromisesToClass(PromiseDependency) {
+  this.prototype.getPromise = AWS$v.util.promisifyMethod("get", PromiseDependency);
+  this.prototype.refreshPromise = AWS$v.util.promisifyMethod("refresh", PromiseDependency);
+};
+AWS$v.Credentials.deletePromisesFromClass = function deletePromisesFromClass() {
+  delete this.prototype.getPromise;
+  delete this.prototype.refreshPromise;
+};
+AWS$v.util.addPromises(AWS$v.Credentials);
+var AWS$u = core;
+AWS$u.CredentialProviderChain = AWS$u.util.inherit(AWS$u.Credentials, {
+  constructor: function CredentialProviderChain(providers) {
+    if (providers) {
+      this.providers = providers;
+    } else {
+      this.providers = AWS$u.CredentialProviderChain.defaultProviders.slice(0);
+    }
+    this.resolveCallbacks = [];
+  },
+  resolve: function resolve2(callback) {
+    var self2 = this;
+    if (self2.providers.length === 0) {
+      callback(new Error("No providers"));
+      return self2;
+    }
+    if (self2.resolveCallbacks.push(callback) === 1) {
+      let resolveNext = function(err, creds) {
+        if (!err && creds || index === providers.length) {
+          AWS$u.util.arrayEach(self2.resolveCallbacks, function(callback2) {
+            callback2(err, creds);
+          });
+          self2.resolveCallbacks.length = 0;
+          return;
+        }
+        var provider = providers[index++];
+        if (typeof provider === "function") {
+          creds = provider.call();
+        } else {
+          creds = provider;
+        }
+        if (creds.get) {
+          creds.get(function(getErr) {
+            resolveNext(getErr, getErr ? null : creds);
+          });
+        } else {
+          resolveNext(null, creds);
+        }
+      };
+      var index = 0;
+      var providers = self2.providers.slice(0);
+      resolveNext();
+    }
+    return self2;
+  }
+});
+AWS$u.CredentialProviderChain.defaultProviders = [];
+AWS$u.CredentialProviderChain.addPromisesToClass = function addPromisesToClass2(PromiseDependency) {
+  this.prototype.resolvePromise = AWS$u.util.promisifyMethod("resolve", PromiseDependency);
+};
+AWS$u.CredentialProviderChain.deletePromisesFromClass = function deletePromisesFromClass2() {
+  delete this.prototype.resolvePromise;
+};
+AWS$u.util.addPromises(AWS$u.CredentialProviderChain);
+var AWS$t = core;
+var PromisesDependency;
+AWS$t.Config = AWS$t.util.inherit({
+  constructor: function Config(options) {
+    if (options === void 0)
+      options = {};
+    options = this.extractCredentials(options);
+    AWS$t.util.each.call(this, this.keys, function(key, value) {
+      this.set(key, options[key], value);
+    });
+  },
+  getCredentials: function getCredentials(callback) {
+    var self2 = this;
+    function finish(err) {
+      callback(err, err ? null : self2.credentials);
+    }
+    function credError(msg, err) {
+      return new AWS$t.util.error(err || new Error(), {
+        code: "CredentialsError",
+        message: msg,
+        name: "CredentialsError"
+      });
+    }
+    function getAsyncCredentials() {
+      self2.credentials.get(function(err) {
+        if (err) {
+          var msg = "Could not load credentials from " + self2.credentials.constructor.name;
+          err = credError(msg, err);
+        }
+        finish(err);
+      });
+    }
+    function getStaticCredentials() {
+      var err = null;
+      if (!self2.credentials.accessKeyId || !self2.credentials.secretAccessKey) {
+        err = credError("Missing credentials");
+      }
+      finish(err);
+    }
+    if (self2.credentials) {
+      if (typeof self2.credentials.get === "function") {
+        getAsyncCredentials();
+      } else {
+        getStaticCredentials();
+      }
+    } else if (self2.credentialProvider) {
+      self2.credentialProvider.resolve(function(err, creds) {
+        if (err) {
+          err = credError("Could not load credentials from any providers", err);
+        }
+        self2.credentials = creds;
+        finish(err);
+      });
+    } else {
+      finish(credError("No credentials to load"));
+    }
+  },
+  update: function update(options, allowUnknownKeys) {
+    allowUnknownKeys = allowUnknownKeys || false;
+    options = this.extractCredentials(options);
+    AWS$t.util.each.call(this, options, function(key, value) {
+      if (allowUnknownKeys || Object.prototype.hasOwnProperty.call(this.keys, key) || AWS$t.Service.hasService(key)) {
+        this.set(key, value);
+      }
+    });
+  },
+  loadFromPath: function loadFromPath(path) {
+    this.clear();
+    var options = JSON.parse(AWS$t.util.readFileSync(path));
+    var fileSystemCreds = new AWS$t.FileSystemCredentials(path);
+    var chain = new AWS$t.CredentialProviderChain();
+    chain.providers.unshift(fileSystemCreds);
+    chain.resolve(function(err, creds) {
+      if (err)
+        throw err;
+      else
+        options.credentials = creds;
+    });
+    this.constructor(options);
+    return this;
+  },
+  clear: function clear() {
+    AWS$t.util.each.call(this, this.keys, function(key) {
+      delete this[key];
+    });
+    this.set("credentials", void 0);
+    this.set("credentialProvider", void 0);
+  },
+  set: function set(property3, value, defaultValue) {
+    if (value === void 0) {
+      if (defaultValue === void 0) {
+        defaultValue = this.keys[property3];
+      }
+      if (typeof defaultValue === "function") {
+        this[property3] = defaultValue.call(this);
+      } else {
+        this[property3] = defaultValue;
+      }
+    } else if (property3 === "httpOptions" && this[property3]) {
+      this[property3] = AWS$t.util.merge(this[property3], value);
+    } else {
+      this[property3] = value;
+    }
+  },
+  keys: {
+    credentials: null,
+    credentialProvider: null,
+    region: null,
+    logger: null,
+    apiVersions: {},
+    apiVersion: null,
+    endpoint: void 0,
+    httpOptions: {
+      timeout: 12e4
+    },
+    maxRetries: void 0,
+    maxRedirects: 10,
+    paramValidation: true,
+    sslEnabled: true,
+    s3ForcePathStyle: false,
+    s3BucketEndpoint: false,
+    s3DisableBodySigning: true,
+    s3UsEast1RegionalEndpoint: "legacy",
+    s3UseArnRegion: void 0,
+    computeChecksums: true,
+    convertResponseTypes: true,
+    correctClockSkew: false,
+    customUserAgent: null,
+    dynamoDbCrc32: true,
+    systemClockOffset: 0,
+    signatureVersion: null,
+    signatureCache: true,
+    retryDelayOptions: {},
+    useAccelerateEndpoint: false,
+    clientSideMonitoring: false,
+    endpointDiscoveryEnabled: void 0,
+    endpointCacheSize: 1e3,
+    hostPrefixEnabled: true,
+    stsRegionalEndpoints: "legacy",
+    useFipsEndpoint: false,
+    useDualstackEndpoint: false
+  },
+  extractCredentials: function extractCredentials(options) {
+    if (options.accessKeyId && options.secretAccessKey) {
+      options = AWS$t.util.copy(options);
+      options.credentials = new AWS$t.Credentials(options);
+    }
+    return options;
+  },
+  setPromisesDependency: function setPromisesDependency(dep) {
+    PromisesDependency = dep;
+    if (dep === null && typeof Promise === "function") {
+      PromisesDependency = Promise;
+    }
+    var constructors = [AWS$t.Request, AWS$t.Credentials, AWS$t.CredentialProviderChain];
+    if (AWS$t.S3) {
+      constructors.push(AWS$t.S3);
+      if (AWS$t.S3.ManagedUpload) {
+        constructors.push(AWS$t.S3.ManagedUpload);
+      }
+    }
+    AWS$t.util.addPromises(constructors, PromisesDependency);
+  },
+  getPromisesDependency: function getPromisesDependency() {
+    return PromisesDependency;
+  }
+});
+AWS$t.config = new AWS$t.Config();
+var AWS$s = core;
+var inherit$a = AWS$s.util.inherit;
+AWS$s.Endpoint = inherit$a({
+  constructor: function Endpoint(endpoint, config2) {
+    AWS$s.util.hideProperties(this, ["slashes", "auth", "hash", "search", "query"]);
+    if (typeof endpoint === "undefined" || endpoint === null) {
+      throw new Error("Invalid endpoint: " + endpoint);
+    } else if (typeof endpoint !== "string") {
+      return AWS$s.util.copy(endpoint);
+    }
+    if (!endpoint.match(/^http/)) {
+      var useSSL = config2 && config2.sslEnabled !== void 0 ? config2.sslEnabled : AWS$s.config.sslEnabled;
+      endpoint = (useSSL ? "https" : "http") + "://" + endpoint;
+    }
+    AWS$s.util.update(this, AWS$s.util.urlParse(endpoint));
+    if (this.port) {
+      this.port = parseInt(this.port, 10);
+    } else {
+      this.port = this.protocol === "https:" ? 443 : 80;
+    }
+  }
+});
+AWS$s.HttpRequest = inherit$a({
+  constructor: function HttpRequest(endpoint, region) {
+    endpoint = new AWS$s.Endpoint(endpoint);
+    this.method = "POST";
+    this.path = endpoint.path || "/";
+    this.headers = {};
+    this.body = "";
+    this.endpoint = endpoint;
+    this.region = region;
+    this._userAgent = "";
+    this.setUserAgent();
+  },
+  setUserAgent: function setUserAgent() {
+    this._userAgent = this.headers[this.getUserAgentHeaderName()] = AWS$s.util.userAgent();
+  },
+  getUserAgentHeaderName: function getUserAgentHeaderName() {
+    var prefix = AWS$s.util.isBrowser() ? "X-Amz-" : "";
+    return prefix + "User-Agent";
+  },
+  appendToUserAgent: function appendToUserAgent(agentPartial) {
+    if (typeof agentPartial === "string" && agentPartial) {
+      this._userAgent += " " + agentPartial;
+    }
+    this.headers[this.getUserAgentHeaderName()] = this._userAgent;
+  },
+  getUserAgent: function getUserAgent3() {
+    return this._userAgent;
+  },
+  pathname: function pathname() {
+    return this.path.split("?", 1)[0];
+  },
+  search: function search() {
+    var query2 = this.path.split("?", 2)[1];
+    if (query2) {
+      query2 = AWS$s.util.queryStringParse(query2);
+      return AWS$s.util.queryParamsToString(query2);
+    }
+    return "";
+  },
+  updateEndpoint: function updateEndpoint(endpointStr) {
+    var newEndpoint = new AWS$s.Endpoint(endpointStr);
+    this.endpoint = newEndpoint;
+    this.path = newEndpoint.path || "/";
+    if (this.headers["Host"]) {
+      this.headers["Host"] = newEndpoint.host;
+    }
+  }
+});
+AWS$s.HttpResponse = inherit$a({
+  constructor: function HttpResponse() {
+    this.statusCode = void 0;
+    this.headers = {};
+    this.body = void 0;
+    this.streaming = false;
+    this.stream = null;
+  },
+  createUnbufferedStream: function createUnbufferedStream() {
+    this.streaming = true;
+    return this.stream;
+  }
+});
+AWS$s.HttpClient = inherit$a({});
+AWS$s.HttpClient.getInstance = function getInstance() {
+  if (this.singleton === void 0) {
+    this.singleton = new this();
+  }
+  return this.singleton;
+};
+var AWS$r = core;
+var util$5 = util_1;
+var endpointDiscoveryEnabledEnvs = ["AWS_ENABLE_ENDPOINT_DISCOVERY", "AWS_ENDPOINT_DISCOVERY_ENABLED"];
+function getCacheKey(request) {
+  var service = request.service;
+  var api2 = service.api || {};
+  api2.operations;
+  var identifiers = {};
+  if (service.config.region) {
+    identifiers.region = service.config.region;
+  }
+  if (api2.serviceId) {
+    identifiers.serviceId = api2.serviceId;
+  }
+  if (service.config.credentials.accessKeyId) {
+    identifiers.accessKeyId = service.config.credentials.accessKeyId;
+  }
+  return identifiers;
+}
+function marshallCustomIdentifiersHelper(result, params, shape2) {
+  if (!shape2 || params === void 0 || params === null)
+    return;
+  if (shape2.type === "structure" && shape2.required && shape2.required.length > 0) {
+    util$5.arrayEach(shape2.required, function(name) {
+      var memberShape = shape2.members[name];
+      if (memberShape.endpointDiscoveryId === true) {
+        var locationName = memberShape.isLocationName ? memberShape.name : name;
+        result[locationName] = String(params[name]);
+      } else {
+        marshallCustomIdentifiersHelper(result, params[name], memberShape);
+      }
+    });
+  }
+}
+function marshallCustomIdentifiers(request, shape2) {
+  var identifiers = {};
+  marshallCustomIdentifiersHelper(identifiers, request.params, shape2);
+  return identifiers;
+}
+function optionalDiscoverEndpoint(request) {
+  var service = request.service;
+  var api2 = service.api;
+  var operationModel = api2.operations ? api2.operations[request.operation] : void 0;
+  var inputShape = operationModel ? operationModel.input : void 0;
+  var identifiers = marshallCustomIdentifiers(request, inputShape);
+  var cacheKey = getCacheKey(request);
+  if (Object.keys(identifiers).length > 0) {
+    cacheKey = util$5.update(cacheKey, identifiers);
+    if (operationModel)
+      cacheKey.operation = operationModel.name;
+  }
+  var endpoints = AWS$r.endpointCache.get(cacheKey);
+  if (endpoints && endpoints.length === 1 && endpoints[0].Address === "") {
+    return;
+  } else if (endpoints && endpoints.length > 0) {
+    request.httpRequest.updateEndpoint(endpoints[0].Address);
+  } else {
+    var endpointRequest = service.makeRequest(api2.endpointOperation, {
+      Operation: operationModel.name,
+      Identifiers: identifiers
+    });
+    addApiVersionHeader(endpointRequest);
+    endpointRequest.removeListener("validate", AWS$r.EventListeners.Core.VALIDATE_PARAMETERS);
+    endpointRequest.removeListener("retry", AWS$r.EventListeners.Core.RETRY_CHECK);
+    AWS$r.endpointCache.put(cacheKey, [{
+      Address: "",
+      CachePeriodInMinutes: 1
+    }]);
+    endpointRequest.send(function(err, data) {
+      if (data && data.Endpoints) {
+        AWS$r.endpointCache.put(cacheKey, data.Endpoints);
+      } else if (err) {
+        AWS$r.endpointCache.put(cacheKey, [{
+          Address: "",
+          CachePeriodInMinutes: 1
+        }]);
+      }
+    });
+  }
+}
+var requestQueue = {};
+function requiredDiscoverEndpoint(request, done) {
+  var service = request.service;
+  var api2 = service.api;
+  var operationModel = api2.operations ? api2.operations[request.operation] : void 0;
+  var inputShape = operationModel ? operationModel.input : void 0;
+  var identifiers = marshallCustomIdentifiers(request, inputShape);
+  var cacheKey = getCacheKey(request);
+  if (Object.keys(identifiers).length > 0) {
+    cacheKey = util$5.update(cacheKey, identifiers);
+    if (operationModel)
+      cacheKey.operation = operationModel.name;
+  }
+  var cacheKeyStr = AWS$r.EndpointCache.getKeyString(cacheKey);
+  var endpoints = AWS$r.endpointCache.get(cacheKeyStr);
+  if (endpoints && endpoints.length === 1 && endpoints[0].Address === "") {
+    if (!requestQueue[cacheKeyStr])
+      requestQueue[cacheKeyStr] = [];
+    requestQueue[cacheKeyStr].push({ request, callback: done });
+    return;
+  } else if (endpoints && endpoints.length > 0) {
+    request.httpRequest.updateEndpoint(endpoints[0].Address);
+    done();
+  } else {
+    var endpointRequest = service.makeRequest(api2.endpointOperation, {
+      Operation: operationModel.name,
+      Identifiers: identifiers
+    });
+    endpointRequest.removeListener("validate", AWS$r.EventListeners.Core.VALIDATE_PARAMETERS);
+    addApiVersionHeader(endpointRequest);
+    AWS$r.endpointCache.put(cacheKeyStr, [{
+      Address: "",
+      CachePeriodInMinutes: 60
+    }]);
+    endpointRequest.send(function(err, data) {
+      if (err) {
+        request.response.error = util$5.error(err, { retryable: false });
+        AWS$r.endpointCache.remove(cacheKey);
+        if (requestQueue[cacheKeyStr]) {
+          var pendingRequests = requestQueue[cacheKeyStr];
+          util$5.arrayEach(pendingRequests, function(requestContext) {
+            requestContext.request.response.error = util$5.error(err, { retryable: false });
+            requestContext.callback();
+          });
+          delete requestQueue[cacheKeyStr];
+        }
+      } else if (data) {
+        AWS$r.endpointCache.put(cacheKeyStr, data.Endpoints);
+        request.httpRequest.updateEndpoint(data.Endpoints[0].Address);
+        if (requestQueue[cacheKeyStr]) {
+          var pendingRequests = requestQueue[cacheKeyStr];
+          util$5.arrayEach(pendingRequests, function(requestContext) {
+            requestContext.request.httpRequest.updateEndpoint(data.Endpoints[0].Address);
+            requestContext.callback();
+          });
+          delete requestQueue[cacheKeyStr];
+        }
+      }
+      done();
+    });
+  }
+}
+function addApiVersionHeader(endpointRequest) {
+  var api2 = endpointRequest.service.api;
+  var apiVersion = api2.apiVersion;
+  if (apiVersion && !endpointRequest.httpRequest.headers["x-amz-api-version"]) {
+    endpointRequest.httpRequest.headers["x-amz-api-version"] = apiVersion;
+  }
+}
+function invalidateCachedEndpoints(response) {
+  var error2 = response.error;
+  var httpResponse = response.httpResponse;
+  if (error2 && (error2.code === "InvalidEndpointException" || httpResponse.statusCode === 421)) {
+    var request = response.request;
+    var operations2 = request.service.api.operations || {};
+    var inputShape = operations2[request.operation] ? operations2[request.operation].input : void 0;
+    var identifiers = marshallCustomIdentifiers(request, inputShape);
+    var cacheKey = getCacheKey(request);
+    if (Object.keys(identifiers).length > 0) {
+      cacheKey = util$5.update(cacheKey, identifiers);
+      if (operations2[request.operation])
+        cacheKey.operation = operations2[request.operation].name;
+    }
+    AWS$r.endpointCache.remove(cacheKey);
+  }
+}
+function hasCustomEndpoint(client) {
+  if (client._originalConfig && client._originalConfig.endpoint && client._originalConfig.endpointDiscoveryEnabled === true) {
+    throw util$5.error(new Error(), {
+      code: "ConfigurationException",
+      message: "Custom endpoint is supplied; endpointDiscoveryEnabled must not be true."
+    });
+  }
+  var svcConfig = AWS$r.config[client.serviceIdentifier] || {};
+  return Boolean(AWS$r.config.endpoint || svcConfig.endpoint || client._originalConfig && client._originalConfig.endpoint);
+}
+function isFalsy(value) {
+  return ["false", "0"].indexOf(value) >= 0;
+}
+function resolveEndpointDiscoveryConfig(request) {
+  var service = request.service || {};
+  if (service.config.endpointDiscoveryEnabled !== void 0) {
+    return service.config.endpointDiscoveryEnabled;
+  }
+  if (util$5.isBrowser())
+    return void 0;
+  for (var i = 0; i < endpointDiscoveryEnabledEnvs.length; i++) {
+    var env = endpointDiscoveryEnabledEnvs[i];
+    if (Object.prototype.hasOwnProperty.call(process.env, env)) {
+      if (process.env[env] === "" || process.env[env] === void 0) {
+        throw util$5.error(new Error(), {
+          code: "ConfigurationException",
+          message: "environmental variable " + env + " cannot be set to nothing"
+        });
+      }
+      return !isFalsy(process.env[env]);
+    }
+  }
+  var configFile = {};
+  try {
+    configFile = AWS$r.util.iniLoader ? AWS$r.util.iniLoader.loadFrom({
+      isConfig: true,
+      filename: process.env[AWS$r.util.sharedConfigFileEnv]
+    }) : {};
+  } catch (e2) {
+  }
+  var sharedFileConfig = configFile[{}.AWS_PROFILE || AWS$r.util.defaultProfile] || {};
+  if (Object.prototype.hasOwnProperty.call(sharedFileConfig, "endpoint_discovery_enabled")) {
+    if (sharedFileConfig.endpoint_discovery_enabled === void 0) {
+      throw util$5.error(new Error(), {
+        code: "ConfigurationException",
+        message: "config file entry 'endpoint_discovery_enabled' cannot be set to nothing"
+      });
+    }
+    return !isFalsy(sharedFileConfig.endpoint_discovery_enabled);
+  }
+  return void 0;
+}
+function discoverEndpoint(request, done) {
+  var service = request.service || {};
+  if (hasCustomEndpoint(service) || request.isPresigned())
+    return done();
+  var operations2 = service.api.operations || {};
+  var operationModel = operations2[request.operation];
+  var isEndpointDiscoveryRequired = operationModel ? operationModel.endpointDiscoveryRequired : "NULL";
+  var isEnabled = resolveEndpointDiscoveryConfig(request);
+  var hasRequiredEndpointDiscovery = service.api.hasRequiredEndpointDiscovery;
+  if (isEnabled || hasRequiredEndpointDiscovery) {
+    request.httpRequest.appendToUserAgent("endpoint-discovery");
+  }
+  switch (isEndpointDiscoveryRequired) {
+    case "OPTIONAL":
+      if (isEnabled || hasRequiredEndpointDiscovery) {
+        optionalDiscoverEndpoint(request);
+        request.addNamedListener("INVALIDATE_CACHED_ENDPOINTS", "extractError", invalidateCachedEndpoints);
+      }
+      done();
+      break;
+    case "REQUIRED":
+      if (isEnabled === false) {
+        request.response.error = util$5.error(new Error(), {
+          code: "ConfigurationException",
+          message: "Endpoint Discovery is disabled but " + service.api.className + "." + request.operation + "() requires it. Please check your configurations."
+        });
+        done();
+        break;
+      }
+      request.addNamedListener("INVALIDATE_CACHED_ENDPOINTS", "extractError", invalidateCachedEndpoints);
+      requiredDiscoverEndpoint(request, done);
+      break;
+    case "NULL":
+    default:
+      done();
+      break;
+  }
+}
+var discover_endpoint = {
+  discoverEndpoint,
+  requiredDiscoverEndpoint,
+  optionalDiscoverEndpoint,
+  marshallCustomIdentifiers,
+  getCacheKey,
+  invalidateCachedEndpoint: invalidateCachedEndpoints
+};
+var __viteBrowserExternal = {};
+var __viteBrowserExternal$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+  __proto__: null,
+  "default": __viteBrowserExternal
+}, Symbol.toStringTag, { value: "Module" }));
+var require$$1$2 = /* @__PURE__ */ getAugmentedNamespace(__viteBrowserExternal$1);
+var AWS$q = core;
+var SequentialExecutor2 = sequential_executor;
+var DISCOVER_ENDPOINT = discover_endpoint.discoverEndpoint;
+AWS$q.EventListeners = {
+  Core: {}
+};
+function getOperationAuthtype(req) {
+  if (!req.service.api.operations) {
+    return "";
+  }
+  var operation2 = req.service.api.operations[req.operation];
+  return operation2 ? operation2.authtype : "";
+}
+AWS$q.EventListeners = {
+  Core: new SequentialExecutor2().addNamedListeners(function(add, addAsync) {
+    addAsync("VALIDATE_CREDENTIALS", "validate", function VALIDATE_CREDENTIALS(req, done) {
+      if (!req.service.api.signatureVersion && !req.service.config.signatureVersion)
+        return done();
+      req.service.config.getCredentials(function(err) {
+        if (err) {
+          req.response.error = AWS$q.util.error(err, { code: "CredentialsError", message: "Missing credentials in config, if using AWS_CONFIG_FILE, set AWS_SDK_LOAD_CONFIG=1" });
+        }
+        done();
+      });
+    });
+    add("VALIDATE_REGION", "validate", function VALIDATE_REGION(req) {
+      if (!req.service.isGlobalEndpoint) {
+        var dnsHostRegex = new RegExp(/^([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9-]{0,61}[a-zA-Z0-9])$/);
+        if (!req.service.config.region) {
+          req.response.error = AWS$q.util.error(new Error(), { code: "ConfigError", message: "Missing region in config" });
+        } else if (!dnsHostRegex.test(req.service.config.region)) {
+          req.response.error = AWS$q.util.error(new Error(), { code: "ConfigError", message: "Invalid region in config" });
+        }
+      }
+    });
+    add("BUILD_IDEMPOTENCY_TOKENS", "validate", function BUILD_IDEMPOTENCY_TOKENS(req) {
+      if (!req.service.api.operations) {
+        return;
+      }
+      var operation2 = req.service.api.operations[req.operation];
+      if (!operation2) {
+        return;
+      }
+      var idempotentMembers = operation2.idempotentMembers;
+      if (!idempotentMembers.length) {
+        return;
+      }
+      var params = AWS$q.util.copy(req.params);
+      for (var i = 0, iLen = idempotentMembers.length; i < iLen; i++) {
+        if (!params[idempotentMembers[i]]) {
+          params[idempotentMembers[i]] = AWS$q.util.uuid.v4();
+        }
+      }
+      req.params = params;
+    });
+    add("VALIDATE_PARAMETERS", "validate", function VALIDATE_PARAMETERS(req) {
+      if (!req.service.api.operations) {
+        return;
+      }
+      var rules2 = req.service.api.operations[req.operation].input;
+      var validation = req.service.config.paramValidation;
+      new AWS$q.ParamValidator(validation).validate(rules2, req.params);
+    });
+    add("COMPUTE_CHECKSUM", "afterBuild", function COMPUTE_CHECKSUM(req) {
+      if (!req.service.api.operations) {
+        return;
+      }
+      var operation2 = req.service.api.operations[req.operation];
+      if (!operation2) {
+        return;
+      }
+      var body = req.httpRequest.body;
+      var isNonStreamingPayload = body && (AWS$q.util.Buffer.isBuffer(body) || typeof body === "string");
+      var headers = req.httpRequest.headers;
+      if (operation2.httpChecksumRequired && req.service.config.computeChecksums && isNonStreamingPayload && !headers["Content-MD5"]) {
+        var md52 = AWS$q.util.crypto.md5(body, "base64");
+        headers["Content-MD5"] = md52;
+      }
+    });
+    addAsync("COMPUTE_SHA256", "afterBuild", function COMPUTE_SHA256(req, done) {
+      req.haltHandlersOnError();
+      if (!req.service.api.operations) {
+        return;
+      }
+      var operation2 = req.service.api.operations[req.operation];
+      var authtype = operation2 ? operation2.authtype : "";
+      if (!req.service.api.signatureVersion && !authtype && !req.service.config.signatureVersion)
+        return done();
+      if (req.service.getSignerClass(req) === AWS$q.Signers.V4) {
+        var body = req.httpRequest.body || "";
+        if (authtype.indexOf("unsigned-body") >= 0) {
+          req.httpRequest.headers["X-Amz-Content-Sha256"] = "UNSIGNED-PAYLOAD";
+          return done();
+        }
+        AWS$q.util.computeSha256(body, function(err, sha) {
+          if (err) {
+            done(err);
+          } else {
+            req.httpRequest.headers["X-Amz-Content-Sha256"] = sha;
+            done();
+          }
+        });
+      } else {
+        done();
+      }
+    });
+    add("SET_CONTENT_LENGTH", "afterBuild", function SET_CONTENT_LENGTH(req) {
+      var authtype = getOperationAuthtype(req);
+      var payloadMember = AWS$q.util.getRequestPayloadShape(req);
+      if (req.httpRequest.headers["Content-Length"] === void 0) {
+        try {
+          var length = AWS$q.util.string.byteLength(req.httpRequest.body);
+          req.httpRequest.headers["Content-Length"] = length;
+        } catch (err) {
+          if (payloadMember && payloadMember.isStreaming) {
+            if (payloadMember.requiresLength) {
+              throw err;
+            } else if (authtype.indexOf("unsigned-body") >= 0) {
+              req.httpRequest.headers["Transfer-Encoding"] = "chunked";
+              return;
+            } else {
+              throw err;
+            }
+          }
+          throw err;
+        }
+      }
+    });
+    add("SET_HTTP_HOST", "afterBuild", function SET_HTTP_HOST(req) {
+      req.httpRequest.headers["Host"] = req.httpRequest.endpoint.host;
+    });
+    add("RESTART", "restart", function RESTART() {
+      var err = this.response.error;
+      if (!err || !err.retryable)
+        return;
+      this.httpRequest = new AWS$q.HttpRequest(this.service.endpoint, this.service.region);
+      if (this.response.retryCount < this.service.config.maxRetries) {
+        this.response.retryCount++;
+      } else {
+        this.response.error = null;
+      }
+    });
+    var addToHead = true;
+    addAsync("DISCOVER_ENDPOINT", "sign", DISCOVER_ENDPOINT, addToHead);
+    addAsync("SIGN", "sign", function SIGN(req, done) {
+      var service = req.service;
+      var operations2 = req.service.api.operations || {};
+      var operation2 = operations2[req.operation];
+      var authtype = operation2 ? operation2.authtype : "";
+      if (!service.api.signatureVersion && !authtype && !service.config.signatureVersion)
+        return done();
+      service.config.getCredentials(function(err, credentials) {
+        if (err) {
+          req.response.error = err;
+          return done();
+        }
+        try {
+          var date = service.getSkewCorrectedDate();
+          var SignerClass = service.getSignerClass(req);
+          var signer2 = new SignerClass(req.httpRequest, service.getSigningName(req), {
+            signatureCache: service.config.signatureCache,
+            operation: operation2,
+            signatureVersion: service.api.signatureVersion
+          });
+          signer2.setServiceClientId(service._clientId);
+          delete req.httpRequest.headers["Authorization"];
+          delete req.httpRequest.headers["Date"];
+          delete req.httpRequest.headers["X-Amz-Date"];
+          signer2.addAuthorization(credentials, date);
+          req.signedAt = date;
+        } catch (e2) {
+          req.response.error = e2;
+        }
+        done();
+      });
+    });
+    add("VALIDATE_RESPONSE", "validateResponse", function VALIDATE_RESPONSE(resp) {
+      if (this.service.successfulResponse(resp, this)) {
+        resp.data = {};
+        resp.error = null;
+      } else {
+        resp.data = null;
+        resp.error = AWS$q.util.error(new Error(), { code: "UnknownError", message: "An unknown error occurred." });
+      }
+    });
+    addAsync("SEND", "send", function SEND(resp, done) {
+      resp.httpResponse._abortCallback = done;
+      resp.error = null;
+      resp.data = null;
+      function callback(httpResp) {
+        resp.httpResponse.stream = httpResp;
+        var stream = resp.request.httpRequest.stream;
+        var service = resp.request.service;
+        var api2 = service.api;
+        var operationName = resp.request.operation;
+        var operation2 = api2.operations[operationName] || {};
+        httpResp.on("headers", function onHeaders(statusCode, headers, statusMessage) {
+          resp.request.emit("httpHeaders", [statusCode, headers, resp, statusMessage]);
+          if (!resp.httpResponse.streaming) {
+            if (AWS$q.HttpClient.streamsApiVersion === 2) {
+              if (operation2.hasEventOutput && service.successfulResponse(resp)) {
+                resp.request.emit("httpDone");
+                done();
+                return;
+              }
+              httpResp.on("readable", function onReadable() {
+                var data = httpResp.read();
+                if (data !== null) {
+                  resp.request.emit("httpData", [data, resp]);
+                }
+              });
+            } else {
+              httpResp.on("data", function onData(data) {
+                resp.request.emit("httpData", [data, resp]);
+              });
+            }
+          }
+        });
+        httpResp.on("end", function onEnd() {
+          if (!stream || !stream.didCallback) {
+            if (AWS$q.HttpClient.streamsApiVersion === 2 && (operation2.hasEventOutput && service.successfulResponse(resp))) {
+              return;
+            }
+            resp.request.emit("httpDone");
+            done();
+          }
+        });
+      }
+      function progress(httpResp) {
+        httpResp.on("sendProgress", function onSendProgress(value) {
+          resp.request.emit("httpUploadProgress", [value, resp]);
+        });
+        httpResp.on("receiveProgress", function onReceiveProgress(value) {
+          resp.request.emit("httpDownloadProgress", [value, resp]);
+        });
+      }
+      function error2(err) {
+        if (err.code !== "RequestAbortedError") {
+          var errCode = err.code === "TimeoutError" ? err.code : "NetworkingError";
+          err = AWS$q.util.error(err, {
+            code: errCode,
+            region: resp.request.httpRequest.region,
+            hostname: resp.request.httpRequest.endpoint.hostname,
+            retryable: true
+          });
+        }
+        resp.error = err;
+        resp.request.emit("httpError", [resp.error, resp], function() {
+          done();
+        });
+      }
+      function executeSend() {
+        var http = AWS$q.HttpClient.getInstance();
+        var httpOptions = resp.request.service.config.httpOptions || {};
+        try {
+          var stream = http.handleRequest(resp.request.httpRequest, httpOptions, callback, error2);
+          progress(stream);
+        } catch (err) {
+          error2(err);
+        }
+      }
+      var timeDiff = (resp.request.service.getSkewCorrectedDate() - this.signedAt) / 1e3;
+      if (timeDiff >= 60 * 10) {
+        this.emit("sign", [this], function(err) {
+          if (err)
+            done(err);
+          else
+            executeSend();
+        });
+      } else {
+        executeSend();
+      }
+    });
+    add("HTTP_HEADERS", "httpHeaders", function HTTP_HEADERS(statusCode, headers, resp, statusMessage) {
+      resp.httpResponse.statusCode = statusCode;
+      resp.httpResponse.statusMessage = statusMessage;
+      resp.httpResponse.headers = headers;
+      resp.httpResponse.body = AWS$q.util.buffer.toBuffer("");
+      resp.httpResponse.buffers = [];
+      resp.httpResponse.numBytes = 0;
+      var dateHeader = headers.date || headers.Date;
+      var service = resp.request.service;
+      if (dateHeader) {
+        var serverTime = Date.parse(dateHeader);
+        if (service.config.correctClockSkew && service.isClockSkewed(serverTime)) {
+          service.applyClockOffset(serverTime);
+        }
+      }
+    });
+    add("HTTP_DATA", "httpData", function HTTP_DATA(chunk, resp) {
+      if (chunk) {
+        if (AWS$q.util.isNode()) {
+          resp.httpResponse.numBytes += chunk.length;
+          var total = resp.httpResponse.headers["content-length"];
+          var progress = { loaded: resp.httpResponse.numBytes, total };
+          resp.request.emit("httpDownloadProgress", [progress, resp]);
+        }
+        resp.httpResponse.buffers.push(AWS$q.util.buffer.toBuffer(chunk));
+      }
+    });
+    add("HTTP_DONE", "httpDone", function HTTP_DONE(resp) {
+      if (resp.httpResponse.buffers && resp.httpResponse.buffers.length > 0) {
+        var body = AWS$q.util.buffer.concat(resp.httpResponse.buffers);
+        resp.httpResponse.body = body;
+      }
+      delete resp.httpResponse.numBytes;
+      delete resp.httpResponse.buffers;
+    });
+    add("FINALIZE_ERROR", "retry", function FINALIZE_ERROR(resp) {
+      if (resp.httpResponse.statusCode) {
+        resp.error.statusCode = resp.httpResponse.statusCode;
+        if (resp.error.retryable === void 0) {
+          resp.error.retryable = this.service.retryableError(resp.error, this);
+        }
+      }
+    });
+    add("INVALIDATE_CREDENTIALS", "retry", function INVALIDATE_CREDENTIALS(resp) {
+      if (!resp.error)
+        return;
+      switch (resp.error.code) {
+        case "RequestExpired":
+        case "ExpiredTokenException":
+        case "ExpiredToken":
+          resp.error.retryable = true;
+          resp.request.service.config.credentials.expired = true;
+      }
+    });
+    add("EXPIRED_SIGNATURE", "retry", function EXPIRED_SIGNATURE(resp) {
+      var err = resp.error;
+      if (!err)
+        return;
+      if (typeof err.code === "string" && typeof err.message === "string") {
+        if (err.code.match(/Signature/) && err.message.match(/expired/)) {
+          resp.error.retryable = true;
+        }
+      }
+    });
+    add("CLOCK_SKEWED", "retry", function CLOCK_SKEWED(resp) {
+      if (!resp.error)
+        return;
+      if (this.service.clockSkewError(resp.error) && this.service.config.correctClockSkew) {
+        resp.error.retryable = true;
+      }
+    });
+    add("REDIRECT", "retry", function REDIRECT(resp) {
+      if (resp.error && resp.error.statusCode >= 300 && resp.error.statusCode < 400 && resp.httpResponse.headers["location"]) {
+        this.httpRequest.endpoint = new AWS$q.Endpoint(resp.httpResponse.headers["location"]);
+        this.httpRequest.headers["Host"] = this.httpRequest.endpoint.host;
+        resp.error.redirect = true;
+        resp.error.retryable = true;
+      }
+    });
+    add("RETRY_CHECK", "retry", function RETRY_CHECK(resp) {
+      if (resp.error) {
+        if (resp.error.redirect && resp.redirectCount < resp.maxRedirects) {
+          resp.error.retryDelay = 0;
+        } else if (resp.retryCount < resp.maxRetries) {
+          resp.error.retryDelay = this.service.retryDelays(resp.retryCount, resp.error) || 0;
+        }
+      }
+    });
+    addAsync("RESET_RETRY_STATE", "afterRetry", function RESET_RETRY_STATE(resp, done) {
+      var delay, willRetry = false;
+      if (resp.error) {
+        delay = resp.error.retryDelay || 0;
+        if (resp.error.retryable && resp.retryCount < resp.maxRetries) {
+          resp.retryCount++;
+          willRetry = true;
+        } else if (resp.error.redirect && resp.redirectCount < resp.maxRedirects) {
+          resp.redirectCount++;
+          willRetry = true;
+        }
+      }
+      if (willRetry && delay >= 0) {
+        resp.error = null;
+        setTimeout(done, delay);
+      } else {
+        done();
+      }
+    });
+  }),
+  CorePost: new SequentialExecutor2().addNamedListeners(function(add) {
+    add("EXTRACT_REQUEST_ID", "extractData", AWS$q.util.extractRequestId);
+    add("EXTRACT_REQUEST_ID", "extractError", AWS$q.util.extractRequestId);
+    add("ENOTFOUND_ERROR", "httpError", function ENOTFOUND_ERROR(err) {
+      function isDNSError(err2) {
+        return err2.errno === "ENOTFOUND" || typeof err2.errno === "number" && typeof AWS$q.util.getSystemErrorName === "function" && ["EAI_NONAME", "EAI_NODATA"].indexOf(AWS$q.util.getSystemErrorName(err2.errno) >= 0);
+      }
+      if (err.code === "NetworkingError" && isDNSError(err)) {
+        var message = "Inaccessible host: `" + err.hostname + "' at port `" + err.port + "'. This service may not be available in the `" + err.region + "' region.";
+        this.response.error = AWS$q.util.error(new Error(message), {
+          code: "UnknownEndpoint",
+          region: err.region,
+          hostname: err.hostname,
+          retryable: true,
+          originalError: err
+        });
+      }
+    });
+  }),
+  Logger: new SequentialExecutor2().addNamedListeners(function(add) {
+    add("LOG_REQUEST", "complete", function LOG_REQUEST(resp) {
+      var req = resp.request;
+      var logger2 = req.service.config.logger;
+      if (!logger2)
+        return;
+      function filterSensitiveLog(inputShape, shape2) {
+        if (!shape2) {
+          return shape2;
+        }
+        if (inputShape.isSensitive) {
+          return "***SensitiveInformation***";
+        }
+        switch (inputShape.type) {
+          case "structure":
+            var struct = {};
+            AWS$q.util.each(shape2, function(subShapeName, subShape) {
+              if (Object.prototype.hasOwnProperty.call(inputShape.members, subShapeName)) {
+                struct[subShapeName] = filterSensitiveLog(inputShape.members[subShapeName], subShape);
+              } else {
+                struct[subShapeName] = subShape;
+              }
+            });
+            return struct;
+          case "list":
+            var list = [];
+            AWS$q.util.arrayEach(shape2, function(subShape, index) {
+              list.push(filterSensitiveLog(inputShape.member, subShape));
+            });
+            return list;
+          case "map":
+            var map = {};
+            AWS$q.util.each(shape2, function(key, value) {
+              map[key] = filterSensitiveLog(inputShape.value, value);
+            });
+            return map;
+          default:
+            return shape2;
+        }
+      }
+      function buildMessage() {
+        var time = resp.request.service.getSkewCorrectedDate().getTime();
+        var delta = (time - req.startTime.getTime()) / 1e3;
+        var ansi = logger2.isTTY ? true : false;
+        var status2 = resp.httpResponse.statusCode;
+        var censoredParams = req.params;
+        if (req.service.api.operations && req.service.api.operations[req.operation] && req.service.api.operations[req.operation].input) {
+          var inputShape = req.service.api.operations[req.operation].input;
+          censoredParams = filterSensitiveLog(inputShape, req.params);
+        }
+        var params = require$$1$2.inspect(censoredParams, true, null);
+        var message = "";
+        if (ansi)
+          message += "\x1B[33m";
+        message += "[AWS " + req.service.serviceIdentifier + " " + status2;
+        message += " " + delta.toString() + "s " + resp.retryCount + " retries]";
+        if (ansi)
+          message += "\x1B[0;1m";
+        message += " " + AWS$q.util.string.lowerFirst(req.operation);
+        message += "(" + params + ")";
+        if (ansi)
+          message += "\x1B[0m";
+        return message;
+      }
+      var line = buildMessage();
+      if (typeof logger2.log === "function") {
+        logger2.log(line);
+      } else if (typeof logger2.write === "function") {
+        logger2.write(line + "\n");
+      }
+    });
+  }),
+  Json: new SequentialExecutor2().addNamedListeners(function(add) {
+    var svc = json;
+    add("BUILD", "build", svc.buildRequest);
+    add("EXTRACT_DATA", "extractData", svc.extractData);
+    add("EXTRACT_ERROR", "extractError", svc.extractError);
+  }),
+  Rest: new SequentialExecutor2().addNamedListeners(function(add) {
+    var svc = rest;
+    add("BUILD", "build", svc.buildRequest);
+    add("EXTRACT_DATA", "extractData", svc.extractData);
+    add("EXTRACT_ERROR", "extractError", svc.extractError);
+  }),
+  RestJson: new SequentialExecutor2().addNamedListeners(function(add) {
+    var svc = rest_json;
+    add("BUILD", "build", svc.buildRequest);
+    add("EXTRACT_DATA", "extractData", svc.extractData);
+    add("EXTRACT_ERROR", "extractError", svc.extractError);
+  }),
+  RestXml: new SequentialExecutor2().addNamedListeners(function(add) {
+    var svc = rest_xml;
+    add("BUILD", "build", svc.buildRequest);
+    add("EXTRACT_DATA", "extractData", svc.extractData);
+    add("EXTRACT_ERROR", "extractError", svc.extractError);
+  }),
+  Query: new SequentialExecutor2().addNamedListeners(function(add) {
+    var svc = query;
+    add("BUILD", "build", svc.buildRequest);
+    add("EXTRACT_DATA", "extractData", svc.extractData);
+    add("EXTRACT_ERROR", "extractError", svc.extractError);
+  })
+};
+function AcceptorStateMachine$1(states, state) {
+  this.currentState = state || null;
+  this.states = states || {};
+}
+AcceptorStateMachine$1.prototype.runTo = function runTo(finalState, done, bindObject, inputError) {
+  if (typeof finalState === "function") {
+    inputError = bindObject;
+    bindObject = done;
+    done = finalState;
+    finalState = null;
+  }
+  var self2 = this;
+  var state = self2.states[self2.currentState];
+  state.fn.call(bindObject || self2, inputError, function(err) {
+    if (err) {
+      if (state.fail)
+        self2.currentState = state.fail;
+      else
+        return done ? done.call(bindObject, err) : null;
+    } else {
+      if (state.accept)
+        self2.currentState = state.accept;
+      else
+        return done ? done.call(bindObject) : null;
+    }
+    if (self2.currentState === finalState) {
+      return done ? done.call(bindObject, err) : null;
+    }
+    self2.runTo(finalState, done, bindObject, err);
+  });
+};
+AcceptorStateMachine$1.prototype.addState = function addState(name, acceptState, failState, fn2) {
+  if (typeof acceptState === "function") {
+    fn2 = acceptState;
+    acceptState = null;
+    failState = null;
+  } else if (typeof failState === "function") {
+    fn2 = failState;
+    failState = null;
+  }
+  if (!this.currentState)
+    this.currentState = name;
+  this.states[name] = { accept: acceptState, fail: failState, fn: fn2 };
+  return this;
+};
+var state_machine = AcceptorStateMachine$1;
+var jmespath$3 = {};
+(function(exports) {
+  (function(exports2) {
+    function isArray(obj) {
+      if (obj !== null) {
+        return Object.prototype.toString.call(obj) === "[object Array]";
+      } else {
+        return false;
+      }
+    }
+    function isObject2(obj) {
+      if (obj !== null) {
+        return Object.prototype.toString.call(obj) === "[object Object]";
+      } else {
+        return false;
+      }
+    }
+    function strictDeepEqual(first, second) {
+      if (first === second) {
+        return true;
+      }
+      var firstType = Object.prototype.toString.call(first);
+      if (firstType !== Object.prototype.toString.call(second)) {
+        return false;
+      }
+      if (isArray(first) === true) {
+        if (first.length !== second.length) {
+          return false;
+        }
+        for (var i = 0; i < first.length; i++) {
+          if (strictDeepEqual(first[i], second[i]) === false) {
+            return false;
+          }
+        }
+        return true;
+      }
+      if (isObject2(first) === true) {
+        var keysSeen = {};
+        for (var key in first) {
+          if (hasOwnProperty.call(first, key)) {
+            if (strictDeepEqual(first[key], second[key]) === false) {
+              return false;
+            }
+            keysSeen[key] = true;
+          }
+        }
+        for (var key2 in second) {
+          if (hasOwnProperty.call(second, key2)) {
+            if (keysSeen[key2] !== true) {
+              return false;
+            }
+          }
+        }
+        return true;
+      }
+      return false;
+    }
+    function isFalse(obj) {
+      if (obj === "" || obj === false || obj === null) {
+        return true;
+      } else if (isArray(obj) && obj.length === 0) {
+        return true;
+      } else if (isObject2(obj)) {
+        for (var key in obj) {
+          if (obj.hasOwnProperty(key)) {
+            return false;
+          }
+        }
+        return true;
+      } else {
+        return false;
+      }
+    }
+    function objValues(obj) {
+      var keys = Object.keys(obj);
+      var values = [];
+      for (var i = 0; i < keys.length; i++) {
+        values.push(obj[keys[i]]);
+      }
+      return values;
+    }
+    var trimLeft;
+    if (typeof String.prototype.trimLeft === "function") {
+      trimLeft = function(str) {
+        return str.trimLeft();
+      };
+    } else {
+      trimLeft = function(str) {
+        return str.match(/^\s*(.*)/)[1];
+      };
+    }
+    var TYPE_NUMBER = 0;
+    var TYPE_ANY = 1;
+    var TYPE_STRING = 2;
+    var TYPE_ARRAY = 3;
+    var TYPE_OBJECT = 4;
+    var TYPE_BOOLEAN = 5;
+    var TYPE_EXPREF = 6;
+    var TYPE_NULL = 7;
+    var TYPE_ARRAY_NUMBER = 8;
+    var TYPE_ARRAY_STRING = 9;
+    var TYPE_NAME_TABLE = {
+      0: "number",
+      1: "any",
+      2: "string",
+      3: "array",
+      4: "object",
+      5: "boolean",
+      6: "expression",
+      7: "null",
+      8: "Array<number>",
+      9: "Array<string>"
+    };
+    var TOK_EOF = "EOF";
+    var TOK_UNQUOTEDIDENTIFIER = "UnquotedIdentifier";
+    var TOK_QUOTEDIDENTIFIER = "QuotedIdentifier";
+    var TOK_RBRACKET = "Rbracket";
+    var TOK_RPAREN = "Rparen";
+    var TOK_COMMA = "Comma";
+    var TOK_COLON = "Colon";
+    var TOK_RBRACE = "Rbrace";
+    var TOK_NUMBER = "Number";
+    var TOK_CURRENT = "Current";
+    var TOK_EXPREF = "Expref";
+    var TOK_PIPE = "Pipe";
+    var TOK_OR = "Or";
+    var TOK_AND = "And";
+    var TOK_EQ = "EQ";
+    var TOK_GT = "GT";
+    var TOK_LT = "LT";
+    var TOK_GTE = "GTE";
+    var TOK_LTE = "LTE";
+    var TOK_NE = "NE";
+    var TOK_FLATTEN = "Flatten";
+    var TOK_STAR = "Star";
+    var TOK_FILTER = "Filter";
+    var TOK_DOT = "Dot";
+    var TOK_NOT = "Not";
+    var TOK_LBRACE = "Lbrace";
+    var TOK_LBRACKET = "Lbracket";
+    var TOK_LPAREN = "Lparen";
+    var TOK_LITERAL = "Literal";
+    var basicTokens = {
+      ".": TOK_DOT,
+      "*": TOK_STAR,
+      ",": TOK_COMMA,
+      ":": TOK_COLON,
+      "{": TOK_LBRACE,
+      "}": TOK_RBRACE,
+      "]": TOK_RBRACKET,
+      "(": TOK_LPAREN,
+      ")": TOK_RPAREN,
+      "@": TOK_CURRENT
+    };
+    var operatorStartToken = {
+      "<": true,
+      ">": true,
+      "=": true,
+      "!": true
+    };
+    var skipChars = {
+      " ": true,
+      "	": true,
+      "\n": true
+    };
+    function isAlpha(ch) {
+      return ch >= "a" && ch <= "z" || ch >= "A" && ch <= "Z" || ch === "_";
+    }
+    function isNum(ch) {
+      return ch >= "0" && ch <= "9" || ch === "-";
+    }
+    function isAlphaNum(ch) {
+      return ch >= "a" && ch <= "z" || ch >= "A" && ch <= "Z" || ch >= "0" && ch <= "9" || ch === "_";
+    }
+    function Lexer() {
+    }
+    Lexer.prototype = {
+      tokenize: function(stream) {
+        var tokens = [];
+        this._current = 0;
+        var start;
+        var identifier;
+        var token;
+        while (this._current < stream.length) {
+          if (isAlpha(stream[this._current])) {
+            start = this._current;
+            identifier = this._consumeUnquotedIdentifier(stream);
+            tokens.push({
+              type: TOK_UNQUOTEDIDENTIFIER,
+              value: identifier,
+              start
+            });
+          } else if (basicTokens[stream[this._current]] !== void 0) {
+            tokens.push({
+              type: basicTokens[stream[this._current]],
+              value: stream[this._current],
+              start: this._current
+            });
+            this._current++;
+          } else if (isNum(stream[this._current])) {
+            token = this._consumeNumber(stream);
+            tokens.push(token);
+          } else if (stream[this._current] === "[") {
+            token = this._consumeLBracket(stream);
+            tokens.push(token);
+          } else if (stream[this._current] === '"') {
+            start = this._current;
+            identifier = this._consumeQuotedIdentifier(stream);
+            tokens.push({
+              type: TOK_QUOTEDIDENTIFIER,
+              value: identifier,
+              start
+            });
+          } else if (stream[this._current] === "'") {
+            start = this._current;
+            identifier = this._consumeRawStringLiteral(stream);
+            tokens.push({
+              type: TOK_LITERAL,
+              value: identifier,
+              start
+            });
+          } else if (stream[this._current] === "`") {
+            start = this._current;
+            var literal = this._consumeLiteral(stream);
+            tokens.push({
+              type: TOK_LITERAL,
+              value: literal,
+              start
+            });
+          } else if (operatorStartToken[stream[this._current]] !== void 0) {
+            tokens.push(this._consumeOperator(stream));
+          } else if (skipChars[stream[this._current]] !== void 0) {
+            this._current++;
+          } else if (stream[this._current] === "&") {
+            start = this._current;
+            this._current++;
+            if (stream[this._current] === "&") {
+              this._current++;
+              tokens.push({ type: TOK_AND, value: "&&", start });
+            } else {
+              tokens.push({ type: TOK_EXPREF, value: "&", start });
+            }
+          } else if (stream[this._current] === "|") {
+            start = this._current;
+            this._current++;
+            if (stream[this._current] === "|") {
+              this._current++;
+              tokens.push({ type: TOK_OR, value: "||", start });
+            } else {
+              tokens.push({ type: TOK_PIPE, value: "|", start });
+            }
+          } else {
+            var error2 = new Error("Unknown character:" + stream[this._current]);
+            error2.name = "LexerError";
+            throw error2;
+          }
+        }
+        return tokens;
+      },
+      _consumeUnquotedIdentifier: function(stream) {
+        var start = this._current;
+        this._current++;
+        while (this._current < stream.length && isAlphaNum(stream[this._current])) {
+          this._current++;
+        }
+        return stream.slice(start, this._current);
+      },
+      _consumeQuotedIdentifier: function(stream) {
+        var start = this._current;
+        this._current++;
+        var maxLength = stream.length;
+        while (stream[this._current] !== '"' && this._current < maxLength) {
+          var current = this._current;
+          if (stream[current] === "\\" && (stream[current + 1] === "\\" || stream[current + 1] === '"')) {
+            current += 2;
+          } else {
+            current++;
+          }
+          this._current = current;
+        }
+        this._current++;
+        return JSON.parse(stream.slice(start, this._current));
+      },
+      _consumeRawStringLiteral: function(stream) {
+        var start = this._current;
+        this._current++;
+        var maxLength = stream.length;
+        while (stream[this._current] !== "'" && this._current < maxLength) {
+          var current = this._current;
+          if (stream[current] === "\\" && (stream[current + 1] === "\\" || stream[current + 1] === "'")) {
+            current += 2;
+          } else {
+            current++;
+          }
+          this._current = current;
+        }
+        this._current++;
+        var literal = stream.slice(start + 1, this._current - 1);
+        return literal.replace("\\'", "'");
+      },
+      _consumeNumber: function(stream) {
+        var start = this._current;
+        this._current++;
+        var maxLength = stream.length;
+        while (isNum(stream[this._current]) && this._current < maxLength) {
+          this._current++;
+        }
+        var value = parseInt(stream.slice(start, this._current));
+        return { type: TOK_NUMBER, value, start };
+      },
+      _consumeLBracket: function(stream) {
+        var start = this._current;
+        this._current++;
+        if (stream[this._current] === "?") {
+          this._current++;
+          return { type: TOK_FILTER, value: "[?", start };
+        } else if (stream[this._current] === "]") {
+          this._current++;
+          return { type: TOK_FLATTEN, value: "[]", start };
+        } else {
+          return { type: TOK_LBRACKET, value: "[", start };
+        }
+      },
+      _consumeOperator: function(stream) {
+        var start = this._current;
+        var startingChar = stream[start];
+        this._current++;
+        if (startingChar === "!") {
+          if (stream[this._current] === "=") {
+            this._current++;
+            return { type: TOK_NE, value: "!=", start };
+          } else {
+            return { type: TOK_NOT, value: "!", start };
+          }
+        } else if (startingChar === "<") {
+          if (stream[this._current] === "=") {
+            this._current++;
+            return { type: TOK_LTE, value: "<=", start };
+          } else {
+            return { type: TOK_LT, value: "<", start };
+          }
+        } else if (startingChar === ">") {
+          if (stream[this._current] === "=") {
+            this._current++;
+            return { type: TOK_GTE, value: ">=", start };
+          } else {
+            return { type: TOK_GT, value: ">", start };
+          }
+        } else if (startingChar === "=") {
+          if (stream[this._current] === "=") {
+            this._current++;
+            return { type: TOK_EQ, value: "==", start };
+          }
+        }
+      },
+      _consumeLiteral: function(stream) {
+        this._current++;
+        var start = this._current;
+        var maxLength = stream.length;
+        var literal;
+        while (stream[this._current] !== "`" && this._current < maxLength) {
+          var current = this._current;
+          if (stream[current] === "\\" && (stream[current + 1] === "\\" || stream[current + 1] === "`")) {
+            current += 2;
+          } else {
+            current++;
+          }
+          this._current = current;
+        }
+        var literalString = trimLeft(stream.slice(start, this._current));
+        literalString = literalString.replace("\\`", "`");
+        if (this._looksLikeJSON(literalString)) {
+          literal = JSON.parse(literalString);
+        } else {
+          literal = JSON.parse('"' + literalString + '"');
+        }
+        this._current++;
+        return literal;
+      },
+      _looksLikeJSON: function(literalString) {
+        var startingChars = '[{"';
+        var jsonLiterals = ["true", "false", "null"];
+        var numberLooking = "-0123456789";
+        if (literalString === "") {
+          return false;
+        } else if (startingChars.indexOf(literalString[0]) >= 0) {
+          return true;
+        } else if (jsonLiterals.indexOf(literalString) >= 0) {
+          return true;
+        } else if (numberLooking.indexOf(literalString[0]) >= 0) {
+          try {
+            JSON.parse(literalString);
+            return true;
+          } catch (ex) {
+            return false;
+          }
+        } else {
+          return false;
+        }
+      }
+    };
+    var bindingPower = {};
+    bindingPower[TOK_EOF] = 0;
+    bindingPower[TOK_UNQUOTEDIDENTIFIER] = 0;
+    bindingPower[TOK_QUOTEDIDENTIFIER] = 0;
+    bindingPower[TOK_RBRACKET] = 0;
+    bindingPower[TOK_RPAREN] = 0;
+    bindingPower[TOK_COMMA] = 0;
+    bindingPower[TOK_RBRACE] = 0;
+    bindingPower[TOK_NUMBER] = 0;
+    bindingPower[TOK_CURRENT] = 0;
+    bindingPower[TOK_EXPREF] = 0;
+    bindingPower[TOK_PIPE] = 1;
+    bindingPower[TOK_OR] = 2;
+    bindingPower[TOK_AND] = 3;
+    bindingPower[TOK_EQ] = 5;
+    bindingPower[TOK_GT] = 5;
+    bindingPower[TOK_LT] = 5;
+    bindingPower[TOK_GTE] = 5;
+    bindingPower[TOK_LTE] = 5;
+    bindingPower[TOK_NE] = 5;
+    bindingPower[TOK_FLATTEN] = 9;
+    bindingPower[TOK_STAR] = 20;
+    bindingPower[TOK_FILTER] = 21;
+    bindingPower[TOK_DOT] = 40;
+    bindingPower[TOK_NOT] = 45;
+    bindingPower[TOK_LBRACE] = 50;
+    bindingPower[TOK_LBRACKET] = 55;
+    bindingPower[TOK_LPAREN] = 60;
+    function Parser() {
+    }
+    Parser.prototype = {
+      parse: function(expression) {
+        this._loadTokens(expression);
+        this.index = 0;
+        var ast = this.expression(0);
+        if (this._lookahead(0) !== TOK_EOF) {
+          var t2 = this._lookaheadToken(0);
+          var error2 = new Error("Unexpected token type: " + t2.type + ", value: " + t2.value);
+          error2.name = "ParserError";
+          throw error2;
+        }
+        return ast;
+      },
+      _loadTokens: function(expression) {
+        var lexer = new Lexer();
+        var tokens = lexer.tokenize(expression);
+        tokens.push({ type: TOK_EOF, value: "", start: expression.length });
+        this.tokens = tokens;
+      },
+      expression: function(rbp) {
+        var leftToken = this._lookaheadToken(0);
+        this._advance();
+        var left = this.nud(leftToken);
+        var currentToken = this._lookahead(0);
+        while (rbp < bindingPower[currentToken]) {
+          this._advance();
+          left = this.led(currentToken, left);
+          currentToken = this._lookahead(0);
+        }
+        return left;
+      },
+      _lookahead: function(number) {
+        return this.tokens[this.index + number].type;
+      },
+      _lookaheadToken: function(number) {
+        return this.tokens[this.index + number];
+      },
+      _advance: function() {
+        this.index++;
+      },
+      nud: function(token) {
+        var left;
+        var right;
+        var expression;
+        switch (token.type) {
+          case TOK_LITERAL:
+            return { type: "Literal", value: token.value };
+          case TOK_UNQUOTEDIDENTIFIER:
+            return { type: "Field", name: token.value };
+          case TOK_QUOTEDIDENTIFIER:
+            var node = { type: "Field", name: token.value };
+            if (this._lookahead(0) === TOK_LPAREN) {
+              throw new Error("Quoted identifier not allowed for function names.");
+            }
+            return node;
+          case TOK_NOT:
+            right = this.expression(bindingPower.Not);
+            return { type: "NotExpression", children: [right] };
+          case TOK_STAR:
+            left = { type: "Identity" };
+            right = null;
+            if (this._lookahead(0) === TOK_RBRACKET) {
+              right = { type: "Identity" };
+            } else {
+              right = this._parseProjectionRHS(bindingPower.Star);
+            }
+            return { type: "ValueProjection", children: [left, right] };
+          case TOK_FILTER:
+            return this.led(token.type, { type: "Identity" });
+          case TOK_LBRACE:
+            return this._parseMultiselectHash();
+          case TOK_FLATTEN:
+            left = { type: TOK_FLATTEN, children: [{ type: "Identity" }] };
+            right = this._parseProjectionRHS(bindingPower.Flatten);
+            return { type: "Projection", children: [left, right] };
+          case TOK_LBRACKET:
+            if (this._lookahead(0) === TOK_NUMBER || this._lookahead(0) === TOK_COLON) {
+              right = this._parseIndexExpression();
+              return this._projectIfSlice({ type: "Identity" }, right);
+            } else if (this._lookahead(0) === TOK_STAR && this._lookahead(1) === TOK_RBRACKET) {
+              this._advance();
+              this._advance();
+              right = this._parseProjectionRHS(bindingPower.Star);
+              return {
+                type: "Projection",
+                children: [{ type: "Identity" }, right]
+              };
+            }
+            return this._parseMultiselectList();
+          case TOK_CURRENT:
+            return { type: TOK_CURRENT };
+          case TOK_EXPREF:
+            expression = this.expression(bindingPower.Expref);
+            return { type: "ExpressionReference", children: [expression] };
+          case TOK_LPAREN:
+            var args = [];
+            while (this._lookahead(0) !== TOK_RPAREN) {
+              if (this._lookahead(0) === TOK_CURRENT) {
+                expression = { type: TOK_CURRENT };
+                this._advance();
+              } else {
+                expression = this.expression(0);
+              }
+              args.push(expression);
+            }
+            this._match(TOK_RPAREN);
+            return args[0];
+          default:
+            this._errorToken(token);
+        }
+      },
+      led: function(tokenName, left) {
+        var right;
+        switch (tokenName) {
+          case TOK_DOT:
+            var rbp = bindingPower.Dot;
+            if (this._lookahead(0) !== TOK_STAR) {
+              right = this._parseDotRHS(rbp);
+              return { type: "Subexpression", children: [left, right] };
+            }
+            this._advance();
+            right = this._parseProjectionRHS(rbp);
+            return { type: "ValueProjection", children: [left, right] };
+          case TOK_PIPE:
+            right = this.expression(bindingPower.Pipe);
+            return { type: TOK_PIPE, children: [left, right] };
+          case TOK_OR:
+            right = this.expression(bindingPower.Or);
+            return { type: "OrExpression", children: [left, right] };
+          case TOK_AND:
+            right = this.expression(bindingPower.And);
+            return { type: "AndExpression", children: [left, right] };
+          case TOK_LPAREN:
+            var name = left.name;
+            var args = [];
+            var expression, node;
+            while (this._lookahead(0) !== TOK_RPAREN) {
+              if (this._lookahead(0) === TOK_CURRENT) {
+                expression = { type: TOK_CURRENT };
+                this._advance();
+              } else {
+                expression = this.expression(0);
+              }
+              if (this._lookahead(0) === TOK_COMMA) {
+                this._match(TOK_COMMA);
+              }
+              args.push(expression);
+            }
+            this._match(TOK_RPAREN);
+            node = { type: "Function", name, children: args };
+            return node;
+          case TOK_FILTER:
+            var condition = this.expression(0);
+            this._match(TOK_RBRACKET);
+            if (this._lookahead(0) === TOK_FLATTEN) {
+              right = { type: "Identity" };
+            } else {
+              right = this._parseProjectionRHS(bindingPower.Filter);
+            }
+            return { type: "FilterProjection", children: [left, right, condition] };
+          case TOK_FLATTEN:
+            var leftNode = { type: TOK_FLATTEN, children: [left] };
+            var rightNode = this._parseProjectionRHS(bindingPower.Flatten);
+            return { type: "Projection", children: [leftNode, rightNode] };
+          case TOK_EQ:
+          case TOK_NE:
+          case TOK_GT:
+          case TOK_GTE:
+          case TOK_LT:
+          case TOK_LTE:
+            return this._parseComparator(left, tokenName);
+          case TOK_LBRACKET:
+            var token = this._lookaheadToken(0);
+            if (token.type === TOK_NUMBER || token.type === TOK_COLON) {
+              right = this._parseIndexExpression();
+              return this._projectIfSlice(left, right);
+            }
+            this._match(TOK_STAR);
+            this._match(TOK_RBRACKET);
+            right = this._parseProjectionRHS(bindingPower.Star);
+            return { type: "Projection", children: [left, right] };
+          default:
+            this._errorToken(this._lookaheadToken(0));
+        }
+      },
+      _match: function(tokenType) {
+        if (this._lookahead(0) === tokenType) {
+          this._advance();
+        } else {
+          var t2 = this._lookaheadToken(0);
+          var error2 = new Error("Expected " + tokenType + ", got: " + t2.type);
+          error2.name = "ParserError";
+          throw error2;
+        }
+      },
+      _errorToken: function(token) {
+        var error2 = new Error("Invalid token (" + token.type + '): "' + token.value + '"');
+        error2.name = "ParserError";
+        throw error2;
+      },
+      _parseIndexExpression: function() {
+        if (this._lookahead(0) === TOK_COLON || this._lookahead(1) === TOK_COLON) {
+          return this._parseSliceExpression();
+        } else {
+          var node = {
+            type: "Index",
+            value: this._lookaheadToken(0).value
+          };
+          this._advance();
+          this._match(TOK_RBRACKET);
+          return node;
+        }
+      },
+      _projectIfSlice: function(left, right) {
+        var indexExpr = { type: "IndexExpression", children: [left, right] };
+        if (right.type === "Slice") {
+          return {
+            type: "Projection",
+            children: [indexExpr, this._parseProjectionRHS(bindingPower.Star)]
+          };
+        } else {
+          return indexExpr;
+        }
+      },
+      _parseSliceExpression: function() {
+        var parts = [null, null, null];
+        var index = 0;
+        var currentToken = this._lookahead(0);
+        while (currentToken !== TOK_RBRACKET && index < 3) {
+          if (currentToken === TOK_COLON) {
+            index++;
+            this._advance();
+          } else if (currentToken === TOK_NUMBER) {
+            parts[index] = this._lookaheadToken(0).value;
+            this._advance();
+          } else {
+            var t2 = this._lookahead(0);
+            var error2 = new Error("Syntax error, unexpected token: " + t2.value + "(" + t2.type + ")");
+            error2.name = "Parsererror";
+            throw error2;
+          }
+          currentToken = this._lookahead(0);
+        }
+        this._match(TOK_RBRACKET);
+        return {
+          type: "Slice",
+          children: parts
+        };
+      },
+      _parseComparator: function(left, comparator) {
+        var right = this.expression(bindingPower[comparator]);
+        return { type: "Comparator", name: comparator, children: [left, right] };
+      },
+      _parseDotRHS: function(rbp) {
+        var lookahead = this._lookahead(0);
+        var exprTokens = [TOK_UNQUOTEDIDENTIFIER, TOK_QUOTEDIDENTIFIER, TOK_STAR];
+        if (exprTokens.indexOf(lookahead) >= 0) {
+          return this.expression(rbp);
+        } else if (lookahead === TOK_LBRACKET) {
+          this._match(TOK_LBRACKET);
+          return this._parseMultiselectList();
+        } else if (lookahead === TOK_LBRACE) {
+          this._match(TOK_LBRACE);
+          return this._parseMultiselectHash();
+        }
+      },
+      _parseProjectionRHS: function(rbp) {
+        var right;
+        if (bindingPower[this._lookahead(0)] < 10) {
+          right = { type: "Identity" };
+        } else if (this._lookahead(0) === TOK_LBRACKET) {
+          right = this.expression(rbp);
+        } else if (this._lookahead(0) === TOK_FILTER) {
+          right = this.expression(rbp);
+        } else if (this._lookahead(0) === TOK_DOT) {
+          this._match(TOK_DOT);
+          right = this._parseDotRHS(rbp);
+        } else {
+          var t2 = this._lookaheadToken(0);
+          var error2 = new Error("Sytanx error, unexpected token: " + t2.value + "(" + t2.type + ")");
+          error2.name = "ParserError";
+          throw error2;
+        }
+        return right;
+      },
+      _parseMultiselectList: function() {
+        var expressions = [];
+        while (this._lookahead(0) !== TOK_RBRACKET) {
+          var expression = this.expression(0);
+          expressions.push(expression);
+          if (this._lookahead(0) === TOK_COMMA) {
+            this._match(TOK_COMMA);
+            if (this._lookahead(0) === TOK_RBRACKET) {
+              throw new Error("Unexpected token Rbracket");
+            }
+          }
+        }
+        this._match(TOK_RBRACKET);
+        return { type: "MultiSelectList", children: expressions };
+      },
+      _parseMultiselectHash: function() {
+        var pairs = [];
+        var identifierTypes = [TOK_UNQUOTEDIDENTIFIER, TOK_QUOTEDIDENTIFIER];
+        var keyToken, keyName, value, node;
+        for (; ; ) {
+          keyToken = this._lookaheadToken(0);
+          if (identifierTypes.indexOf(keyToken.type) < 0) {
+            throw new Error("Expecting an identifier token, got: " + keyToken.type);
+          }
+          keyName = keyToken.value;
+          this._advance();
+          this._match(TOK_COLON);
+          value = this.expression(0);
+          node = { type: "KeyValuePair", name: keyName, value };
+          pairs.push(node);
+          if (this._lookahead(0) === TOK_COMMA) {
+            this._match(TOK_COMMA);
+          } else if (this._lookahead(0) === TOK_RBRACE) {
+            this._match(TOK_RBRACE);
+            break;
+          }
+        }
+        return { type: "MultiSelectHash", children: pairs };
+      }
+    };
+    function TreeInterpreter(runtime) {
+      this.runtime = runtime;
+    }
+    TreeInterpreter.prototype = {
+      search: function(node, value) {
+        return this.visit(node, value);
+      },
+      visit: function(node, value) {
+        var matched, current, result, first, second, field, left, right, collected, i;
+        switch (node.type) {
+          case "Field":
+            if (value !== null && isObject2(value)) {
+              field = value[node.name];
+              if (field === void 0) {
+                return null;
+              } else {
+                return field;
+              }
+            }
+            return null;
+          case "Subexpression":
+            result = this.visit(node.children[0], value);
+            for (i = 1; i < node.children.length; i++) {
+              result = this.visit(node.children[1], result);
+              if (result === null) {
+                return null;
+              }
+            }
+            return result;
+          case "IndexExpression":
+            left = this.visit(node.children[0], value);
+            right = this.visit(node.children[1], left);
+            return right;
+          case "Index":
+            if (!isArray(value)) {
+              return null;
+            }
+            var index = node.value;
+            if (index < 0) {
+              index = value.length + index;
+            }
+            result = value[index];
+            if (result === void 0) {
+              result = null;
+            }
+            return result;
+          case "Slice":
+            if (!isArray(value)) {
+              return null;
+            }
+            var sliceParams = node.children.slice(0);
+            var computed = this.computeSliceParams(value.length, sliceParams);
+            var start = computed[0];
+            var stop = computed[1];
+            var step = computed[2];
+            result = [];
+            if (step > 0) {
+              for (i = start; i < stop; i += step) {
+                result.push(value[i]);
+              }
+            } else {
+              for (i = start; i > stop; i += step) {
+                result.push(value[i]);
+              }
+            }
+            return result;
+          case "Projection":
+            var base = this.visit(node.children[0], value);
+            if (!isArray(base)) {
+              return null;
+            }
+            collected = [];
+            for (i = 0; i < base.length; i++) {
+              current = this.visit(node.children[1], base[i]);
+              if (current !== null) {
+                collected.push(current);
+              }
+            }
+            return collected;
+          case "ValueProjection":
+            base = this.visit(node.children[0], value);
+            if (!isObject2(base)) {
+              return null;
+            }
+            collected = [];
+            var values = objValues(base);
+            for (i = 0; i < values.length; i++) {
+              current = this.visit(node.children[1], values[i]);
+              if (current !== null) {
+                collected.push(current);
+              }
+            }
+            return collected;
+          case "FilterProjection":
+            base = this.visit(node.children[0], value);
+            if (!isArray(base)) {
+              return null;
+            }
+            var filtered = [];
+            var finalResults = [];
+            for (i = 0; i < base.length; i++) {
+              matched = this.visit(node.children[2], base[i]);
+              if (!isFalse(matched)) {
+                filtered.push(base[i]);
+              }
+            }
+            for (var j2 = 0; j2 < filtered.length; j2++) {
+              current = this.visit(node.children[1], filtered[j2]);
+              if (current !== null) {
+                finalResults.push(current);
+              }
+            }
+            return finalResults;
+          case "Comparator":
+            first = this.visit(node.children[0], value);
+            second = this.visit(node.children[1], value);
+            switch (node.name) {
+              case TOK_EQ:
+                result = strictDeepEqual(first, second);
+                break;
+              case TOK_NE:
+                result = !strictDeepEqual(first, second);
+                break;
+              case TOK_GT:
+                result = first > second;
+                break;
+              case TOK_GTE:
+                result = first >= second;
+                break;
+              case TOK_LT:
+                result = first < second;
+                break;
+              case TOK_LTE:
+                result = first <= second;
+                break;
+              default:
+                throw new Error("Unknown comparator: " + node.name);
+            }
+            return result;
+          case TOK_FLATTEN:
+            var original = this.visit(node.children[0], value);
+            if (!isArray(original)) {
+              return null;
+            }
+            var merged = [];
+            for (i = 0; i < original.length; i++) {
+              current = original[i];
+              if (isArray(current)) {
+                merged.push.apply(merged, current);
+              } else {
+                merged.push(current);
+              }
+            }
+            return merged;
+          case "Identity":
+            return value;
+          case "MultiSelectList":
+            if (value === null) {
+              return null;
+            }
+            collected = [];
+            for (i = 0; i < node.children.length; i++) {
+              collected.push(this.visit(node.children[i], value));
+            }
+            return collected;
+          case "MultiSelectHash":
+            if (value === null) {
+              return null;
+            }
+            collected = {};
+            var child;
+            for (i = 0; i < node.children.length; i++) {
+              child = node.children[i];
+              collected[child.name] = this.visit(child.value, value);
+            }
+            return collected;
+          case "OrExpression":
+            matched = this.visit(node.children[0], value);
+            if (isFalse(matched)) {
+              matched = this.visit(node.children[1], value);
+            }
+            return matched;
+          case "AndExpression":
+            first = this.visit(node.children[0], value);
+            if (isFalse(first) === true) {
+              return first;
+            }
+            return this.visit(node.children[1], value);
+          case "NotExpression":
+            first = this.visit(node.children[0], value);
+            return isFalse(first);
+          case "Literal":
+            return node.value;
+          case TOK_PIPE:
+            left = this.visit(node.children[0], value);
+            return this.visit(node.children[1], left);
+          case TOK_CURRENT:
+            return value;
+          case "Function":
+            var resolvedArgs = [];
+            for (i = 0; i < node.children.length; i++) {
+              resolvedArgs.push(this.visit(node.children[i], value));
+            }
+            return this.runtime.callFunction(node.name, resolvedArgs);
+          case "ExpressionReference":
+            var refNode = node.children[0];
+            refNode.jmespathType = TOK_EXPREF;
+            return refNode;
+          default:
+            throw new Error("Unknown node type: " + node.type);
+        }
+      },
+      computeSliceParams: function(arrayLength, sliceParams) {
+        var start = sliceParams[0];
+        var stop = sliceParams[1];
+        var step = sliceParams[2];
+        var computed = [null, null, null];
+        if (step === null) {
+          step = 1;
+        } else if (step === 0) {
+          var error2 = new Error("Invalid slice, step cannot be 0");
+          error2.name = "RuntimeError";
+          throw error2;
+        }
+        var stepValueNegative = step < 0 ? true : false;
+        if (start === null) {
+          start = stepValueNegative ? arrayLength - 1 : 0;
+        } else {
+          start = this.capSliceRange(arrayLength, start, step);
+        }
+        if (stop === null) {
+          stop = stepValueNegative ? -1 : arrayLength;
+        } else {
+          stop = this.capSliceRange(arrayLength, stop, step);
+        }
+        computed[0] = start;
+        computed[1] = stop;
+        computed[2] = step;
+        return computed;
+      },
+      capSliceRange: function(arrayLength, actualValue, step) {
+        if (actualValue < 0) {
+          actualValue += arrayLength;
+          if (actualValue < 0) {
+            actualValue = step < 0 ? -1 : 0;
+          }
+        } else if (actualValue >= arrayLength) {
+          actualValue = step < 0 ? arrayLength - 1 : arrayLength;
+        }
+        return actualValue;
+      }
+    };
+    function Runtime(interpreter) {
+      this._interpreter = interpreter;
+      this.functionTable = {
+        abs: { _func: this._functionAbs, _signature: [{ types: [TYPE_NUMBER] }] },
+        avg: { _func: this._functionAvg, _signature: [{ types: [TYPE_ARRAY_NUMBER] }] },
+        ceil: { _func: this._functionCeil, _signature: [{ types: [TYPE_NUMBER] }] },
+        contains: {
+          _func: this._functionContains,
+          _signature: [
+            { types: [TYPE_STRING, TYPE_ARRAY] },
+            { types: [TYPE_ANY] }
+          ]
+        },
+        "ends_with": {
+          _func: this._functionEndsWith,
+          _signature: [{ types: [TYPE_STRING] }, { types: [TYPE_STRING] }]
+        },
+        floor: { _func: this._functionFloor, _signature: [{ types: [TYPE_NUMBER] }] },
+        length: {
+          _func: this._functionLength,
+          _signature: [{ types: [TYPE_STRING, TYPE_ARRAY, TYPE_OBJECT] }]
+        },
+        map: {
+          _func: this._functionMap,
+          _signature: [{ types: [TYPE_EXPREF] }, { types: [TYPE_ARRAY] }]
+        },
+        max: {
+          _func: this._functionMax,
+          _signature: [{ types: [TYPE_ARRAY_NUMBER, TYPE_ARRAY_STRING] }]
+        },
+        "merge": {
+          _func: this._functionMerge,
+          _signature: [{ types: [TYPE_OBJECT], variadic: true }]
+        },
+        "max_by": {
+          _func: this._functionMaxBy,
+          _signature: [{ types: [TYPE_ARRAY] }, { types: [TYPE_EXPREF] }]
+        },
+        sum: { _func: this._functionSum, _signature: [{ types: [TYPE_ARRAY_NUMBER] }] },
+        "starts_with": {
+          _func: this._functionStartsWith,
+          _signature: [{ types: [TYPE_STRING] }, { types: [TYPE_STRING] }]
+        },
+        min: {
+          _func: this._functionMin,
+          _signature: [{ types: [TYPE_ARRAY_NUMBER, TYPE_ARRAY_STRING] }]
+        },
+        "min_by": {
+          _func: this._functionMinBy,
+          _signature: [{ types: [TYPE_ARRAY] }, { types: [TYPE_EXPREF] }]
+        },
+        type: { _func: this._functionType, _signature: [{ types: [TYPE_ANY] }] },
+        keys: { _func: this._functionKeys, _signature: [{ types: [TYPE_OBJECT] }] },
+        values: { _func: this._functionValues, _signature: [{ types: [TYPE_OBJECT] }] },
+        sort: { _func: this._functionSort, _signature: [{ types: [TYPE_ARRAY_STRING, TYPE_ARRAY_NUMBER] }] },
+        "sort_by": {
+          _func: this._functionSortBy,
+          _signature: [{ types: [TYPE_ARRAY] }, { types: [TYPE_EXPREF] }]
+        },
+        join: {
+          _func: this._functionJoin,
+          _signature: [
+            { types: [TYPE_STRING] },
+            { types: [TYPE_ARRAY_STRING] }
+          ]
+        },
+        reverse: {
+          _func: this._functionReverse,
+          _signature: [{ types: [TYPE_STRING, TYPE_ARRAY] }]
+        },
+        "to_array": { _func: this._functionToArray, _signature: [{ types: [TYPE_ANY] }] },
+        "to_string": { _func: this._functionToString, _signature: [{ types: [TYPE_ANY] }] },
+        "to_number": { _func: this._functionToNumber, _signature: [{ types: [TYPE_ANY] }] },
+        "not_null": {
+          _func: this._functionNotNull,
+          _signature: [{ types: [TYPE_ANY], variadic: true }]
+        }
+      };
+    }
+    Runtime.prototype = {
+      callFunction: function(name, resolvedArgs) {
+        var functionEntry = this.functionTable[name];
+        if (functionEntry === void 0) {
+          throw new Error("Unknown function: " + name + "()");
+        }
+        this._validateArgs(name, resolvedArgs, functionEntry._signature);
+        return functionEntry._func.call(this, resolvedArgs);
+      },
+      _validateArgs: function(name, args, signature4) {
+        var pluralized;
+        if (signature4[signature4.length - 1].variadic) {
+          if (args.length < signature4.length) {
+            pluralized = signature4.length === 1 ? " argument" : " arguments";
+            throw new Error("ArgumentError: " + name + "() takes at least" + signature4.length + pluralized + " but received " + args.length);
+          }
+        } else if (args.length !== signature4.length) {
+          pluralized = signature4.length === 1 ? " argument" : " arguments";
+          throw new Error("ArgumentError: " + name + "() takes " + signature4.length + pluralized + " but received " + args.length);
+        }
+        var currentSpec;
+        var actualType;
+        var typeMatched;
+        for (var i = 0; i < signature4.length; i++) {
+          typeMatched = false;
+          currentSpec = signature4[i].types;
+          actualType = this._getTypeName(args[i]);
+          for (var j2 = 0; j2 < currentSpec.length; j2++) {
+            if (this._typeMatches(actualType, currentSpec[j2], args[i])) {
+              typeMatched = true;
+              break;
+            }
+          }
+          if (!typeMatched) {
+            var expected = currentSpec.map(function(typeIdentifier) {
+              return TYPE_NAME_TABLE[typeIdentifier];
+            }).join(",");
+            throw new Error("TypeError: " + name + "() expected argument " + (i + 1) + " to be type " + expected + " but received type " + TYPE_NAME_TABLE[actualType] + " instead.");
+          }
+        }
+      },
+      _typeMatches: function(actual, expected, argValue) {
+        if (expected === TYPE_ANY) {
+          return true;
+        }
+        if (expected === TYPE_ARRAY_STRING || expected === TYPE_ARRAY_NUMBER || expected === TYPE_ARRAY) {
+          if (expected === TYPE_ARRAY) {
+            return actual === TYPE_ARRAY;
+          } else if (actual === TYPE_ARRAY) {
+            var subtype;
+            if (expected === TYPE_ARRAY_NUMBER) {
+              subtype = TYPE_NUMBER;
+            } else if (expected === TYPE_ARRAY_STRING) {
+              subtype = TYPE_STRING;
+            }
+            for (var i = 0; i < argValue.length; i++) {
+              if (!this._typeMatches(this._getTypeName(argValue[i]), subtype, argValue[i])) {
+                return false;
+              }
+            }
+            return true;
+          }
+        } else {
+          return actual === expected;
+        }
+      },
+      _getTypeName: function(obj) {
+        switch (Object.prototype.toString.call(obj)) {
+          case "[object String]":
+            return TYPE_STRING;
+          case "[object Number]":
+            return TYPE_NUMBER;
+          case "[object Array]":
+            return TYPE_ARRAY;
+          case "[object Boolean]":
+            return TYPE_BOOLEAN;
+          case "[object Null]":
+            return TYPE_NULL;
+          case "[object Object]":
+            if (obj.jmespathType === TOK_EXPREF) {
+              return TYPE_EXPREF;
+            } else {
+              return TYPE_OBJECT;
+            }
+        }
+      },
+      _functionStartsWith: function(resolvedArgs) {
+        return resolvedArgs[0].lastIndexOf(resolvedArgs[1]) === 0;
+      },
+      _functionEndsWith: function(resolvedArgs) {
+        var searchStr = resolvedArgs[0];
+        var suffix = resolvedArgs[1];
+        return searchStr.indexOf(suffix, searchStr.length - suffix.length) !== -1;
+      },
+      _functionReverse: function(resolvedArgs) {
+        var typeName2 = this._getTypeName(resolvedArgs[0]);
+        if (typeName2 === TYPE_STRING) {
+          var originalStr = resolvedArgs[0];
+          var reversedStr = "";
+          for (var i = originalStr.length - 1; i >= 0; i--) {
+            reversedStr += originalStr[i];
+          }
+          return reversedStr;
+        } else {
+          var reversedArray = resolvedArgs[0].slice(0);
+          reversedArray.reverse();
+          return reversedArray;
+        }
+      },
+      _functionAbs: function(resolvedArgs) {
+        return Math.abs(resolvedArgs[0]);
+      },
+      _functionCeil: function(resolvedArgs) {
+        return Math.ceil(resolvedArgs[0]);
+      },
+      _functionAvg: function(resolvedArgs) {
+        var sum = 0;
+        var inputArray = resolvedArgs[0];
+        for (var i = 0; i < inputArray.length; i++) {
+          sum += inputArray[i];
+        }
+        return sum / inputArray.length;
+      },
+      _functionContains: function(resolvedArgs) {
+        return resolvedArgs[0].indexOf(resolvedArgs[1]) >= 0;
+      },
+      _functionFloor: function(resolvedArgs) {
+        return Math.floor(resolvedArgs[0]);
+      },
+      _functionLength: function(resolvedArgs) {
+        if (!isObject2(resolvedArgs[0])) {
+          return resolvedArgs[0].length;
+        } else {
+          return Object.keys(resolvedArgs[0]).length;
+        }
+      },
+      _functionMap: function(resolvedArgs) {
+        var mapped = [];
+        var interpreter = this._interpreter;
+        var exprefNode = resolvedArgs[0];
+        var elements = resolvedArgs[1];
+        for (var i = 0; i < elements.length; i++) {
+          mapped.push(interpreter.visit(exprefNode, elements[i]));
+        }
+        return mapped;
+      },
+      _functionMerge: function(resolvedArgs) {
+        var merged = {};
+        for (var i = 0; i < resolvedArgs.length; i++) {
+          var current = resolvedArgs[i];
+          for (var key in current) {
+            merged[key] = current[key];
+          }
+        }
+        return merged;
+      },
+      _functionMax: function(resolvedArgs) {
+        if (resolvedArgs[0].length > 0) {
+          var typeName2 = this._getTypeName(resolvedArgs[0][0]);
+          if (typeName2 === TYPE_NUMBER) {
+            return Math.max.apply(Math, resolvedArgs[0]);
+          } else {
+            var elements = resolvedArgs[0];
+            var maxElement = elements[0];
+            for (var i = 1; i < elements.length; i++) {
+              if (maxElement.localeCompare(elements[i]) < 0) {
+                maxElement = elements[i];
+              }
+            }
+            return maxElement;
+          }
+        } else {
+          return null;
+        }
+      },
+      _functionMin: function(resolvedArgs) {
+        if (resolvedArgs[0].length > 0) {
+          var typeName2 = this._getTypeName(resolvedArgs[0][0]);
+          if (typeName2 === TYPE_NUMBER) {
+            return Math.min.apply(Math, resolvedArgs[0]);
+          } else {
+            var elements = resolvedArgs[0];
+            var minElement = elements[0];
+            for (var i = 1; i < elements.length; i++) {
+              if (elements[i].localeCompare(minElement) < 0) {
+                minElement = elements[i];
+              }
+            }
+            return minElement;
+          }
+        } else {
+          return null;
+        }
+      },
+      _functionSum: function(resolvedArgs) {
+        var sum = 0;
+        var listToSum = resolvedArgs[0];
+        for (var i = 0; i < listToSum.length; i++) {
+          sum += listToSum[i];
+        }
+        return sum;
+      },
+      _functionType: function(resolvedArgs) {
+        switch (this._getTypeName(resolvedArgs[0])) {
+          case TYPE_NUMBER:
+            return "number";
+          case TYPE_STRING:
+            return "string";
+          case TYPE_ARRAY:
+            return "array";
+          case TYPE_OBJECT:
+            return "object";
+          case TYPE_BOOLEAN:
+            return "boolean";
+          case TYPE_EXPREF:
+            return "expref";
+          case TYPE_NULL:
+            return "null";
+        }
+      },
+      _functionKeys: function(resolvedArgs) {
+        return Object.keys(resolvedArgs[0]);
+      },
+      _functionValues: function(resolvedArgs) {
+        var obj = resolvedArgs[0];
+        var keys = Object.keys(obj);
+        var values = [];
+        for (var i = 0; i < keys.length; i++) {
+          values.push(obj[keys[i]]);
+        }
+        return values;
+      },
+      _functionJoin: function(resolvedArgs) {
+        var joinChar = resolvedArgs[0];
+        var listJoin = resolvedArgs[1];
+        return listJoin.join(joinChar);
+      },
+      _functionToArray: function(resolvedArgs) {
+        if (this._getTypeName(resolvedArgs[0]) === TYPE_ARRAY) {
+          return resolvedArgs[0];
+        } else {
+          return [resolvedArgs[0]];
+        }
+      },
+      _functionToString: function(resolvedArgs) {
+        if (this._getTypeName(resolvedArgs[0]) === TYPE_STRING) {
+          return resolvedArgs[0];
+        } else {
+          return JSON.stringify(resolvedArgs[0]);
+        }
+      },
+      _functionToNumber: function(resolvedArgs) {
+        var typeName2 = this._getTypeName(resolvedArgs[0]);
+        var convertedValue;
+        if (typeName2 === TYPE_NUMBER) {
+          return resolvedArgs[0];
+        } else if (typeName2 === TYPE_STRING) {
+          convertedValue = +resolvedArgs[0];
+          if (!isNaN(convertedValue)) {
+            return convertedValue;
+          }
+        }
+        return null;
+      },
+      _functionNotNull: function(resolvedArgs) {
+        for (var i = 0; i < resolvedArgs.length; i++) {
+          if (this._getTypeName(resolvedArgs[i]) !== TYPE_NULL) {
+            return resolvedArgs[i];
+          }
+        }
+        return null;
+      },
+      _functionSort: function(resolvedArgs) {
+        var sortedArray = resolvedArgs[0].slice(0);
+        sortedArray.sort();
+        return sortedArray;
+      },
+      _functionSortBy: function(resolvedArgs) {
+        var sortedArray = resolvedArgs[0].slice(0);
+        if (sortedArray.length === 0) {
+          return sortedArray;
+        }
+        var interpreter = this._interpreter;
+        var exprefNode = resolvedArgs[1];
+        var requiredType = this._getTypeName(interpreter.visit(exprefNode, sortedArray[0]));
+        if ([TYPE_NUMBER, TYPE_STRING].indexOf(requiredType) < 0) {
+          throw new Error("TypeError");
+        }
+        var that = this;
+        var decorated = [];
+        for (var i = 0; i < sortedArray.length; i++) {
+          decorated.push([i, sortedArray[i]]);
+        }
+        decorated.sort(function(a2, b2) {
+          var exprA = interpreter.visit(exprefNode, a2[1]);
+          var exprB = interpreter.visit(exprefNode, b2[1]);
+          if (that._getTypeName(exprA) !== requiredType) {
+            throw new Error("TypeError: expected " + requiredType + ", received " + that._getTypeName(exprA));
+          } else if (that._getTypeName(exprB) !== requiredType) {
+            throw new Error("TypeError: expected " + requiredType + ", received " + that._getTypeName(exprB));
+          }
+          if (exprA > exprB) {
+            return 1;
+          } else if (exprA < exprB) {
+            return -1;
+          } else {
+            return a2[0] - b2[0];
+          }
+        });
+        for (var j2 = 0; j2 < decorated.length; j2++) {
+          sortedArray[j2] = decorated[j2][1];
+        }
+        return sortedArray;
+      },
+      _functionMaxBy: function(resolvedArgs) {
+        var exprefNode = resolvedArgs[1];
+        var resolvedArray = resolvedArgs[0];
+        var keyFunction = this.createKeyFunction(exprefNode, [TYPE_NUMBER, TYPE_STRING]);
+        var maxNumber = -Infinity;
+        var maxRecord;
+        var current;
+        for (var i = 0; i < resolvedArray.length; i++) {
+          current = keyFunction(resolvedArray[i]);
+          if (current > maxNumber) {
+            maxNumber = current;
+            maxRecord = resolvedArray[i];
+          }
+        }
+        return maxRecord;
+      },
+      _functionMinBy: function(resolvedArgs) {
+        var exprefNode = resolvedArgs[1];
+        var resolvedArray = resolvedArgs[0];
+        var keyFunction = this.createKeyFunction(exprefNode, [TYPE_NUMBER, TYPE_STRING]);
+        var minNumber = Infinity;
+        var minRecord;
+        var current;
+        for (var i = 0; i < resolvedArray.length; i++) {
+          current = keyFunction(resolvedArray[i]);
+          if (current < minNumber) {
+            minNumber = current;
+            minRecord = resolvedArray[i];
+          }
+        }
+        return minRecord;
+      },
+      createKeyFunction: function(exprefNode, allowedTypes) {
+        var that = this;
+        var interpreter = this._interpreter;
+        var keyFunc = function(x2) {
+          var current = interpreter.visit(exprefNode, x2);
+          if (allowedTypes.indexOf(that._getTypeName(current)) < 0) {
+            var msg = "TypeError: expected one of " + allowedTypes + ", received " + that._getTypeName(current);
+            throw new Error(msg);
+          }
+          return current;
+        };
+        return keyFunc;
+      }
+    };
+    function compile(stream) {
+      var parser2 = new Parser();
+      var ast = parser2.parse(stream);
+      return ast;
+    }
+    function tokenize(stream) {
+      var lexer = new Lexer();
+      return lexer.tokenize(stream);
+    }
+    function search2(data, expression) {
+      var parser2 = new Parser();
+      var runtime = new Runtime();
+      var interpreter = new TreeInterpreter(runtime);
+      runtime._interpreter = interpreter;
+      var node = parser2.parse(expression);
+      return interpreter.search(node, data);
+    }
+    exports2.tokenize = tokenize;
+    exports2.compile = compile;
+    exports2.search = search2;
+    exports2.strictDeepEqual = strictDeepEqual;
+  })(exports);
+})(jmespath$3);
+var AWS$p = core;
+var AcceptorStateMachine = state_machine;
+var inherit$9 = AWS$p.util.inherit;
+var domain = AWS$p.util.domain;
+var jmespath$2 = jmespath$3;
+var hardErrorStates = { success: 1, error: 1, complete: 1 };
+function isTerminalState(machine) {
+  return Object.prototype.hasOwnProperty.call(hardErrorStates, machine._asm.currentState);
+}
+var fsm = new AcceptorStateMachine();
+fsm.setupStates = function() {
+  var transition = function(_2, done) {
+    var self2 = this;
+    self2._haltHandlersOnError = false;
+    self2.emit(self2._asm.currentState, function(err) {
+      if (err) {
+        if (isTerminalState(self2)) {
+          if (domain && self2.domain instanceof domain.Domain) {
+            err.domainEmitter = self2;
+            err.domain = self2.domain;
+            err.domainThrown = false;
+            self2.domain.emit("error", err);
+          } else {
+            throw err;
+          }
+        } else {
+          self2.response.error = err;
+          done(err);
+        }
+      } else {
+        done(self2.response.error);
+      }
+    });
+  };
+  this.addState("validate", "build", "error", transition);
+  this.addState("build", "afterBuild", "restart", transition);
+  this.addState("afterBuild", "sign", "restart", transition);
+  this.addState("sign", "send", "retry", transition);
+  this.addState("retry", "afterRetry", "afterRetry", transition);
+  this.addState("afterRetry", "sign", "error", transition);
+  this.addState("send", "validateResponse", "retry", transition);
+  this.addState("validateResponse", "extractData", "extractError", transition);
+  this.addState("extractError", "extractData", "retry", transition);
+  this.addState("extractData", "success", "retry", transition);
+  this.addState("restart", "build", "error", transition);
+  this.addState("success", "complete", "complete", transition);
+  this.addState("error", "complete", "complete", transition);
+  this.addState("complete", null, null, transition);
+};
+fsm.setupStates();
+AWS$p.Request = inherit$9({
+  constructor: function Request(service, operation2, params) {
+    var endpoint = service.endpoint;
+    var region = service.config.region;
+    var customUserAgent = service.config.customUserAgent;
+    if (service.signingRegion) {
+      region = service.signingRegion;
+    } else if (service.isGlobalEndpoint) {
+      region = "us-east-1";
+    }
+    this.domain = domain && domain.active;
+    this.service = service;
+    this.operation = operation2;
+    this.params = params || {};
+    this.httpRequest = new AWS$p.HttpRequest(endpoint, region);
+    this.httpRequest.appendToUserAgent(customUserAgent);
+    this.startTime = service.getSkewCorrectedDate();
+    this.response = new AWS$p.Response(this);
+    this._asm = new AcceptorStateMachine(fsm.states, "validate");
+    this._haltHandlersOnError = false;
+    AWS$p.SequentialExecutor.call(this);
+    this.emit = this.emitEvent;
+  },
+  send: function send(callback) {
+    if (callback) {
+      this.httpRequest.appendToUserAgent("callback");
+      this.on("complete", function(resp) {
+        callback.call(resp, resp.error, resp.data);
+      });
+    }
+    this.runTo();
+    return this.response;
+  },
+  build: function build(callback) {
+    return this.runTo("send", callback);
+  },
+  runTo: function runTo2(state, done) {
+    this._asm.runTo(state, done, this);
+    return this;
+  },
+  abort: function abort() {
+    this.removeAllListeners("validateResponse");
+    this.removeAllListeners("extractError");
+    this.on("validateResponse", function addAbortedError(resp) {
+      resp.error = AWS$p.util.error(new Error("Request aborted by user"), {
+        code: "RequestAbortedError",
+        retryable: false
+      });
+    });
+    if (this.httpRequest.stream && !this.httpRequest.stream.didCallback) {
+      this.httpRequest.stream.abort();
+      if (this.httpRequest._abortCallback) {
+        this.httpRequest._abortCallback();
+      } else {
+        this.removeAllListeners("send");
+      }
+    }
+    return this;
+  },
+  eachPage: function eachPage(callback) {
+    callback = AWS$p.util.fn.makeAsync(callback, 3);
+    function wrappedCallback(response) {
+      callback.call(response, response.error, response.data, function(result) {
+        if (result === false)
+          return;
+        if (response.hasNextPage()) {
+          response.nextPage().on("complete", wrappedCallback).send();
+        } else {
+          callback.call(response, null, null, AWS$p.util.fn.noop);
+        }
+      });
+    }
+    this.on("complete", wrappedCallback).send();
+  },
+  eachItem: function eachItem(callback) {
+    var self2 = this;
+    function wrappedCallback(err, data) {
+      if (err)
+        return callback(err, null);
+      if (data === null)
+        return callback(null, null);
+      var config2 = self2.service.paginationConfig(self2.operation);
+      var resultKey = config2.resultKey;
+      if (Array.isArray(resultKey))
+        resultKey = resultKey[0];
+      var items = jmespath$2.search(data, resultKey);
+      var continueIteration = true;
+      AWS$p.util.arrayEach(items, function(item) {
+        continueIteration = callback(null, item);
+        if (continueIteration === false) {
+          return AWS$p.util.abort;
+        }
+      });
+      return continueIteration;
+    }
+    this.eachPage(wrappedCallback);
+  },
+  isPageable: function isPageable() {
+    return this.service.paginationConfig(this.operation) ? true : false;
+  },
+  createReadStream: function createReadStream() {
+    var streams = AWS$p.util.stream;
+    var req = this;
+    var stream = null;
+    if (AWS$p.HttpClient.streamsApiVersion === 2) {
+      stream = new streams.PassThrough();
+      process.nextTick(function() {
+        req.send();
+      });
+    } else {
+      stream = new streams.Stream();
+      stream.readable = true;
+      stream.sent = false;
+      stream.on("newListener", function(event) {
+        if (!stream.sent && event === "data") {
+          stream.sent = true;
+          process.nextTick(function() {
+            req.send();
+          });
+        }
+      });
+    }
+    this.on("error", function(err) {
+      stream.emit("error", err);
+    });
+    this.on("httpHeaders", function streamHeaders(statusCode, headers, resp) {
+      if (statusCode < 300) {
+        req.removeListener("httpData", AWS$p.EventListeners.Core.HTTP_DATA);
+        req.removeListener("httpError", AWS$p.EventListeners.Core.HTTP_ERROR);
+        req.on("httpError", function streamHttpError(error2) {
+          resp.error = error2;
+          resp.error.retryable = false;
+        });
+        var shouldCheckContentLength = false;
+        var expectedLen;
+        if (req.httpRequest.method !== "HEAD") {
+          expectedLen = parseInt(headers["content-length"], 10);
+        }
+        if (expectedLen !== void 0 && !isNaN(expectedLen) && expectedLen >= 0) {
+          shouldCheckContentLength = true;
+          var receivedLen = 0;
+        }
+        var checkContentLengthAndEmit = function checkContentLengthAndEmit2() {
+          if (shouldCheckContentLength && receivedLen !== expectedLen) {
+            stream.emit("error", AWS$p.util.error(new Error("Stream content length mismatch. Received " + receivedLen + " of " + expectedLen + " bytes."), { code: "StreamContentLengthMismatch" }));
+          } else if (AWS$p.HttpClient.streamsApiVersion === 2) {
+            stream.end();
+          } else {
+            stream.emit("end");
+          }
+        };
+        var httpStream = resp.httpResponse.createUnbufferedStream();
+        if (AWS$p.HttpClient.streamsApiVersion === 2) {
+          if (shouldCheckContentLength) {
+            var lengthAccumulator = new streams.PassThrough();
+            lengthAccumulator._write = function(chunk) {
+              if (chunk && chunk.length) {
+                receivedLen += chunk.length;
+              }
+              return streams.PassThrough.prototype._write.apply(this, arguments);
+            };
+            lengthAccumulator.on("end", checkContentLengthAndEmit);
+            stream.on("error", function(err) {
+              shouldCheckContentLength = false;
+              httpStream.unpipe(lengthAccumulator);
+              lengthAccumulator.emit("end");
+              lengthAccumulator.end();
+            });
+            httpStream.pipe(lengthAccumulator).pipe(stream, { end: false });
+          } else {
+            httpStream.pipe(stream);
+          }
+        } else {
+          if (shouldCheckContentLength) {
+            httpStream.on("data", function(arg) {
+              if (arg && arg.length) {
+                receivedLen += arg.length;
+              }
+            });
+          }
+          httpStream.on("data", function(arg) {
+            stream.emit("data", arg);
+          });
+          httpStream.on("end", checkContentLengthAndEmit);
+        }
+        httpStream.on("error", function(err) {
+          shouldCheckContentLength = false;
+          stream.emit("error", err);
+        });
+      }
+    });
+    return stream;
+  },
+  emitEvent: function emit2(eventName, args, done) {
+    if (typeof args === "function") {
+      done = args;
+      args = null;
+    }
+    if (!done)
+      done = function() {
+      };
+    if (!args)
+      args = this.eventParameters(eventName, this.response);
+    var origEmit = AWS$p.SequentialExecutor.prototype.emit;
+    origEmit.call(this, eventName, args, function(err) {
+      if (err)
+        this.response.error = err;
+      done.call(this, err);
+    });
+  },
+  eventParameters: function eventParameters(eventName) {
+    switch (eventName) {
+      case "restart":
+      case "validate":
+      case "sign":
+      case "build":
+      case "afterValidate":
+      case "afterBuild":
+        return [this];
+      case "error":
+        return [this.response.error, this.response];
+      default:
+        return [this.response];
+    }
+  },
+  presign: function presign(expires, callback) {
+    if (!callback && typeof expires === "function") {
+      callback = expires;
+      expires = null;
+    }
+    return new AWS$p.Signers.Presign().sign(this.toGet(), expires, callback);
+  },
+  isPresigned: function isPresigned() {
+    return Object.prototype.hasOwnProperty.call(this.httpRequest.headers, "presigned-expires");
+  },
+  toUnauthenticated: function toUnauthenticated() {
+    this._unAuthenticated = true;
+    this.removeListener("validate", AWS$p.EventListeners.Core.VALIDATE_CREDENTIALS);
+    this.removeListener("sign", AWS$p.EventListeners.Core.SIGN);
+    return this;
+  },
+  toGet: function toGet() {
+    if (this.service.api.protocol === "query" || this.service.api.protocol === "ec2") {
+      this.removeListener("build", this.buildAsGet);
+      this.addListener("build", this.buildAsGet);
+    }
+    return this;
+  },
+  buildAsGet: function buildAsGet(request) {
+    request.httpRequest.method = "GET";
+    request.httpRequest.path = request.service.endpoint.path + "?" + request.httpRequest.body;
+    request.httpRequest.body = "";
+    delete request.httpRequest.headers["Content-Length"];
+    delete request.httpRequest.headers["Content-Type"];
+  },
+  haltHandlersOnError: function haltHandlersOnError() {
+    this._haltHandlersOnError = true;
+  }
+});
+AWS$p.Request.addPromisesToClass = function addPromisesToClass3(PromiseDependency) {
+  this.prototype.promise = function promise() {
+    var self2 = this;
+    this.httpRequest.appendToUserAgent("promise");
+    return new PromiseDependency(function(resolve3, reject) {
+      self2.on("complete", function(resp) {
+        if (resp.error) {
+          reject(resp.error);
+        } else {
+          resolve3(Object.defineProperty(resp.data || {}, "$response", { value: resp }));
+        }
+      });
+      self2.runTo();
+    });
+  };
+};
+AWS$p.Request.deletePromisesFromClass = function deletePromisesFromClass3() {
+  delete this.prototype.promise;
+};
+AWS$p.util.addPromises(AWS$p.Request);
+AWS$p.util.mixin(AWS$p.Request, AWS$p.SequentialExecutor);
+var AWS$o = core;
+var inherit$8 = AWS$o.util.inherit;
+var jmespath$1 = jmespath$3;
+AWS$o.Response = inherit$8({
+  constructor: function Response(request) {
+    this.request = request;
+    this.data = null;
+    this.error = null;
+    this.retryCount = 0;
+    this.redirectCount = 0;
+    this.httpResponse = new AWS$o.HttpResponse();
+    if (request) {
+      this.maxRetries = request.service.numRetries();
+      this.maxRedirects = request.service.config.maxRedirects;
+    }
+  },
+  nextPage: function nextPage(callback) {
+    var config2;
+    var service = this.request.service;
+    var operation2 = this.request.operation;
+    try {
+      config2 = service.paginationConfig(operation2, true);
+    } catch (e2) {
+      this.error = e2;
+    }
+    if (!this.hasNextPage()) {
+      if (callback)
+        callback(this.error, null);
+      else if (this.error)
+        throw this.error;
+      return null;
+    }
+    var params = AWS$o.util.copy(this.request.params);
+    if (!this.nextPageTokens) {
+      return callback ? callback(null, null) : null;
+    } else {
+      var inputTokens = config2.inputToken;
+      if (typeof inputTokens === "string")
+        inputTokens = [inputTokens];
+      for (var i = 0; i < inputTokens.length; i++) {
+        params[inputTokens[i]] = this.nextPageTokens[i];
+      }
+      return service.makeRequest(this.request.operation, params, callback);
+    }
+  },
+  hasNextPage: function hasNextPage() {
+    this.cacheNextPageTokens();
+    if (this.nextPageTokens)
+      return true;
+    if (this.nextPageTokens === void 0)
+      return void 0;
+    else
+      return false;
+  },
+  cacheNextPageTokens: function cacheNextPageTokens() {
+    if (Object.prototype.hasOwnProperty.call(this, "nextPageTokens"))
+      return this.nextPageTokens;
+    this.nextPageTokens = void 0;
+    var config2 = this.request.service.paginationConfig(this.request.operation);
+    if (!config2)
+      return this.nextPageTokens;
+    this.nextPageTokens = null;
+    if (config2.moreResults) {
+      if (!jmespath$1.search(this.data, config2.moreResults)) {
+        return this.nextPageTokens;
+      }
+    }
+    var exprs = config2.outputToken;
+    if (typeof exprs === "string")
+      exprs = [exprs];
+    AWS$o.util.arrayEach.call(this, exprs, function(expr) {
+      var output = jmespath$1.search(this.data, expr);
+      if (output) {
+        this.nextPageTokens = this.nextPageTokens || [];
+        this.nextPageTokens.push(output);
+      }
+    });
+    return this.nextPageTokens;
+  }
+});
+var AWS$n = core;
+var inherit$7 = AWS$n.util.inherit;
+var jmespath = jmespath$3;
+function CHECK_ACCEPTORS(resp) {
+  var waiter = resp.request._waiter;
+  var acceptors = waiter.config.acceptors;
+  var acceptorMatched = false;
+  var state = "retry";
+  acceptors.forEach(function(acceptor) {
+    if (!acceptorMatched) {
+      var matcher = waiter.matchers[acceptor.matcher];
+      if (matcher && matcher(resp, acceptor.expected, acceptor.argument)) {
+        acceptorMatched = true;
+        state = acceptor.state;
+      }
+    }
+  });
+  if (!acceptorMatched && resp.error)
+    state = "failure";
+  if (state === "success") {
+    waiter.setSuccess(resp);
+  } else {
+    waiter.setError(resp, state === "retry");
+  }
+}
+AWS$n.ResourceWaiter = inherit$7({
+  constructor: function constructor(service, state) {
+    this.service = service;
+    this.state = state;
+    this.loadWaiterConfig(this.state);
+  },
+  service: null,
+  state: null,
+  config: null,
+  matchers: {
+    path: function(resp, expected, argument) {
+      try {
+        var result = jmespath.search(resp.data, argument);
+      } catch (err) {
+        return false;
+      }
+      return jmespath.strictDeepEqual(result, expected);
+    },
+    pathAll: function(resp, expected, argument) {
+      try {
+        var results = jmespath.search(resp.data, argument);
+      } catch (err) {
+        return false;
+      }
+      if (!Array.isArray(results))
+        results = [results];
+      var numResults = results.length;
+      if (!numResults)
+        return false;
+      for (var ind = 0; ind < numResults; ind++) {
+        if (!jmespath.strictDeepEqual(results[ind], expected)) {
+          return false;
+        }
+      }
+      return true;
+    },
+    pathAny: function(resp, expected, argument) {
+      try {
+        var results = jmespath.search(resp.data, argument);
+      } catch (err) {
+        return false;
+      }
+      if (!Array.isArray(results))
+        results = [results];
+      var numResults = results.length;
+      for (var ind = 0; ind < numResults; ind++) {
+        if (jmespath.strictDeepEqual(results[ind], expected)) {
+          return true;
+        }
+      }
+      return false;
+    },
+    status: function(resp, expected) {
+      var statusCode = resp.httpResponse.statusCode;
+      return typeof statusCode === "number" && statusCode === expected;
+    },
+    error: function(resp, expected) {
+      if (typeof expected === "string" && resp.error) {
+        return expected === resp.error.code;
+      }
+      return expected === !!resp.error;
+    }
+  },
+  listeners: new AWS$n.SequentialExecutor().addNamedListeners(function(add) {
+    add("RETRY_CHECK", "retry", function(resp) {
+      var waiter = resp.request._waiter;
+      if (resp.error && resp.error.code === "ResourceNotReady") {
+        resp.error.retryDelay = (waiter.config.delay || 0) * 1e3;
+      }
+    });
+    add("CHECK_OUTPUT", "extractData", CHECK_ACCEPTORS);
+    add("CHECK_ERROR", "extractError", CHECK_ACCEPTORS);
+  }),
+  wait: function wait(params, callback) {
+    if (typeof params === "function") {
+      callback = params;
+      params = void 0;
+    }
+    if (params && params.$waiter) {
+      params = AWS$n.util.copy(params);
+      if (typeof params.$waiter.delay === "number") {
+        this.config.delay = params.$waiter.delay;
+      }
+      if (typeof params.$waiter.maxAttempts === "number") {
+        this.config.maxAttempts = params.$waiter.maxAttempts;
+      }
+      delete params.$waiter;
+    }
+    var request = this.service.makeRequest(this.config.operation, params);
+    request._waiter = this;
+    request.response.maxRetries = this.config.maxAttempts;
+    request.addListeners(this.listeners);
+    if (callback)
+      request.send(callback);
+    return request;
+  },
+  setSuccess: function setSuccess(resp) {
+    resp.error = null;
+    resp.data = resp.data || {};
+    resp.request.removeAllListeners("extractData");
+  },
+  setError: function setError(resp, retryable) {
+    resp.data = null;
+    resp.error = AWS$n.util.error(resp.error || new Error(), {
+      code: "ResourceNotReady",
+      message: "Resource is not in the state " + this.state,
+      retryable
+    });
+  },
+  loadWaiterConfig: function loadWaiterConfig(state) {
+    if (!this.service.api.waiters[state]) {
+      throw new AWS$n.util.error(new Error(), {
+        code: "StateNotFoundError",
+        message: "State " + state + " not found."
+      });
+    }
+    this.config = AWS$n.util.copy(this.service.api.waiters[state]);
+  }
+});
+var AWS$m = core;
+var inherit$6 = AWS$m.util.inherit;
+AWS$m.Signers.V2 = inherit$6(AWS$m.Signers.RequestSigner, {
+  addAuthorization: function addAuthorization(credentials, date) {
+    if (!date)
+      date = AWS$m.util.date.getDate();
+    var r2 = this.request;
+    r2.params.Timestamp = AWS$m.util.date.iso8601(date);
+    r2.params.SignatureVersion = "2";
+    r2.params.SignatureMethod = "HmacSHA256";
+    r2.params.AWSAccessKeyId = credentials.accessKeyId;
+    if (credentials.sessionToken) {
+      r2.params.SecurityToken = credentials.sessionToken;
+    }
+    delete r2.params.Signature;
+    r2.params.Signature = this.signature(credentials);
+    r2.body = AWS$m.util.queryParamsToString(r2.params);
+    r2.headers["Content-Length"] = r2.body.length;
+  },
+  signature: function signature(credentials) {
+    return AWS$m.util.crypto.hmac(credentials.secretAccessKey, this.stringToSign(), "base64");
+  },
+  stringToSign: function stringToSign() {
+    var parts = [];
+    parts.push(this.request.method);
+    parts.push(this.request.endpoint.host.toLowerCase());
+    parts.push(this.request.pathname());
+    parts.push(AWS$m.util.queryParamsToString(this.request.params));
+    return parts.join("\n");
+  }
+});
+AWS$m.Signers.V2;
+var AWS$l = core;
+var inherit$5 = AWS$l.util.inherit;
+AWS$l.Signers.V3 = inherit$5(AWS$l.Signers.RequestSigner, {
+  addAuthorization: function addAuthorization2(credentials, date) {
+    var datetime = AWS$l.util.date.rfc822(date);
+    this.request.headers["X-Amz-Date"] = datetime;
+    if (credentials.sessionToken) {
+      this.request.headers["x-amz-security-token"] = credentials.sessionToken;
+    }
+    this.request.headers["X-Amzn-Authorization"] = this.authorization(credentials, datetime);
+  },
+  authorization: function authorization(credentials) {
+    return "AWS3 AWSAccessKeyId=" + credentials.accessKeyId + ",Algorithm=HmacSHA256,SignedHeaders=" + this.signedHeaders() + ",Signature=" + this.signature(credentials);
+  },
+  signedHeaders: function signedHeaders() {
+    var headers = [];
+    AWS$l.util.arrayEach(this.headersToSign(), function iterator(h2) {
+      headers.push(h2.toLowerCase());
+    });
+    return headers.sort().join(";");
+  },
+  canonicalHeaders: function canonicalHeaders() {
+    var headers = this.request.headers;
+    var parts = [];
+    AWS$l.util.arrayEach(this.headersToSign(), function iterator(h2) {
+      parts.push(h2.toLowerCase().trim() + ":" + String(headers[h2]).trim());
+    });
+    return parts.sort().join("\n") + "\n";
+  },
+  headersToSign: function headersToSign() {
+    var headers = [];
+    AWS$l.util.each(this.request.headers, function iterator(k2) {
+      if (k2 === "Host" || k2 === "Content-Encoding" || k2.match(/^X-Amz/i)) {
+        headers.push(k2);
+      }
+    });
+    return headers;
+  },
+  signature: function signature2(credentials) {
+    return AWS$l.util.crypto.hmac(credentials.secretAccessKey, this.stringToSign(), "base64");
+  },
+  stringToSign: function stringToSign2() {
+    var parts = [];
+    parts.push(this.request.method);
+    parts.push("/");
+    parts.push("");
+    parts.push(this.canonicalHeaders());
+    parts.push(this.request.body);
+    return AWS$l.util.crypto.sha256(parts.join("\n"));
+  }
+});
+AWS$l.Signers.V3;
+var AWS$k = core;
+var inherit$4 = AWS$k.util.inherit;
+AWS$k.Signers.V3Https = inherit$4(AWS$k.Signers.V3, {
+  authorization: function authorization2(credentials) {
+    return "AWS3-HTTPS AWSAccessKeyId=" + credentials.accessKeyId + ",Algorithm=HmacSHA256,Signature=" + this.signature(credentials);
+  },
+  stringToSign: function stringToSign3() {
+    return this.request.headers["X-Amz-Date"];
+  }
+});
+AWS$k.Signers.V3Https;
+var AWS$j = core;
+var cachedSecret = {};
+var cacheQueue = [];
+var maxCacheEntries = 50;
+var v4Identifier = "aws4_request";
+var v4_credentials = {
+  createScope: function createScope(date, region, serviceName) {
+    return [
+      date.substr(0, 8),
+      region,
+      serviceName,
+      v4Identifier
+    ].join("/");
+  },
+  getSigningKey: function getSigningKey(credentials, date, region, service, shouldCache) {
+    var credsIdentifier = AWS$j.util.crypto.hmac(credentials.secretAccessKey, credentials.accessKeyId, "base64");
+    var cacheKey = [credsIdentifier, date, region, service].join("_");
+    shouldCache = shouldCache !== false;
+    if (shouldCache && cacheKey in cachedSecret) {
+      return cachedSecret[cacheKey];
+    }
+    var kDate = AWS$j.util.crypto.hmac("AWS4" + credentials.secretAccessKey, date, "buffer");
+    var kRegion = AWS$j.util.crypto.hmac(kDate, region, "buffer");
+    var kService = AWS$j.util.crypto.hmac(kRegion, service, "buffer");
+    var signingKey = AWS$j.util.crypto.hmac(kService, v4Identifier, "buffer");
+    if (shouldCache) {
+      cachedSecret[cacheKey] = signingKey;
+      cacheQueue.push(cacheKey);
+      if (cacheQueue.length > maxCacheEntries) {
+        delete cachedSecret[cacheQueue.shift()];
+      }
+    }
+    return signingKey;
+  },
+  emptyCache: function emptyCache() {
+    cachedSecret = {};
+    cacheQueue = [];
+  }
+};
+var AWS$i = core;
+var v4Credentials = v4_credentials;
+var inherit$3 = AWS$i.util.inherit;
+var expiresHeader$1 = "presigned-expires";
+AWS$i.Signers.V4 = inherit$3(AWS$i.Signers.RequestSigner, {
+  constructor: function V4(request, serviceName, options) {
+    AWS$i.Signers.RequestSigner.call(this, request);
+    this.serviceName = serviceName;
+    options = options || {};
+    this.signatureCache = typeof options.signatureCache === "boolean" ? options.signatureCache : true;
+    this.operation = options.operation;
+    this.signatureVersion = options.signatureVersion;
+  },
+  algorithm: "AWS4-HMAC-SHA256",
+  addAuthorization: function addAuthorization3(credentials, date) {
+    var datetime = AWS$i.util.date.iso8601(date).replace(/[:\-]|\.\d{3}/g, "");
+    if (this.isPresigned()) {
+      this.updateForPresigned(credentials, datetime);
+    } else {
+      this.addHeaders(credentials, datetime);
+    }
+    this.request.headers["Authorization"] = this.authorization(credentials, datetime);
+  },
+  addHeaders: function addHeaders(credentials, datetime) {
+    this.request.headers["X-Amz-Date"] = datetime;
+    if (credentials.sessionToken) {
+      this.request.headers["x-amz-security-token"] = credentials.sessionToken;
+    }
+  },
+  updateForPresigned: function updateForPresigned(credentials, datetime) {
+    var credString = this.credentialString(datetime);
+    var qs = {
+      "X-Amz-Date": datetime,
+      "X-Amz-Algorithm": this.algorithm,
+      "X-Amz-Credential": credentials.accessKeyId + "/" + credString,
+      "X-Amz-Expires": this.request.headers[expiresHeader$1],
+      "X-Amz-SignedHeaders": this.signedHeaders()
+    };
+    if (credentials.sessionToken) {
+      qs["X-Amz-Security-Token"] = credentials.sessionToken;
+    }
+    if (this.request.headers["Content-Type"]) {
+      qs["Content-Type"] = this.request.headers["Content-Type"];
+    }
+    if (this.request.headers["Content-MD5"]) {
+      qs["Content-MD5"] = this.request.headers["Content-MD5"];
+    }
+    if (this.request.headers["Cache-Control"]) {
+      qs["Cache-Control"] = this.request.headers["Cache-Control"];
+    }
+    AWS$i.util.each.call(this, this.request.headers, function(key, value) {
+      if (key === expiresHeader$1)
+        return;
+      if (this.isSignableHeader(key)) {
+        var lowerKey = key.toLowerCase();
+        if (lowerKey.indexOf("x-amz-meta-") === 0) {
+          qs[lowerKey] = value;
+        } else if (lowerKey.indexOf("x-amz-") === 0) {
+          qs[key] = value;
+        }
+      }
+    });
+    var sep = this.request.path.indexOf("?") >= 0 ? "&" : "?";
+    this.request.path += sep + AWS$i.util.queryParamsToString(qs);
+  },
+  authorization: function authorization3(credentials, datetime) {
+    var parts = [];
+    var credString = this.credentialString(datetime);
+    parts.push(this.algorithm + " Credential=" + credentials.accessKeyId + "/" + credString);
+    parts.push("SignedHeaders=" + this.signedHeaders());
+    parts.push("Signature=" + this.signature(credentials, datetime));
+    return parts.join(", ");
+  },
+  signature: function signature3(credentials, datetime) {
+    var signingKey = v4Credentials.getSigningKey(credentials, datetime.substr(0, 8), this.request.region, this.serviceName, this.signatureCache);
+    return AWS$i.util.crypto.hmac(signingKey, this.stringToSign(datetime), "hex");
+  },
+  stringToSign: function stringToSign4(datetime) {
+    var parts = [];
+    parts.push("AWS4-HMAC-SHA256");
+    parts.push(datetime);
+    parts.push(this.credentialString(datetime));
+    parts.push(this.hexEncodedHash(this.canonicalString()));
+    return parts.join("\n");
+  },
+  canonicalString: function canonicalString() {
+    var parts = [], pathname2 = this.request.pathname();
+    if (this.serviceName !== "s3" && this.signatureVersion !== "s3v4")
+      pathname2 = AWS$i.util.uriEscapePath(pathname2);
+    parts.push(this.request.method);
+    parts.push(pathname2);
+    parts.push(this.request.search());
+    parts.push(this.canonicalHeaders() + "\n");
+    parts.push(this.signedHeaders());
+    parts.push(this.hexEncodedBodyHash());
+    return parts.join("\n");
+  },
+  canonicalHeaders: function canonicalHeaders2() {
+    var headers = [];
+    AWS$i.util.each.call(this, this.request.headers, function(key, item) {
+      headers.push([key, item]);
+    });
+    headers.sort(function(a2, b2) {
+      return a2[0].toLowerCase() < b2[0].toLowerCase() ? -1 : 1;
+    });
+    var parts = [];
+    AWS$i.util.arrayEach.call(this, headers, function(item) {
+      var key = item[0].toLowerCase();
+      if (this.isSignableHeader(key)) {
+        var value = item[1];
+        if (typeof value === "undefined" || value === null || typeof value.toString !== "function") {
+          throw AWS$i.util.error(new Error("Header " + key + " contains invalid value"), {
+            code: "InvalidHeader"
+          });
+        }
+        parts.push(key + ":" + this.canonicalHeaderValues(value.toString()));
+      }
+    });
+    return parts.join("\n");
+  },
+  canonicalHeaderValues: function canonicalHeaderValues(values) {
+    return values.replace(/\s+/g, " ").replace(/^\s+|\s+$/g, "");
+  },
+  signedHeaders: function signedHeaders2() {
+    var keys = [];
+    AWS$i.util.each.call(this, this.request.headers, function(key) {
+      key = key.toLowerCase();
+      if (this.isSignableHeader(key))
+        keys.push(key);
+    });
+    return keys.sort().join(";");
+  },
+  credentialString: function credentialString(datetime) {
+    return v4Credentials.createScope(datetime.substr(0, 8), this.request.region, this.serviceName);
+  },
+  hexEncodedHash: function hash(string2) {
+    return AWS$i.util.crypto.sha256(string2, "hex");
+  },
+  hexEncodedBodyHash: function hexEncodedBodyHash() {
+    var request = this.request;
+    if (this.isPresigned() && ["s3", "s3-object-lambda"].indexOf(this.serviceName) > -1 && !request.body) {
+      return "UNSIGNED-PAYLOAD";
+    } else if (request.headers["X-Amz-Content-Sha256"]) {
+      return request.headers["X-Amz-Content-Sha256"];
+    } else {
+      return this.hexEncodedHash(this.request.body || "");
+    }
+  },
+  unsignableHeaders: [
+    "authorization",
+    "content-type",
+    "content-length",
+    "user-agent",
+    expiresHeader$1,
+    "expect",
+    "x-amzn-trace-id"
+  ],
+  isSignableHeader: function isSignableHeader(key) {
+    if (key.toLowerCase().indexOf("x-amz-") === 0)
+      return true;
+    return this.unsignableHeaders.indexOf(key) < 0;
+  },
+  isPresigned: function isPresigned2() {
+    return this.request.headers[expiresHeader$1] ? true : false;
+  }
+});
+AWS$i.Signers.V4;
+var AWS$h = core;
+var inherit$2 = AWS$h.util.inherit;
+AWS$h.Signers.S3 = inherit$2(AWS$h.Signers.RequestSigner, {
+  subResources: {
+    "acl": 1,
+    "accelerate": 1,
+    "analytics": 1,
+    "cors": 1,
+    "lifecycle": 1,
+    "delete": 1,
+    "inventory": 1,
+    "location": 1,
+    "logging": 1,
+    "metrics": 1,
+    "notification": 1,
+    "partNumber": 1,
+    "policy": 1,
+    "requestPayment": 1,
+    "replication": 1,
+    "restore": 1,
+    "tagging": 1,
+    "torrent": 1,
+    "uploadId": 1,
+    "uploads": 1,
+    "versionId": 1,
+    "versioning": 1,
+    "versions": 1,
+    "website": 1
+  },
+  responseHeaders: {
+    "response-content-type": 1,
+    "response-content-language": 1,
+    "response-expires": 1,
+    "response-cache-control": 1,
+    "response-content-disposition": 1,
+    "response-content-encoding": 1
+  },
+  addAuthorization: function addAuthorization4(credentials, date) {
+    if (!this.request.headers["presigned-expires"]) {
+      this.request.headers["X-Amz-Date"] = AWS$h.util.date.rfc822(date);
+    }
+    if (credentials.sessionToken) {
+      this.request.headers["x-amz-security-token"] = credentials.sessionToken;
+    }
+    var signature4 = this.sign(credentials.secretAccessKey, this.stringToSign());
+    var auth = "AWS " + credentials.accessKeyId + ":" + signature4;
+    this.request.headers["Authorization"] = auth;
+  },
+  stringToSign: function stringToSign5() {
+    var r2 = this.request;
+    var parts = [];
+    parts.push(r2.method);
+    parts.push(r2.headers["Content-MD5"] || "");
+    parts.push(r2.headers["Content-Type"] || "");
+    parts.push(r2.headers["presigned-expires"] || "");
+    var headers = this.canonicalizedAmzHeaders();
+    if (headers)
+      parts.push(headers);
+    parts.push(this.canonicalizedResource());
+    return parts.join("\n");
+  },
+  canonicalizedAmzHeaders: function canonicalizedAmzHeaders() {
+    var amzHeaders = [];
+    AWS$h.util.each(this.request.headers, function(name) {
+      if (name.match(/^x-amz-/i))
+        amzHeaders.push(name);
+    });
+    amzHeaders.sort(function(a2, b2) {
+      return a2.toLowerCase() < b2.toLowerCase() ? -1 : 1;
+    });
+    var parts = [];
+    AWS$h.util.arrayEach.call(this, amzHeaders, function(name) {
+      parts.push(name.toLowerCase() + ":" + String(this.request.headers[name]));
+    });
+    return parts.join("\n");
+  },
+  canonicalizedResource: function canonicalizedResource() {
+    var r2 = this.request;
+    var parts = r2.path.split("?");
+    var path = parts[0];
+    var querystring2 = parts[1];
+    var resource = "";
+    if (r2.virtualHostedBucket)
+      resource += "/" + r2.virtualHostedBucket;
+    resource += path;
+    if (querystring2) {
+      var resources = [];
+      AWS$h.util.arrayEach.call(this, querystring2.split("&"), function(param) {
+        var name = param.split("=")[0];
+        var value = param.split("=")[1];
+        if (this.subResources[name] || this.responseHeaders[name]) {
+          var subresource = { name };
+          if (value !== void 0) {
+            if (this.subResources[name]) {
+              subresource.value = value;
+            } else {
+              subresource.value = decodeURIComponent(value);
+            }
+          }
+          resources.push(subresource);
+        }
+      });
+      resources.sort(function(a2, b2) {
+        return a2.name < b2.name ? -1 : 1;
+      });
+      if (resources.length) {
+        querystring2 = [];
+        AWS$h.util.arrayEach(resources, function(res) {
+          if (res.value === void 0) {
+            querystring2.push(res.name);
+          } else {
+            querystring2.push(res.name + "=" + res.value);
+          }
+        });
+        resource += "?" + querystring2.join("&");
+      }
+    }
+    return resource;
+  },
+  sign: function sign(secret, string2) {
+    return AWS$h.util.crypto.hmac(secret, string2, "base64", "sha1");
+  }
+});
+AWS$h.Signers.S3;
+var AWS$g = core;
+var inherit$1 = AWS$g.util.inherit;
+var expiresHeader = "presigned-expires";
+function signedUrlBuilder(request) {
+  var expires = request.httpRequest.headers[expiresHeader];
+  var signerClass = request.service.getSignerClass(request);
+  delete request.httpRequest.headers["User-Agent"];
+  delete request.httpRequest.headers["X-Amz-User-Agent"];
+  if (signerClass === AWS$g.Signers.V4) {
+    if (expires > 604800) {
+      var message = "Presigning does not support expiry time greater than a week with SigV4 signing.";
+      throw AWS$g.util.error(new Error(), {
+        code: "InvalidExpiryTime",
+        message,
+        retryable: false
+      });
+    }
+    request.httpRequest.headers[expiresHeader] = expires;
+  } else if (signerClass === AWS$g.Signers.S3) {
+    var now3 = request.service ? request.service.getSkewCorrectedDate() : AWS$g.util.date.getDate();
+    request.httpRequest.headers[expiresHeader] = parseInt(AWS$g.util.date.unixTimestamp(now3) + expires, 10).toString();
+  } else {
+    throw AWS$g.util.error(new Error(), {
+      message: "Presigning only supports S3 or SigV4 signing.",
+      code: "UnsupportedSigner",
+      retryable: false
+    });
+  }
+}
+function signedUrlSigner(request) {
+  var endpoint = request.httpRequest.endpoint;
+  var parsedUrl = AWS$g.util.urlParse(request.httpRequest.path);
+  var queryParams = {};
+  if (parsedUrl.search) {
+    queryParams = AWS$g.util.queryStringParse(parsedUrl.search.substr(1));
+  }
+  var auth = request.httpRequest.headers["Authorization"].split(" ");
+  if (auth[0] === "AWS") {
+    auth = auth[1].split(":");
+    queryParams["Signature"] = auth.pop();
+    queryParams["AWSAccessKeyId"] = auth.join(":");
+    AWS$g.util.each(request.httpRequest.headers, function(key, value) {
+      if (key === expiresHeader)
+        key = "Expires";
+      if (key.indexOf("x-amz-meta-") === 0) {
+        delete queryParams[key];
+        key = key.toLowerCase();
+      }
+      queryParams[key] = value;
+    });
+    delete request.httpRequest.headers[expiresHeader];
+    delete queryParams["Authorization"];
+    delete queryParams["Host"];
+  } else if (auth[0] === "AWS4-HMAC-SHA256") {
+    auth.shift();
+    var rest2 = auth.join(" ");
+    var signature4 = rest2.match(/Signature=(.*?)(?:,|\s|\r?\n|$)/)[1];
+    queryParams["X-Amz-Signature"] = signature4;
+    delete queryParams["Expires"];
+  }
+  endpoint.pathname = parsedUrl.pathname;
+  endpoint.search = AWS$g.util.queryParamsToString(queryParams);
+}
+AWS$g.Signers.Presign = inherit$1({
+  sign: function sign2(request, expireTime, callback) {
+    request.httpRequest.headers[expiresHeader] = expireTime || 3600;
+    request.on("build", signedUrlBuilder);
+    request.on("sign", signedUrlSigner);
+    request.removeListener("afterBuild", AWS$g.EventListeners.Core.SET_CONTENT_LENGTH);
+    request.removeListener("afterBuild", AWS$g.EventListeners.Core.COMPUTE_SHA256);
+    request.emit("beforePresign", [request]);
+    if (callback) {
+      request.build(function() {
+        if (this.response.error)
+          callback(this.response.error);
+        else {
+          callback(null, AWS$g.util.urlFormat(request.httpRequest.endpoint));
+        }
+      });
+    } else {
+      request.build();
+      if (request.response.error)
+        throw request.response.error;
+      return AWS$g.util.urlFormat(request.httpRequest.endpoint);
+    }
+  }
+});
+AWS$g.Signers.Presign;
+var AWS$f = core;
+var inherit = AWS$f.util.inherit;
+AWS$f.Signers.RequestSigner = inherit({
+  constructor: function RequestSigner(request) {
+    this.request = request;
+  },
+  setServiceClientId: function setServiceClientId(id) {
+    this.serviceClientId = id;
+  },
+  getServiceClientId: function getServiceClientId() {
+    return this.serviceClientId;
+  }
+});
+AWS$f.Signers.RequestSigner.getVersion = function getVersion(version2) {
+  switch (version2) {
+    case "v2":
+      return AWS$f.Signers.V2;
+    case "v3":
+      return AWS$f.Signers.V3;
+    case "s3v4":
+      return AWS$f.Signers.V4;
+    case "v4":
+      return AWS$f.Signers.V4;
+    case "s3":
+      return AWS$f.Signers.S3;
+    case "v3https":
+      return AWS$f.Signers.V3Https;
+  }
+  throw new Error("Unknown signing version " + version2);
+};
+var AWS$e = core;
+AWS$e.ParamValidator = AWS$e.util.inherit({
+  constructor: function ParamValidator(validation) {
+    if (validation === true || validation === void 0) {
+      validation = { "min": true };
+    }
+    this.validation = validation;
+  },
+  validate: function validate(shape2, params, context) {
+    this.errors = [];
+    this.validateMember(shape2, params || {}, context || "params");
+    if (this.errors.length > 1) {
+      var msg = this.errors.join("\n* ");
+      msg = "There were " + this.errors.length + " validation errors:\n* " + msg;
+      throw AWS$e.util.error(new Error(msg), { code: "MultipleValidationErrors", errors: this.errors });
+    } else if (this.errors.length === 1) {
+      throw this.errors[0];
+    } else {
+      return true;
+    }
+  },
+  fail: function fail(code2, message) {
+    this.errors.push(AWS$e.util.error(new Error(message), { code: code2 }));
+  },
+  validateStructure: function validateStructure(shape2, params, context) {
+    if (shape2.isDocument)
+      return true;
+    this.validateType(params, context, ["object"], "structure");
+    var paramName;
+    for (var i = 0; shape2.required && i < shape2.required.length; i++) {
+      paramName = shape2.required[i];
+      var value = params[paramName];
+      if (value === void 0 || value === null) {
+        this.fail("MissingRequiredParameter", "Missing required key '" + paramName + "' in " + context);
+      }
+    }
+    for (paramName in params) {
+      if (!Object.prototype.hasOwnProperty.call(params, paramName))
+        continue;
+      var paramValue = params[paramName], memberShape = shape2.members[paramName];
+      if (memberShape !== void 0) {
+        var memberContext = [context, paramName].join(".");
+        this.validateMember(memberShape, paramValue, memberContext);
+      } else if (paramValue !== void 0 && paramValue !== null) {
+        this.fail("UnexpectedParameter", "Unexpected key '" + paramName + "' found in " + context);
+      }
+    }
+    return true;
+  },
+  validateMember: function validateMember(shape2, param, context) {
+    switch (shape2.type) {
+      case "structure":
+        return this.validateStructure(shape2, param, context);
+      case "list":
+        return this.validateList(shape2, param, context);
+      case "map":
+        return this.validateMap(shape2, param, context);
+      default:
+        return this.validateScalar(shape2, param, context);
+    }
+  },
+  validateList: function validateList(shape2, params, context) {
+    if (this.validateType(params, context, [Array])) {
+      this.validateRange(shape2, params.length, context, "list member count");
+      for (var i = 0; i < params.length; i++) {
+        this.validateMember(shape2.member, params[i], context + "[" + i + "]");
+      }
+    }
+  },
+  validateMap: function validateMap(shape2, params, context) {
+    if (this.validateType(params, context, ["object"], "map")) {
+      var mapCount = 0;
+      for (var param in params) {
+        if (!Object.prototype.hasOwnProperty.call(params, param))
+          continue;
+        this.validateMember(shape2.key, param, context + "[key='" + param + "']");
+        this.validateMember(shape2.value, params[param], context + "['" + param + "']");
+        mapCount++;
+      }
+      this.validateRange(shape2, mapCount, context, "map member count");
+    }
+  },
+  validateScalar: function validateScalar(shape2, value, context) {
+    switch (shape2.type) {
+      case null:
+      case void 0:
+      case "string":
+        return this.validateString(shape2, value, context);
+      case "base64":
+      case "binary":
+        return this.validatePayload(value, context);
+      case "integer":
+      case "float":
+        return this.validateNumber(shape2, value, context);
+      case "boolean":
+        return this.validateType(value, context, ["boolean"]);
+      case "timestamp":
+        return this.validateType(value, context, [
+          Date,
+          /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d+)?Z$/,
+          "number"
+        ], "Date object, ISO-8601 string, or a UNIX timestamp");
+      default:
+        return this.fail("UnkownType", "Unhandled type " + shape2.type + " for " + context);
+    }
+  },
+  validateString: function validateString(shape2, value, context) {
+    var validTypes = ["string"];
+    if (shape2.isJsonValue) {
+      validTypes = validTypes.concat(["number", "object", "boolean"]);
+    }
+    if (value !== null && this.validateType(value, context, validTypes)) {
+      this.validateEnum(shape2, value, context);
+      this.validateRange(shape2, value.length, context, "string length");
+      this.validatePattern(shape2, value, context);
+      this.validateUri(shape2, value, context);
+    }
+  },
+  validateUri: function validateUri(shape2, value, context) {
+    if (shape2["location"] === "uri") {
+      if (value.length === 0) {
+        this.fail("UriParameterError", 'Expected uri parameter to have length >= 1, but found "' + value + '" for ' + context);
+      }
+    }
+  },
+  validatePattern: function validatePattern(shape2, value, context) {
+    if (this.validation["pattern"] && shape2["pattern"] !== void 0) {
+      if (!new RegExp(shape2["pattern"]).test(value)) {
+        this.fail("PatternMatchError", 'Provided value "' + value + '" does not match regex pattern /' + shape2["pattern"] + "/ for " + context);
+      }
+    }
+  },
+  validateRange: function validateRange(shape2, value, context, descriptor) {
+    if (this.validation["min"]) {
+      if (shape2["min"] !== void 0 && value < shape2["min"]) {
+        this.fail("MinRangeError", "Expected " + descriptor + " >= " + shape2["min"] + ", but found " + value + " for " + context);
+      }
+    }
+    if (this.validation["max"]) {
+      if (shape2["max"] !== void 0 && value > shape2["max"]) {
+        this.fail("MaxRangeError", "Expected " + descriptor + " <= " + shape2["max"] + ", but found " + value + " for " + context);
+      }
+    }
+  },
+  validateEnum: function validateRange2(shape2, value, context) {
+    if (this.validation["enum"] && shape2["enum"] !== void 0) {
+      if (shape2["enum"].indexOf(value) === -1) {
+        this.fail("EnumError", "Found string value of " + value + ", but expected " + shape2["enum"].join("|") + " for " + context);
+      }
+    }
+  },
+  validateType: function validateType(value, context, acceptedTypes, type) {
+    if (value === null || value === void 0)
+      return false;
+    var foundInvalidType = false;
+    for (var i = 0; i < acceptedTypes.length; i++) {
+      if (typeof acceptedTypes[i] === "string") {
+        if (typeof value === acceptedTypes[i])
+          return true;
+      } else if (acceptedTypes[i] instanceof RegExp) {
+        if ((value || "").toString().match(acceptedTypes[i]))
+          return true;
+      } else {
+        if (value instanceof acceptedTypes[i])
+          return true;
+        if (AWS$e.util.isType(value, acceptedTypes[i]))
+          return true;
+        if (!type && !foundInvalidType)
+          acceptedTypes = acceptedTypes.slice();
+        acceptedTypes[i] = AWS$e.util.typeName(acceptedTypes[i]);
+      }
+      foundInvalidType = true;
+    }
+    var acceptedType = type;
+    if (!acceptedType) {
+      acceptedType = acceptedTypes.join(", ").replace(/,([^,]+)$/, ", or$1");
+    }
+    var vowel = acceptedType.match(/^[aeiou]/i) ? "n" : "";
+    this.fail("InvalidParameterType", "Expected " + context + " to be a" + vowel + " " + acceptedType);
+    return false;
+  },
+  validateNumber: function validateNumber(shape2, value, context) {
+    if (value === null || value === void 0)
+      return;
+    if (typeof value === "string") {
+      var castedValue = parseFloat(value);
+      if (castedValue.toString() === value)
+        value = castedValue;
+    }
+    if (this.validateType(value, context, ["number"])) {
+      this.validateRange(shape2, value, context, "numeric value");
+    }
+  },
+  validatePayload: function validatePayload(value, context) {
+    if (value === null || value === void 0)
+      return;
+    if (typeof value === "string")
+      return;
+    if (value && typeof value.byteLength === "number")
+      return;
+    if (AWS$e.util.isNode()) {
+      var Stream = AWS$e.util.stream.Stream;
+      if (AWS$e.util.Buffer.isBuffer(value) || value instanceof Stream)
+        return;
+    } else {
+      if (typeof Blob !== void 0 && value instanceof Blob)
+        return;
+    }
+    var types = ["Buffer", "Stream", "File", "Blob", "ArrayBuffer", "DataView"];
+    if (value) {
+      for (var i = 0; i < types.length; i++) {
+        if (AWS$e.util.isType(value, types[i]))
+          return;
+        if (AWS$e.util.typeName(value.constructor) === types[i])
+          return;
+      }
+    }
+    this.fail("InvalidParameterType", "Expected " + context + " to be a string, Buffer, Stream, Blob, or typed array object");
+  }
+});
+var AWS$d = { util: util_1 };
+var core = AWS$d;
+AWS$d.util.update(AWS$d, {
+  VERSION: "2.1092.0",
+  Signers: {},
+  Protocol: {
+    Json: json,
+    Query: query,
+    Rest: rest,
+    RestJson: rest_json,
+    RestXml: rest_xml
+  },
+  XML: {
+    Builder: builder,
+    Parser: null
+  },
+  JSON: {
+    Builder: builder$1,
+    Parser: parser
+  },
+  Model: {
+    Api: api,
+    Operation: operation,
+    Shape: shape,
+    Paginator: paginator,
+    ResourceWaiter: resource_waiter
+  },
+  apiLoader: api_loader,
+  EndpointCache: endpointCache.EndpointCache
+});
+AWS$d.events = new AWS$d.SequentialExecutor();
+AWS$d.util.memoizedProperty(AWS$d, "endpointCache", function() {
+  return new AWS$d.EndpointCache(AWS$d.config.endpointCacheSize);
+}, true);
+var rngBrowser = { exports: {} };
+var getRandomValues = typeof crypto != "undefined" && crypto.getRandomValues && crypto.getRandomValues.bind(crypto) || typeof msCrypto != "undefined" && typeof window.msCrypto.getRandomValues == "function" && msCrypto.getRandomValues.bind(msCrypto);
+if (getRandomValues) {
+  var rnds8 = new Uint8Array(16);
+  rngBrowser.exports = function whatwgRNG() {
+    getRandomValues(rnds8);
+    return rnds8;
+  };
+} else {
+  var rnds = new Array(16);
+  rngBrowser.exports = function mathRNG() {
+    for (var i = 0, r2; i < 16; i++) {
+      if ((i & 3) === 0)
+        r2 = Math.random() * 4294967296;
+      rnds[i] = r2 >>> ((i & 3) << 3) & 255;
+    }
+    return rnds;
+  };
+}
+var byteToHex = [];
+for (var i = 0; i < 256; ++i) {
+  byteToHex[i] = (i + 256).toString(16).substr(1);
+}
+function bytesToUuid$2(buf, offset2) {
+  var i = offset2 || 0;
+  var bth = byteToHex;
+  return [
+    bth[buf[i++]],
+    bth[buf[i++]],
+    bth[buf[i++]],
+    bth[buf[i++]],
+    "-",
+    bth[buf[i++]],
+    bth[buf[i++]],
+    "-",
+    bth[buf[i++]],
+    bth[buf[i++]],
+    "-",
+    bth[buf[i++]],
+    bth[buf[i++]],
+    "-",
+    bth[buf[i++]],
+    bth[buf[i++]],
+    bth[buf[i++]],
+    bth[buf[i++]],
+    bth[buf[i++]],
+    bth[buf[i++]]
+  ].join("");
+}
+var bytesToUuid_1 = bytesToUuid$2;
+var rng$1 = rngBrowser.exports;
+var bytesToUuid$1 = bytesToUuid_1;
+var _nodeId;
+var _clockseq;
+var _lastMSecs = 0;
+var _lastNSecs = 0;
+function v1$1(options, buf, offset2) {
+  var i = buf && offset2 || 0;
+  var b2 = buf || [];
+  options = options || {};
+  var node = options.node || _nodeId;
+  var clockseq = options.clockseq !== void 0 ? options.clockseq : _clockseq;
+  if (node == null || clockseq == null) {
+    var seedBytes = rng$1();
+    if (node == null) {
+      node = _nodeId = [
+        seedBytes[0] | 1,
+        seedBytes[1],
+        seedBytes[2],
+        seedBytes[3],
+        seedBytes[4],
+        seedBytes[5]
+      ];
+    }
+    if (clockseq == null) {
+      clockseq = _clockseq = (seedBytes[6] << 8 | seedBytes[7]) & 16383;
+    }
+  }
+  var msecs = options.msecs !== void 0 ? options.msecs : new Date().getTime();
+  var nsecs = options.nsecs !== void 0 ? options.nsecs : _lastNSecs + 1;
+  var dt = msecs - _lastMSecs + (nsecs - _lastNSecs) / 1e4;
+  if (dt < 0 && options.clockseq === void 0) {
+    clockseq = clockseq + 1 & 16383;
+  }
+  if ((dt < 0 || msecs > _lastMSecs) && options.nsecs === void 0) {
+    nsecs = 0;
+  }
+  if (nsecs >= 1e4) {
+    throw new Error("uuid.v1(): Can't create more than 10M uuids/sec");
+  }
+  _lastMSecs = msecs;
+  _lastNSecs = nsecs;
+  _clockseq = clockseq;
+  msecs += 122192928e5;
+  var tl = ((msecs & 268435455) * 1e4 + nsecs) % 4294967296;
+  b2[i++] = tl >>> 24 & 255;
+  b2[i++] = tl >>> 16 & 255;
+  b2[i++] = tl >>> 8 & 255;
+  b2[i++] = tl & 255;
+  var tmh = msecs / 4294967296 * 1e4 & 268435455;
+  b2[i++] = tmh >>> 8 & 255;
+  b2[i++] = tmh & 255;
+  b2[i++] = tmh >>> 24 & 15 | 16;
+  b2[i++] = tmh >>> 16 & 255;
+  b2[i++] = clockseq >>> 8 | 128;
+  b2[i++] = clockseq & 255;
+  for (var n2 = 0; n2 < 6; ++n2) {
+    b2[i + n2] = node[n2];
+  }
+  return buf ? buf : bytesToUuid$1(b2);
+}
+var v1_1 = v1$1;
+var rng = rngBrowser.exports;
+var bytesToUuid = bytesToUuid_1;
+function v4$1(options, buf, offset2) {
+  var i = buf && offset2 || 0;
+  if (typeof options == "string") {
+    buf = options === "binary" ? new Array(16) : null;
+    options = null;
+  }
+  options = options || {};
+  var rnds = options.random || (options.rng || rng)();
+  rnds[6] = rnds[6] & 15 | 64;
+  rnds[8] = rnds[8] & 63 | 128;
+  if (buf) {
+    for (var ii2 = 0; ii2 < 16; ++ii2) {
+      buf[i + ii2] = rnds[ii2];
+    }
+  }
+  return buf || bytesToUuid(rnds);
+}
+var v4_1 = v4$1;
+var v1 = v1_1;
+var v4 = v4_1;
+var uuid = v4;
+uuid.v1 = v1;
+uuid.v4 = v4;
+var uuid_1 = uuid;
+var AWS$c;
+var util$4 = {
+  environment: "nodejs",
+  engine: function engine() {
+    if (util$4.isBrowser() && typeof navigator !== "undefined") {
+      return navigator.userAgent;
+    } else {
+      var engine2 = process.platform + "/" + process.version;
+      if ({}.AWS_EXECUTION_ENV) {
+        engine2 += " exec-env/" + {}.AWS_EXECUTION_ENV;
+      }
+      return engine2;
+    }
+  },
+  userAgent: function userAgent2() {
+    var name = util$4.environment;
+    var agent = "aws-sdk-" + name + "/" + core.VERSION;
+    if (name === "nodejs")
+      agent += " " + util$4.engine();
+    return agent;
+  },
+  uriEscape: function uriEscape(string2) {
+    var output = encodeURIComponent(string2);
+    output = output.replace(/[^A-Za-z0-9_.~\-%]+/g, escape);
+    output = output.replace(/[*]/g, function(ch) {
+      return "%" + ch.charCodeAt(0).toString(16).toUpperCase();
+    });
+    return output;
+  },
+  uriEscapePath: function uriEscapePath(string2) {
+    var parts = [];
+    util$4.arrayEach(string2.split("/"), function(part) {
+      parts.push(util$4.uriEscape(part));
+    });
+    return parts.join("/");
+  },
+  urlParse: function urlParse(url2) {
+    return util$4.url.parse(url2);
+  },
+  urlFormat: function urlFormat(url2) {
+    return util$4.url.format(url2);
+  },
+  queryStringParse: function queryStringParse(qs) {
+    return util$4.querystring.parse(qs);
+  },
+  queryParamsToString: function queryParamsToString(params) {
+    var items = [];
+    var escape2 = util$4.uriEscape;
+    var sortedKeys = Object.keys(params).sort();
+    util$4.arrayEach(sortedKeys, function(name) {
+      var value = params[name];
+      var ename = escape2(name);
+      var result = ename + "=";
+      if (Array.isArray(value)) {
+        var vals = [];
+        util$4.arrayEach(value, function(item) {
+          vals.push(escape2(item));
+        });
+        result = ename + "=" + vals.sort().join("&" + ename + "=");
+      } else if (value !== void 0 && value !== null) {
+        result = ename + "=" + escape2(value);
+      }
+      items.push(result);
+    });
+    return items.join("&");
+  },
+  readFileSync: function readFileSync(path) {
+    if (util$4.isBrowser())
+      return null;
+    return require$$1$2.readFileSync(path, "utf-8");
+  },
+  base64: {
+    encode: function encode64(string2) {
+      if (typeof string2 === "number") {
+        throw util$4.error(new Error("Cannot base64 encode number " + string2));
+      }
+      if (string2 === null || typeof string2 === "undefined") {
+        return string2;
+      }
+      var buf = util$4.buffer.toBuffer(string2);
+      return buf.toString("base64");
+    },
+    decode: function decode64(string2) {
+      if (typeof string2 === "number") {
+        throw util$4.error(new Error("Cannot base64 decode number " + string2));
+      }
+      if (string2 === null || typeof string2 === "undefined") {
+        return string2;
+      }
+      return util$4.buffer.toBuffer(string2, "base64");
+    }
+  },
+  buffer: {
+    toBuffer: function(data, encoding) {
+      return typeof util$4.Buffer.from === "function" && util$4.Buffer.from !== Uint8Array.from ? util$4.Buffer.from(data, encoding) : new util$4.Buffer(data, encoding);
+    },
+    alloc: function(size, fill, encoding) {
+      if (typeof size !== "number") {
+        throw new Error("size passed to alloc must be a number.");
+      }
+      if (typeof util$4.Buffer.alloc === "function") {
+        return util$4.Buffer.alloc(size, fill, encoding);
+      } else {
+        var buf = new util$4.Buffer(size);
+        if (fill !== void 0 && typeof buf.fill === "function") {
+          buf.fill(fill, void 0, void 0, encoding);
+        }
+        return buf;
+      }
+    },
+    toStream: function toStream(buffer2) {
+      if (!util$4.Buffer.isBuffer(buffer2))
+        buffer2 = util$4.buffer.toBuffer(buffer2);
+      var readable = new util$4.stream.Readable();
+      var pos = 0;
+      readable._read = function(size) {
+        if (pos >= buffer2.length)
+          return readable.push(null);
+        var end = pos + size;
+        if (end > buffer2.length)
+          end = buffer2.length;
+        readable.push(buffer2.slice(pos, end));
+        pos = end;
+      };
+      return readable;
+    },
+    concat: function(buffers) {
+      var length = 0, offset2 = 0, buffer2 = null, i;
+      for (i = 0; i < buffers.length; i++) {
+        length += buffers[i].length;
+      }
+      buffer2 = util$4.buffer.alloc(length);
+      for (i = 0; i < buffers.length; i++) {
+        buffers[i].copy(buffer2, offset2);
+        offset2 += buffers[i].length;
+      }
+      return buffer2;
+    }
+  },
+  string: {
+    byteLength: function byteLength2(string2) {
+      if (string2 === null || string2 === void 0)
+        return 0;
+      if (typeof string2 === "string")
+        string2 = util$4.buffer.toBuffer(string2);
+      if (typeof string2.byteLength === "number") {
+        return string2.byteLength;
+      } else if (typeof string2.length === "number") {
+        return string2.length;
+      } else if (typeof string2.size === "number") {
+        return string2.size;
+      } else if (typeof string2.path === "string") {
+        return require$$1$2.lstatSync(string2.path).size;
+      } else {
+        throw util$4.error(new Error("Cannot determine length of " + string2), { object: string2 });
+      }
+    },
+    upperFirst: function upperFirst(string2) {
+      return string2[0].toUpperCase() + string2.substr(1);
+    },
+    lowerFirst: function lowerFirst(string2) {
+      return string2[0].toLowerCase() + string2.substr(1);
+    }
+  },
+  ini: {
+    parse: function string(ini) {
+      var currentSection, map = {};
+      util$4.arrayEach(ini.split(/\r?\n/), function(line) {
+        line = line.split(/(^|\s)[;#]/)[0];
+        var section = line.match(/^\s*\[([^\[\]]+)\]\s*$/);
+        if (section) {
+          currentSection = section[1];
+          if (currentSection === "__proto__" || currentSection.split(/\s/)[1] === "__proto__") {
+            throw util$4.error(new Error("Cannot load profile name '" + currentSection + "' from shared ini file."));
+          }
+        } else if (currentSection) {
+          var item = line.match(/^\s*(.+?)\s*=\s*(.+?)\s*$/);
+          if (item) {
+            map[currentSection] = map[currentSection] || {};
+            map[currentSection][item[1]] = item[2];
+          }
+        }
+      });
+      return map;
+    }
+  },
+  fn: {
+    noop: function() {
+    },
+    callback: function(err) {
+      if (err)
+        throw err;
+    },
+    makeAsync: function makeAsync(fn2, expectedArgs) {
+      if (expectedArgs && expectedArgs <= fn2.length) {
+        return fn2;
+      }
+      return function() {
+        var args = Array.prototype.slice.call(arguments, 0);
+        var callback = args.pop();
+        var result = fn2.apply(null, args);
+        callback(result);
+      };
+    }
+  },
+  date: {
+    getDate: function getDate() {
+      if (!AWS$c)
+        AWS$c = core;
+      if (AWS$c.config.systemClockOffset) {
+        return new Date(new Date().getTime() + AWS$c.config.systemClockOffset);
+      } else {
+        return new Date();
+      }
+    },
+    iso8601: function iso8601(date) {
+      if (date === void 0) {
+        date = util$4.date.getDate();
+      }
+      return date.toISOString().replace(/\.\d{3}Z$/, "Z");
+    },
+    rfc822: function rfc822(date) {
+      if (date === void 0) {
+        date = util$4.date.getDate();
+      }
+      return date.toUTCString();
+    },
+    unixTimestamp: function unixTimestamp(date) {
+      if (date === void 0) {
+        date = util$4.date.getDate();
+      }
+      return date.getTime() / 1e3;
+    },
+    from: function format(date) {
+      if (typeof date === "number") {
+        return new Date(date * 1e3);
+      } else {
+        return new Date(date);
+      }
+    },
+    format: function format2(date, formatter) {
+      if (!formatter)
+        formatter = "iso8601";
+      return util$4.date[formatter](util$4.date.from(date));
+    },
+    parseTimestamp: function parseTimestamp(value) {
+      if (typeof value === "number") {
+        return new Date(value * 1e3);
+      } else if (value.match(/^\d+$/)) {
+        return new Date(value * 1e3);
+      } else if (value.match(/^\d{4}/)) {
+        return new Date(value);
+      } else if (value.match(/^\w{3},/)) {
+        return new Date(value);
+      } else {
+        throw util$4.error(new Error("unhandled timestamp format: " + value), { code: "TimestampParserError" });
+      }
+    }
+  },
+  crypto: {
+    crc32Table: [
+      0,
+      1996959894,
+      3993919788,
+      2567524794,
+      124634137,
+      1886057615,
+      3915621685,
+      2657392035,
+      249268274,
+      2044508324,
+      3772115230,
+      2547177864,
+      162941995,
+      2125561021,
+      3887607047,
+      2428444049,
+      498536548,
+      1789927666,
+      4089016648,
+      2227061214,
+      450548861,
+      1843258603,
+      4107580753,
+      2211677639,
+      325883990,
+      1684777152,
+      4251122042,
+      2321926636,
+      335633487,
+      1661365465,
+      4195302755,
+      2366115317,
+      997073096,
+      1281953886,
+      3579855332,
+      2724688242,
+      1006888145,
+      1258607687,
+      3524101629,
+      2768942443,
+      901097722,
+      1119000684,
+      3686517206,
+      2898065728,
+      853044451,
+      1172266101,
+      3705015759,
+      2882616665,
+      651767980,
+      1373503546,
+      3369554304,
+      3218104598,
+      565507253,
+      1454621731,
+      3485111705,
+      3099436303,
+      671266974,
+      1594198024,
+      3322730930,
+      2970347812,
+      795835527,
+      1483230225,
+      3244367275,
+      3060149565,
+      1994146192,
+      31158534,
+      2563907772,
+      4023717930,
+      1907459465,
+      112637215,
+      2680153253,
+      3904427059,
+      2013776290,
+      251722036,
+      2517215374,
+      3775830040,
+      2137656763,
+      141376813,
+      2439277719,
+      3865271297,
+      1802195444,
+      476864866,
+      2238001368,
+      4066508878,
+      1812370925,
+      453092731,
+      2181625025,
+      4111451223,
+      1706088902,
+      314042704,
+      2344532202,
+      4240017532,
+      1658658271,
+      366619977,
+      2362670323,
+      4224994405,
+      1303535960,
+      984961486,
+      2747007092,
+      3569037538,
+      1256170817,
+      1037604311,
+      2765210733,
+      3554079995,
+      1131014506,
+      879679996,
+      2909243462,
+      3663771856,
+      1141124467,
+      855842277,
+      2852801631,
+      3708648649,
+      1342533948,
+      654459306,
+      3188396048,
+      3373015174,
+      1466479909,
+      544179635,
+      3110523913,
+      3462522015,
+      1591671054,
+      702138776,
+      2966460450,
+      3352799412,
+      1504918807,
+      783551873,
+      3082640443,
+      3233442989,
+      3988292384,
+      2596254646,
+      62317068,
+      1957810842,
+      3939845945,
+      2647816111,
+      81470997,
+      1943803523,
+      3814918930,
+      2489596804,
+      225274430,
+      2053790376,
+      3826175755,
+      2466906013,
+      167816743,
+      2097651377,
+      4027552580,
+      2265490386,
+      503444072,
+      1762050814,
+      4150417245,
+      2154129355,
+      426522225,
+      1852507879,
+      4275313526,
+      2312317920,
+      282753626,
+      1742555852,
+      4189708143,
+      2394877945,
+      397917763,
+      1622183637,
+      3604390888,
+      2714866558,
+      953729732,
+      1340076626,
+      3518719985,
+      2797360999,
+      1068828381,
+      1219638859,
+      3624741850,
+      2936675148,
+      906185462,
+      1090812512,
+      3747672003,
+      2825379669,
+      829329135,
+      1181335161,
+      3412177804,
+      3160834842,
+      628085408,
+      1382605366,
+      3423369109,
+      3138078467,
+      570562233,
+      1426400815,
+      3317316542,
+      2998733608,
+      733239954,
+      1555261956,
+      3268935591,
+      3050360625,
+      752459403,
+      1541320221,
+      2607071920,
+      3965973030,
+      1969922972,
+      40735498,
+      2617837225,
+      3943577151,
+      1913087877,
+      83908371,
+      2512341634,
+      3803740692,
+      2075208622,
+      213261112,
+      2463272603,
+      3855990285,
+      2094854071,
+      198958881,
+      2262029012,
+      4057260610,
+      1759359992,
+      534414190,
+      2176718541,
+      4139329115,
+      1873836001,
+      414664567,
+      2282248934,
+      4279200368,
+      1711684554,
+      285281116,
+      2405801727,
+      4167216745,
+      1634467795,
+      376229701,
+      2685067896,
+      3608007406,
+      1308918612,
+      956543938,
+      2808555105,
+      3495958263,
+      1231636301,
+      1047427035,
+      2932959818,
+      3654703836,
+      1088359270,
+      936918e3,
+      2847714899,
+      3736837829,
+      1202900863,
+      817233897,
+      3183342108,
+      3401237130,
+      1404277552,
+      615818150,
+      3134207493,
+      3453421203,
+      1423857449,
+      601450431,
+      3009837614,
+      3294710456,
+      1567103746,
+      711928724,
+      3020668471,
+      3272380065,
+      1510334235,
+      755167117
+    ],
+    crc32: function crc32(data) {
+      var tbl = util$4.crypto.crc32Table;
+      var crc = 0 ^ -1;
+      if (typeof data === "string") {
+        data = util$4.buffer.toBuffer(data);
+      }
+      for (var i = 0; i < data.length; i++) {
+        var code2 = data.readUInt8(i);
+        crc = crc >>> 8 ^ tbl[(crc ^ code2) & 255];
+      }
+      return (crc ^ -1) >>> 0;
+    },
+    hmac: function hmac2(key, string2, digest, fn2) {
+      if (!digest)
+        digest = "binary";
+      if (digest === "buffer") {
+        digest = void 0;
+      }
+      if (!fn2)
+        fn2 = "sha256";
+      if (typeof string2 === "string")
+        string2 = util$4.buffer.toBuffer(string2);
+      return util$4.crypto.lib.createHmac(fn2, key).update(string2).digest(digest);
+    },
+    md5: function md5(data, digest, callback) {
+      return util$4.crypto.hash("md5", data, digest, callback);
+    },
+    sha256: function sha2562(data, digest, callback) {
+      return util$4.crypto.hash("sha256", data, digest, callback);
+    },
+    hash: function(algorithm, data, digest, callback) {
+      var hash2 = util$4.crypto.createHash(algorithm);
+      if (!digest) {
+        digest = "binary";
+      }
+      if (digest === "buffer") {
+        digest = void 0;
+      }
+      if (typeof data === "string")
+        data = util$4.buffer.toBuffer(data);
+      var sliceFn = util$4.arraySliceFn(data);
+      var isBuffer = util$4.Buffer.isBuffer(data);
+      if (util$4.isBrowser() && typeof ArrayBuffer !== "undefined" && data && data.buffer instanceof ArrayBuffer)
+        isBuffer = true;
+      if (callback && typeof data === "object" && typeof data.on === "function" && !isBuffer) {
+        data.on("data", function(chunk) {
+          hash2.update(chunk);
+        });
+        data.on("error", function(err) {
+          callback(err);
+        });
+        data.on("end", function() {
+          callback(null, hash2.digest(digest));
+        });
+      } else if (callback && sliceFn && !isBuffer && typeof FileReader !== "undefined") {
+        var index = 0, size = 1024 * 512;
+        var reader = new FileReader();
+        reader.onerror = function() {
+          callback(new Error("Failed to read data."));
+        };
+        reader.onload = function() {
+          var buf = new util$4.Buffer(new Uint8Array(reader.result));
+          hash2.update(buf);
+          index += buf.length;
+          reader._continueReading();
+        };
+        reader._continueReading = function() {
+          if (index >= data.size) {
+            callback(null, hash2.digest(digest));
+            return;
+          }
+          var back = index + size;
+          if (back > data.size)
+            back = data.size;
+          reader.readAsArrayBuffer(sliceFn.call(data, index, back));
+        };
+        reader._continueReading();
+      } else {
+        if (util$4.isBrowser() && typeof data === "object" && !isBuffer) {
+          data = new util$4.Buffer(new Uint8Array(data));
+        }
+        var out = hash2.update(data).digest(digest);
+        if (callback)
+          callback(null, out);
+        return out;
+      }
+    },
+    toHex: function toHex(data) {
+      var out = [];
+      for (var i = 0; i < data.length; i++) {
+        out.push(("0" + data.charCodeAt(i).toString(16)).substr(-2, 2));
+      }
+      return out.join("");
+    },
+    createHash: function createHash(algorithm) {
+      return util$4.crypto.lib.createHash(algorithm);
+    }
+  },
+  abort: {},
+  each: function each(object, iterFunction) {
+    for (var key in object) {
+      if (Object.prototype.hasOwnProperty.call(object, key)) {
+        var ret = iterFunction.call(this, key, object[key]);
+        if (ret === util$4.abort)
+          break;
+      }
+    }
+  },
+  arrayEach: function arrayEach(array, iterFunction) {
+    for (var idx in array) {
+      if (Object.prototype.hasOwnProperty.call(array, idx)) {
+        var ret = iterFunction.call(this, array[idx], parseInt(idx, 10));
+        if (ret === util$4.abort)
+          break;
+      }
+    }
+  },
+  update: function update2(obj1, obj2) {
+    util$4.each(obj2, function iterator(key, item) {
+      obj1[key] = item;
+    });
+    return obj1;
+  },
+  merge: function merge(obj1, obj2) {
+    return util$4.update(util$4.copy(obj1), obj2);
+  },
+  copy: function copy(object) {
+    if (object === null || object === void 0)
+      return object;
+    var dupe = {};
+    for (var key in object) {
+      dupe[key] = object[key];
+    }
+    return dupe;
+  },
+  isEmpty: function isEmpty(obj) {
+    for (var prop in obj) {
+      if (Object.prototype.hasOwnProperty.call(obj, prop)) {
+        return false;
+      }
+    }
+    return true;
+  },
+  arraySliceFn: function arraySliceFn(obj) {
+    var fn2 = obj.slice || obj.webkitSlice || obj.mozSlice;
+    return typeof fn2 === "function" ? fn2 : null;
+  },
+  isType: function isType(obj, type) {
+    if (typeof type === "function")
+      type = util$4.typeName(type);
+    return Object.prototype.toString.call(obj) === "[object " + type + "]";
+  },
+  typeName: function typeName(type) {
+    if (Object.prototype.hasOwnProperty.call(type, "name"))
+      return type.name;
+    var str = type.toString();
+    var match2 = str.match(/^\s*function (.+)\(/);
+    return match2 ? match2[1] : str;
+  },
+  error: function error(err, options) {
+    var originalError = null;
+    if (typeof err.message === "string" && err.message !== "") {
+      if (typeof options === "string" || options && options.message) {
+        originalError = util$4.copy(err);
+        originalError.message = err.message;
+      }
+    }
+    err.message = err.message || null;
+    if (typeof options === "string") {
+      err.message = options;
+    } else if (typeof options === "object" && options !== null) {
+      util$4.update(err, options);
+      if (options.message)
+        err.message = options.message;
+      if (options.code || options.name)
+        err.code = options.code || options.name;
+      if (options.stack)
+        err.stack = options.stack;
+    }
+    if (typeof Object.defineProperty === "function") {
+      Object.defineProperty(err, "name", { writable: true, enumerable: false });
+      Object.defineProperty(err, "message", { enumerable: true });
+    }
+    err.name = String(options && options.name || err.name || err.code || "Error");
+    err.time = new Date();
+    if (originalError)
+      err.originalError = originalError;
+    return err;
+  },
+  inherit: function inherit2(klass, features) {
+    var newObject = null;
+    if (features === void 0) {
+      features = klass;
+      klass = Object;
+      newObject = {};
+    } else {
+      var ctor = function ConstructorWrapper() {
+      };
+      ctor.prototype = klass.prototype;
+      newObject = new ctor();
+    }
+    if (features.constructor === Object) {
+      features.constructor = function() {
+        if (klass !== Object) {
+          return klass.apply(this, arguments);
+        }
+      };
+    }
+    features.constructor.prototype = newObject;
+    util$4.update(features.constructor.prototype, features);
+    features.constructor.__super__ = klass;
+    return features.constructor;
+  },
+  mixin: function mixin() {
+    var klass = arguments[0];
+    for (var i = 1; i < arguments.length; i++) {
+      for (var prop in arguments[i].prototype) {
+        var fn2 = arguments[i].prototype[prop];
+        if (prop !== "constructor") {
+          klass.prototype[prop] = fn2;
+        }
+      }
+    }
+    return klass;
+  },
+  hideProperties: function hideProperties(obj, props) {
+    if (typeof Object.defineProperty !== "function")
+      return;
+    util$4.arrayEach(props, function(key) {
+      Object.defineProperty(obj, key, {
+        enumerable: false,
+        writable: true,
+        configurable: true
+      });
+    });
+  },
+  property: function property2(obj, name, value, enumerable, isValue) {
+    var opts = {
+      configurable: true,
+      enumerable: enumerable !== void 0 ? enumerable : true
+    };
+    if (typeof value === "function" && !isValue) {
+      opts.get = value;
+    } else {
+      opts.value = value;
+      opts.writable = true;
+    }
+    Object.defineProperty(obj, name, opts);
+  },
+  memoizedProperty: function memoizedProperty2(obj, name, get5, enumerable) {
+    var cachedValue = null;
+    util$4.property(obj, name, function() {
+      if (cachedValue === null) {
+        cachedValue = get5();
+      }
+      return cachedValue;
+    }, enumerable);
+  },
+  hoistPayloadMember: function hoistPayloadMember(resp) {
+    var req = resp.request;
+    var operationName = req.operation;
+    var operation2 = req.service.api.operations[operationName];
+    var output = operation2.output;
+    if (output.payload && !operation2.hasEventOutput) {
+      var payloadMember = output.members[output.payload];
+      var responsePayload = resp.data[output.payload];
+      if (payloadMember.type === "structure") {
+        util$4.each(responsePayload, function(key, value) {
+          util$4.property(resp.data, key, value, false);
+        });
+      }
+    }
+  },
+  computeSha256: function computeSha256(body, done) {
+    if (util$4.isNode()) {
+      var Stream = util$4.stream.Stream;
+      var fs = require$$1$2;
+      if (typeof Stream === "function" && body instanceof Stream) {
+        if (typeof body.path === "string") {
+          var settings = {};
+          if (typeof body.start === "number") {
+            settings.start = body.start;
+          }
+          if (typeof body.end === "number") {
+            settings.end = body.end;
+          }
+          body = fs.createReadStream(body.path, settings);
+        } else {
+          return done(new Error("Non-file stream objects are not supported with SigV4"));
+        }
+      }
+    }
+    util$4.crypto.sha256(body, "hex", function(err, sha) {
+      if (err)
+        done(err);
+      else
+        done(null, sha);
+    });
+  },
+  isClockSkewed: function isClockSkewed2(serverTime) {
+    if (serverTime) {
+      util$4.property(AWS$c.config, "isClockSkewed", Math.abs(new Date().getTime() - serverTime) >= 3e5, false);
+      return AWS$c.config.isClockSkewed;
+    }
+  },
+  applyClockOffset: function applyClockOffset2(serverTime) {
+    if (serverTime)
+      AWS$c.config.systemClockOffset = serverTime - new Date().getTime();
+  },
+  extractRequestId: function extractRequestId(resp) {
+    var requestId = resp.httpResponse.headers["x-amz-request-id"] || resp.httpResponse.headers["x-amzn-requestid"];
+    if (!requestId && resp.data && resp.data.ResponseMetadata) {
+      requestId = resp.data.ResponseMetadata.RequestId;
+    }
+    if (requestId) {
+      resp.requestId = requestId;
+    }
+    if (resp.error) {
+      resp.error.requestId = requestId;
+    }
+  },
+  addPromises: function addPromises(constructors, PromiseDependency) {
+    var deletePromises = false;
+    if (PromiseDependency === void 0 && AWS$c && AWS$c.config) {
+      PromiseDependency = AWS$c.config.getPromisesDependency();
+    }
+    if (PromiseDependency === void 0 && typeof Promise !== "undefined") {
+      PromiseDependency = Promise;
+    }
+    if (typeof PromiseDependency !== "function")
+      deletePromises = true;
+    if (!Array.isArray(constructors))
+      constructors = [constructors];
+    for (var ind = 0; ind < constructors.length; ind++) {
+      var constructor2 = constructors[ind];
+      if (deletePromises) {
+        if (constructor2.deletePromisesFromClass) {
+          constructor2.deletePromisesFromClass();
+        }
+      } else if (constructor2.addPromisesToClass) {
+        constructor2.addPromisesToClass(PromiseDependency);
+      }
+    }
+  },
+  promisifyMethod: function promisifyMethod(methodName, PromiseDependency) {
+    return function promise() {
+      var self2 = this;
+      var args = Array.prototype.slice.call(arguments);
+      return new PromiseDependency(function(resolve3, reject) {
+        args.push(function(err, data) {
+          if (err) {
+            reject(err);
+          } else {
+            resolve3(data);
+          }
+        });
+        self2[methodName].apply(self2, args);
+      });
+    };
+  },
+  isDualstackAvailable: function isDualstackAvailable(service) {
+    if (!service)
+      return false;
+    var metadata2 = require$$2$2;
+    if (typeof service !== "string")
+      service = service.serviceIdentifier;
+    if (typeof service !== "string" || !metadata2.hasOwnProperty(service))
+      return false;
+    return !!metadata2[service].dualstackAvailable;
+  },
+  calculateRetryDelay: function calculateRetryDelay(retryCount, retryDelayOptions, err) {
+    if (!retryDelayOptions)
+      retryDelayOptions = {};
+    var customBackoff = retryDelayOptions.customBackoff || null;
+    if (typeof customBackoff === "function") {
+      return customBackoff(retryCount, err);
+    }
+    var base = typeof retryDelayOptions.base === "number" ? retryDelayOptions.base : 100;
+    var delay = Math.random() * (Math.pow(2, retryCount) * base);
+    return delay;
+  },
+  handleRequestWithRetries: function handleRequestWithRetries(httpRequest, options, cb) {
+    if (!options)
+      options = {};
+    var http = AWS$c.HttpClient.getInstance();
+    var httpOptions = options.httpOptions || {};
+    var retryCount = 0;
+    var errCallback = function(err) {
+      var maxRetries = options.maxRetries || 0;
+      if (err && err.code === "TimeoutError")
+        err.retryable = true;
+      if (err && err.retryable && retryCount < maxRetries) {
+        var delay = util$4.calculateRetryDelay(retryCount, options.retryDelayOptions, err);
+        if (delay >= 0) {
+          retryCount++;
+          setTimeout(sendRequest, delay + (err.retryAfter || 0));
+          return;
+        }
+      }
+      cb(err);
+    };
+    var sendRequest = function() {
+      var data = "";
+      http.handleRequest(httpRequest, httpOptions, function(httpResponse) {
+        httpResponse.on("data", function(chunk) {
+          data += chunk.toString();
+        });
+        httpResponse.on("end", function() {
+          var statusCode = httpResponse.statusCode;
+          if (statusCode < 300) {
+            cb(null, data);
+          } else {
+            var retryAfter = parseInt(httpResponse.headers["retry-after"], 10) * 1e3 || 0;
+            var err = util$4.error(new Error(), {
+              statusCode,
+              retryable: statusCode >= 500 || statusCode === 429
+            });
+            if (retryAfter && err.retryable)
+              err.retryAfter = retryAfter;
+            errCallback(err);
+          }
+        });
+      }, errCallback);
+    };
+    AWS$c.util.defer(sendRequest);
+  },
+  uuid: {
+    v4: function uuidV4() {
+      return uuid_1.v4();
+    }
+  },
+  convertPayloadToString: function convertPayloadToString(resp) {
+    var req = resp.request;
+    var operation2 = req.operation;
+    var rules2 = req.service.api.operations[operation2].output || {};
+    if (rules2.payload && resp.data[rules2.payload]) {
+      resp.data[rules2.payload] = resp.data[rules2.payload].toString();
+    }
+  },
+  defer: function defer(callback) {
+    if (typeof process === "object" && typeof process.nextTick === "function") {
+      process.nextTick(callback);
+    } else if (typeof setImmediate === "function") {
+      setImmediate(callback);
+    } else {
+      setTimeout(callback, 0);
+    }
+  },
+  getRequestPayloadShape: function getRequestPayloadShape(req) {
+    var operations2 = req.service.api.operations;
+    if (!operations2)
+      return void 0;
+    var operation2 = (operations2 || {})[req.operation];
+    if (!operation2 || !operation2.input || !operation2.input.payload)
+      return void 0;
+    return operation2.input.members[operation2.input.payload];
+  },
+  getProfilesFromSharedConfig: function getProfilesFromSharedConfig(iniLoader, filename) {
+    var profiles = {};
+    var profilesFromConfig = {};
+    if (process.env[util$4.configOptInEnv]) {
+      var profilesFromConfig = iniLoader.loadFrom({
+        isConfig: true,
+        filename: process.env[util$4.sharedConfigFileEnv]
+      });
+    }
+    var profilesFromCreds = {};
+    try {
+      var profilesFromCreds = iniLoader.loadFrom({
+        filename: filename || process.env[util$4.configOptInEnv] && process.env[util$4.sharedCredentialsFileEnv]
+      });
+    } catch (error2) {
+      if (!process.env[util$4.configOptInEnv])
+        throw error2;
+    }
+    for (var i = 0, profileNames = Object.keys(profilesFromConfig); i < profileNames.length; i++) {
+      profiles[profileNames[i]] = objectAssign(profiles[profileNames[i]] || {}, profilesFromConfig[profileNames[i]]);
+    }
+    for (var i = 0, profileNames = Object.keys(profilesFromCreds); i < profileNames.length; i++) {
+      profiles[profileNames[i]] = objectAssign(profiles[profileNames[i]] || {}, profilesFromCreds[profileNames[i]]);
+    }
+    return profiles;
+    function objectAssign(target, source) {
+      for (var i2 = 0, keys = Object.keys(source); i2 < keys.length; i2++) {
+        target[keys[i2]] = source[keys[i2]];
+      }
+      return target;
+    }
+  },
+  ARN: {
+    validate: function validateARN(str) {
+      return str && str.indexOf("arn:") === 0 && str.split(":").length >= 6;
+    },
+    parse: function parseARN(arn) {
+      var matched = arn.split(":");
+      return {
+        partition: matched[1],
+        service: matched[2],
+        region: matched[3],
+        accountId: matched[4],
+        resource: matched.slice(5).join(":")
+      };
+    },
+    build: function buildARN(arnObject) {
+      if (arnObject.service === void 0 || arnObject.region === void 0 || arnObject.accountId === void 0 || arnObject.resource === void 0)
+        throw util$4.error(new Error("Input ARN object is invalid"));
+      return "arn:" + (arnObject.partition || "aws") + ":" + arnObject.service + ":" + arnObject.region + ":" + arnObject.accountId + ":" + arnObject.resource;
+    }
+  },
+  defaultProfile: "default",
+  configOptInEnv: "AWS_SDK_LOAD_CONFIG",
+  sharedCredentialsFileEnv: "AWS_SHARED_CREDENTIALS_FILE",
+  sharedConfigFileEnv: "AWS_CONFIG_FILE",
+  imdsDisabledEnv: "AWS_EC2_METADATA_DISABLED"
+};
+var util_1 = util$4;
+var browserCryptoLib = { exports: {} };
+var browserHmac = { exports: {} };
+var browserHashUtils = { exports: {} };
+(function(module, exports) {
+  var Buffer2 = buffer.Buffer;
+  if (typeof ArrayBuffer !== "undefined" && typeof ArrayBuffer.isView === "undefined") {
+    ArrayBuffer.isView = function(arg) {
+      return viewStrings.indexOf(Object.prototype.toString.call(arg)) > -1;
+    };
+  }
+  var viewStrings = [
+    "[object Int8Array]",
+    "[object Uint8Array]",
+    "[object Uint8ClampedArray]",
+    "[object Int16Array]",
+    "[object Uint16Array]",
+    "[object Int32Array]",
+    "[object Uint32Array]",
+    "[object Float32Array]",
+    "[object Float64Array]",
+    "[object DataView]"
+  ];
+  function isEmptyData(data) {
+    if (typeof data === "string") {
+      return data.length === 0;
+    }
+    return data.byteLength === 0;
+  }
+  function convertToBuffer(data) {
+    if (typeof data === "string") {
+      data = new Buffer2(data, "utf8");
+    }
+    if (ArrayBuffer.isView(data)) {
+      return new Uint8Array(data.buffer, data.byteOffset, data.byteLength / Uint8Array.BYTES_PER_ELEMENT);
+    }
+    return new Uint8Array(data);
+  }
+  module.exports = {
+    isEmptyData,
+    convertToBuffer
+  };
+})(browserHashUtils);
+(function(module, exports) {
+  var hashUtils = browserHashUtils.exports;
+  function Hmac(hashCtor, secret) {
+    this.hash = new hashCtor();
+    this.outer = new hashCtor();
+    var inner = bufferFromSecret(hashCtor, secret);
+    var outer = new Uint8Array(hashCtor.BLOCK_SIZE);
+    outer.set(inner);
+    for (var i = 0; i < hashCtor.BLOCK_SIZE; i++) {
+      inner[i] ^= 54;
+      outer[i] ^= 92;
+    }
+    this.hash.update(inner);
+    this.outer.update(outer);
+    for (var i = 0; i < inner.byteLength; i++) {
+      inner[i] = 0;
+    }
+  }
+  module.exports = Hmac;
+  Hmac.prototype.update = function(toHash) {
+    if (hashUtils.isEmptyData(toHash) || this.error) {
+      return this;
+    }
+    try {
+      this.hash.update(hashUtils.convertToBuffer(toHash));
+    } catch (e2) {
+      this.error = e2;
+    }
+    return this;
+  };
+  Hmac.prototype.digest = function(encoding) {
+    if (!this.outer.finished) {
+      this.outer.update(this.hash.digest());
+    }
+    return this.outer.digest(encoding);
+  };
+  function bufferFromSecret(hashCtor, secret) {
+    var input = hashUtils.convertToBuffer(secret);
+    if (input.byteLength > hashCtor.BLOCK_SIZE) {
+      var bufferHash = new hashCtor();
+      bufferHash.update(input);
+      input = bufferHash.digest();
+    }
+    var buffer2 = new Uint8Array(hashCtor.BLOCK_SIZE);
+    buffer2.set(input);
+    return buffer2;
+  }
+})(browserHmac);
+var browserMd5 = { exports: {} };
+(function(module, exports) {
+  var hashUtils = browserHashUtils.exports;
+  var Buffer2 = buffer.Buffer;
+  var BLOCK_SIZE = 64;
+  var DIGEST_LENGTH = 16;
+  function Md5() {
+    this.state = [
+      1732584193,
+      4023233417,
+      2562383102,
+      271733878
+    ];
+    this.buffer = new DataView(new ArrayBuffer(BLOCK_SIZE));
+    this.bufferLength = 0;
+    this.bytesHashed = 0;
+    this.finished = false;
+  }
+  module.exports = Md5;
+  Md5.BLOCK_SIZE = BLOCK_SIZE;
+  Md5.prototype.update = function(sourceData) {
+    if (hashUtils.isEmptyData(sourceData)) {
+      return this;
+    } else if (this.finished) {
+      throw new Error("Attempted to update an already finished hash.");
+    }
+    var data = hashUtils.convertToBuffer(sourceData);
+    var position = 0;
+    var byteLength3 = data.byteLength;
+    this.bytesHashed += byteLength3;
+    while (byteLength3 > 0) {
+      this.buffer.setUint8(this.bufferLength++, data[position++]);
+      byteLength3--;
+      if (this.bufferLength === BLOCK_SIZE) {
+        this.hashBuffer();
+        this.bufferLength = 0;
+      }
+    }
+    return this;
+  };
+  Md5.prototype.digest = function(encoding) {
+    if (!this.finished) {
+      var _a2 = this, buffer2 = _a2.buffer, undecoratedLength = _a2.bufferLength, bytesHashed = _a2.bytesHashed;
+      var bitsHashed = bytesHashed * 8;
+      buffer2.setUint8(this.bufferLength++, 128);
+      if (undecoratedLength % BLOCK_SIZE >= BLOCK_SIZE - 8) {
+        for (var i = this.bufferLength; i < BLOCK_SIZE; i++) {
+          buffer2.setUint8(i, 0);
+        }
+        this.hashBuffer();
+        this.bufferLength = 0;
+      }
+      for (var i = this.bufferLength; i < BLOCK_SIZE - 8; i++) {
+        buffer2.setUint8(i, 0);
+      }
+      buffer2.setUint32(BLOCK_SIZE - 8, bitsHashed >>> 0, true);
+      buffer2.setUint32(BLOCK_SIZE - 4, Math.floor(bitsHashed / 4294967296), true);
+      this.hashBuffer();
+      this.finished = true;
+    }
+    var out = new DataView(new ArrayBuffer(DIGEST_LENGTH));
+    for (var i = 0; i < 4; i++) {
+      out.setUint32(i * 4, this.state[i], true);
+    }
+    var buff = new Buffer2(out.buffer, out.byteOffset, out.byteLength);
+    return encoding ? buff.toString(encoding) : buff;
+  };
+  Md5.prototype.hashBuffer = function() {
+    var _a2 = this, buffer2 = _a2.buffer, state = _a2.state;
+    var a2 = state[0], b2 = state[1], c2 = state[2], d2 = state[3];
+    a2 = ff(a2, b2, c2, d2, buffer2.getUint32(0, true), 7, 3614090360);
+    d2 = ff(d2, a2, b2, c2, buffer2.getUint32(4, true), 12, 3905402710);
+    c2 = ff(c2, d2, a2, b2, buffer2.getUint32(8, true), 17, 606105819);
+    b2 = ff(b2, c2, d2, a2, buffer2.getUint32(12, true), 22, 3250441966);
+    a2 = ff(a2, b2, c2, d2, buffer2.getUint32(16, true), 7, 4118548399);
+    d2 = ff(d2, a2, b2, c2, buffer2.getUint32(20, true), 12, 1200080426);
+    c2 = ff(c2, d2, a2, b2, buffer2.getUint32(24, true), 17, 2821735955);
+    b2 = ff(b2, c2, d2, a2, buffer2.getUint32(28, true), 22, 4249261313);
+    a2 = ff(a2, b2, c2, d2, buffer2.getUint32(32, true), 7, 1770035416);
+    d2 = ff(d2, a2, b2, c2, buffer2.getUint32(36, true), 12, 2336552879);
+    c2 = ff(c2, d2, a2, b2, buffer2.getUint32(40, true), 17, 4294925233);
+    b2 = ff(b2, c2, d2, a2, buffer2.getUint32(44, true), 22, 2304563134);
+    a2 = ff(a2, b2, c2, d2, buffer2.getUint32(48, true), 7, 1804603682);
+    d2 = ff(d2, a2, b2, c2, buffer2.getUint32(52, true), 12, 4254626195);
+    c2 = ff(c2, d2, a2, b2, buffer2.getUint32(56, true), 17, 2792965006);
+    b2 = ff(b2, c2, d2, a2, buffer2.getUint32(60, true), 22, 1236535329);
+    a2 = gg(a2, b2, c2, d2, buffer2.getUint32(4, true), 5, 4129170786);
+    d2 = gg(d2, a2, b2, c2, buffer2.getUint32(24, true), 9, 3225465664);
+    c2 = gg(c2, d2, a2, b2, buffer2.getUint32(44, true), 14, 643717713);
+    b2 = gg(b2, c2, d2, a2, buffer2.getUint32(0, true), 20, 3921069994);
+    a2 = gg(a2, b2, c2, d2, buffer2.getUint32(20, true), 5, 3593408605);
+    d2 = gg(d2, a2, b2, c2, buffer2.getUint32(40, true), 9, 38016083);
+    c2 = gg(c2, d2, a2, b2, buffer2.getUint32(60, true), 14, 3634488961);
+    b2 = gg(b2, c2, d2, a2, buffer2.getUint32(16, true), 20, 3889429448);
+    a2 = gg(a2, b2, c2, d2, buffer2.getUint32(36, true), 5, 568446438);
+    d2 = gg(d2, a2, b2, c2, buffer2.getUint32(56, true), 9, 3275163606);
+    c2 = gg(c2, d2, a2, b2, buffer2.getUint32(12, true), 14, 4107603335);
+    b2 = gg(b2, c2, d2, a2, buffer2.getUint32(32, true), 20, 1163531501);
+    a2 = gg(a2, b2, c2, d2, buffer2.getUint32(52, true), 5, 2850285829);
+    d2 = gg(d2, a2, b2, c2, buffer2.getUint32(8, true), 9, 4243563512);
+    c2 = gg(c2, d2, a2, b2, buffer2.getUint32(28, true), 14, 1735328473);
+    b2 = gg(b2, c2, d2, a2, buffer2.getUint32(48, true), 20, 2368359562);
+    a2 = hh(a2, b2, c2, d2, buffer2.getUint32(20, true), 4, 4294588738);
+    d2 = hh(d2, a2, b2, c2, buffer2.getUint32(32, true), 11, 2272392833);
+    c2 = hh(c2, d2, a2, b2, buffer2.getUint32(44, true), 16, 1839030562);
+    b2 = hh(b2, c2, d2, a2, buffer2.getUint32(56, true), 23, 4259657740);
+    a2 = hh(a2, b2, c2, d2, buffer2.getUint32(4, true), 4, 2763975236);
+    d2 = hh(d2, a2, b2, c2, buffer2.getUint32(16, true), 11, 1272893353);
+    c2 = hh(c2, d2, a2, b2, buffer2.getUint32(28, true), 16, 4139469664);
+    b2 = hh(b2, c2, d2, a2, buffer2.getUint32(40, true), 23, 3200236656);
+    a2 = hh(a2, b2, c2, d2, buffer2.getUint32(52, true), 4, 681279174);
+    d2 = hh(d2, a2, b2, c2, buffer2.getUint32(0, true), 11, 3936430074);
+    c2 = hh(c2, d2, a2, b2, buffer2.getUint32(12, true), 16, 3572445317);
+    b2 = hh(b2, c2, d2, a2, buffer2.getUint32(24, true), 23, 76029189);
+    a2 = hh(a2, b2, c2, d2, buffer2.getUint32(36, true), 4, 3654602809);
+    d2 = hh(d2, a2, b2, c2, buffer2.getUint32(48, true), 11, 3873151461);
+    c2 = hh(c2, d2, a2, b2, buffer2.getUint32(60, true), 16, 530742520);
+    b2 = hh(b2, c2, d2, a2, buffer2.getUint32(8, true), 23, 3299628645);
+    a2 = ii2(a2, b2, c2, d2, buffer2.getUint32(0, true), 6, 4096336452);
+    d2 = ii2(d2, a2, b2, c2, buffer2.getUint32(28, true), 10, 1126891415);
+    c2 = ii2(c2, d2, a2, b2, buffer2.getUint32(56, true), 15, 2878612391);
+    b2 = ii2(b2, c2, d2, a2, buffer2.getUint32(20, true), 21, 4237533241);
+    a2 = ii2(a2, b2, c2, d2, buffer2.getUint32(48, true), 6, 1700485571);
+    d2 = ii2(d2, a2, b2, c2, buffer2.getUint32(12, true), 10, 2399980690);
+    c2 = ii2(c2, d2, a2, b2, buffer2.getUint32(40, true), 15, 4293915773);
+    b2 = ii2(b2, c2, d2, a2, buffer2.getUint32(4, true), 21, 2240044497);
+    a2 = ii2(a2, b2, c2, d2, buffer2.getUint32(32, true), 6, 1873313359);
+    d2 = ii2(d2, a2, b2, c2, buffer2.getUint32(60, true), 10, 4264355552);
+    c2 = ii2(c2, d2, a2, b2, buffer2.getUint32(24, true), 15, 2734768916);
+    b2 = ii2(b2, c2, d2, a2, buffer2.getUint32(52, true), 21, 1309151649);
+    a2 = ii2(a2, b2, c2, d2, buffer2.getUint32(16, true), 6, 4149444226);
+    d2 = ii2(d2, a2, b2, c2, buffer2.getUint32(44, true), 10, 3174756917);
+    c2 = ii2(c2, d2, a2, b2, buffer2.getUint32(8, true), 15, 718787259);
+    b2 = ii2(b2, c2, d2, a2, buffer2.getUint32(36, true), 21, 3951481745);
+    state[0] = a2 + state[0] & 4294967295;
+    state[1] = b2 + state[1] & 4294967295;
+    state[2] = c2 + state[2] & 4294967295;
+    state[3] = d2 + state[3] & 4294967295;
+  };
+  function cmn(q2, a2, b2, x2, s2, t2) {
+    a2 = (a2 + q2 & 4294967295) + (x2 + t2 & 4294967295) & 4294967295;
+    return (a2 << s2 | a2 >>> 32 - s2) + b2 & 4294967295;
+  }
+  function ff(a2, b2, c2, d2, x2, s2, t2) {
+    return cmn(b2 & c2 | ~b2 & d2, a2, b2, x2, s2, t2);
+  }
+  function gg(a2, b2, c2, d2, x2, s2, t2) {
+    return cmn(b2 & d2 | c2 & ~d2, a2, b2, x2, s2, t2);
+  }
+  function hh(a2, b2, c2, d2, x2, s2, t2) {
+    return cmn(b2 ^ c2 ^ d2, a2, b2, x2, s2, t2);
+  }
+  function ii2(a2, b2, c2, d2, x2, s2, t2) {
+    return cmn(c2 ^ (b2 | ~d2), a2, b2, x2, s2, t2);
+  }
+})(browserMd5);
+var browserSha1 = { exports: {} };
+(function(module, exports) {
+  var Buffer2 = buffer.Buffer;
+  var hashUtils = browserHashUtils.exports;
+  var BLOCK_SIZE = 64;
+  var DIGEST_LENGTH = 20;
+  function Sha1() {
+    this.h0 = 1732584193;
+    this.h1 = 4023233417;
+    this.h2 = 2562383102;
+    this.h3 = 271733878;
+    this.h4 = 3285377520;
+    this.block = new Uint32Array(80);
+    this.offset = 0;
+    this.shift = 24;
+    this.totalLength = 0;
+  }
+  module.exports = Sha1;
+  Sha1.BLOCK_SIZE = BLOCK_SIZE;
+  Sha1.prototype.update = function(data) {
+    if (this.finished) {
+      throw new Error("Attempted to update an already finished hash.");
+    }
+    if (hashUtils.isEmptyData(data)) {
+      return this;
+    }
+    data = hashUtils.convertToBuffer(data);
+    var length = data.length;
+    this.totalLength += length * 8;
+    for (var i = 0; i < length; i++) {
+      this.write(data[i]);
+    }
+    return this;
+  };
+  Sha1.prototype.write = function write(byte) {
+    this.block[this.offset] |= (byte & 255) << this.shift;
+    if (this.shift) {
+      this.shift -= 8;
+    } else {
+      this.offset++;
+      this.shift = 24;
+    }
+    if (this.offset === 16)
+      this.processBlock();
+  };
+  Sha1.prototype.digest = function(encoding) {
+    this.write(128);
+    if (this.offset > 14 || this.offset === 14 && this.shift < 24) {
+      this.processBlock();
+    }
+    this.offset = 14;
+    this.shift = 24;
+    this.write(0);
+    this.write(0);
+    this.write(this.totalLength > 1099511627775 ? this.totalLength / 1099511627776 : 0);
+    this.write(this.totalLength > 4294967295 ? this.totalLength / 4294967296 : 0);
+    for (var s2 = 24; s2 >= 0; s2 -= 8) {
+      this.write(this.totalLength >> s2);
+    }
+    var out = new Buffer2(DIGEST_LENGTH);
+    var outView = new DataView(out.buffer);
+    outView.setUint32(0, this.h0, false);
+    outView.setUint32(4, this.h1, false);
+    outView.setUint32(8, this.h2, false);
+    outView.setUint32(12, this.h3, false);
+    outView.setUint32(16, this.h4, false);
+    return encoding ? out.toString(encoding) : out;
+  };
+  Sha1.prototype.processBlock = function processBlock() {
+    for (var i = 16; i < 80; i++) {
+      var w2 = this.block[i - 3] ^ this.block[i - 8] ^ this.block[i - 14] ^ this.block[i - 16];
+      this.block[i] = w2 << 1 | w2 >>> 31;
+    }
+    var a2 = this.h0;
+    var b2 = this.h1;
+    var c2 = this.h2;
+    var d2 = this.h3;
+    var e2 = this.h4;
+    var f2, k2;
+    for (i = 0; i < 80; i++) {
+      if (i < 20) {
+        f2 = d2 ^ b2 & (c2 ^ d2);
+        k2 = 1518500249;
+      } else if (i < 40) {
+        f2 = b2 ^ c2 ^ d2;
+        k2 = 1859775393;
+      } else if (i < 60) {
+        f2 = b2 & c2 | d2 & (b2 | c2);
+        k2 = 2400959708;
+      } else {
+        f2 = b2 ^ c2 ^ d2;
+        k2 = 3395469782;
+      }
+      var temp = (a2 << 5 | a2 >>> 27) + f2 + e2 + k2 + (this.block[i] | 0);
+      e2 = d2;
+      d2 = c2;
+      c2 = b2 << 30 | b2 >>> 2;
+      b2 = a2;
+      a2 = temp;
+    }
+    this.h0 = this.h0 + a2 | 0;
+    this.h1 = this.h1 + b2 | 0;
+    this.h2 = this.h2 + c2 | 0;
+    this.h3 = this.h3 + d2 | 0;
+    this.h4 = this.h4 + e2 | 0;
+    this.offset = 0;
+    for (i = 0; i < 16; i++) {
+      this.block[i] = 0;
+    }
+  };
+})(browserSha1);
+var browserSha256 = { exports: {} };
+(function(module, exports) {
+  var Buffer2 = buffer.Buffer;
+  var hashUtils = browserHashUtils.exports;
+  var BLOCK_SIZE = 64;
+  var DIGEST_LENGTH = 32;
+  var KEY = new Uint32Array([
+    1116352408,
+    1899447441,
+    3049323471,
+    3921009573,
+    961987163,
+    1508970993,
+    2453635748,
+    2870763221,
+    3624381080,
+    310598401,
+    607225278,
+    1426881987,
+    1925078388,
+    2162078206,
+    2614888103,
+    3248222580,
+    3835390401,
+    4022224774,
+    264347078,
+    604807628,
+    770255983,
+    1249150122,
+    1555081692,
+    1996064986,
+    2554220882,
+    2821834349,
+    2952996808,
+    3210313671,
+    3336571891,
+    3584528711,
+    113926993,
+    338241895,
+    666307205,
+    773529912,
+    1294757372,
+    1396182291,
+    1695183700,
+    1986661051,
+    2177026350,
+    2456956037,
+    2730485921,
+    2820302411,
+    3259730800,
+    3345764771,
+    3516065817,
+    3600352804,
+    4094571909,
+    275423344,
+    430227734,
+    506948616,
+    659060556,
+    883997877,
+    958139571,
+    1322822218,
+    1537002063,
+    1747873779,
+    1955562222,
+    2024104815,
+    2227730452,
+    2361852424,
+    2428436474,
+    2756734187,
+    3204031479,
+    3329325298
+  ]);
+  var MAX_HASHABLE_LENGTH = Math.pow(2, 53) - 1;
+  function Sha256() {
+    this.state = [
+      1779033703,
+      3144134277,
+      1013904242,
+      2773480762,
+      1359893119,
+      2600822924,
+      528734635,
+      1541459225
+    ];
+    this.temp = new Int32Array(64);
+    this.buffer = new Uint8Array(64);
+    this.bufferLength = 0;
+    this.bytesHashed = 0;
+    this.finished = false;
+  }
+  module.exports = Sha256;
+  Sha256.BLOCK_SIZE = BLOCK_SIZE;
+  Sha256.prototype.update = function(data) {
+    if (this.finished) {
+      throw new Error("Attempted to update an already finished hash.");
+    }
+    if (hashUtils.isEmptyData(data)) {
+      return this;
+    }
+    data = hashUtils.convertToBuffer(data);
+    var position = 0;
+    var byteLength3 = data.byteLength;
+    this.bytesHashed += byteLength3;
+    if (this.bytesHashed * 8 > MAX_HASHABLE_LENGTH) {
+      throw new Error("Cannot hash more than 2^53 - 1 bits");
+    }
+    while (byteLength3 > 0) {
+      this.buffer[this.bufferLength++] = data[position++];
+      byteLength3--;
+      if (this.bufferLength === BLOCK_SIZE) {
+        this.hashBuffer();
+        this.bufferLength = 0;
+      }
+    }
+    return this;
+  };
+  Sha256.prototype.digest = function(encoding) {
+    if (!this.finished) {
+      var bitsHashed = this.bytesHashed * 8;
+      var bufferView = new DataView(this.buffer.buffer, this.buffer.byteOffset, this.buffer.byteLength);
+      var undecoratedLength = this.bufferLength;
+      bufferView.setUint8(this.bufferLength++, 128);
+      if (undecoratedLength % BLOCK_SIZE >= BLOCK_SIZE - 8) {
+        for (var i = this.bufferLength; i < BLOCK_SIZE; i++) {
+          bufferView.setUint8(i, 0);
+        }
+        this.hashBuffer();
+        this.bufferLength = 0;
+      }
+      for (var i = this.bufferLength; i < BLOCK_SIZE - 8; i++) {
+        bufferView.setUint8(i, 0);
+      }
+      bufferView.setUint32(BLOCK_SIZE - 8, Math.floor(bitsHashed / 4294967296), true);
+      bufferView.setUint32(BLOCK_SIZE - 4, bitsHashed);
+      this.hashBuffer();
+      this.finished = true;
+    }
+    var out = new Buffer2(DIGEST_LENGTH);
+    for (var i = 0; i < 8; i++) {
+      out[i * 4] = this.state[i] >>> 24 & 255;
+      out[i * 4 + 1] = this.state[i] >>> 16 & 255;
+      out[i * 4 + 2] = this.state[i] >>> 8 & 255;
+      out[i * 4 + 3] = this.state[i] >>> 0 & 255;
+    }
+    return encoding ? out.toString(encoding) : out;
+  };
+  Sha256.prototype.hashBuffer = function() {
+    var _a2 = this, buffer2 = _a2.buffer, state = _a2.state;
+    var state0 = state[0], state1 = state[1], state2 = state[2], state3 = state[3], state4 = state[4], state5 = state[5], state6 = state[6], state7 = state[7];
+    for (var i = 0; i < BLOCK_SIZE; i++) {
+      if (i < 16) {
+        this.temp[i] = (buffer2[i * 4] & 255) << 24 | (buffer2[i * 4 + 1] & 255) << 16 | (buffer2[i * 4 + 2] & 255) << 8 | buffer2[i * 4 + 3] & 255;
+      } else {
+        var u2 = this.temp[i - 2];
+        var t1_1 = (u2 >>> 17 | u2 << 15) ^ (u2 >>> 19 | u2 << 13) ^ u2 >>> 10;
+        u2 = this.temp[i - 15];
+        var t2_1 = (u2 >>> 7 | u2 << 25) ^ (u2 >>> 18 | u2 << 14) ^ u2 >>> 3;
+        this.temp[i] = (t1_1 + this.temp[i - 7] | 0) + (t2_1 + this.temp[i - 16] | 0);
+      }
+      var t1 = (((state4 >>> 6 | state4 << 26) ^ (state4 >>> 11 | state4 << 21) ^ (state4 >>> 25 | state4 << 7)) + (state4 & state5 ^ ~state4 & state6) | 0) + (state7 + (KEY[i] + this.temp[i] | 0) | 0) | 0;
+      var t2 = ((state0 >>> 2 | state0 << 30) ^ (state0 >>> 13 | state0 << 19) ^ (state0 >>> 22 | state0 << 10)) + (state0 & state1 ^ state0 & state2 ^ state1 & state2) | 0;
+      state7 = state6;
+      state6 = state5;
+      state5 = state4;
+      state4 = state3 + t1 | 0;
+      state3 = state2;
+      state2 = state1;
+      state1 = state0;
+      state0 = t1 + t2 | 0;
+    }
+    state[0] += state0;
+    state[1] += state1;
+    state[2] += state2;
+    state[3] += state3;
+    state[4] += state4;
+    state[5] += state5;
+    state[6] += state6;
+    state[7] += state7;
+  };
+})(browserSha256);
+(function(module, exports) {
+  var Hmac = browserHmac.exports;
+  var Md5 = browserMd5.exports;
+  var Sha1 = browserSha1.exports;
+  var Sha256 = browserSha256.exports;
+  module.exports = {
+    createHash: function createHash2(alg) {
+      alg = alg.toLowerCase();
+      if (alg === "md5") {
+        return new Md5();
+      } else if (alg === "sha256") {
+        return new Sha256();
+      } else if (alg === "sha1") {
+        return new Sha1();
+      }
+      throw new Error("Hash algorithm " + alg + " is not supported in the browser SDK");
+    },
+    createHmac: function createHmac(alg, key) {
+      alg = alg.toLowerCase();
+      if (alg === "md5") {
+        return new Hmac(Md5, key);
+      } else if (alg === "sha256") {
+        return new Hmac(Sha256, key);
+      } else if (alg === "sha1") {
+        return new Hmac(Sha1, key);
+      }
+      throw new Error("HMAC algorithm " + alg + " is not supported in the browser SDK");
+    },
+    createSign: function() {
+      throw new Error("createSign is not implemented in the browser");
+    }
+  };
+})(browserCryptoLib);
+var url = {};
+var punycode$1 = { exports: {} };
+/*! https://mths.be/punycode v1.3.2 by @mathias */
+(function(module, exports) {
+  (function(root) {
+    var freeExports = exports && !exports.nodeType && exports;
+    var freeModule = module && !module.nodeType && module;
+    var freeGlobal = typeof commonjsGlobal == "object" && commonjsGlobal;
+    if (freeGlobal.global === freeGlobal || freeGlobal.window === freeGlobal || freeGlobal.self === freeGlobal) {
+      root = freeGlobal;
+    }
+    var punycode2, maxInt = 2147483647, base = 36, tMin = 1, tMax = 26, skew = 38, damp = 700, initialBias = 72, initialN = 128, delimiter = "-", regexPunycode = /^xn--/, regexNonASCII = /[^\x20-\x7E]/, regexSeparators = /[\x2E\u3002\uFF0E\uFF61]/g, errors = {
+      "overflow": "Overflow: input needs wider integers to process",
+      "not-basic": "Illegal input >= 0x80 (not a basic code point)",
+      "invalid-input": "Invalid input"
+    }, baseMinusTMin = base - tMin, floor = Math.floor, stringFromCharCode = String.fromCharCode, key;
+    function error2(type) {
+      throw RangeError(errors[type]);
+    }
+    function map(array, fn2) {
+      var length = array.length;
+      var result = [];
+      while (length--) {
+        result[length] = fn2(array[length]);
+      }
+      return result;
+    }
+    function mapDomain(string2, fn2) {
+      var parts = string2.split("@");
+      var result = "";
+      if (parts.length > 1) {
+        result = parts[0] + "@";
+        string2 = parts[1];
+      }
+      string2 = string2.replace(regexSeparators, ".");
+      var labels = string2.split(".");
+      var encoded = map(labels, fn2).join(".");
+      return result + encoded;
+    }
+    function ucs2decode(string2) {
+      var output = [], counter = 0, length = string2.length, value, extra;
+      while (counter < length) {
+        value = string2.charCodeAt(counter++);
+        if (value >= 55296 && value <= 56319 && counter < length) {
+          extra = string2.charCodeAt(counter++);
+          if ((extra & 64512) == 56320) {
+            output.push(((value & 1023) << 10) + (extra & 1023) + 65536);
+          } else {
+            output.push(value);
+            counter--;
+          }
+        } else {
+          output.push(value);
+        }
+      }
+      return output;
+    }
+    function ucs2encode(array) {
+      return map(array, function(value) {
+        var output = "";
+        if (value > 65535) {
+          value -= 65536;
+          output += stringFromCharCode(value >>> 10 & 1023 | 55296);
+          value = 56320 | value & 1023;
+        }
+        output += stringFromCharCode(value);
+        return output;
+      }).join("");
+    }
+    function basicToDigit(codePoint) {
+      if (codePoint - 48 < 10) {
+        return codePoint - 22;
+      }
+      if (codePoint - 65 < 26) {
+        return codePoint - 65;
+      }
+      if (codePoint - 97 < 26) {
+        return codePoint - 97;
+      }
+      return base;
+    }
+    function digitToBasic(digit, flag) {
+      return digit + 22 + 75 * (digit < 26) - ((flag != 0) << 5);
+    }
+    function adapt(delta, numPoints, firstTime) {
+      var k2 = 0;
+      delta = firstTime ? floor(delta / damp) : delta >> 1;
+      delta += floor(delta / numPoints);
+      for (; delta > baseMinusTMin * tMax >> 1; k2 += base) {
+        delta = floor(delta / baseMinusTMin);
+      }
+      return floor(k2 + (baseMinusTMin + 1) * delta / (delta + skew));
+    }
+    function decode2(input) {
+      var output = [], inputLength = input.length, out, i = 0, n2 = initialN, bias = initialBias, basic, j2, index, oldi, w2, k2, digit, t2, baseMinusT;
+      basic = input.lastIndexOf(delimiter);
+      if (basic < 0) {
+        basic = 0;
+      }
+      for (j2 = 0; j2 < basic; ++j2) {
+        if (input.charCodeAt(j2) >= 128) {
+          error2("not-basic");
+        }
+        output.push(input.charCodeAt(j2));
+      }
+      for (index = basic > 0 ? basic + 1 : 0; index < inputLength; ) {
+        for (oldi = i, w2 = 1, k2 = base; ; k2 += base) {
+          if (index >= inputLength) {
+            error2("invalid-input");
+          }
+          digit = basicToDigit(input.charCodeAt(index++));
+          if (digit >= base || digit > floor((maxInt - i) / w2)) {
+            error2("overflow");
+          }
+          i += digit * w2;
+          t2 = k2 <= bias ? tMin : k2 >= bias + tMax ? tMax : k2 - bias;
+          if (digit < t2) {
+            break;
+          }
+          baseMinusT = base - t2;
+          if (w2 > floor(maxInt / baseMinusT)) {
+            error2("overflow");
+          }
+          w2 *= baseMinusT;
+        }
+        out = output.length + 1;
+        bias = adapt(i - oldi, out, oldi == 0);
+        if (floor(i / out) > maxInt - n2) {
+          error2("overflow");
+        }
+        n2 += floor(i / out);
+        i %= out;
+        output.splice(i++, 0, n2);
+      }
+      return ucs2encode(output);
+    }
+    function encode2(input) {
+      var n2, delta, handledCPCount, basicLength, bias, j2, m2, q2, k2, t2, currentValue, output = [], inputLength, handledCPCountPlusOne, baseMinusT, qMinusT;
+      input = ucs2decode(input);
+      inputLength = input.length;
+      n2 = initialN;
+      delta = 0;
+      bias = initialBias;
+      for (j2 = 0; j2 < inputLength; ++j2) {
+        currentValue = input[j2];
+        if (currentValue < 128) {
+          output.push(stringFromCharCode(currentValue));
+        }
+      }
+      handledCPCount = basicLength = output.length;
+      if (basicLength) {
+        output.push(delimiter);
+      }
+      while (handledCPCount < inputLength) {
+        for (m2 = maxInt, j2 = 0; j2 < inputLength; ++j2) {
+          currentValue = input[j2];
+          if (currentValue >= n2 && currentValue < m2) {
+            m2 = currentValue;
+          }
+        }
+        handledCPCountPlusOne = handledCPCount + 1;
+        if (m2 - n2 > floor((maxInt - delta) / handledCPCountPlusOne)) {
+          error2("overflow");
+        }
+        delta += (m2 - n2) * handledCPCountPlusOne;
+        n2 = m2;
+        for (j2 = 0; j2 < inputLength; ++j2) {
+          currentValue = input[j2];
+          if (currentValue < n2 && ++delta > maxInt) {
+            error2("overflow");
+          }
+          if (currentValue == n2) {
+            for (q2 = delta, k2 = base; ; k2 += base) {
+              t2 = k2 <= bias ? tMin : k2 >= bias + tMax ? tMax : k2 - bias;
+              if (q2 < t2) {
+                break;
+              }
+              qMinusT = q2 - t2;
+              baseMinusT = base - t2;
+              output.push(stringFromCharCode(digitToBasic(t2 + qMinusT % baseMinusT, 0)));
+              q2 = floor(qMinusT / baseMinusT);
+            }
+            output.push(stringFromCharCode(digitToBasic(q2, 0)));
+            bias = adapt(delta, handledCPCountPlusOne, handledCPCount == basicLength);
+            delta = 0;
+            ++handledCPCount;
+          }
+        }
+        ++delta;
+        ++n2;
+      }
+      return output.join("");
+    }
+    function toUnicode(input) {
+      return mapDomain(input, function(string2) {
+        return regexPunycode.test(string2) ? decode2(string2.slice(4).toLowerCase()) : string2;
+      });
+    }
+    function toASCII(input) {
+      return mapDomain(input, function(string2) {
+        return regexNonASCII.test(string2) ? "xn--" + encode2(string2) : string2;
+      });
+    }
+    punycode2 = {
+      "version": "1.3.2",
+      "ucs2": {
+        "decode": ucs2decode,
+        "encode": ucs2encode
+      },
+      "decode": decode2,
+      "encode": encode2,
+      "toASCII": toASCII,
+      "toUnicode": toUnicode
+    };
+    if (freeExports && freeModule) {
+      if (module.exports == freeExports) {
+        freeModule.exports = punycode2;
+      } else {
+        for (key in punycode2) {
+          punycode2.hasOwnProperty(key) && (freeExports[key] = punycode2[key]);
+        }
+      }
+    } else {
+      root.punycode = punycode2;
+    }
+  })(commonjsGlobal);
+})(punycode$1, punycode$1.exports);
+var querystring$1 = {};
+function hasOwnProperty$1(obj, prop) {
+  return Object.prototype.hasOwnProperty.call(obj, prop);
+}
+var decode = function(qs, sep, eq, options) {
+  sep = sep || "&";
+  eq = eq || "=";
+  var obj = {};
+  if (typeof qs !== "string" || qs.length === 0) {
+    return obj;
+  }
+  var regexp = /\+/g;
+  qs = qs.split(sep);
+  var maxKeys = 1e3;
+  if (options && typeof options.maxKeys === "number") {
+    maxKeys = options.maxKeys;
+  }
+  var len = qs.length;
+  if (maxKeys > 0 && len > maxKeys) {
+    len = maxKeys;
+  }
+  for (var i = 0; i < len; ++i) {
+    var x2 = qs[i].replace(regexp, "%20"), idx = x2.indexOf(eq), kstr, vstr, k2, v2;
+    if (idx >= 0) {
+      kstr = x2.substr(0, idx);
+      vstr = x2.substr(idx + 1);
+    } else {
+      kstr = x2;
+      vstr = "";
+    }
+    k2 = decodeURIComponent(kstr);
+    v2 = decodeURIComponent(vstr);
+    if (!hasOwnProperty$1(obj, k2)) {
+      obj[k2] = v2;
+    } else if (Array.isArray(obj[k2])) {
+      obj[k2].push(v2);
+    } else {
+      obj[k2] = [obj[k2], v2];
+    }
+  }
+  return obj;
+};
+var stringifyPrimitive = function(v2) {
+  switch (typeof v2) {
+    case "string":
+      return v2;
+    case "boolean":
+      return v2 ? "true" : "false";
+    case "number":
+      return isFinite(v2) ? v2 : "";
+    default:
+      return "";
+  }
+};
+var encode = function(obj, sep, eq, name) {
+  sep = sep || "&";
+  eq = eq || "=";
+  if (obj === null) {
+    obj = void 0;
+  }
+  if (typeof obj === "object") {
+    return Object.keys(obj).map(function(k2) {
+      var ks = encodeURIComponent(stringifyPrimitive(k2)) + eq;
+      if (Array.isArray(obj[k2])) {
+        return obj[k2].map(function(v2) {
+          return ks + encodeURIComponent(stringifyPrimitive(v2));
+        }).join(sep);
+      } else {
+        return ks + encodeURIComponent(stringifyPrimitive(obj[k2]));
+      }
+    }).join(sep);
+  }
+  if (!name)
+    return "";
+  return encodeURIComponent(stringifyPrimitive(name)) + eq + encodeURIComponent(stringifyPrimitive(obj));
+};
+querystring$1.decode = querystring$1.parse = decode;
+querystring$1.encode = querystring$1.stringify = encode;
+var punycode = punycode$1.exports;
+url.parse = urlParse2;
+url.resolve = urlResolve;
+url.resolveObject = urlResolveObject;
+url.format = urlFormat2;
+url.Url = Url;
+function Url() {
+  this.protocol = null;
+  this.slashes = null;
+  this.auth = null;
+  this.host = null;
+  this.port = null;
+  this.hostname = null;
+  this.hash = null;
+  this.search = null;
+  this.query = null;
+  this.pathname = null;
+  this.path = null;
+  this.href = null;
+}
+var protocolPattern = /^([a-z0-9.+-]+:)/i, portPattern = /:[0-9]*$/, delims = ["<", ">", '"', "`", " ", "\r", "\n", "	"], unwise = ["{", "}", "|", "\\", "^", "`"].concat(delims), autoEscape = ["'"].concat(unwise), nonHostChars = ["%", "/", "?", ";", "#"].concat(autoEscape), hostEndingChars = ["/", "?", "#"], hostnameMaxLen = 255, hostnamePartPattern = /^[a-z0-9A-Z_-]{0,63}$/, hostnamePartStart = /^([a-z0-9A-Z_-]{0,63})(.*)$/, unsafeProtocol = {
+  "javascript": true,
+  "javascript:": true
+}, hostlessProtocol = {
+  "javascript": true,
+  "javascript:": true
+}, slashedProtocol = {
+  "http": true,
+  "https": true,
+  "ftp": true,
+  "gopher": true,
+  "file": true,
+  "http:": true,
+  "https:": true,
+  "ftp:": true,
+  "gopher:": true,
+  "file:": true
+}, querystring = querystring$1;
+function urlParse2(url2, parseQueryString, slashesDenoteHost) {
+  if (url2 && isObject$1(url2) && url2 instanceof Url)
+    return url2;
+  var u2 = new Url();
+  u2.parse(url2, parseQueryString, slashesDenoteHost);
+  return u2;
+}
+Url.prototype.parse = function(url2, parseQueryString, slashesDenoteHost) {
+  if (!isString(url2)) {
+    throw new TypeError("Parameter 'url' must be a string, not " + typeof url2);
+  }
+  var rest2 = url2;
+  rest2 = rest2.trim();
+  var proto = protocolPattern.exec(rest2);
+  if (proto) {
+    proto = proto[0];
+    var lowerProto = proto.toLowerCase();
+    this.protocol = lowerProto;
+    rest2 = rest2.substr(proto.length);
+  }
+  if (slashesDenoteHost || proto || rest2.match(/^\/\/[^@\/]+@[^@\/]+/)) {
+    var slashes = rest2.substr(0, 2) === "//";
+    if (slashes && !(proto && hostlessProtocol[proto])) {
+      rest2 = rest2.substr(2);
+      this.slashes = true;
+    }
+  }
+  if (!hostlessProtocol[proto] && (slashes || proto && !slashedProtocol[proto])) {
+    var hostEnd = -1;
+    for (var i = 0; i < hostEndingChars.length; i++) {
+      var hec = rest2.indexOf(hostEndingChars[i]);
+      if (hec !== -1 && (hostEnd === -1 || hec < hostEnd))
+        hostEnd = hec;
+    }
+    var auth, atSign;
+    if (hostEnd === -1) {
+      atSign = rest2.lastIndexOf("@");
+    } else {
+      atSign = rest2.lastIndexOf("@", hostEnd);
+    }
+    if (atSign !== -1) {
+      auth = rest2.slice(0, atSign);
+      rest2 = rest2.slice(atSign + 1);
+      this.auth = decodeURIComponent(auth);
+    }
+    hostEnd = -1;
+    for (var i = 0; i < nonHostChars.length; i++) {
+      var hec = rest2.indexOf(nonHostChars[i]);
+      if (hec !== -1 && (hostEnd === -1 || hec < hostEnd))
+        hostEnd = hec;
+    }
+    if (hostEnd === -1)
+      hostEnd = rest2.length;
+    this.host = rest2.slice(0, hostEnd);
+    rest2 = rest2.slice(hostEnd);
+    this.parseHost();
+    this.hostname = this.hostname || "";
+    var ipv6Hostname = this.hostname[0] === "[" && this.hostname[this.hostname.length - 1] === "]";
+    if (!ipv6Hostname) {
+      var hostparts = this.hostname.split(/\./);
+      for (var i = 0, l2 = hostparts.length; i < l2; i++) {
+        var part = hostparts[i];
+        if (!part)
+          continue;
+        if (!part.match(hostnamePartPattern)) {
+          var newpart = "";
+          for (var j2 = 0, k2 = part.length; j2 < k2; j2++) {
+            if (part.charCodeAt(j2) > 127) {
+              newpart += "x";
+            } else {
+              newpart += part[j2];
+            }
+          }
+          if (!newpart.match(hostnamePartPattern)) {
+            var validParts = hostparts.slice(0, i);
+            var notHost = hostparts.slice(i + 1);
+            var bit = part.match(hostnamePartStart);
+            if (bit) {
+              validParts.push(bit[1]);
+              notHost.unshift(bit[2]);
+            }
+            if (notHost.length) {
+              rest2 = "/" + notHost.join(".") + rest2;
+            }
+            this.hostname = validParts.join(".");
+            break;
+          }
+        }
+      }
+    }
+    if (this.hostname.length > hostnameMaxLen) {
+      this.hostname = "";
+    } else {
+      this.hostname = this.hostname.toLowerCase();
+    }
+    if (!ipv6Hostname) {
+      var domainArray = this.hostname.split(".");
+      var newOut = [];
+      for (var i = 0; i < domainArray.length; ++i) {
+        var s2 = domainArray[i];
+        newOut.push(s2.match(/[^A-Za-z0-9_-]/) ? "xn--" + punycode.encode(s2) : s2);
+      }
+      this.hostname = newOut.join(".");
+    }
+    var p2 = this.port ? ":" + this.port : "";
+    var h2 = this.hostname || "";
+    this.host = h2 + p2;
+    this.href += this.host;
+    if (ipv6Hostname) {
+      this.hostname = this.hostname.substr(1, this.hostname.length - 2);
+      if (rest2[0] !== "/") {
+        rest2 = "/" + rest2;
+      }
+    }
+  }
+  if (!unsafeProtocol[lowerProto]) {
+    for (var i = 0, l2 = autoEscape.length; i < l2; i++) {
+      var ae2 = autoEscape[i];
+      var esc = encodeURIComponent(ae2);
+      if (esc === ae2) {
+        esc = escape(ae2);
+      }
+      rest2 = rest2.split(ae2).join(esc);
+    }
+  }
+  var hash2 = rest2.indexOf("#");
+  if (hash2 !== -1) {
+    this.hash = rest2.substr(hash2);
+    rest2 = rest2.slice(0, hash2);
+  }
+  var qm = rest2.indexOf("?");
+  if (qm !== -1) {
+    this.search = rest2.substr(qm);
+    this.query = rest2.substr(qm + 1);
+    if (parseQueryString) {
+      this.query = querystring.parse(this.query);
+    }
+    rest2 = rest2.slice(0, qm);
+  } else if (parseQueryString) {
+    this.search = "";
+    this.query = {};
+  }
+  if (rest2)
+    this.pathname = rest2;
+  if (slashedProtocol[lowerProto] && this.hostname && !this.pathname) {
+    this.pathname = "/";
+  }
+  if (this.pathname || this.search) {
+    var p2 = this.pathname || "";
+    var s2 = this.search || "";
+    this.path = p2 + s2;
+  }
+  this.href = this.format();
+  return this;
+};
+function urlFormat2(obj) {
+  if (isString(obj))
+    obj = urlParse2(obj);
+  if (!(obj instanceof Url))
+    return Url.prototype.format.call(obj);
+  return obj.format();
+}
+Url.prototype.format = function() {
+  var auth = this.auth || "";
+  if (auth) {
+    auth = encodeURIComponent(auth);
+    auth = auth.replace(/%3A/i, ":");
+    auth += "@";
+  }
+  var protocol = this.protocol || "", pathname2 = this.pathname || "", hash2 = this.hash || "", host = false, query2 = "";
+  if (this.host) {
+    host = auth + this.host;
+  } else if (this.hostname) {
+    host = auth + (this.hostname.indexOf(":") === -1 ? this.hostname : "[" + this.hostname + "]");
+    if (this.port) {
+      host += ":" + this.port;
+    }
+  }
+  if (this.query && isObject$1(this.query) && Object.keys(this.query).length) {
+    query2 = querystring.stringify(this.query);
+  }
+  var search2 = this.search || query2 && "?" + query2 || "";
+  if (protocol && protocol.substr(-1) !== ":")
+    protocol += ":";
+  if (this.slashes || (!protocol || slashedProtocol[protocol]) && host !== false) {
+    host = "//" + (host || "");
+    if (pathname2 && pathname2.charAt(0) !== "/")
+      pathname2 = "/" + pathname2;
+  } else if (!host) {
+    host = "";
+  }
+  if (hash2 && hash2.charAt(0) !== "#")
+    hash2 = "#" + hash2;
+  if (search2 && search2.charAt(0) !== "?")
+    search2 = "?" + search2;
+  pathname2 = pathname2.replace(/[?#]/g, function(match2) {
+    return encodeURIComponent(match2);
+  });
+  search2 = search2.replace("#", "%23");
+  return protocol + host + pathname2 + search2 + hash2;
+};
+function urlResolve(source, relative) {
+  return urlParse2(source, false, true).resolve(relative);
+}
+Url.prototype.resolve = function(relative) {
+  return this.resolveObject(urlParse2(relative, false, true)).format();
+};
+function urlResolveObject(source, relative) {
+  if (!source)
+    return relative;
+  return urlParse2(source, false, true).resolveObject(relative);
+}
+Url.prototype.resolveObject = function(relative) {
+  if (isString(relative)) {
+    var rel = new Url();
+    rel.parse(relative, false, true);
+    relative = rel;
+  }
+  var result = new Url();
+  Object.keys(this).forEach(function(k2) {
+    result[k2] = this[k2];
+  }, this);
+  result.hash = relative.hash;
+  if (relative.href === "") {
+    result.href = result.format();
+    return result;
+  }
+  if (relative.slashes && !relative.protocol) {
+    Object.keys(relative).forEach(function(k2) {
+      if (k2 !== "protocol")
+        result[k2] = relative[k2];
+    });
+    if (slashedProtocol[result.protocol] && result.hostname && !result.pathname) {
+      result.path = result.pathname = "/";
+    }
+    result.href = result.format();
+    return result;
+  }
+  if (relative.protocol && relative.protocol !== result.protocol) {
+    if (!slashedProtocol[relative.protocol]) {
+      Object.keys(relative).forEach(function(k2) {
+        result[k2] = relative[k2];
+      });
+      result.href = result.format();
+      return result;
+    }
+    result.protocol = relative.protocol;
+    if (!relative.host && !hostlessProtocol[relative.protocol]) {
+      var relPath = (relative.pathname || "").split("/");
+      while (relPath.length && !(relative.host = relPath.shift()))
+        ;
+      if (!relative.host)
+        relative.host = "";
+      if (!relative.hostname)
+        relative.hostname = "";
+      if (relPath[0] !== "")
+        relPath.unshift("");
+      if (relPath.length < 2)
+        relPath.unshift("");
+      result.pathname = relPath.join("/");
+    } else {
+      result.pathname = relative.pathname;
+    }
+    result.search = relative.search;
+    result.query = relative.query;
+    result.host = relative.host || "";
+    result.auth = relative.auth;
+    result.hostname = relative.hostname || relative.host;
+    result.port = relative.port;
+    if (result.pathname || result.search) {
+      var p2 = result.pathname || "";
+      var s2 = result.search || "";
+      result.path = p2 + s2;
+    }
+    result.slashes = result.slashes || relative.slashes;
+    result.href = result.format();
+    return result;
+  }
+  var isSourceAbs = result.pathname && result.pathname.charAt(0) === "/", isRelAbs = relative.host || relative.pathname && relative.pathname.charAt(0) === "/", mustEndAbs = isRelAbs || isSourceAbs || result.host && relative.pathname, removeAllDots = mustEndAbs, srcPath = result.pathname && result.pathname.split("/") || [], relPath = relative.pathname && relative.pathname.split("/") || [], psychotic = result.protocol && !slashedProtocol[result.protocol];
+  if (psychotic) {
+    result.hostname = "";
+    result.port = null;
+    if (result.host) {
+      if (srcPath[0] === "")
+        srcPath[0] = result.host;
+      else
+        srcPath.unshift(result.host);
+    }
+    result.host = "";
+    if (relative.protocol) {
+      relative.hostname = null;
+      relative.port = null;
+      if (relative.host) {
+        if (relPath[0] === "")
+          relPath[0] = relative.host;
+        else
+          relPath.unshift(relative.host);
+      }
+      relative.host = null;
+    }
+    mustEndAbs = mustEndAbs && (relPath[0] === "" || srcPath[0] === "");
+  }
+  if (isRelAbs) {
+    result.host = relative.host || relative.host === "" ? relative.host : result.host;
+    result.hostname = relative.hostname || relative.hostname === "" ? relative.hostname : result.hostname;
+    result.search = relative.search;
+    result.query = relative.query;
+    srcPath = relPath;
+  } else if (relPath.length) {
+    if (!srcPath)
+      srcPath = [];
+    srcPath.pop();
+    srcPath = srcPath.concat(relPath);
+    result.search = relative.search;
+    result.query = relative.query;
+  } else if (!isNullOrUndefined(relative.search)) {
+    if (psychotic) {
+      result.hostname = result.host = srcPath.shift();
+      var authInHost = result.host && result.host.indexOf("@") > 0 ? result.host.split("@") : false;
+      if (authInHost) {
+        result.auth = authInHost.shift();
+        result.host = result.hostname = authInHost.shift();
+      }
+    }
+    result.search = relative.search;
+    result.query = relative.query;
+    if (!isNull(result.pathname) || !isNull(result.search)) {
+      result.path = (result.pathname ? result.pathname : "") + (result.search ? result.search : "");
+    }
+    result.href = result.format();
+    return result;
+  }
+  if (!srcPath.length) {
+    result.pathname = null;
+    if (result.search) {
+      result.path = "/" + result.search;
+    } else {
+      result.path = null;
+    }
+    result.href = result.format();
+    return result;
+  }
+  var last = srcPath.slice(-1)[0];
+  var hasTrailingSlash = (result.host || relative.host) && (last === "." || last === "..") || last === "";
+  var up = 0;
+  for (var i = srcPath.length; i >= 0; i--) {
+    last = srcPath[i];
+    if (last == ".") {
+      srcPath.splice(i, 1);
+    } else if (last === "..") {
+      srcPath.splice(i, 1);
+      up++;
+    } else if (up) {
+      srcPath.splice(i, 1);
+      up--;
+    }
+  }
+  if (!mustEndAbs && !removeAllDots) {
+    for (; up--; up) {
+      srcPath.unshift("..");
+    }
+  }
+  if (mustEndAbs && srcPath[0] !== "" && (!srcPath[0] || srcPath[0].charAt(0) !== "/")) {
+    srcPath.unshift("");
+  }
+  if (hasTrailingSlash && srcPath.join("/").substr(-1) !== "/") {
+    srcPath.push("");
+  }
+  var isAbsolute = srcPath[0] === "" || srcPath[0] && srcPath[0].charAt(0) === "/";
+  if (psychotic) {
+    result.hostname = result.host = isAbsolute ? "" : srcPath.length ? srcPath.shift() : "";
+    var authInHost = result.host && result.host.indexOf("@") > 0 ? result.host.split("@") : false;
+    if (authInHost) {
+      result.auth = authInHost.shift();
+      result.host = result.hostname = authInHost.shift();
+    }
+  }
+  mustEndAbs = mustEndAbs || result.host && srcPath.length;
+  if (mustEndAbs && !isAbsolute) {
+    srcPath.unshift("");
+  }
+  if (!srcPath.length) {
+    result.pathname = null;
+    result.path = null;
+  } else {
+    result.pathname = srcPath.join("/");
+  }
+  if (!isNull(result.pathname) || !isNull(result.search)) {
+    result.path = (result.pathname ? result.pathname : "") + (result.search ? result.search : "");
+  }
+  result.auth = relative.auth || result.auth;
+  result.slashes = result.slashes || relative.slashes;
+  result.href = result.format();
+  return result;
+};
+Url.prototype.parseHost = function() {
+  var host = this.host;
+  var port = portPattern.exec(host);
+  if (port) {
+    port = port[0];
+    if (port !== ":") {
+      this.port = port.substr(1);
+    }
+    host = host.substr(0, host.length - port.length);
+  }
+  if (host)
+    this.hostname = host;
+};
+function isString(arg) {
+  return typeof arg === "string";
+}
+function isObject$1(arg) {
+  return typeof arg === "object" && arg !== null;
+}
+function isNull(arg) {
+  return arg === null;
+}
+function isNullOrUndefined(arg) {
+  return arg == null;
+}
+var browserClock = {
+  now: function now2() {
+    if (typeof performance !== "undefined" && typeof performance.now === "function") {
+      return performance.now();
+    }
+    return Date.now();
+  }
+};
+function eventMessageChunker$1(buffer2) {
+  var messages = [];
+  var offset2 = 0;
+  while (offset2 < buffer2.length) {
+    var totalLength = buffer2.readInt32BE(offset2);
+    var message = buffer2.slice(offset2, totalLength + offset2);
+    offset2 += totalLength;
+    messages.push(message);
+  }
+  return messages;
+}
+var eventMessageChunker_1 = {
+  eventMessageChunker: eventMessageChunker$1
+};
+var util$3 = core.util;
+var toBuffer$1 = util$3.buffer.toBuffer;
+function Int64$1(bytes) {
+  if (bytes.length !== 8) {
+    throw new Error("Int64 buffers must be exactly 8 bytes");
+  }
+  if (!util$3.Buffer.isBuffer(bytes))
+    bytes = toBuffer$1(bytes);
+  this.bytes = bytes;
+}
+Int64$1.fromNumber = function(number) {
+  if (number > 9223372036854776e3 || number < -9223372036854776e3) {
+    throw new Error(number + " is too large (or, if negative, too small) to represent as an Int64");
+  }
+  var bytes = new Uint8Array(8);
+  for (var i = 7, remaining = Math.abs(Math.round(number)); i > -1 && remaining > 0; i--, remaining /= 256) {
+    bytes[i] = remaining;
+  }
+  if (number < 0) {
+    negate(bytes);
+  }
+  return new Int64$1(bytes);
+};
+Int64$1.prototype.valueOf = function() {
+  var bytes = this.bytes.slice(0);
+  var negative = bytes[0] & 128;
+  if (negative) {
+    negate(bytes);
+  }
+  return parseInt(bytes.toString("hex"), 16) * (negative ? -1 : 1);
+};
+Int64$1.prototype.toString = function() {
+  return String(this.valueOf());
+};
+function negate(bytes) {
+  for (var i = 0; i < 8; i++) {
+    bytes[i] ^= 255;
+  }
+  for (var i = 7; i > -1; i--) {
+    bytes[i]++;
+    if (bytes[i] !== 0) {
+      break;
+    }
+  }
+}
+var int64 = {
+  Int64: Int64$1
+};
+var util$2 = core.util;
+var toBuffer = util$2.buffer.toBuffer;
+var PRELUDE_MEMBER_LENGTH = 4;
+var PRELUDE_LENGTH = PRELUDE_MEMBER_LENGTH * 2;
+var CHECKSUM_LENGTH = 4;
+var MINIMUM_MESSAGE_LENGTH = PRELUDE_LENGTH + CHECKSUM_LENGTH * 2;
+function splitMessage$1(message) {
+  if (!util$2.Buffer.isBuffer(message))
+    message = toBuffer(message);
+  if (message.length < MINIMUM_MESSAGE_LENGTH) {
+    throw new Error("Provided message too short to accommodate event stream message overhead");
+  }
+  if (message.length !== message.readUInt32BE(0)) {
+    throw new Error("Reported message length does not match received message length");
+  }
+  var expectedPreludeChecksum = message.readUInt32BE(PRELUDE_LENGTH);
+  if (expectedPreludeChecksum !== util$2.crypto.crc32(message.slice(0, PRELUDE_LENGTH))) {
+    throw new Error("The prelude checksum specified in the message (" + expectedPreludeChecksum + ") does not match the calculated CRC32 checksum.");
+  }
+  var expectedMessageChecksum = message.readUInt32BE(message.length - CHECKSUM_LENGTH);
+  if (expectedMessageChecksum !== util$2.crypto.crc32(message.slice(0, message.length - CHECKSUM_LENGTH))) {
+    throw new Error("The message checksum did not match the expected value of " + expectedMessageChecksum);
+  }
+  var headersStart = PRELUDE_LENGTH + CHECKSUM_LENGTH;
+  var headersEnd = headersStart + message.readUInt32BE(PRELUDE_MEMBER_LENGTH);
+  return {
+    headers: message.slice(headersStart, headersEnd),
+    body: message.slice(headersEnd, message.length - CHECKSUM_LENGTH)
+  };
+}
+var splitMessage_1 = {
+  splitMessage: splitMessage$1
+};
+var Int64 = int64.Int64;
+var splitMessage = splitMessage_1.splitMessage;
+var BOOLEAN_TAG = "boolean";
+var BYTE_TAG = "byte";
+var SHORT_TAG = "short";
+var INT_TAG = "integer";
+var LONG_TAG = "long";
+var BINARY_TAG = "binary";
+var STRING_TAG = "string";
+var TIMESTAMP_TAG = "timestamp";
+var UUID_TAG = "uuid";
+function parseHeaders(headers) {
+  var out = {};
+  var position = 0;
+  while (position < headers.length) {
+    var nameLength = headers.readUInt8(position++);
+    var name = headers.slice(position, position + nameLength).toString();
+    position += nameLength;
+    switch (headers.readUInt8(position++)) {
+      case 0:
+        out[name] = {
+          type: BOOLEAN_TAG,
+          value: true
+        };
+        break;
+      case 1:
+        out[name] = {
+          type: BOOLEAN_TAG,
+          value: false
+        };
+        break;
+      case 2:
+        out[name] = {
+          type: BYTE_TAG,
+          value: headers.readInt8(position++)
+        };
+        break;
+      case 3:
+        out[name] = {
+          type: SHORT_TAG,
+          value: headers.readInt16BE(position)
+        };
+        position += 2;
+        break;
+      case 4:
+        out[name] = {
+          type: INT_TAG,
+          value: headers.readInt32BE(position)
+        };
+        position += 4;
+        break;
+      case 5:
+        out[name] = {
+          type: LONG_TAG,
+          value: new Int64(headers.slice(position, position + 8))
+        };
+        position += 8;
+        break;
+      case 6:
+        var binaryLength = headers.readUInt16BE(position);
+        position += 2;
+        out[name] = {
+          type: BINARY_TAG,
+          value: headers.slice(position, position + binaryLength)
+        };
+        position += binaryLength;
+        break;
+      case 7:
+        var stringLength = headers.readUInt16BE(position);
+        position += 2;
+        out[name] = {
+          type: STRING_TAG,
+          value: headers.slice(position, position + stringLength).toString()
+        };
+        position += stringLength;
+        break;
+      case 8:
+        out[name] = {
+          type: TIMESTAMP_TAG,
+          value: new Date(new Int64(headers.slice(position, position + 8)).valueOf())
+        };
+        position += 8;
+        break;
+      case 9:
+        var uuidChars = headers.slice(position, position + 16).toString("hex");
+        position += 16;
+        out[name] = {
+          type: UUID_TAG,
+          value: uuidChars.substr(0, 8) + "-" + uuidChars.substr(8, 4) + "-" + uuidChars.substr(12, 4) + "-" + uuidChars.substr(16, 4) + "-" + uuidChars.substr(20)
+        };
+        break;
+      default:
+        throw new Error("Unrecognized header type tag");
+    }
+  }
+  return out;
+}
+function parseMessage$1(message) {
+  var parsed = splitMessage(message);
+  return { headers: parseHeaders(parsed.headers), body: parsed.body };
+}
+var parseMessage_1 = {
+  parseMessage: parseMessage$1
+};
+var parseMessage = parseMessage_1.parseMessage;
+function parseEvent$1(parser2, message, shape2) {
+  var parsedMessage = parseMessage(message);
+  var messageType = parsedMessage.headers[":message-type"];
+  if (messageType) {
+    if (messageType.value === "error") {
+      throw parseError(parsedMessage);
+    } else if (messageType.value !== "event") {
+      return;
+    }
+  }
+  var eventType = parsedMessage.headers[":event-type"];
+  var eventModel = shape2.members[eventType.value];
+  if (!eventModel) {
+    return;
+  }
+  var result = {};
+  var eventPayloadMemberName = eventModel.eventPayloadMemberName;
+  if (eventPayloadMemberName) {
+    var payloadShape = eventModel.members[eventPayloadMemberName];
+    if (payloadShape.type === "binary") {
+      result[eventPayloadMemberName] = parsedMessage.body;
+    } else {
+      result[eventPayloadMemberName] = parser2.parse(parsedMessage.body.toString(), payloadShape);
+    }
+  }
+  var eventHeaderNames = eventModel.eventHeaderMemberNames;
+  for (var i = 0; i < eventHeaderNames.length; i++) {
+    var name = eventHeaderNames[i];
+    if (parsedMessage.headers[name]) {
+      result[name] = eventModel.members[name].toType(parsedMessage.headers[name].value);
+    }
+  }
+  var output = {};
+  output[eventType.value] = result;
+  return output;
+}
+function parseError(message) {
+  var errorCode = message.headers[":error-code"];
+  var errorMessage = message.headers[":error-message"];
+  var error2 = new Error(errorMessage.value || errorMessage);
+  error2.code = error2.name = errorCode.value || errorCode;
+  return error2;
+}
+var parseEvent_1 = {
+  parseEvent: parseEvent$1
+};
+var eventMessageChunker = eventMessageChunker_1.eventMessageChunker;
+var parseEvent = parseEvent_1.parseEvent;
+function createEventStream(body, parser2, model) {
+  var eventMessages = eventMessageChunker(body);
+  var events2 = [];
+  for (var i = 0; i < eventMessages.length; i++) {
+    events2.push(parseEvent(parser2, eventMessages[i], model));
+  }
+  return events2;
+}
+var bufferedCreateEventStream = {
+  createEventStream
+};
+var AWS$b = core;
+function validateRegionalEndpointsFlagValue(configValue, errorOptions) {
+  if (typeof configValue !== "string")
+    return void 0;
+  else if (["legacy", "regional"].indexOf(configValue.toLowerCase()) >= 0) {
+    return configValue.toLowerCase();
+  } else {
+    throw AWS$b.util.error(new Error(), errorOptions);
+  }
+}
+function resolveRegionalEndpointsFlag$1(originalConfig, options) {
+  originalConfig = originalConfig || {};
+  var resolved;
+  if (originalConfig[options.clientConfig]) {
+    resolved = validateRegionalEndpointsFlagValue(originalConfig[options.clientConfig], {
+      code: "InvalidConfiguration",
+      message: 'invalid "' + options.clientConfig + '" configuration. Expect "legacy"  or "regional". Got "' + originalConfig[options.clientConfig] + '".'
+    });
+    if (resolved)
+      return resolved;
+  }
+  if (!AWS$b.util.isNode())
+    return resolved;
+  if (Object.prototype.hasOwnProperty.call(process.env, options.env)) {
+    var envFlag = process.env[options.env];
+    resolved = validateRegionalEndpointsFlagValue(envFlag, {
+      code: "InvalidEnvironmentalVariable",
+      message: "invalid " + options.env + ' environmental variable. Expect "legacy"  or "regional". Got "' + process.env[options.env] + '".'
+    });
+    if (resolved)
+      return resolved;
+  }
+  var profile = {};
+  try {
+    var profiles = AWS$b.util.getProfilesFromSharedConfig(AWS$b.util.iniLoader);
+    profile = profiles[{}.AWS_PROFILE || AWS$b.util.defaultProfile];
+  } catch (e2) {
+  }
+  if (profile && Object.prototype.hasOwnProperty.call(profile, options.sharedConfig)) {
+    var fileFlag = profile[options.sharedConfig];
+    resolved = validateRegionalEndpointsFlagValue(fileFlag, {
+      code: "InvalidConfiguration",
+      message: "invalid " + options.sharedConfig + ' profile config. Expect "legacy"  or "regional". Got "' + profile[options.sharedConfig] + '".'
+    });
+    if (resolved)
+      return resolved;
+  }
+  return resolved;
+}
+var config_regional_endpoint = resolveRegionalEndpointsFlag$1;
+var AWS$a = core;
+var resolveRegionalEndpointsFlag = config_regional_endpoint;
+var ENV_REGIONAL_ENDPOINT_ENABLED = "AWS_STS_REGIONAL_ENDPOINTS";
+var CONFIG_REGIONAL_ENDPOINT_ENABLED = "sts_regional_endpoints";
+AWS$a.util.update(AWS$a.STS.prototype, {
+  credentialsFrom: function credentialsFrom(data, credentials) {
+    if (!data)
+      return null;
+    if (!credentials)
+      credentials = new AWS$a.TemporaryCredentials();
+    credentials.expired = false;
+    credentials.accessKeyId = data.Credentials.AccessKeyId;
+    credentials.secretAccessKey = data.Credentials.SecretAccessKey;
+    credentials.sessionToken = data.Credentials.SessionToken;
+    credentials.expireTime = data.Credentials.Expiration;
+    return credentials;
+  },
+  assumeRoleWithWebIdentity: function assumeRoleWithWebIdentity(params, callback) {
+    return this.makeUnauthenticatedRequest("assumeRoleWithWebIdentity", params, callback);
+  },
+  assumeRoleWithSAML: function assumeRoleWithSAML(params, callback) {
+    return this.makeUnauthenticatedRequest("assumeRoleWithSAML", params, callback);
+  },
+  setupRequestListeners: function setupRequestListeners2(request) {
+    request.addListener("validate", this.optInRegionalEndpoint, true);
+  },
+  optInRegionalEndpoint: function optInRegionalEndpoint(req) {
+    var service = req.service;
+    var config2 = service.config;
+    config2.stsRegionalEndpoints = resolveRegionalEndpointsFlag(service._originalConfig, {
+      env: ENV_REGIONAL_ENDPOINT_ENABLED,
+      sharedConfig: CONFIG_REGIONAL_ENDPOINT_ENABLED,
+      clientConfig: "stsRegionalEndpoints"
+    });
+    if (config2.stsRegionalEndpoints === "regional" && service.isGlobalEndpoint) {
+      if (!config2.region) {
+        throw AWS$a.util.error(new Error(), { code: "ConfigError", message: "Missing region in config" });
+      }
+      var insertPoint = config2.endpoint.indexOf(".amazonaws.com");
+      var regionalEndpoint = config2.endpoint.substring(0, insertPoint) + "." + config2.region + config2.endpoint.substring(insertPoint);
+      req.httpRequest.updateEndpoint(regionalEndpoint);
+      req.httpRequest.region = config2.region;
+    }
+  }
+});
+const version$1 = "2.0";
+const metadata$1 = {
+  apiVersion: "2011-06-15",
+  endpointPrefix: "sts",
+  globalEndpoint: "sts.amazonaws.com",
+  protocol: "query",
+  serviceAbbreviation: "AWS STS",
+  serviceFullName: "AWS Security Token Service",
+  serviceId: "STS",
+  signatureVersion: "v4",
+  uid: "sts-2011-06-15",
+  xmlNamespace: "https://sts.amazonaws.com/doc/2011-06-15/"
+};
+const operations$1 = {
+  AssumeRole: {
+    input: {
+      type: "structure",
+      required: [
+        "RoleArn",
+        "RoleSessionName"
+      ],
+      members: {
+        RoleArn: {},
+        RoleSessionName: {},
+        PolicyArns: {
+          shape: "S4"
+        },
+        Policy: {},
+        DurationSeconds: {
+          type: "integer"
+        },
+        Tags: {
+          shape: "S8"
+        },
+        TransitiveTagKeys: {
+          type: "list",
+          member: {}
+        },
+        ExternalId: {},
+        SerialNumber: {},
+        TokenCode: {},
+        SourceIdentity: {}
+      }
+    },
+    output: {
+      resultWrapper: "AssumeRoleResult",
+      type: "structure",
+      members: {
+        Credentials: {
+          shape: "Si"
+        },
+        AssumedRoleUser: {
+          shape: "Sn"
+        },
+        PackedPolicySize: {
+          type: "integer"
+        },
+        SourceIdentity: {}
+      }
+    }
+  },
+  AssumeRoleWithSAML: {
+    input: {
+      type: "structure",
+      required: [
+        "RoleArn",
+        "PrincipalArn",
+        "SAMLAssertion"
+      ],
+      members: {
+        RoleArn: {},
+        PrincipalArn: {},
+        SAMLAssertion: {},
+        PolicyArns: {
+          shape: "S4"
+        },
+        Policy: {},
+        DurationSeconds: {
+          type: "integer"
+        }
+      }
+    },
+    output: {
+      resultWrapper: "AssumeRoleWithSAMLResult",
+      type: "structure",
+      members: {
+        Credentials: {
+          shape: "Si"
+        },
+        AssumedRoleUser: {
+          shape: "Sn"
+        },
+        PackedPolicySize: {
+          type: "integer"
+        },
+        Subject: {},
+        SubjectType: {},
+        Issuer: {},
+        Audience: {},
+        NameQualifier: {},
+        SourceIdentity: {}
+      }
+    }
+  },
+  AssumeRoleWithWebIdentity: {
+    input: {
+      type: "structure",
+      required: [
+        "RoleArn",
+        "RoleSessionName",
+        "WebIdentityToken"
+      ],
+      members: {
+        RoleArn: {},
+        RoleSessionName: {},
+        WebIdentityToken: {},
+        ProviderId: {},
+        PolicyArns: {
+          shape: "S4"
+        },
+        Policy: {},
+        DurationSeconds: {
+          type: "integer"
+        }
+      }
+    },
+    output: {
+      resultWrapper: "AssumeRoleWithWebIdentityResult",
+      type: "structure",
+      members: {
+        Credentials: {
+          shape: "Si"
+        },
+        SubjectFromWebIdentityToken: {},
+        AssumedRoleUser: {
+          shape: "Sn"
+        },
+        PackedPolicySize: {
+          type: "integer"
+        },
+        Provider: {},
+        Audience: {},
+        SourceIdentity: {}
+      }
+    }
+  },
+  DecodeAuthorizationMessage: {
+    input: {
+      type: "structure",
+      required: [
+        "EncodedMessage"
+      ],
+      members: {
+        EncodedMessage: {}
+      }
+    },
+    output: {
+      resultWrapper: "DecodeAuthorizationMessageResult",
+      type: "structure",
+      members: {
+        DecodedMessage: {}
+      }
+    }
+  },
+  GetAccessKeyInfo: {
+    input: {
+      type: "structure",
+      required: [
+        "AccessKeyId"
+      ],
+      members: {
+        AccessKeyId: {}
+      }
+    },
+    output: {
+      resultWrapper: "GetAccessKeyInfoResult",
+      type: "structure",
+      members: {
+        Account: {}
+      }
+    }
+  },
+  GetCallerIdentity: {
+    input: {
+      type: "structure",
+      members: {}
+    },
+    output: {
+      resultWrapper: "GetCallerIdentityResult",
+      type: "structure",
+      members: {
+        UserId: {},
+        Account: {},
+        Arn: {}
+      }
+    }
+  },
+  GetFederationToken: {
+    input: {
+      type: "structure",
+      required: [
+        "Name"
+      ],
+      members: {
+        Name: {},
+        Policy: {},
+        PolicyArns: {
+          shape: "S4"
+        },
+        DurationSeconds: {
+          type: "integer"
+        },
+        Tags: {
+          shape: "S8"
+        }
+      }
+    },
+    output: {
+      resultWrapper: "GetFederationTokenResult",
+      type: "structure",
+      members: {
+        Credentials: {
+          shape: "Si"
+        },
+        FederatedUser: {
+          type: "structure",
+          required: [
+            "FederatedUserId",
+            "Arn"
+          ],
+          members: {
+            FederatedUserId: {},
+            Arn: {}
+          }
+        },
+        PackedPolicySize: {
+          type: "integer"
+        }
+      }
+    }
+  },
+  GetSessionToken: {
+    input: {
+      type: "structure",
+      members: {
+        DurationSeconds: {
+          type: "integer"
+        },
+        SerialNumber: {},
+        TokenCode: {}
+      }
+    },
+    output: {
+      resultWrapper: "GetSessionTokenResult",
+      type: "structure",
+      members: {
+        Credentials: {
+          shape: "Si"
+        }
+      }
+    }
+  }
+};
+const shapes$1 = {
+  S4: {
+    type: "list",
+    member: {
+      type: "structure",
+      members: {
+        arn: {}
+      }
+    }
+  },
+  S8: {
+    type: "list",
+    member: {
+      type: "structure",
+      required: [
+        "Key",
+        "Value"
+      ],
+      members: {
+        Key: {},
+        Value: {}
+      }
+    }
+  },
+  Si: {
+    type: "structure",
+    required: [
+      "AccessKeyId",
+      "SecretAccessKey",
+      "SessionToken",
+      "Expiration"
+    ],
+    members: {
+      AccessKeyId: {},
+      SecretAccessKey: {},
+      SessionToken: {},
+      Expiration: {
+        type: "timestamp"
+      }
+    }
+  },
+  Sn: {
+    type: "structure",
+    required: [
+      "AssumedRoleId",
+      "Arn"
+    ],
+    members: {
+      AssumedRoleId: {},
+      Arn: {}
+    }
+  }
+};
+var require$$1$1 = {
+  version: version$1,
+  metadata: metadata$1,
+  operations: operations$1,
+  shapes: shapes$1
+};
+const pagination$1 = {};
+var require$$2$1 = {
+  pagination: pagination$1
+};
+var AWS$9 = core;
+var Service$1 = AWS$9.Service;
+var apiLoader$1 = AWS$9.apiLoader;
+apiLoader$1.services["sts"] = {};
+AWS$9.STS = Service$1.defineService("sts", ["2011-06-15"]);
+Object.defineProperty(apiLoader$1.services["sts"], "2011-06-15", {
+  get: function get3() {
+    var model = require$$1$1;
+    model.paginators = require$$2$1.pagination;
+    return model;
+  },
+  enumerable: true,
+  configurable: true
+});
+var sts = AWS$9.STS;
+var AWS$8 = core;
+var STS$4 = sts;
+AWS$8.TemporaryCredentials = AWS$8.util.inherit(AWS$8.Credentials, {
+  constructor: function TemporaryCredentials(params, masterCredentials) {
+    AWS$8.Credentials.call(this);
+    this.loadMasterCredentials(masterCredentials);
+    this.expired = true;
+    this.params = params || {};
+    if (this.params.RoleArn) {
+      this.params.RoleSessionName = this.params.RoleSessionName || "temporary-credentials";
+    }
+  },
+  refresh: function refresh2(callback) {
+    this.coalesceRefresh(callback || AWS$8.util.fn.callback);
+  },
+  load: function load2(callback) {
+    var self2 = this;
+    self2.createClients();
+    self2.masterCredentials.get(function() {
+      self2.service.config.credentials = self2.masterCredentials;
+      var operation2 = self2.params.RoleArn ? self2.service.assumeRole : self2.service.getSessionToken;
+      operation2.call(self2.service, function(err, data) {
+        if (!err) {
+          self2.service.credentialsFrom(data, self2);
+        }
+        callback(err);
+      });
+    });
+  },
+  loadMasterCredentials: function loadMasterCredentials(masterCredentials) {
+    this.masterCredentials = masterCredentials || AWS$8.config.credentials;
+    while (this.masterCredentials.masterCredentials) {
+      this.masterCredentials = this.masterCredentials.masterCredentials;
+    }
+    if (typeof this.masterCredentials.get !== "function") {
+      this.masterCredentials = new AWS$8.Credentials(this.masterCredentials);
+    }
+  },
+  createClients: function() {
+    this.service = this.service || new STS$4({ params: this.params });
+  }
+});
+var AWS$7 = core;
+var STS$3 = sts;
+AWS$7.ChainableTemporaryCredentials = AWS$7.util.inherit(AWS$7.Credentials, {
+  constructor: function ChainableTemporaryCredentials(options) {
+    AWS$7.Credentials.call(this);
+    options = options || {};
+    this.errorCode = "ChainableTemporaryCredentialsProviderFailure";
+    this.expired = true;
+    this.tokenCodeFn = null;
+    var params = AWS$7.util.copy(options.params) || {};
+    if (params.RoleArn) {
+      params.RoleSessionName = params.RoleSessionName || "temporary-credentials";
+    }
+    if (params.SerialNumber) {
+      if (!options.tokenCodeFn || typeof options.tokenCodeFn !== "function") {
+        throw new AWS$7.util.error(new Error("tokenCodeFn must be a function when params.SerialNumber is given"), { code: this.errorCode });
+      } else {
+        this.tokenCodeFn = options.tokenCodeFn;
+      }
+    }
+    var config2 = AWS$7.util.merge({
+      params,
+      credentials: options.masterCredentials || AWS$7.config.credentials
+    }, options.stsConfig || {});
+    this.service = new STS$3(config2);
+  },
+  refresh: function refresh3(callback) {
+    this.coalesceRefresh(callback || AWS$7.util.fn.callback);
+  },
+  load: function load3(callback) {
+    var self2 = this;
+    var operation2 = self2.service.config.params.RoleArn ? "assumeRole" : "getSessionToken";
+    this.getTokenCode(function(err, tokenCode) {
+      var params = {};
+      if (err) {
+        callback(err);
+        return;
+      }
+      if (tokenCode) {
+        params.TokenCode = tokenCode;
+      }
+      self2.service[operation2](params, function(err2, data) {
+        if (!err2) {
+          self2.service.credentialsFrom(data, self2);
+        }
+        callback(err2);
+      });
+    });
+  },
+  getTokenCode: function getTokenCode(callback) {
+    var self2 = this;
+    if (this.tokenCodeFn) {
+      this.tokenCodeFn(this.service.config.params.SerialNumber, function(err, token) {
+        if (err) {
+          var message = err;
+          if (err instanceof Error) {
+            message = err.message;
+          }
+          callback(AWS$7.util.error(new Error("Error fetching MFA token: " + message), { code: self2.errorCode }));
+          return;
+        }
+        callback(null, token);
+      });
+    } else {
+      callback(null);
+    }
+  }
+});
+var AWS$6 = core;
+var STS$2 = sts;
+AWS$6.WebIdentityCredentials = AWS$6.util.inherit(AWS$6.Credentials, {
+  constructor: function WebIdentityCredentials(params, clientConfig) {
+    AWS$6.Credentials.call(this);
+    this.expired = true;
+    this.params = params;
+    this.params.RoleSessionName = this.params.RoleSessionName || "web-identity";
+    this.data = null;
+    this._clientConfig = AWS$6.util.copy(clientConfig || {});
+  },
+  refresh: function refresh4(callback) {
+    this.coalesceRefresh(callback || AWS$6.util.fn.callback);
+  },
+  load: function load4(callback) {
+    var self2 = this;
+    self2.createClients();
+    self2.service.assumeRoleWithWebIdentity(function(err, data) {
+      self2.data = null;
+      if (!err) {
+        self2.data = data;
+        self2.service.credentialsFrom(data, self2);
+      }
+      callback(err);
+    });
+  },
+  createClients: function() {
+    if (!this.service) {
+      var stsConfig = AWS$6.util.merge({}, this._clientConfig);
+      stsConfig.params = this.params;
+      this.service = new STS$2(stsConfig);
+    }
+  }
+});
+const version = "2.0";
+const metadata = {
+  apiVersion: "2014-06-30",
+  endpointPrefix: "cognito-identity",
+  jsonVersion: "1.1",
+  protocol: "json",
+  serviceFullName: "Amazon Cognito Identity",
+  serviceId: "Cognito Identity",
+  signatureVersion: "v4",
+  targetPrefix: "AWSCognitoIdentityService",
+  uid: "cognito-identity-2014-06-30"
+};
+const operations = {
+  CreateIdentityPool: {
+    input: {
+      type: "structure",
+      required: [
+        "IdentityPoolName",
+        "AllowUnauthenticatedIdentities"
+      ],
+      members: {
+        IdentityPoolName: {},
+        AllowUnauthenticatedIdentities: {
+          type: "boolean"
+        },
+        AllowClassicFlow: {
+          type: "boolean"
+        },
+        SupportedLoginProviders: {
+          shape: "S5"
+        },
+        DeveloperProviderName: {},
+        OpenIdConnectProviderARNs: {
+          shape: "S9"
+        },
+        CognitoIdentityProviders: {
+          shape: "Sb"
+        },
+        SamlProviderARNs: {
+          shape: "Sg"
+        },
+        IdentityPoolTags: {
+          shape: "Sh"
+        }
+      }
+    },
+    output: {
+      shape: "Sk"
+    }
+  },
+  DeleteIdentities: {
+    input: {
+      type: "structure",
+      required: [
+        "IdentityIdsToDelete"
+      ],
+      members: {
+        IdentityIdsToDelete: {
+          type: "list",
+          member: {}
+        }
+      }
+    },
+    output: {
+      type: "structure",
+      members: {
+        UnprocessedIdentityIds: {
+          type: "list",
+          member: {
+            type: "structure",
+            members: {
+              IdentityId: {},
+              ErrorCode: {}
+            }
+          }
+        }
+      }
+    }
+  },
+  DeleteIdentityPool: {
+    input: {
+      type: "structure",
+      required: [
+        "IdentityPoolId"
+      ],
+      members: {
+        IdentityPoolId: {}
+      }
+    }
+  },
+  DescribeIdentity: {
+    input: {
+      type: "structure",
+      required: [
+        "IdentityId"
+      ],
+      members: {
+        IdentityId: {}
+      }
+    },
+    output: {
+      shape: "Sv"
+    }
+  },
+  DescribeIdentityPool: {
+    input: {
+      type: "structure",
+      required: [
+        "IdentityPoolId"
+      ],
+      members: {
+        IdentityPoolId: {}
+      }
+    },
+    output: {
+      shape: "Sk"
+    }
+  },
+  GetCredentialsForIdentity: {
+    input: {
+      type: "structure",
+      required: [
+        "IdentityId"
+      ],
+      members: {
+        IdentityId: {},
+        Logins: {
+          shape: "S10"
+        },
+        CustomRoleArn: {}
+      }
+    },
+    output: {
+      type: "structure",
+      members: {
+        IdentityId: {},
+        Credentials: {
+          type: "structure",
+          members: {
+            AccessKeyId: {},
+            SecretKey: {},
+            SessionToken: {},
+            Expiration: {
+              type: "timestamp"
+            }
+          }
+        }
+      }
+    },
+    authtype: "none"
+  },
+  GetId: {
+    input: {
+      type: "structure",
+      required: [
+        "IdentityPoolId"
+      ],
+      members: {
+        AccountId: {},
+        IdentityPoolId: {},
+        Logins: {
+          shape: "S10"
+        }
+      }
+    },
+    output: {
+      type: "structure",
+      members: {
+        IdentityId: {}
+      }
+    },
+    authtype: "none"
+  },
+  GetIdentityPoolRoles: {
+    input: {
+      type: "structure",
+      required: [
+        "IdentityPoolId"
+      ],
+      members: {
+        IdentityPoolId: {}
+      }
+    },
+    output: {
+      type: "structure",
+      members: {
+        IdentityPoolId: {},
+        Roles: {
+          shape: "S1c"
+        },
+        RoleMappings: {
+          shape: "S1e"
+        }
+      }
+    }
+  },
+  GetOpenIdToken: {
+    input: {
+      type: "structure",
+      required: [
+        "IdentityId"
+      ],
+      members: {
+        IdentityId: {},
+        Logins: {
+          shape: "S10"
+        }
+      }
+    },
+    output: {
+      type: "structure",
+      members: {
+        IdentityId: {},
+        Token: {}
+      }
+    },
+    authtype: "none"
+  },
+  GetOpenIdTokenForDeveloperIdentity: {
+    input: {
+      type: "structure",
+      required: [
+        "IdentityPoolId",
+        "Logins"
+      ],
+      members: {
+        IdentityPoolId: {},
+        IdentityId: {},
+        Logins: {
+          shape: "S10"
+        },
+        PrincipalTags: {
+          shape: "S1s"
+        },
+        TokenDuration: {
+          type: "long"
+        }
+      }
+    },
+    output: {
+      type: "structure",
+      members: {
+        IdentityId: {},
+        Token: {}
+      }
+    }
+  },
+  GetPrincipalTagAttributeMap: {
+    input: {
+      type: "structure",
+      required: [
+        "IdentityPoolId",
+        "IdentityProviderName"
+      ],
+      members: {
+        IdentityPoolId: {},
+        IdentityProviderName: {}
+      }
+    },
+    output: {
+      type: "structure",
+      members: {
+        IdentityPoolId: {},
+        IdentityProviderName: {},
+        UseDefaults: {
+          type: "boolean"
+        },
+        PrincipalTags: {
+          shape: "S1s"
+        }
+      }
+    }
+  },
+  ListIdentities: {
+    input: {
+      type: "structure",
+      required: [
+        "IdentityPoolId",
+        "MaxResults"
+      ],
+      members: {
+        IdentityPoolId: {},
+        MaxResults: {
+          type: "integer"
+        },
+        NextToken: {},
+        HideDisabled: {
+          type: "boolean"
+        }
+      }
+    },
+    output: {
+      type: "structure",
+      members: {
+        IdentityPoolId: {},
+        Identities: {
+          type: "list",
+          member: {
+            shape: "Sv"
+          }
+        },
+        NextToken: {}
+      }
+    }
+  },
+  ListIdentityPools: {
+    input: {
+      type: "structure",
+      required: [
+        "MaxResults"
+      ],
+      members: {
+        MaxResults: {
+          type: "integer"
+        },
+        NextToken: {}
+      }
+    },
+    output: {
+      type: "structure",
+      members: {
+        IdentityPools: {
+          type: "list",
+          member: {
+            type: "structure",
+            members: {
+              IdentityPoolId: {},
+              IdentityPoolName: {}
+            }
+          }
+        },
+        NextToken: {}
+      }
+    }
+  },
+  ListTagsForResource: {
+    input: {
+      type: "structure",
+      required: [
+        "ResourceArn"
+      ],
+      members: {
+        ResourceArn: {}
+      }
+    },
+    output: {
+      type: "structure",
+      members: {
+        Tags: {
+          shape: "Sh"
+        }
+      }
+    }
+  },
+  LookupDeveloperIdentity: {
+    input: {
+      type: "structure",
+      required: [
+        "IdentityPoolId"
+      ],
+      members: {
+        IdentityPoolId: {},
+        IdentityId: {},
+        DeveloperUserIdentifier: {},
+        MaxResults: {
+          type: "integer"
+        },
+        NextToken: {}
+      }
+    },
+    output: {
+      type: "structure",
+      members: {
+        IdentityId: {},
+        DeveloperUserIdentifierList: {
+          type: "list",
+          member: {}
+        },
+        NextToken: {}
+      }
+    }
+  },
+  MergeDeveloperIdentities: {
+    input: {
+      type: "structure",
+      required: [
+        "SourceUserIdentifier",
+        "DestinationUserIdentifier",
+        "DeveloperProviderName",
+        "IdentityPoolId"
+      ],
+      members: {
+        SourceUserIdentifier: {},
+        DestinationUserIdentifier: {},
+        DeveloperProviderName: {},
+        IdentityPoolId: {}
+      }
+    },
+    output: {
+      type: "structure",
+      members: {
+        IdentityId: {}
+      }
+    }
+  },
+  SetIdentityPoolRoles: {
+    input: {
+      type: "structure",
+      required: [
+        "IdentityPoolId",
+        "Roles"
+      ],
+      members: {
+        IdentityPoolId: {},
+        Roles: {
+          shape: "S1c"
+        },
+        RoleMappings: {
+          shape: "S1e"
+        }
+      }
+    }
+  },
+  SetPrincipalTagAttributeMap: {
+    input: {
+      type: "structure",
+      required: [
+        "IdentityPoolId",
+        "IdentityProviderName"
+      ],
+      members: {
+        IdentityPoolId: {},
+        IdentityProviderName: {},
+        UseDefaults: {
+          type: "boolean"
+        },
+        PrincipalTags: {
+          shape: "S1s"
+        }
+      }
+    },
+    output: {
+      type: "structure",
+      members: {
+        IdentityPoolId: {},
+        IdentityProviderName: {},
+        UseDefaults: {
+          type: "boolean"
+        },
+        PrincipalTags: {
+          shape: "S1s"
+        }
+      }
+    }
+  },
+  TagResource: {
+    input: {
+      type: "structure",
+      required: [
+        "ResourceArn",
+        "Tags"
+      ],
+      members: {
+        ResourceArn: {},
+        Tags: {
+          shape: "Sh"
+        }
+      }
+    },
+    output: {
+      type: "structure",
+      members: {}
+    }
+  },
+  UnlinkDeveloperIdentity: {
+    input: {
+      type: "structure",
+      required: [
+        "IdentityId",
+        "IdentityPoolId",
+        "DeveloperProviderName",
+        "DeveloperUserIdentifier"
+      ],
+      members: {
+        IdentityId: {},
+        IdentityPoolId: {},
+        DeveloperProviderName: {},
+        DeveloperUserIdentifier: {}
+      }
+    }
+  },
+  UnlinkIdentity: {
+    input: {
+      type: "structure",
+      required: [
+        "IdentityId",
+        "Logins",
+        "LoginsToRemove"
+      ],
+      members: {
+        IdentityId: {},
+        Logins: {
+          shape: "S10"
+        },
+        LoginsToRemove: {
+          shape: "Sw"
+        }
+      }
+    },
+    authtype: "none"
+  },
+  UntagResource: {
+    input: {
+      type: "structure",
+      required: [
+        "ResourceArn",
+        "TagKeys"
+      ],
+      members: {
+        ResourceArn: {},
+        TagKeys: {
+          type: "list",
+          member: {}
+        }
+      }
+    },
+    output: {
+      type: "structure",
+      members: {}
+    }
+  },
+  UpdateIdentityPool: {
+    input: {
+      shape: "Sk"
+    },
+    output: {
+      shape: "Sk"
+    }
+  }
+};
+const shapes = {
+  S5: {
+    type: "map",
+    key: {},
+    value: {}
+  },
+  S9: {
+    type: "list",
+    member: {}
+  },
+  Sb: {
+    type: "list",
+    member: {
+      type: "structure",
+      members: {
+        ProviderName: {},
+        ClientId: {},
+        ServerSideTokenCheck: {
+          type: "boolean"
+        }
+      }
+    }
+  },
+  Sg: {
+    type: "list",
+    member: {}
+  },
+  Sh: {
+    type: "map",
+    key: {},
+    value: {}
+  },
+  Sk: {
+    type: "structure",
+    required: [
+      "IdentityPoolId",
+      "IdentityPoolName",
+      "AllowUnauthenticatedIdentities"
+    ],
+    members: {
+      IdentityPoolId: {},
+      IdentityPoolName: {},
+      AllowUnauthenticatedIdentities: {
+        type: "boolean"
+      },
+      AllowClassicFlow: {
+        type: "boolean"
+      },
+      SupportedLoginProviders: {
+        shape: "S5"
+      },
+      DeveloperProviderName: {},
+      OpenIdConnectProviderARNs: {
+        shape: "S9"
+      },
+      CognitoIdentityProviders: {
+        shape: "Sb"
+      },
+      SamlProviderARNs: {
+        shape: "Sg"
+      },
+      IdentityPoolTags: {
+        shape: "Sh"
+      }
+    }
+  },
+  Sv: {
+    type: "structure",
+    members: {
+      IdentityId: {},
+      Logins: {
+        shape: "Sw"
+      },
+      CreationDate: {
+        type: "timestamp"
+      },
+      LastModifiedDate: {
+        type: "timestamp"
+      }
+    }
+  },
+  Sw: {
+    type: "list",
+    member: {}
+  },
+  S10: {
+    type: "map",
+    key: {},
+    value: {}
+  },
+  S1c: {
+    type: "map",
+    key: {},
+    value: {}
+  },
+  S1e: {
+    type: "map",
+    key: {},
+    value: {
+      type: "structure",
+      required: [
+        "Type"
+      ],
+      members: {
+        Type: {},
+        AmbiguousRoleResolution: {},
+        RulesConfiguration: {
+          type: "structure",
+          required: [
+            "Rules"
+          ],
+          members: {
+            Rules: {
+              type: "list",
+              member: {
+                type: "structure",
+                required: [
+                  "Claim",
+                  "MatchType",
+                  "Value",
+                  "RoleARN"
+                ],
+                members: {
+                  Claim: {},
+                  MatchType: {},
+                  Value: {},
+                  RoleARN: {}
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  S1s: {
+    type: "map",
+    key: {},
+    value: {}
+  }
+};
+var require$$1 = {
+  version,
+  metadata,
+  operations,
+  shapes
+};
+const pagination = {
+  ListIdentityPools: {
+    input_token: "NextToken",
+    limit_key: "MaxResults",
+    output_token: "NextToken",
+    result_key: "IdentityPools"
+  }
+};
+var require$$2 = {
+  pagination
+};
+var AWS$5 = core;
+var Service2 = AWS$5.Service;
+var apiLoader = AWS$5.apiLoader;
+apiLoader.services["cognitoidentity"] = {};
+AWS$5.CognitoIdentity = Service2.defineService("cognitoidentity", ["2014-06-30"]);
+Object.defineProperty(apiLoader.services["cognitoidentity"], "2014-06-30", {
+  get: function get4() {
+    var model = require$$1;
+    model.paginators = require$$2.pagination;
+    return model;
+  },
+  enumerable: true,
+  configurable: true
+});
+var cognitoidentity = AWS$5.CognitoIdentity;
+var AWS$4 = core;
+var CognitoIdentity = cognitoidentity;
+var STS$1 = sts;
+AWS$4.CognitoIdentityCredentials = AWS$4.util.inherit(AWS$4.Credentials, {
+  localStorageKey: {
+    id: "aws.cognito.identity-id.",
+    providers: "aws.cognito.identity-providers."
+  },
+  constructor: function CognitoIdentityCredentials(params, clientConfig) {
+    AWS$4.Credentials.call(this);
+    this.expired = true;
+    this.params = params;
+    this.data = null;
+    this._identityId = null;
+    this._clientConfig = AWS$4.util.copy(clientConfig || {});
+    this.loadCachedId();
+    var self2 = this;
+    Object.defineProperty(this, "identityId", {
+      get: function() {
+        self2.loadCachedId();
+        return self2._identityId || self2.params.IdentityId;
+      },
+      set: function(identityId) {
+        self2._identityId = identityId;
+      }
+    });
+  },
+  refresh: function refresh5(callback) {
+    this.coalesceRefresh(callback || AWS$4.util.fn.callback);
+  },
+  load: function load5(callback) {
+    var self2 = this;
+    self2.createClients();
+    self2.data = null;
+    self2._identityId = null;
+    self2.getId(function(err) {
+      if (!err) {
+        if (!self2.params.RoleArn) {
+          self2.getCredentialsForIdentity(callback);
+        } else {
+          self2.getCredentialsFromSTS(callback);
+        }
+      } else {
+        self2.clearIdOnNotAuthorized(err);
+        callback(err);
+      }
+    });
+  },
+  clearCachedId: function clearCache() {
+    this._identityId = null;
+    delete this.params.IdentityId;
+    var poolId = this.params.IdentityPoolId;
+    var loginId = this.params.LoginId || "";
+    delete this.storage[this.localStorageKey.id + poolId + loginId];
+    delete this.storage[this.localStorageKey.providers + poolId + loginId];
+  },
+  clearIdOnNotAuthorized: function clearIdOnNotAuthorized(err) {
+    var self2 = this;
+    if (err.code == "NotAuthorizedException") {
+      self2.clearCachedId();
+    }
+  },
+  getId: function getId(callback) {
+    var self2 = this;
+    if (typeof self2.params.IdentityId === "string") {
+      return callback(null, self2.params.IdentityId);
+    }
+    self2.cognito.getId(function(err, data) {
+      if (!err && data.IdentityId) {
+        self2.params.IdentityId = data.IdentityId;
+        callback(null, data.IdentityId);
+      } else {
+        callback(err);
+      }
+    });
+  },
+  loadCredentials: function loadCredentials(data, credentials) {
+    if (!data || !credentials)
+      return;
+    credentials.expired = false;
+    credentials.accessKeyId = data.Credentials.AccessKeyId;
+    credentials.secretAccessKey = data.Credentials.SecretKey;
+    credentials.sessionToken = data.Credentials.SessionToken;
+    credentials.expireTime = data.Credentials.Expiration;
+  },
+  getCredentialsForIdentity: function getCredentialsForIdentity(callback) {
+    var self2 = this;
+    self2.cognito.getCredentialsForIdentity(function(err, data) {
+      if (!err) {
+        self2.cacheId(data);
+        self2.data = data;
+        self2.loadCredentials(self2.data, self2);
+      } else {
+        self2.clearIdOnNotAuthorized(err);
+      }
+      callback(err);
+    });
+  },
+  getCredentialsFromSTS: function getCredentialsFromSTS(callback) {
+    var self2 = this;
+    self2.cognito.getOpenIdToken(function(err, data) {
+      if (!err) {
+        self2.cacheId(data);
+        self2.params.WebIdentityToken = data.Token;
+        self2.webIdentityCredentials.refresh(function(webErr) {
+          if (!webErr) {
+            self2.data = self2.webIdentityCredentials.data;
+            self2.sts.credentialsFrom(self2.data, self2);
+          }
+          callback(webErr);
+        });
+      } else {
+        self2.clearIdOnNotAuthorized(err);
+        callback(err);
+      }
+    });
+  },
+  loadCachedId: function loadCachedId() {
+    var self2 = this;
+    if (AWS$4.util.isBrowser() && !self2.params.IdentityId) {
+      var id = self2.getStorage("id");
+      if (id && self2.params.Logins) {
+        var actualProviders = Object.keys(self2.params.Logins);
+        var cachedProviders = (self2.getStorage("providers") || "").split(",");
+        var intersect = cachedProviders.filter(function(n2) {
+          return actualProviders.indexOf(n2) !== -1;
+        });
+        if (intersect.length !== 0) {
+          self2.params.IdentityId = id;
+        }
+      } else if (id) {
+        self2.params.IdentityId = id;
+      }
+    }
+  },
+  createClients: function() {
+    var clientConfig = this._clientConfig;
+    this.webIdentityCredentials = this.webIdentityCredentials || new AWS$4.WebIdentityCredentials(this.params, clientConfig);
+    if (!this.cognito) {
+      var cognitoConfig = AWS$4.util.merge({}, clientConfig);
+      cognitoConfig.params = this.params;
+      this.cognito = new CognitoIdentity(cognitoConfig);
+    }
+    this.sts = this.sts || new STS$1(clientConfig);
+  },
+  cacheId: function cacheId(data) {
+    this._identityId = data.IdentityId;
+    this.params.IdentityId = this._identityId;
+    if (AWS$4.util.isBrowser()) {
+      this.setStorage("id", data.IdentityId);
+      if (this.params.Logins) {
+        this.setStorage("providers", Object.keys(this.params.Logins).join(","));
+      }
+    }
+  },
+  getStorage: function getStorage(key) {
+    return this.storage[this.localStorageKey[key] + this.params.IdentityPoolId + (this.params.LoginId || "")];
+  },
+  setStorage: function setStorage(key, val) {
+    try {
+      this.storage[this.localStorageKey[key] + this.params.IdentityPoolId + (this.params.LoginId || "")] = val;
+    } catch (_2) {
+    }
+  },
+  storage: function() {
+    try {
+      var storage = AWS$4.util.isBrowser() && window.localStorage !== null && typeof window.localStorage === "object" ? window.localStorage : {};
+      storage["aws.test-storage"] = "foobar";
+      delete storage["aws.test-storage"];
+      return storage;
+    } catch (_2) {
+      return {};
+    }
+  }()
+});
+var AWS$3 = core;
+var STS = sts;
+AWS$3.SAMLCredentials = AWS$3.util.inherit(AWS$3.Credentials, {
+  constructor: function SAMLCredentials(params) {
+    AWS$3.Credentials.call(this);
+    this.expired = true;
+    this.params = params;
+  },
+  refresh: function refresh6(callback) {
+    this.coalesceRefresh(callback || AWS$3.util.fn.callback);
+  },
+  load: function load6(callback) {
+    var self2 = this;
+    self2.createClients();
+    self2.service.assumeRoleWithSAML(function(err, data) {
+      if (!err) {
+        self2.service.credentialsFrom(data, self2);
+      }
+      callback(err);
+    });
+  },
+  createClients: function() {
+    this.service = this.service || new STS({ params: this.params });
+  }
+});
+var util$1 = util_1;
+var Shape = shape;
+function DomXmlParser() {
+}
+DomXmlParser.prototype.parse = function(xml, shape2) {
+  if (xml.replace(/^\s+/, "") === "")
+    return {};
+  var result, error2;
+  try {
+    if (window.DOMParser) {
+      try {
+        var parser2 = new DOMParser();
+        result = parser2.parseFromString(xml, "text/xml");
+      } catch (syntaxError) {
+        throw util$1.error(new Error("Parse error in document"), {
+          originalError: syntaxError,
+          code: "XMLParserError",
+          retryable: true
+        });
+      }
+      if (result.documentElement === null) {
+        throw util$1.error(new Error("Cannot parse empty document."), {
+          code: "XMLParserError",
+          retryable: true
+        });
+      }
+      var isError = result.getElementsByTagName("parsererror")[0];
+      if (isError && (isError.parentNode === result || isError.parentNode.nodeName === "body" || isError.parentNode.parentNode === result || isError.parentNode.parentNode.nodeName === "body")) {
+        var errorElement = isError.getElementsByTagName("div")[0] || isError;
+        throw util$1.error(new Error(errorElement.textContent || "Parser error in document"), {
+          code: "XMLParserError",
+          retryable: true
+        });
+      }
+    } else if (window.ActiveXObject) {
+      result = new window.ActiveXObject("Microsoft.XMLDOM");
+      result.async = false;
+      if (!result.loadXML(xml)) {
+        throw util$1.error(new Error("Parse error in document"), {
+          code: "XMLParserError",
+          retryable: true
+        });
+      }
+    } else {
+      throw new Error("Cannot load XML parser");
+    }
+  } catch (e2) {
+    error2 = e2;
+  }
+  if (result && result.documentElement && !error2) {
+    var data = parseXml(result.documentElement, shape2);
+    var metadata2 = getElementByTagName(result.documentElement, "ResponseMetadata");
+    if (metadata2) {
+      data.ResponseMetadata = parseXml(metadata2, {});
+    }
+    return data;
+  } else if (error2) {
+    throw util$1.error(error2 || new Error(), { code: "XMLParserError", retryable: true });
+  } else {
+    return {};
+  }
+};
+function getElementByTagName(xml, tag) {
+  var elements = xml.getElementsByTagName(tag);
+  for (var i = 0, iLen = elements.length; i < iLen; i++) {
+    if (elements[i].parentNode === xml) {
+      return elements[i];
+    }
+  }
+}
+function parseXml(xml, shape2) {
+  if (!shape2)
+    shape2 = {};
+  switch (shape2.type) {
+    case "structure":
+      return parseStructure(xml, shape2);
+    case "map":
+      return parseMap(xml, shape2);
+    case "list":
+      return parseList(xml, shape2);
+    case void 0:
+    case null:
+      return parseUnknown(xml);
+    default:
+      return parseScalar(xml, shape2);
+  }
+}
+function parseStructure(xml, shape2) {
+  var data = {};
+  if (xml === null)
+    return data;
+  util$1.each(shape2.members, function(memberName, memberShape) {
+    if (memberShape.isXmlAttribute) {
+      if (Object.prototype.hasOwnProperty.call(xml.attributes, memberShape.name)) {
+        var value = xml.attributes[memberShape.name].value;
+        data[memberName] = parseXml({ textContent: value }, memberShape);
+      }
+    } else {
+      var xmlChild = memberShape.flattened ? xml : getElementByTagName(xml, memberShape.name);
+      if (xmlChild) {
+        data[memberName] = parseXml(xmlChild, memberShape);
+      } else if (!memberShape.flattened && memberShape.type === "list" && !shape2.api.xmlNoDefaultLists) {
+        data[memberName] = memberShape.defaultValue;
+      }
+    }
+  });
+  return data;
+}
+function parseMap(xml, shape2) {
+  var data = {};
+  var xmlKey = shape2.key.name || "key";
+  var xmlValue = shape2.value.name || "value";
+  var tagName = shape2.flattened ? shape2.name : "entry";
+  var child = xml.firstElementChild;
+  while (child) {
+    if (child.nodeName === tagName) {
+      var key = getElementByTagName(child, xmlKey).textContent;
+      var value = getElementByTagName(child, xmlValue);
+      data[key] = parseXml(value, shape2.value);
+    }
+    child = child.nextElementSibling;
+  }
+  return data;
+}
+function parseList(xml, shape2) {
+  var data = [];
+  var tagName = shape2.flattened ? shape2.name : shape2.member.name || "member";
+  var child = xml.firstElementChild;
+  while (child) {
+    if (child.nodeName === tagName) {
+      data.push(parseXml(child, shape2.member));
+    }
+    child = child.nextElementSibling;
+  }
+  return data;
+}
+function parseScalar(xml, shape2) {
+  if (xml.getAttribute) {
+    var encoding = xml.getAttribute("encoding");
+    if (encoding === "base64") {
+      shape2 = new Shape.create({ type: encoding });
+    }
+  }
+  var text = xml.textContent;
+  if (text === "")
+    text = null;
+  if (typeof shape2.toType === "function") {
+    return shape2.toType(text);
+  } else {
+    return text;
+  }
+}
+function parseUnknown(xml) {
+  if (xml === void 0 || xml === null)
+    return "";
+  if (!xml.firstElementChild) {
+    if (xml.parentNode.parentNode === null)
+      return {};
+    if (xml.childNodes.length === 0)
+      return "";
+    else
+      return xml.textContent;
+  }
+  var shape2 = { type: "structure", members: {} };
+  var child = xml.firstElementChild;
+  while (child) {
+    var tag = child.nodeName;
+    if (Object.prototype.hasOwnProperty.call(shape2.members, tag)) {
+      shape2.members[tag].type = "list";
+    } else {
+      shape2.members[tag] = { name: tag };
+    }
+    child = child.nextElementSibling;
+  }
+  return parseStructure(xml, shape2);
+}
+var browser_parser = DomXmlParser;
+function EventEmitter$1() {
+  this._events = this._events || {};
+  this._maxListeners = this._maxListeners || void 0;
+}
+var events = EventEmitter$1;
+EventEmitter$1.EventEmitter = EventEmitter$1;
+EventEmitter$1.prototype._events = void 0;
+EventEmitter$1.prototype._maxListeners = void 0;
+EventEmitter$1.defaultMaxListeners = 10;
+EventEmitter$1.prototype.setMaxListeners = function(n2) {
+  if (!isNumber(n2) || n2 < 0 || isNaN(n2))
+    throw TypeError("n must be a positive number");
+  this._maxListeners = n2;
+  return this;
+};
+EventEmitter$1.prototype.emit = function(type) {
+  var er, handler, len, args, i, listeners2;
+  if (!this._events)
+    this._events = {};
+  if (type === "error") {
+    if (!this._events.error || isObject(this._events.error) && !this._events.error.length) {
+      er = arguments[1];
+      if (er instanceof Error) {
+        throw er;
+      } else {
+        var err = new Error('Uncaught, unspecified "error" event. (' + er + ")");
+        err.context = er;
+        throw err;
+      }
+    }
+  }
+  handler = this._events[type];
+  if (isUndefined(handler))
+    return false;
+  if (isFunction(handler)) {
+    switch (arguments.length) {
+      case 1:
+        handler.call(this);
+        break;
+      case 2:
+        handler.call(this, arguments[1]);
+        break;
+      case 3:
+        handler.call(this, arguments[1], arguments[2]);
+        break;
+      default:
+        args = Array.prototype.slice.call(arguments, 1);
+        handler.apply(this, args);
+    }
+  } else if (isObject(handler)) {
+    args = Array.prototype.slice.call(arguments, 1);
+    listeners2 = handler.slice();
+    len = listeners2.length;
+    for (i = 0; i < len; i++)
+      listeners2[i].apply(this, args);
+  }
+  return true;
+};
+EventEmitter$1.prototype.addListener = function(type, listener) {
+  var m2;
+  if (!isFunction(listener))
+    throw TypeError("listener must be a function");
+  if (!this._events)
+    this._events = {};
+  if (this._events.newListener)
+    this.emit("newListener", type, isFunction(listener.listener) ? listener.listener : listener);
+  if (!this._events[type])
+    this._events[type] = listener;
+  else if (isObject(this._events[type]))
+    this._events[type].push(listener);
+  else
+    this._events[type] = [this._events[type], listener];
+  if (isObject(this._events[type]) && !this._events[type].warned) {
+    if (!isUndefined(this._maxListeners)) {
+      m2 = this._maxListeners;
+    } else {
+      m2 = EventEmitter$1.defaultMaxListeners;
+    }
+    if (m2 && m2 > 0 && this._events[type].length > m2) {
+      this._events[type].warned = true;
+      console.error("(node) warning: possible EventEmitter memory leak detected. %d listeners added. Use emitter.setMaxListeners() to increase limit.", this._events[type].length);
+      if (typeof console.trace === "function") {
+        console.trace();
+      }
+    }
+  }
+  return this;
+};
+EventEmitter$1.prototype.on = EventEmitter$1.prototype.addListener;
+EventEmitter$1.prototype.once = function(type, listener) {
+  if (!isFunction(listener))
+    throw TypeError("listener must be a function");
+  var fired = false;
+  function g2() {
+    this.removeListener(type, g2);
+    if (!fired) {
+      fired = true;
+      listener.apply(this, arguments);
+    }
+  }
+  g2.listener = listener;
+  this.on(type, g2);
+  return this;
+};
+EventEmitter$1.prototype.removeListener = function(type, listener) {
+  var list, position, length, i;
+  if (!isFunction(listener))
+    throw TypeError("listener must be a function");
+  if (!this._events || !this._events[type])
+    return this;
+  list = this._events[type];
+  length = list.length;
+  position = -1;
+  if (list === listener || isFunction(list.listener) && list.listener === listener) {
+    delete this._events[type];
+    if (this._events.removeListener)
+      this.emit("removeListener", type, listener);
+  } else if (isObject(list)) {
+    for (i = length; i-- > 0; ) {
+      if (list[i] === listener || list[i].listener && list[i].listener === listener) {
+        position = i;
+        break;
+      }
+    }
+    if (position < 0)
+      return this;
+    if (list.length === 1) {
+      list.length = 0;
+      delete this._events[type];
+    } else {
+      list.splice(position, 1);
+    }
+    if (this._events.removeListener)
+      this.emit("removeListener", type, listener);
+  }
+  return this;
+};
+EventEmitter$1.prototype.removeAllListeners = function(type) {
+  var key, listeners2;
+  if (!this._events)
+    return this;
+  if (!this._events.removeListener) {
+    if (arguments.length === 0)
+      this._events = {};
+    else if (this._events[type])
+      delete this._events[type];
+    return this;
+  }
+  if (arguments.length === 0) {
+    for (key in this._events) {
+      if (key === "removeListener")
+        continue;
+      this.removeAllListeners(key);
+    }
+    this.removeAllListeners("removeListener");
+    this._events = {};
+    return this;
+  }
+  listeners2 = this._events[type];
+  if (isFunction(listeners2)) {
+    this.removeListener(type, listeners2);
+  } else if (listeners2) {
+    while (listeners2.length)
+      this.removeListener(type, listeners2[listeners2.length - 1]);
+  }
+  delete this._events[type];
+  return this;
+};
+EventEmitter$1.prototype.listeners = function(type) {
+  var ret;
+  if (!this._events || !this._events[type])
+    ret = [];
+  else if (isFunction(this._events[type]))
+    ret = [this._events[type]];
+  else
+    ret = this._events[type].slice();
+  return ret;
+};
+EventEmitter$1.prototype.listenerCount = function(type) {
+  if (this._events) {
+    var evlistener = this._events[type];
+    if (isFunction(evlistener))
+      return 1;
+    else if (evlistener)
+      return evlistener.length;
+  }
+  return 0;
+};
+EventEmitter$1.listenerCount = function(emitter, type) {
+  return emitter.listenerCount(type);
+};
+function isFunction(arg) {
+  return typeof arg === "function";
+}
+function isNumber(arg) {
+  return typeof arg === "number";
+}
+function isObject(arg) {
+  return typeof arg === "object" && arg !== null;
+}
+function isUndefined(arg) {
+  return arg === void 0;
+}
+var AWS$2 = core;
+var EventEmitter = events.EventEmitter;
+AWS$2.XHRClient = AWS$2.util.inherit({
+  handleRequest: function handleRequest(httpRequest, httpOptions, callback, errCallback) {
+    var self2 = this;
+    var endpoint = httpRequest.endpoint;
+    var emitter = new EventEmitter();
+    var href = endpoint.protocol + "//" + endpoint.hostname;
+    if (endpoint.port !== 80 && endpoint.port !== 443) {
+      href += ":" + endpoint.port;
+    }
+    href += httpRequest.path;
+    var xhr = new XMLHttpRequest(), headersEmitted = false;
+    httpRequest.stream = xhr;
+    xhr.addEventListener("readystatechange", function() {
+      try {
+        if (xhr.status === 0)
+          return;
+      } catch (e2) {
+        return;
+      }
+      if (this.readyState >= this.HEADERS_RECEIVED && !headersEmitted) {
+        emitter.statusCode = xhr.status;
+        emitter.headers = self2.parseHeaders(xhr.getAllResponseHeaders());
+        emitter.emit("headers", emitter.statusCode, emitter.headers, xhr.statusText);
+        headersEmitted = true;
+      }
+      if (this.readyState === this.DONE) {
+        self2.finishRequest(xhr, emitter);
+      }
+    }, false);
+    xhr.upload.addEventListener("progress", function(evt) {
+      emitter.emit("sendProgress", evt);
+    });
+    xhr.addEventListener("progress", function(evt) {
+      emitter.emit("receiveProgress", evt);
+    }, false);
+    xhr.addEventListener("timeout", function() {
+      errCallback(AWS$2.util.error(new Error("Timeout"), { code: "TimeoutError" }));
+    }, false);
+    xhr.addEventListener("error", function() {
+      errCallback(AWS$2.util.error(new Error("Network Failure"), {
+        code: "NetworkingError"
+      }));
+    }, false);
+    xhr.addEventListener("abort", function() {
+      errCallback(AWS$2.util.error(new Error("Request aborted"), {
+        code: "RequestAbortedError"
+      }));
+    }, false);
+    callback(emitter);
+    xhr.open(httpRequest.method, href, httpOptions.xhrAsync !== false);
+    AWS$2.util.each(httpRequest.headers, function(key, value) {
+      if (key !== "Content-Length" && key !== "User-Agent" && key !== "Host") {
+        xhr.setRequestHeader(key, value);
+      }
+    });
+    if (httpOptions.timeout && httpOptions.xhrAsync !== false) {
+      xhr.timeout = httpOptions.timeout;
+    }
+    if (httpOptions.xhrWithCredentials) {
+      xhr.withCredentials = true;
+    }
+    try {
+      xhr.responseType = "arraybuffer";
+    } catch (e2) {
+    }
+    try {
+      if (httpRequest.body) {
+        xhr.send(httpRequest.body);
+      } else {
+        xhr.send();
+      }
+    } catch (err) {
+      if (httpRequest.body && typeof httpRequest.body.buffer === "object") {
+        xhr.send(httpRequest.body.buffer);
+      } else {
+        throw err;
+      }
+    }
+    return emitter;
+  },
+  parseHeaders: function parseHeaders2(rawHeaders) {
+    var headers = {};
+    AWS$2.util.arrayEach(rawHeaders.split(/\r?\n/), function(line) {
+      var key = line.split(":", 1)[0];
+      var value = line.substring(key.length + 2);
+      if (key.length > 0)
+        headers[key.toLowerCase()] = value;
+    });
+    return headers;
+  },
+  finishRequest: function finishRequest(xhr, emitter) {
+    var buffer2;
+    if (xhr.responseType === "arraybuffer" && xhr.response) {
+      var ab = xhr.response;
+      buffer2 = new AWS$2.util.Buffer(ab.byteLength);
+      var view = new Uint8Array(ab);
+      for (var i = 0; i < buffer2.length; ++i) {
+        buffer2[i] = view[i];
+      }
+    }
+    try {
+      if (!buffer2 && typeof xhr.responseText === "string") {
+        buffer2 = new AWS$2.util.Buffer(xhr.responseText);
+      }
+    } catch (e2) {
+    }
+    if (buffer2)
+      emitter.emit("data", buffer2);
+    emitter.emit("end");
+  }
+});
+AWS$2.HttpClient.prototype = AWS$2.XHRClient.prototype;
+AWS$2.HttpClient.streamsApiVersion = 1;
+var util = util_1;
+util.crypto.lib = browserCryptoLib.exports;
+util.Buffer = buffer.Buffer;
+util.url = url;
+util.querystring = querystring$1;
+util.realClock = browserClock;
+util.environment = "js";
+util.createEventStream = bufferedCreateEventStream.createEventStream;
+util.isBrowser = function() {
+  return true;
+};
+util.isNode = function() {
+  return false;
+};
+var AWS$1 = core;
+AWS$1.XML.Parser = browser_parser;
+(function(module) {
+  var AWS2 = core;
+  if (typeof window !== "undefined")
+    window.AWS = AWS2;
+  module.exports = AWS2;
+  if (typeof self !== "undefined")
+    self.AWS = AWS2;
+})(browser);
 const initialState$7 = {
   inProgress: false
 };
@@ -31286,7 +44145,7 @@ const login$1 = ({
       return;
     }
     const config2 = getState().app.config;
-    AWS.config.update({
+    browser.exports.config.update({
       region: config2.aws.region
     });
     const authenticationData = {
@@ -31313,14 +44172,14 @@ const login$1 = ({
       },
       onSuccess: (result) => {
         const accessToken = result.getAccessToken().getJwtToken();
-        const credentials = new AWS.CognitoIdentityCredentials({
+        const credentials = new browser.exports.CognitoIdentityCredentials({
           IdentityPoolId: config2.aws.cognito.identityPoolId,
           Logins: {
             [`cognito-idp.${config2.aws.region}.amazonaws.com/${config2.aws.cognito.userPoolId}`]: result.getIdToken().getJwtToken()
           }
         });
-        AWS.config.credentials = credentials;
-        AWS.config.credentials.refresh((err) => {
+        browser.exports.config.credentials = credentials;
+        browser.exports.config.credentials.refresh((err) => {
           if (err) {
             const exception = new d("Error encountered while refreshing credentials", {
               cause: err
@@ -31352,9 +44211,9 @@ const login$1 = ({
         });
       }
     });
-  } catch (error) {
-    const exception = error instanceof d ? error : new aa$1("An unknown error occurred while logging a user in.", {
-      cause: error
+  } catch (error2) {
+    const exception = error2 instanceof d ? error2 : new aa$1("An unknown error occurred while logging a user in.", {
+      cause: error2
     });
     dispatch(setLoginFailure(exception.toJSON()));
   }
@@ -31363,7 +44222,7 @@ const refreshSession = () => async (dispatch, getState) => {
   try {
     dispatch(setLoginInProgress(true));
     const config2 = getState().app.config;
-    AWS.config.update({
+    browser.exports.config.update({
       region: config2.aws.region
     });
     const poolData = {
@@ -31395,7 +44254,7 @@ const refreshSession = () => async (dispatch, getState) => {
           dispatch(setLoginInProgress(false));
         } else {
           const accessToken = session.getIdToken().getJwtToken();
-          AWS.config.update({
+          browser.exports.config.update({
             region: config2.aws.region
           });
           cognitoUser.refreshSession(session.getRefreshToken(), (err2, result) => {
@@ -31404,14 +44263,14 @@ const refreshSession = () => async (dispatch, getState) => {
             }
             console.log("result", result);
           });
-          const credentials = new AWS.CognitoIdentityCredentials({
+          const credentials = new browser.exports.CognitoIdentityCredentials({
             IdentityPoolId: config2.aws.cognito.identityPoolId,
             Logins: {
               [`cognito-idp.${config2.aws.region}.amazonaws.com/${config2.aws.cognito.userPoolId}`]: session.getIdToken().getJwtToken()
             }
           });
-          AWS.config.credentials = credentials;
-          AWS.config.credentials.refresh((err2) => {
+          browser.exports.config.credentials = credentials;
+          browser.exports.config.credentials.refresh((err2) => {
             if (err2) {
               const exception = new d("Error encountered while refreshing credentials", {
                 cause: err2
@@ -31450,9 +44309,9 @@ const refreshSession = () => async (dispatch, getState) => {
         }
       });
     }
-  } catch (error) {
+  } catch (error2) {
     const exception = new d("Error encountered getting user attributes", {
-      cause: error
+      cause: error2
     });
     logger.exception(exception.toJSON());
     dispatch(setLoginFailure(exception.toJSON()));
@@ -31580,12 +44439,12 @@ const signUp = ({
         dispatch(setSignupSuccess({ userId: userSub }));
       }
     });
-  } catch (error) {
-    if (error.name === p$2.name) {
-      dispatch(setSignupFailure(error.toJSON()));
+  } catch (error2) {
+    if (error2.name === p$2.name) {
+      dispatch(setSignupFailure(error2.toJSON()));
       return;
     }
-    throw error;
+    throw error2;
   }
 };
 const initialState$4 = {
@@ -31619,9 +44478,9 @@ const checkUsernameAvailability = ({ username }) => async (dispatch) => {
   try {
     dispatch(setCheckUsernameAvailabilityInProgress(true));
     dispatch(setCheckUsernameAvailabilityInProgress(false));
-  } catch (error) {
-    const exception = error instanceof d ? error : new G$1("An exception occurred while checking username availability", {
-      cause: error,
+  } catch (error2) {
+    const exception = error2 instanceof d ? error2 : new G$1("An exception occurred while checking username availability", {
+      cause: error2,
       origin: {
         file: "src/state/user/authentication/username-availability.ts"
       }
@@ -31741,9 +44600,9 @@ const getVerificationDetails = ({ userId }) => async (dispatch, getState) => {
   try {
     dispatch(setVerificationStatusLookupInProgress(true));
     dispatch(setVerificationStatusLookupInProgress(false));
-  } catch (error) {
-    const exception = error instanceof d ? error : new d(error.message, {
-      cause: error
+  } catch (error2) {
+    const exception = error2 instanceof d ? error2 : new d(error2.message, {
+      cause: error2
     });
     dispatch(setVerificationStatusLookupFailure(exception.toJSON()));
     dispatch(setVerificationStatusLookupInProgress(false));
