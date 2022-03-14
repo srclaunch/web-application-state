@@ -16,7 +16,7 @@ export default defineConfig({
     rollupOptions: {
       // Externalize deps that shouldn't be bundled
       external: [
-        // 'aws-sdk',
+        'aws-sdk',
         // 'aws-sdk/globals',
         // '@reduxjs/toolkit',
         // '@srclaunch/exceptions',
