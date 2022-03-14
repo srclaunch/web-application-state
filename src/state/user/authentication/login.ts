@@ -18,8 +18,8 @@ import {
   CognitoUserPool,
   CognitoUserSession,
 } from 'amazon-cognito-identity-js';
-import AWS from 'aws-sdk';
-import { Credentials } from 'aws-sdk/lib/credentials';
+// import { Credentials } from 'aws-sdk/credentials';
+import * as AWS from 'aws-sdk';
 import { DateTime } from 'luxon';
 
 import { AppThunk } from '../../../index';
@@ -180,7 +180,7 @@ export const login =
             },
           });
 
-          AWS.config.credentials = credentials as Credentials;
+          AWS.config.credentials = credentials;
 
           // @ts-ignore
           AWS.config.credentials.refresh(err => {
@@ -297,18 +297,16 @@ export const refreshSession = (): AppThunk => async (dispatch, getState) => {
               region: config.aws.region,
             });
 
-            const credentials: Credentials = new AWS.CognitoIdentityCredentials(
-              {
-                IdentityPoolId: config.aws.cognito.identityPoolId,
-                Logins: {
-                  // Change the key below according to the specific region your user pool is in.
-                  [`cognito-idp.${config.aws.region}.amazonaws.com/${config.aws.cognito.userPoolId}`]:
-                    session.getIdToken().getJwtToken(),
-                },
+            const credentials = new AWS.CognitoIdentityCredentials({
+              IdentityPoolId: config.aws.cognito.identityPoolId,
+              Logins: {
+                // Change the key below according to the specific region your user pool is in.
+                [`cognito-idp.${config.aws.region}.amazonaws.com/${config.aws.cognito.userPoolId}`]:
+                  session.getIdToken().getJwtToken(),
               },
-            );
+            });
 
-            AWS.config.credentials = credentials as Credentials;
+            AWS.config.credentials = credentials;
             // @ts-ignore
             AWS.config.credentials.refresh(err => {
               if (err) {
