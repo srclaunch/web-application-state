@@ -19,7 +19,7 @@ import {
   CognitoUserSession,
 } from 'amazon-cognito-identity-js';
 // import { Credentials } from 'aws-sdk/credentials';
-import * as AWS from 'aws-sdk';
+import * as AWS from 'aws-sdk/global';
 import { DateTime } from 'luxon';
 
 import { AppThunk } from '../../../index';
