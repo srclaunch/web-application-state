@@ -135,7 +135,7 @@ export const login =
       const config = getState().app.config;
 
       // @ts-ignore
-      const AWS = global.AWS || {};
+      const AWS = window.AWS || {};
 
       AWS.config.update({
         region: config.aws.region,
