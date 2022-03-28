@@ -1,6 +1,6 @@
-import base from './.eslintrc.js';
+const base = require('./.eslintrc');
 
-export default {
+module.exports = {
   ...base,
   env: {
     browser: true,

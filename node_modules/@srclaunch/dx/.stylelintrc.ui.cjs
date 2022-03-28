@@ -1,6 +1,6 @@
-import base from '../index.js';
+const base = require('../index');
 
-export default {
+module.exports = {
   ...base,
   extends: [
     ...base.extends,
