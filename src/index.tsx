@@ -1,3 +1,8 @@
+import React, { ReactElement } from 'react';
+import { createRoot } from 'react-dom/client';
+import { Provider } from 'react-redux';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { createBrowserHistory } from 'history';
 import {
   AnyAction,
   configureStore,
@@ -16,12 +21,6 @@ import {
   WebApplicationConfig,
 } from '@srclaunch/types';
 import { getEnvironment } from '@srclaunch/web-environment';
-import { createBrowserHistory } from 'history';
-import { ReactElement, StrictMode } from 'react';
-import { createRoot } from 'react-dom/client';
-import { Provider } from 'react-redux';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-
 import { createMiddleware } from './middleware/index';
 import { createRootReducer } from './state';
 import { setConfig } from './state/app/config';
@@ -89,7 +88,7 @@ export const renderReduxWebApp = async ({
   }
 
   createRoot(document.getElementById('root')!).render(
-    <StrictMode>
+    <React.StrictMode>
       <Provider store={store}>
         <Router>
           <Routes>
@@ -141,7 +140,7 @@ export const renderReduxWebApp = async ({
           </Routes>
         </Router>
       </Provider>
-    </StrictMode>,
+    </React.StrictMode>,
   );
 };
 

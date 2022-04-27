@@ -13,14 +13,7 @@ export default {
   description: 'Redux state and utilities used by AppLab web applications',
   type: ProjectType.Library,
   build: {
-    external: [
-      'chalk',
-      '@srclaunch/logger',
-      '@reduxjs/toolkit',
-      'react',
-      'react-dom',
-      'react-redux',
-    ],
+    external: ['@reduxjs/toolkit'],
     input: {
       directory: 'src',
       file: 'index.tsx',
