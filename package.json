@@ -54,7 +54,7 @@
     "redux": "^4.2.0"
   },
   "devDependencies": {
-    "@srclaunch/cli": "^0.1.322",
+    "@srclaunch/cli": "^0.1.324",
     "@srclaunch/dx": "^0.1.44",
     "@srclaunch/types": "^0.1.112",
     "@types/history": "5.0.0",
