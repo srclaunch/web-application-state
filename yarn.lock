@@ -1988,6 +1988,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@srclaunch/exceptions@npm:^0.1.55":
+  version: 0.1.55
+  resolution: "@srclaunch/exceptions@npm:0.1.55"
+  dependencies:
+    "@srclaunch/logger": ^0.1.69
+    luxon: ^2.3.2
+    nanoid: ^3.3.3
+    serialize-error: ^10.0.0
+  checksum: 06de952f36d3a32acacfa14675b7c5a398c5055e4d9973ac1714519a7b8227cd7d7b58d4f6a23b1eb17d00bd4af9f4cb29b485d793a824883af38cfa18fac4e6
+  languageName: node
+  linkType: hard
+
 "@srclaunch/http-client@npm:^0.1.19":
   version: 0.1.19
   resolution: "@srclaunch/http-client@npm:0.1.19"
@@ -2016,6 +2028,18 @@ __metadata:
     luxon: ^2.3.2
     nanoid: ^3.3.3
   checksum: b29ee2605a87dceb3931373c59f836de9437632aafe363e68be46fb04be8ec8b30867d047472f1cbe16677d62cf8cfe69d3527b7bfa3b390a81bc1685611bf8c
+  languageName: node
+  linkType: hard
+
+"@srclaunch/logger@npm:^0.1.69":
+  version: 0.1.69
+  resolution: "@srclaunch/logger@npm:0.1.69"
+  dependencies:
+    ansi-styles: ^6.1.0
+    chalk: ^5.0.1
+    luxon: ^2.3.2
+    nanoid: ^3.3.3
+  checksum: 122396cbf00f73ab74ef76fa9c6f0152dc85a52ae8f23a14e843dc32cac9b52a2cef2b3a2a709a782a1a44fdca946b147e7bf0fa12492b807916a843057800a6
   languageName: node
   linkType: hard
 
@@ -2057,10 +2081,10 @@ __metadata:
     "@reduxjs/toolkit": ^1.8.1
     "@srclaunch/cli": ^0.1.303
     "@srclaunch/dx": ^0.1.44
-    "@srclaunch/exceptions": ^0.1.54
+    "@srclaunch/exceptions": ^0.1.55
     "@srclaunch/http-client": ^0.1.19
     "@srclaunch/i18n": ^0.1.4
-    "@srclaunch/logger": ^0.1.66
+    "@srclaunch/logger": ^0.1.69
     "@srclaunch/themes": ^0.1.19
     "@srclaunch/types": ^0.1.99
     "@srclaunch/validation": ^0.1.25
@@ -2112,7 +2136,7 @@ __metadata:
     react-redux: ^7.2.8
     react-router: ^6.3.0
     react-router-dom: ^6.3.0
-    redux: ^4.1.2
+    redux: ^4.2.0
     redux-logger: ^3.0.6
     standard-version: ^9.3.2
     stylelint: ^14.8.0
@@ -9933,7 +9957,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"redux@npm:^4.0.0, redux@npm:^4.1.2":
+"redux@npm:^4.0.0, redux@npm:^4.1.2, redux@npm:^4.2.0":
   version: 4.2.0
   resolution: "redux@npm:4.2.0"
   dependencies:

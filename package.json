@@ -3,7 +3,7 @@
   "description": "Redux state and utilities used by AppLab web applications",
   "author": "Steven Bennett <steven@srclaunch.com>",
   "license": "MIT",
-  "version": "0.1.54",
+  "version": "0.1.55",
   "engines": {
     "node": ">=16"
   },
@@ -36,10 +36,10 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.1",
-    "@srclaunch/exceptions": "^0.1.54",
+    "@srclaunch/exceptions": "^0.1.55",
     "@srclaunch/http-client": "^0.1.19",
     "@srclaunch/i18n": "^0.1.4",
-    "@srclaunch/logger": "^0.1.66",
+    "@srclaunch/logger": "^0.1.69",
     "@srclaunch/themes": "^0.1.19",
     "@srclaunch/validation": "^0.1.25",
     "@srclaunch/web-environment": "^0.1.15",
@@ -51,7 +51,7 @@
     "react-redux": "^7.2.8",
     "react-router": "^6.3.0",
     "react-router-dom": "^6.3.0",
-    "redux": "^4.1.2"
+    "redux": "^4.2.0"
   },
   "devDependencies": {
     "@srclaunch/cli": "^0.1.303",
