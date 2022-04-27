@@ -1,8 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { PageRoute } from '@srclaunch/types';
+import { Route as RouteType } from '@srclaunch/types';
 
 type AppState = {
-  list?: Omit<PageRoute, 'component'>[];
+  list?: Omit<RouteType, 'component'>[];
 };
 
 const initialState: AppState = {
@@ -15,7 +15,7 @@ const slice = createSlice({
   reducers: {
     setRoutes: (
       state,
-      action: PayloadAction<Omit<PageRoute, 'component'>[]>,
+      action: PayloadAction<Omit<RouteType, 'component'>[]>,
     ) => {
       state.list = action.payload;
     },

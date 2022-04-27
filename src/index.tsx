@@ -11,8 +11,8 @@ import {
   EnvironmentType,
   Model,
   ModelProps,
-  PageRole,
-  PageRoute,
+  RouteRole,
+  Route as RouteType,
   WebApplicationConfig,
 } from '@srclaunch/types';
 import { getEnvironment } from '@srclaunch/web-environment';
@@ -67,7 +67,7 @@ export const renderReduxWebApp = async ({
   readonly container?: ReactElement;
   readonly config?: WebApplicationConfig;
   readonly httpClient?: typeof HttpClient;
-  readonly routes: readonly PageRoute[];
+  readonly routes: readonly RouteType[];
   readonly store: RootState;
 }): Promise<void> => {
   await store.dispatch(setConfig(config));
@@ -95,7 +95,7 @@ export const renderReduxWebApp = async ({
           <Routes>
             <Route path="/" element={container}>
               {routes.map((route, k: number) => {
-                if (route.role === PageRole.Index) {
+                if (route.role === RouteRole.Index) {
                   return (
                     <Route
                       index
@@ -180,6 +180,8 @@ export {
   getPaymentMethods,
 } from './state/user/payment-methods';
 export { getSubscriptions } from './state/user/subscriptions';
+export type { Modal } from './types/modal';
+export type { Notification } from './types/notification';
 export { matchPath, matchRoutes } from 'react-router';
 export {
   Link,

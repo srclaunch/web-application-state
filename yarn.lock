@@ -1429,7 +1429,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:^7.10.2, @babel/runtime@npm:^7.12.5, @babel/runtime@npm:^7.15.4, @babel/runtime@npm:^7.16.3, @babel/runtime@npm:^7.7.6, @babel/runtime@npm:^7.8.4, @babel/runtime@npm:^7.9.2":
+"@babel/runtime@npm:^7.10.2, @babel/runtime@npm:^7.12.1, @babel/runtime@npm:^7.12.5, @babel/runtime@npm:^7.15.4, @babel/runtime@npm:^7.16.3, @babel/runtime@npm:^7.7.6, @babel/runtime@npm:^7.8.4, @babel/runtime@npm:^7.9.2":
   version: 7.17.9
   resolution: "@babel/runtime@npm:7.17.9"
   dependencies:
@@ -1928,9 +1928,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@srclaunch/cli@npm:^0.1.303":
-  version: 0.1.303
-  resolution: "@srclaunch/cli@npm:0.1.303"
+"@srclaunch/cli@npm:^0.1.307":
+  version: 0.1.307
+  resolution: "@srclaunch/cli@npm:0.1.307"
   dependencies:
     "@rauschma/stringio": ^1.4.0
     "@srclaunch/exceptions": ^0.1.54
@@ -1965,7 +1965,7 @@ __metadata:
     ansi-styles: "*"
   bin:
     srclaunch: dist/index.mjs
-  checksum: 0da2e9d9a6ac395b2beb0b6d9896f62e7c5b561832c05dc00cbe991a434eb39ed1229e45e9f8f8b1f516e3a57f23c0e666ec290061072ad92c656168e563dbac
+  checksum: f79e50242b9f5fc7a4da51f08dd426d74e4ade900b191679fced1a376b5a021fec9e91e3b01d7f75eb52db79d93863c9fa2f16481a44c83a748e609195864011
   languageName: node
   linkType: hard
 
@@ -1988,15 +1988,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@srclaunch/exceptions@npm:^0.1.55":
-  version: 0.1.55
-  resolution: "@srclaunch/exceptions@npm:0.1.55"
+"@srclaunch/exceptions@npm:^0.1.58":
+  version: 0.1.58
+  resolution: "@srclaunch/exceptions@npm:0.1.58"
   dependencies:
-    "@srclaunch/logger": ^0.1.69
+    "@srclaunch/logger": ^0.1.73
     luxon: ^2.3.2
     nanoid: ^3.3.3
     serialize-error: ^10.0.0
-  checksum: 06de952f36d3a32acacfa14675b7c5a398c5055e4d9973ac1714519a7b8227cd7d7b58d4f6a23b1eb17d00bd4af9f4cb29b485d793a824883af38cfa18fac4e6
+  checksum: f35be2a9b11abfbb1d88349d2b2590de21ae73031d9606bfc6a52b998ccb2905542192af7413d60a9a0bf6dcb9cf8c91e2d07750ef6ecc50df4d0b0630ad04ec
   languageName: node
   linkType: hard
 
@@ -2031,15 +2031,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@srclaunch/logger@npm:^0.1.69":
-  version: 0.1.69
-  resolution: "@srclaunch/logger@npm:0.1.69"
+"@srclaunch/logger@npm:^0.1.73":
+  version: 0.1.73
+  resolution: "@srclaunch/logger@npm:0.1.73"
   dependencies:
-    ansi-styles: ^6.1.0
-    chalk: ^5.0.1
     luxon: ^2.3.2
     nanoid: ^3.3.3
-  checksum: 122396cbf00f73ab74ef76fa9c6f0152dc85a52ae8f23a14e843dc32cac9b52a2cef2b3a2a709a782a1a44fdca946b147e7bf0fa12492b807916a843057800a6
+    picocolors: ^1.0.0
+  checksum: 0a5b807cd2ffcaac342d76d2077155854a9291e0c824b2adf9f5cd048178da4ab8f03abe08ac0b1a9b43c69e553e520ee11794d9bbfb56bd0732338030d82317
   languageName: node
   linkType: hard
 
@@ -2061,16 +2060,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@srclaunch/validation@npm:^0.1.25":
-  version: 0.1.25
-  resolution: "@srclaunch/validation@npm:0.1.25"
+"@srclaunch/validation@npm:^0.1.26":
+  version: 0.1.26
+  resolution: "@srclaunch/validation@npm:0.1.26"
   dependencies:
-    "@srclaunch/exceptions": ^0.1.54
+    "@srclaunch/exceptions": ^0.1.58
     email-validator: ^2.0.4
     js-file-download: ^0.4.12
     password-validator: ^5.2.1
     zxcvbn: ^4.4.2
-  checksum: d6cf812ca964c74021a8b2c03fa1b2ad7326dd158bd162927c5bb9622b152e90cf9d1799999b7a30014414c4911d70119aa353091afe13a3a8c6f48971691fff
+  checksum: 99361620deb1f3115111adbed03b544808dabf291833c6f7b31d6e193cfcb9c301948388e0a970de38f264746f553d56c82121be9caf3446da1c0575547830ed
   languageName: node
   linkType: hard
 
@@ -2079,17 +2078,18 @@ __metadata:
   resolution: "@srclaunch/web-application-state@workspace:."
   dependencies:
     "@reduxjs/toolkit": ^1.8.1
-    "@srclaunch/cli": ^0.1.303
+    "@srclaunch/cli": ^0.1.307
     "@srclaunch/dx": ^0.1.44
-    "@srclaunch/exceptions": ^0.1.55
+    "@srclaunch/exceptions": ^0.1.58
     "@srclaunch/http-client": ^0.1.19
     "@srclaunch/i18n": ^0.1.4
-    "@srclaunch/logger": ^0.1.69
+    "@srclaunch/logger": ^0.1.73
     "@srclaunch/themes": ^0.1.19
     "@srclaunch/types": ^0.1.99
-    "@srclaunch/validation": ^0.1.25
+    "@srclaunch/validation": ^0.1.26
     "@srclaunch/web-environment": ^0.1.15
     "@types/history": 5.0.0
+    "@types/jest": ^27.4.1
     "@types/luxon": ^2.3.1
     "@types/node": ^17.0.29
     "@types/react": ^18.0.8
@@ -2127,13 +2127,14 @@ __metadata:
     eslint-plugin-testing-library: ^5.3.1
     eslint-plugin-unicorn: ^42.0.0
     history: 5.3.0
+    jest: ^27.5.1
     luxon: ^2.3.2
     nanoid: ^3.3.3
     prettier: ^2.6.2
     prettier-eslint: ^14.0.1
     react: ^18.1.0
     react-dom: ^18.1.0
-    react-redux: ^7.2.8
+    react-redux: ^8.0.1
     react-router: ^6.3.0
     react-router-dom: ^6.3.0
     redux: ^4.2.0
@@ -2145,6 +2146,7 @@ __metadata:
     stylelint-config-recommended: ^7.0.0
     stylelint-config-styled-components: ^0.1.1
     stylelint-order: ^5.0.0
+    ts-jest: ^27.1.4
     typescript: ^4.6.3
     vite: ^2.9.6
   peerDependencies:
@@ -2270,7 +2272,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/hoist-non-react-statics@npm:^3.3.0":
+"@types/hoist-non-react-statics@npm:^3.3.0, @types/hoist-non-react-statics@npm:^3.3.1":
   version: 3.3.1
   resolution: "@types/hoist-non-react-statics@npm:3.3.1"
   dependencies:
@@ -2302,6 +2304,16 @@ __metadata:
   dependencies:
     "@types/istanbul-lib-report": "*"
   checksum: f1ad54bc68f37f60b30c7915886b92f86b847033e597f9b34f2415acdbe5ed742fa559a0a40050d74cdba3b6a63c342cac1f3a64dba5b68b66a6941f4abd7903
+  languageName: node
+  linkType: hard
+
+"@types/jest@npm:^27.4.1":
+  version: 27.4.1
+  resolution: "@types/jest@npm:27.4.1"
+  dependencies:
+    jest-matcher-utils: ^27.0.0
+    pretty-format: ^27.0.0
+  checksum: 5184f3eef4832d01ee8f59bed15eec45ccc8e29c724a5e6ce37bf74396b37bdf04f557000f45ba4fc38ae6075cf9cfcce3d7a75abc981023c61ceb27230a93e4
   languageName: node
   linkType: hard
 
@@ -2393,7 +2405,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-redux@npm:^7.1.20, @types/react-redux@npm:^7.1.24":
+"@types/react-redux@npm:^7.1.24":
   version: 7.1.24
   resolution: "@types/react-redux@npm:7.1.24"
   dependencies:
@@ -2445,6 +2457,13 @@ __metadata:
   version: 2.0.1
   resolution: "@types/stack-utils@npm:2.0.1"
   checksum: 205fdbe3326b7046d7eaf5e494d8084f2659086a266f3f9cf00bccc549c8e36e407f88168ad4383c8b07099957ad669f75f2532ed4bc70be2b037330f7bae019
+  languageName: node
+  linkType: hard
+
+"@types/use-sync-external-store@npm:^0.0.3":
+  version: 0.0.3
+  resolution: "@types/use-sync-external-store@npm:0.0.3"
+  checksum: 161ddb8eec5dbe7279ac971531217e9af6b99f7783213566d2b502e2e2378ea19cf5e5ea4595039d730aa79d3d35c6567d48599f69773a02ffcff1776ec2a44e
   languageName: node
   linkType: hard
 
@@ -7550,7 +7569,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jest-matcher-utils@npm:^27.5.1":
+"jest-matcher-utils@npm:^27.0.0, jest-matcher-utils@npm:^27.5.1":
   version: 27.5.1
   resolution: "jest-matcher-utils@npm:27.5.1"
   dependencies:
@@ -9551,7 +9570,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pretty-format@npm:^27.5.1":
+"pretty-format@npm:^27.0.0, pretty-format@npm:^27.5.1":
   version: 27.5.1
   resolution: "pretty-format@npm:27.5.1"
   dependencies:
@@ -9605,7 +9624,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prop-types@npm:^15.5.10, prop-types@npm:^15.7.2, prop-types@npm:^15.8.1":
+"prop-types@npm:^15.5.10, prop-types@npm:^15.8.1":
   version: 15.8.1
   resolution: "prop-types@npm:15.8.1"
   dependencies:
@@ -9720,10 +9739,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-is@npm:^17.0.1, react-is@npm:^17.0.2":
+"react-is@npm:^17.0.1":
   version: 17.0.2
   resolution: "react-is@npm:17.0.2"
   checksum: 9d6d111d8990dc98bc5402c1266a808b0459b5d54830bbea24c12d908b536df7883f268a7868cfaedde3dd9d4e0d574db456f84d2e6df9c4526f99bb4b5344d8
+  languageName: node
+  linkType: hard
+
+"react-is@npm:^18.0.0":
+  version: 18.1.0
+  resolution: "react-is@npm:18.1.0"
+  checksum: d206a0fe6790851bff168727bfb896de02c5591695afb0c441163e8630136a3e13ee1a7ddd59fdccddcc93968b4721ae112c10f790b194b03b35a3dc13a355ef
   languageName: node
   linkType: hard
 
@@ -9740,24 +9766,35 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-redux@npm:^7.2.8":
-  version: 7.2.8
-  resolution: "react-redux@npm:7.2.8"
+"react-redux@npm:^8.0.1":
+  version: 8.0.1
+  resolution: "react-redux@npm:8.0.1"
   dependencies:
-    "@babel/runtime": ^7.15.4
-    "@types/react-redux": ^7.1.20
+    "@babel/runtime": ^7.12.1
+    "@types/hoist-non-react-statics": ^3.3.1
+    "@types/use-sync-external-store": ^0.0.3
     hoist-non-react-statics: ^3.3.2
-    loose-envify: ^1.4.0
-    prop-types: ^15.7.2
-    react-is: ^17.0.2
+    react-is: ^18.0.0
+    use-sync-external-store: ^1.0.0
   peerDependencies:
-    react: ^16.8.3 || ^17 || ^18
+    "@types/react": ^16.8 || ^17.0 || ^18.0
+    "@types/react-dom": ^16.8 || ^17.0 || ^18.0
+    react: ^16.8 || ^17.0 || ^18.0
+    react-dom: ^16.8 || ^17.0 || ^18.0
+    react-native: ">=0.59"
+    redux: ^4
   peerDependenciesMeta:
+    "@types/react":
+      optional: true
+    "@types/react-dom":
+      optional: true
     react-dom:
       optional: true
     react-native:
       optional: true
-  checksum: ecf1933e91013f2d41bfc781515b536bf81eb1f70ff228607841094c8330fe77d522372b359687e51c0b52b9888dba73db9ac0486aace1896ab9eb9daec102d5
+    redux:
+      optional: true
+  checksum: d7c004b4bfb4e4cd9a5fc21fa30734cf2fc1c04b1483f0c0ea1446e00b7792e9d7ef16cf62d38254f68f6058bac34f759da6a204772a0982e029d2e83cc80512
   languageName: node
   linkType: hard
 
@@ -11709,6 +11746,15 @@ __metadata:
   dependencies:
     prepend-http: ^2.0.0
   checksum: 1040e357750451173132228036aff1fd04abbd43eac1fb3e4fca7495a078bcb8d33cb765fe71ad7e473d9c94d98fd67adca63bd2716c815a2da066198dd37217
+  languageName: node
+  linkType: hard
+
+"use-sync-external-store@npm:^1.0.0":
+  version: 1.1.0
+  resolution: "use-sync-external-store@npm:1.1.0"
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
+  checksum: 8993a0b642f91d7fcdbb02b7b3ac984bd3af4769686f38291fe7fcfe73dfb73d6c64d20dfb7e5e7fbf5a6da8f5392d6f8e5b00c243a04975595946e82c02b883
   languageName: node
   linkType: hard
 

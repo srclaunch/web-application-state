@@ -1,6 +1,6 @@
 import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
 import { nanoid } from 'nanoid';
-import { Modal } from '@srclaunch/types';
+import { Modal } from '../../types/modal';
 
 const modalAdapter = createEntityAdapter<Modal>({
   selectId: modal => modal.id.toString(),

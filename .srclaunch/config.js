@@ -5,6 +5,7 @@ import {
   BuildTool,
   ProjectType,
   TestReporter,
+  TestTool,
 } from '@srclaunch/types';
 
 export default {
@@ -13,7 +14,7 @@ export default {
   type: ProjectType.Library,
   build: {
     external: [
-      '@srclaunch/exceptions',
+      'chalk',
       '@srclaunch/logger',
       '@reduxjs/toolkit',
       'react',
@@ -33,9 +34,7 @@ export default {
     coverage: {
       reporters: [TestReporter.Lcov, TestReporter.JSONSummary],
     },
-    files: {
-      include: ['src/**/*.test.ts'],
-    },
+    tool: TestTool.Jest,
     verbose: true,
   },
 };

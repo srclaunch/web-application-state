@@ -1,5 +1,5 @@
 import { UncaughtException } from '@srclaunch/exceptions';
-import Logger from '@srclaunch/logger';
+import { Logger } from '@srclaunch/logger';
 import { Middleware } from 'redux';
 
 import { RootState } from '../index';

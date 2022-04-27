@@ -1,11 +1,4 @@
 {
   "extends": "@srclaunch/dx/tsconfig.ui.json",
-  "compilerOptions": {
-    "declaration": true,
-    "declarationDir": "dist",
-    "emitDeclarationOnly": true,
-    "rootDir": "src",
-    "types": ["vite/client", "node"]
-  },
   "include": ["src"]
 }

@@ -1,6 +1,6 @@
 import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
 import { nanoid } from 'nanoid';
-import { Notification } from '@srclaunch/types';
+import { Notification } from '../../types/notification';
 import { AppThunk } from '../../index';
 
 const notificationAdapter = createEntityAdapter<Notification>({
