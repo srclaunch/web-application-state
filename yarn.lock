@@ -6,11 +6,12 @@ __metadata:
   cacheKey: 8
 
 "@ampproject/remapping@npm:^2.1.0":
-  version: 2.1.2
-  resolution: "@ampproject/remapping@npm:2.1.2"
+  version: 2.2.0
+  resolution: "@ampproject/remapping@npm:2.2.0"
   dependencies:
-    "@jridgewell/trace-mapping": ^0.3.0
-  checksum: e023f92cdd9723f3042cde3b4d922adfeef0e198aa73486b0b6c034ad36af5f96e5c0cc72b335b30b2eb9852d907efc92af6bfcd3f4b4d286177ee32a189cf92
+    "@jridgewell/gen-mapping": ^0.1.0
+    "@jridgewell/trace-mapping": ^0.3.9
+  checksum: d74d170d06468913921d72430259424b7e4c826b5a7d39ff839a29d547efb97dc577caa8ba3fb5cf023624e9af9d09651afc3d4112a45e2050328abc9b3a2292
   languageName: node
   linkType: hard
 
@@ -1800,10 +1801,27 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@jridgewell/gen-mapping@npm:^0.1.0":
+  version: 0.1.1
+  resolution: "@jridgewell/gen-mapping@npm:0.1.1"
+  dependencies:
+    "@jridgewell/set-array": ^1.0.0
+    "@jridgewell/sourcemap-codec": ^1.4.10
+  checksum: 3bcc21fe786de6ffbf35c399a174faab05eb23ce6a03e8769569de28abbf4facc2db36a9ddb0150545ae23a8d35a7cf7237b2aa9e9356a7c626fb4698287d5cc
+  languageName: node
+  linkType: hard
+
 "@jridgewell/resolve-uri@npm:^3.0.3":
   version: 3.0.6
   resolution: "@jridgewell/resolve-uri@npm:3.0.6"
   checksum: e57cc08d2aaea6bd55e77e7a124beb2fcca87be28c0db6c2d69b7cb2cb4e14109bbef1d57ae6250bf5f4a4ad950f094ed99c8925adaf82336b66dab0ad6906e6
+  languageName: node
+  linkType: hard
+
+"@jridgewell/set-array@npm:^1.0.0":
+  version: 1.1.0
+  resolution: "@jridgewell/set-array@npm:1.1.0"
+  checksum: 86ddd72ce7d2f7756dfb69804b35d0e760a85dcef30ed72e8610bf2c5e843f8878d977a0c77c4fdfa6a0e3d5b18e5bde4a1f1dd73fd2db06b200c998e9b5a6c5
   languageName: node
   linkType: hard
 
@@ -1814,7 +1832,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@jridgewell/trace-mapping@npm:^0.3.0, @jridgewell/trace-mapping@npm:^0.3.7":
+"@jridgewell/trace-mapping@npm:^0.3.7, @jridgewell/trace-mapping@npm:^0.3.9":
   version: 0.3.9
   resolution: "@jridgewell/trace-mapping@npm:0.3.9"
   dependencies:
@@ -2004,19 +2022,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@srclaunch/exceptions@npm:^0.1.54":
-  version: 0.1.54
-  resolution: "@srclaunch/exceptions@npm:0.1.54"
-  dependencies:
-    "@srclaunch/logger": ^0.1.66
-    luxon: ^2.3.2
-    nanoid: ^3.3.3
-    serialize-error: ^10.0.0
-  checksum: bcbe0b982ad3790b4ead7ac2a40880527172d2faa3c0d60c3807751c7c893ca1a5c0a5297f2f885999423e161ebd6c9ef3da96dc362a2da4c645a6a74a76116d
-  languageName: node
-  linkType: hard
-
-"@srclaunch/exceptions@npm:^0.1.58":
+"@srclaunch/exceptions@npm:^0.1.54, @srclaunch/exceptions@npm:^0.1.58":
   version: 0.1.58
   resolution: "@srclaunch/exceptions@npm:0.1.58"
   dependencies:
@@ -2048,18 +2054,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@srclaunch/logger@npm:^0.1.66":
-  version: 0.1.66
-  resolution: "@srclaunch/logger@npm:0.1.66"
-  dependencies:
-    chalk: ^5.0.1
-    luxon: ^2.3.2
-    nanoid: ^3.3.3
-  checksum: b29ee2605a87dceb3931373c59f836de9437632aafe363e68be46fb04be8ec8b30867d047472f1cbe16677d62cf8cfe69d3527b7bfa3b390a81bc1685611bf8c
-  languageName: node
-  linkType: hard
-
-"@srclaunch/logger@npm:^0.1.73":
+"@srclaunch/logger@npm:^0.1.66, @srclaunch/logger@npm:^0.1.73":
   version: 0.1.73
   resolution: "@srclaunch/logger@npm:0.1.73"
   dependencies:
@@ -2167,8 +2162,6 @@ __metadata:
     nanoid: ^3.3.3
     prettier: ^2.6.2
     prettier-eslint: ^14.0.1
-    react: ^18.1.0
-    react-dom: ^18.1.0
     react-redux: ^8.0.1
     react-router: ^6.3.0
     react-router-dom: ^6.3.0
@@ -3178,12 +3171,12 @@ __metadata:
   linkType: hard
 
 "axios@npm:^0.27.0":
-  version: 0.27.1
-  resolution: "axios@npm:0.27.1"
+  version: 0.27.2
+  resolution: "axios@npm:0.27.2"
   dependencies:
     follow-redirects: ^1.14.9
     form-data: ^4.0.0
-  checksum: 0da3131125429fcaeb5057c9b7249699c59d48a053d8aaa897089c96e5fa623cf2cf9c3ae36c307235dab495ab7409c87ffbd9b77407624a21403571a492c771
+  checksum: 38cb7540465fe8c4102850c4368053c21683af85c5fdf0ea619f9628abbcb59415d1e22ebc8a6390d2bbc9b58a9806c874f139767389c862ec9b772235f06854
   languageName: node
   linkType: hard
 
@@ -3547,8 +3540,8 @@ __metadata:
   linkType: hard
 
 "cacache@npm:^16.0.2":
-  version: 16.0.6
-  resolution: "cacache@npm:16.0.6"
+  version: 16.0.7
+  resolution: "cacache@npm:16.0.7"
   dependencies:
     "@npmcli/fs": ^2.1.0
     "@npmcli/move-file": ^2.0.0
@@ -3568,7 +3561,7 @@ __metadata:
     ssri: ^9.0.0
     tar: ^6.1.11
     unique-filename: ^1.1.1
-  checksum: c9813d4aa0452ecfdb7f796d931d0b8068fc921a3575fb858c26ab12ed41634a995135dbd56afd64ec4de141bd78c7021ce5aeabce83453c7342d3ed126815df
+  checksum: 2155b099b7e0f0369fb1155ca4673532ca7efe2ebdbec63acca8743580b8446b5d4fd7184626b1cb059001af77b981cdc67035c7855544d365d4f048eafca2ca
   languageName: node
   linkType: hard
 
@@ -4839,9 +4832,9 @@ __metadata:
   linkType: hard
 
 "electron-to-chromium@npm:^1.4.118":
-  version: 1.4.122
-  resolution: "electron-to-chromium@npm:1.4.122"
-  checksum: 8af3e4ec8d7429a301bd3e2df42c5899d590dc93b750ef74aa3244c5343b01bd3048e98bd6f13073bf3d053c6931ccda6827d8f47ba8022d7ba3c74003321cae
+  version: 1.4.123
+  resolution: "electron-to-chromium@npm:1.4.123"
+  checksum: da7800ead12e233cf503182d6168f22c1c21c24c314150f54a01e54a612a3abe61b976c43c9c69003787b3844660733b9ed3e842470d906b8bbd03e50b966772
   languageName: node
   linkType: hard
 
@@ -9769,18 +9762,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-dom@npm:^18.1.0":
-  version: 18.1.0
-  resolution: "react-dom@npm:18.1.0"
-  dependencies:
-    loose-envify: ^1.1.0
-    scheduler: ^0.22.0
-  peerDependencies:
-    react: ^18.1.0
-  checksum: bb0d48eeb0b297c79c2a03978baa29f5b3ff7ba3d070b21e34c9af1a6e7fdf0ca8b8d73e41f9214d91ad40eeb6d1f3559f884cbbc338713374a51320637c23df
-  languageName: node
-  linkType: hard
-
 "react-is@npm:^16.13.1, react-is@npm:^16.7.0":
   version: 16.13.1
   resolution: "react-is@npm:16.13.1"
@@ -10414,15 +10395,6 @@ __metadata:
     loose-envify: ^1.1.0
     object-assign: ^4.1.1
   checksum: c4b35cf967c8f0d3e65753252d0f260271f81a81e427241295c5a7b783abf4ea9e905f22f815ab66676f5313be0a25f47be582254db8f9241b259213e999b8fc
-  languageName: node
-  linkType: hard
-
-"scheduler@npm:^0.22.0":
-  version: 0.22.0
-  resolution: "scheduler@npm:0.22.0"
-  dependencies:
-    loose-envify: ^1.1.0
-  checksum: a8ef5cab769c020cd6382ad9ecc3f72dbde56a50a36639b3a42ad9c11f7724f03700bcad373044059b8067d4a6365154dc7c0ca8027ef20ff4900cf58a0fc2c5
   languageName: node
   linkType: hard
 
