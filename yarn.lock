@@ -1958,9 +1958,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@srclaunch/cli@npm:^0.1.321":
-  version: 0.1.321
-  resolution: "@srclaunch/cli@npm:0.1.321"
+"@srclaunch/cli@npm:^0.1.322":
+  version: 0.1.322
+  resolution: "@srclaunch/cli@npm:0.1.322"
   dependencies:
     "@rauschma/stringio": ^1.4.0
     "@srclaunch/exceptions": ^0.1.58
@@ -1996,7 +1996,7 @@ __metadata:
     ansi-styles: "*"
   bin:
     srclaunch: dist/index.mjs
-  checksum: e28add48eaa5bec7b313878337654030f43f2fc875a95c442548893b81dada1fa12791164d4f960ef7d26a8a9c7896488e2747521dadf06fa15599899ba63f7e
+  checksum: 783d7ae7a6f4f1db33e75a714da87baea072f8eac61e7d49b0377aafd3ec6a92dbedd976d2e968c10533441f79b5643da277f4cde24e5bcac43748bcdf5a34e2
   languageName: node
   linkType: hard
 
@@ -2091,10 +2091,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@srclaunch/types@npm:^0.1.111":
-  version: 0.1.111
-  resolution: "@srclaunch/types@npm:0.1.111"
-  checksum: 117c955f39e83af6b24fdc26d6d0646d620793c29fe5804def036411e5549f7b2492638a7f4f34da95c55eda3e33084b2c332cbeacff1417af1bd7b44f7b5dcc
+"@srclaunch/types@npm:^0.1.112":
+  version: 0.1.112
+  resolution: "@srclaunch/types@npm:0.1.112"
+  checksum: 501eeda89b359817e5b5c57176296569c7d26b73dd5ff6dea3c38722ae6776501e7faac9ca0cd9c85bbbd264d50688194897a0def2e37411bdbdf5069cb6657c
   languageName: node
   linkType: hard
 
@@ -2116,14 +2116,14 @@ __metadata:
   resolution: "@srclaunch/web-application-state@workspace:."
   dependencies:
     "@reduxjs/toolkit": ^1.8.1
-    "@srclaunch/cli": ^0.1.321
+    "@srclaunch/cli": ^0.1.322
     "@srclaunch/dx": ^0.1.44
     "@srclaunch/exceptions": ^0.1.58
     "@srclaunch/http-client": ^0.1.19
     "@srclaunch/i18n": ^0.1.4
     "@srclaunch/logger": ^0.1.73
     "@srclaunch/themes": ^0.1.28
-    "@srclaunch/types": ^0.1.111
+    "@srclaunch/types": ^0.1.112
     "@srclaunch/validation": ^0.1.26
     "@srclaunch/web-environment": ^0.1.15
     "@types/history": 5.0.0
