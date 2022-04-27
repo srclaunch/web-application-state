@@ -182,6 +182,7 @@ export {
 export { getSubscriptions } from './state/user/subscriptions';
 export type { Modal } from './types/modal';
 export type { Notification } from './types/notification';
+export { NotificationType } from './types/notification';
 export { matchPath, matchRoutes } from 'react-router';
 export {
   Link,

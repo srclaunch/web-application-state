@@ -1,5 +1,13 @@
+export enum NotificationType {
+  Error = 'error',
+  Info = 'info',
+  Success = 'success',
+  Warning = 'warning',
+}
+
 export type Notification = {
   id: string;
   date_created: string;
-  message: string;
+  label: string;
+  type: NotificationType;
 };
