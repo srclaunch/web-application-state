@@ -18,7 +18,7 @@ import {
 import { getEnvironment } from '@srclaunch/web-environment';
 import { createBrowserHistory } from 'history';
 import { ReactElement, StrictMode } from 'react';
-import ReactDOM from 'react-dom/client';
+import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
@@ -88,7 +88,7 @@ export const renderReduxWebApp = async ({
     await store.dispatch(refreshSession());
   }
 
-  ReactDOM.createRoot(document.getElementById('root')!).render(
+  createRoot(document.getElementById('root')!).render(
     <StrictMode>
       <Provider store={store}>
         <Router>
