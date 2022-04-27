@@ -13,7 +13,7 @@ export default {
   description: 'Redux state and utilities used by AppLab web applications',
   type: ProjectType.Library,
   build: {
-    external: ['@reduxjs/toolkit'],
+    external: ['react', 'react-dom'],
     input: {
       directory: 'src',
       file: 'index.tsx',
