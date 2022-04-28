@@ -13,7 +13,12 @@ export default {
   description: 'Redux state and utilities used by AppLab web applications',
   type: ProjectType.Library,
   build: {
-    external: ['react', 'react-dom', 'styled-components'],
+    bundle: {
+      external: ['react', 'react-dom'],
+      globals: {
+        react: 'React',
+      },
+    },
     input: {
       directory: 'src',
       file: 'index.tsx',
