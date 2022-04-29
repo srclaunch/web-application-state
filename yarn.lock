@@ -1976,9 +1976,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@srclaunch/cli@npm:^0.1.334":
-  version: 0.1.334
-  resolution: "@srclaunch/cli@npm:0.1.334"
+"@srclaunch/cli@npm:^0.1.335":
+  version: 0.1.335
+  resolution: "@srclaunch/cli@npm:0.1.335"
   dependencies:
     "@rauschma/stringio": ^1.4.0
     "@srclaunch/exceptions": ^0.1.68
@@ -2012,14 +2012,14 @@ __metadata:
     vite: ^2.9.6
   bin:
     srclaunch: dist/index.mjs
-  checksum: 1b08b94415ac2e24e16a965d8d1e65d309274cd680c3ec59d4b2afdf4bdc1090b345718394405439ac19d14c5ea5b60f302ad5ac1cd7775f36e88ed7f00ae02c
+  checksum: ff3bb0f1cd14a067e2945706a60b588baba9bc865ed4da99506ef619813539bee66379f3ee5402cd5a3d38e34c1b7eec98caa80e1a13b023920a75c0cf5e9fad
   languageName: node
   linkType: hard
 
-"@srclaunch/dx@npm:^0.1.45":
-  version: 0.1.45
-  resolution: "@srclaunch/dx@npm:0.1.45"
-  checksum: 3a9cd438265a640b8b4e35a57a5d7359f7ba434a77ec192cf4add7b8d2ebcb4e8c2e345b7557bd3354e626d3c7ad6d6e5ddef4ec9add234677881ad6cd2f7e1b
+"@srclaunch/dx@npm:^0.1.47":
+  version: 0.1.47
+  resolution: "@srclaunch/dx@npm:0.1.47"
+  checksum: 6d930583dc6d98a3e96588f0cf9cd3e6761babd725ab23b08339d2ba24d20b59145ca50517b7bb71498c172198066e8477298b2554e1f85bab3cc9a9228712dd
   languageName: node
   linkType: hard
 
@@ -2109,8 +2109,8 @@ __metadata:
   resolution: "@srclaunch/web-application-state@workspace:."
   dependencies:
     "@reduxjs/toolkit": ^1.8.1
-    "@srclaunch/cli": ^0.1.334
-    "@srclaunch/dx": ^0.1.45
+    "@srclaunch/cli": ^0.1.335
+    "@srclaunch/dx": ^0.1.47
     "@srclaunch/exceptions": ^0.1.69
     "@srclaunch/http-client": ^0.1.20
     "@srclaunch/i18n": ^0.1.5
@@ -2171,7 +2171,7 @@ __metadata:
     redux: ^4.2.0
     redux-logger: ^3.0.6
     standard-version: ^9.3.2
-    stylelint: ^14.8.0
+    stylelint: ^14.8.1
     stylelint-config-idiomatic-order: ^8.1.0
     stylelint-config-prettier: ^9.0.3
     stylelint-config-recommended: ^7.0.0
@@ -11200,9 +11200,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"stylelint@npm:^14.8.0":
-  version: 14.8.0
-  resolution: "stylelint@npm:14.8.0"
+"stylelint@npm:^14.8.1":
+  version: 14.8.1
+  resolution: "stylelint@npm:14.8.1"
   dependencies:
     balanced-match: ^2.0.0
     colord: ^2.9.2
@@ -11247,7 +11247,7 @@ __metadata:
     write-file-atomic: ^4.0.1
   bin:
     stylelint: bin/stylelint.js
-  checksum: cf222d7ec16c6c217998787e5fdf5c1b1acf857b1d19ba22ddce305309850a801e01ec7143671fa428db2f6e877cbee63c359f768880c4420373ad1609b7dde6
+  checksum: ea357c078cab17e4af5990b5307e14fab79d6eb4b7fa7f146000907886b240ac547c55cab69c4036c2e5599e155c0ee002525886d55dd16d85c9de4eee8f8b0c
   languageName: node
   linkType: hard
 

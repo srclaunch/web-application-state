@@ -1,17 +1,22 @@
-import React, { ReactElement } from 'react';
-import { createRoot } from 'react-dom/client';
-import { Provider } from 'react-redux';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { createBrowserHistory } from 'history';
+import React, { ReactElement } from "react";
+import { createRoot } from "react-dom/client";
+import { Provider } from "react-redux";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { createBrowserHistory } from "history";
 import {
   AnyAction,
   configureStore,
+  
+  
+  
+  
+  
   EnhancedStore,
   Middleware,
   ReducersMapObject,
   ThunkAction,
-} from '@reduxjs/toolkit';
-import { HttpClient } from '@srclaunch/http-client';
+} from "@reduxjs/toolkit";
+import { HttpClient } from "@srclaunch/http-client";
 import {
   EnvironmentType,
   Model,
@@ -19,14 +24,14 @@ import {
   RouteRole,
   Route as RouteType,
   WebApplicationConfig,
-} from '@srclaunch/types';
-import { getEnvironment } from '@srclaunch/web-environment';
-import { createMiddleware } from './middleware/index';
-import { createRootReducer } from './state';
-import { setConfig } from './state/app/config';
-import { setRoutes } from './state/app/routes';
-import { addThemes, setTheme } from './state/ui/themes';
-import { refreshSession } from './state/user/authentication/login';
+} from "@srclaunch/types";
+import { getEnvironment } from "@srclaunch/web-environment";
+import { createMiddleware } from "./middleware/index";
+import { createRootReducer } from "./state";
+import { setConfig } from "./state/app/config";
+import { setRoutes } from "./state/app/routes";
+import { addThemes, setTheme } from "./state/ui/themes";
+import { refreshSession } from "./state/user/authentication/login";
 
 const environment = getEnvironment();
 
@@ -45,7 +50,7 @@ export const createStore = ({
     devTools:
       environment.type === EnvironmentType.Development ||
       environment.type === EnvironmentType.NonProduction,
-    middleware: getDefaultMiddleware => [
+    middleware: (getDefaultMiddleware) => [
       ...getDefaultMiddleware(),
       ...createMiddleware(history, middleware),
     ],
@@ -80,14 +85,14 @@ export const renderReduxWebApp = async ({
   }
 
   await store.dispatch(
-    setRoutes(routes.map(({ component, ...route }) => ({ ...route }))),
+    setRoutes(routes.map(({ component, ...route }) => ({ ...route })))
   );
 
   if (authentication) {
     await store.dispatch(refreshSession());
   }
 
-  createRoot(document.getElementById('root')!).render(
+  createRoot(document.getElementById("root")!).render(
     <React.StrictMode>
       <Provider store={store}>
         <Router>
@@ -140,7 +145,7 @@ export const renderReduxWebApp = async ({
           </Routes>
         </Router>
       </Provider>
-    </React.StrictMode>,
+    </React.StrictMode>
   );
 };
 
@@ -148,7 +153,7 @@ export const renderReduxWebApp = async ({
 // @ts-ignore
 export type RootState = ReturnType<typeof createStore.getState>;
 
-export type AppDispatch = RootState['dispatch'];
+export type AppDispatch = RootState["dispatch"];
 
 export type AppThunk<ReturnType = unknown> = ThunkAction<
   ReturnType,
@@ -157,31 +162,31 @@ export type AppThunk<ReturnType = unknown> = ThunkAction<
   AnyAction
 >;
 
-export { useAppDispatch as useDispatch } from './hooks/use-dispatch';
-export { useAppSelector as useSelector } from './hooks/use-selector';
-export { hideModelPanel, showModelPanel } from './state/models/index';
-export { closeModal, showModal } from './state/ui/modals';
-export { addToastNotification } from './state/ui/notifications';
-export { addThemes, setTheme } from './state/ui/themes';
+export { useAppDispatch as useDispatch } from "./hooks/use-dispatch";
+export { useAppSelector as useSelector } from "./hooks/use-selector";
+export { hideModelPanel, showModelPanel } from "./state/models/index";
+export { closeModal, showModal } from "./state/ui/modals";
+export { addToastNotification } from "./state/ui/notifications";
+export { addThemes, setTheme } from "./state/ui/themes";
 export {
   login,
   logout,
   refreshSession,
-} from './state/user/authentication/login';
-export { signUp } from './state/user/authentication/signup';
-export { checkUsernameAvailability } from './state/user/authentication/username-availability';
-export { resendVerificationCode } from './state/user/authentication/verification/code/resend';
-export { getVerificationDetails } from './state/user/authentication/verification/code/status';
-export { verifyCode } from './state/user/authentication/verification/code/verify';
+} from "./state/user/authentication/login";
+export { signUp } from "./state/user/authentication/signup";
+export { checkUsernameAvailability } from "./state/user/authentication/username-availability";
+export { resendVerificationCode } from "./state/user/authentication/verification/code/resend";
+export { getVerificationDetails } from "./state/user/authentication/verification/code/status";
+export { verifyCode } from "./state/user/authentication/verification/code/verify";
 export {
   deletePaymentMethod,
   getPaymentMethods,
-} from './state/user/payment-methods';
-export { getSubscriptions } from './state/user/subscriptions';
-export type { Modal } from './types/modal';
-export type { Notification } from './types/notification';
-export { NotificationType } from './types/notification';
-export { matchPath, matchRoutes } from 'react-router';
+} from "./state/user/payment-methods";
+export { getSubscriptions } from "./state/user/subscriptions";
+export type { Modal } from "./types/modal";
+export type { Notification } from "./types/notification";
+export { NotificationType } from "./types/notification";
+export { matchPath, matchRoutes } from "react-router";
 export {
   Link,
   Navigate,
@@ -196,6 +201,6 @@ export {
   useParams,
   useResolvedPath,
   useSearchParams,
-} from 'react-router-dom';
+} from "react-router-dom";
 
 export { createStore as store };
