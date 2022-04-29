@@ -40,7 +40,7 @@
     "@srclaunch/http-client": "^0.1.20",
     "@srclaunch/i18n": "^0.1.5",
     "@srclaunch/logger": "^0.1.80",
-    "@srclaunch/themes": "^0.1.31",
+    "@srclaunch/themes": "^0.1.32",
     "@srclaunch/validation": "^0.1.27",
     "@srclaunch/web-environment": "^0.1.17",
     "@testing-library/jest-dom": "^5.16.4",
