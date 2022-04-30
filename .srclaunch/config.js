@@ -14,10 +14,14 @@ export default {
   type: ProjectType.Library,
   build: {
     bundle: {
-      external: ['react', 'react-dom'],
+      external: [
+        'react',
+        'react-dom',
+        '@srclaunch/themes',
+        'styled-components',
+      ],
       globals: {
         react: 'React',
-        'react-dom': 'ReactDOM',
       },
     },
     input: {
