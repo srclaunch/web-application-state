@@ -33,6 +33,5 @@ export default {
       reporters: [TestReporter.Lcov, TestReporter.JSONSummary],
     },
     tool: TestTool.Jest,
-    verbose: true,
   },
 };
